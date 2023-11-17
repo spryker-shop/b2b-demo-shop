@@ -13,7 +13,6 @@ export default class AutocompleteForm extends Component {
     protected hiddenInputElement: HTMLInputElement;
     protected suggestionsContainer: HTMLElement;
     protected cleanButton: HTMLButtonElement;
-    protected overlay: HTMLElement;
     protected eventShowOverlay: CustomEvent<OverlayEventDetail>;
     protected eventHideOverlay: CustomEvent<OverlayEventDetail>;
 
@@ -25,7 +24,6 @@ export default class AutocompleteForm extends Component {
         this.inputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
         this.hiddenInputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input-hidden`)[0];
         this.cleanButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__clean-button`)[0];
-        this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayBlockClassName)[0];
 
         this.mapEvents();
     }
@@ -158,10 +156,6 @@ export default class AutocompleteForm extends Component {
 
     protected get showCleanButton(): boolean {
         return this.hasAttribute('show-clean-button');
-    }
-
-    protected get overlayBlockClassName(): string {
-        return this.getAttribute('overlay-block-class-name');
     }
 
     protected get bodyOverlayClassName(): string {

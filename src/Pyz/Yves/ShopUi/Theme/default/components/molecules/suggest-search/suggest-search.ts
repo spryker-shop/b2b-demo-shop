@@ -42,7 +42,8 @@ export default class SuggestSearch extends SuggestSearchCore {
     }
 
     hideSugestions(): void {
-        this.suggestionsContainer.classList.add('is-hidden');
+        super.hideSugestions();
+
         this.searchInput.classList.remove(`${this.name}__input--active`);
         this.hintInput.classList.remove(`${this.name}__hint--active`);
     }

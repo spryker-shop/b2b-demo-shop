@@ -2,6 +2,7 @@ import SideDrawerCore from 'ShopUi/components/organisms/side-drawer/side-drawer'
 
 export default class SideDrawer extends SideDrawerCore {
     protected overlay: HTMLElement;
+    protected isOverlayShown: boolean;
 
     protected init(): void {
         this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayClassName)[0];
@@ -22,12 +23,20 @@ export default class SideDrawer extends SideDrawerCore {
             }
 
             if (window.innerWidth >= this.overlayBreakpoint) {
-                this.overlay.classList.remove(`${this.overlayClassName}--show`);
+                if (!this.isOverlayShown) {
+                    return;
+                }
+
+                this.toggleOverlay(false);
 
                 return;
             }
 
-            this.overlay.classList.add(`${this.overlayClassName}--show`);
+            if (this.isOverlayShown) {
+                return;
+            }
+
+            this.toggleOverlay(true);
         });
     }
 
@@ -51,6 +60,12 @@ export default class SideDrawer extends SideDrawerCore {
             conatiner.classList.toggle(this.lockedBodyClassName, isShown),
         );
         this.toggleOverlay(isShown);
+    }
+
+    protected toggleOverlay(isShown: boolean): void {
+        super.toggleOverlay(isShown);
+
+        this.isOverlayShown = isShown;
     }
 
     protected get lockedBodyClassName(): string {
