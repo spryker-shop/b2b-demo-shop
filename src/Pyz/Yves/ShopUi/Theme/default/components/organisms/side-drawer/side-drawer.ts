@@ -46,8 +46,8 @@ export default class SideDrawer extends SideDrawerCore {
         this.overlay.addEventListener('click', () => this.toggle(false));
     }
 
-    toggle(isShownFromOutside?: boolean): void {
-        const isShown = isShownFromOutside ?? !this.classList.contains(`${this.name}--show`);
+    toggle(isShownForced?: boolean): void {
+        const isShown = isShownForced ?? !this.classList.contains(`${this.name}--show`);
 
         this.classList.toggle(`${this.name}--show`, isShown);
         this.containers.forEach((conatiner: HTMLElement) =>
