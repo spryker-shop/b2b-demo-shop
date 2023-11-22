@@ -22,7 +22,7 @@ tag: '1.0'
 
 environment: docker.production
 image:
-    tag: spryker/php:8.1
+    tag: spryker/php:8.2
     environment:
         SPRYKER_DNS_RESOLVER_IP: "10.105.0.2"
         SPRYKER_DEFAULT_STORE: "US"
@@ -97,16 +97,19 @@ groups:
                 endpoints:
                     glue.us.b2b-us.demo-spryker.com:
                         store: US
+                        cors-allow-origin: '*'
             glue_storefront:
                 application: glue-storefront
                 endpoints:
                     glue-storefront.us.b2b-us.demo-spryker.com:
                         store: US
+                        cors-allow-origin: '*'
             glue_backend:
                 application: glue-backend
                 endpoints:
                     glue-backend.us.b2b-us.demo-spryker.com:
                         store: US
+                        cors-allow-origin: '*'
             boffice:
                 application: backoffice
                 endpoints:
