@@ -17,11 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 class ShoppingListWidgetController extends SprykerShopShoppingListWidgetController
 {
     /**
-     * @var string
-     */
-    public const REQUEST_HEADER_REFERER = 'referer';
-
-    /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -30,8 +25,8 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
     {
         $parentResponse = parent::indexAction($request);
 
-        if ($this->getPyzRefererUrl($request) !== null) {
-            return $this->redirectResponseExternal($this->getPyzRefererUrl($request));
+        if ($this->getRefererUrl($request) !== null) {
+            return $this->redirectResponseExternal($this->getRefererUrl($request));
         }
 
         return $parentResponse;
@@ -42,7 +37,7 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
      *
      * @return array<mixed>|string|null
      */
-    protected function getPyzRefererUrl(Request $request)
+    protected function getRefererUrl(Request $request)
     {
         if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
             return $request->headers->get(static::REQUEST_HEADER_REFERER);

@@ -7,7 +7,8 @@
 
 namespace Pyz\Glue\GlueBackendApiApplication;
 
-use Spryker\Glue\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Glue\DynamicEntityBackendApi\Plugin\GlueApplication\DynamicEntityRouteProviderPlugin;
+use Spryker\Glue\EventDispatcher\Plugin\GlueBackendApiApplication\EventDispatcherApplicationPlugin;
 use Spryker\Glue\GlueBackendApiApplication\GlueBackendApiApplicationDependencyProvider as SprykerGlueBackendApiApplicationDependencyProvider;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ApplicationIdentifierRequestBuilderPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\LocaleRequestBuilderPlugin;
@@ -102,6 +103,8 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
      */
     protected function getRouteProviderPlugins(): array
     {
-        return [];
+        return [
+            new DynamicEntityRouteProviderPlugin(),
+        ];
     }
 }

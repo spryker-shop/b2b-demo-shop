@@ -10,50 +10,31 @@ namespace Pyz\Zed\CustomerAccessGui\Communication\Form\DataProvider;
 use ArrayObject;
 use Generated\Shared\Transfer\ContentTypeAccessTransfer;
 use Generated\Shared\Transfer\CustomerAccessTransfer;
-use Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface;
 use Pyz\Zed\CustomerAccessGui\Communication\Form\CustomerAccessForm;
+use Spryker\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccessDataProvider as SprykerCustomerAccessDataProvider;
 
-class CustomerAccessDataProvider
+/**
+ * @property \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface $customerAccessFacade
+ */
+class CustomerAccessDataProvider extends SprykerCustomerAccessDataProvider
 {
-    /**
-     * @var \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface
-     */
-    protected $customerAccessFacade;
-
-    /**
-     * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface $customerAccessFacade
-     */
-    public function __construct(
-        CustomerAccessFacadeInterface $customerAccessFacade,
-    ) {
-        $this->customerAccessFacade = $customerAccessFacade;
-    }
-
-    /**
-     * @return array<mixed>
-     */
+   /**
+    * @return array<string, mixed>
+    */
     public function getOptions(): array
     {
         $allContentTypes = $this->customerAccessFacade->getAllContentTypes();
-        $nonManageableContentTypes = $this->customerAccessFacade->filterPyzNonManageableContentTypes($allContentTypes)->getContentTypeAccess();
+        $nonManageableContentTypes = $this->customerAccessFacade->filterNonManageableContentTypes($allContentTypes)->getContentTypeAccess();
 
         return [
             'data_class' => CustomerAccessTransfer::class,
-            CustomerAccessForm::PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE
-                => $this->customerAccessFacade->filterPyzManageableContentTypes($allContentTypes)->getContentTypeAccess(),
-            CustomerAccessForm::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE
-                => $nonManageableContentTypes,
-            CustomerAccessForm::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA
-                => $this->filterPyzContentTypesData($nonManageableContentTypes),
+            CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE
+            => $this->customerAccessFacade->filterManageableContentTypes($allContentTypes)->getContentTypeAccess(),
+            CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE
+            => $nonManageableContentTypes,
+            CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA
+            => $this->filterContentTypesData($nonManageableContentTypes),
         ];
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
-    public function getData(): CustomerAccessTransfer
-    {
-        return $this->customerAccessFacade->getRestrictedContentTypes();
     }
 
     /**
@@ -61,7 +42,7 @@ class CustomerAccessDataProvider
      *
      * @return array<\Generated\Shared\Transfer\ContentTypeAccessTransfer>
      */
-    protected function filterPyzContentTypesData(ArrayObject $contentTypes): array
+    protected function filterContentTypesData(ArrayObject $contentTypes): array
     {
         return array_filter(
             $contentTypes->getArrayCopy(),

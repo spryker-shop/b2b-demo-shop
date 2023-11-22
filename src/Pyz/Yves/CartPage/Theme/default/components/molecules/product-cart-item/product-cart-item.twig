@@ -89,3 +89,31 @@
         </div>
     </div>
 {% endblock %}
+
+{% block itemAttributes %}
+    {% if data.attributes is not empty %}
+        {% embed molecule('product-item-variant-selector') with {
+            data: {
+                productItem: listItem,
+                productItemAttributes: data.attributes,
+                canEdit: data.canEdit,
+            },
+        } only %}
+            {% block variantSelector %}
+                {% include molecule('custom-select') with {
+                    modifiers: ['small', 'mobile-expand', 'mobile-xs'],
+                    data: {
+                        label: ('product.attribute.' ~ attributeName) | trans,
+                        options: options,
+                    },
+                    attributes: {
+                        name: 'preselectedAttributes[' ~ attributeName ~ ']',
+                        disabled: not data.canEdit or isProductSalesUnit,
+                        'data-cart-form-submitter': true,
+                        'config-theme': 'small',
+                    },
+                } only %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+{% endblock %}

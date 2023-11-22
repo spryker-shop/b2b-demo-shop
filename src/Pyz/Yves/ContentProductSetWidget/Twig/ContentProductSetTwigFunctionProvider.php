@@ -7,201 +7,29 @@
 
 namespace Pyz\Yves\ContentProductSetWidget\Twig;
 
-use Pyz\Yves\ContentProductSetWidget\Reader\ContentProductAbstractReaderInterface;
-use Pyz\Yves\ContentProductSetWidget\Reader\ContentProductSetReaderInterface;
-use Spryker\Client\ContentProductSet\Exception\InvalidProductSetTermException;
-use Spryker\Shared\Twig\TwigFunctionProvider;
-use Symfony\Component\HttpFoundation\Request;
-use Twig\Environment;
+use SprykerShop\Yves\ContentProductSetWidget\Twig\ContentProductSetTwigFunctionProvider as SprykerShopContentProductSetTwigFunctionProvider;
 
 /**
  * @method \Pyz\Yves\ContentProductSetWidget\ContentProductSetWidgetFactory getFactory()
  */
-class ContentProductSetTwigFunctionProvider extends TwigFunctionProvider
+class ContentProductSetTwigFunctionProvider extends SprykerShopContentProductSetTwigFunctionProvider
 {
     /**
-     * @var string
-     */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
-
-    /**
-     * @var string
-     */
-    protected const PYZ_FUNCTION_CONTENT_PRODUCT_SET = 'content_product_set';
-
-    /**
-     * @var string
-     */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_CART_BUTTON_TOP = 'cart-button-top';
-
-    /**
-     * @var string
-     */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_CART_BUTTON_BOTTOM = 'cart-button-btm';
-
-    /**
-     * @var string
-     */
-    protected const PYZ_PARAM_ATTRIBUTE = 'attributes';
-
-    /**
-     * @var string
+     * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
      *
-     * @deprecated Use {@link \SprykerShop\Yves\ContentProductSetWidget\Twig\ContentProductSetTwigFunctionProvider::PYZ_WIDGET_TEMPLATE_IDENTIFIER_CART_BUTTON_TOP} instead.
-     */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_DEFAULT = 'default';
-
-    /**
-     * @var \Twig\Environment
-     */
-    protected $twig;
-
-    /**
-     * @var \Symfony\Component\HttpFoundation\Request
-     */
-    protected $request;
-
-    /**
      * @var string
      */
-    protected $localeName;
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
 
     /**
-     * @var \Pyz\Yves\ContentProductSetWidget\Reader\ContentProductSetReaderInterface
+     * @return array<string, string>
      */
-    protected $contentProductSetReader;
-
-    /**
-     * @var \Pyz\Yves\ContentProductSetWidget\Reader\ContentProductAbstractReaderInterface
-     */
-    protected $contentProductAbstractReader;
-
-    /**
-     * @param \Twig\Environment $twig
-     * @param string $localeName
-     * @param \Pyz\Yves\ContentProductSetWidget\Reader\ContentProductSetReaderInterface $contentProductSetReader
-     * @param \Pyz\Yves\ContentProductSetWidget\Reader\ContentProductAbstractReaderInterface $contentProductAbstractReader
-     */
-    public function __construct(
-        Environment $twig,
-        string $localeName,
-        ContentProductSetReaderInterface $contentProductSetReader,
-        ContentProductAbstractReaderInterface $contentProductAbstractReader,
-    ) {
-        $this->twig = $twig;
-        $this->localeName = $localeName;
-        $this->contentProductSetReader = $contentProductSetReader;
-        $this->contentProductAbstractReader = $contentProductAbstractReader;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFunctionName(): string
+    protected function getAvailableTemplates(): array
     {
-        return static::PYZ_FUNCTION_CONTENT_PRODUCT_SET;
-    }
+        $contentWidgetTemplates = parent::getAvailableTemplates();
 
-    /**
-     * @return callable
-     */
-    public function getFunction(): callable
-    {
-        return function (array $context, string $contentKey, string $templateIdentifier): string {
-            if (!isset($this->getPyzAvailableTemplates()[$templateIdentifier])) {
-                return $this->getPyzMessageProductSetWrongTemplate($templateIdentifier);
-            }
-
-            try {
-                $productSetDataStorageTransfer = $this->contentProductSetReader
-                    ->findProductSetDataStorage($contentKey, $this->localeName);
-            } catch (InvalidProductSetTermException $exception) {
-                return $this->getPyzMessageProductSetWrongType($contentKey);
-            }
-
-            if (!$productSetDataStorageTransfer) {
-                return $this->getPyzMessageProductSetNotFound($contentKey);
-            }
-
-            /** @var array<mixed> $selectedAttributes */
-            $selectedAttributes = $this->getPyzRequest($context)->query->get(static::PYZ_PARAM_ATTRIBUTE) ?: [];
-            $productAbstractViewCollection = $this->contentProductAbstractReader
-                ->getProductAbstractCollection($productSetDataStorageTransfer, $selectedAttributes, $this->localeName);
-
-            return (string)$this->twig->render(
-                $this->getPyzAvailableTemplates()[$templateIdentifier],
-                [
-                    'productSet' => $productSetDataStorageTransfer,
-                    'productViews' => $productAbstractViewCollection,
-                ],
-            );
-        };
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getOptions(): array
-    {
         return [
-            'needs_context' => true,
-            'is_safe' => ['html'],
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getPyzAvailableTemplates(): array
-    {
-        return [
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_DEFAULT => '@ContentProductSetWidget/views/content-product-set/content-product-set.twig',
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_CART_BUTTON_TOP => '@ContentProductSetWidget/views/content-product-set/content-product-set.twig',
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_CART_BUTTON_BOTTOM => '@ContentProductSetWidget/views/content-product-set-alternative/content-product-set-alternative.twig',
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => '@ContentProductSetWidget/views/content-product-set-landing-page/content-product-set-landing-page.twig',
-        ];
-    }
-
-    /**
-     * @param string $contentKey
-     *
-     * @return string
-     */
-    protected function getPyzMessageProductSetNotFound(string $contentKey): string
-    {
-        return sprintf('<strong>Content product set with content key "%s" not found.</strong>', $contentKey);
-    }
-
-    /**
-     * @param string $templateIdentifier
-     *
-     * @return string
-     */
-    protected function getPyzMessageProductSetWrongTemplate(string $templateIdentifier): string
-    {
-        return sprintf('<strong>"%s" is not supported name of template.</strong>', $templateIdentifier);
-    }
-
-    /**
-     * @param string $contentKey
-     *
-     * @return string
-     */
-    protected function getPyzMessageProductSetWrongType(string $contentKey): string
-    {
-        return sprintf(
-            '<strong>Content product set widget could not be rendered because the content item with key "%s" is not a product set.</strong>',
-            $contentKey,
-        );
-    }
-
-    /**
-     * @param array<mixed> $context
-     *
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
-    protected function getPyzRequest(array $context): Request
-    {
-        return $context['app']['request'];
+                static::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => '@ContentProductSetWidget/views/content-product-set-landing-page/content-product-set-landing-page.twig',
+            ] + $contentWidgetTemplates;
     }
 }

@@ -8,12 +8,19 @@
 
         {% if not isItemRelatedToBundle %}
             <div class="{{ config.name }}__wrapper grid grid--middle {{ config.jsName }}__item-shipping-{{ loop.index }}">
-                {% set hasShippingAddresses = item.shippingAddress.id_customer_address is defined %}
-                {% set hasCompanyUnitAddresses = item.shippingAddress.id_company_unit_address is defined %}
+                {% set shippingAddress = item.shippingAddress %}
+                {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
+                {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
+                {% set shippingAddressValue = shippingAddress.id_customer_address.vars.value | default %}
+                {% set shippingCompanyAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
                 {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', item.shippingAddress.vars.data]) %}
                 {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
                 {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
                 {% set formFieldUniqueName = 'multiShippingAddresses' %}
+                {% set isNewCompanyAddressSelected = isCompanyBusinessUnitShippingAddressApplicable and shippingCompanyAddressValue is empty and shippingAddressValue is empty %}
+                {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 or isNewCompanyAddressSelected %}
+                {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
+                {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' is-hidden' %}
 
                 {% block multiShippingAddressesInner %}
                     {% embed molecule('product-card-item') with {
@@ -33,6 +40,8 @@
                             hasShippingAddresses: hasShippingAddresses,
                             hasCompanyUnitAddresses: hasCompanyUnitAddresses,
                             formFieldUniqueName: formFieldUniqueName,
+                            isNewAddressSelected: isNewAddressSelected,
+                            isSavedAddressSelected: isSavedAddressSelected,
                         },
                     } only %}
                         {% block image %}
@@ -77,6 +86,7 @@
                                     {% widget embed.companyBusinessUnitShippingAddressWidget with {
                                         data: {
                                             itemShippingTriggerJsClass: embed.jsName ~ '__trigger ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
+                                            hasPreselectedOption: not embed.isSavedAddressSelected and not embed.isNewAddressSelected,
                                         },
                                         embed: {
                                             index: embed.index,
@@ -142,8 +152,7 @@
                 {% endblock %}
 
                 <div class="col col--sm-12">
-                    {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping '
-                        ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ (hasShippingAddressesAndApplicable ? ' is-hidden ') ~ ' spacing-x spacing-x--inner spacing-x--reset' %}
+                    {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping ' ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ ' spacing-x spacing-x--inner spacing-x--reset' ~ newAddressHiddenClassName %}
 
                     {% include molecule('form') with {
                         class: itemClass,

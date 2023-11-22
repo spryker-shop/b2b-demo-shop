@@ -24,10 +24,10 @@ class ProductUrlCartConnectorFacade extends AbstractFacade implements ProductUrl
      *
      * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
-    public function expandPyzItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
+    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
         return $this->getFactory()
-            ->createPyzProductExpander()
+            ->createProductExpander()
             ->expandItems($cartChangeTransfer);
     }
 }

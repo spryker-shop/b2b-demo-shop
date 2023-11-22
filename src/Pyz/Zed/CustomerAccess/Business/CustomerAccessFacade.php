@@ -14,7 +14,7 @@ use Spryker\Zed\CustomerAccessGui\Dependency\Facade\CustomerAccessGuiToCustomerA
 /**
  * @method \Pyz\Zed\CustomerAccess\Business\CustomerAccessBusinessFactory getFactory()
  * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface getEntityManager()
- * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
+ * @method \Spryker\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
  */
 class CustomerAccessFacade extends SprykerCustomerAccessFacade implements CustomerAccessFacadeInterface, CustomerAccessGuiToCustomerAccessFacadeInterface
 {
@@ -27,10 +27,10 @@ class CustomerAccessFacade extends SprykerCustomerAccessFacade implements Custom
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterPyzManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
+    public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         return $this->getFactory()
-            ->createPyzCustomerAccessFilter()
+            ->createCustomerAccessFilter()
             ->filterManageableContentTypes($customerAccessTransfer);
     }
 
@@ -43,24 +43,10 @@ class CustomerAccessFacade extends SprykerCustomerAccessFacade implements Custom
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterPyzNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
+    public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         return $this->getFactory()
-            ->createPyzCustomerAccessFilter()
+            ->createCustomerAccessFilter()
             ->filterNonManageableContentTypes($customerAccessTransfer);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
-    public function updatePyzUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
-    {
-        return $this->getFactory()->createPyzCustomerAccessUpdater()->updateUnauthenticatedCustomerAccess($customerAccessTransfer);
     }
 }

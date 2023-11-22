@@ -22,7 +22,7 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterPyzManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
+    public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 
     /**
      * Specification:
@@ -34,19 +34,5 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterPyzNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
-
-    /**
-     * Specification:
-     * - Updates unauthenticated customer access entities
-     * - Marks all content types as has no access
-     * - Marks listed in CustomerAccessTransfer content types as has access
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
-    public function updatePyzUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
+    public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 }

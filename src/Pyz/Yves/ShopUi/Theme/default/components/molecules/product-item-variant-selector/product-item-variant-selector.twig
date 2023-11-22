@@ -45,19 +45,21 @@
                             <span class="{{ config.name }}__label">{{ ('product.attribute.' ~ attributeName) | trans }}:</span>
                         </div>
                         <div class="col col--expand {{ config.name }}__select">
-                            {% include molecule('custom-select') with {
-                                modifiers: ['small', 'mobile-expand', 'mobile-xs'],
-                                data: {
-                                    label: ('product.attribute.' ~ attributeName) | trans,
-                                    options: options
-                                },
-                                attributes: {
-                                    name: 'preselectedAttributes[' ~ attributeName ~ ']',
-                                    disabled: not data.canEdit or isProductSalesUnit,
-                                    'data-form-submitter': true,
-                                    'config-theme': 'small',
-                                },
-                            } only %}
+                            {% block variantSelector %}
+                                {% include molecule('custom-select') with {
+                                    modifiers: ['small', 'mobile-expand', 'mobile-xs'],
+                                    data: {
+                                        label: ('product.attribute.' ~ attributeName) | trans,
+                                        options: options,
+                                    },
+                                    attributes: {
+                                        name: 'preselectedAttributes[' ~ attributeName ~ ']',
+                                        disabled: not data.canEdit or isProductSalesUnit,
+                                        'data-form-submitter': true,
+                                        'config-theme': 'small',
+                                    },
+                                } only %}
+                            {% endblock %}
                         </div>
                     </label>
                     <input name="selectedAttributes[{{ attributeName }}]" type="hidden" />

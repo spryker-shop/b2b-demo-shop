@@ -17,23 +17,23 @@ class MenuItemCompanyWidget extends AbstractWidget
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_IS_VISIBLE = 'isVisible';
+    protected const PARAMETER_IS_VISIBLE = 'isVisible';
 
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_COMPANY_NAME = 'companyName';
+    protected const PARAMETER_COMPANY_NAME = 'companyName';
 
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_HAS_COMPANY_ACCESS = 'hasCompanyAccess';
+    protected const PARAMETER_HAS_COMPANY_ACCESS = 'hasCompanyAccess';
 
     public function __construct()
     {
-        $this->addPyzIsVisibleParameter();
-        $this->addPyzCompanyNameParameter();
-        $this->addPyzHasCompanyAccessParameter();
+        $this->addIsVisibleParameter();
+        $this->addCompanyNameParameter();
+        $this->addHasCompanyAccessParameter();
     }
 
     /**
@@ -55,37 +55,37 @@ class MenuItemCompanyWidget extends AbstractWidget
     /**
      * @return void
      */
-    protected function addPyzIsVisibleParameter(): void
+    protected function addIsVisibleParameter(): void
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
         $isVisible = ($customer !== null && $customer->getCompanyUserTransfer() !== null);
 
-        $this->addParameter(static::PYZ_PARAMETER_IS_VISIBLE, $isVisible);
+        $this->addParameter(static::PARAMETER_IS_VISIBLE, $isVisible);
     }
 
     /**
      * @return void
      */
-    protected function addPyzCompanyNameParameter(): void
+    protected function addCompanyNameParameter(): void
     {
-        $this->addParameter(static::PYZ_PARAMETER_COMPANY_NAME, $this->getPyzCompanyName());
+        $this->addParameter(static::PARAMETER_COMPANY_NAME, $this->getCompanyName());
     }
 
     /**
      * @return void
      */
-    protected function addPyzHasCompanyAccessParameter(): void
+    protected function addHasCompanyAccessParameter(): void
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-        $hasPyzCompanyAccess = $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
+        $hasCompanyAccess = $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
 
-        $this->addParameter(static::PYZ_PARAMETER_HAS_COMPANY_ACCESS, $hasPyzCompanyAccess);
+        $this->addParameter(static::PARAMETER_HAS_COMPANY_ACCESS, $hasCompanyAccess);
     }
 
     /**
      * @return string
      */
-    protected function getPyzCompanyName(): string
+    protected function getCompanyName(): string
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
 

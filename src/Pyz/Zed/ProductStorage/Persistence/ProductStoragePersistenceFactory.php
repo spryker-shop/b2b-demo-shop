@@ -19,7 +19,7 @@ class ProductStoragePersistenceFactory extends SprykerProductStoragePersistenceF
     /**
      * @return \Orm\Zed\ProductBundle\Persistence\SpyProductBundleQuery
      */
-    public function createPyzProductBundleQuery(): SpyProductBundleQuery
+    public function createProductBundleQuery(): SpyProductBundleQuery
     {
         return SpyProductBundleQuery::create();
     }

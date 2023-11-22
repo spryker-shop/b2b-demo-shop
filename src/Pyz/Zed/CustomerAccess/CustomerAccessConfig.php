@@ -49,7 +49,7 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
      *
      * @return list<string>
      */
-    public function getPyzManageableContentTypes(): array
+    public function getManageableContentTypes(): array
     {
         return [
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_PRICE,
