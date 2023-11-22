@@ -5,7 +5,7 @@ tag: 'dev'
 
 environment: docker.dev
 image:
-    tag: spryker/php:8.1
+    tag: spryker/php:8.2
     php:
         enabled-extensions:
             - blackfire
@@ -104,22 +104,28 @@ groups:
                 endpoints:
                     glue.de.spryker.local:
                         store: DE
+                        cors-allow-origin: '*'
                     glue.at.spryker.local:
                         store: AT
+                        cors-allow-origin: '*'
             glue_storefront_eu:
                 application: glue-storefront
                 endpoints:
                     glue-storefront.de.spryker.local:
                         store: DE
+                        cors-allow-origin: '*'
                     glue-storefront.at.spryker.local:
                         store: AT
+                        cors-allow-origin: '*'
             glue_backend_eu:
                 application: glue-backend
                 endpoints:
                     glue-backend.de.spryker.local:
                         store: DE
+                        cors-allow-origin: '*'
                     glue-backend.at.spryker.local:
                         store: AT
+                        cors-allow-origin: '*'
             backoffice_eu:
                 application: backoffice
                 endpoints:
@@ -167,16 +173,19 @@ groups:
                 endpoints:
                     glue.us.spryker.local:
                         store: US
+                        cors-allow-origin: '*'
             glue_storefront_us:
                 application: glue-storefront
                 endpoints:
                     glue-storefront.us.spryker.local:
                         store: US
+                        cors-allow-origin: '*'
             glue_backend_us:
                 application: glue-backend
                 endpoints:
                     glue-backend.us.spryker.local:
                         store: US
+                        cors-allow-origin: '*'
             backoffice_us:
                 application: backoffice
                 endpoints:
@@ -230,7 +239,7 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
-        version: '2.324'
+        version: '2.401'
         csrf-protection-enabled: true
         endpoints:
             scheduler.spryker.local:
@@ -250,6 +259,8 @@ services:
         engine: dashboard
         endpoints:
             spryker.local:
+    webdriver:
+        engine: chromedriver
 
 docker:
 
@@ -277,3 +288,7 @@ docker:
         mutagen:
             platforms:
                 - macos
+
+    compose:
+        yamls:
+            - .robot/docker-compose.robot.yml

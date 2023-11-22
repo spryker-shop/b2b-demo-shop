@@ -20,7 +20,7 @@ class MultiCartController extends SprykerShopMultiCartController
     /**
      * @var string
      */
-    public const PYZ_REQUEST_HEADER_REFERER = 'referer';
+    public const REQUEST_HEADER_REFERER = 'referer';
 
     /**
      * @param int $idQuote
@@ -28,7 +28,7 @@ class MultiCartController extends SprykerShopMultiCartController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function setPyzDefaultBackAction(int $idQuote, Request $request): RedirectResponse
+    public function setDefaultBackAction(int $idQuote, Request $request): RedirectResponse
     {
         $multiCartClient = $this->getFactory()
             ->getMultiCartClient();
@@ -38,14 +38,14 @@ class MultiCartController extends SprykerShopMultiCartController
         if (!$quoteTransfer) {
             $this->addInfoMessage(static::GLOSSARY_KEY_PERMISSION_FAILED);
 
-            return $this->redirectResponseExternal($this->getPyzRefererUrl($request));
+            return $this->redirectResponseExternal($this->getRefererUrl($request));
         }
 
         $multiCartClient->markQuoteAsDefault($quoteTransfer);
 
         $this->getFactory()->getCartClient()->validateQuote();
 
-        return $this->redirectResponseExternal($this->getPyzRefererUrl($request));
+        return $this->redirectResponseExternal($this->getRefererUrl($request));
     }
 
     /**
@@ -53,10 +53,10 @@ class MultiCartController extends SprykerShopMultiCartController
      *
      * @return string
      */
-    protected function getPyzRefererUrl(Request $request): string
+    protected function getRefererUrl(Request $request): string
     {
-        if ($request->headers->has(static::PYZ_REQUEST_HEADER_REFERER)) {
-            return $request->headers->get(static::PYZ_REQUEST_HEADER_REFERER);
+        if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
+            return $request->headers->get(static::REQUEST_HEADER_REFERER);
         }
 
         return CartPageRouteProviderPlugin::ROUTE_NAME_CART;

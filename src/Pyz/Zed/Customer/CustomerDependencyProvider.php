@@ -33,12 +33,12 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @var string
      */
-    public const PYZ_FACADE_SALES = 'sales facade';
+    public const FACADE_SALES = 'sales facade';
 
     /**
      * @var string
      */
-    public const PYZ_FACADE_NEWSLETTER = 'newsletter facade';
+    public const FACADE_NEWSLETTER = 'newsletter facade';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -48,8 +48,8 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
-        $container = $this->addPyzFacadeSales($container);
-        $container = $this->addPyzFacadeNewsletter($container);
+        $container = $this->addFacadeSales($container);
+        $container = $this->addFacadeNewsletter($container);
 
         return $container;
     }
@@ -59,9 +59,9 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addPyzFacadeSales(Container $container): Container
+    protected function addFacadeSales(Container $container): Container
     {
-        $container->set(static::PYZ_FACADE_SALES, function (Container $container) {
+        $container->set(static::FACADE_SALES, function (Container $container) {
             return $container->getLocator()->sales()->facade();
         });
 
@@ -73,9 +73,9 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addPyzFacadeNewsletter(Container $container): Container
+    protected function addFacadeNewsletter(Container $container): Container
     {
-        $container->set(static::PYZ_FACADE_NEWSLETTER, function (Container $container) {
+        $container->set(static::FACADE_NEWSLETTER, function (Container $container) {
             return $container->getLocator()->newsletter()->facade();
         });
 

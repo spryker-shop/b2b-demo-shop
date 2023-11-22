@@ -27,7 +27,7 @@ class ProductRelationCreatePage
     /**
      * @var string
      */
-    public const PRODUCT_RULE_NAME = 'sku';
+    public const PRODUCT_RULE_NAME = 'product_sku';
 
     /**
      * @var string

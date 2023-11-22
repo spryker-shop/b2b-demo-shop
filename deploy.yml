@@ -5,7 +5,7 @@ tag: '1.0'
 
 environment: docker.production
 image:
-    tag: spryker/php:8.1
+    tag: spryker/php:8.2
     php:
         ini:
             "opcache.revalidate_freq": 0
@@ -97,6 +97,7 @@ groups:
                 endpoints:
                     glue.de.spryker.local:
                         store: DE
+                        cors-allow-origin: '*'
                     glue.at.spryker.local:
                         store: AT
             glue_storefront_eu:
@@ -224,7 +225,7 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
-        version: '2.324'
+        version: '2.401'
         csrf-protection-enabled: true
         endpoints:
             scheduler.spryker.local:

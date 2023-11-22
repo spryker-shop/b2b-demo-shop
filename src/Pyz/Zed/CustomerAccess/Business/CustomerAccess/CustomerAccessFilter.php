@@ -33,7 +33,7 @@ class CustomerAccessFilter implements CustomerAccessFilterInterface
     public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         $filteredCustomerAccessTransfer = new CustomerAccessTransfer();
-        $manageableContentTypes = $this->customerAccessConfig->getPyzManageableContentTypes();
+        $manageableContentTypes = $this->customerAccessConfig->getManageableContentTypes();
 
         foreach ($customerAccessTransfer->getContentTypeAccess() as $contentTypeAccess) {
             if (!$this->isManageable($contentTypeAccess->getContentType(), $manageableContentTypes)) {
@@ -53,7 +53,7 @@ class CustomerAccessFilter implements CustomerAccessFilterInterface
     public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         $filteredCustomerAccessTransfer = new CustomerAccessTransfer();
-        $manageableContentTypes = $this->customerAccessConfig->getPyzManageableContentTypes();
+        $manageableContentTypes = $this->customerAccessConfig->getManageableContentTypes();
 
         foreach ($customerAccessTransfer->getContentTypeAccess() as $contentTypeAccess) {
             if ($this->isManageable($contentTypeAccess->getContentType(), $manageableContentTypes)) {

@@ -8,7 +8,7 @@
 namespace Pyz\Zed\CustomerAccessGui\Communication\Form;
 
 use ArrayObject;
-use Spryker\Zed\Kernel\Communication\Form\AbstractType;
+use Spryker\Zed\CustomerAccessGui\Communication\Form\CustomerAccessForm as SprykerCustomerAccessForm;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,37 +18,27 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @method \Pyz\Zed\CustomerAccessGui\Communication\CustomerAccessGuiCommunicationFactory getFactory()
  * @method \Spryker\Zed\CustomerAccessGui\CustomerAccessGuiConfig getConfig()
  */
-class CustomerAccessForm extends AbstractType
+class CustomerAccessForm extends SprykerCustomerAccessForm
 {
     /**
      * @var string
      */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE';
+    public const OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE';
 
     /**
      * @var string
      */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE';
+    public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE';
 
     /**
      * @var string
      */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA';
+    public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA';
 
     /**
      * @var string
      */
-    protected const PYZ_FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
-
-    /**
-     * @var string
-     */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS = 'OPTION_CONTENT_TYPE_ACCESS';
-
-    /**
-     * @var string
-     */
-    public const PYZ_FIELD_CONTENT_TYPE_ACCESS = 'contentTypeAccess';
+    protected const FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
@@ -57,9 +47,9 @@ class CustomerAccessForm extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setRequired(static::PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE);
-        $resolver->setRequired(static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE);
-        $resolver->setRequired(static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA);
     }
 
     /**
@@ -70,30 +60,30 @@ class CustomerAccessForm extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addPyzContentTypeAccessManageable($builder, $options);
-        $this->addPyzContentTypeAccessNonManageable($builder, $options);
+        $this->addContentTypeAccessManageable($builder, $options);
+        $this->addContentTypeAccessNonManageable($builder, $options);
     }
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array<mixed> $options
+     * @param array<string, mixed> $options
      *
      * @return $this
      */
-    protected function addPyzContentTypeAccessManageable(FormBuilderInterface $builder, array $options)
+    protected function addContentTypeAccessManageable(FormBuilderInterface $builder, array $options)
     {
-        $builder->add(static::PYZ_FIELD_CONTENT_TYPE_ACCESS, ChoiceType::class, [
+        $builder->add(static::FIELD_CONTENT_TYPE_ACCESS, ChoiceType::class, [
             'expanded' => true,
             'multiple' => true,
             'required' => false,
             'label' => 'Content Types',
             'choice_label' => 'contentType',
             'choice_value' => 'contentType',
-            'choices' => $options[static::PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE],
+            'choices' => $options[static::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE],
         ]);
 
         $builder
-            ->get(static::PYZ_FIELD_CONTENT_TYPE_ACCESS)
+            ->get(static::FIELD_CONTENT_TYPE_ACCESS)
             ->addModelTransformer(new CallbackTransformer(function ($customerAccess): array {
                 if ($customerAccess) {
                     return (array)$customerAccess;
@@ -109,13 +99,13 @@ class CustomerAccessForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array<mixed> $options
+     * @param array<string, mixed> $options
      *
      * @return $this
      */
-    protected function addPyzContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options)
+    protected function addContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options)
     {
-        $builder->add(static::PYZ_FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE, ChoiceType::class, [
+        $builder->add(static::FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE, ChoiceType::class, [
             'mapped' => false,
             'expanded' => true,
             'multiple' => true,
@@ -123,8 +113,8 @@ class CustomerAccessForm extends AbstractType
             'disabled' => true,
             'choice_label' => 'contentType',
             'choice_value' => 'contentType',
-            'data' => $options[static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA],
-            'choices' => $options[static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE],
+            'data' => $options[static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA],
+            'choices' => $options[static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE],
         ]);
 
         return $this;

@@ -158,7 +158,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
             ->findOneOrCreate();
 
         $productAbstractEntity
-            ->setPyzColorCode($dataSet[static::KEY_COLOR_CODE])
+            ->setColorCode($dataSet[static::KEY_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
             ->setNewFrom($dataSet[static::KEY_NEW_FROM])

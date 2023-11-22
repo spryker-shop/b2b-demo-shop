@@ -93,8 +93,8 @@
 
         {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
 
-        {% if data.product.pyzProductSetIds is not empty %}
-            {% widget 'ProductSetIdsWidget' args [data.product.pyzProductSetIds, data.request] only %}{% endwidget %}
+        {% if data.product.productSetIds is not empty %}
+            {% widget 'ProductSetIdsWidget' args [data.product.productSetIds, data.request] only %}{% endwidget %}
         {% endif %}
     </section>
 {% endblock %}
