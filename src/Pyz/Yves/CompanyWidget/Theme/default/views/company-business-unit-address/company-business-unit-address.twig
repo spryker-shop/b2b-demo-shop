@@ -3,6 +3,7 @@
 {% block body %}
     {% set defaultAddressKey = null %}
     {% set optionValueDeliverToMultipleAddresses = '-1' %}
+    {% set optionValueDefineNewAddress = '0' %}
     {% set fullAddresses = data.customerAddresses ?: data.companyBusinessUnitAddresses %}
     {% set shippingAddress = 'shippingAddress' %}
     {% set billingAddress = 'billingAddress' %}
@@ -53,6 +54,7 @@
             currentAddressId: data.currentAddressId,
             isMultipleShipmentEnabled: data.isMultipleShipmentEnabled,
             optionValueDeliverToMultipleAddresses: optionValueDeliverToMultipleAddresses,
+            optionValueDefineNewAddress: optionValueDefineNewAddress,
             itemShippingTriggerJsClass: data.itemShippingTriggerJsClass,
             items: data.items,
             shippingAddress: shippingAddress,
@@ -90,7 +92,7 @@
                 <option value="" disabled selected>{{ 'checkout.step.address.select_address' | trans }}</option>
             {% endif %}
 
-            <option value="0">{{ 'company.account.add_new_address' | trans }}</option>
+            <option value="{{ embed.optionValueDefineNewAddress }}">{{ 'company.account.add_new_address' | trans }}</option>
 
             {% if embed.customerAddresses %}
                 <optgroup label="{{ 'page.checkout.address.option_group.customer' | trans | upper }}">
