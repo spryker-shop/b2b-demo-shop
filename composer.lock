@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c981a19bb4e773667adfe17bc58af6d4",
+    "content-hash": "d414282ba9477e6a0f9bcbb0f9ae4837",
     "packages": [
         {
             "name": "async-aws/core",
@@ -4976,7 +4976,7 @@
         },
         {
             "name": "spryker-feature/checkout",
-            "version": "202311.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/checkout.git",
@@ -5000,6 +5000,7 @@
                 "spryker/sales-order-threshold-gui": "^1.9.0",
                 "spryker/step-engine": "^3.5.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -5135,7 +5136,7 @@
         },
         {
             "name": "spryker-feature/company-account",
-            "version": "202311.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/company-account.git",
@@ -5185,6 +5186,7 @@
             "suggest": {
                 "spryker-feature/customer-account-management": "Recommended feature dependency."
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -5371,7 +5373,7 @@
         },
         {
             "name": "spryker-feature/customer-account-management",
-            "version": "202311.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/customer-account-management.git",
@@ -5398,6 +5400,7 @@
                 "spryker/oauth-customer-validation": "^1.0.0",
                 "spryker/oauth-revoke": "^1.3.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -66635,9 +66638,31 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker-feature/checkout",
+            "version": "9999999-dev",
+            "alias": "202407.0",
+            "alias_normalized": "202407.0"
+        },
+        {
+            "package": "spryker-feature/company-account",
+            "version": "9999999-dev",
+            "alias": "202407.0",
+            "alias_normalized": "202407.0"
+        },
+        {
+            "package": "spryker-feature/customer-account-management",
+            "version": "9999999-dev",
+            "alias": "202407.0",
+            "alias_normalized": "202407.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker-feature/checkout": 20,
+        "spryker-feature/company-account": 20,
+        "spryker-feature/customer-account-management": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20
     },
