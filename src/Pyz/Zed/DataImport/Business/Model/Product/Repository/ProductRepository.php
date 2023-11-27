@@ -94,6 +94,7 @@ class ProductRepository implements ProductRepositoryInterface
 
         $productQuery = $this->applyPagination($productQuery, $paginationTransfer);
 
+        /** @phpstan-var \Propel\Runtime\Collection\ArrayCollection */
         return $productQuery->find();
     }
 
@@ -172,10 +173,12 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getSkuProductAbstractList(): array
     {
-        return SpyProductAbstractQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $productAbstractEntities */
+        $productAbstractEntities = SpyProductAbstractQuery::create()
             ->select([SpyProductAbstractTableMap::COL_SKU])
-            ->find()
-            ->toArray();
+            ->find();
+
+        return $productAbstractEntities->toArray();
     }
 
     /**
@@ -183,10 +186,12 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getSkuProductConcreteList(): array
     {
-        return SpyProductQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $productEntities */
+        $productEntities = SpyProductQuery::create()
             ->select([SpyProductTableMap::COL_SKU])
-            ->find()
-            ->toArray();
+            ->find();
+
+        return $productEntities->toArray();
     }
 
     /**
