@@ -53,13 +53,7 @@ export default class SuggestSearch extends SuggestSearchCore {
             }
 
             if (window.innerWidth >= this.overlayBreakpoint && this.isOverlayShown) {
-                this.toggleOverlay(false);
-
-                return;
-            }
-
-            if (window.innerWidth < this.overlayBreakpoint && !this.isOverlayShown) {
-                this.toggleOverlay(true);
+                this.toggleSearch(false);
             }
         });
     }
@@ -70,7 +64,7 @@ export default class SuggestSearch extends SuggestSearchCore {
         this.searchInput.classList.add(`${this.name}__input--active`);
         this.hintInput.classList.add(`${this.name}__hint--active`);
 
-        if (!this.isOverlayShown) {
+        if (window.innerWidth >= this.overlayBreakpoint && !this.isOverlayShown) {
             this.toggleSearch(true);
         }
     }
@@ -96,7 +90,7 @@ export default class SuggestSearch extends SuggestSearchCore {
         };
 
         this.eventShowOverlay = new CustomEvent(EVENT_SHOW_OVERLAY, overlayConfig);
-        this.eventHideOverlay = new CustomEvent(EVENT_HIDE_OVERLAY, { bubbles: true });
+        this.eventHideOverlay = new CustomEvent(EVENT_HIDE_OVERLAY, overlayConfig);
     }
 
     protected toggleSearch(isShown: boolean): void {
