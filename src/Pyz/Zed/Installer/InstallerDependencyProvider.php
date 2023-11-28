@@ -34,7 +34,7 @@ use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
 class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
 {
     /**
-     * @return array<\Spryker\Zed\Installer\Dependency\Plugin\InstallerPluginInterface>
+     * @return array<\Spryker\Zed\Installer\Dependency\Plugin\InstallerPluginInterface|\Spryker\Zed\InstallerExtension\Dependency\Plugin\InstallerPluginInterface>
      */
     public function getInstallerPlugins(): array
     {
