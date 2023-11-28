@@ -17,8 +17,7 @@
                 {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
                 {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
                 {% set formFieldUniqueName = 'multiShippingAddresses' %}
-                {% set isNewCompanyAddressSelected = isCompanyBusinessUnitShippingAddressApplicable and shippingCompanyAddressValue is empty and shippingAddressValue is empty %}
-                {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 or isNewCompanyAddressSelected %}
+                {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 %}
                 {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
                 {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' is-hidden' %}
 
@@ -42,6 +41,8 @@
                             formFieldUniqueName: formFieldUniqueName,
                             isNewAddressSelected: isNewAddressSelected,
                             isSavedAddressSelected: isSavedAddressSelected,
+                            shippingAddressValue: shippingAddressValue,
+                            shippingCompanyAddressValue: shippingCompanyAddressValue,
                         },
                     } only %}
                         {% block image %}
@@ -93,6 +94,8 @@
                                             item: embed.item,
                                             jsName: embed.jsName,
                                             formFieldUniqueName: embed.formFieldUniqueName,
+                                            shippingAddressValue: embed.shippingAddressValue,
+                                            shippingCompanyAddressValue: embed.shippingCompanyAddressValue,
                                         },
                                     } only %}
                                         {% block addressHandler %}
@@ -111,8 +114,8 @@
 
                                         {% block hiddenFields %}
                                             {% set index = embed.index - 1 %}
-                                            <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_customer_address]">
-                                            <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_company_unit_address]">
+                                            <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_customer_address]" value="{{ embed.shippingAddressValue }}">
+                                            <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_company_unit_address]" value="{{ embed.shippingCompanyAddressValue }}">
                                             <input type="hidden" class="{{ embed.jsName }}__default-address-item-shipping-{{ embed.index }}" value="{{ defaultAddressKey }}">
                                         {% endblock %}
                                     {% endwidget %}
