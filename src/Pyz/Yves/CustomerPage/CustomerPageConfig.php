@@ -12,6 +12,11 @@ use SprykerShop\Yves\CustomerPage\CustomerPageConfig as SprykerCustomerPageConfi
 class CustomerPageConfig extends SprykerCustomerPageConfig
 {
     /**
+     * @var bool
+     */
+    protected const CUSTOMER_SECURITY_BLOCKER_ENABLED = true;
+
+    /**
      * @uses \Pyz\Zed\Customer\CustomerConfig::MIN_LENGTH_CUSTOMER_PASSWORD
      *
      * @var int
