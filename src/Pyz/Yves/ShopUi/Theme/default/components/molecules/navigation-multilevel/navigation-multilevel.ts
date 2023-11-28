@@ -1,15 +1,21 @@
 import Component from 'ShopUi/models/component';
-import OverlayBlock from '../../atoms/overlay-block/overlay-block';
+import {
+    EVENT_HIDE_OVERLAY,
+    EVENT_SHOW_OVERLAY,
+    OverlayEventDetail,
+} from 'ShopUi/components/molecules/main-overlay/main-overlay';
 
 export default class NavigationMultilevel extends Component {
-    protected overlay: OverlayBlock;
+    protected overlay: HTMLElement;
     protected triggers: HTMLElement[];
     protected touchTriggers: HTMLElement[];
+    protected eventShowOverlay: CustomEvent<OverlayEventDetail>;
+    protected eventHideOverlay: CustomEvent<OverlayEventDetail>;
 
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
+        this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayBlockClassName)[0];
         this.triggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__trigger`));
         this.touchTriggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__touch-trigger`));
 
@@ -27,6 +33,7 @@ export default class NavigationMultilevel extends Component {
         this.touchTriggers.forEach((trigger: HTMLElement) => {
             trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
         });
+        this.mapOverlayEvents();
     }
 
     protected addReverseClassToDropDownMenu(): void {
@@ -47,8 +54,8 @@ export default class NavigationMultilevel extends Component {
         if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
-            this.overlay.showOverlay();
-            this.addClass(trigger);
+            this.toggleOverlay(true);
+            trigger.classList.add(this.classToToggle);
         }
     }
 
@@ -56,17 +63,9 @@ export default class NavigationMultilevel extends Component {
         if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
-            this.overlay.hideOverlay();
-            this.removeClass(trigger);
+            this.toggleOverlay(false);
+            trigger.classList.remove(this.classToToggle);
         }
-    }
-
-    protected addClass(trigger: HTMLElement): void {
-        trigger.classList.add(this.classToToggle);
-    }
-
-    protected removeClass(trigger: HTMLElement): void {
-        trigger.classList.remove(this.classToToggle);
     }
 
     protected onTriggerClick(event: Event): void {
@@ -80,6 +79,23 @@ export default class NavigationMultilevel extends Component {
             contentToShow.classList.toggle(contentToggleClass);
             trigger.classList.toggle('is-active');
         }
+    }
+
+    protected mapOverlayEvents(): void {
+        const overlayConfig: CustomEventInit<OverlayEventDetail> = {
+            bubbles: true,
+            detail: {
+                id: this.name,
+                zIndex: Number(getComputedStyle(this).zIndex) - 1,
+            },
+        };
+
+        this.eventShowOverlay = new CustomEvent(EVENT_SHOW_OVERLAY, overlayConfig);
+        this.eventHideOverlay = new CustomEvent(EVENT_HIDE_OVERLAY, overlayConfig);
+    }
+
+    protected toggleOverlay(isShown: boolean): void {
+        this.dispatchEvent(isShown ? this.eventShowOverlay : this.eventHideOverlay);
     }
 
     protected isDropMenuReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {

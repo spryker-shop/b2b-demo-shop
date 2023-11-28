@@ -19,15 +19,12 @@
                 transition: none;
                 z-index: $setting-zi-element;
             }
-
-            .body-overlay--no-search & {
-                z-index: $setting-zi-search-suggestions;
-            }
         }
 
         &--active {
             @include helper-visibility-visible;
             transform: translateY(0);
+            z-index: $setting-zi-header-overlay;
         }
 
         &__button {
