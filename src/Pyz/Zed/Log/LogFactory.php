@@ -5,15 +5,15 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\Log;
+namespace Pyz\Yves\Log;
 
 use Monolog\Handler\HandlerInterface;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Spryker\Zed\Log\LogFactory as SprykerLogFactory;
+use Spryker\Yves\Log\LogFactory as SprykerLogFactory;
 
 /**
- * @method \Pyz\Zed\Log\LogConfig getConfig()
+ * @method \Pyz\Yves\Log\LogConfig getConfig()
  */
 class LogFactory extends SprykerLogFactory
 {
