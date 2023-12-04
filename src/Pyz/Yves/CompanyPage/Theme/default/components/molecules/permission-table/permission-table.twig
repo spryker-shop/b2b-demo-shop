@@ -35,8 +35,10 @@
                         }) %}
                         {% set titleAssign = 'company.account.company_role.permission.assign' | trans %}
                         {% set titleUnassign = 'company.account.company_role.permission.unassign' | trans %}
+                        {% set form = isAssigned ? formUnassign : formAssign %}
+                        {% set formAction = isAssigned ? actionUnassign : actionAssign %}
 
-                        {{ form_start(isAssigned ? formUnassign : formAssign, { action: isAssigned ? actionUnassign : actionAssign }) }}
+                        {{ form_start(form, { action: formAction }) }}
                             {% include atom('switch') with {
                                 modifiers: isAssigned ? ['active'] : [],
                                 config: {
@@ -46,7 +48,7 @@
                                     title: isAssigned ? titleUnassign : titleAssign,
                                 },
                             } only %}
-                        {{ form_end(isAssigned ? formUnassign : formAssign) }}
+                        {{ form_end(form) }}
                     </td>
                 {% endif %}
                 {% if showActions %}
