@@ -69,7 +69,9 @@
                 }
 
                 &:hover > #{$name} {
-                    @include helper-visibility-visible;
+                    @include helper-breakpoint-media-min($xl) {
+                        @include helper-visibility-visible;
+                    }
                 }
 
                 & > #{$name} > #{$name}__item {
@@ -92,10 +94,6 @@
                         opacity: 0;
                     }
                 }
-            }
-
-            &--has-overlay {
-                z-index: $setting-zi-header + 1;
             }
 
             &--filter-enumeration {

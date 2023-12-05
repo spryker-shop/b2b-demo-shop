@@ -1,4 +1,7 @@
 @mixin agent-control-bar($name: '.agent-control-bar') {
+    $column-spacing: rem(12);
+    $column-spacing-desktop: rem(28);
+
     #{$name} {
         position: relative;
         background-color: $setting-color-gray-6;
@@ -8,15 +11,101 @@
             z-index: auto;
         }
 
-        &__container {
-            @include helper-breakpoint-media-max($md) {
-                flex-direction: column-reverse;
-                text-align: right;
+        &__header {
+            @include helper-breakpoint-media-min($md) {
+                border-bottom: rem(1) solid $setting-color-gray-2;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                border-bottom: none;
             }
         }
 
-        &__header {
-            padding: rem(22) 0;
+        &__content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            @include helper-breakpoint-media-min($md) {
+                flex-wrap: nowrap;
+            }
+        }
+
+        &__col {
+            flex-grow: 0;
+            flex-basis: auto;
+        }
+
+        &__customer {
+            padding-right: $column-spacing;
+            min-width: 21%;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-right: $column-spacing-desktop;
+            }
+
+            &--search {
+                flex-grow: 1;
+                width: 100%;
+                padding: rem(12) 0 rem(12) 0;
+
+                @include helper-breakpoint-media-min($md) {
+                    width: auto;
+                    min-width: 38%;
+                    padding-right: $column-spacing;
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-right: $column-spacing-desktop;
+                }
+
+                @include helper-breakpoint-media-min($xl) {
+                    flex-grow: 0;
+                }
+            }
+        }
+
+        &__title {
+            @include helper-font-size(tiny);
+            color: $setting-color-gray-3;
+            padding-bottom: rem(5);
+        }
+
+        &__quote-request {
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            padding: rem(17) $column-spacing rem(13);
+            border-left: rem(1) solid $setting-color-gray-2;
+            border-right: rem(1) solid $setting-color-gray-2;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-right: $column-spacing-desktop;
+                padding-left: $column-spacing-desktop;
+            }
+        }
+
+        &__agent {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($md) {
+                width: auto;
+                margin-left: auto;
+                padding-left: $column-spacing;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: $column-spacing-desktop;
+            }
+
+            &--search {
+                margin-left: auto;
+                padding-left: $column-spacing;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: $column-spacing-desktop;
+                }
+            }
         }
 
         &__footer {
