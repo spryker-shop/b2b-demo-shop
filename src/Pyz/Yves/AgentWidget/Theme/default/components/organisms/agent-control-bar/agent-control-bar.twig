@@ -8,6 +8,7 @@
 {% define data = {
     agent: required,
     customer: {},
+    locale: app.locale | slice(0, 2),
 } %}
 
 {% set isAgentControl = is_granted('ROLE_PREVIOUS_ADMIN') %}
@@ -24,7 +25,7 @@
                         {% include molecule('agent-control-item', 'AgentWidget') with {
                             data: {
                                 title: customerTitle,
-                                buttonLink: '/?_switch_user=_exit',
+                                buttonLink: '/' ~ data.locale ~ '?_switch_user=_exit',
                                 buttonTitle: 'agent.control_bar.logout_as_customer' | trans,
                                 firstName: data.customer.firstName,
                                 lastName: data.customer.lastName,
@@ -33,7 +34,7 @@
                         } only %}
                     {% else %}
                         <div class="{{ config.name }}__title">{{ customerTitle }}</div>
-                        <form method="GET" action="/">
+                        <form method="GET" action="/{{ data.locale }}">
                             <div class="grid grid--middle grid--nowrap">
                                 <div class="col col--expand">
                                     {% include molecule('autocomplete-form') with {
