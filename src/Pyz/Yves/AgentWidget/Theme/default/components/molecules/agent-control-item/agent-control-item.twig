@@ -23,7 +23,9 @@
         } only %}
     </div>
     <div class="{{ config.name }}__col {{ config.name }}__info">
-        <div>{{ data.title }}</div>
+        <div class="{{ config.name }}__title">
+            {{- data.title -}}
+        </div>
         <a href="{{ path(data.type ~ '/overview') }}" class="{{ config.name }}__name">
             {{- data.firstName }} {{ data.lastName -}}
         </a>

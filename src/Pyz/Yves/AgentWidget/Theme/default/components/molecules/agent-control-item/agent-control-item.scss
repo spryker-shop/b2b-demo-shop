@@ -23,6 +23,10 @@
             overflow: hidden;
         }
 
+        &__title {
+            margin-bottom: rem(4);
+        }
+
         &__name {
             @include helper-effect-transition(color);
             font-size: rem(10);
@@ -53,7 +57,7 @@
             display: inline-block;
             font-size: 0;
             line-height: 0;
-            padding: rem(5) rem(5) rem(1);
+            padding: rem(5) rem(5) rem(3);
 
             &:hover,
             &:focus {
