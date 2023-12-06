@@ -20,6 +20,7 @@
             @include helper-font-size(tiny);
             line-height: normal;
             color: $setting-color-gray-3;
+            overflow: hidden;
         }
 
         &__name {
@@ -28,6 +29,10 @@
             font-weight: fw(bold);
             color: $setting-color-gray-4;
             text-transform: uppercase;
+            display: inline-block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
             &:hover,
             &:focus {
