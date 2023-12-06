@@ -6,7 +6,7 @@
 
 {% define data = {
     url: required,
-    iconNane: 'message',
+    iconName: 'message',
     text: 'quote_request_widget.request_for_quote.list.title' | trans,
 } %}
 
@@ -14,9 +14,9 @@
     <a class="{{ config.name }}__link" href="{{ data.url }}">
         <div class="{{ config.name }}__icon">
             {% include atom('icon') with {
-                modifiers: [data.iconNane],
+                modifiers: [data.iconName],
                 data: {
-                    name: data.iconNane,
+                    name: data.iconName,
                 },
             } only %}
         </div>
