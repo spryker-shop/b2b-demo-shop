@@ -1,17 +1,133 @@
-@mixin agent-control-bar($name: '.agent-control-bar') {
+@mixin agent-widget-agent-control-bar($name: '.agent-control-bar') {
+    $column-spacing: rem(12);
+    $column-spacing-desktop: rem(28);
+
     #{$name} {
         position: relative;
         background-color: $setting-color-gray-6;
+        z-index: $setting-zi-header + 1;
 
-        &__container {
-            @include helper-breakpoint-media-max($md) {
-                flex-direction: column-reverse;
-                text-align: right;
-            }
+        .body-has-overlay & {
+            z-index: auto;
         }
 
         &__header {
-            padding: rem(22) 0;
+            border-bottom: rem(1) solid $setting-color-gray-2;
+
+            @include helper-breakpoint-media-min($lg) {
+                border-bottom: none;
+            }
+        }
+
+        &__content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            @include helper-breakpoint-media-min($md) {
+                flex-wrap: nowrap;
+            }
+        }
+
+        &__col {
+            flex-grow: 0;
+            flex-basis: auto;
+        }
+
+        &__customer {
+            padding-right: $column-spacing;
+            min-width: 21%;
+            max-width: 175px;
+
+            @include helper-breakpoint-media-min($md) {
+                max-width: 40%;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-right: $column-spacing-desktop;
+            }
+
+            &--search {
+                flex-grow: 1;
+                width: 100%;
+                max-width: none;
+                padding: rem(12) 0 rem(20) 0;
+                border-bottom: rem(1) solid $setting-color-gray-2;
+
+                @include helper-breakpoint-media-min($md) {
+                    width: auto;
+                    min-width: 38%;
+                    padding-bottom: rem(12);
+                    padding-right: $column-spacing;
+                    border-bottom: none;
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-right: $column-spacing-desktop;
+                }
+
+                @include helper-breakpoint-media-min($xl) {
+                    flex-grow: 0;
+                }
+            }
+        }
+
+        &__title {
+            @include helper-font-size(tiny);
+            color: $setting-color-gray-3;
+            padding-bottom: rem(5);
+        }
+
+        &__quote-request {
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            padding: rem(17) $column-spacing rem(13);
+            border-left: rem(1) solid $setting-color-gray-2;
+            border-right: rem(1) solid $setting-color-gray-2;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-right: $column-spacing-desktop;
+                padding-left: $column-spacing-desktop;
+            }
+        }
+
+        &__agent {
+            width: 100%;
+            padding: rem(15) 0 rem(20);
+            border-top: rem(1) solid $setting-color-gray-2;
+
+            @include helper-breakpoint-media-min($md) {
+                width: auto;
+                max-width: 40%;
+                margin-left: auto;
+                padding: 0 0 0 $column-spacing;
+                border-top: none;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: $column-spacing-desktop;
+            }
+
+            &--search {
+                width: auto;
+                max-width: 175px;
+                margin-left: auto;
+                padding: 0 0 0 $column-spacing;
+                border-top: none;
+
+                @include helper-breakpoint-media-min($md) {
+                    max-width: 30%;
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: $column-spacing-desktop;
+                }
+
+                @include helper-breakpoint-media-min($xl) {
+                    max-width: 40%;
+                }
+            }
         }
 
         &__footer {
@@ -22,4 +138,4 @@
     }
 }
 
-@include agent-control-bar();
+@include agent-widget-agent-control-bar();

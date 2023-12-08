@@ -1,21 +1,9 @@
-{% extends model('component') %}
+{% extends molecule('logo', '@SprykerShop:ShopUi') %}
 {% import _self as component %}
 
 {% define config = {
-    name: 'logo',
-    tag: 'div'
+    tag: 'div',
 } %}
-
-{% define data = {
-    url: '/'
-} %}
-
-{% define attributes = {
-    src: null,
-    alt: 'Logo'
-} %}
-
-{% block attributes %}{% endblock %}
 
 {% block body %}
     <a href="{{data.url}}" class="{{ component.renderClass(config.name ~ '__link', modifiers) }}">

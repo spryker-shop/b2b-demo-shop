@@ -1,32 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.companyRoleForm,
-    permissions: _view.permissions,
-    idCompanyRole: _view.idCompanyRole,
-    title: 'company.account.company_role' | trans,
-    activePage: 'role',
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'company.account.page-title' | trans,
-                    url: url('company/overview'),
-                }, {
-                    label: 'company.account.company_role' | trans,
-                    url: url('company/company-role'),
-                }, {
-                    label: 'company.account.company_role.edit_information' | trans({
-                        '%role_name%' : data.form.vars.value.name,
-                    }),
-                },
-            ],
-        },
-    } only %}
-{% endblock %}
+{% extends view('role-update', '@SprykerShop:CompanyPage') %}
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
@@ -61,10 +33,12 @@
         data: {
             permissions: data.permissions,
             idCompanyRole: data.idCompanyRole,
+            companyRolePermissionAssignFormCloner: data.companyRolePermissionAssignFormCloner,
+            companyRolePermissionUnassignFormCloner: data.companyRolePermissionUnassignFormCloner,
             actions: {
                 configure: true,
-                switch: true
-            }
-        }
+                switch: true,
+            },
+        },
     } only %}
 {% endblock %}

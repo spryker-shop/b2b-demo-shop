@@ -7,7 +7,7 @@
             z-index: $setting-zi-search-suggestions + 2;
         }
 
-        &__input {
+        #{$name}__input {
             padding: rem(15) rem(36) rem(15) rem(18);
             border: none;
             font-size: rem(15);
@@ -37,7 +37,7 @@
             z-index: $setting-zi-search-suggestions + 3;
         }
 
-        &__clean-button {
+        #{$name}__clean-button {
             position: absolute;
             top: 0;
             right: 0;
@@ -46,7 +46,30 @@
         }
 
         &--overlap {
-            z-index: $setting-zi-custom-select;
+            z-index: $setting-zi-header-overlay - 1;
+        }
+
+        &--small {
+            #{$name}__input {
+                @include helper-font-size(small);
+                padding: rem(11) rem(40) rem(11) rem(14);
+                line-height: rem(14);
+            }
+
+            #{$name}__clean-button {
+                padding-right: rem(14);
+                color: $setting-color-gray-2;
+
+                &:hover,
+                &:focus {
+                    color: $setting-color-gray-4;
+                }
+            }
+
+            #{$name}__icon {
+                width: rem(12);
+                height: rem(12);
+            }
         }
 
         @content;
