@@ -19,7 +19,7 @@
                 {% set formFieldUniqueName = 'multiShippingAddresses' %}
                 {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 %}
                 {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
-                {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' is-hidden' %}
+                {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' ' ~ data.hiddenClassName %}
 
                 {% block multiShippingAddressesInner %}
                     {% embed molecule('product-card-item') with {
@@ -43,6 +43,7 @@
                             isSavedAddressSelected: isSavedAddressSelected,
                             shippingAddressValue: shippingAddressValue,
                             shippingCompanyAddressValue: shippingCompanyAddressValue,
+                            addressSelectClassName: data.addressSelectClassName,
                         },
                     } only %}
                         {% block image %}
@@ -86,7 +87,7 @@
                                 {% if embed.hasShippingAddressesAndApplicable and embed.isCompanyBusinessUnitShippingAddressApplicable %}
                                     {% widget embed.companyBusinessUnitShippingAddressWidget with {
                                         data: {
-                                            itemShippingTriggerJsClass: embed.jsName ~ '__trigger ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
+                                            itemShippingTriggerJsClass: embed.addressSelectClassName ~ ' ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
                                             hasPreselectedOption: not embed.isSavedAddressSelected and not embed.isNewAddressSelected,
                                         },
                                         embed: {
@@ -127,11 +128,12 @@
                                     {% if embed.hasCompanyUnitAddresses %}
                                         {% do embed.item.shippingAddress.id_company_unit_address.setRendered %}
                                     {% endif %}
-                                {% endif %}
-
-                                {% if embed.hasShippingAddressesAndApplicable and not embed.isCompanyBusinessUnitShippingAddressApplicable %}
+                                {% else %}
                                     {{ form_row(embed.item.shippingAddress.id_customer_address, {
                                         label: 'page.checkout.address.delivery.address_select' | trans,
+                                        attr: {
+                                            class: embed.addressSelectClassName ~ ' ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
+                                        },
                                     }) }}
                                 {% endif %}
                             </div>
@@ -154,11 +156,9 @@
                     {% endembed %}
                 {% endblock %}
 
-                <div class="col col--sm-12">
-                    {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping ' ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ ' spacing-x spacing-x--inner spacing-x--reset' ~ newAddressHiddenClassName %}
-
+                <div class="{{ data.validationClassName }} col col--sm-12">
                     {% include molecule('form') with {
-                        class: itemClass,
+                        class: data.itemShippingClassName ~ ' ' ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ newAddressHiddenClassName ~ ' ' ~ config.name ~ '__content ' ~ config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
                         modifiers: ['checkout-address-content'],
                         data: {
                             form: item.shippingAddress,
@@ -181,7 +181,7 @@
                         {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
                             class: config.jsName ~ '__toggler',
                             attributes: {
-                                'trigger-selector': isCompanyBusinessUnitShippingAddressApplicable ? '.' ~ config.jsName ~ '__trigger--' ~ loop.index : '[name="addressesForm[' ~ formFieldUniqueName ~ '][' ~ loop.index0 ~ '][shippingAddress][id_customer_address]"]',
+                                'trigger-selector': '.' ~ config.jsName ~ '__trigger--' ~ loop.index,
                                 'target-selector': '.' ~ config.jsName ~ '__item-shipping--' ~ loop.index,
                                 'parent-target-class-name': config.jsName,
                             },
@@ -191,22 +191,4 @@
             </div>
         {% endif %}
     {% endfor %}
-
-    {% include molecule('is-next-checkout-step-enabled', 'CheckoutPage') with {
-        attributes: {
-            'trigger-selector': isCompanyBusinessUnitShippingAddressApplicable ? '.' ~ data.jsAddressClass ~ '__form-select-shippingAddress' : '[name="addressesForm[shippingAddress][id_customer_address]"]',
-            'target-selector': '.' ~ config.jsName ~ '__validate-next-checkout-step',
-        },
-    } only %}
-
-    {% include molecule('validate-next-checkout-step', 'CheckoutPage') with {
-        class: config.jsName ~ '__validate-next-checkout-step',
-        attributes: {
-            'container-selector': '.' ~ config.jsName ~ '__item-shipping',
-            'target-selector': '.' ~ data.jsAddressClass ~ '__form-submit',
-            'dropdown-trigger-selector': '.' ~ config.jsName ~ '__trigger',
-            'parent-target-class-name': config.jsName,
-            'is-enable': false,
-        },
-    } only %}
 {% endblock %}
