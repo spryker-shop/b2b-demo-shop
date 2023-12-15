@@ -37,18 +37,18 @@ x-frontend-auth: &frontend-auth
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
 
-namespace: spryker-alumio-uat-b2b
+namespace: spryker-alu-prod
 tag: '1.0'
 
 environment: docker
 image:
     tag: spryker/php:8.2  # Last actual image
     environment:
-        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-alumio-uat-b2b.com
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-alumio-prod-test-b2b.demo-spryker.com
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
-        SPRYKER_YVES_HOST_DE: de.alumio-uat-b2b.com
-        SPRYKER_YVES_HOST_AT: at.alumio-uat-b2b.com
-        SPRYKER_YVES_HOST_US: us.alumio-uat-b2b.com
+        SPRYKER_YVES_HOST_DE: de.alumio-prod-test-b2b.demo-spryker.com
+        SPRYKER_YVES_HOST_AT: at.alumio-prod-test-b2b.demo-spryker.com
+        SPRYKER_YVES_HOST_US: us.alumio-prod-test-b2b.demo-spryker.com
     node:
         version: 18
         npm: 9
@@ -68,7 +68,7 @@ regions:
     EU:
         services:
             database:
-                database: spryker_alumio
+                database: spryker_alu_prod
                 username: spryker
                 password: secret
         stores:
@@ -110,75 +110,75 @@ groups:
             yves_eu:
                 application: yves
                 endpoints:
-                    date-time-configurator-alumio-uat-b2b.com:
+                    date-time-configurator-alumio-prod-test-b2b.demo-spryker.com:
                         entry-point: Configurator
-                    www.de.alumio-uat-b2b.com:
+                    www.de.alumio-prod-test-b2b.demo-spryker.com:
                         store: DE
                         <<: *frontend-auth
-                    de.alumio-uat-b2b.com:
+                    de.alumio-prod-test-b2b.demo-spryker.com:
                         store: DE
                         <<: *frontend-auth
-                    www.at.alumio-uat-b2b.com:
+                    www.at.alumio-prod-test-b2b.demo-spryker.com:
                         store: AT
                         <<: *frontend-auth
-                    at.alumio-uat-b2b.com:
+                    at.alumio-prod-test-b2b.demo-spryker.com:
                         store: AT
                         <<: *frontend-auth
-                    www.us.alumio-uat-b2b.com:
+                    www.us.alumio-prod-test-b2b.demo-spryker.com:
                         store: US
                         <<: *frontend-auth
-                    us.alumio-uat-b2b.com:
+                    us.alumio-prod-test-b2b.demo-spryker.com:
                         store: US
                         <<: *frontend-auth
             backoffice_eu:
                 application: backoffice
                 endpoints:
-                    backoffice.de.alumio-uat-b2b.com:
+                    backoffice.de.alumio-prod-test-b2b.demo-spryker.com:
                         store: DE
                         primal: true
-                    backoffice.at.alumio-uat-b2b.com:
+                    backoffice.at.alumio-prod-test-b2b.demo-spryker.com:
                         store: AT
-                    backoffice.us.alumio-uat-b2b.com:
+                    backoffice.us.alumio-prod-test-b2b.demo-spryker.com:
                         store: US
             backend_gateway_eu:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.alumio-uat-b2b.com:
+                    backend-gateway.de.alumio-prod-test-b2b.demo-spryker.com:
                         store: DE
                         primal: true
-                    backend-gateway.at.alumio-uat-b2b.com:
+                    backend-gateway.at.alumio-prod-test-b2b.demo-spryker.com:
                         store: AT
-                    backend-gateway.us.alumio-uat-b2b.com:
+                    backend-gateway.us.alumio-prod-test-b2b.demo-spryker.com:
                         store: US
             backend_api_eu:
                 application: zed
                 endpoints:
-                    backend-api.de.alumio-uat-b2b.com:
+                    backend-api.de.alumio-prod-test-b2b.demo-spryker.com:
                         store: DE
                         entry-point: BackendApi
-                    backend-api.at.alumio-uat-b2b.com:
+                    backend-api.at.alumio-prod-test-b2b.demo-spryker.com:
                         store: AT
                         entry-point: BackendApi
-                    backend-api.us.alumio-uat-b2b.com:
+                    backend-api.us.alumio-prod-test-b2b.demo-spryker.com:
                         store: US
                         entry-point: BackendApi
             glue_eu:
                 application: glue
                 endpoints:
-                    glue.de.alumio-uat-b2b.com:
+                    glue.de.alumio-prod-test-b2b.demo-spryker.com:
                         store: DE
-                    glue.at.alumio-uat-b2b.com:
+                    glue.at.alumio-prod-test-b2b.demo-spryker.com:
                         store: AT
-                    glue.us.alumio-uat-b2b.com:
+                    glue.us.alumio-prod-test-b2b.demo-spryker.com:
                         store: US
             glue_backend_eu:
                 application: glue-backend
                 endpoints:
-                    glue-backend.de.alumio-uat-b2b.com:
+                    glue-backend.de.alumio-prod-test-b2b.demo-spryker.com:
                         store: DE
-                    glue-backend.at.alumio-uat-b2b.com:
+                    glue-backend.at.alumio-prod-test-b2b.demo-spryker.com:
                         store: AT
-                    glue-backend.us.alumio-uat-b2b.com:
+                    glue-backend.us.alumio-prod-test-b2b.demo-spryker.com:
                         store: US
 services:
     database:
@@ -197,7 +197,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            queue.alumio-uat-b2b.com:
+            queue.alumio-prod-test-b2b.demo-spryker.com:
             localhost:5672:
                 protocol: tcp
     session:
@@ -217,11 +217,11 @@ services:
         engine: jenkins
         version: '2.401'
         endpoints:
-            scheduler.alumio-uat-b2b.com:
+            scheduler.alumio-prod-test-b2b.demo-spryker.com:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.alumio-uat-b2b.com:
+            mail.alumio-prod-test-b2b.demo-spryker.com:
 
 docker:
     blackfire:
