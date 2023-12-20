@@ -52,7 +52,7 @@
                     </td>
                 {% endif %}
                 {% if showActions %}
-                    <td class="spacing spacing--inner spacing--reset">
+                    <td class="table__actions">
                         {% if data.actions.configure and permission.configurationSignature %}
                             {% include molecule('table-action-list') with {
                                 data: {

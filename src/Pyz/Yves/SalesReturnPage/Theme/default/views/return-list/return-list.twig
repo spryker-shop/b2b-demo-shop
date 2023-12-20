@@ -18,6 +18,52 @@
 
 {% block salesReturnTableUnderline %}{% endblock %}
 
+{% block salesReturnTable %}
+    {% set salesReturnTableClass = salesReturnTableClass ~ ' table--responsive' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesReturnTableHeaderCells %}
+    <th>{{ 'return_page.return.return_ref' | trans }}</th>
+    <th>{{ 'return_page.return.order_ref' | trans }}</th>
+    <th>{{ 'return_page.return.number_of_items' | trans }}</th>
+    <th>{{ 'return_page.return.date' | trans }}</th>
+    <th>{{ 'return_page.return.items_state' | trans }}</th>
+    <th></th>
+{% endblock %}
+
+{% block salesReturnTableBodyCells %}
+    <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'return_page.return.return_ref' | trans }}">
+        {{ return.returnReference }}
+    </td>
+    <td class="transform-cell" data-content="{{ 'return_page.return.order_ref' | trans }}">
+        <div>
+            {% for orderReference in orderReferences %}
+                {{- (not loop.first ? ', ') ~ orderReference -}}
+            {% endfor %}
+        </div>
+    </td>
+    <td class="transform-cell" data-content="{{ 'return_page.return.number_of_items' | trans }}">
+        {{ return.returnItems | length | executeFilterIfExists('formatInt', app.locale) }}
+    </td>
+    <td class="transform-cell" data-content="{{ 'return_page.return.date' | trans }}">
+        {{ date(return.createdAt) | formatDateTime }}
+    </td>
+    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'return_page.return.items_state' | trans }}">
+        <div>
+            {% for state in itemStates %}
+                {% set stateName = state.status | replace({' ': '-'}) | lower %}
+
+                {{ block('state') }}
+            {% endfor %}
+        </div>
+    </td>
+    <td class="table__actions">
+        {{ block('returnActionsMenu') }}
+    </td>
+{% endblock %}
+
 {% block returnActionsMenu %}
     {% include molecule('table-action-list') with {
         data: {

@@ -10,6 +10,10 @@
         th {
             color: $setting-color-gray-5;
             font-weight: fw(bold);
+
+            &:empty {
+                padding: 0;
+            }
         }
 
         th,
@@ -175,6 +179,14 @@
                 td {
                     padding: 0;
                 }
+            }
+        }
+
+        #{$name}__actions {
+            padding: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: 0;
             }
         }
 
