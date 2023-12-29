@@ -4,6 +4,9 @@ on:
     schedule:
         -   cron: '0 3 * * *'
     workflow_dispatch:
+    push:
+        branches:
+            - feature/frw-5940/master-support-symfony-security-v6-robot
 
 jobs:
     docker-alpine-php-8-2-mariadb-robot-ui:
@@ -27,11 +30,11 @@ jobs:
                   git config --global user.email "github-actions[bot]@users.noreply.github.com"
                   git config --global user.name "github-actions[bot]"
                   git clone -b feature/frw-5940/master-support-symfony-security-v6-robot --single-branch https://github.com/spryker-shop/b2b-demo-shop.git .
-            -   name: Up-merge fresh branch (internal)
-                    run: |
-                        git fetch origin
-                        git config pull.ff only
-                        git pull origin feature/frw-5940/master-support-symfony-security-v6-robot --no-ff --allow-unrelated-histories --no-edit
+            - name: Up-merge fresh branch (internal)
+              run: |
+                  git fetch origin
+                  git config pull.ff only
+                  git pull origin feature/frw-5940/master-support-symfony-security-v6-robot --no-ff --allow-unrelated-histories --no-edit
             - name: Install packages
               run: |
                   sudo apt-get install apache2-utils
