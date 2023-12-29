@@ -4,9 +4,6 @@ on:
     schedule:
         -   cron: '0 3 * * *'
     workflow_dispatch:
-    push:
-        branches:
-            - feature/frw-5940/master-support-symfony-security-v6-robot
 
 jobs:
     docker-alpine-php-8-2-mariadb-robot-ui:
