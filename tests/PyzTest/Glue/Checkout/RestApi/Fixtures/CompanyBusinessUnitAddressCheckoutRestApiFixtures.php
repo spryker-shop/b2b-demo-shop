@@ -17,8 +17,6 @@ use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PermissionCollectionTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
-use Generated\Shared\Transfer\ShipmentTypeTransfer;
-use Generated\Shared\Transfer\StoreRelationTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use Spryker\Zed\Company\CompanyDependencyProvider;
 use SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper;
