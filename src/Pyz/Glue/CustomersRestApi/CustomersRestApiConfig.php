@@ -13,11 +13,6 @@ use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig as SprykerCustomersRest
 class CustomersRestApiConfig extends SprykerCustomersRestApiConfig
 {
     /**
-     * Specification:
-     * - Defines a list of properties in a `RestAddressTransfer` that should trigger validation skip.
-     *
-     * @api
-     *
      * @return list<string>
      */
     public function getBillingAddressFieldsToSkipValidation(): array
