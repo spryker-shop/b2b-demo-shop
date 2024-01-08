@@ -8,11 +8,14 @@
 namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 
 use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
+use Generated\Shared\Transfer\CompanyRoleCollectionTransfer;
+use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyUnitAddressCollectionTransfer;
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
 use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\PermissionCollectionTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\ShipmentTypeTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
@@ -136,11 +139,22 @@ class CompanyBusinessUnitAddressCheckoutRestApiFixtures implements FixturesBuild
 
         $I->haveCompanyUnitAddressToCompanyBusinessUnitRelation($companyBusinessUnitTransfer);
 
+        $permissionCollectionTransfer = (new PermissionCollectionTransfer())->addPermission(
+            $I->getLocator()->permission()->facade()->findPermissionByKey('PlaceOrderPermissionPlugin'),
+        );
+
+        $companyRoleTransfer = $I->haveCompanyRole([
+            CompanyRoleTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
+            CompanyRoleTransfer::PERMISSION_COLLECTION => $permissionCollectionTransfer,
+        ]);
+
         $this->companyUserTransfer = $I->haveCompanyUser([
             CompanyUserTransfer::CUSTOMER => $customerTransfer,
             CompanyUserTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
             CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $companyBusinessUnitTransfer->getIdCompanyBusinessUnit(),
+            CompanyUserTransfer::COMPANY_ROLE_COLLECTION => (new CompanyRoleCollectionTransfer())->addRole($companyRoleTransfer),
         ]);
+        $I->assignCompanyRolesToCompanyUser($this->companyUserTransfer);
     }
 
     /**
@@ -150,11 +164,6 @@ class CompanyBusinessUnitAddressCheckoutRestApiFixtures implements FixturesBuild
      */
     protected function buildShipmentMethod(CheckoutApiTester $I): void
     {
-        $shipmentTypeTransfer = $I->haveShipmentType([
-            ShipmentTypeTransfer::IS_ACTIVE => true,
-            ShipmentTypeTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($I->getStoreFacade()->getCurrentStore()),
-        ]);
-
         $this->shipmentMethodTransfer = $I->haveShipmentMethod(
             [
                 ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
@@ -166,8 +175,6 @@ class CompanyBusinessUnitAddressCheckoutRestApiFixtures implements FixturesBuild
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
             ],
         );
-
-        $I->addShipmentTypeToShipmentMethod($this->shipmentMethodTransfer, $shipmentTypeTransfer);
     }
 
     /**

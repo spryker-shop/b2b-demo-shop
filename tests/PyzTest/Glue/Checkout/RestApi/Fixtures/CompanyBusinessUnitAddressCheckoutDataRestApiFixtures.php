@@ -152,11 +152,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
      */
     protected function createPersistentQuoteWithItemsAndItemLevelShipment(CheckoutApiTester $I): QuoteTransfer
     {
-        $shipmentTypeTransfer = $I->haveShipmentType([
-            ShipmentTypeTransfer::IS_ACTIVE => true,
-            ShipmentTypeTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($I->getStoreFacade()->getCurrentStore()),
-        ]);
-
         $shipmentMethodTransfer = $I->haveShipmentMethod(
             [
                 ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
@@ -168,8 +163,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
             ],
         );
-
-        $I->addShipmentTypeToShipmentMethod($shipmentMethodTransfer, $shipmentTypeTransfer);
 
         return $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->customerTransfer,
