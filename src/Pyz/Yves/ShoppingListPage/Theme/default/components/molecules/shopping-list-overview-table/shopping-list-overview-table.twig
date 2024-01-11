@@ -8,11 +8,15 @@
     shoppingLists: required,
     idShoppingList: null,
     shoppingListForm: null,
-    shoppingListResponse: null
+    shoppingListResponse: null,
 } %}
 
+{% block extraClass %}
+    is-scrollable
+{% endblock %}
+
 {% block body %}
-    <table class="table table--grid table--expand table--responsive spacing-bottom spacing-bottom--biggest">
+    <table class="table table--expand table--responsive spacing-bottom spacing-bottom--biggest">
         <thead>
             <tr>
                 {% if data.enableTableForm %}<th></th>{% endif %}
@@ -56,10 +60,9 @@
                         {{ 'checkout.step.summary.items' | trans }}
                     </span>
                 </td>
-                <td class="spacing spacing--inner spacing--reset">
+                <td class="table__actions">
                     {% embed molecule('table-action-list') with {
                         data: {
-                            linkModifiers: ['tight'],
                             items: [
                                 {
                                     url: url('shopping-list/update', { idShoppingList: shoppingList.idShoppingList }),

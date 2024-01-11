@@ -22,7 +22,7 @@
                     <td class="transform-cell" data-content="{{ 'company.user.invitation.mail' | trans }}">{{ invitation.email }}</td>
                     <td class="transform-cell" data-content="{{ 'company.user.invitation.business.unit' | trans }}">{{ invitation.companyBusinessUnitName }}</td>
                     <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'company.user.invitation.status' | trans }}">{{ ('company.user.invitation.status.' ~ invitation.companyUserInvitationStatusKey) | trans }}</td>
-                    <td class="table__actions grid spacing spacing--inner spacing--reset">
+                    <td class="table__actions">
                         {% include molecule('table-action-list') with {
                             data: {
                                 items: [

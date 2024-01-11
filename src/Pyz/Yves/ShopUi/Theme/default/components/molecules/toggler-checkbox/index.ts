@@ -6,6 +6,6 @@ export default register(
         import(
             /* webpackMode: "lazy" */
             /* webpackChunkName: "toggler-checkbox" */
-            './toggler-checkbox'
+            'ShopUi/components/molecules/toggler-checkbox/toggler-checkbox'
         ),
 );
