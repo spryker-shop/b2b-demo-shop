@@ -23,14 +23,6 @@
                     "validation": { "isRequired": true }
                 },
                 {
-                    "fieldName": "approval_status",
-                    "fieldVisibleName": "approval_status",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "string",
-                    "validation": { "isRequired": false }
-                },
-                {
                     "fieldName": "attributes",
                     "fieldVisibleName": "attributes",
                     "isCreatable": true,
@@ -71,191 +63,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productAbstractProducts",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "products"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractLocalizedAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-localized-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractCategories",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-categories"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractUrls",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "urls"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_resource_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productImageSets",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-image-sets"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractPriceProducts",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "price-products"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productReviews",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-reviews"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractSets",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-sets"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productRelations",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-relations"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productRelationProductAbstracts",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-relations-product-abstract"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productLabelProductAbstracts",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-label-product-abstracts"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractGroups",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-groups"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractProductOptionGroups",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-product-option-groups"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product",
@@ -289,14 +97,6 @@
                     "validation": { "isRequired": true }
                 },
                 {
-                    "fieldName": "discount",
-                    "fieldVisibleName": "discount",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "integer",
-                    "validation": { "isRequired": false }
-                },
-                {
                     "fieldName": "is_active",
                     "fieldVisibleName": "is_active",
                     "isVisible": true,
@@ -320,123 +120,9 @@
                     "isEditable": true,
                     "type": "string",
                     "validation": { "isRequired": true }
-                },
-                {
-                    "fieldName": "warehouses",
-                    "fieldVisibleName": "warehouses",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "string",
-                    "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productLocalizedAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-localized-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product",
-                        "parentFieldName": "id_product"
-                    }
-                ]
-            },
-            {
-                "name": "productMainBundledProduct",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-bundles"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_bundled_product",
-                        "parentFieldName": "id_product"
-                    }
-                ]
-            },
-            {
-                "name": "productSingleBundledProduct",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-bundles"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product",
-                        "parentFieldName": "id_product"
-                    }
-                ]
-            },
-            {
-                "name": "productImageSets",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-image-sets"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product",
-                        "parentFieldName": "id_product"
-                    }
-                ]
-            },
-            {
-                "name": "productPrices",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "price-products"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product",
-                        "parentFieldName": "id_product"
-                    }
-                ]
-            },
-            {
-                "name": "productStocks",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "stock-products"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product",
-                        "parentFieldName": "id_product"
-                    }
-                ]
-            },
-            {
-                "name": "productSearch",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-searches"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product",
-                        "parentFieldName": "id_product"
-                    }
-                ]
-            },
-            {
-                "name": "productCategories",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-categories"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "fk_product_abstract"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_abstract_localized_attributes",
@@ -592,48 +278,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "categoryNodes",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "category-nodes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_category",
-                        "parentFieldName": "id_category"
-                    }
-                ]
-            },
-            {
-                "name": "categoryStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "category-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_category",
-                        "parentFieldName": "id_category"
-                    }
-                ]
-            },
-            {
-                "name": "categoryAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "category-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_category",
-                        "parentFieldName": "id_category"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_category_template",
@@ -667,22 +312,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "categoryTemplateCategories",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "categories"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_category_template",
-                        "parentFieldName": "id_category_template"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_category",
@@ -724,22 +354,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "categories",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "categories"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "id_category",
-                        "parentFieldName": "fk_category"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_url",
@@ -815,191 +430,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "localeProductAbstractLocalizedAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-localized-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeUrls",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "urls"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeProductLocalizedAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-localized-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeStores",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeProductImageSets",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-image-sets"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeGlossaryTranslations",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "glossary-translation"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeProductManagementAttributeValueTranslations",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-management-attribute-value-translations"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeProductReviews",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-reviews"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeProductSetDates",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-set-data"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeProductSearches",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-searches"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeCategoryAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "category-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeProductLabelLocalizedAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-labels-localized-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeSalesOrders",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "sales-orders"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            },
-            {
-                "name": "localeLocaleStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "locale-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_locale",
-                        "parentFieldName": "id_locale"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_localized_attributes",
@@ -1175,126 +606,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "storeProductAbstractStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storeProductOptionValuePrices",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-option-value-prices"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storePriceProducts",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "price-product-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storeAvailabilityAbstracts",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "availability-abstracts"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storeAvailabilities",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "availabilities"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storeCategories",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "category-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storeProductRelations",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-relation-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storeProductLabels",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-label-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            },
-            {
-                "name": "storeLocaleStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "locale-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_store",
-                        "parentFieldName": "id_store"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_attribute_key",
@@ -1328,48 +640,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productAttributeKeyProductManagementAttributes",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-management-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_attribute_key",
-                        "parentFieldName": "id_product_attribute_key"
-                    }
-                ]
-            },
-            {
-                "name": "productAttributeKeySearchAttributes",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-search-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_attribute_key",
-                        "parentFieldName": "id_product_attribute_key"
-                    }
-                ]
-            },
-            {
-                "name": "productAttributeKeySearchAttributeMaps",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-search-attribute-maps"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_attribute_key",
-                        "parentFieldName": "id_product_attribute_key"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_group",
@@ -1395,22 +666,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productGroupProductAbstractGroups",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-groups"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_group",
-                        "parentFieldName": "id_product_group"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_abstract_group",
@@ -1478,22 +734,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productImageSetToProductImages",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-image-set-to-product-images"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_image",
-                        "parentFieldName": "id_product_image"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_image_set",
@@ -1543,22 +784,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productImageSetToProductImages",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-image-set-to-product-images"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_image_set",
-                        "parentFieldName": "id_product_image_set"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_image_set_to_product_image",
@@ -1642,22 +868,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productManagementAttributeValues",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-management-attribute-values"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_management_attribute",
-                        "parentFieldName": "id_product_management_attribute"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_management_attribute_value",
@@ -1691,22 +902,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productManagementAttributeValueTranslations",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-management-attribute-value-translations"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_management_attribute_value",
-                        "parentFieldName": "id_product_management_attribute_value"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_glossary_key",
@@ -1740,22 +936,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "glossaryKeyGlossaryTranslations",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "glossary-translation"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_glossary_key",
-                        "parentFieldName": "id_glossary_key"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_glossary_translation",
@@ -1881,14 +1062,6 @@
                     "validation": { "isRequired": false }
                 },
                 {
-                    "fieldName": "key",
-                    "fieldVisibleName": "key",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "string",
-                    "validation": { "isRequired": true }
-                },
-                {
                     "fieldName": "name",
                     "fieldVisibleName": "name",
                     "isCreatable": true,
@@ -1897,35 +1070,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productOptionGroupProductOptionValues",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-option-values"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_option_group",
-                        "parentFieldName": "id_product_option_group"
-                    }
-                ]
-            },
-            {
-                "name": "productOptionGroupProductAbstracts",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-product-option-groups"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_option_group",
-                        "parentFieldName": "id_product_option_group"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_option_value",
@@ -1975,22 +1120,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productOptionValuePrices",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-option-value-prices"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_option_value",
-                        "parentFieldName": "id_product_option_value"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_abstract_product_option_group",
@@ -2116,48 +1246,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "currencyStores",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_currency",
-                        "parentFieldName": "id_currency"
-                    }
-                ]
-            },
-            {
-                "name": "currencyProductOptionValuePrices",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-option-value-prices"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_currency",
-                        "parentFieldName": "id_currency"
-                    }
-                ]
-            },
-            {
-                "name": "currencyProductPriceStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "price-product-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_currency",
-                        "parentFieldName": "id_currency"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_price_type",
@@ -2241,22 +1330,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "priceProductStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "price-product-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_price_product",
-                        "parentFieldName": "id_price_product"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_company",
@@ -2268,14 +1342,6 @@
                 {
                     "fieldName": "id_company",
                     "fieldVisibleName": "id_company",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "integer",
-                    "validation": { "isRequired": false }
-                },
-                {
-                    "fieldName": "fk_company_type",
-                    "fieldVisibleName": "fk_company_type",
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
@@ -2314,63 +1380,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "companyPriceProducts",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "price-products"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_company",
-                        "parentFieldName": "id_company"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "tableName": "spy_company_type",
-        "tableAlias": "company-types",
-        "isActive": true,
-        "definition": {
-            "identifier": "id_company_type",
-            "fields": [
-                {
-                    "fieldName": "id_company_type",
-                    "fieldVisibleName": "id_company_type",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "integer",
-                    "validation": { "isRequired": false }
-                },
-                {
-                    "fieldName": "name",
-                    "fieldVisibleName": "name",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "string",
-                    "validation": { "isRequired": true }
-                }
-            ]
-        },
-        "childRelations": [
-            {
-                "name": "companyTypeCompanies",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "companies"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_company_type",
-                        "parentFieldName": "id_company_type"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_price_product_store",
@@ -2428,22 +1438,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "priceProductStoreDefaults",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "price-product-defaults"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_price_product_store",
-                        "parentFieldName": "id_price_product_store"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_price_product_default",
@@ -2677,61 +1672,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productSetUrls",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "urls"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_resource_product_set",
-                        "parentFieldName": "id_product_set"
-                    }
-                ]
-            },
-            {
-                "name": "productSetProductImageSets",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-image-sets"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_resource_product_set",
-                        "parentFieldName": "id_product_set"
-                    }
-                ]
-            },
-            {
-                "name": "productSetAbstractSets",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstract-sets"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_set",
-                        "parentFieldName": "id_product_set"
-                    }
-                ]
-            },
-            {
-                "name": "productSetDates",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-set-data"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_set",
-                        "parentFieldName": "id_product_set"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_abstract_set",
@@ -2879,32 +1820,9 @@
                     "isEditable": true,
                     "type": "string",
                     "validation": { "isRequired": true }
-                },
-                {
-                    "fieldName": "uuid",
-                    "fieldVisibleName": "uuid",
-                    "isCreatable": false,
-                    "isEditable": false,
-                    "type": "string",
-                    "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "stockProducts",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "stock-products"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_stock",
-                        "parentFieldName": "id_stock"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_stock_product",
@@ -2996,22 +1914,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "availabilityAbstractAvailabilities",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "availabilities"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_availability_abstract",
-                        "parentFieldName": "id_availability_abstract"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_availability",
@@ -3103,48 +2006,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "taxSetProductAbstracts",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-abstracts"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_tax_set",
-                        "parentFieldName": "id_tax_set"
-                    }
-                ]
-            },
-            {
-                "name": "taxSetProductOptionGroups",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-option-groups"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_tax_set",
-                        "parentFieldName": "id_tax_set"
-                    }
-                ]
-            },
-            {
-                "name": "taxSets",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "tax-set-taxes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_tax_set",
-                        "parentFieldName": "id_tax_set"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_tax_set_tax",
@@ -3270,22 +2132,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "countryTaxRates",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "tax-rates"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_country",
-                        "parentFieldName": "id_country"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_search",
@@ -3385,22 +2232,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "categoryNodeParents",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "category-nodes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_parent_category_node",
-                        "parentFieldName": "id_category_node"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_category_store",
@@ -3534,22 +2366,7 @@
                     "validation": { "isRequired": true }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productRelationTypeProductRelations",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-relations"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_relation_type",
-                        "parentFieldName": "id_product_relation_type"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_relation",
@@ -3615,35 +2432,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productRelationProductAbstracts",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-relations-product-abstract"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_relation",
-                        "parentFieldName": "id_product_relation"
-                    }
-                ]
-            },
-            {
-                "name": "productRelationStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-relation-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_relation",
-                        "parentFieldName": "id_product_relation"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_relation_product_abstract",
@@ -3809,48 +2598,7 @@
                     "validation": { "isRequired": false }
                 }
             ]
-        },
-        "childRelations": [
-            {
-                "name": "productLabelLocalizedAttributes",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-labels-localized-attributes"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_label",
-                        "parentFieldName": "id_product_label"
-                    }
-                ]
-            },
-            {
-                "name": "productLabelStores",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-label-stores"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_label",
-                        "parentFieldName": "id_product_label"
-                    }
-                ]
-            },
-            {
-                "name": "productLabelProductAbstracts",
-                "isEditable": false,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "product-label-product-abstracts"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_product_label",
-                        "parentFieldName": "id_product_label"
-                    }
-                ]
-            }
-        ]
+        }
     },
     {
         "tableName": "spy_product_label_localized_attributes",
