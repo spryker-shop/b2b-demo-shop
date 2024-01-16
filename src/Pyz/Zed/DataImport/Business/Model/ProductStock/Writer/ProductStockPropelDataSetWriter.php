@@ -76,6 +76,11 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected const COL_STOCK_PRODUCT_TOTAL_QUANTITY = 'stockProductTotalQuantity';
 
     /**
+     * @var array<string, array<int, \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstract>>
+     */
+    protected static $availabilityAbstractEntitiesIndexedByAbstractSkuAndIdStore = [];
+
+    /**
      * @var array<string>
      */
     protected static $productAbstractSkus = [];
@@ -435,16 +440,22 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getAvailabilityAbstract(string $abstractSku, int $idStore): SpyAvailabilityAbstract
     {
+        if (!empty(static::$availabilityAbstractEntitiesIndexedByAbstractSkuAndIdStore[$abstractSku][$idStore])) {
+            return static::$availabilityAbstractEntitiesIndexedByAbstractSkuAndIdStore[$abstractSku][$idStore];
+        }
+
         $availabilityAbstractEntity = SpyAvailabilityAbstractQuery::create()
             ->filterByAbstractSku($abstractSku)
             ->filterByFkStore($idStore)
             ->findOne();
 
-        if ($availabilityAbstractEntity !== null) {
-            return $availabilityAbstractEntity;
+        if (!$availabilityAbstractEntity) {
+            $availabilityAbstractEntity = $this->createAvailabilityAbstract($abstractSku, $idStore);
         }
 
-        return $this->createAvailabilityAbstract($abstractSku, $idStore);
+        static::$availabilityAbstractEntitiesIndexedByAbstractSkuAndIdStore[$abstractSku][$idStore] = $availabilityAbstractEntity;
+
+        return $availabilityAbstractEntity;
     }
 
     /**
