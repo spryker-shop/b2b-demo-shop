@@ -1,0 +1,50 @@
+{% extends molecule('return-product-item', '@SprykerShop:SalesReturnPage') %}
+
+{% define data = {
+    countOfDecimalsInAmount: 10,
+} %}
+
+{% block body %}
+    {% set checkboxColumnClass = 'col grid grid--nowrap' %}
+    {% set productItemColumnClass = 'col col--expand grid' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block productItemColumnInner %}
+    {% set productInfoColumnClass = 'col col--sm-12 col--lg-4' %}
+    {% set productStatusColumnClass = 'col col--lg-2 text-center is-hidden-sm-md' %}
+    {% set productPriceColumnClass = 'col col--sm-6 col--lg-2 text-center' %}
+    {% set productQuantityColumnClass = config.name ~ '__quantity col col--sm-6 col--lg-2 text-center' %}
+    {% set productPriceTotalColumnClass = 'col col--lg-2 text-center is-hidden-sm-md' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block productItemQuantityAmount %}
+    <div class="{{ productQuantityColumnClass }}">
+        x {{ data.item.quantity | executeFilterIfExists('formatInt', app.locale) }}
+
+        {% if data.item.amount %}
+            {% set amountSalesUnitName = data.item.amountSalesUnit.productMeasurementUnit.name | default %}
+            
+            {% embed atom('quantity-option') with {
+                data: {
+                    value: data.item.amount,
+                    precision: data.item.quantity,
+                    optionName: amountSalesUnitName | trans,
+                },
+                embed: {
+                    countOfDecimalsInAmount: data.countOfDecimalsInAmount,
+                },
+            } only %}
+                {% block body %}
+                    {{ 'quantity_option.amount' | trans({
+                        '%value%': data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim,
+                        '%name%': data.optionName,
+                    }) }}
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
+    </div>
+{% endblock %}

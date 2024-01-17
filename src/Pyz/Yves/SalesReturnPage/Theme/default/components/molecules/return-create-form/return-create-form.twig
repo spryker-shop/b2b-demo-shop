@@ -28,3 +28,81 @@
 
     {{ parent() }}
 {% endblock %}
+
+{% block salesReturnProductItemInner %}
+    {{ form_errors(returnItem) }}
+
+    {% block salesReturnProductItemInfo %}
+        {% embed molecule('return-product-item', 'SalesReturnPage') with {
+            class: productItemReturnClass,
+            data: {
+                item: orderItem,
+            },
+            embed: {
+                returnItem: returnItem,
+                isReturnable: isReturnable,
+                checkboxWrapperClass: checkboxWrapperClass,
+            },
+        } only %}
+            {% block body %}
+                <div class="col col--sm-12 grid grid--nowrap">
+                    {{ parent() }}
+                </div>
+
+                {% include molecule('return-product-reason', 'SalesReturnPage') with {
+                    class: config.name ~ '__reason col col--sm-12 col--lg-5',
+                    data: {
+                        returnItem: embed.returnItem,
+                        isReturnable: embed.returnItem.vars.value.orderItem.isReturnable,
+                    },
+                } only %}
+            {% endblock %}
+
+            {% block checkboxColumnInner %}
+                <div class="{{ config.name }}__checkbox {{ embed.checkboxWrapperClass }}">
+                    {{ form_row(embed.returnItem.isReturnable, {
+                        label: ' ',
+                        attr: { 
+                            class: 'js-return-create__trigger-state-toggler',
+                        },
+                        disabled: not embed.isReturnable,
+                    }) }}
+                </div>
+
+                <div class="col col--expand">
+                    {% include molecule('lazy-image') with {
+                        class: config.name ~ '__image',
+                        data: {
+                            imageSrc: data.item.metadata.image,
+                        },
+                    } only %}
+                </div>
+            {% endblock %}
+
+            {% block productItemInfoInner %}
+                <div class="spacing-bottom spacing-bottom--big">
+                    {% for returnPolicyMessage in data.item.returnPolicyMessages %}
+                        <div class="badge badge--hollow spacing-bottom spacing-bottom--small">
+                            {{ returnPolicyMessage.value | trans(returnPolicyMessage.parameters) }}
+                        </div>
+                    {% endfor %}
+
+                    {% if not data.item.isReturnable %}
+                        <div class="badge badge--hollow spacing-bottom spacing-bottom--small">
+                            {{ 'return_page.returnable_state' | trans }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="is-hidden-lg-xl">
+                    {% set state = data.item.state.name | replace({' ': '-'}) | lower %}
+                    {% set stateLabel = data.item.state.displayName ?? ('oms.state.' ~ state) %}
+
+                    {{ block('state') }}
+                </div>
+
+                {{ parent() }}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endblock %}
