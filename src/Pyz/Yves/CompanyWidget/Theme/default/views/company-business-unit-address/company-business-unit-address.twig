@@ -3,6 +3,7 @@
 {% block body %}
     {% set defaultAddressKey = null %}
     {% set optionValueDeliverToMultipleAddresses = '-1' %}
+    {% set optionValueDefineNewAddress = '0' %}
     {% set fullAddresses = data.customerAddresses ?: data.companyBusinessUnitAddresses %}
     {% set shippingAddress = 'shippingAddress' %}
     {% set billingAddress = 'billingAddress' %}
@@ -20,9 +21,7 @@
             {% set isCurrentValueDeliverToMultipleAddresses = data.currentAddressId == optionValueDeliverToMultipleAddresses %}
             {% set isBillingAddress = not data.currentAddressId and isBillingAddressFormType and address.isDefaultBilling %}
 
-            {% if canUseCurrentAsDefaultCustomerAddress or canUseCurrentAsDefaultCompanyUnitAddress
-                or isCurrentCustomerAddress or isCurrentCompanyUnitAddress
-            %}
+            {% if canUseCurrentAsDefaultCustomerAddress or canUseCurrentAsDefaultCompanyUnitAddress or isCurrentCustomerAddress or isCurrentCompanyUnitAddress %}
                 {% set defaultAddressKey = address.key %}
             {% endif %}
 
@@ -48,20 +47,16 @@
         embed: {
             customerAddresses: data.customerAddresses,
             companyBusinessUnitAddresses: data.companyBusinessUnitAddresses,
-            formType: data.formType,
             defaultAddressKey: defaultAddressKey,
-            currentAddressId: data.currentAddressId,
             isMultipleShipmentEnabled: data.isMultipleShipmentEnabled,
             optionValueDeliverToMultipleAddresses: optionValueDeliverToMultipleAddresses,
+            optionValueDefineNewAddress: optionValueDefineNewAddress,
             itemShippingTriggerJsClass: data.itemShippingTriggerJsClass,
-            items: data.items,
-            shippingAddress: shippingAddress,
-            jsAddressClass: data.jsAddressClass,
+            isShippingAddressFormType: isShippingAddressFormType,
             hasPreselectedOption: data.hasPreselectedOption,
         },
     } only %}
         {%- block selectClass -%}
-            {{ embed.jsAddressClass }}__form-select-{{ embed.formType }}
             {{ embed.itemShippingTriggerJsClass ? embed.itemShippingTriggerJsClass }}
             {{ parent() }}
         {%- endblock -%}
@@ -90,7 +85,7 @@
                 <option value="" disabled selected>{{ 'checkout.step.address.select_address' | trans }}</option>
             {% endif %}
 
-            <option value="0">{{ 'company.account.add_new_address' | trans }}</option>
+            <option value="{{ embed.optionValueDefineNewAddress }}">{{ 'company.account.add_new_address' | trans }}</option>
 
             {% if embed.customerAddresses %}
                 <optgroup label="{{ 'page.checkout.address.option_group.customer' | trans | upper }}">
@@ -108,7 +103,7 @@
                 </optgroup>
             {% endif %}
 
-            {% if embed.formType == embed.shippingAddress and embed.isMultipleShipmentEnabled %}
+            {% if embed.isShippingAddressFormType and embed.isMultipleShipmentEnabled %}
                 <option value="{{ embed.optionValueDeliverToMultipleAddresses }}" {% if embed.defaultAddressKey == embed.optionValueDeliverToMultipleAddresses %}selected{% endif %}>
                     {{ 'customer.account.deliver_to_multiple_addresses' | trans }}
                 </option>
@@ -116,11 +111,6 @@
         {% endblock %}
     {% endembed %}
 
-    {% block addressHandler %}
-        {{ parent() }}
-    {% endblock %}
-
-    {% block hiddenFields %}
-        {{ parent() }}
-    {% endblock %}
+    {{ block('addressHandler') }}
+    {{ block('hiddenFields') }}
 {% endblock %}

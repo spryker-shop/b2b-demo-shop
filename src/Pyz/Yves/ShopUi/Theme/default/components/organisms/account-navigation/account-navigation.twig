@@ -3,23 +3,23 @@
 
 {% define config = {
     name: 'account-navigation',
-    tag: 'account-navigation'
+    tag: 'account-navigation',
 } %}
 
 {% define data = {
     introIcon: 'user',
     activePage: '',
     items: required,
-    title: ''
+    title: '',
 } %}
 
 {% block close %}
-    <button class="{{config.name}}__close {{attributes['trigger-class-name']}}">
+    <button class="{{ config.name }}__close {{ attributes['trigger-selector'] }}">
         {% include atom('icon') with {
             modifiers: ['small'],
             data: {
-                name: 'cross'
-            }
+                name: 'cross',
+            },
         } only %}
     </button>
 {% endblock %}
@@ -30,8 +30,8 @@
             class:  config.name ~ '__account-icon',
             modifiers: ['big'],
             data: {
-                name: data.introIcon
-            }
+                name: data.introIcon,
+            },
         } only %}
         <span class="{{ config.name }}__account-text">
             {{ data.title }}
@@ -44,7 +44,7 @@
         modifiers: ['account'],
         data: {
             activePage: data.activePage,
-            items: data.items
-        }
+            items: data.items,
+        },
     } only %}
 {% endblock %}

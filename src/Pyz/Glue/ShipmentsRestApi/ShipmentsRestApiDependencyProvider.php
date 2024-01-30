@@ -8,6 +8,7 @@
 namespace Pyz\Glue\ShipmentsRestApi;
 
 use Spryker\Glue\CompanyBusinessUnitAddressesRestApi\Plugin\ShipmentsRestApi\CompanyBusinessUnitAddressSourceCheckerPlugin;
+use Spryker\Glue\CompanyBusinessUnitAddressesRestApi\Plugin\ShipmentsRestApi\CompanyBusinessUnitUuidRestAddressResponseMapperPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\ShipmentsRestApi\CustomerAddressSourceCheckerPlugin;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiDependencyProvider as SprykerShipmentsRestApiDependencyProvider;
 
@@ -21,6 +22,16 @@ class ShipmentsRestApiDependencyProvider extends SprykerShipmentsRestApiDependen
         return [
             new CompanyBusinessUnitAddressSourceCheckerPlugin(),
             new CustomerAddressSourceCheckerPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Glue\ShipmentsRestApiExtension\Dependency\Plugin\RestAddressResponseMapperPluginInterface>
+     */
+    protected function getRestAddressResponseMapperPlugins(): array
+    {
+        return [
+            new CompanyBusinessUnitUuidRestAddressResponseMapperPlugin(),
         ];
     }
 }

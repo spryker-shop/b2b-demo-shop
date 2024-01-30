@@ -1,5 +1,20 @@
 {% extends molecule('search-form', '@SprykerShop:ShopUi') %}
 
+{% define config = {
+    name: 'search-form',
+} %}
+
+{% define attributes = {
+    'wrapper-class-name': 'js-' ~ config.name,
+    'wrapper-toggle-class-name': config.name ~ '--active',
+    'open-class-name': required,
+    'close-class-name': required,
+} %}
+
+{% block extraClass %}
+    {{ config.jsName }}
+{% endblock %}
+
 {% block body %}
     <form action="{{ data.searchUrl }}">
         <input
@@ -35,7 +50,10 @@
             attributes: {
                 'suggestion-url': path('search/suggestion'),
                 'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
-                'overlay-breakpoint': '768',
+                'wrapper-class-name': attributes['wrapper-class-name'],
+                'wrapper-toggle-class-name': attributes['wrapper-toggle-class-name'],
+                'open-class-name': attributes['open-class-name'],
+                'close-class-name': attributes['close-class-name'],
             },
         } only %}
     </form>

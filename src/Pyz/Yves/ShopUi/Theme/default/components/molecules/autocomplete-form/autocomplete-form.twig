@@ -19,7 +19,7 @@
     'value-data-attribute': 'data-value',
     'item-class-name': '',
     'show-clean-button': false,
-    'overlay-block-class-name': 'js-overlay-block',
+    'body-overlay-class-name': 'body-has-overlay',
 } %}
 
 {% block body %}
@@ -52,6 +52,7 @@
                 {% block cleanButton %}
                     <button type="button" class="button button--hollow-icon {{ config.name }}__clean-button {{ config.jsName }}__clean-button">
                         {% include atom('icon') with {
+                            class: config.name ~ '__icon',
                             data: {
                                 name: 'cross'
                             }
