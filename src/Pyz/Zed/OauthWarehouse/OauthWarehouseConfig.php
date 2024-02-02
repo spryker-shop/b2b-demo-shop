@@ -14,11 +14,6 @@ class OauthWarehouseConfig extends SprykerOauthWarehouseConfig
     /**
      * @var string
      */
-    public const SCOPE_WAREHOUSE_USER = 'warehouse-user';
-
-    /**
-     * @var string
-     */
     public const SCOPE_BACK_OFFICE_USER = 'back-office-user';
 
     /**
@@ -34,7 +29,6 @@ class OauthWarehouseConfig extends SprykerOauthWarehouseConfig
     {
         return [
             static::SCOPE_BACK_OFFICE_USER,
-            static::SCOPE_WAREHOUSE_USER,
         ];
     }
 }
