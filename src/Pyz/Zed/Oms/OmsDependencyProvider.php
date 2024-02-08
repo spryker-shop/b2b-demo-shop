@@ -19,9 +19,12 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleReservationP
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitOmsReservationAggregationPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\SalesInvoice\Communication\Plugin\Oms\GenerateOrderInvoiceCommandPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCancelPaymentMessageCommandPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCapturePaymentMessageCommandPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentCancelReservationPendingPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentConfirmationPendingPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentRefundPendingPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendRefundPaymentMessageCommandPlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
@@ -150,6 +153,18 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     {
         return [
             new OrderRefundedEventListenerPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function extendCommandPlugins(): array
+    {
+        return [
+            new SendCapturePaymentMessageCommandPlugin('Payment/Capture'),
+            new SendRefundPaymentMessageCommandPlugin('Payment/Refund'),
+            new SendCancelPaymentMessageCommandPlugin('Payment/Cancel'),
         ];
     }
 }
