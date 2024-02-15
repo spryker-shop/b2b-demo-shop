@@ -47,10 +47,10 @@ regions:
 
             broker:
                 namespace: eu-docker
-                key_value_store:
-                    namespace: 1
-                search:
-                    namespace: eu_search
+            key_value_store:
+                namespace: 1
+            search:
+                namespace: eu_search
     US:
         services:
             mail:
@@ -64,10 +64,10 @@ regions:
 
             broker:
                 namespace: us-docker
-                key_value_store:
-                    namespace: 2
-                search:
-                    namespace: us_search
+            key_value_store:
+                namespace: 2
+            search:
+                namespace: us_search
 groups:
     EU:
         region: EU
@@ -89,7 +89,7 @@ groups:
                         region: EU
                         services:
                             session:
-                                namespace: 1
+                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
@@ -136,7 +136,7 @@ groups:
                         region: US
                         services:
                             session:
-                                namespace: 9
+                                namespace: 4
             yves_us:
                 application: yves
                 endpoints:
