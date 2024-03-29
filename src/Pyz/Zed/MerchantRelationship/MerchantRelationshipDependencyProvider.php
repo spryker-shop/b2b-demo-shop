@@ -7,6 +7,9 @@
 
 namespace Pyz\Zed\MerchantRelationship;
 
+use Spryker\Zed\CommentMerchantRelationRequestConnector\Communication\Plugin\MerchantRelationship\CopyCommentThreadToMerchantRelationshipPostCreatePlugin;
+use Spryker\Zed\CommentMerchantRelationshipConnector\Communication\Plugin\MerchantRelationship\CommentThreadMerchantRelationshipExpanderPlugin;
+use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\MerchantRelationship\CompanyUnitAddressMerchantRelationshipExpanderPlugin;
 use Spryker\Zed\MerchantRelationship\MerchantRelationshipDependencyProvider as SprykerMerchantRelationshipDependencyProvider;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPostCreatePlugin;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPostUpdatePlugin;
@@ -33,6 +36,7 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     {
         return [
             new ProductListMerchantRelationshipPostCreatePlugin(),
+            new CopyCommentThreadToMerchantRelationshipPostCreatePlugin(),
         ];
     }
 
@@ -43,6 +47,17 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     {
         return [
             new ProductListMerchantRelationshipPostUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\MerchantRelationshipExtension\Dependency\Plugin\MerchantRelationshipExpanderPluginInterface>
+     */
+    protected function getMerchantRelationshipExpanderPlugins(): array
+    {
+        return [
+            new CommentThreadMerchantRelationshipExpanderPlugin(),
+            new CompanyUnitAddressMerchantRelationshipExpanderPlugin(),
         ];
     }
 }

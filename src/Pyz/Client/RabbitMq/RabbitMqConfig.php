@@ -26,6 +26,8 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\MerchantSearch\MerchantSearchConfig;
+use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductConfigurationStorage\ProductConfigurationStorageConfig;
@@ -157,6 +159,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             StoreStorageConfig::STORE_SYNC_STORAGE_QUEUE,
             AssetStorageConfig::ASSET_SYNC_STORAGE_QUEUE,
             SearchHttpConfig::SEARCH_HTTP_CONFIG_SYNC_QUEUE,
+            MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
+            MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
         ];
     }
 
