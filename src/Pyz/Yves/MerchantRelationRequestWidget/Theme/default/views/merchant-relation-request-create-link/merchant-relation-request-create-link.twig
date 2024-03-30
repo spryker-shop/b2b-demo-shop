@@ -1,0 +1,7 @@
+{% extends view('merchant-relation-request-create-link', '@SprykerShop:MerchantRelationRequestWidget') %}
+
+{% block body %}
+    <a class="link link--smaller" href="{{ url('company/merchant-relation-request/create', {'merchant-reference': data.merchantReference}) }}" data-qa="merchant-relation-request-create-link">
+        {{ 'merchant_relation_request_widget.request_for_relation.link' | trans }}
+    </a>
+{% endblock %}

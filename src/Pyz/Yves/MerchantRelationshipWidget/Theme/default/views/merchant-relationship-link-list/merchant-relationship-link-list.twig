@@ -1,0 +1,25 @@
+{% extends view('merchant-relationship-link-list', '@SprykerShop:MerchantRelationshipWidget') %}
+
+{% block body %}
+    <ul class="merchant-relationship-status-notification__list">
+        {% for merchantRelationship in data.merchantRelationships %}
+            <li class="grid grid--gap-smaller merchant-relationship-status-notification__list-item">
+                <span class="col">
+                    {% include atom('icon') with {
+                        data: {
+                            name: 'handshake',
+                        },
+                    } only %}
+                </span>
+
+                <span class="col">{{ merchantRelationship.merchant.name }} - {{ merchantRelationship.ownerCompanyBusinessUnit.name }}</span>
+
+                <span class="col">
+                    <a class="link" href="{{ path('company/merchant-relation/details', {'id-merchant-relationship': merchantRelationship.idMerchantRelationship}) }}">
+                        {{'merchant_relationship_widget.merchant_relationship_links_list.view' | trans}}
+                    </a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

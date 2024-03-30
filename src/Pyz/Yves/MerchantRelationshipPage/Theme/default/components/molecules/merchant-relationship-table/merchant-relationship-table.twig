@@ -1,0 +1,45 @@
+{% extends molecule('merchant-relationship-table', '@SprykerShop:MerchantRelationshipPage') %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+            <tr>
+                <th>{{ 'merchant_relationship_page.table.header.merchant' | trans }}</th>
+                <th>{{ 'merchant_relationship_page.table.header.business_unit_owner' | trans }}</th>
+                <th>{{ 'merchant_relationship_page.table.header.business_units' | trans }}</th>
+                <th>{{ 'merchant_relationship_page.table.header.created' | trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for merchantRelationship in data.merchantRelationships %}
+                <tr>
+                    <td>{{ merchantRelationship.merchant.name }}</td>
+                    <td>{{ merchantRelationship.ownerCompanyBusinessUnit.name }}</td>
+                    <td>
+                        {% set companyBusinessUnits = [] %}
+                        {% for companyBusinessUnit in merchantRelationship.assigneeCompanyBusinessUnits.companyBusinessUnits %}
+                            {% set companyBusinessUnits = companyBusinessUnits | merge([companyBusinessUnit.name]) %}
+                        {% endfor %}
+
+                        {{ companyBusinessUnits | join(', ') }}
+                    </td>
+                    <td>{{ merchantRelationship.createdAt | formatDateTime }}</td>
+                    <td>
+                        {% include molecule('table-action-list') with {
+                            data: {
+                                items: [
+                                    {
+                                        url: url('company/merchant-relation/details', {'id-merchant-relationship': merchantRelationship.idMerchantRelationship}),
+                                        icon: 'eye',
+                                        title: 'merchant_relationship_page.table.action.view',
+                                    }
+                                ]
+                            }
+                        } only %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends molecule('merchant-relation-request-view-table', '@SprykerShop:MerchantRelationRequestPage') %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+            <tr>
+                <th class="text-left">{{ 'merchant_relation_request_page.merchant_relation_request.merchant' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.company_user' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.business_unit_owner' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.business_units' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.created_at' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.status' | trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for merchantRelationRequest in data.merchantRelationRequests %}
+            <tr>
+                <td>{{ merchantRelationRequest.merchant.name }}</td>
+                <td>{{ merchantRelationRequest.companyUser.customer.firstName ~ ' ' ~ merchantRelationRequest.companyUser.customer.lastName }}</td>
+                <td>{{ merchantRelationRequest.ownerCompanyBusinessUnit.name }}</td>
+                <td>
+                    {% for companyBusinessUnit in merchantRelationRequest.assigneeCompanyBusinessUnits %}
+                        {{  companyBusinessUnit.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ merchantRelationRequest.createdAt | formatDateTime }}</td>
+                <td>
+                    {{ block('stateWrapper') }}
+                </td>
+                <td>
+                    {% include molecule('table-action-list') with {
+                        data: {
+                            items: [
+                                {
+                                    url: url('company/merchant-relation-request/details', { uuid: (merchantRelationRequest.uuid) }),
+                                    icon: 'eye',
+                                    title: 'merchant_relation_request_page.merchant_relation_request.actions.view',
+                                }
+                            ]
+                        }
+                    } only %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
