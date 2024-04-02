@@ -31,7 +31,7 @@
         </h4>
 
         <div class="grid grid--middle spacing-bottom spacing-bottom--big">
-            {% if data.merchant.merchantProfile.logoUrl %}
+            {% if data.merchant.merchantProfile and data.merchant.merchantProfile.logoUrl %}
                 <div class="col col--sm-2 col--lg-1 spacing">
                     {% include molecule('lazy-image') with {
                         data: {
