@@ -11,10 +11,11 @@
 
 {% block body %}
     {% for item in data.items %}
+        {% set itemQa = item.qa is defined ? item.qa : '' %}
         {% set available = item.available is defined ? item.available : true %}
         {% set isCustomAction = available and item.customAction is defined and (item.customAction | trim) is not empty and item.url is not defined %}
         {% set isAction = available and (item.customAction is not defined or (item.customAction | trim) is empty) and item.url is defined %}
-        
+
         {% if isCustomAction %}
             <div class="{{ config.name }}__item">
                 {{ item.customAction | raw }}
@@ -23,6 +24,7 @@
         {% if isAction %}
             <div class="{{ config.name }}__item">
                 {% include molecule('table-action-link') with {
+                    qa: itemQa,
                     class: 'link link--alt link--action',
                     modifiers: data.linkModifiers,
                     data: item,
