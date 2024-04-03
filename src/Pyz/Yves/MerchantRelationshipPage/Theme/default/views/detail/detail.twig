@@ -31,15 +31,7 @@
         {% endif %}
 
         <div class="col">
-            <strong>
-                {% if data.merchantUrl is not null %}
-                    <a class="link" href="{{ data.merchantUrl }}">
-                        {{ data.merchant.name }}
-                    </a>
-                {% else %}
-                    {{ data.merchant.name }}
-                {% endif %}
-            </strong>
+            <strong>{{ data.merchant.name }}</strong>
         </div>
     </div>
 
