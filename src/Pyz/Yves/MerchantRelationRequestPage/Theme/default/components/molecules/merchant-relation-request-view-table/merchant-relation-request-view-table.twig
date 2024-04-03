@@ -15,20 +15,20 @@
         </thead>
         <tbody>
         {% for merchantRelationRequest in data.merchantRelationRequests %}
-            <tr>
-                <td>{{ merchantRelationRequest.merchant.name }}</td>
-                <td>{{ merchantRelationRequest.companyUser.customer.firstName ~ ' ' ~ merchantRelationRequest.companyUser.customer.lastName }}</td>
-                <td>{{ merchantRelationRequest.ownerCompanyBusinessUnit.name }}</td>
-                <td>
+            <tr class="table__row">
+                <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.merchant' | trans }}">{{ merchantRelationRequest.merchant.name }}</td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.company_user' | trans }}">{{ merchantRelationRequest.companyUser.customer.firstName ~ ' ' ~ merchantRelationRequest.companyUser.customer.lastName }}</td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.business_unit_owner' | trans }}">{{ merchantRelationRequest.ownerCompanyBusinessUnit.name }}</td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.business_units' | trans }}">
                     {% for companyBusinessUnit in merchantRelationRequest.assigneeCompanyBusinessUnits %}
                         {{  companyBusinessUnit.name }}{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </td>
-                <td>{{ merchantRelationRequest.createdAt | formatDateTime }}</td>
-                <td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.created_at' | trans }}">{{ merchantRelationRequest.createdAt | formatDateTime }}</td>
+                <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.status' | trans }}">
                     {{ block('stateWrapper') }}
                 </td>
-                <td>
+                <td class="table__actions">
                     {% include molecule('table-action-list') with {
                         data: {
                             items: [

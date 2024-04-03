@@ -38,9 +38,9 @@
     {{ block('additionalDetails') }}
 
     {% block actions %}
-        <div class="grid grid--justify">
-            <div class="col">
-                <a href="{{ url('company/merchant-relation-request') }}" class="button button--secondary button--hollow">
+        <div class="grid grid--justify grid--column-mob-reverse grid--row-tablet">
+            <div class="col col--bottom-indent col--sm-12 col--md-auto">
+                <a href="{{ url('company/merchant-relation-request') }}" class="button button--secondary button--hollow button--expand">
                     {% include atom('icon') with {
                         modifiers: ['small'],
                         data: {
@@ -51,8 +51,8 @@
                 </a>
             </div>
 
-            <div class="col">
-                <button type="submit" class="button button--success" data-init-single-click>
+            <div class="col col--bottom-indent col--sm-12 col--md-auto">
+                <button type="submit" class="button button--success button--expand" data-init-single-click>
                     {{ 'merchant_relation_request_page.merchant_relation_request.actions.send_request' | trans }}
                 </button>
             </div>
