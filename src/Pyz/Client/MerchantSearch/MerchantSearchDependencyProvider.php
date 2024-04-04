@@ -13,15 +13,15 @@ use Spryker\Client\MerchantSearch\Plugin\Elasticsearch\ResultFormatter\MerchantS
 
 class MerchantSearchDependencyProvider extends SprykerMerchantSearchDependencyProvider
 {
-    /**
-     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
-     */
-    protected function getMerchantSearchResultFormatterPlugins(): array
-    {
-        return [
-            new MerchantSearchResultFormatterPlugin(),
-        ];
-    }
+//    /**
+//     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
+//     */
+//    protected function getMerchantSearchResultFormatterPlugins(): array
+//    {
+//        return [
+//            new MerchantSearchResultFormatterPlugin(),
+//        ];
+//    }
 
     /**
      * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
