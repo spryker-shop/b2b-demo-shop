@@ -10,7 +10,6 @@ namespace Pyz\Client\MerchantSearch;
 use Spryker\Client\MerchantSearch\MerchantSearchDependencyProvider as SprykerMerchantSearchDependencyProvider;
 use Spryker\Client\MerchantSearch\Plugin\Elasticsearch\Query\PaginatedMerchantSearchQueryExpanderPlugin;
 use Spryker\Client\MerchantSearch\Plugin\Elasticsearch\ResultFormatter\MerchantSearchResultFormatterPlugin;
-use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\StoreQueryExpanderPlugin;
 
 class MerchantSearchDependencyProvider extends SprykerMerchantSearchDependencyProvider
 {
@@ -31,7 +30,6 @@ class MerchantSearchDependencyProvider extends SprykerMerchantSearchDependencyPr
     {
         return [
             new PaginatedMerchantSearchQueryExpanderPlugin(),
-            new StoreQueryExpanderPlugin(),
         ];
     }
 }
