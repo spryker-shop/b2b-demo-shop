@@ -141,8 +141,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductBundleStoragePlugins(),
             $this->getProductConfigurationStoragePlugins(),
             $this->getProductExportPlugins(),
-            $this->getMerchantStoragePlugins(),
-            $this->getMerchantSearchPlugins(),
+//            $this->getMerchantStoragePlugins(),
+//            $this->getMerchantSearchPlugins(),
         );
     }
 
@@ -190,7 +190,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new FileManagerPublisherTriggerPlugin(),
             new AssetPublisherTriggerPlugin(),
             new CustomerAccessPublisherTriggerPlugin(),
-            new MerchantPublisherTriggerPlugin(),
+//            new MerchantPublisherTriggerPlugin(),
         ];
     }
 
