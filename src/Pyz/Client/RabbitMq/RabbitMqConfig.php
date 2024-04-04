@@ -159,8 +159,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             StoreStorageConfig::STORE_SYNC_STORAGE_QUEUE,
             AssetStorageConfig::ASSET_SYNC_STORAGE_QUEUE,
             SearchHttpConfig::SEARCH_HTTP_CONFIG_SYNC_QUEUE,
-//            MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
-//            MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
+            MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
+            MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
         ];
     }
 

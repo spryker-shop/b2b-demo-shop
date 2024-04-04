@@ -12,11 +12,11 @@ use Spryker\Zed\MerchantStorage\MerchantStorageConfig as BaseMerchantStorageConf
 
 class MerchantStorageConfig extends BaseMerchantStorageConfig
 {
-//    /**
-//     * @return string|null
-//     */
-//    public function getMerchantSynchronizationPoolName(): ?string
-//    {
-//        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
-//    }
+    /**
+     * @return string|null
+     */
+    public function getMerchantSynchronizationPoolName(): ?string
+    {
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
 }
