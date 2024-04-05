@@ -26,6 +26,9 @@ use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandP
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\Oms\Command\SubmitPaymentTaxInvoicePlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCapturePaymentMessageCommandPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendRefundPaymentMessageCommandPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCancelPaymentMessageCommandPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -140,5 +143,25 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         return [
             new InitiationTimeoutProcessorPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function extendCommandPlugins(Container $container): Container
+    {
+         $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
+             //...
+             $commandCollection->add(new SendCapturePaymentMessageCommandPlugin(), 'Payment/Capture');
+             // These two commands will be also supported soon by ACP Stripe app.
+             $commandCollection->add(new SendRefundPaymentMessageCommandPlugin(), 'Payment/Refund');
+             $commandCollection->add(new SendCancelPaymentMessageCommandPlugin(), 'Payment/Cancel');
+
+             return $commandCollection;
+        });
+
+        return $container;
     }
 }

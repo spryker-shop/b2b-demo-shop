@@ -31,6 +31,8 @@ use Spryker\Zed\ProductReview\Communication\Plugin\MessageBroker\ProductReviewAd
 use Spryker\Zed\SearchHttp\Communication\Plugin\MessageBroker\SearchEndpointMessageHandlerPlugin;
 use Spryker\Zed\Session\Communication\Plugin\MessageBroker\SessionTrackingIdMessageAttributeProviderPlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\MessageBroker\TaxAppMessageHandlerPlugin;
+use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentOperationsMessageHandlerPlugin;
+use Spryker\Zed\SalesPaymentDetail\Communication\Plugin\MessageBroker\PaymentCreatedMessageHandlerPlugin;
 
 class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProvider
 {
@@ -74,6 +76,11 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new SearchEndpointMessageHandlerPlugin(),
             new ProductReviewAddReviewsMessageHandlerPlugin(),
             new TaxAppMessageHandlerPlugin(),
+            # These plugins are handling messages sent from Stripe app to your project.
+            new PaymentOperationsMessageHandlerPlugin(),
+
+            # [Optional] This plugin is handling the `PaymentCreated` messages sent from Stripe App.
+            new PaymentCreatedMessageHandlerPlugin(),
         ];
     }
 

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
+
+    <process name="PaymentAuthorization">
+        <subprocesses>
+            <process>PaymentCancel</process>
+            <process>ItemClose</process>
+        </subprocesses>
+
+        <states>
+
+            <state name="payment authorization failed" reserved="true" display="oms.state.in-progress">
+                <flag>cancellable</flag>
+            </state>
+            <state name="payment authorized" reserved="true" display="oms.state.in-progress">
+                <flag>cancellable</flag>
+            </state>
+            <state name="payment authorization canceled" display="oms.state.canceled"/>
+        </states>
+
+        <transitions>
+            <transition happy="true">
+                <source>payment pending</source>
+                <target>payment authorized</target>
+                <event>payment authorization successful</event>
+            </transition>
+
+            <transition>
+                <source>payment pending</source>
+                <target>payment authorization failed</target>
+                <event>payment authorization failed</event>
+            </transition>
+
+            <transition>
+                <source>payment authorization failed</source>
+                <target>payment authorized</target>
+                <event>payment authorization successful</event>
+            </transition>
+
+            <transition>
+                <source>payment authorized</source>
+                <target>payment cancellation ready</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
+                <source>payment authorization failed</source>
+                <target>payment authorization canceled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
+                <source>payment authorization canceled</source>
+                <target>payment cancellation ready</target>
+                <event>cancel</event>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="payment authorization successful"/>
+            <event name="payment authorization failed"/>
+        </events>
+    </process>
+
+</statemachine>

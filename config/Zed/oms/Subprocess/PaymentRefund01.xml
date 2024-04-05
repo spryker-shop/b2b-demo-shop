@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
+
+    <process name="PaymentRefund">
+        <subprocesses>
+            <process>ItemClose</process>
+        </subprocesses>
+
+        <states>
+            <state name="payment refund ready" display="oms.state.waiting"/>
+            <state name="payment refund pending" display="oms.state.waiting"/>
+            <state name="payment refunded" display="oms.state.refunded"/>
+            <state name="payment refund failed" display="oms.state.waiting"/>
+        </states>
+
+        <transitions>
+            <transition>
+                <source>payment refund ready</source>
+                <target>payment refund pending</target>
+                <event>start refund</event>
+            </transition>
+
+            <transition>
+                <source>payment refund pending</source>
+                <target>payment refunded</target>
+                <event>payment refund successful</event>
+            </transition>
+
+            <transition>
+                <source>payment refund pending</source>
+                <target>payment refund failed</target>
+                <event>payment refund failed</event>
+            </transition>
+
+            <transition>
+                <source>payment refund failed</source>
+                <target>payment refunded</target>
+                <event>confirm payment refund</event>
+            </transition>
+
+            <transition>
+                <source>payment refund failed</source>
+                <target>payment refund ready</target>
+                <event>retry payment refund</event>
+            </transition>
+
+            <transition>
+                <source>payment refunded</source>
+                <target>canceled</target>
+                <event>close</event>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="payment refund successful"/>
+            <event name="payment refund failed" timeout="1 day"/>
+            <event name="retry payment refund" manual="true"/>
+            <event name="confirm payment refund" manual="true"/>
+            <event name="refund" manual="true"/>
+            <event name="start refund" onEnter="true" command="Payment/Refund"/>
+        </events>
+    </process>
+
+</statemachine>
