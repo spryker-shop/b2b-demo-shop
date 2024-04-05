@@ -1,0 +1,63 @@
+{% extends view('merchant-relation-request-create', 'SprykerShop:MerchantRelationRequestPage') %}
+
+{% block merchantSeparator %}{% endblock %}
+
+{% block companyDetailsTitle %}
+    <h4 class="spacing-y spacing-y--big">
+        {{ 'merchant_relation_request_page.merchant_relation_request_detail.company_details' | trans }}
+    </h4>
+{% endblock %}
+
+{% block companyDetailsSeparator %}{% endblock %}
+
+{% block contactDetailsTitle %}
+    <h4 class="spacing-y spacing-y--big">
+        {{ 'merchant_relation_request_page.merchant_relation_request_detail.details' | trans }}
+    </h4>
+{% endblock %}
+
+{% block contactDetailsSeparator %}{% endblock %}
+
+{% block additionalDetailsTitle %}
+    <h4 class="spacing-y spacing-y--big">
+        {{ 'merchant_relation_request_page.merchant_relation_request_detail.additional_details' | trans }}
+    </h4>
+{% endblock %}
+
+{% block additionalDetailsSeparator %}{% endblock %}
+
+{% block companyContent %}
+    <h3 class="spacing-bottom spacing-bottom--big">
+        {{ 'merchant_relation_request_page.merchant_relation_request.title_create' | trans }}
+    </h3>
+
+    {{ block('formStart') }}
+    {{ block('merchant') }}
+    {{ block('companyDetails') }}
+    {{ block('contactDetails') }}
+    {{ block('additionalDetails') }}
+
+    {% block actions %}
+        <div class="grid grid--justify grid--column-mob-reverse grid--row-tablet">
+            <div class="col col--bottom-indent col--sm-12 col--md-auto">
+                <a href="{{ url('company/merchant-relation-request') }}" class="button button--secondary button--hollow button--expand">
+                    {% include atom('icon') with {
+                        modifiers: ['small'],
+                        data: {
+                            name: 'chevron-left'
+                        }
+                    } only %}
+                    {{ 'merchant_relation_request_page.merchant_relation_request.actions.back' | trans }}
+                </a>
+            </div>
+
+            <div class="col col--bottom-indent col--sm-12 col--md-auto">
+                <button type="submit" class="button button--success button--expand" data-init-single-click>
+                    {{ 'merchant_relation_request_page.merchant_relation_request.actions.send_request' | trans }}
+                </button>
+            </div>
+        </div>
+    {% endblock %}
+
+    {{ block('formEnd') }}
+{% endblock %}

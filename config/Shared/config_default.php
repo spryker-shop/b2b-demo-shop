@@ -63,6 +63,8 @@ use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
+use Spryker\Shared\MerchantRelationRequest\MerchantRelationRequestConstants;
+use Spryker\Shared\MerchantRelationship\MerchantRelationshipConstants;
 use Spryker\Shared\MessageBroker\MessageBrokerConstants;
 use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
@@ -615,6 +617,8 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[CustomerConstants::BASE_URL_YVES]
     = $config[ProductManagementConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
+    = $config[MerchantRelationshipConstants::BASE_URL_YVES]
+    = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
     = sprintf(
         'https://%s%s',
         $yvesHost,

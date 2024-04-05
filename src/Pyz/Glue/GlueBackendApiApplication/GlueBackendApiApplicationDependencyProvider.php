@@ -26,6 +26,7 @@ use Spryker\Glue\OauthBackendApi\Plugin\UserRequestBuilderPlugin;
 use Spryker\Glue\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Glue\StoresApi\Plugin\GlueBackendApiApplication\StoreApplicationPlugin as ClientStoreApplicationPlugin;
 use Spryker\Glue\StoresBackendApi\Plugin\GlueBackendApiApplication\StoreApplicationPlugin;
+use Spryker\Glue\TestifyBackendApi\Plugin\GlueBackendApiApplication\DynamicFixturesBackendResourcePlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 
 class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiApplicationDependencyProvider
@@ -97,9 +98,15 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
      */
     protected function getResourcePlugins(): array
     {
-        return [
+        $plugins = [
             new OauthBackendApiTokenResource(),
         ];
+
+        if (class_exists(DynamicFixturesBackendResourcePlugin::class)) {
+            $plugins[] = new DynamicFixturesBackendResourcePlugin();
+        }
+
+        return $plugins;
     }
 
     /**

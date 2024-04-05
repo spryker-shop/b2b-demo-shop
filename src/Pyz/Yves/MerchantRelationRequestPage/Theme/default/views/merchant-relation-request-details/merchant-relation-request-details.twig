@@ -1,0 +1,133 @@
+{% extends view('merchant-relation-request-details', 'SprykerShop:MerchantRelationRequestPage') %}
+
+{% block companyContent %}
+    {% block heading %}
+        <h3 class="spacing-bottom spacing-bottom--big">{{ 'merchant_relation_request_page.merchant_relation_request.title_create' | trans }}</h3>
+
+        <ul>
+            <li>
+                {{ 'merchant_relation_request_page.merchant_relation_request_detail.date_created' | trans  ~ ': ' }}
+                {{ data.merchantRelationRequest.createdAt | formatDateTime }}
+            <li>
+        </ul>
+    {% endblock %}
+
+    {% block notification %}
+        {% include molecule('merchant-relation-request-status-notification', 'MerchantRelationRequestPage') with {
+            class: 'spacing-y spacing-y--big',
+            modifiers: [data.merchantRelationRequest.status],
+            data: {
+                status: data.merchantRelationRequest.status,
+                isCancellable: data.isRequestCancellable,
+                uuid: data.merchantRelationRequest.uuid,
+                merchantRelationships: data.merchantRelationRequest.merchantRelationships,
+            },
+        } only %}
+    {% endblock %}
+
+    {% block merchantLogo %}
+        <h4 class="spacing-bottom spacing-bottom--big">
+            {{ 'merchant_relation_request_page.merchant_relation_request.merchant' | trans }}
+        </h4>
+
+        <div class="grid grid--middle spacing-bottom spacing-bottom--big">
+            {% if data.merchant.merchantProfile and data.merchant.merchantProfile.logoUrl %}
+                <div class="col col--sm-2 col--lg-1 spacing">
+                    {% include molecule('lazy-image') with {
+                        data: {
+                            imageSrc: data.merchant.merchantProfile.logoUrl,
+                            alt: data.merchant.name
+                        },
+                    } only %}
+                </div>
+            {% endif %}
+
+            <div class="col">
+                <strong>{{ data.merchant.name }}</strong>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block companyDetails %}
+        <h4 class="spacing-bottom spacing-bottom--big">
+            {{ 'merchant_relation_request_page.merchant_relation_request_detail.company_details' | trans }}
+        </h4>
+
+        <ul class="spacing-bottom spacing-bottom--bigger">
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request_detail.company' | trans  ~ ': ' }}</span>
+                <strong class="col">{{ data.merchantRelationRequest.ownerCompanyBusinessUnit.company.name }}</strong>
+            </li>
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request_detail.business_unit_owner' | trans  ~ ': ' }}</span>
+                <strong class="col">{{ data.merchantRelationRequest.ownerCompanyBusinessUnit.name }}</strong>
+            </li>
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request_detail.business_units' | trans  ~ ': ' }}</span>
+                <strong class="col">
+                    {% set companyBusinessUnits = [] %}
+                    {% for companyBusinessUnit in data.merchantRelationRequest.assigneeCompanyBusinessUnits %}
+                        {% set companyBusinessUnits = companyBusinessUnits | merge([companyBusinessUnit.name]) %}
+                    {% endfor %}
+
+                    {{ companyBusinessUnits | join(', ') }}
+                </strong>
+            </li>
+        </ul>
+    {% endblock %}
+
+    {% block customerDetails %}
+        <h4 class="spacing-bottom spacing-bottom--big">
+            {{ 'merchant_relation_request_page.merchant_relation_request_detail.details' | trans }}
+        </h4>
+
+        <ul class="spacing-bottom spacing-bottom--bigger">
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request_detail.first_name' | trans  ~ ': ' }}</span>
+                <strong class="col">{{ data.merchantRelationRequest.companyUser.customer.firstName }}</strong>
+            </li>
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request_detail.last_name' | trans  ~ ': ' }}</span>
+                <strong class="col">{{ data.merchantRelationRequest.companyUser.customer.lastName }}</strong>
+            </li>
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request_detail.email' | trans  ~ ': ' }}</span>
+                <span class="col">
+                    <a class="link" href="mailto:{{ data.merchantRelationRequest.companyUser.customer.email }}">
+                        {{ data.merchantRelationRequest.companyUser.customer.email }}
+                    </a>
+                </span>
+            </li>
+        </ul>
+    {% endblock %}
+
+    {% block requestNote %}
+        {% if data.merchantRelationRequest.requestNote ?? '' | length %}
+            <h4 class="spacing-bottom spacing-bottom--big">
+                {{ 'merchant_relation_request_page.merchant_relation_request_detail.additional_details' | trans }}
+            </h4>
+
+            <ul class="spacing-bottom spacing-bottom--bigger">
+                <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                    <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request.request_note_label' | trans  ~ ': ' }}</span>
+                    <span class="col">{{ data.merchantRelationRequest.requestNote }}</span>
+                </li>
+            </ul>
+        {% endif %}
+    {% endblock %}
+
+    {% block desisionNote %}
+        {% if data.merchantRelationRequest.decisionNote ?? '' | length %}
+            <h4 class="spacing-bottom spacing-bottom--big">
+                {{ 'merchant_relation_request_page.merchant_relation_request_detail.comment_from_merchant' | trans }}
+            </h4>
+
+            <ul class="spacing-bottom spacing-bottom--bigger">
+                <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                    <span class="col col--xl-3">{{ 'merchant_relation_request_page.merchant_relation_request.request_note_label' | trans  ~ ': ' }}</span>
+                    <span class="col">{{  data.merchantRelationRequest.decisionNote }}</span>
+                </li>
+            </ul>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

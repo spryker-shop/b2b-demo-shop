@@ -251,5 +251,11 @@
         &.container {
             max-width: $setting-grid-max-width;
         }
+
+        &--row-tablet {
+            @include helper-breakpoint-media-min($md) {
+                flex-direction: row;
+            }
+        }
     }
 }

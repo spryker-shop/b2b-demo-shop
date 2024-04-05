@@ -8,7 +8,7 @@
 
 {% define data = {
     title: '',
-    actions: []
+    actions: [],
 } %}
 
 {% block body %}
@@ -19,7 +19,7 @@
         {% block actions %}
             {% for action in data.actions %}
                 {% set modifiers = (action.modifiers | default((action.primary | default(false)) ? [] : ['hollow'])) %}
-                <a class="{{ component.renderClass('button', modifiers) }} {{ config.name }}__action" href="{{ action.url }}">
+                <a {% if action.qa is defined %} data-qa="{{ action.qa }}" {% endif %}class="{{ component.renderClass('button', modifiers) }} {{ config.name }}__action" href="{{ action.url }}">
                     {% if action.icon | default(false) %}
                         {% include atom('icon') with {
                             class: config.name ~ '__icon',
