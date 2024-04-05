@@ -665,6 +665,7 @@ jobs:
                   docker/sdk up -t -v
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk cli console queue:worker:start --stop-when-empty
+                  APPLICATION_STORE=AT docker/sdk console queue:worker:start --stop-when-empty
             - name: Run Tests
               run: |
                   docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:b2b
