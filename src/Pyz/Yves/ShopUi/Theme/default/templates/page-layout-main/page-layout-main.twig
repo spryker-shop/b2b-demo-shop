@@ -1,11 +1,13 @@
-{% extends template('page-blank') %}
+{% extends template('page-layout-main', '@SprykerShop:ShopUi') %}
 
 {% block meta %}
     {{ parent() }}
     <meta name="format-detection" content="telephone=no">
 {% endblock %}
 
-{%- block class -%}js-page-layout-main__side-drawer-container{%- endblock -%}
+{% set pageLayoutMainJsClassName = 'js-page-layout-main' %}
+
+{%- block class -%}{{ pageLayoutMainJsClassName }}__side-drawer-container{%- endblock -%}
 
 {% block body %}
     {% block notifications %}
@@ -17,8 +19,8 @@
         {% block sidebar %}
             {% embed organism('side-drawer') with {
                 attributes: {
-                    'container-class-name': 'js-page-layout-main__side-drawer-container',
-                    'trigger-class-name': 'js-page-layout-main__side-drawer-trigger',
+                    'trigger-selector': pageLayoutMainJsClassName ~ '__side-drawer-trigger',
+                    'container-selector': pageLayoutMainJsClassName ~ '__side-drawer-container',
                     'locked-body-class-name': 'is-locked-tablet',
                 },
             } only %}
@@ -33,9 +35,10 @@
 
                 {% include organism('account-navigation') with {
                     attributes: {
-                        'container-class-name': 'js-page-layout-main__side-drawer-container',
-                        'trigger-class-name': 'js-page-layout-main__user-account-navigation-trigger',
+                        'trigger-selector': pageLayoutMainJsClassName ~ '__user-account-navigation-trigger',
+                        'container-selector': pageLayoutMainJsClassName ~ '__side-drawer-container',
                         'locked-body-class-name': 'is-locked-mobile',
+                        'overlay-breakpoint': 768,
                     },
                     data: {
                         title: customerFullName,
@@ -105,9 +108,10 @@
                     {% include organism('account-navigation') with {
                         modifiers: ['company'],
                         attributes: {
-                            'container-class-name': 'js-page-layout-main__side-drawer-container',
-                            'trigger-class-name': 'js-page-layout-main__company-account-navigation-trigger',
+                            'trigger-selector': pageLayoutMainJsClassName ~ '__company-account-navigation-trigger',
+                            'container-selector': pageLayoutMainJsClassName ~ '__side-drawer-container',
                             'locked-body-class-name': 'is-locked-mobile',
+                            'overlay-breakpoint': 768,
                         },
                         data: {
                             introIcon: 'office',
@@ -136,6 +140,18 @@
                                     url: path('company/company-role'),
                                     label: 'company.account.company_role' | trans,
                                     icon: 'user'
+                                },
+                                {
+                                    url: path('company/merchant-relation'),
+                                    icon: 'handshake',
+                                    label: 'company.account.merchant_relations' | trans,
+                                    name: 'merchant-relation'
+                                },
+                                {
+                                    url: path('company/merchant-relation-request'),
+                                    icon: 'script',
+                                    label: 'merchant_relation_request_widget.merchant_relation_request.list.title' | trans,
+                                    name: 'merchant-relation-request'
                                 }
                             ]
                         }
@@ -153,7 +169,7 @@
                 {% endblock %}
 
                 {% block mobile %}
-                    <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+                    <a href="#" class="link link--alt {{ pageLayoutMainJsClassName }}__side-drawer-trigger">
                         {% include atom('icon') with {
                             modifiers: ['big'],
                             data: {
@@ -214,7 +230,6 @@
         {% endblock %}
     </div>
 
-    {% include atom('overlay-block') only %}
     {% include atom('touch-checker') only %}
 
     {% block globalComponents %}
@@ -238,6 +253,12 @@
             attributes: {
                 'target-class-name': 'page-layout',
                 'trigger-class-name': 'page-layout--preload',
+            },
+        } only %}
+
+        {% include molecule('main-overlay') with {
+            attributes: {
+                'is-open': data.isOverlayOpen,
             },
         } only %}
     {% endblock %}

@@ -1,0 +1,25 @@
+@mixin quote-request-agent-widget-request-button($name: '.request-button') {
+    #{$name} {
+        &__link {
+            @include helper-effect-transition(color);
+            color: $setting-color-gray-4;
+            font-size: rem(10);
+            font-weight: fw(bold);
+            text-transform: uppercase;
+            text-align: center;
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-3;
+            }
+        }
+
+        &__icon {
+            margin-bottom: rem(10);
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-agent-widget-request-button();

@@ -1,84 +1,30 @@
-.quote-table {
-    tbody {
-        font-size: rem(13);
+@mixin multi-cart-page-quote-table($name: '.quote-table') {
+    #{$name} {
+        &__cart-name {
+            display: inline-block;
+            color: $setting-color-gray-5;
+            background: $setting-color-transparent;
+            font-weight: fw(medium);
+            word-break: break-word;
+            text-align: left;
+            cursor: pointer;
 
-        @include helper-breakpoint-media-min($lg) {
-            font-size: rem(14);
-        }
-    }
+            &--active {
+                color: $setting-color-main;
+            }
 
-    tr {
-        margin: 0 rem(-15);
-        padding: rem(20) rem(15);
-
-        @include helper-breakpoint-media-min($lg) {
-            margin: 0;
-            padding: 0;
-        }
-
-        &:first-child {
-            border-top: 1px solid $setting-color-gray-6;
-
-            @include helper-breakpoint-media-min($lg) {
-                border-top: 0;
+            &:hover {
+                color: $setting-color-alt;
             }
         }
 
-        &:last-child {
-            border-bottom: 1px solid $setting-color-gray-6;
-        }
-    }
-
-    td {
-        padding-top: rem(12);
-
-        @include helper-breakpoint-media-min($lg) {
-            padding-top: rem(16);
+        &__duplicate-button {
+            background-color: $setting-color-transparent;
+            width: 100%;
         }
 
-        &::before {
-            color: $setting-color-black;
-            text-transform: uppercase;
-            padding-right: rem(6);
-        }
-
-        &:last-child {
-            padding-left: 0;
-            padding-right: 0;
-
-            @include helper-breakpoint-media-min($lg) {
-                padding-left: rem(15);
-                padding-right: rem(15);
-            }
-        }
-    }
-
-    td:first-child,
-    th:first-child {
-        @include helper-breakpoint-media-min($lg) {
-            padding-left: rem(30);
-        }
-    }
-
-    &__cart-name {
-        display: inline-block;
-        color: $setting-color-gray-5;
-        background: $setting-color-transparent;
-        font-weight: fw(medium);
-        word-break: break-word;
-        text-align: left;
-
-        &--active {
-            color: $setting-color-main;
-        }
-
-        &:hover {
-            color: $setting-color-alt;
-        }
-    }
-
-    &__duplicate-form,
-    &__duplicate-button {
-        height: 100%;
+        @content;
     }
 }
+
+@include multi-cart-page-quote-table();

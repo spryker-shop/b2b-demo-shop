@@ -15,6 +15,7 @@ use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyU
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyUserPostSavePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\CompanyRoleCollectionHydratePlugin;
 use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserDependencyProvider;
+use Spryker\Zed\MerchantRelationRequest\Communication\Plugin\CompanyUser\MerchantRelationRequestCompanyUserPreDeletePlugin;
 use Spryker\Zed\MerchantRelationship\Communication\Plugin\CompanyUser\MerchantRelationshipHydratePlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\CompanyUserExtension\QuoteRequestCompanyUserPreDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CompanyUserExtension\SharedCartCompanyUserPreDeletePlugin;
@@ -74,6 +75,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
             new ShoppingListCompanyUserPreDeletePlugin(),
             new SharedCartCompanyUserPreDeletePlugin(),
             new QuoteRequestCompanyUserPreDeletePlugin(),
+            new MerchantRelationRequestCompanyUserPreDeletePlugin(),
         ];
     }
 

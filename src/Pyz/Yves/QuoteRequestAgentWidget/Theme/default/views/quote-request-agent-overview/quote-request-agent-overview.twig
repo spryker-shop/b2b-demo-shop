@@ -6,18 +6,14 @@
 } %}
 
 {% block requestList %}
-    <ul class="col menu menu--inline">
-        <li class="menu__item menu__item--has-children-dropdown menu__item--has-overlay">
-            <a class="grid grid--center text-secondary" href="{{ path('agent/quote-request') }}" title="{{ 'quote_request_agent_widget.quote_request' | trans }}">
-                {% include atom('icon') with {
-                    class: 'col col-sm-12',
-                    modifiers: ['big', 'message'],
-                    data: {
-                        name: 'message',
-                    },
-                } only %}
-                <div class="col col--sm-12 text-center">{{ 'quote_request_widget.request_for_quote.list.title' | trans }}</div>
-            </a>
+    <ul class="menu menu--inline">
+        <li class="menu__item menu__item--has-children-dropdown">
+            {% include atom('request-button', 'QuoteRequestAgentWidget') with {
+                data: {
+                    url: path('agent/quote-request'),
+                },
+            } %}
+
             <ul class="menu menu--wider text-left">
                 {% if data.quoteRequestOverviewCollection.quoteRequests | length %}
                     {% for quoteRequest in data.quoteRequestOverviewCollection.quoteRequests %}

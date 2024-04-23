@@ -879,26 +879,34 @@ customer.newsletter.subscribed,Newsletter subscribed,en_US
 customer.newsletter.subscribed,Newsletter abonniert,de_DE
 dynamic_entity.validation.invalid_data_format,"Invalid or missing data format. Please ensure that the data is provided in the correct format. Example request body: {'data':[{...},{...},..]}",en_US
 dynamic_entity.validation.invalid_data_format,"Ungültiges oder fehlendes Datenformat. Stellen Sie bitte sicher, dass die Daten im richtigen Format bereitgestellt werden. Beispiel Anforderungskörper: {'data':[{...},{...}]}",de_DE
-dynamic_entity.validation.persistence_failed,"Failed to persist the data. Please verify the provided data and try again.",en_US
-dynamic_entity.validation.persistence_failed,"Das Speichern der Daten ist fehlgeschlagen. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut.",de_DE
-dynamic_entity.validation.persistence_failed_duplicate_entry,"Failed to persist the data. Please verify the provided data and try again. Entry is duplicated.",en_US
-dynamic_entity.validation.persistence_failed_duplicate_entry,"Das Speichern der Daten ist fehlgeschlagen. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut. Eintrag is doppelt vorhanden.",de_DE
-dynamic_entity.validation.entity_does_not_exist,"The entity could not be found in the database.",en_US
-dynamic_entity.validation.entity_does_not_exist,"Die Entität konnte in der Datenbank nicht gefunden werden.",de_DE
-dynamic_entity.validation.invalid_field_type,"Invalid data type for field: %fieldName%",en_US
-dynamic_entity.validation.invalid_field_type,"Ungültiger Datentyp: %fieldName%",de_DE
-dynamic_entity.validation.invalid_field_value,"Invalid data value for field: %fieldName%, row number: %rowNumber%. Field rules: %validationRules%",en_US
-dynamic_entity.validation.invalid_field_value,"Ungültiger Datenwert für das Feld: %fieldName%, Zeilennummer: %rowNumber%. Feldregeln: %validationRules%",de_DE
-dynamic_entity.validation.required_field_is_missing,"The required field must not be empty. Field: '%fieldName%'",en_US
-dynamic_entity.validation.required_field_is_missing,"Das erforderlich Feld darf nicht leer sein. Feld: '%fieldName%'",de_DE
+dynamic_entity.validation.persistence_failed,"Failed to persist the data for `%errorPath%`. Please verify the provided data and try again.",en_US
+dynamic_entity.validation.persistence_failed,"Das Speichern der Daten ist fehlgeschlagen für `%errorPath%`. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut.",de_DE
+dynamic_entity.validation.persistence_failed_duplicate_entry,"Failed to persist the data for `%errorPath%`. Please verify the provided data and try again. Entry is duplicated.",en_US
+dynamic_entity.validation.persistence_failed_duplicate_entry,"Das Speichern der Daten ist fehlgeschlagen für `%errorPath%`. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut. Eintrag is doppelt vorhanden.",de_DE
+dynamic_entity.validation.entity_does_not_exist,"The entity `%errorPath%` could not be found in the database.",en_US
+dynamic_entity.validation.entity_does_not_exist,"Die Entität `%errorPath%` konnte in der Datenbank nicht gefunden werden.",de_DE
+dynamic_entity.validation.invalid_field_type,"Invalid data type `%errorPath%` for field `%fieldName%`",en_US
+dynamic_entity.validation.invalid_field_type,"Ungültiger Datentyp `%errorPath%` für das Feld `%fieldName%`",de_DE
+dynamic_entity.validation.invalid_field_value,"Invalid data value `%errorPath%` for field: `%fieldName%`. Field rules: %validationRules%",en_US
+dynamic_entity.validation.invalid_field_value,"Ungültiger Datenwert `%errorPath%` für das Feld: `%fieldName%`. Feldregeln: %validationRules%",de_DE
+dynamic_entity.validation.required_field_is_missing,"The required field must not be empty. Field: '%errorPath%.%fieldName%'",en_US
+dynamic_entity.validation.required_field_is_missing,"Das erforderlich Feld darf nicht leer sein. Feld: '%errorPath%.%fieldName%'",de_DE
 dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entity `%identifier%` not found by identifier, and new identifier can not be persisted. Please update the request.",en_US
 dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entität `%identifier%` konnte anhand der ID nicht gefunden werden, und die neue ID kann nicht dauerhaft gespeichert werden. Bitte aktualisieren Sie die Anfrage.",de_DE
-dynamic_entity.validation.modification_of_immutable_field_prohibited,"Modification of immutable field `%fieldName%` is prohibited",en_US
-dynamic_entity.validation.modification_of_immutable_field_prohibited,"Änderung des unveränderlichen Feldes %fieldName% ist nicht zulässig.",de_DE
-dynamic_entity.validation.missing_identifier,"Incomplete Request - missing identifier",en_US
-dynamic_entity.validation.missing_identifier,"Unvollständige Anforderung - fehlende ID",de_DE
-dynamic_entity.validation.provided_field_is_invalid,"The provided `%fieldName%` is incorrect or invalid.",en_US
-dynamic_entity.validation.provided_field_is_invalid,"Der angegebene `%fieldName%` ist falsch oder ungültig.",de_DE
+dynamic_entity.validation.modification_of_immutable_field_prohibited,"Modification of immutable field `%errorPath%.%fieldName%` is prohibited",en_US
+dynamic_entity.validation.modification_of_immutable_field_prohibited,"Änderung des unveränderlichen Feldes `%errorPath%.%fieldName%` ist nicht zulässig.",de_DE
+dynamic_entity.validation.missing_identifier,"Incomplete Request - missing identifier for `%errorPath%`",en_US
+dynamic_entity.validation.missing_identifier,"Unvollständige Anforderung - fehlende ID für `%errorPath%`",de_DE
+dynamic_entity.validation.provided_field_is_invalid,"The provided `%errorPath%.%fieldName%` is incorrect or invalid.",en_US
+dynamic_entity.validation.provided_field_is_invalid,"Der angegebene `%errorPath%.%fieldName%` ist falsch oder ungültig.",de_DE
+dynamic_entity.validation.relation_is_not_editable,"The relationship `%relationName%` is not editable by configuration.",en_US
+dynamic_entity.validation.relation_is_not_editable,"Die Beziehung `%relationName%` kann nicht per Konfiguration bearbeitet werden.",de_DE
+dynamic_entity.validation.relation_not_found,"Relation `%relationName%` not found. Please check the requested relation name and try again.",en_US
+dynamic_entity.validation.relation_not_found,"Beziehung `%relationName%` nicht gefunden. Bitte überprüfen Sie den angeforderten Beziehungsnamen und versuchen Sie es erneut.",de_DE
+dynamic_entity.validation.configuration_not_found,"Dynamic entity configuration for table alias `%aliasName%` not found.",en_US
+dynamic_entity.validation.configuration_not_found,"Dynamische Entitätskonfiguration für Tabellenalias `%aliasName%` nicht gefunden.",de_DE
+dynamic_entity.validation.filter_field_not_found,"Filter field `%filterField%` for table alias `%aliasName%` not found.",en_US
+dynamic_entity.validation.filter_field_not_found,"Filterfeld `%filterField%` für Tabellen alias `%aliasName%` nicht gefunden.",de_DE
 validator.constraints.password.do_not_match,Passwords don't match,en_US
 validator.constraints.password.do_not_match,Passwörter stimmen nicht überein,de_DE
 discount.successfully.applied,"The discount ""display_name"" has been successfully applied",en_US
@@ -1323,6 +1331,8 @@ product.filter.price-default-eur-net_mode,Preis,de_DE
 product.filter.price-default-eur-net_mode,Price range,en_US
 product.filter.price-default-eur-gross_mode,Preis,de_DE
 product.filter.price-default-eur-gross_mode,Price range,en_US
+product.filter.price-default-usd-net_mode,Price range,en_US
+product.filter.price-default-usd-gross_mode,Price range,en_US
 price.mode.gross_mode,Gross prices,en_US
 price.mode.gross_mode,Bruttopreise,de_DE
 price.mode.net_mode,Net prices,en_US
@@ -3857,3 +3867,221 @@ store_widget.switcher.store,Store:,en_US
 store_widget.switcher.store,Shop:,de_DE
 store.validation.store_not_found,"Store not found",en_US
 store.validation.store_not_found,"Store nicht gefunden",de_DE
+category.validation.category_node_entity_not_found,The category node ID '%category_node_id%' cannot be relocated because this category node no longer exists.,en_US
+category.validation.category_node_entity_not_found,"Die Kategorieknoten-ID '%category_node_id%' kann nicht verschoben werden, da dieser Kategorieknoten nicht mehr existiert.",de_DE
+merchant_relation_request.validation.status_not_pending,New requests can only be made if the current status is pending.,en_US
+merchant_relation_request.validation.status_not_pending,"Neue Anfragen können nur gestellt werden, wenn der aktuelle Status ausstehend ist.",de_DE
+merchant_relation_request.validation.decision_note_empty,Please clear the decision note before submitting your request.,en_US
+merchant_relation_request.validation.decision_note_empty,"Bitte leeren Sie die Entscheidungsnotiz, bevor Sie Ihre Anfrage einreichen.",de_DE
+merchant_relation_request.validation.assignee_business_units_empty,Please specify at least one assignee business unit to proceed.,en_US
+merchant_relation_request.validation.assignee_business_units_empty,"Bitte geben Sie mindestens eine zugewiesene Geschäftseinheit an, um fortzufahren.",de_DE
+merchant_relation_request.validation.request_note_wrong_length,A merchant relation request note must have length from %min% to %max% characters.,en_US
+merchant_relation_request.validation.request_note_wrong_length,Eine Händlerbeziehungsanfrage-Notiz muss eine Länge von %min% bis %max% Zeichen haben.,de_DE
+merchant_relation_request.validation.incompatible_company_account,Only company users from the same company can create requests for this list of business units.,en_US
+merchant_relation_request.validation.incompatible_company_account,Nur Nutzer desselben Unternehmens können Anfragen für diese Liste von Geschäftseinheiten erstellen.,de_DE
+merchant_relation_request.validation.decision_note_wrong_length,A merchant relation request decision note must have length from %min% to %max% characters.,en_US
+merchant_relation_request.validation.decision_note_wrong_length,Eine Entscheidungsbemerkung zu einer Händlerbeziehungsanfrage muss eine Länge von %min% bis %max% Zeichen haben.,de_DE
+merchant_relation_request.validation.not_found,Merchant Relation Request not found.,en_US
+merchant_relation_request.validation.not_found,Händlerbeziehungsanfrage nicht gefunden.,de_DE
+merchant_relation_request.validation.cant_be_approved,"Merchant Relation Request can't be approved.",en_US
+merchant_relation_request.validation.cant_be_approved,Händlerbeziehungsanfrage kann nicht genehmigt werden.,de_DE
+merchant_relation_request.validation.cant_be_canceled,"Merchant Relation Request can't be canceled.",en_US
+merchant_relation_request.validation.cant_be_canceled,Händlerbeziehungsanfrage kann nicht storniert werden.,de_DE
+merchant_relation_request.validation.cant_be_rejected,"Merchant Relation Request can't be rejected.",en_US
+merchant_relation_request.validation.cant_be_rejected,Händlerbeziehungsanfrage kann nicht abgelehnt werden.,de_DE
+merchant_relation_request.validation.cant_become_pending,"Merchant Relation Request can't become pending.",en_US
+merchant_relation_request.validation.cant_become_pending,Händlerbeziehungsanfrage kann nicht ausstehend werden.,de_DE
+merchant_relation_request.mail.merchant_relation_request_status_change.subject,"The status of your merchant relation request has been changed.",en_US
+merchant_relation_request.mail.merchant_relation_request_status_change.subject,Der Status Ihrer Händlerbeziehungsanfrage wurde geändert.,de_DE
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.salutation,"Hello %first_name% %last_name%,",en_US
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.salutation,"Hallo %first_name% %last_name%,",de_DE
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.main_text,"Merchant %merchant_name% changed the status of your merchant relation request to %status%. Please review it in your Company Account.",en_US
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.main_text,"Händler %merchant_name% hat den Status Ihrer Händlerbeziehungsanfrage in %status% geändert. Bitte überprüfen Sie es in Ihrem Firmenkonto.",de_DE
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.button,View merchant relation request,en_US
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.button,Händlerbeziehungsanfrage anzeigen,de_DE
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.decision_note_title,Comment from Merchant,en_US
+merchant_relation_request.mail.trans.merchant_relation_request_status_change.decision_note_title,Anmerkung vom Händler,de_DE
+comment.validation.error.user_not_found,User not found.,en_US
+comment.validation.error.user_not_found,Benutzer nicht gefunden.,de_DE
+comment.validation.error.comment_author_intersected,Comment Author intersection detected.,en_US
+comment.validation.error.comment_author_intersected,Schnittpunkt des Kommentarautors erkannt.,de_DE
+comment.validation.error.customer_not_found,Customer not found.,en_US
+comment.validation.error.customer_not_found,Kunde nicht gefunden.,de_DE
+permission.name.CreateMerchantRelationRequestPermissionPlugin,Send Merchant Relation Request,en_US
+permission.name.CreateMerchantRelationRequestPermissionPlugin,Händlerbeziehungsanfrage senden,de_DE
+merchant_relation_request_widget.request_for_relation.link,Merchant Relation Request,en_US
+merchant_relation_request_widget.request_for_relation.link,Händlerbeziehungsanfrage,de_DE
+merchant_relation_request_widget.request_for_relation.button,Send Request,en_US
+merchant_relation_request_widget.request_for_relation.button,Anfrage senden,de_DE
+merchant_relation_request_widget.request_for_relation.details,Contact Details,en_US
+merchant_relation_request_widget.request_for_relation.details,Kontaktdetails,de_DE
+merchant_relation_request_widget.create_request.label,Create the merchant relation request,en_US
+merchant_relation_request_widget.create_request.label,Händlerbeziehungsanfrage erstellen,de_DE
+merchant_relation_page.merchant_relation.view.empty,You do not have any merchant relations yet.,en_US
+merchant_relation_page.merchant_relation.view.empty,Sie haben noch keine Händlerbeziehungen.,de_DE
+merchant_relation_request_widget.merchant_relation_request.list.title,Merchant Relation Requests,en_US
+merchant_relation_request_widget.merchant_relation_request.list.title,Händlerbeziehungs-anfragen,de_DE
+merchant_relation_request_page.merchant_relation_request.view.empty,You do not have any merchant relation requests yet.,en_US
+merchant_relation_request_page.merchant_relation_request.view.empty,Sie haben noch keine Händlerbeziehungsanfragen.,de_DE
+merchant_relation_request_page.merchant_relation_request,Merchant Relation Requests,en_US
+merchant_relation_request_page.merchant_relation_request,Händlerbeziehungsanfragen,de_DE
+merchant_relation_request_page.merchant_relation_request.list.manage,Manage Merchant Relation Requests,en_US
+merchant_relation_request_page.merchant_relation_request.list.manage,Verwalten Sie Händlerbeziehungsanfragen,de_DE
+merchant_relation_request_page.merchant_relation_request.list.create_link,Create request,en_US
+merchant_relation_request_page.merchant_relation_request.list.create_link,Anfrage erstellen,de_DE
+merchant_relation_request_page.merchant_relation_request.breadcrumb.create,Create,en_US
+merchant_relation_request_page.merchant_relation_request.breadcrumb.create,Erstellen,de_DE
+merchant_relation_request_page.merchant_relation_request.title_create,Merchant Relation Request,en_US
+merchant_relation_request_page.merchant_relation_request.title_create,Händlerbeziehungsanfrage,de_DE
+merchant_relation_request_page.merchant_relation_request.actions.cancel,Cancel request,en_US
+merchant_relation_request_page.merchant_relation_request.actions.cancel,Anfrage stornieren,de_DE
+merchant_relation_request_page.merchant_relation_request.actions.back,Back,en_US
+merchant_relation_request_page.merchant_relation_request.actions.back,Zurück,de_DE
+merchant_relation_request_page.merchant_relation_request.actions.send_request,Submit Request,en_US
+merchant_relation_request_page.merchant_relation_request.actions.send_request,Anfrage einreichen,de_DE
+merchant_relation_request_page.merchant_relation_request.submit,Submit Request,en_US
+merchant_relation_request_page.merchant_relation_request.submit,Anfrage absenden,de_DE
+merchant_relation_request_page.merchant_relation_request.request_note,Message to the Merchant,en_US
+merchant_relation_request_page.merchant_relation_request.request_note,Nachricht an den Händler,de_DE
+merchant_relation_request_page.merchant_relation_request.business_units,Business Units,en_US
+merchant_relation_request_page.merchant_relation_request.business_units,Geschäftseinheiten,de_DE
+merchant_relation_request_page.merchant_relation_request.business_unit_owner,Business Unit Owner,en_US
+merchant_relation_request_page.merchant_relation_request.business_unit_owner,Inhaber der Geschäftseinheit,de_DE
+merchant_relation_request_page.merchant_relation_request.business_unit_owner.placeholder,Select Business Unit Owner,en_US
+merchant_relation_request_page.merchant_relation_request.business_unit_owner.placeholder,Inhaber der Geschäftseinheit auswählen,de_DE
+merchant_relation_request_page.merchant_relation_request.merchant,Merchant,en_US
+merchant_relation_request_page.merchant_relation_request.merchant,Händler,de_DE
+merchant_relation_request_page.merchant_relation_request.merchant.placeholder,Select Merchant,en_US
+merchant_relation_request_page.merchant_relation_request.merchant.placeholder,Händler auswählen,de_DE
+merchant_relation_request_page.merchant_relation_request.created,Merchant relation request has been submitted successfully.,en_US
+merchant_relation_request_page.merchant_relation_request.created,Händlerbeziehungsanfrage wurde erfolgreich übermittelt.,de_DE
+merchant_relation_request_page.merchant_relation_request.created_at,Created,en_US
+merchant_relation_request_page.merchant_relation_request.created_at,Erstellt,de_DE
+merchant_relation_request_page.merchant_relation_request.company_user,Company User,en_US
+merchant_relation_request_page.merchant_relation_request.company_user,Firmenbenutzer,de_DE
+merchant_relation_request_page.merchant_relation_request.status,Status,en_US
+merchant_relation_request_page.merchant_relation_request.status,Status,de_DE
+merchant_relation_request_page.merchant_relation_request.actions,Actions,en_US
+merchant_relation_request_page.merchant_relation_request.actions,Aktionen,de_DE
+merchant_relation_request_page.merchant_relation_request.actions.view,View,en_US
+merchant_relation_request_page.merchant_relation_request.actions.view,Ansehen,de_DE
+merchant_relation_request_page.merchant_relation_request.empty_business_units.error,At least one business unit must be assigned to a user,en_US
+merchant_relation_request_page.merchant_relation_request.empty_business_units.error,Einem Benutzer muss mindestens eine Geschäftseinheit zugeordnet sein,de_DE
+merchant_relation_request_page.merchant_relation_request.success.canceled,Merchant relation request canceled successfully.,en_US
+merchant_relation_request_page.merchant_relation_request.success.canceled,Die Anfrage zur Händlerbeziehung wurde erfolgreich abgebrochen.,de_DE
+merchant_relation_request.validation.company_user_access_denied,Access denied.,en_US
+merchant_relation_request.validation.company_user_access_denied,Zugriff verweigert.,de_DE
+merchant_relation_request.validation.merchant_not_found,Merchant not found.,en_US
+merchant_relation_request.validation.merchant_not_found,Händler nicht gefunden.,de_DE
+merchant_relation_request.merchant_notification.active_filters,Active Filters:,en_US
+merchant_relation_request.merchant_notification.active_filters,Aktive Filter:,de_DE
+merchant_relation_request.merchant_notification.reset_all,Reset All,en_US
+merchant_relation_request.merchant_notification.reset_all,Alles zurücksetzen,de_DE
+merchant_relation_request.merchant_notification.apply,Apply,en_US
+merchant_relation_request.merchant_notification.apply,Anwenden,de_DE
+merchant_relation_request_page.merchant_relation_request.status.placeholder,Select Status,en_US
+merchant_relation_request_page.merchant_relation_request.status.placeholder,Status auswählen,de_DE
+merchant_relation_request_page.merchant_relation_request.status.pending,Pending ,en_US
+merchant_relation_request_page.merchant_relation_request.status.pending,Ausstehend,de_DE
+merchant_relation_request_page.merchant_relation_request.status.canceled,Canceled ,en_US
+merchant_relation_request_page.merchant_relation_request.status.canceled,Storniert,de_DE
+merchant_relation_request_page.merchant_relation_request.status.rejected,Rejected ,en_US
+merchant_relation_request_page.merchant_relation_request.status.rejected,Abgelehnt,de_DE
+merchant_relation_request_page.merchant_relation_request.status.approved,Approved ,en_US
+merchant_relation_request_page.merchant_relation_request.status.approved,Genehmigt,de_DE
+merchant_relation_request_page.merchant_relation_request.request_note_label,Message,en_US
+merchant_relation_request_page.merchant_relation_request.request_note_label,Nachricht,de_DE
+merchant_relation_request_page.merchant_relation_request.decision_note_label,Message to the user,en_US
+merchant_relation_request_page.merchant_relation_request.decision_note_label,Nachricht an den Benutzer,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.date_created,Created date,en_US
+merchant_relation_request_page.merchant_relation_request_detail.date_created,Erstellt am,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.company_details,Company Details,en_US
+merchant_relation_request_page.merchant_relation_request_detail.company_details,Firmendetails,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.company,Company,en_US
+merchant_relation_request_page.merchant_relation_request_detail.company,Firma,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.business_unit_owner,Business Unit Owner,en_US
+merchant_relation_request_page.merchant_relation_request_detail.business_unit_owner,Inhaber der Geschäftseinheit,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.business_units,Business Units,en_US
+merchant_relation_request_page.merchant_relation_request_detail.business_units,Geschäftseinheiten,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.details,Contact Details,en_US
+merchant_relation_request_page.merchant_relation_request_detail.details,Kontaktdetails,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.first_name,Vorname,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.first_name,First Name,en_US
+merchant_relation_request_page.merchant_relation_request_detail.last_name,Nachname,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.last_name,Last Name,en_US
+merchant_relation_request_page.merchant_relation_request_detail.email,E-mail-Adresse,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.email,E-mail,en_US
+merchant_relation_request_page.merchant_relation_request_detail.additional_details,Zusätzliche Details,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.additional_details,Additional details,en_US
+merchant_relation_request_page.merchant_relation_request_detail.comment_from_merchant,Kommentar vom Händler,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.comment_from_merchant,Comment from merchant,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.pending,Merchant relation request is pending.,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.pending,Händlerbeziehungsanfrage ist ausstehend.,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.canceled,Merchant relation request was canceled.,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.canceled,Händlerbeziehungsanfrage wurde storniert.,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.approved,Merchant relation request was approved.,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.approved,Händlerbeziehungsanfrage wurde genehmigt.,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.rejected,Merchant relation request was rejected.,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.title.rejected,Händlerbeziehungsanfrage wurde abgelehnt.,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.pending,The merchant has not yet reviewed your request. You have the option to cancel it.,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.pending,"Der Händler hat Ihre Anfrage noch nicht geprüft. Sie haben die Möglichkeit, diese zu stornieren.",de_DE
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.canceled,This request has been canceled. You can create a new request.,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.canceled,Diese Anfrage wurde storniert. Sie können eine neue Anfrage stellen.,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.approved,The following merchant relations were created:,en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.approved,Die folgenden Händlerbeziehungen wurden erstellt:,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.rejected,"The merchant has rejected your request. If you have any questions, please contact the merchant.",en_US
+merchant_relation_request_page.merchant_relation_request_detail.notification.description.rejected,Der Händler hat Ihre Anfrage abgelehnt. Bei Fragen wenden Sie sich bitte an den Händler.,de_DE
+merchant_relation_request_page.merchant_relation_request_detail.labels.company,Company,en_US
+merchant_relation_request_page.merchant_relation_request_detail.labels.company,Unternehmen,de_DE
+merchant_relationship_page.table.header.merchant,Merchant,en_US
+merchant_relationship_page.table.header.merchant,Händler,de_DE
+merchant_relationship_page.table.header.business_unit_owner,Business Unit Owner,en_US
+merchant_relationship_page.table.header.business_unit_owner,Inhaber der Geschäftseinheit,de_DE
+merchant_relationship_page.table.header.business_units,Business Units,en_US
+merchant_relationship_page.table.header.business_units,Geschäftseinheiten,de_DE
+merchant_relationship_page.table.header.created,Created,en_US
+merchant_relationship_page.table.header.created,Erstellt,de_DE
+merchant_relationship_page.table.header.actions,Actions,en_US
+merchant_relationship_page.table.header.actions,Aktion,de_DE
+merchant_relationship_page.table.action.view,View,en_US
+merchant_relationship_page.table.action.view,Ansehen,de_DE
+merchant_relationship_widget.merchant_relationship_links_list.view,View,en_US
+merchant_relationship_widget.merchant_relationship_links_list.view,Anzeigen,de_DE
+company.account.merchant_relations,Merchant Relations,en_US
+company.account.merchant_relations,Händlerbeziehungen,de_DE
+merchant_relationship_page.table.filter.apply,Apply,en_US
+merchant_relationship_page.table.filter.apply,Anwenden,de_DE
+merchant_relationship_page.merchant_relationsip_detail,Merchant Relation,en_US
+merchant_relationship_page.merchant_relationsip_detail,Händlerbeziehung,de_DE
+merchant_relationship_page.merchant_relationsip_detail.date_created,Created date,en_US
+merchant_relationship_page.merchant_relationsip_detail.date_created,Erstellt am,de_DE
+merchant_relationship_page.merchant_relationsip_detail.company_details,Company Details,en_US
+merchant_relationship_page.merchant_relationsip_detail.company_details,Firmendetails,de_DE
+merchant_relationship_page.merchant_relationsip_detail.company,Company,en_US
+merchant_relationship_page.merchant_relationsip_detail.company,Firma,de_DE
+merchant_relationship_page.merchant_relationsip_detail.business_unit_owner,Business Unit Owner,en_US
+merchant_relationship_page.merchant_relationsip_detail.business_unit_owner,Inhaber der Geschäftseinheit,de_DE
+merchant_relationship_page.merchant_relationsip_detail.business_units,Business Units,en_US
+merchant_relationship_page.merchant_relationsip_detail.business_units,Geschäftseinheiten,de_DE
+merchant_relationship_page.merchant_relationsip_detail.view,View,en_US
+merchant_relationship_page.merchant_relationsip_detail.view,Ansehen,de_DE
+merchant_relationship_page.merchant_relationship.business_unit_owner,Business Unit Owner,en_US
+merchant_relationship_page.merchant_relationship.business_unit_owner,Inhaber der Geschäftseinheit,de_DE
+merchant_relationship_page.merchant_relationship.business_unit_owner.placeholder,Select Business Unit Owner,en_US
+merchant_relationship_page.merchant_relationship.business_unit_owner.placeholder,Inhaber der Geschäftseinheit auswählen,de_DE
+merchant_relationship_page.merchant_relationship.merchant,Merchant,en_US
+merchant_relationship_page.merchant_relationship.merchant,Händler,de_DE
+merchant_relationship_page.merchant_relationship.merchant.placeholder,Select Merchant,en_US
+merchant_relationship_page.merchant_relationship.merchant.placeholder,Händler auswählen,de_DE
+merchant_relationship_page.merchant_relationship.active_filters,Active Filters:,en_US
+merchant_relationship_page.merchant_relationship.active_filters,Aktive Filter:,de_DE
+merchant_relationship_page.merchant_relationship.reset_all,Reset All,en_US
+merchant_relationship_page.merchant_relationship.reset_all,Alles zurücksetzen,de_DE
+merchant_relationship.mail.trans.merchant_relationship_delete.subject,Your merchant relation was terminated.,en_US
+merchant_relationship.mail.trans.merchant_relationship_delete.subject,Ihre Händlerbeziehung wurde beendet.,de_DE
+merchant_relationship.mail.trans.merchant_relationship_delete.salutation,"Hello,",en_US
+merchant_relationship.mail.trans.merchant_relationship_delete.salutation,"Hallo,",de_DE
+merchant_relationship.mail.trans.merchant_relationship_delete.main_text,"Merchant %merchant_name% terminated your merchant relation. Please get in touch with the merchant in case of questions.",en_US
+merchant_relationship.mail.trans.merchant_relationship_delete.main_text,"Der Händler %merchant_name% hat Ihre Händlerbeziehung beendet. Bei Fragen wenden Sie sich bitte an den Händler.",de_DE
+merchant_relationship.mail.trans.merchant_relationship_delete.link,Contact merchant,en_US
+merchant_relationship.mail.trans.merchant_relationship_delete.link,Händler kontaktieren,de_DE

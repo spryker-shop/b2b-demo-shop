@@ -78,6 +78,19 @@
             }
         }
 
+        &--with-overlay {
+            position: relative;
+            z-index: $setting-zi-header-overlay;
+
+            #{$name}__loader {
+                top: rem(-60);
+
+                @include helper-breakpoint-media-min($lg) {
+                    top: rem(-50);
+                }
+            }
+        }
+
         @content;
     }
 }

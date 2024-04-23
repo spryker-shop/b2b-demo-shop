@@ -1,22 +1,16 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'side-drawer',
-    tag: 'side-drawer',
-} %}
+{% extends organism('side-drawer', '@SprykerShop:ShopUi') %}
 
 {% define attributes = {
-    'trigger-class-name': required,
-    'container-class-name': '',
     'locked-body-class-name': 'is-locked-tablet',
+    'overlay-class-name': 'main-overlay',
+    'should-close-by-overlay-click': true,
+    'overlay-breakpoint': 1024,
 } %}
 
 {% block body %}
-    <div class="{{ config.name }}__overlay {{ attributes['trigger-class-name'] }}"></div>
-
-    <aside class="{{ config.name }}__drawer {% if is_granted('ROLE_USER') %} {{ config.name }}__drawer--logged{% endif %}">
+    <aside class="{{ config.name }}__drawer">
         {% block close %}
-            <button class="{{ config.name }}__close {{ attributes['trigger-class-name'] }}">
+            <button class="{{ config.name }}__close {{ attributes['trigger-selector'] }}">
                 {% include atom('icon') with {
                     data: {
                         name: 'cross',

@@ -5,58 +5,56 @@
     accessType: _widget.accessType,
     isQuoteDeletable: _widget.isQuoteDeletable,
     isSharingAllowed: _widget.isSharingAllowed,
+    itemClassName: '',
 } %}
 
 {% block body %}
     {% if not data.cart.isLocked %}
         {% if data.isSharingAllowed and data.accessType == 'OWNER_ACCESS' %}
-            <li class="col col--equal menu__item">
+            <div class="{{ data.itemClassName }}">
                 {% include molecule('table-action-link') with {
-                    class: 'link link--alt link--action spacing-right spacing-right--reset',
-                    modifiers: ['tight', 'full-height'],
+                    class: 'link link--alt link--action',
                     data: {
-                        url: url('shared-cart/share', {idQuote: data.cart.idQuote}),
+                        url: url('shared-cart/share', { idQuote: data.cart.idQuote }),
                         icon: 'share',
                         title: 'shared_cart.form.share_button',
-                        iconModifier: 'share'
+                        iconModifier: 'share',
                     },
                     attributes: {
-                        title: 'shared_cart_widget.cart.share' | trans
-                    }
+                        title: 'shared_cart_widget.cart.share' | trans,
+                    },
                 } only %}
-            </li>
+            </div>
         {% endif %}
         {% if data.accessType != 'OWNER_ACCESS' %}
-            <li class="col col--equal menu__item">
+            <div class="{{ data.itemClassName }}">
                 {% include molecule('table-action-link') with {
-                    class: 'link link--alt link--action spacing-right spacing-right--reset',
-                    modifiers: ['tight', 'full-height'],
+                    class: 'link link--alt link--action',
                     data: {
-                        url: url('shared-cart/dismiss-confirm', {idQuote: data.cart.idQuote}),
+                        url: url('shared-cart/dismiss-confirm', { idQuote: data.cart.idQuote }),
                         icon: 'dismiss',
-                        title: 'shared_cart_widget.cart.dismiss'
+                        title: 'shared_cart_widget.cart.dismiss',
                     },
                     attributes: {
-                        title: 'shared_cart_widget.cart.dismiss' | trans
-                    }
+                        title: 'shared_cart_widget.cart.dismiss' | trans,
+                    },
                 } only %}
-            </li>
+            </div>
         {% endif %}
     {% endif %}
     {% if data.isQuoteDeletable and can('WriteSharedCartPermissionPlugin', data.cart.idQuote) %}
-        <li class="col col--equal menu__item">
+        <div class="{{ data.itemClassName }}">
             {% include molecule('table-action-link') with {
-                class: 'link link--alt link--action spacing-right spacing-right--reset',
-                modifiers: ['tight', 'full-height'],
+                class: 'link link--alt link--action',
                 data: {
                     url: url('multi-cart/confirm-delete', {idQuote: data.cart.idQuote}),
                     icon: 'delete',
-                    title: 'page.multi_cart.shopping_cart.list.link.delete'
+                    title: 'page.multi_cart.shopping_cart.list.link.delete',
                 },
                 attributes: {
-                    title: 'page.multi_cart.shopping_cart.list.link.delete' | trans
-                }
+                    title: 'page.multi_cart.shopping_cart.list.link.delete' | trans,
+                },
             } only %}
-        </li>
+        </div>
     {% endif %}
 {% endblock %}

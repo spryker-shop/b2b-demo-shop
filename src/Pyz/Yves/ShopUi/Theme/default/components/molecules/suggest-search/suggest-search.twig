@@ -1,8 +1,14 @@
 {% extends molecule('suggest-search', '@SprykerShop:ShopUi') %}
 
 {% define attributes = {
-    'overlay-class-name': 'js-overlay-block',
-    'overlay-breakpoint': '0',
+    'overlay-class-name': 'main-overlay',
+    'body-overlay-class-name': 'body-has-overlay',
+    'wrapper-class-name': required,
+    'wrapper-toggle-class-name': 'is-active',
+    'open-class-name': required,
+    'close-class-name': required,
+    'should-close-by-overlay-click': true,
+    'overlay-breakpoint': 768,
 } %}
 
 {% block body %}
@@ -17,6 +23,7 @@
     } only %}
 
     {% include molecule('ajax-loader') with {
+        class: config.name ~ '__loader',
         modifiers: ['big'],
         attributes: {
             'provider-class-name': config.jsName ~ '__ajax-provider',

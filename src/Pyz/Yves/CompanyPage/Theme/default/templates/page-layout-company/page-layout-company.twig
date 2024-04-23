@@ -6,13 +6,24 @@
 } %}
 
 {% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [{
-                label: 'company.account.page-title' | trans,
-            }],
-        },
-    } only %}
+    {% set breadcrumbs = [] %}
+
+    {% block breadcrumbsContent %}
+        {% set breadcrumbBase = [{
+            label: 'company.account.page-title' | trans,
+            url: url('company/overview'),
+        }] %}
+
+        {% set breadcrumbsList = data.currentBreadcrumb ? breadcrumbBase | merge([{
+            label: data.currentBreadcrumb | trans
+        }]) : breadcrumbBase | merge(breadcrumbs) %}
+
+        {% include molecule('breadcrumb') with {
+            data: {
+                steps: breadcrumbsList,
+            }
+        } only %}
+    {% endblock %}
 {% endblock %}
 
 {% block title %}{% endblock %}
@@ -33,7 +44,7 @@
             <div class="grid grid--gap">
                 <div class="col col--sm-12 col--xl-3 is-hidden-sm-lg">
                     {% block companyNavigation %}
-                        {% include molecule('navigation-sidebar', 'ShopUi') with {
+                        {% embed molecule('navigation-sidebar', 'ShopUi') with {
                             data: {
                                 items: [
                                     {
@@ -64,6 +75,11 @@
                                 activePage: data.activePage,
                             },
                         } only %}
+                            {% block postContent %}
+                                {% widget 'MerchantRelationshipMenuItemWidget' args [data.activePage] only %}{% endwidget %}
+                                {% widget 'MerchantRelationRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
+                            {% endblock %}
+                        {% endembed %}
                     {% endblock %}
                 </div>
 
