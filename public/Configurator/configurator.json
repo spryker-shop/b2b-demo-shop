@@ -2,7 +2,8 @@
     "data": {
         "name": "CP steel cabinet",
         "image": "https://d2s0ynfc62ej12.cloudfront.net/image/00049524F-01",
-        "logo": "./logo.svg"
+        "logo": "./logo.svg",
+        "defaultPrice": 182654
     },
     "configuration": [
         {
@@ -23,7 +24,15 @@
                 {
                     "value": "3",
                     "title": "6 shelves",
-                    "price": 42000
+                    "price": 42000,
+                    "availableQuantity": [
+                        {
+                            "condition": {
+                                "store_name": "AT"
+                            },
+                            "quantity": 0
+                        }
+                    ]
                 }
             ]
         },
@@ -40,7 +49,8 @@
                 {
                     "value": "2",
                     "title": "3 lockers",
-                    "price": 48000
+                    "price": 48000,
+                    "availableQuantity": 7
                 }
             ]
         }
@@ -48,5 +58,29 @@
     "defaults": {
         "shelve": "1",
         "locker": "1"
-    }
+    },
+    "volumePrices": [
+        {
+            "condition": {
+                "shelve": "2",
+                "locker": "2"
+            },
+            "prices": {
+                "GROSS_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 58500,
+                        "gross_price": 59000
+                    }
+                ],
+                "NET_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 53500,
+                        "gross_price": 54000
+                    }
+                ]
+            }
+        }
+    ]
 }
