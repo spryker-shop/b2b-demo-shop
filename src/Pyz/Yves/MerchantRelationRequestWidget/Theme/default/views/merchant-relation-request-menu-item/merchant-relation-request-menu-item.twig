@@ -1,0 +1,13 @@
+{% extends view('merchant-relation-request-menu-item', '@SprykerShop:MerchantRelationRequestWidget') %}
+
+{% block body %}
+    {% include molecule('navigation-sidebar-item') with {
+        data: {
+            url: path('company/merchant-relation-request'),
+            icon: 'script',
+            label: 'merchant_relation_request_widget.merchant_relation_request.list.title' | trans,
+            name: 'merchant-relation-request'
+        },
+        modifiers: data.isActivePage ? ['active'] : [],
+    } only %}
+{% endblock %}

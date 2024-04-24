@@ -1,22 +1,29 @@
 {% extends molecule('quote-table', '@SprykerShop:MultiCartPage') %}
 
-{% macro duplicateButton(name) %}
-    <button class="link link--alt link--action {{ name }}__duplicate-button">
-        {% include molecule('table-action-span') with {
-            modifiers: ['tight', 'full-height'],
-            class: 'link link--alt link--action',
-            data: {
-                icon: 'duplicate',
-                title: 'page.multi_cart.shopping_cart.list.link.duplicate',
-            },
-        } only %}
-    </button>
+{% macro multiCartDuplicateAction(multiCartDuplicateForm, quote, configName) %}
+    {% if multiCartDuplicateForm %}
+        {{ form_start(multiCartDuplicateForm, { action: path('multi-cart/duplicate', { idQuote: quote.idQuote }) }) }}
+            <button class="{{ configName }}__duplicate-button">
+                {% include molecule('table-action-span') with {
+                    class: 'link link--alt link--action',
+                    data: {
+                        icon: 'duplicate',
+                        title: 'page.multi_cart.shopping_cart.list.link.duplicate',
+                    },
+                } only %}
+            </button>
+        {{ form_end(multiCartDuplicateForm) }}
+    {% endif %}
 {% endmacro %}
 
+{% block extraClass %}
+    is-scrollable
+{% endblock %}
+
 {% block body %}
-    <table class="table table--grid table--expand table--responsive spacing-bottom spacing-bottom--smaller">
+    <table class="table table--expand table--responsive spacing-bottom spacing-bottom--smaller">
         <thead>
-            <tr class="active">
+            <tr>
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}</th>
                 {% set cartListPermissionGroupWidget = findWidget('CartListPermissionGroupWidget', [data.quotes|first, isQuoteDeletable]) %}
                 {% if cartListPermissionGroupWidget is defined and cartListPermissionGroupWidget.isSharingAllowed %}
@@ -39,27 +46,18 @@
                 {% set isQuoteEditable = can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                 <tr>
                     <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}">
-                        {% set defaultSubmitButton %}
-                            <button class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}">{{ quote.name }}</button>
-                        {% endset %}
-
                         {% if quote.isDefault %}
                             <a href="{{ url('cart') }}">
                                 {{ quote.name }}
                             </a>
-                        {% elseif data.multiCartSetDefaultFormClone %}
-                            {% set multiCartSetDefaultForm = data.multiCartSetDefaultFormClone.getForm.createView %}
-
-                            {{ form_start(multiCartSetDefaultForm, {'action': path('multi-cart/set-default', {'idQuote': quote.idQuote}) }) }}
-                                {{ defaultSubmitButton }}
-                            {{ form_end(multiCartSetDefaultForm) }}
                         {% else %}
-                            {% set formName = 'multiCartSetDefaultForm_' ~ loop.index %}
+                            {% set multiCartSetDefaultForm = data.multiCartSetDefaultFormClone.getForm.createView ?? null %}
 
-                            <form id="{{ formName }}" name="{{ formName }}" method="POST" action="{{ path('multi-cart/set-default', {'idQuote': quote.idQuote}) }}">
-                                <input type="hidden" name="multi_cart_set_default_form[_token]" value="{{ csrf_token('multi_cart_set_default_form') }}">
-                                {{ defaultSubmitButton }}
-                            </form>
+                            {% if multiCartSetDefaultForm %}
+                                {{ form_start(multiCartSetDefaultForm, { action: path('multi-cart/set-default', { idQuote: quote.idQuote }) }) }}
+                                    <button class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}">{{ quote.name }}</button>
+                                {{ form_end(multiCartSetDefaultForm) }}
+                            {% endif %}
                         {% endif %}
                     </td>
                     {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] only %}
@@ -96,82 +94,69 @@
                             } only %}
                         {% endif %}
                     </td>
-                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}">
+                    <td class="transform-cell" data-content="{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}">
                         <strong>{{ quote.totals.grandTotal | default(0) | money(true, quote.currency.code) }}</strong>
                     </td>
-                    {% if widgetGlobalExists('QuoteApprovalStatusWidget') %}
-                        <td>
-                            {% widget 'QuoteApprovalStatusWidget' args [quote] only %}{% endwidget %}
-                        </td>
-                    {% endif %}
+                    {% widget 'QuoteApprovalStatusWidget' args [quote] only %}
+                        {% block body %}
+                            <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'quote_approval_widget.cart.status' | trans }}">
+                                {{ parent() }}
+                            </td>
+                        {% endblock %}
+                    {% endwidget %}
                     {% if showActions %}
-                        <td>
-                            <ul class="menu grid grid--stretch grid--justify grid--nowrap grid--gap-smaller">
-                                {% if isQuoteEditable %}
-                                    {% if data.actions.update %}
-                                        <li class="col col--equal menu__item">
-                                            {% include molecule('table-action-link') with {
-                                                modifiers: ['tight', 'full-height'],
-                                                class: 'link link--alt link--action spacing-right spacing-right--reset',
-                                                data: {
-                                                    url: url('multi-cart/update', { idQuote: quote.idQuote }),
-                                                    icon: 'edit',
-                                                    title: 'page.multi_cart.shopping_cart.update.title',
-                                                },
-                                            } only %}
-                                        </li>
-                                    {% endif %}
-                                    {% if data.actions.duplicate %}
-                                        <li class="col col--equal menu__item grid grid--stretch">
-                                            {% set duplicateFormClass = 'col ' ~ config.name ~ '__duplicate-form' %}
-                                            {% import _self as macros %}
+                        <td class="table__actions">
+                            {% set multiCartDuplicateForm = data.multiCartDuplicateFormClone.getForm.createView ?? null %}
+                            {% import _self as macros %}
 
-                                            {% if data.multiCartDuplicateFormClone %}
-                                                {% set multiCartDuplicateForm = data.multiCartDuplicateFormClone.getForm.createView %}
-
-                                                {{ form_start(multiCartDuplicateForm, {'action': path('multi-cart/duplicate', {'idQuote': quote.idQuote}), 'attr': {'class': duplicateFormClass} }) }}
-                                                    {{ macros.duplicateButton(config.name) }}
-                                                {{ form_end(multiCartDuplicateForm) }}
-                                            {% else %}
-                                                {% set formName = 'multiCartDuplicateForm_' ~ loop.index %}
-
-                                                <form id="{{ formName }}" class="{{ duplicateFormClass }}" name="{{ formName }}" method="POST" action="{{ path('multi-cart/duplicate', {'idQuote': quote.idQuote}) }}">
-                                                    <input type="hidden" name="multi_cart_duplicate_form[_token]" value="{{ csrf_token('multi_cart_duplicate_form') }}">
-                                                    {{ macros.duplicateButton(config.name) }}
-                                                </form>
-                                            {% endif %}
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-
-                                <li class="col col--equal menu__item">
-                                    {% include molecule('table-action-link') with {
-                                        class: 'link link--alt link--action spacing-right spacing-right--reset',
-                                        modifiers: ['tight', 'full-height'],
-                                        data: {
-                                            url: url('shopping-list/create-from-exist-cart', {idQuote: quote.idQuote}),
+                            {% embed molecule('table-action-list') with {
+                                data: {
+                                    items: [
+                                        {
+                                            url: url('multi-cart/update', { idQuote: quote.idQuote }),
+                                            icon: 'edit',
+                                            title: 'page.multi_cart.shopping_cart.update.title',
+                                            available: isQuoteEditable and data.actions.update,
+                                        },
+                                        {
+                                            customAction: _self.multiCartDuplicateAction(multiCartDuplicateForm, quote, config.name),
+                                            available: isQuoteEditable and data.actions.duplicate,
+                                        },
+                                        {
+                                            url: url('shopping-list/create-from-exist-cart', { idQuote: quote.idQuote }),
                                             icon: 'create-list',
                                             title: 'page.multi_cart.shopping_cart.list.link.add_to_list',
                                             iconModifier: 'create-list',
                                         },
-                                    } only %}
-                                </li>
+                                    ],
+                                },
+                                embed: {
+                                    quote: quote,
+                                    isQuoteDeletable: isQuoteDeletable,
+                                },
+                            } only %}
+                                {% block body %}
+                                    {{ parent() }}
 
-                                {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] use view('multi-cart-permission-actions', 'SharedCartWidget') only %}
-                                {% nowidget %}
-                                    <li class="col col--equal menu__item">
-                                        {% include molecule('table-action-link') with {
-                                            class: 'link link--alt link--action spacing-right spacing-right--reset',
-                                            modifiers: ['tight', 'full-height'],
-                                            data: {
-                                                url: url('multi-cart/confirm-delete', {idQuote: quote.idQuote}),
-                                                icon: 'delete',
-                                                title: 'page.multi_cart.shopping_cart.list.link.delete',
-                                            },
-                                        } only %}
-                                    </li>
-                                {% endwidget %}
-                            </ul>
+                                    {% widget 'CartListPermissionGroupWidget' args [embed.quote, embed.isQuoteDeletable] use view('multi-cart-permission-actions', 'SharedCartWidget') with {
+                                        data: {
+                                            itemClassName: config.name ~ '__item',
+                                        },
+                                    } only %}
+                                    {% nowidget %}
+                                        <div class="{{ config.name }}__item">
+                                            {% include molecule('table-action-link') with {
+                                                class: 'link link--alt link--action',
+                                                data: {
+                                                    url: url('multi-cart/confirm-delete', { idQuote: embed.quote.idQuote }),
+                                                    icon: 'delete',
+                                                    title: 'page.multi_cart.shopping_cart.list.link.delete',
+                                                },
+                                            } only %}
+                                        </div>
+                                    {% endwidget %}
+                                {% endblock %}
+                            {% endembed %}
                         </td>
                     {% endif %}
                 </tr>

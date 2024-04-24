@@ -1,16 +1,14 @@
 @mixin shop-ui-table-action-list($name: '.table-action-list') {
     #{$name} {
         display: flex;
+        flex-wrap: wrap;
         padding-top: $setting-grid-space;
         padding-bottom: $setting-grid-space-mobile;
-        margin: 0 rem(-4);
-        justify-content: space-between;
 
         @include helper-breakpoint-media-min($lg) {
             width: 100%;
-            margin: 0;
-            padding: 0;
-            justify-content: flex-end;
+            padding: 0 rem(10) 0 0;
+            flex-wrap: nowrap;
         }
 
         &--shopping-list {
@@ -25,18 +23,20 @@
             }
         }
 
-        &__inner {
-            display: flex;
-            justify-content: space-between;
-            margin: 0 rem(-4);
-        }
-
         &__item {
             flex-grow: 1;
-            padding: 0 rem(4);
+            min-width: calc(100% / 3);
+            padding: rem(2) rem(4);
+
+            @include helper-breakpoint-media-min($md) {
+                min-width: 20%;
+            }
 
             @include helper-breakpoint-media-min($lg) {
                 flex-grow: 0;
+                min-width: rem(30);
+                padding: 0 rem(4);
+                text-align: center;
             }
         }
 

@@ -174,7 +174,6 @@ use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\AbstractProductPric
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\ConcreteProductPricesByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\CurrencyParameterValidatorPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterValidatorPlugin;
-use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetCurrencyBeforeActionPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeActionPlugin;
 use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\AbstractProductsProductReviewsResourceRoutePlugin;
 use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsRelationshipByProductAbstractSkuPlugin;
@@ -212,7 +211,7 @@ use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemByS
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
-use Spryker\Glue\StoresRestApi\Plugin\Application\StoreHttpHeaderApplicationPlugin;
+use Spryker\Glue\StoresApi\Plugin\GlueStorefrontApiApplication\StoreApplicationPlugin;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\CartUpSellingProductsResourceRoutePlugin;
 use Spryker\Glue\UrlsRestApi\Plugin\GlueApplication\UrlResolverResourceRoutePlugin;
@@ -440,7 +439,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new SetCustomerBeforeActionPlugin(),
             new SetAnonymousCustomerIdControllerBeforeActionPlugin(),
-            new SetCurrencyBeforeActionPlugin(),
             new SetPriceModeBeforeActionPlugin(),
         ];
     }
@@ -769,7 +767,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new EventDispatcherApplicationPlugin(),
             new GlueApplicationApplicationPlugin(),
             new RouterApplicationPlugin(),
-            new StoreHttpHeaderApplicationPlugin(),
+            new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
         ];
     }

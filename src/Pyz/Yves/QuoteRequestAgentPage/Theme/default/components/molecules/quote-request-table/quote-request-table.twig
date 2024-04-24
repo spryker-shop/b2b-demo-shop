@@ -1,72 +1,70 @@
-{% extends model('component') %}
+{% extends molecule('quote-request-table', '@SprykerShop:QuoteRequestAgentPage') %}
 
-{% define config = {
-    name: 'quote-request-table',
-} %}
+{% block extraClass %}
+    is-scrollable
+{% endblock %}
 
-{% define data = {
-    quoteRequests: required,
-} %}
+{% block quoteRequestAgentCancelAction %}
+    {% widget 'QuoteRequestAgentCancelWidget' args [quoteRequest] only %}
+    {% endwidget %}
+{% endblock %}
 
 {% block body %}
     <table class="table table--expand table--responsive">
         <thead>
-        <tr>
-            <th class="spacing-x spacing-x--inner spacing-x--big text-left">{{ 'quote_request_page.quote_request.list.reference' | trans }}</th>
-            <th class="spacing-x spacing-x--inner spacing-x--big">{{ 'quote_request_page.quote_request.list.company' | trans }}</th>
-            <th class="spacing-x spacing-x--inner spacing-x--big">{{ 'quote_request_page.quote_request.list.business_unit' | trans }}</th>
-            <th class="spacing-x spacing-x--inner spacing-x--big">{{ 'quote_request_page.quote_request.list.owner' | trans }}</th>
-            <th class="spacing-x spacing-x--inner spacing-x--big">{{ 'quote_request_page.quote_request.list.total' | trans }}</th>
-            <th class="spacing-x spacing-x--inner spacing-x--big">{{ 'quote_request_page.quote_request.list.date' | trans }}</th>
-            <th class="spacing-x spacing-x--inner spacing-x--big">{{ 'quote_request_page.quote_request.list.status' | trans }}</th>
-            <th class="spacing-x spacing-x--inner spacing-x--big">{{ 'quote_request_page.quote_request.list.actions' | trans }}</th>
-        </tr>
+            <tr>
+                <th>{{ 'quote_request_page.quote_request.list.reference' | trans }}</th>
+                <th>{{ 'quote_request_page.quote_request.list.company' | trans }}</th>
+                <th>{{ 'quote_request_page.quote_request.list.business_unit' | trans }}</th>
+                <th>{{ 'quote_request_page.quote_request.list.owner' | trans }}</th>
+                <th>{{ 'quote_request_page.quote_request.list.total' | trans }}</th>
+                <th>{{ 'quote_request_page.quote_request.list.date' | trans }}</th>
+                <th>{{ 'quote_request_page.quote_request.list.status' | trans }}</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
             {% for quoteRequest in data.quoteRequests %}
                 <tr>
-                    <td class="spacing-x spacing-x--inner spacing-x--big">
+                    <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'quote_request_page.quote_request.list.reference' | trans }}">
                         <strong>{{ quoteRequest.quoteRequestReference }}</strong>
                     </td>
-                    <td class="spacing-x spacing-x--inner spacing-x--big">
+                    <td class="transform-cell" data-content="{{ 'quote_request_page.quote_request.list.company' | trans }}">
                         {{ quoteRequest.companyUser.company.name }}
                     </td>
-                    <td class="spacing-x spacing-x--inner spacing-x--big">
-                        {{ quoteRequest.companyUser.companyBusinessUnit ? quoteRequest.companyUser.companyBusinessUnit.name : '' }}
+                    <td class="transform-cell" data-content="{{ 'quote_request_page.quote_request.list.business_unit' | trans }}">
+                        {{ quoteRequest.companyUser.companyBusinessUnit ? quoteRequest.companyUser.companyBusinessUnit.name }}
                     </td>
-                    <td class="spacing-x spacing-x--inner spacing-x--big">
+                    <td class="transform-cell" data-content="{{ 'quote_request_page.quote_request.list.owner' | trans }}">
                         {{ quoteRequest.companyUser.customer.firstName ~ ' ' ~ quoteRequest.companyUser.customer.lastName }}
                     </td>
-                    <td class="spacing-x spacing-x--inner spacing-x--big text-center">
-                        <strong>{{ quoteRequest.latestVersion.quote.totals.grandTotal | default(0) | money(true, quoteRequest.latestVersion.quote.currency ? quoteRequest.latestVersion.quote.currency.code : '') }}</strong>
+                    <td class="transform-cell" data-content="{{ 'quote_request_page.quote_request.list.total' | trans }}">
+                        <strong>{{ quoteRequest.latestVersion.quote.totals.grandTotal | default(0) | money(true, quoteRequest.latestVersion.quote.currency ? quoteRequest.latestVersion.quote.currency.code) }}</strong>
                     </td>
-                    <td class="spacing-x spacing-x--inner spacing-x--big text-center">{{ quoteRequest.createdAt | formatDateTime }}</td>
-                    <td class=" spacing-x spacing-x--inner spacing-x--big text-center">
-                        <p class="quote-status request-status request-status--{{ quoteRequest.status }}">
+                    <td class="transform-cell" data-content="{{ 'quote_request_page.quote_request.list.date' | trans }}">
+                        {{ quoteRequest.createdAt | formatDateTime }}
+                    </td>
+                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'quote_request_page.quote_request.list.status' | trans }}">
+                        <span class="quote-status request-status request-status--{{ quoteRequest.status }}">
                             {{ ('quote_request.status.' ~ quoteRequest.status) | trans }}
-                        </p>
-                    <td class="spacing-x spacing-x--inner spacing-x--big">
-                        <ul class="menu grid grid--stretch grid--justify grid--nowrap grid--gap-smaller">
-                            <li class="col col--equal menu__item">
-                                {% include molecule('table-action-link') with {
-                                    class: 'link link--alt link--action',
-                                    data: {
+                        </span>
+                    </td>
+                    <td class="table__actions">
+                        {% include molecule('table-action-list') with {
+                            data: {
+                                items: [
+                                    {
                                         url: path('agent/quote-request/details', { quoteRequestReference: (quoteRequest.quoteRequestReference) }),
                                         icon: 'eye',
                                         title: 'quote_request_page.quote_request.actions.view',
                                         iconModifier: 'big',
                                     },
-                                } only %}
-                            </li>
-
-                            {% widget 'QuoteRequestAgentCancelWidget' args [quoteRequest] only %}
-                                {% block body %}
-                                    <li class="col col--equal menu__item">
-                                        {{ parent() }}
-                                    </li>
-                                {% endblock %}
-                            {% endwidget %}
-                        </ul>
+                                    {
+                                        customAction: block('quoteRequestAgentCancelAction'),
+                                    },
+                                ],
+                            },
+                        } only %}
                     </td>
                 </tr>
             {% endfor %}

@@ -29,6 +29,8 @@ use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Synchronization\Custo
 use Spryker\Zed\CustomerStorage\Communication\Plugin\Synchronization\CustomerInvalidatedStorageSynchronizationDataPlugin;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Synchronization\FileSynchronizationDataBulkPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Synchronization\GlossarySynchronizationDataRepositoryPlugin;
+use Spryker\Zed\MerchantSearch\Communication\Plugin\Synchronization\MerchantSynchronizationDataBulkRepositoryPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Synchronization\MerchantSynchronizationDataPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Synchronization\NavigationSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataBulkPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductConcreteMerchantRelationSynchronizationDataBulkPlugin;
@@ -70,7 +72,7 @@ use Spryker\Zed\StoreStorage\Communication\Plugin\Synchronization\StoreSynchroni
 use Spryker\Zed\Synchronization\Communication\Plugin\Synchronization\SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
 use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryExpanderStrategyPluginInterface;
-use Spryker\Zed\TaxProductStorage\Communication\Plugin\Synchronization\TaxProductSynchronizationDataPlugin;
+use Spryker\Zed\TaxProductStorage\Communication\Plugin\Synchronization\TaxProductSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Synchronization\TaxSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlRedirectSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlSynchronizationDataPlugin;
@@ -126,7 +128,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ContentStorageSynchronizationDataPlugin(),
             new ProductAlternativeSynchronizationDataBulkPlugin(),
             new ProductReplacementForSynchronizationDataBulkPlugin(),
-            new TaxProductSynchronizationDataPlugin(),
+            new TaxProductSynchronizationDataBulkRepositoryPlugin(),
             new TaxSynchronizationDataPlugin(),
             new CompanyUserSynchronizationDataBulkPlugin(),
             new ConfigurableBundleTemplateSynchronizationDataBulkPlugin(),
@@ -148,6 +150,8 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new AssetStorageSynchronizationDataPlugin(),
             new ProductConfigurationSynchronizationDataRepositoryPlugin(),
             new SearchHttpSynchronizationDataPlugin(),
+            new MerchantSynchronizationDataPlugin(),
+            new MerchantSynchronizationDataBulkRepositoryPlugin(),
         ];
     }
 

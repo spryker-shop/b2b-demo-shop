@@ -13,19 +13,21 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderConfirmationPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderStatusChangedMessagePlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Oms\ReservationHandler\ReservationVersionPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitOmsReservationAggregationPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\SalesInvoice\Communication\Plugin\Oms\GenerateOrderInvoiceCommandPlugin;
-use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentCancelReservationPendingPlugin;
-use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentConfirmationPendingPlugin;
-use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentRefundPendingPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCancelPaymentMessageCommandPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCapturePaymentMessageCommandPlugin;
+use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendRefundPaymentMessageCommandPlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\Oms\Command\SubmitPaymentTaxInvoicePlugin;
+use Spryker\Zed\TaxApp\Communication\Plugin\Oms\OrderRefundedEventListenerPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -42,19 +44,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
-        $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
-            $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
-            $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
-            $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
-            $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
-            $commandCollection->add(new SendEventPaymentConfirmationPendingPlugin(), 'Payment/SendEventPaymentConfirmationPending');
-            $commandCollection->add(new SendEventPaymentRefundPendingPlugin(), 'Payment/SendEventPaymentRefundPending');
-            $commandCollection->add(new SendEventPaymentCancelReservationPendingPlugin(), 'Payment/SendEventPaymentCancelReservationPending');
-            $commandCollection->add(new SendOrderStatusChangedMessagePlugin(), 'Order/RequestProductReviews');
-            $commandCollection->add(new SubmitPaymentTaxInvoicePlugin(), 'TaxApp/SubmitPaymentTaxInvoice');
-
-            return $commandCollection;
-        });
+        $container = $this->extendCommandPlugins($container);
 
         return $container;
     }
@@ -65,6 +55,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     protected function getReservationPostSaveTerminationAwareStrategyPlugins(): array
     {
         return [
+            new ReservationVersionPostSaveTerminationAwareStrategyPlugin(),
             new AvailabilityReservationPostSaveTerminationAwareStrategyPlugin(),
             new ProductBundleReservationPostSaveTerminationAwareStrategyPlugin(),
             new LeadProductReservationPostSaveTerminationAwareStrategyPlugin(),
@@ -140,5 +131,39 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         return [
             new InitiationTimeoutProcessorPlugin(),
         ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsEventTriggeredListenerPluginInterface>
+     */
+    protected function getOmsEventTriggeredListenerPlugins(): array
+    {
+        return [
+            new OrderRefundedEventListenerPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function extendCommandPlugins(Container $container): Container
+    {
+        $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
+            $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
+            $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
+            $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
+            $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
+            $commandCollection->add(new SendCapturePaymentMessageCommandPlugin(), 'Payment/Capture');
+            $commandCollection->add(new SendRefundPaymentMessageCommandPlugin(), 'Payment/Refund');
+            $commandCollection->add(new SendCancelPaymentMessageCommandPlugin(), 'Payment/Cancel');
+            $commandCollection->add(new SendOrderStatusChangedMessagePlugin(), 'Order/RequestProductReviews');
+            $commandCollection->add(new SubmitPaymentTaxInvoicePlugin(), 'TaxApp/SubmitPaymentTaxInvoice');
+
+            return $commandCollection;
+        });
+
+        return $container;
     }
 }

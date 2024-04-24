@@ -14,11 +14,11 @@ use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
-use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
+use Spryker\Yves\Http\Plugin\Application\YvesHttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
-use Spryker\Yves\Security\Plugin\Application\SecurityApplicationPlugin;
+use Spryker\Yves\Security\Plugin\Application\YvesSecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
@@ -60,6 +60,11 @@ use SprykerShop\Yves\CustomerValidationPage\Plugin\ShopApplication\LogoutInvalid
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\ShopApplication\CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
+use SprykerShop\Yves\MerchantRelationRequestWidget\Widget\MerchantRelationRequestCreateButtonWidget;
+use SprykerShop\Yves\MerchantRelationRequestWidget\Widget\MerchantRelationRequestCreateLinkWidget;
+use SprykerShop\Yves\MerchantRelationRequestWidget\Widget\MerchantRelationRequestMenuItemWidget;
+use SprykerShop\Yves\MerchantRelationshipWidget\Widget\MerchantRelationshipLinkListWidget;
+use SprykerShop\Yves\MerchantRelationshipWidget\Widget\MerchantRelationshipMenuItemWidget;
 use SprykerShop\Yves\MoneyWidget\Widget\CurrencyIsoCodeWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\CartOperationsWidget;
@@ -291,6 +296,11 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConfigurationShoppingListPageButtonWidget::class,
             StoreSwitcherWidget::class,
             CartSummaryHideTaxAmountWidget::class,
+            MerchantRelationRequestCreateLinkWidget::class,
+            MerchantRelationRequestCreateButtonWidget::class,
+            MerchantRelationRequestMenuItemWidget::class,
+            MerchantRelationshipMenuItemWidget::class,
+            MerchantRelationshipLinkListWidget::class,
         ];
     }
 
@@ -327,7 +337,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     protected function getApplicationPlugins(): array
     {
         $applicationPlugins = [
-            new HttpApplicationPlugin(),
+            new YvesHttpApplicationPlugin(),
             new TwigApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
             new ShopApplicationApplicationPlugin(),
@@ -340,7 +350,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new FlashMessengerApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
-            new SecurityApplicationPlugin(),
+            new YvesSecurityApplicationPlugin(),
             new CustomerConfirmationUserCheckerApplicationPlugin(),
         ];
 

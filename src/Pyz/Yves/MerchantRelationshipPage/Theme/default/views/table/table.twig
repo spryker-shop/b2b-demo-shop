@@ -1,0 +1,14 @@
+{% extends view('table', '@SprykerShop:MerchantRelationshipPage') %}
+
+{% block relationshipFiltersSeparator %}{% endblock %}
+
+{% block merchantRelationshipPaginationSeparator %}{% endblock %}
+
+{% block companyContent %}
+    <h3 class="spacing-bottom spacing-bottom--big">
+        {{ 'company.account.merchant_relations' | trans }}
+    </h3>
+
+    {{ block('relationshipFiltersSection') }}
+    {{ block('relationshipSection') }}
+{% endblock %}

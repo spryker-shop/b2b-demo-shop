@@ -1,0 +1,44 @@
+{% extends molecule('merchant-relationship-table', '@SprykerShop:MerchantRelationshipPage') %}
+
+{% block body %}
+    <table class="table table--expand table--responsive">
+        <thead>
+            <tr>
+                <th>{{ 'merchant_relationship_page.table.header.merchant' | trans }}</th>
+                <th>{{ 'merchant_relationship_page.table.header.business_unit_owner' | trans }}</th>
+                <th>{{ 'merchant_relationship_page.table.header.business_units' | trans }}</th>
+                <th>{{ 'merchant_relationship_page.table.header.created' | trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for merchantRelationship in data.merchantRelationships %}
+                <tr class="table__row">
+                    <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'merchant_relationship_page.table.header.merchant' | trans }}">{{ merchantRelationship.merchant.name }}</td>
+                    <td class="transform-cell" data-content="{{ 'merchant_relationship_page.table.header.business_unit_owner' | trans }}">{{ merchantRelationship.ownerCompanyBusinessUnit.name }}</td>
+                    <td class="transform-cell" data-content="{{ 'merchant_relationship_page.table.header.business_units' | trans }}">
+                        {% set companyBusinessUnits = [] %}
+                        {% for companyBusinessUnit in merchantRelationship.assigneeCompanyBusinessUnits.companyBusinessUnits %}
+                            {% set companyBusinessUnits = companyBusinessUnits | merge([companyBusinessUnit.name]) %}
+                        {% endfor %}
+                        {{ companyBusinessUnits | join(', ') }}
+                    </td>
+                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'merchant_relationship_page.table.header.created' | trans }}">{{ merchantRelationship.createdAt | formatDateTime }}</td>
+                    <td class="table__actions">
+                        {% include molecule('table-action-list') with {
+                            data: {
+                                items: [
+                                    {
+                                        url: url('company/merchant-relation/details', {'id-merchant-relationship': merchantRelationship.idMerchantRelationship}),
+                                        icon: 'eye',
+                                        title: 'merchant_relationship_page.table.action.view',
+                                    }
+                                ]
+                            }
+                        } only %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

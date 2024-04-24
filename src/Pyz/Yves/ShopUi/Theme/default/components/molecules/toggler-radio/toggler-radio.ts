@@ -1,4 +1,4 @@
-import TogglerCheckbox from '../toggler-checkbox/toggler-checkbox';
+import TogglerCheckbox from 'ShopUi/components/molecules/toggler-checkbox/toggler-checkbox';
 
 export default class TogglerRadio extends TogglerCheckbox {
     // eslint-disable-next-line no-use-before-define

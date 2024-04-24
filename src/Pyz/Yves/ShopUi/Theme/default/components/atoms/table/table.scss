@@ -10,6 +10,10 @@
         th {
             color: $setting-color-gray-5;
             font-weight: fw(bold);
+
+            &:empty {
+                padding: 0;
+            }
         }
 
         th,
@@ -17,9 +21,10 @@
             padding: rem(16) rem(15);
             text-align: left;
 
-            @include helper-breakpoint-media-min($lg) {
-                padding-left: rem(32);
-                padding-right: rem(32);
+            &:first-child {
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: rem(30);
+                }
             }
         }
 
@@ -52,24 +57,6 @@
 
         &--expand {
             width: 100%;
-        }
-
-        &--grid {
-            thead {
-                white-space: nowrap;
-            }
-
-            th,
-            td {
-                padding: rem(16) rem(15);
-            }
-        }
-
-        &--medium-indent {
-            th,
-            td {
-                padding: rem(16) rem(15);
-            }
         }
 
         &--responsive {
@@ -175,6 +162,14 @@
                 td {
                     padding: 0;
                 }
+            }
+        }
+
+        #{$name}__actions {
+            padding: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: 0;
             }
         }
 

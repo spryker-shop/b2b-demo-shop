@@ -10,7 +10,6 @@
         {% block link %}
             {% include molecule('table-action-link') with {
                 class: 'link link--alt link--action',
-                modifiers: ['tight'],
                 data: {
                     url: url('shopping-list/dismiss-confirm', { idShoppingList: data.idShoppingList }),
                     icon: 'dismiss',
