@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6b7beed32a9a9094c80b0509b73630e",
+    "content-hash": "a6f810dee112b1dc047bc45993d7074e",
     "packages": [
         {
             "name": "async-aws/core",
@@ -5562,7 +5562,7 @@
         },
         {
             "name": "spryker-feature/customer-account-management",
-            "version": "202404.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/customer-account-management.git",
@@ -5589,6 +5589,7 @@
                 "spryker/oauth-customer-validation": "^1.0.0",
                 "spryker/oauth-revoke": "^1.3.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -27813,16 +27814,16 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.56.1",
+            "version": "7.56.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "70cada48245cdf22794fd8e5fe752932320820b9"
+                "reference": "e4c03261bdc2ae8401fdcedb60c48944081ec92a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/70cada48245cdf22794fd8e5fe752932320820b9",
-                "reference": "70cada48245cdf22794fd8e5fe752932320820b9",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/e4c03261bdc2ae8401fdcedb60c48944081ec92a",
+                "reference": "e4c03261bdc2ae8401fdcedb60c48944081ec92a",
                 "shasum": ""
             },
             "require": {
@@ -27889,9 +27890,9 @@
             ],
             "description": "Customer module",
             "support": {
-                "source": "https://github.com/spryker/customer/tree/7.56.1"
+                "source": "https://github.com/spryker/customer/tree/7.56.2"
             },
-            "time": "2024-04-01T14:15:35+00:00"
+            "time": "2024-04-29T10:21:07+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -67045,19 +67046,18 @@
         },
         {
             "name": "spryker/cypress-tests",
-            "version": "dev-master",
+            "version": "dev-feature/cc-33308-smoke-tests",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cypress-tests.git",
-                "reference": "605573465f36f74974480ea901d79fffad91e9e6"
+                "reference": "e58c3f50f72f3e4aed6487119fc5daa5a8b48c9f"
             },
-            "default-branch": true,
             "type": "library",
             "license": [
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2024-04-04T09:50:20+00:00"
+            "time": "2024-04-30T14:07:08+00:00"
         },
         {
             "name": "spryker/development",
@@ -68062,9 +68062,17 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker-feature/customer-account-management",
+            "version": "9999999-dev",
+            "alias": "202407.0",
+            "alias_normalized": "202407.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker-feature/customer-account-management": 20,
         "spryker/cypress-tests": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20
