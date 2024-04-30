@@ -31,8 +31,8 @@ x-frontend-auth: &frontend-auth
     auth:
         engine: basic
         users:
-            - username: cloud # must be changed
-              password: cloud # must be changed
+            -   username: cloud # must be changed
+                password: cloud # must be changed
         exclude:
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
