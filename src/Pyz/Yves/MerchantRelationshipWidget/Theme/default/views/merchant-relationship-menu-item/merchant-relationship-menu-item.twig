@@ -1,0 +1,13 @@
+{% extends view('merchant-relationship-menu-item', '@SprykerShop:MerchantRelationshipWidget') %}
+
+{% block body %}
+    {% include molecule('navigation-sidebar-item') with {
+        data: {
+            url: path('company/merchant-relation'),
+            icon: 'handshake',
+            label: 'company.account.merchant_relations' | trans,
+            name: 'merchant-relation'
+        },
+        modifiers: data.isActivePage ? ['active'] : [],
+    } only %}
+{% endblock %}

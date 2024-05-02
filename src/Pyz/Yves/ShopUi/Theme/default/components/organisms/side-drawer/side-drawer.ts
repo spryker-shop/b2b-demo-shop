@@ -1,45 +1,80 @@
-import Component from 'ShopUi/models/component';
+import SideDrawerCore from 'ShopUi/components/organisms/side-drawer/side-drawer';
 
-export default class SideDrawer extends Component {
-    protected triggers: HTMLElement[];
-    protected containers: HTMLElement[];
-
-    protected readyCallback(): void {}
+export default class SideDrawer extends SideDrawerCore {
+    protected overlay: HTMLElement;
+    protected isOverlayShown: boolean;
 
     protected init(): void {
-        this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
-        this.containers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.containerClassName));
-        this.mapEvents();
+        this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayClassName)[0];
+
+        super.init();
     }
 
     protected mapEvents(): void {
-        this.triggers.forEach((trigger: HTMLElement) => {
-            trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
+        super.mapEvents();
+
+        this.mapWindowResizeEvent();
+    }
+
+    protected mapWindowResizeEvent(): void {
+        window.addEventListener('resize', () => {
+            if (!this.classList.contains(`${this.name}--show`)) {
+                return;
+            }
+
+            if (window.innerWidth >= this.overlayBreakpoint && this.isOverlayShown) {
+                this.toggleOverlay(false);
+
+                return;
+            }
+
+            if (window.innerWidth < this.overlayBreakpoint && !this.isOverlayShown) {
+                this.toggleOverlay(true);
+            }
         });
     }
 
-    protected onTriggerClick(event: Event): void {
-        event.preventDefault();
-        this.toggle();
+    protected mapOverlayEvents(): void {
+        super.mapOverlayEvents();
+
+        if (this.shouldCloseByOverlayClick) {
+            this.mapOverlayClickEvent();
+        }
     }
 
-    toggle(): void {
-        const isShown = !this.classList.contains(`${this.name}--show`);
+    protected mapOverlayClickEvent(): void {
+        this.overlay.addEventListener('click', () => this.toggle(false));
+    }
+
+    toggle(isShownForced?: boolean): void {
+        const isShown = isShownForced ?? !this.classList.contains(`${this.name}--show`);
+
         this.classList.toggle(`${this.name}--show`, isShown);
-        this.containers.forEach((conatiner: HTMLElement) => {
-            conatiner.classList.toggle(this.lockedBodyClassName, isShown);
-        });
+        this.containers.forEach((conatiner: HTMLElement) =>
+            conatiner.classList.toggle(this.lockedBodyClassName, isShown),
+        );
+        this.toggleOverlay(isShown);
     }
 
-    protected get triggerClassName(): string {
-        return this.getAttribute('trigger-class-name');
-    }
+    protected toggleOverlay(isShown: boolean): void {
+        super.toggleOverlay(isShown);
 
-    protected get containerClassName(): string {
-        return this.getAttribute('container-class-name');
+        this.isOverlayShown = isShown;
     }
 
     protected get lockedBodyClassName(): string {
         return this.getAttribute('locked-body-class-name');
+    }
+
+    protected get overlayClassName(): string {
+        return this.getAttribute('overlay-class-name');
+    }
+
+    protected get shouldCloseByOverlayClick(): boolean {
+        return this.hasAttribute('should-close-by-overlay-click');
+    }
+
+    protected get overlayBreakpoint(): number {
+        return Number(this.getAttribute('overlay-breakpoint'));
     }
 }

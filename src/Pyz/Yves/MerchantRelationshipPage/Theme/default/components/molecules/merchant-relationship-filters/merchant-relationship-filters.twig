@@ -1,0 +1,25 @@
+{% extends molecule('merchant-relationship-filters', 'SprykerShop:MerchantRelationshipPage') %}
+
+{% block body %}
+    <div class="form__fields grid grid--bottom">
+        {% for filter in data.merchantRelationshipSearchForm.filters.children %}
+            <div class="form__field col col--sm-12 col--lg-6">
+                {{ form_row(filter, {
+                    attr: {
+                        class: data.jsPrefix ~ filter.vars.name ~ '-target',
+                    }})
+                }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <hr class="box__separator">
+
+    <div class="grid">
+        <div class="col--sm-12 col--md-auto col--right">
+            <button name="buttonSubmit" class="button button--expand button--success">
+                {{ 'merchant_relationship_page.table.filter.apply' | trans }}
+            </button>
+        </div>
+    </div>
+{% endblock %}

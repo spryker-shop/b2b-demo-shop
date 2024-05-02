@@ -1,0 +1,86 @@
+{
+    "data": {
+        "name": "CP steel cabinet",
+        "image": "https://d2s0ynfc62ej12.cloudfront.net/image/00049524F-01",
+        "logo": "./logo.svg",
+        "defaultPrice": 182654
+    },
+    "configuration": [
+        {
+            "id": "shelve",
+            "label": "Adjustable shelves",
+            "tooltip": "3 are already included",
+            "data": [
+                {
+                    "value": "1",
+                    "title": "4 shelves",
+                    "price": 14000
+                },
+                {
+                    "value": "2",
+                    "title": "5 shelves",
+                    "price": 28000
+                },
+                {
+                    "value": "3",
+                    "title": "6 shelves",
+                    "price": 42000,
+                    "availableQuantity": [
+                        {
+                            "condition": {
+                                "store_name": "AT"
+                            },
+                            "quantity": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "locker",
+            "label": "Lockers",
+            "tooltip": "1 is already included",
+            "data": [
+                {
+                    "value": "1",
+                    "title": "2 lockers",
+                    "price": 24000
+                },
+                {
+                    "value": "2",
+                    "title": "3 lockers",
+                    "price": 48000,
+                    "availableQuantity": 7
+                }
+            ]
+        }
+    ],
+    "defaults": {
+        "shelve": "1",
+        "locker": "1"
+    },
+    "volumePrices": [
+        {
+            "condition": {
+                "shelve": "2",
+                "locker": "2"
+            },
+            "prices": {
+                "GROSS_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 58500,
+                        "gross_price": 59000
+                    }
+                ],
+                "NET_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 53500,
+                        "gross_price": 54000
+                    }
+                ]
+            }
+        }
+    ]
+}

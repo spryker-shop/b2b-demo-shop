@@ -1,0 +1,35 @@
+{% embed '@Gui/Partials/widget.twig' with { widget_title: 'Comments to Order' | trans } %}
+    {% block widget_content %}
+        {% block head_css %}
+            <link rel="stylesheet" href="{{ assetsPath('css/spryker-zed-comment-sales-connector-main.css') }}">
+        {% endblock %}
+
+        {% if order.commentThread %}
+            <div class="comment-wrapper">
+                {% for comment in order.commentThread.comments %}
+                    <div class="comment-box">
+                        <p class="comment-title">
+                            {{ comment.customer.firstName }} {{ comment.customer.lastName }} @
+                            <span>
+                                {{ comment.createdAt | formatDateTime }}
+                                {% if comment.isUpdated %}
+                                    ({{ 'edited' | trans }})
+                                {% endif %}
+                            </span>
+                        </p>
+
+                        <p>{{ comment.message }}</p>
+
+                        <ul class="comment-tag-list">
+                            {% for commentTag in comment.commentTags %}
+                                <li class="tag">{{ commentTag.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ 'Order has no comments' | trans }}
+        {% endif %}
+    {% endblock %}
+{% endembed %}

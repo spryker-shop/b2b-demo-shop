@@ -69,7 +69,9 @@
                 }
 
                 &:hover > #{$name} {
-                    @include helper-visibility-visible;
+                    @include helper-breakpoint-media-min($xl) {
+                        @include helper-visibility-visible;
+                    }
                 }
 
                 & > #{$name} > #{$name}__item {
@@ -92,10 +94,6 @@
                         opacity: 0;
                     }
                 }
-            }
-
-            &--has-overlay {
-                z-index: $setting-zi-header + 1;
             }
 
             &--filter-enumeration {
@@ -202,6 +200,11 @@
         &--lvl-0 {
             @include helper-breakpoint-media-min($xl) {
                 display: flex;
+                margin: 0 rem(-20);
+            }
+
+            @include helper-breakpoint-media-min($xxl) {
+                margin: 0 rem(-30);
             }
         }
 
@@ -244,16 +247,6 @@
                 border: none;
             }
 
-            &:not(:last-child) {
-                @include helper-breakpoint-media-min($xl) {
-                    margin-right: rem(40);
-                }
-
-                @include helper-breakpoint-media-min($xxl) {
-                    margin-right: rem(60);
-                }
-            }
-
             &:hover {
                 @include helper-breakpoint-media-min($xl) {
                     &::before {
@@ -278,11 +271,15 @@
 
             @include helper-breakpoint-media-min($xl) {
                 @include helper-effect-transition(color);
-                padding: 0;
+                padding: 0 rem(20);
                 font-weight: fw(regular);
                 line-height: rem(68);
                 color: $setting-color-gray-3;
                 letter-spacing: 0;
+            }
+
+            @include helper-breakpoint-media-min($xxl) {
+                padding: 0 rem(30);
             }
 
             &:hover {
@@ -305,20 +302,16 @@
                 padding-top: rem(15);
                 position: absolute;
                 top: 100%;
-                left: rem(-10);
+                left: rem(10);
                 transform-origin: top left;
                 transform: scale(0);
-            }
-
-            @include helper-breakpoint-media-min($xxl) {
-                left: rem(-28);
             }
         }
 
         &-wrapper--reverse {
             @include helper-breakpoint-media-min($xl) {
                 left: auto;
-                right: rem(-10);
+                right: rem(10);
             }
         }
 
@@ -334,7 +327,7 @@
             }
 
             @include helper-breakpoint-media-min($xxxl) {
-                padding: rem(38) rem(39) rem(43);
+                padding: rem(30);
             }
         }
 
@@ -345,7 +338,7 @@
                 }
 
                 @include helper-breakpoint-media-min($xxl) {
-                    margin-right: rem(70);
+                    margin-right: rem(40);
                 }
             }
         }

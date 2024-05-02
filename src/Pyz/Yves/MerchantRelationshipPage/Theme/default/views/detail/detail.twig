@@ -1,0 +1,63 @@
+{% extends view('detail', '@SprykerShop:MerchantRelationshipPage') %}
+
+{% block companyContent %}
+    {% block relationsHeading %}
+        <h3 class="spacing-bottom spacing-bottom--big">{{ 'merchant_relationship_page.merchant_relationsip_detail' | trans }}</h3>
+
+        <ul class="spacing-bottom spacing-bottom--big">
+            <li>
+                {{ 'merchant_relationship_page.merchant_relationsip_detail.date_created' | trans  ~ ': ' }}
+                {{ data.merchantRelationship.createdAt | formatDateTime }}
+            <li>
+        </ul>
+    {% endblock %}
+
+    {% block relationsLogo %}
+        <h4 class="spacing-bottom spacing-bottom--big">
+            {{ 'merchant_relationship_page.merchant_relationship.merchant' | trans }}
+        </h4>
+    {% endblock %}
+
+    <div class="grid grid--middle spacing-bottom spacing-bottom--big">
+        {% if data.merchant.merchantProfile and data.merchant.merchantProfile.logoUrl %}
+            <div class="col col--sm-2 col--lg-1 spacing">
+                {% include molecule('lazy-image') with {
+                    data: {
+                        imageSrc: data.merchant.merchantProfile.logoUrl,
+                        alt: data.merchant.name
+                    },
+                } only %}
+            </div>
+        {% endif %}
+
+        <div class="col">
+            <strong>{{ data.merchant.name }}</strong>
+        </div>
+    </div>
+
+    {% block relationsDesctiption %}
+        <h4 class="spacing-bottom spacing-bottom--big">{{ 'merchant_relationship_page.merchant_relationsip_detail.company_details' | trans }}</h4>
+
+        <ul>
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relationship_page.merchant_relationsip_detail.company' | trans  ~ ': ' }}</span>
+                <strong class="col">{{ data.merchantRelationship.ownerCompanyBusinessUnit.company.name }}</strong>
+            </li>
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relationship_page.merchant_relationsip_detail.business_unit_owner' | trans  ~ ': ' }}</span>
+                <strong class="col">{{ data.merchantRelationship.ownerCompanyBusinessUnit.name }}</strong>
+            </li>
+            <li class="spacing-bottom grid grid--gap-smaller grid--nowrap">
+                <span class="col col--xl-3">{{ 'merchant_relationship_page.merchant_relationsip_detail.business_units' | trans  ~ ': ' }}</span>
+                <strong class="col">
+                    {% set companyBusinessUnits = [] %}
+                    {% for companyBusinessUnit in data.merchantRelationship.assigneeCompanyBusinessUnits.companyBusinessUnits %}
+                        {% set companyBusinessUnits = companyBusinessUnits | merge([companyBusinessUnit.name]) %}
+                    {% endfor %}
+
+                    {{ companyBusinessUnits | join(', ') }}
+                </strong>
+            </li>
+        </ul>
+     {% endblock %}
+{% endblock %}

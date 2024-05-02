@@ -1,0 +1,49 @@
+{% extends molecule('merchant-relation-request-view-table', '@SprykerShop:MerchantRelationRequestPage') %}
+
+{% block body %}
+    <table class="table table--expand table--responsive">
+        <thead>
+            <tr>
+                <th class="text-left">{{ 'merchant_relation_request_page.merchant_relation_request.merchant' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.company_user' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.business_unit_owner' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.business_units' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.created_at' | trans }}</th>
+                <th>{{ 'merchant_relation_request_page.merchant_relation_request.status' | trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for merchantRelationRequest in data.merchantRelationRequests %}
+            <tr class="table__row">
+                <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.merchant' | trans }}">{{ merchantRelationRequest.merchant.name }}</td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.company_user' | trans }}">{{ merchantRelationRequest.companyUser.customer.firstName ~ ' ' ~ merchantRelationRequest.companyUser.customer.lastName }}</td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.business_unit_owner' | trans }}">{{ merchantRelationRequest.ownerCompanyBusinessUnit.name }}</td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.business_units' | trans }}">
+                    {% for companyBusinessUnit in merchantRelationRequest.assigneeCompanyBusinessUnits %}
+                        {{  companyBusinessUnit.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td class="transform-cell" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.created_at' | trans }}">{{ merchantRelationRequest.createdAt | formatDateTime }}</td>
+                <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'merchant_relation_request_page.merchant_relation_request.status' | trans }}">
+                    {{ block('stateWrapper') }}
+                </td>
+                <td class="table__actions">
+                    {% include molecule('table-action-list') with {
+                        data: {
+                            items: [
+                                {
+                                    url: url('company/merchant-relation-request/details', { uuid: (merchantRelationRequest.uuid) }),
+                                    icon: 'eye',
+                                    title: 'merchant_relation_request_page.merchant_relation_request.actions.view',
+                                    qa: 'merchant-relation-request-view-link',
+                                }
+                            ]
+                        }
+                    } only %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

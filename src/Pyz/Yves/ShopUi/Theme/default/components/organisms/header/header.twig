@@ -35,8 +35,8 @@
                                 } only %}
                             </button>
                         </div>
-                        <div class="col {{ config.name }}__actions-item header__actions-item--search">
-                            <button class="link link--alternative {{ config.jsName }}__actions-search-trigger">
+                        <div class="col {{ config.name }}__actions-item {{ config.name }}__actions-item--search">
+                            <button class="link link--alternative {{ config.jsName }}__open-search-trigger">
                                 {% include atom('icon') with {
                                     modifiers: ['big'],
                                     data: {
@@ -56,13 +56,15 @@
                 <div class="col {{ config.name }}__search">
                     {% if data.showSearchForm %}
                         {% embed molecule('search-form') with {
-                            class: config.name ~ '__search-form ' ~ config.jsName ~ '__search-form',
+                            class: config.name ~ '__search-form',
                             modifiers: ['main-search'],
                             attributes: {
                                 'data-search-id': 'desktop',
+                                'open-class-name': config.jsName ~ '__open-search-trigger',
+                                'close-class-name': config.jsName ~ '__close-search-trigger',
                             },
                             embed: {
-                                jsTriggerSearchClass: config.jsName ~ '__actions-search-trigger',
+                                jsTriggerSearchClass: config.jsName ~ '__close-search-trigger',
                             },
                         } only %}
                             {% block close %}
@@ -148,22 +150,4 @@
             </div>
         </div>
     {% endif %}
-
-    {% set triggerClassList = [config.jsName ~ '__actions-search-trigger', 'js-overlay-block'] %}
-
-    {% for triggerClass in triggerClassList %}
-        {% include molecule('toggler-click') with {
-            attributes: {
-                'trigger-class-name': triggerClass,
-                'target-class-name': config.jsName ~ '__search-form',
-                'class-to-toggle': 'search-form--active',
-            },
-        } only %}
-    {% endfor %}
-
-    {% include molecule('overlay-enabler') with {
-        attributes: {
-            'trigger-class-name': config.jsName ~ '__actions-search-trigger',
-        },
-    } only %}
 {% endblock %}

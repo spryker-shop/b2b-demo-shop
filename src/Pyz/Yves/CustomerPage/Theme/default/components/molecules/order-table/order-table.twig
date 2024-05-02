@@ -10,7 +10,6 @@
     {% widget 'CustomerReorderFormWidget' args [order] only %}
         {% block body %}
             {% embed molecule('remote-form-submit') with {
-                class: 'table-action-list__item',
                 data: {
                     label: 'customer.order.reorder' | trans,
                     buttonClass: 'button--expand-sm-lg link',
@@ -42,7 +41,6 @@
     {% widget 'OrderCancelButtonWidget' args [order, data.requestUri] only %}
         {% block body %}
             {% embed molecule('remote-form-submit') with {
-                class: 'table-action-list__item',
                 data: {
                     label: 'order_cancel_widget.cancel_order' | trans,
                     buttonClass: 'button--expand-sm-lg link',
@@ -76,7 +74,7 @@
     {% if data.orders is empty %}
         <p>{{ 'customer.account.no_order' | trans }}</p>
     {% else %}
-        <table class="table table--expand table--responsive table--medium-indent">
+        <table class="table table--expand table--responsive">
             <thead>
                 <tr>
                     <th {{ _self.sortingAttributes('orderReference', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
@@ -102,7 +100,7 @@
                     {% endif %}
                     <th>{{ 'customer.order.total' | trans }}</th>
                     <th>{{ 'customer.order.items_state' | trans }}</th>
-                    <th>{{ 'customer.table.actions' | trans }}</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -130,17 +128,15 @@
                                 </span>
                             </td>
                         {% endif %}
-                        <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.total' | trans }}">
+                        <td class="transform-cell" data-content="{{ 'customer.order.total' | trans }}">
                             <strong>
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
                             </strong>
                         </td>
-                        <td>
-                            {% block stateWrapper %}
-                                {{ parent() }}
-                            {% endblock %}
+                        <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.items_state' | trans }}">
+                            <div>{{ block('stateWrapper') }}</div>
                         </td>
-                        <td class="spacing-x spacing-x--inner spacing-x--reset">
+                        <td class="table__actions">
                             {% include molecule('table-action-list') with {
                                 data: {
                                     items: [
