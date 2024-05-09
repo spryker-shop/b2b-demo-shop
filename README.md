@@ -11,14 +11,14 @@ Spryker B2B Demo Shop is a collection of Spryker B2B-specific features. It suits
 
 This section describes how to get started with the B2B Demo Shop quickly.
 
-For detailed installation instructions, see [Installing Spryker with Docker](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/installing-spryker-with-docker.html) or [Installing with Development Virtual Machine](https://docs.spryker.com/docs/scos/dev/developer-getting-started-guide.html#installing-spryker-with-development-virtual-machine).
+For detailed installation instructions, see [Install Spryker](https://docs.spryker.com/docs/dg/dev/set-up-spryker-locally/install-spryker/install-spryker.html).
 
 ### Prerequisites
 
 For full installation prerequisites, see one of the following:
-* [Installing Docker prerequisites on MacOS](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/docker-installation-prerequisites/installing-docker-prerequisites-on-macos.html)
-* [Installing Docker prerequisites on Linux](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/docker-installation-prerequisites/installing-docker-prerequisites-on-linux.html)
-* [Installing Docker prerequisites on Windows](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/docker-installation-prerequisites/installing-docker-prerequisites-on-windows-with-wsl2.html)
+* [Install Docker prerequisites on MacOS](https://docs.spryker.com/docs/dg/dev/set-up-spryker-locally/install-spryker/install-docker-prerequisites/install-docker-prerequisites-on-macos.html)
+* [Install Docker prerequisites on Linux](https://docs.spryker.com/docs/dg/dev/set-up-spryker-locally/install-spryker/install-docker-prerequisites/install-docker-prerequisites-on-linux.html)
+* [Install Docker prerequisites on Windows](https://docs.spryker.com/docs/dg/dev/set-up-spryker-locally/install-spryker/install-docker-prerequisites/install-docker-prerequisites-on-windows-with-wsl2.html)
 
 Recommended system requirements for MacOS:
 
@@ -27,9 +27,7 @@ Recommended system requirements for MacOS:
 |15'|	4	|6GB|
 |13'|	2	|4GB|
 
-### Installing the B2B Demo Shop
-
-To set up the B2B Demo Shop and its environment, do the following:
+### Install the B2B Demo Shop
 
 1. Create a project folder and navigate into it:
 ```bash
@@ -47,10 +45,10 @@ git clone git@github.com:spryker/docker-sdk.git docker
 ```
 
 2. Set up a desired environment:
-  * [Setting up a development environment](#setting-up-a-development-environment)
-  * [Setting up a production-like environment](#setting-up-a-production-like-environment)
+  * [Setting up a development environment](#set-up-a-development-environment)
+  * [Setting up a production-like environment](#set-up-a-production-like-environment)
 
-#### Setting up a development environment
+#### Set up a development environment
 
 1. Bootstrap the docker setup:
 
@@ -81,7 +79,7 @@ docker/sdk up --build --assets --data
 You've set up your Spryker B2B Demo Shop and can access your applications.
 
 
-### Setting up a production-like environment
+### Set up a production-like environment
 
 1. Bootstrap the docker setup:
 
@@ -133,7 +131,7 @@ You've set up your Spryker B2B Demo Shop and can access your applications.
 
 This section describes the most common issues related to the installation of the B2B Demo Shop.
 
-For a complete troubleshooting, see [Troubleshooting Spryker in Docker issues](https://docs.spryker.com/docs/troubleshooting-spryker-in-docker-issues).
+For a complete troubleshooting, see [Troubleshooting Spryker installation issues](https://docs.spryker.com/docs/dg/dev/set-up-spryker-locally/troubleshooting-installation/an-error-during-front-end-setup.html).
 
 **when**
 
@@ -169,11 +167,6 @@ docker/sdk boot -s deploy.dev.yml
 docker/sdk up --build --assets --data
 ```
 
-
-
-## Installation of B2B Demo Shop with Docker
-
-For detailed installation instructions of Spryker with Docker, see [Installing Spryker with Docker](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/installing-spryker-with-docker.html).
 
 ## Glue API reference
 
