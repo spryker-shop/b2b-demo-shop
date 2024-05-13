@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\AuditLog\Persistence" package="src.Orm.Zed.AuditLog.Persistence">
+
+    <table name="audit_logs">
+        <column name="id" type="BIGINT" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="action" type="VARCHAR" size="255" required="true"/>
+        <column name="entity_type" type="VARCHAR" size="255" required="true"/>
+        <column name="entity_id" type="BIGINT" required="true"/>
+        <column name="user_id" type="BIGINT" required="true"/>
+        <column name="timestamp" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="details" type="LONGVARCHAR" required="false"/>
+    </table>
+
+</database>
