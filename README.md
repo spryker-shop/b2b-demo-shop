@@ -170,4 +170,4 @@ docker/sdk up --build --assets --data
 
 ## Contributing to the repository
 
-For contribution guidelines, see [Code contribution guide](https://docs.spryker.com/docs/scos/dev/code-contribution-guide.html#opening-pull-requests)
+For contribution guidelines, see [Code contribution guide](https://docs.spryker.com/docs/dg/dev/code-contribution-guide.html)
