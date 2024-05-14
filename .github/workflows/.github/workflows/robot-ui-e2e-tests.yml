@@ -92,6 +92,7 @@ jobs:
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/b2b_regression/group1/${GITHUB_RUN_ID}/PHP8.2MariaDBRobotUi/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+                  
     docker-alpine-php-8-2-mariadb-robot-ui-group-two:
         name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / UI /Group Two"
         runs-on: ubuntu-20.04
@@ -173,6 +174,7 @@ jobs:
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/b2b_regression/group2/${GITHUB_RUN_ID}/PHP8.2MariaDBRobotUi/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+
     docker-alpine-php-8-2-mariadb-robot-ui-group-three:
         name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / UI / Group Three"
         runs-on: ubuntu-20.04
