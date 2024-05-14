@@ -168,10 +168,6 @@ docker/sdk up --build --assets --data
 ```
 
 
-## Glue API reference
-
-See Glue API reference at [REST API reference](https://docs.spryker.com/docs/scos/dev/glue-api-guides/202108.0/rest-api-reference.html)
-
 ## Contributing to the repository
 
 For contribution guidelines, see [Code contribution guide](https://docs.spryker.com/docs/scos/dev/code-contribution-guide.html#opening-pull-requests)
