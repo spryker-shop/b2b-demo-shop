@@ -22,21 +22,13 @@ jobs:
         steps:
             - name: apt update
               run: sudo apt update
+            - uses: actions/checkout@v3
+
 
             - uses: actions/setup-python@v4
               with:
                   python-version: '3.9'
 
-            - name: Clone project (master)
-              run: |
-                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                  git config --global user.name "github-actions[bot]"
-                  git clone -b master --single-branch https://github.com/spryker-shop/b2b-demo-shop.git .
-            - name: Up-merge fresh branch (master)
-              run: |
-                  git fetch origin
-                  git config pull.ff only
-                  git pull origin master --no-ff --allow-unrelated-histories --no-edit
             - name: Install packages
               run: |
                   sudo apt-get install apache2-utils
@@ -92,7 +84,7 @@ jobs:
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/b2b_regression/group1/${GITHUB_RUN_ID}/PHP8.2MariaDBRobotUi/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
-                  
+
     docker-alpine-php-8-2-mariadb-robot-ui-group-two:
         name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / UI /Group Two"
         runs-on: ubuntu-20.04
@@ -104,21 +96,13 @@ jobs:
         steps:
             - name: apt update
               run: sudo apt update
+            - uses: actions/checkout@v3
+
 
             - uses: actions/setup-python@v4
               with:
                   python-version: '3.9'
 
-            - name: Clone project (master)
-              run: |
-                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                  git config --global user.name "github-actions[bot]"
-                  git clone -b master --single-branch https://github.com/spryker-shop/b2b-demo-shop.git .
-            - name: Up-merge fresh branch (master)
-              run: |
-                  git fetch origin
-                  git config pull.ff only
-                  git pull origin master --no-ff --allow-unrelated-histories --no-edit
             - name: Install packages
               run: |
                   sudo apt-get install apache2-utils
@@ -186,21 +170,12 @@ jobs:
         steps:
             - name: apt update
               run: sudo apt update
+            -  uses: actions/checkout@v3
 
             - uses: actions/setup-python@v4
               with:
                   python-version: '3.9'
 
-            - name: Clone project (master)
-              run: |
-                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                  git config --global user.name "github-actions[bot]"
-                  git clone -b master --single-branch https://github.com/spryker-shop/b2b-demo-shop.git .
-            - name: Up-merge fresh branch (master)
-              run: |
-                  git fetch origin
-                  git config pull.ff only
-                  git pull origin master --no-ff --allow-unrelated-histories --no-edit
             - name: Install packages
               run: |
                   sudo apt-get install apache2-utils
