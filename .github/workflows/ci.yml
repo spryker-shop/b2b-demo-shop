@@ -929,9 +929,9 @@ jobs:
                 run: |
                     sudo apt install awscli -q
 
-            -   name: Install robotframework-suite-tests folder
+            -   name: Install cypress-tests folder
                 run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
