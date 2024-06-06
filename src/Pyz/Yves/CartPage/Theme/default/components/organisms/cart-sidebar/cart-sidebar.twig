@@ -10,6 +10,7 @@
     cartItemsCount: 0,
     isQuoteEditable: required,
     isQuoteValid: required,
+    ajaxTriggerAttribute: '',
 } %}
 
 {% block class %}
@@ -28,6 +29,9 @@
                 accordionItemClass: 'toggler-accordion__item',
                 accordionIconClass: 'toggler-accordion__icon',
             },
+            embed: {
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+            }
         } only %}
             {% block titleAttributes %}
                 data-toggle-target='.js-cart-sidebar-item__content-shopping-list'
@@ -50,6 +54,7 @@
                 cart: data.cart,
                 accordionItemClass: 'toggler-accordion__item',
                 accordionIconClass: 'toggler-accordion__icon',
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
         } only %}
             {% block titleAttributes %}
@@ -66,7 +71,11 @@
                     'cart.quick_add_to_cart.submit' | trans,
                     'cart/quick-add',
                     true,
-                ] only %}
+                ] with {
+                    data: {
+                        ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                    },
+                } only %}
                 {% endwidget %}
             {% endblock %}
         {% endembed %}
@@ -100,6 +109,7 @@
                     cart: data.cart,
                     accordionItemClass: 'toggler-accordion__item',
                     accordionIconClass: 'toggler-accordion__icon',
+                    ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                 },
             } only %}
                 {% block titleAttributes %}
@@ -114,16 +124,11 @@
                     {% widget 'OrderCustomReferenceWidget' args [
                         data.cart,
                         '/cart'
-                    ] only %}
-                        {% block body %}
-                            {% embed molecule('order-custom-reference-form', 'OrderCustomReferenceWidget') ignore missing with {
-                                data: {
-                                    form: data.orderCustomReferenceForm,
-                                },
-                            } only %}
-                                {% block title %}{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
+                   ] with {
+                        data: {
+                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                        },
+                    } only %}
                     {% endwidget %}
                 {% endblock %}
             {% endembed %}
@@ -156,6 +161,7 @@
                 title: 'comment_widget.comments_to_cart' | trans,
                 cart: data.cart,
                 isAccordionItem: false,
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
         } only %}
             {% block contentInner %}
@@ -164,7 +170,11 @@
                     'quote',
                     app.request.requestUri,
                     data.cart.commentThread
-                ] only %}
+                ] with {
+                    data: {
+                        ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                    },
+                } only %}
                 {% endwidget %}
             {% endblock %}
         {% endembed %}
@@ -177,6 +187,7 @@
                 isQuoteValid: data.isQuoteValid,
                 isQuoteEditable: data.isQuoteEditable,
                 isAccordionItem: false,
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
             modifiers: ['summary'],
             embed: {
@@ -193,7 +204,13 @@
                     {% set isCartCodeFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
 
                     {% if isCartCodeFormWidget %}
-                        {% widget 'CartCodeFormWidget' args [data.cart] only %}{% endwidget %}
+                        {% widget 'CartCodeFormWidget' args [data.cart] with {
+                            data: {
+                                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                                redirectRoute: data.ajaxTriggerAttribute ? 'cart/async/view' : null,
+                            },
+                        } only %}
+                        {% endwidget %}
                     {% endif %}
                 </div>
 
@@ -205,6 +222,8 @@
                                 isQuoteValid: data.isQuoteValid,
                                 isQuoteEditable: data.isQuoteEditable,
                                 isAccordionItem: false,
+                                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                                redirectRoute: data.ajaxTriggerAttribute ? 'cart/async/view' : null,
                             },
                         } only %}
                     {% endif %}

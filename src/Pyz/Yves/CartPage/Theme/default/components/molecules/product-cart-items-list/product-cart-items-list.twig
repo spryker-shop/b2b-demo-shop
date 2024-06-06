@@ -11,6 +11,7 @@
                 canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
                 hasAdditionalTitle: cartItem.cartNote | default(false),
                 currencyIsoCode: data.cart.currency.code | default(null),
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
         } only %}
     {% endif %}
