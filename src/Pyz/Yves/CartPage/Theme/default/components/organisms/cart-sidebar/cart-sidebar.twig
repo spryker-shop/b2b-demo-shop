@@ -28,10 +28,8 @@
                 cart: data.cart,
                 accordionItemClass: 'toggler-accordion__item',
                 accordionIconClass: 'toggler-accordion__icon',
-            },
-            embed: {
                 ajaxTriggerAttribute: data.ajaxTriggerAttribute,
-            }
+            },
         } only %}
             {% block titleAttributes %}
                 data-toggle-target='.js-cart-sidebar-item__content-shopping-list'
@@ -42,7 +40,12 @@
             {% endblock %}
 
             {% block contentInner %}
-                {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}{% endwidget %}
+                 {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] with {
+                    data: {
+                        ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                    },
+                } only %}
+                {% endwidget %}
             {% endblock %}
         {% endembed %}
     {% endif %}

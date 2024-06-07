@@ -68,7 +68,7 @@
                             } only %}
                             {{ 'comment_widget.form.edit_comment' | trans }}
                         </button>
-                        <button {{ data.ajaxTriggerAttribute }} action="{{ data.remove.action }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
+                        <button {{ data.ajaxTriggerAttribute }} formaction="{{ data.remove.action }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
                             {% include atom('icon') with {
                                 data: {
                                     name: 'delete',
@@ -85,7 +85,7 @@
                     {{ messageField }}
                     {{ uuidField }}
                     {{ returnUrlField }}
-                    <button {{ data.ajaxTriggerAttribute }} action="{{ data.submit.action }}" class="button button--small {{ config.jsName }}__submit-button">
+                    <button {{ data.ajaxTriggerAttribute }} formaction="{{ data.submit.action }}" class="button button--small {{ config.jsName }}__submit-button">
                         {{ 'comment_widget.form.update_comment' | trans }}
                     </button>
                     <button class="button button--small button--hollow-icon button--back {{ data.jsTriggerSelector }}">
