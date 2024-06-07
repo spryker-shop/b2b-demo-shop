@@ -24,7 +24,7 @@
                     {{ tagName }}
                 </button>
             {% else %}
-               <li class="{{ config.name }}__item">
+                <li class="{{ config.name }}__item">
                     <a class="{{ linkClass }} {{ disableClassName }}" href="{{ path('comment/tag/remove', {'uuid': data.uuid, 'name': tagName, 'returnUrl': data.returnUrl }) }}">
                         {{ tagName }}
                     </a>
