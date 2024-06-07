@@ -19,7 +19,7 @@
     {% for tagName in data.tagNames %}
         {% set linkClass = config.name ~ '__item-link' %}
 
-        {% if data.ajaxTriggerAttribute %}
+            {% if data.ajaxTriggerAttribute %}
                 <button {{ data.ajaxTriggerAttribute }} class="{{ linkClass }} {{ disableClassName }}" formaction="{{ path('comment/tag/async/remove', {'uuid': data.uuid, 'name': tagName }) }}">
                     {{ tagName }}
                 </button>
