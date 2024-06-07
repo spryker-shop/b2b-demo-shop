@@ -19,16 +19,16 @@
     {% for tagName in data.tagNames %}
         {% set linkClass = config.name ~ '__item-link' %}
 
-            {% if data.ajaxTriggerAttribute %}
-                <button {{ data.ajaxTriggerAttribute }} class="{{ linkClass }} {{ disableClassName }}" formaction="{{ path('comment/tag/async/remove', {'uuid': data.uuid, 'name': tagName }) }}">
+        {% if data.ajaxTriggerAttribute %}
+            <button {{ data.ajaxTriggerAttribute }} class="{{ linkClass }} {{ disableClassName }}" formaction="{{ path('comment/tag/async/remove', {'uuid': data.uuid, 'name': tagName }) }}">
+                {{ tagName }}
+            </button>
+        {% else %}
+            <li class="{{ config.name }}__item">
+                <a class="{{ linkClass }} {{ disableClassName }}" href="{{ path('comment/tag/remove', {'uuid': data.uuid, 'name': tagName, 'returnUrl': data.returnUrl }) }}">
                     {{ tagName }}
-                </button>
-            {% else %}
-                <li class="{{ config.name }}__item">
-                    <a class="{{ linkClass }} {{ disableClassName }}" href="{{ path('comment/tag/remove', {'uuid': data.uuid, 'name': tagName, 'returnUrl': data.returnUrl }) }}">
-                        {{ tagName }}
-                    </a>
-                </li>
-            {% endif %}
+                </a>
+            </li>
+        {% endif %}
     {% endfor %}
 {% endblock %}
