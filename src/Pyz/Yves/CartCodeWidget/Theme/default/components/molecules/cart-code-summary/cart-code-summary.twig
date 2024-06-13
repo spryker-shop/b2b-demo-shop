@@ -11,6 +11,7 @@
     ruleDiscounts: null,
     discountTotal: null,
     currencyIsoCode: null,
+    ajaxTriggerAttribute: '',
 } %}
 
 {% set isDiscountsExists = data.discountTotal and (data.voucherDiscounts is not empty or data.ruleDiscounts is not empty) %}
@@ -22,15 +23,20 @@
 {% block body %}
     {% if data.voucherDiscounts is not empty %}
         <li class="{{ config.name }}__item">
+            {% set formActionRoute = data.ajaxTriggerAttribute ? 'cart-code/code-async/clear' : 'cart-code/code/clear' %}
+
             {% include molecule('single-button-form') with {
                 class: 'float-right text-small',
                 data: {
-                    formAction: url('cart-code/code/clear'),
+                    formAction: data.redirectRoute
+                            ? url(formActionRoute, {'redirectRouteName': data.redirectRoute})
+                            : url(formActionRoute),
                     buttonText: 'cart.vouchers.clear-all' | trans,
                     buttonClass: 'link text-alt',
                     fieldName: 'cart_code_clear_form[_token]',
                     fieldValue: csrf_token('cart_code_clear_form'),
                     iconName: '',
+                    buttonAttributes: data.ajaxTriggerAttribute,
                 },
             } only %}
 
@@ -44,7 +50,13 @@
                         {% include molecule('single-button-form') with {
                             class: 'col col--sm-12 text-small',
                             data: {
-                                formAction: url('cart-code/code/remove', {'code': voucherDiscount.voucherCode}),
+                                buttonAttributes: data.ajaxTriggerAttribute,
+                                    formAction: url(
+                                        data.ajaxTriggerAttribute ? 'cart-code/code-async/remove' : 'cart-code/code/remove',
+                                        data.redirectRoute
+                                            ? {'code': voucherDiscount.voucherCode, 'redirectRouteName': data.redirectRoute}
+                                            : {'code': voucherDiscount.voucherCode}
+                                        ),
                                 buttonText: 'cart.voucher.remove' | trans,
                                 buttonClass: 'link text-alt',
                                 fieldName: 'cart_code_remove_form[_token]',

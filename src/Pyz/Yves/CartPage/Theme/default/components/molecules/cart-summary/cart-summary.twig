@@ -8,6 +8,8 @@
     cart: required,
     isQuoteValid: required,
     isQuoteEditable: required,
+    ajaxTriggerAttribute: '',
+    redirectRoute: null,
 } %}
 
 {% set canProceedToCheckout = data.cart.items is not empty
@@ -32,6 +34,8 @@
                             voucherDiscounts: data.cart.voucherDiscounts,
                             ruleDiscounts: data.cart.cartRuleDiscounts,
                             discountTotal: data.cart.totals.discounttotal,
+                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                            redirectRoute: data.redirectRoute,
                         },
                     } only %}
                 </li>

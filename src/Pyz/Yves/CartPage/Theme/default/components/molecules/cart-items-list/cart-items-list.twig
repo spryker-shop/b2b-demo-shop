@@ -11,7 +11,7 @@
         } only %}
 
         {% include molecule('ajax-loader') with {
-            modifiers: ['big'],
+            modifiers: ['big', 'dynamic'] | merge(data.ajaxTriggerAttribute ? ['viewport-centered'] : []),
             attributes: {
                 'provider-class-name': attributes['provider-class-name'],
             },
@@ -35,6 +35,7 @@
                 cartItems: data.cartItems,
                 isQuoteEditable: data.isQuoteEditable,
                 attributes: data.attributes,
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
         } only %}
     {% endif %}

@@ -10,6 +10,7 @@
     availableTags: required,
     tagNames: required,
     returnUrl: required,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% define attributes = {
@@ -17,7 +18,9 @@
 } %}
 
 {% block body %}
-    <form class="{{ config.jsName }}__form" method="GET" action="{{ data.action }}">
+    {% set method = data.ajaxTriggerAttribute ? 'POST' : 'GET' %}
+
+    <form class="{{ config.jsName }}__form" method="{{ method }}" action="{{ data.action }}">
         {% embed molecule('custom-select') with {
             modifiers: ['full-width', 'smaller'],
             attributes: {
@@ -26,6 +29,7 @@
                 'config-theme': 'smaller',
                 'config-dropdown-auto-width': 'true',
                 'config-dropdown-right': 'true',
+                (data.ajaxTriggerAttribute): 'change',
             },
             embed: {
                 availableTags: data.availableTags,

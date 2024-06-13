@@ -8,10 +8,11 @@
     returnUrl: required,
     ownerId: '',
     ownerType: '',
+    ajaxTriggerAttribute: '',
 } %}
 
 {% block body %}
-    <form method="POST" action="{{ path('comment/add') }}">
+    <form method="POST" action="{{ path(data.ajaxTriggerAttribute ? 'comment/async/add' : 'comment/add') }}">
         {% block fieldSet %}
             <textarea name="message"
                       class="textarea textarea--cart-comment {{ config.name }}__textarea {{ config.jsName }}__textarea"
@@ -33,7 +34,7 @@
         {% endblock %}
 
         {% block actions %}
-            <button title="{{ 'comment_widget.form.add_comment' | trans }}" class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
+            <button {{ data.ajaxTriggerAttribute }} title="{{ 'comment_widget.form.add_comment' | trans }}" class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
                 {% include atom('icon') with {
                     data: {
                         name: 'send',

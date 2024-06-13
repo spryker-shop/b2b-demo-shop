@@ -7,16 +7,22 @@
 {% define data = {
     productItem: required,
     isDisabled: false,
+    ajaxTriggerAttribute: '',
 } %}
 
 {% block body %}
-    {% widget 'CartChangeQuantityFormWidget' args [data.productItem, data.isDisabled] only %}
+    {% widget 'CartChangeQuantityFormWidget' args [data.productItem, data.isDisabled] with {
+        data: {
+            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+        },
+    } only %}
         {% block embeddedData %}
             {% include molecule('quantity-counter') with {
                 modifiers: ['cart'],
                 data: {
                     isDisabled: data.readOnly,
                     autoUpdate: true,
+                    ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                 },
                 attributes: {
                     max: data.cartItem.maxQuantity,

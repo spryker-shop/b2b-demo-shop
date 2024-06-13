@@ -44,6 +44,7 @@
                     {% widget 'CartItemNoteFormWidget' args [listItem, data.list] with {
                         data: {
                             isTitleVisible: false,
+                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                         },
                     } only %}
                     {% endwidget %}
@@ -97,6 +98,7 @@
                 productItem: listItem,
                 productItemAttributes: data.attributes,
                 canEdit: data.canEdit,
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
         } only %}
             {% block variantSelector %}
@@ -109,7 +111,7 @@
                     attributes: {
                         name: 'preselectedAttributes[' ~ attributeName ~ ']',
                         disabled: not data.canEdit or isProductSalesUnit,
-                        'data-cart-form-submitter': true,
+                        (submitterKey): submitterValue,
                         'config-theme': 'small',
                     },
                 } only %}

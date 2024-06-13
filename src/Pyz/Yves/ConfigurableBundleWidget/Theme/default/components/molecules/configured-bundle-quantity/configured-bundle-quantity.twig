@@ -3,12 +3,13 @@
 {%- block extraClass %} col col--sm-12 spacing spacing--inner{% endblock -%}
 
 {% block form %}
-    <form method="POST" action="{{ path('cart/configured-bundle/change', {'configuredBundleGroupKey': data.configuredBundle.groupKey }) }}">
+    <form method="POST" action="{{ path(data.ajaxTriggerAttribute? 'cart/configured-bundle/async/change' : 'cart/configured-bundle/change', {'configuredBundleGroupKey': data.configuredBundle.groupKey }) }}">
         {% include molecule('quantity-counter') with {
             modifiers: ['cart', 'secondary'],
             data: {
                 autoUpdate: true,
                 numberFormatConfig: data.numberFormatConfig,
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
             attributes: {
                 value: data.configuredBundle.quantity,
