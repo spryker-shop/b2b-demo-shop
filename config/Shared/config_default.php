@@ -842,3 +842,27 @@ $config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_PAYMENT_AUTHORIZE] = 'ao
 $config[TaxAppConstants::OAUTH_PROVIDER_NAME] = OauthAuth0Config::PROVIDER_NAME;
 $config[TaxAppConstants::OAUTH_GRANT_TYPE] = OauthAuth0Config::GRANT_TYPE_CLIENT_CREDENTIALS;
 $config[TaxAppConstants::OAUTH_OPTION_AUDIENCE] = 'aop-app';
+
+$config[\Spryker\Shared\Log\LogConstants::AUDIT_LOG_SANITIZE_FIELDS] = [
+    'password',
+];
+
+$config[\Spryker\Shared\Log\LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_YVES] = [
+    \Spryker\Yves\Log\Plugin\Log\YvesSecurityAuditLoggerConfigPlugin::class,
+];
+
+$config[\Spryker\Shared\Log\LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_ZED] = [
+    \Spryker\Zed\Log\Communication\Plugin\Log\ZedSecurityAuditLoggerConfigPlugin::class,
+];
+
+$config[\Spryker\Shared\Log\LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_GLUE] = [
+    \Spryker\Glue\Log\Plugin\Log\GlueSecurityAuditLoggerConfigPlugin::class,
+];
+
+$config[\Spryker\Shared\Log\LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_GLUE_BACKEND] = [
+    \Spryker\Glue\Log\Plugin\Log\GlueBackendSecurityAuditLoggerConfigPlugin::class,
+];
+
+$config[\Spryker\Shared\Log\LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_MERCHANT_PORTAL] = [
+    \Spryker\Zed\Log\Communication\Plugin\Log\MerchantPortalSecurityAuditLoggerConfigPlugin::class,
+];
