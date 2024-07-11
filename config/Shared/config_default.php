@@ -116,7 +116,6 @@ use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\Log\YvesSecurityAuditLoggerConfigPlugin;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
-use Spryker\Zed\Log\Communication\Plugin\Log\MerchantPortalSecurityAuditLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Log\ZedSecurityAuditLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\MessageBrokerAws\MessageBrokerAwsConfig;
@@ -479,9 +478,6 @@ $config[LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_GLUE] = [
 ];
 $config[LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_GLUE_BACKEND] = [
     GlueBackendSecurityAuditLoggerConfigPlugin::class,
-];
-$config[LogConstants::AUDIT_LOGGER_CONFIG_PLUGINS_MERCHANT_PORTAL] = [
-    MerchantPortalSecurityAuditLoggerConfigPlugin::class,
 ];
 
 $config[LogConstants::LOG_QUEUE_NAME] = 'log-queue';

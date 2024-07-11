@@ -46,16 +46,6 @@ class LogDependencyProvider extends SprykerLogDependencyProvider
     }
 
     /**
-     * @return list<\Spryker\Shared\Log\Dependency\Plugin\LogHandlerPluginInterface>
-     */
-    protected function getMerchantPortalSecurityAuditLogHandlerPlugins(): array
-    {
-        return [
-            new AuditLogTagFilterBufferedStreamHandlerPlugin(),
-        ];
-    }
-
-    /**
      * @return array<\Spryker\Shared\Log\Dependency\Plugin\LogProcessorPluginInterface>
      */
     protected function getLogProcessors(): array
@@ -75,22 +65,6 @@ class LogDependencyProvider extends SprykerLogDependencyProvider
      * @return list<\Spryker\Shared\Log\Dependency\Plugin\LogProcessorPluginInterface>
      */
     protected function getZedSecurityAuditLogProcessorPlugins(): array
-    {
-        return [
-            new PsrLogMessageProcessorPlugin(),
-            new EnvironmentProcessorPlugin(),
-            new ServerProcessorPlugin(),
-            new AuditLogRequestProcessorPlugin(),
-            new CurrentUserDataRequestProcessorPlugin(),
-            new ResponseProcessorPlugin(),
-            new AuditLogMetaDataProcessorPlugin(),
-        ];
-    }
-
-    /**
-     * @return list<\Spryker\Shared\Log\Dependency\Plugin\LogProcessorPluginInterface>
-     */
-    protected function getMerchantPortalSecurityAuditLogProcessorPlugins(): array
     {
         return [
             new PsrLogMessageProcessorPlugin(),
