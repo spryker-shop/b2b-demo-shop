@@ -185,6 +185,16 @@ groups:
                         store: DE
                     glue.at.aop-b2b.demo-spryker.com:
                         store: AT
+            mportal:
+                application: merchant-portal
+                endpoints:
+                    mp.de.aop-b2b.demo-spryker.com:
+                        store: DE
+                        entry-point: MerchantPortal
+                        primal: true
+                    mp.at.aop-b2b.demo-spryker.com:
+                        store: AT
+                        entry-point: MerchantPortal
 
 services:
     database:
