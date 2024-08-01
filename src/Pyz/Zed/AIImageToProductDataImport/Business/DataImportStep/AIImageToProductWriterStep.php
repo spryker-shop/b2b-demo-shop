@@ -18,6 +18,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\Locale\Business\LocaleFacade;
 use Spryker\Zed\Product\Business\ProductFacade;
 use Spryker\Zed\Store\Business\StoreFacade;
+use Spryker\Zed\Tax\Business\TaxFacade;
 
 class AIImageToProductWriterStep implements DataImportStepInterface
 {
@@ -32,6 +33,9 @@ class AIImageToProductWriterStep implements DataImportStepInterface
             $productAbstractTransfer = new ProductAbstractTransfer();
             $productAbstractTransfer->setSku($dataSet[AIImageToProductDataSetInterface::COLUMN_SKU]);
             $productAbstractTransfer->setName("Import Test Product 2");
+            $productAbstractTransfer->setIdTaxSet(
+                $this->getTaxSetIdByName($dataSet[AIImageToProductDataSetInterface::COLUMN_TAX_SET])
+            );
             $storeRelationTransfer = new StoreRelationTransfer();
             $storeFacade = new StoreFacade();
             $pricesTransfer = new ArrayObject();
@@ -61,10 +65,12 @@ class AIImageToProductWriterStep implements DataImportStepInterface
             $productAbstractTransfer->setLocalizedAttributes($localizedAttributes);
             $productFacade = new ProductFacade();
             $concreteProductCollection = $this->createProductConcreteCollection($productAbstractTransfer);
-            $productFacade->addProduct(
+            $idAbstractProduct = $productFacade->addProduct(
                 $productAbstractTransfer,
                 $concreteProductCollection
             );
+            $productConcreteTransferArray = $productFacade->getConcreteProductsByAbstractProductId($idAbstractProduct);
+            $this->activateConcreteProduct($productConcreteTransferArray, $productFacade);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -102,5 +108,33 @@ class AIImageToProductWriterStep implements DataImportStepInterface
         }
 
         return $concreteProductCollection;
+    }
+
+    /**
+     * @return int
+     */
+    protected function getTaxSetIdByName(string $taxSetName)
+    {
+        $taxFacade = new TaxFacade();
+        $taxSetCollection = $taxFacade->getTaxSets();
+        $taxSetId = 0;
+        foreach ($taxSetCollection->getTaxSets() as $taxSet) {
+            if ($taxSet->getName() == $taxSetName) {
+                $taxSetId = $taxSet->getIdTaxSet();
+            }
+        }
+
+        return $taxSetId;
+    }
+
+    /**
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer>
+     * @param \Spryker\Zed\Product\Business\ProductFacade
+     */
+    protected function activateConcreteProduct($productConcreteTransferArray, ProductFacade $productFacade)
+    {
+        foreach ($productConcreteTransferArray as $productConcreteTransfer) {
+            $productFacade->activateProductConcrete($productConcreteTransfer->getIdProductConcrete());
+        }
     }
 }

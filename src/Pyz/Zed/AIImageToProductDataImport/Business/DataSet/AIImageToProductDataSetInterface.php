@@ -22,5 +22,10 @@ interface AIImageToProductDataSetInterface
     /**
      * @var string
      */
+    public const COLUMN_TAX_SET = 'tax_set';
+
+    /**
+     * @var string
+     */
     public const COLUMN_IMAGE_URL = 'image_url';
 }
