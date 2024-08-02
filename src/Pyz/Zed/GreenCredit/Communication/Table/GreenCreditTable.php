@@ -15,10 +15,17 @@ use Spryker\Zed\CompanyGui\Communication\Form\DenyCompanyForm;
 
 class GreenCreditTable extends AbstractTable
 {
+
+    public const CREDITSTATUS = ['1'=>'Submitted','2'=>'Approved','3'=>'Rejected','4'=>'Closed'];
     /**
      * @var string
      */
     public const ACTIONS = 'Actions';
+
+    /**
+     * @var string
+     */
+    public const STATUS = 'Status';
 
     /**
      * @var string
@@ -65,14 +72,14 @@ class GreenCreditTable extends AbstractTable
             SpyGreenCreditTableMap::COL_ID => 'Request ID',
             SpyGreenCreditTableMap::COL_SERVICE_REQUEST_NO => 'Request No',
             SpyGreenCreditTableMap::COL_QUANTITY => 'Quantity',
-            SpyGreenCreditTableMap::COL_TOTAL => 'Total',
+            SpyGreenCreditTableMap::COL_TOTAL => 'Credits',
             SpyGreenCreditTableMap::COL_REQUEST_RAISED_AT => 'Raised At',
             SpyGreenCreditTableMap::COL_CREATED_AT => 'Created At',
             SpyGreenCreditTableMap::COL_STATUS => 'Status',
             static::ACTIONS => 'Actions',
             
         ]);
-        
+        $config->addRawColumn(SpyGreenCreditTableMap::COL_STATUS);
         $config->addRawColumn('Actions');
 
         $config->setSortable([
@@ -115,7 +122,8 @@ class GreenCreditTable extends AbstractTable
                 
                 SpyGreenCreditTableMap::COL_REQUEST_RAISED_AT => $resultItem[SpyGreenCreditTableMap::COL_REQUEST_RAISED_AT],
                 SpyGreenCreditTableMap::COL_CREATED_AT => $resultItem[SpyGreenCreditTableMap::COL_CREATED_AT],
-                SpyGreenCreditTableMap::COL_STATUS => $resultItem[SpyGreenCreditTableMap::COL_STATUS] ? 'Approved':'Rejected',
+               // SpyGreenCreditTableMap::COL_STATUS => Static::CREDITSTATUS[$resultItem[SpyGreenCreditTableMap::COL_STATUS]],
+               SpyGreenCreditTableMap::COL_STATUS => $this->generateStatusLabels(Static::CREDITSTATUS[$resultItem[SpyGreenCreditTableMap::COL_STATUS]]),
                 
                 static::ACTIONS => $this->buildLinks($resultItem[SpyGreenCreditTableMap::COL_ID]),
                 
@@ -129,15 +137,19 @@ class GreenCreditTable extends AbstractTable
     {
        
         $buttons = [];
-        //$buttons[] = $this->generateViewButton('/green-credit/view?id=' . $id, 'Approve');
-        //$buttons[] = $this->generateRemoveButton('/green-credit/edit?id=' . $id, 'Reject');
-        $buttons[] = $this->generateStatusChangeButton($id,'approve');
-        $buttons[] = $this->generateStatusChangeButton($id, 'deny');
+        $options = ['class'=>'btn-danger'];
+        $buttons[] = $this->generateEditButton('/green-credit/index/activate?id=' . $id.'&action=approve', 'Approve');
+       // $buttons[] = $this->generateRemoveButton('/green-credit/edit?id=' . $id, 'Reject');
+       // $buttons[] = $this->generateStatusChangeButton($id,'approve');
+       $buttons[] = $this->generateRemoveButton('/green-credit/index/activate?id=' . $id.'&action=deny', 'Deny');
+       $buttons[] = $this->generateEditButton('/green-credit/index/activate?id=' . $id.'&action=close', 'Close');
 
        // $buttons = $this->expandLinks($$id);
 
         return implode(' ', $buttons);
     }
+
+
 
     
 
@@ -175,5 +187,27 @@ class GreenCreditTable extends AbstractTable
             
     }
 
+    /**
+     * @param array $item
+     *
+     * @return string
+     */
+    protected function generateStatusLabels($action)
+    {
+        if ($action =='Submitted') {
+            return $this->generateLabel('Submitted', 'label-info');
+        }
+        if ($action =='Approved') {
+            return $this->generateLabel('Approved', 'label-success');
+        }
+        if ($action =='Rejected') {
+            return $this->generateLabel('Rejected', 'label-danger');
+        }
+        if ($action =='Closed') {
+            return $this->generateLabel('Closed', 'label-success');
+        }
+
+        return $this->generateLabel('Inactive', 'label-danger');
+    }
     
 }

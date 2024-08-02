@@ -18,4 +18,5 @@ class IndexController extends AbstractController
 
         return $this->view($response, [], '@GreenCreditsPage/views/greencredits/greencredits.twig');
     }
+    
 }

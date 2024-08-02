@@ -15,9 +15,12 @@
     } only %}
 
     <div class="box">
-        <h4>{{ 'Green Credits Request' | trans }}</h4>
-        <p class="text-small">{{ 'Green Credits Request' | trans }}</p>
-
+    <h3><span style="color:green">{{ 'Total Green Credits : 450' | trans }}</span></h3>
+    <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></br>
+        <h4>{{ 'Raise a new green credit request' | trans }}</h4>
+        
+        
+          
         {% include molecule('form') with {
             data: {
                 form: data.form,

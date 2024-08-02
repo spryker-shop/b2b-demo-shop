@@ -21,7 +21,7 @@ class GreenCreditsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('big_packet', CollectionType::class, [
-            'label' => 'Big Packet',
+            'label' => 'Big Box 146x80X32 cm',
             'constraints' => [
                 new NotBlank(),
                 // new Col(),
@@ -35,7 +35,7 @@ class GreenCreditsFormType extends AbstractType
             ],
         ]);
         $builder->add('medium_packet', CollectionType::class, [
-            'label' => 'Medium Packet',
+            'label' => 'Medium Box 46x38X32 cm',
             'constraints' => [
                 new NotBlank(),
                 // new Col(),
@@ -49,7 +49,7 @@ class GreenCreditsFormType extends AbstractType
             ],
         ]);
         $builder->add('small_packet', CollectionType::class, [
-            'label' => 'Small Packet'
+            'label' => 'Small Box 26X30X20 cm'
         ]);
         $builder->add('small_packet_items_count', NumberType::class, [
             'label' => 'Items Count',
@@ -58,5 +58,7 @@ class GreenCreditsFormType extends AbstractType
                 // new Col(),
             ],
         ]);
+
+        
     }
 }
