@@ -80,6 +80,7 @@ use SprykerShop\Yves\ShoppingListPage\Plugin\Router\ShoppingListPageRouteProvide
 use SprykerShop\Yves\ShoppingListWidget\Plugin\Router\ShoppingListWidgetAsyncRouteProviderPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\Router\ShoppingListWidgetRouteProviderPlugin;
 use SprykerShop\Yves\StorageRouter\Plugin\Router\StorageRouterPlugin;
+use Pyz\Yves\GreenCreditsPage\Plugin\Router\GreenCreditsRouteProviderPlugin;
 
 class RouterDependencyProvider extends SprykerRouterDependencyProvider
 {
@@ -166,6 +167,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new MultiCartPageAsyncRouteProviderPlugin(),
             new OrderCustomReferenceWidgetAsyncRouteProviderPlugin(),
             new ShoppingListWidgetAsyncRouteProviderPlugin(),
+            new GreenCreditsRouteProviderPlugin(),
         ];
     }
 

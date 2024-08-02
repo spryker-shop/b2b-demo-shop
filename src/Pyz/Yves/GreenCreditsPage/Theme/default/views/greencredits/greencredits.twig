@@ -1,0 +1,30 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    form: _view.form,
+    activePage: 'greencredits',
+    title: 'Green Credits' | trans
+} %}
+
+{% block customerContent %}
+    {% include molecule('action-bar') with {
+        modifiers: ['first', 'middle'],
+        data: {
+            title: 'Green Credits' | trans,
+        }
+    } only %}
+
+    <div class="box">
+        <h4>{{ 'Green Credits Request' | trans }}</h4>
+        <p class="text-small">{{ 'Green Credits Request' | trans }}</p>
+
+        {% include molecule('form') with {
+            data: {
+                form: data.form,
+                submit: {
+                    enable: true
+                }
+            }
+        } only %}
+    </div>
+{% endblock %}
