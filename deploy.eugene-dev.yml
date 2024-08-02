@@ -45,7 +45,7 @@ environment: docker.dev
 image:
     tag: spryker/php:8.1
     environment:
-        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example-commerce.eugene-devn.cloud.spryker.toys
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example-commerce.eugene-dev.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
     php:
         enabled-extensions:
@@ -104,43 +104,43 @@ groups:
             yves:
                 application: yves
                 endpoints:
-                    www.gr.eugene-devn.cloud.spryker.toys:
+                    www.gr.eugene-dev.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
-                    www.mr.eugene-devn.cloud.spryker.toys:
+                    www.mr.eugene-dev.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.eugene-devn.cloud.spryker.toys:
+                    backoffice.de.eugene-dev.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
-                    boffice.at.eugene-devn.cloud.spryker.toys:
+                    boffice.at.eugene-dev.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
             backgw:
                 application: backend-gateway
                 endpoints:
-                    bgateway.de.eugene-devn.cloud.spryker.toys:
+                    bgateway.de.eugene-dev.cloud.spryker.toys:
                         store: DE
-                    bgateway.at.eugene-devn.cloud.spryker.toys:
+                    bgateway.at.eugene-dev.cloud.spryker.toys:
                         store: AT
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.de.eugene-devn.cloud.spryker.toys:
+                    backend-api.de.eugene-dev.cloud.spryker.toys:
                         store: DE
                         entry-point: BackendApi
-                    backend-api.at.eugene-devn.cloud.spryker.toys:
+                    backend-api.at.eugene-dev.cloud.spryker.toys:
                         store: AT
                         entry-point: BackendApi
             glue:
                 application: glue
                 endpoints:
-                    glue.de.eugene-devn.cloud.spryker.toys:
+                    glue.de.eugene-dev.cloud.spryker.toys:
                         store: DE
-                    glue.at.eugene-devn.cloud.spryker.toys:
+                    glue.at.eugene-dev.cloud.spryker.toys:
                         store: AT
 
 services:
@@ -160,7 +160,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            queue.eugene-devn.cloud.spryker.toys:
+            queue.eugene-dev.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -180,11 +180,11 @@ services:
         engine: jenkins
         version: '2.324'
         endpoints:
-            scheduler.eugene-devn.cloud.spryker.toys:
+            scheduler.eugene-dev.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.eugene-devn.cloud.spryker.toys:
+            mail.eugene-dev.cloud.spryker.toys:
 
 docker:
 
