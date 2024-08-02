@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\MerchantStorage\Persistence" package="src.Orm.Zed.MerchantStorage.Persistence">
+
+    <table name="spy_merchant_storage" identifierQuoting="true">
+        <column name="id_merchant_storage" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="id_merchant" required="true" type="INTEGER"/>
+
+        <index name="spy_merchant_storage-id_merchant">
+            <index-column name="id_merchant"/>
+        </index>
+
+        <behavior name="synchronization">
+            <parameter name="resource" value="merchant"/>
+            <parameter name="key_suffix_column" value="id_merchant"/>
+            <parameter name="queue_group" value="sync.storage.merchant"/>
+            <parameter name="mappings" value="merchant_reference:id_merchant"/>
+            <parameter name="store" required="true"/>
+        </behavior>
+        <behavior name="timestampable"/>
+    </table>
+</database>

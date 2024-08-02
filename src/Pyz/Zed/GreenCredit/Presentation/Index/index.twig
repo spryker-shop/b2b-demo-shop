@@ -1,0 +1,15 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% block content %}
+
+    {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Green Credit List' } %}
+
+        {% block widget_content %}
+
+            {{ credits | raw }}
+
+        {% endblock %}
+
+    {% endembed %}
+
+{% endblock %}

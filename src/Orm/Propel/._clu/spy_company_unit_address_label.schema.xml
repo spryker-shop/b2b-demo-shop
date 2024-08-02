@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanyUnitAddressLabel\Persistence" package="src.Orm.Zed.CompanyUnitAddressLabel.Persistence">
+    <table name="spy_company_unit_address_label" idMethod="native" allowPkInsert="true">
+        <column name="id_company_unit_address_label" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="name" size="255" type="VARCHAR"/>
+        <unique name="spy_company_unit_address_label-unique-name">
+            <unique-column name="name"/>
+        </unique>
+        <id-method-parameter value="spy_company_unit_address_label_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+    <table name="spy_company_unit_address_label_to_company_unit_address" idMethod="native" allowPkInsert="true">
+        <column name="id_company_unit_address_label_to_company_unit_address" type="INTEGER" autoIncrement="true" required="true" primaryKey="true"/>
+        <column name="fk_company_unit_address" type="INTEGER" required="true"/>
+        <column name="fk_company_unit_address_label" type="INTEGER" required="true"/>
+        <foreign-key name="spy_c_u_a_l_to_c_u_a-fk_company_unit_address" foreignTable="spy_company_unit_address" phpName="CompanyUnitAddress" onDelete="CASCADE">
+            <reference local="fk_company_unit_address" foreign="id_company_unit_address"/>
+        </foreign-key>
+        <foreign-key name="spy_c_u_a_l_to_c_u_a-fk_company_unit_address_label" foreignTable="spy_company_unit_address_label" phpName="CompanyUnitAddressLabel" onDelete="CASCADE">
+            <reference local="fk_company_unit_address_label" foreign="id_company_unit_address_label"/>
+        </foreign-key>
+        <index name="index-spy_company_unit_address_label_to_company_un-01fe071d8046">
+            <index-column name="fk_company_unit_address"/>
+        </index>
+        <index name="index-spy_company_unit_address_label_to_company_un-a6bd4742c848">
+            <index-column name="fk_company_unit_address_label"/>
+        </index>
+        <id-method-parameter value="spy_company_unit_address_label_to_company_unit_address_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+</database>

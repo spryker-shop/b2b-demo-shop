@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanyUnitAddress\Persistence" package="src.Orm.Zed.CompanyUnitAddress.Persistence">
+    <table name="spy_company_unit_address" idMethod="native" identifierQuoting="true">
+        <column name="id_company_unit_address" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_company" type="INTEGER"/>
+        <column name="fk_country" type="INTEGER" required="true"/>
+        <column name="fk_region" type="INTEGER"/>
+        <column name="address1" size="255" type="VARCHAR"/>
+        <column name="address2" size="255" type="VARCHAR"/>
+        <column name="address3" size="255" type="VARCHAR"/>
+        <column name="city" size="255" type="VARCHAR"/>
+        <column name="comment" size="255" type="VARCHAR"/>
+        <column name="key" type="VARCHAR" size="255" description="Key is used for DataImport as identifier for existing entities. This should never be changed."/>
+        <column name="phone" size="255" type="VARCHAR"/>
+        <column name="uuid" required="false" type="VARCHAR" size="36"/>
+        <column name="zip_code" size="15" type="VARCHAR"/>
+        <foreign-key name="spy_company_unit_address-fk_country" foreignTable="spy_country" phpName="Country" refPhpName="CompanyUnitAddress">
+            <reference local="fk_country" foreign="id_country"/>
+        </foreign-key>
+        <foreign-key name="spy_company_unit_address-fk_region" foreignTable="spy_region" phpName="Region" refPhpName="CompanyUnitAddress">
+            <reference local="fk_region" foreign="id_region"/>
+        </foreign-key>
+        <foreign-key name="spy_company_unit_address-fk_company" foreignTable="spy_company" phpName="Company" refPhpName="CompanyUnitAddress">
+            <reference local="fk_company" foreign="id_company"/>
+        </foreign-key>
+        <index name="index-spy_company_unit_address-fk_country">
+            <index-column name="fk_country"/>
+        </index>
+        <index name="index-spy_company_unit_address-fk_region">
+            <index-column name="fk_region"/>
+        </index>
+        <index name="index-spy_company_unit_address-fk_company">
+            <index-column name="fk_company"/>
+        </index>
+        <unique name="spy_company_unit_address-unique-uuid">
+            <unique-column name="uuid"/>
+        </unique>
+        <unique name="spy_company_unit_address-unique-key">
+            <unique-column name="key"/>
+        </unique>
+        <id-method-parameter value="spy_company_unit_address_pk_seq"/>
+        <behavior name="uuid">
+            <parameter name="key_columns" value="id_company_unit_address.fk_company"/>
+        </behavior>
+    </table>
+    <table name="spy_company_unit_address_to_company_business_unit" idMethod="native" allowPkInsert="true">
+        <column name="id_company_unit_address_to_company_business_unit" type="INTEGER" autoIncrement="true" required="true" primaryKey="true"/>
+        <column name="fk_company_business_unit" type="INTEGER" required="true"/>
+        <column name="fk_company_unit_address" type="INTEGER" required="true"/>
+        <foreign-key name="spy_co_u_a_to_co_b_u-fk_co_b_u" foreignTable="spy_company_business_unit" phpName="CompanyBusinessUnit" onDelete="CASCADE">
+            <reference local="fk_company_business_unit" foreign="id_company_business_unit"/>
+        </foreign-key>
+        <foreign-key name="spy_co_u_a_to_co_bu_u-fk_co_u_a" foreignTable="spy_company_unit_address" phpName="CompanyUnitAddress" onDelete="CASCADE">
+            <reference local="fk_company_unit_address" foreign="id_company_unit_address"/>
+        </foreign-key>
+        <index name="index-spy_company_unit_address_to_company_business-bbbe287ce824">
+            <index-column name="fk_company_business_unit"/>
+        </index>
+        <index name="index-spy_company_unit_address_to_company_business-67784ebe75fa">
+            <index-column name="fk_company_unit_address"/>
+        </index>
+        <id-method-parameter value="spy_company_unit_address_to_company_business_unit_pk_seq"/>
+    </table>
+</database>

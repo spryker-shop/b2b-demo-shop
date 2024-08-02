@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\MerchantRelationRequest\Persistence" package="src.Orm.Zed.MerchantRelationRequest.Persistence">
+
+    <table name="spy_merchant_relation_request">
+        <column name="id_merchant_relation_request" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="uuid" required="false" type="VARCHAR" size="36"/>
+
+        <column name="status" required="true" type="VARCHAR" size="255"/>
+        <column name="is_split_enabled" required="false" type="BOOLEAN" default="false"/>
+        <column name="request_note" required="false" type="VARCHAR" size="5000"/>
+        <column name="decision_note" required="false" type="VARCHAR" size="5000"/>
+
+        <column name="fk_company_user" required="true" type="INTEGER"/>
+        <column name="fk_merchant" required="true" type="INTEGER"/>
+        <column name="fk_company_business_unit" required="true" type="INTEGER"/>
+
+        <unique name="spy_merchant_relation_request-uuid">
+            <unique-column name="uuid"/>
+        </unique>
+
+        <index name="spy_merchant_relation_request-status">
+            <index-column name="status"/>
+        </index>
+
+        <foreign-key name="spy_m_rel_request-fk_company_user" foreignTable="spy_company_user" onDelete="CASCADE" phpName="CompanyUser">
+            <reference local="fk_company_user" foreign="id_company_user"/>
+        </foreign-key>
+
+        <foreign-key name="spy_m_rel_request-fk_merchant" foreignTable="spy_merchant" onDelete="CASCADE" phpName="Merchant">
+            <reference local="fk_merchant" foreign="id_merchant"/>
+        </foreign-key>
+
+        <foreign-key name="spy_m_rel_request-fk_company_business_unit" foreignTable="spy_company_business_unit" onDelete="CASCADE" phpName="CompanyBusinessUnit">
+            <reference local="fk_company_business_unit" foreign="id_company_business_unit"/>
+        </foreign-key>
+
+        <behavior name="uuid">
+            <parameter name="key_columns" value="id_merchant_relation_request"/>
+        </behavior>
+
+        <behavior name="timestampable"/>
+
+        <id-method-parameter value="spy_merchant_relation_request_pk_seq"/>
+    </table>
+
+    <table name="spy_merchant_relation_request_to_company_business_unit">
+        <column name="id_merchant_relation_request_to_company_business_unit" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_merchant_relation_request" required="true" type="INTEGER"/>
+        <column name="fk_company_business_unit" required="true" type="INTEGER"/>
+
+        <unique name="spy_m_rel_request_to_company_bu-fk_m_rel_request-fk_c_bu">
+            <unique-column name="fk_merchant_relation_request"/>
+            <unique-column name="fk_company_business_unit"/>
+        </unique>
+
+        <foreign-key name="spy_m_rel_request_to_company_bu-fk_m_rel_request" foreignTable="spy_merchant_relation_request" onDelete="CASCADE" phpName="MerchantRelationshipRequest">
+            <reference local="fk_merchant_relation_request" foreign="id_merchant_relation_request"/>
+        </foreign-key>
+
+        <foreign-key name="spy_m_rel_request_to_company_bu-fk_c_bu" foreignTable="spy_company_business_unit" onDelete="CASCADE" phpName="CompanyBusinessUnit">
+            <reference local="fk_company_business_unit" foreign="id_company_business_unit"/>
+        </foreign-key>
+
+        <id-method-parameter value="spy_m_rel_request_to_company_bu_pk_seq"/>
+    </table>
+
+</database>

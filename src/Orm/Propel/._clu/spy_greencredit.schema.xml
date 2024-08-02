@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<database name="zed"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+    namespace="Orm\Zed\GreenCredit\Persistence"
+    package="src.Orm.Zed.GreenCredit.Persistence">
+
+    <table name="customers_return_requests" idMethod="native">
+        <column name="id" required="true" type="INTEGER" autoIncrement="true" primaryKey="true" />
+        <column name="fk_customer_id" required="true" type="INTEGER" />
+        <column name="request_data" required="true" size="255" type="TEXT" />
+        <column name="service_request_no" required="true" size="255" type="VARCHAR" />
+        <column name="quantity" required="true" type="INTEGER" />
+        <column name="total" required="true" type="INTEGER" />
+        <column name="status" required="true" type="INTEGER" />
+        <column name="request_raised_at" type="TIMESTAMP" default="NULL"/>
+        <column name="picked_up_at" type="TIMESTAMP" default="NULL"/>
+        <column name="created_at" type="TIMESTAMP" default="NULL"/>
+        <column name="updated_at" type="TIMESTAMP" default="NULL"/>
+    </table>
+</database>

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Comment\Persistence" package="src.Orm.Zed.Comment.Persistence">
+    <table name="spy_comment" identifierQuoting="true" idMethod="native" allowPkInsert="true">
+        <column name="id_comment" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="fk_comment_thread" required="true" type="INTEGER"/>
+        <column name="fk_customer" required="false" type="INTEGER"/>
+        <column name="fk_user" type="INTEGER" required="false"/>
+        <column name="is_deleted" defaultValue="false" type="BOOLEAN"/>
+        <column name="is_updated" defaultValue="false" type="BOOLEAN"/>
+        <column name="key" type="VARCHAR" size="255" description="Key is an identifier for existing entities. This should never be changed."/>
+        <column name="message" required="true" type="VARCHAR" size="5000"/>
+        <column name="uuid" required="false" type="VARCHAR" size="36"/>
+        <foreign-key name="spy_comment-fk_user" foreignTable="spy_user" phpName="User" refPhpName="Comment">
+            <reference local="fk_user" foreign="id_user"/>
+        </foreign-key>
+        <foreign-key name="spy_comment-fk_customer" foreignTable="spy_customer">
+            <reference local="fk_customer" foreign="id_customer"/>
+        </foreign-key>
+        <foreign-key name="spy_comment_thread-fk_comment_thread" foreignTable="spy_comment_thread">
+            <reference local="fk_comment_thread" foreign="id_comment_thread"/>
+        </foreign-key>
+        <index name="index-spy_comment-fk_user">
+            <index-column name="fk_user"/>
+        </index>
+        <index name="index-spy_comment-fk_customer">
+            <index-column name="fk_customer"/>
+        </index>
+        <index name="index-spy_comment_thread-fk_comment_thread">
+            <index-column name="fk_comment_thread"/>
+        </index>
+        <unique name="spy_comment-unique-uuid">
+            <unique-column name="uuid"/>
+        </unique>
+        <id-method-parameter value="id_comment_pk_seq"/>
+        <behavior name="uuid">
+            <parameter name="key_columns" value="id_comment"/>
+        </behavior>
+        <behavior name="timestampable"/>
+    </table>
+    <table name="spy_comment_thread" idMethod="native" allowPkInsert="true">
+        <column name="id_comment_thread" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="owner_id" required="true" type="INTEGER"/>
+        <column name="owner_type" required="true" type="VARCHAR" size="64"/>
+        <column name="uuid" required="false" type="VARCHAR" size="36"/>
+        <unique name="spy_comment_thread-owner_type-owner_id">
+            <unique-column name="owner_type"/>
+            <unique-column name="owner_id"/>
+        </unique>
+        <unique name="spy_comment_thread-unique-uuid">
+            <unique-column name="uuid"/>
+        </unique>
+        <id-method-parameter value="id_comment_thread_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="uuid">
+            <parameter name="key_columns" value="owner_type.owner_id"/>
+        </behavior>
+    </table>
+    <table name="spy_comment_tag" idMethod="native" allowPkInsert="true">
+        <column name="id_comment_tag" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="name" required="true" type="VARCHAR" size="255"/>
+        <column name="uuid" required="false" type="VARCHAR" size="36"/>
+        <unique name="spy_comment_tag-name">
+            <unique-column name="name"/>
+        </unique>
+        <unique name="spy_comment_tag-unique-uuid">
+            <unique-column name="uuid"/>
+        </unique>
+        <id-method-parameter value="id_comment_tag_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="uuid">
+            <parameter name="key_columns" value="name"/>
+        </behavior>
+    </table>
+    <table name="spy_comment_to_comment_tag" idMethod="native" allowPkInsert="true" isCrossRef="true">
+        <column name="fk_comment" type="INTEGER" primaryKey="true"/>
+        <column name="fk_comment_tag" type="INTEGER" primaryKey="true"/>
+        <foreign-key name="spy_comment_to_comment_tag-fk_comment" foreignTable="spy_comment">
+            <reference local="fk_comment" foreign="id_comment"/>
+        </foreign-key>
+        <foreign-key name="spy_comment_to_comment_tag-fk_comment_tag" foreignTable="spy_comment_tag">
+            <reference local="fk_comment_tag" foreign="id_comment_tag"/>
+        </foreign-key>
+    </table>
+</database>
