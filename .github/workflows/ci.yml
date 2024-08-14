@@ -12,6 +12,16 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
+    reset-label:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Remove robot-regression-ui-e2e label
+                uses: actions-ecosystem/action-remove-labels@v1
+                with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    labels: 'robot-regression-ui-e2e'
+
     validation:
         name: "Static analysis"
         runs-on: ubuntu-22.04
