@@ -3,6 +3,10 @@ name: Label Check
 on:
     pull_request:
         types: [opened, edited, labeled, unlabeled, synchronize]
+    workflow_run:
+        workflows: ["Outdated Label Reset"]
+        types:
+            - completed
 
 jobs:
     label-check:
