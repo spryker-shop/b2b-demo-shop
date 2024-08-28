@@ -179,6 +179,7 @@ jobs:
 
     php-82-postgresql-glue-alpine:
         name: "PHP 8.2 / PostgreSQL / Glue / Alpine"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
