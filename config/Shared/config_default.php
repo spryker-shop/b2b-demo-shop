@@ -586,6 +586,21 @@ $config[SymfonyMailerConstants::SMTP_PASSWORD] = getenv('SPRYKER_SMTP_PASSWORD')
 
 // >>> FILESYSTEM
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
+    's3-import' => [
+        'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
+        'root' => '/',
+        'path' => '/',
+        'key' => '',
+        'secret' => '',
+        'bucket' => '',
+        'version' => '',
+        'region' => '',
+    ],
+    'files-import' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/',
+        'path' => '/',
+    ],
     'files' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
         'root' => APPLICATION_ROOT_DIR . '/data/DE/media/',
