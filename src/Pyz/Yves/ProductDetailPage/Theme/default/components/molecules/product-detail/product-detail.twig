@@ -29,7 +29,7 @@
                 {% if name %}
                     <div class="col col--sm-6 {{ config.name }}__detail-list-item" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
                         <div class="{{ config.name }}__detail-list-key" itemprop="name">{{ ('product.attribute.' ~ name) | trans }}</div>
-                        <div class="{{ config.name }}__detail-list-value" itemprop="value">{{ value }}</div>
+                        <div class="{{ config.name }}__detail-list-value" itemprop="value">{{ value | join(', ') }}</div>
                     </div>
                 {% endif %}
             {% endfor %}
