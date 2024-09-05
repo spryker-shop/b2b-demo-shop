@@ -17,5 +17,8 @@
             buttonExtraClasses: data.buttonExtraClasses,
             extraAttributes: data.buttonExtraAttributes | merge(not addToCartSku ? {disabled: true} : {}),
         },
+        attributes: {
+            'event-revealer': data.eventRevealer,
+        },
     } only %}
 {% endblock %}
