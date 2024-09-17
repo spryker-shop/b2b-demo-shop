@@ -59,6 +59,9 @@
                     {% if data.showSearchForm %}
                         {% embed molecule('search-form') with {
                             class: config.name ~ '__search-form',
+                            data: {
+                                byImage: true,
+                            },
                             modifiers: ['main-search'],
                             attributes: {
                                 'data-search-id': 'desktop',
