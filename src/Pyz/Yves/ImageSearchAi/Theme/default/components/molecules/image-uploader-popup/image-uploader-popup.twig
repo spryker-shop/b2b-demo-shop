@@ -1,0 +1,12 @@
+{% extends molecule('image-uploader-popup', '@SprykerEco:ImageSearchAi') %}
+
+{% block trigger %}
+    <button type="button" class="spacing-right spacing-right--large button button--sm-lg-large button--big {{ config.name }}__button {{ triggerClassName }}">
+        {% include atom('icon') with {
+            modifiers: modifiers,
+            data: {
+                name: data.icon,
+            },
+        } only %}
+    </button>
+{% endblock %}

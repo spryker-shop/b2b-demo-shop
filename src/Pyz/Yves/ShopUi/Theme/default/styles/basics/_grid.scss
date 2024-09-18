@@ -48,6 +48,10 @@
             flex-grow: 1;
         }
 
+        &--no-shrink {
+            flex-shrink: 0;
+        }
+
         &--mobile-expand {
             flex-grow: 1;
 
@@ -151,6 +155,7 @@
             }
         }
 
+        &--with-gutter,
         &--gap {
             margin-left: -$setting-grid-space-mobile;
             margin-right: -$setting-grid-space-mobile;

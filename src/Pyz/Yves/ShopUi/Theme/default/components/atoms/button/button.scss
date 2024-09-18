@@ -164,6 +164,14 @@
             padding-bottom: rem(12);
         }
 
+        &--sm-lg-large {
+            @include helper-breakpoint-media-max($lg - 1) {
+                font-size: rem(20);
+                line-height: rem(22);
+                padding: rem(18) rem(32);
+            }
+        }
+
         &--form {
             padding-top: rem(14);
             padding-bottom: rem(14);
