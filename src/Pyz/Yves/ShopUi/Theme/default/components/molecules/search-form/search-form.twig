@@ -17,14 +17,17 @@
 
 {% block body %}
     <form action="{{ data.searchUrl }}">
-        <input
-            class="suggest-search__input {{ config.jsName }}__input--{{ attributes['data-search-id'] }}"
-            name="q"
-            type="text"
-            placeholder="{{ 'global.search' | trans }}"
-            value="{{ data.searchValue }}"
-            autocomplete="off"
-        >
+        <div class="grid grid--nowrap">
+            <div class="is-position-relative col col--expand">
+                <input name="q" type="text" class="input input--expand suggest-search__input {{ config.jsName }}__input--{{ attributes['data-search-id'] }}" placeholder="{{ 'global.search' | trans }}" value="{{ data.searchValue }}" autocomplete="off">
+            </div>
+
+            {% if data.byImage and widgetGlobalExists('ImageSearchAiWidget') %}
+                <div class="col col--no-shrink col--sm-auto">
+                    {% widget 'ImageSearchAiWidget' only %}{% endwidget %}
+                </div>
+            {% endif %}
+        </div>
 
         <button class="{{ config.name }}__button {{ config.name }}__button--submit">
             {% include atom('icon') with {

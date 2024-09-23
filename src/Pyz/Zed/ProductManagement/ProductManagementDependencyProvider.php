@@ -28,6 +28,10 @@ use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductCo
 use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditTabsExpanderPlugin;
 use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
+use SprykerEco\Zed\ProductManagementAi\Communication\Plugin\ProductManagement\ImageAltTextProductAbstractFormExpanderPlugin;
+use SprykerEco\Zed\ProductManagementAi\Communication\Plugin\ProductManagement\ImageAltTextProductConcreteEditFormExpanderPlugin;
+use SprykerEco\Zed\ProductManagementAi\Communication\Plugin\ProductManagement\ImageAltTextProductConcreteFormExpanderPlugin;
+use SprykerEco\Zed\ProductManagementAi\Communication\Plugin\ProductManagement\ProductCategoryAbstractFormExpanderPlugin;
 
 class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
 {
@@ -79,6 +83,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         return [
             new DiscontinuedProductConcreteEditFormExpanderPlugin(), #ProductDiscontinuedFeature
             new ProductConcreteEditFormExpanderPlugin(), #ProductAlternativeFeature
+            new ImageAltTextProductConcreteEditFormExpanderPlugin(),
         ];
     }
 
@@ -111,6 +116,8 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new MerchantRelationshipProductAbstractFormExpanderPlugin(),
+            new ProductCategoryAbstractFormExpanderPlugin(),
+            new ImageAltTextProductAbstractFormExpanderPlugin(),
         ];
     }
 
@@ -121,6 +128,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new MerchantRelationshipProductConcreteFormExpanderPlugin(),
+            new ImageAltTextProductConcreteFormExpanderPlugin(),
         ];
     }
 

@@ -1,0 +1,22 @@
+{% extends molecule('image-uploader', '@SprykerEco:ImageSearchAi') %}
+
+{% block actions %}
+    <div class="grid grid--with-gutter">
+        <div class="col col--expand is-hidden-lg-xxl">
+            <label>
+                <input class="{{ config.name }}__file-input {{ config.jsName }}__file-input is-hidden" type="file" accept="image/*" capture="environment">
+                <span tabindex="0" class="{{ config.name }}__file-input-trigger button button--expand">
+                    {{ 'search.with.your.images.photo.button' | trans  }}
+                </span>
+            </label>
+        </div>
+        <div class="col col--expand">
+            <label>
+                <input class="{{ config.name }}__file-input {{ config.jsName }}__file-input is-hidden" type="file" accept="image/*">
+                <span tabindex="0" class="{{ config.name }}__file-input-button button button--expand">
+                    {{ 'search.with.your-images.button' | trans }}
+                </span>
+            </label>
+        </div>
+    </div>
+{% endblock %}
