@@ -63,12 +63,14 @@ $jobs[] = [
     'enable' => true,
 ];
 
+/*
 $jobs[] = [
     'name' => 'queue-worker-start',
     'command' => '$PHP_BIN vendor/bin/console queue:worker:start',
     'schedule' => '* * * * *',
     'enable' => true,
 ];
+*/
 
 $jobs[] = [
     'name' => 'product-relation-updater',
