@@ -5,7 +5,7 @@
 
 ## Description
 
-Spryker B2B Demo Shop is a collection of Spryker B2B-specific features. It suits most projects as a starting point of development and also can be used to explore Spryker.
+Spryker B2B test Demo Shop is a collection of Spryker B2B-specific features. It suits most projects as a starting point of development and also can be used to explore Spryker.
 
 ## B2B Demo Shop quick start
 
