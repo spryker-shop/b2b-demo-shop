@@ -11,7 +11,7 @@
         } only %}
 
         {% include molecule('ajax-loader') with {
-            modifiers: ['big'],
+            modifiers: ['big'] | merge(data.ajaxTriggerAttribute ? ['viewport-centered'] : []),
             attributes: {
                 'provider-class-name': config.jsName ~ '__ajax-provider',
             },

@@ -8,6 +8,8 @@
 {% define data = {
     user: required,
     cartQuantity: 0,
+    isAjaxMode: false,
+    ajaxCartUrl: '',
 } %}
 
 {% set cartQuantityText = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' %}
@@ -90,45 +92,16 @@
         </a>
     </li>
 
-    {% widget 'ShoppingListNavigationMenuWidget' with {config: config} only %}
-        {% block body %}
-            <li class="{{ config.name }}__item">
-                <a class="{{ config.name }}__link {{ config.jsName }}__trigger" href="{{ url('shopping-list') }}" data-toggle-target='.{{ config.jsName }}__sub-nav-shopping-list'>
-                    <span class="{{ config.name }}__icon">
-                    {% include atom('icon') with {
-                        modifiers: ['header-shopping-list'],
-                        data: {
-                            name: 'shopping-list',
-                        },
-                    } only %}
-                    </span>
-                    <span class="{{ config.name }}__text">{{ 'customer.account.shopping_list'|trans }}</span>
-                </a>
-                <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-shopping-list">
-                    <button class="{{config.name}}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-shopping-list'>
-                        {% include atom('icon') with {
-                            data: {
-                                name: 'cross',
-                            },
-                        } only %}
-                    </button>
-                    <h4 class="{{ config.name }}__sub-nav-title">
-                        {{ 'shopping_list.shopping_list'|trans }}
-                    </h4>
-                    {% block listItems %}
-                        <div class="{{ config.name }}__sub-nav-inner">
-                            {{ parent() }}
-                        </div>
-                    {% endblock %}
-                    {% block listActions %}
-                        <div class="{{ config.name }}__sub-nav-actions">
-                            {{ parent() }}
-                        </div>
-                    {% endblock %}
-                </div>
-            </li>
-        {% endblock %}
-    {% endwidget %}
+    <li class="{{ config.name }}__item">
+        {% widget 'ShoppingListNavigationMenuWidget' with {
+            config: config,
+            data: {
+                isAjaxMode: data.isAjaxMode,
+                parentName: config.name,
+            },
+        } only %}
+        {% endwidget %}
+    </li>
 
     <li class="{{ config.name }}__item">
         {% if not shouldShowMiniCart %}
@@ -145,50 +118,14 @@
                 <span>{{ 'global.my-cart' | trans }}</span>
             </a>
         {% else %}
-            {% embed molecule('cart-counter') with {
-                class: config.jsName ~ '__trigger',
+            {% widget 'MiniCartWidget' args [cartQuantityText] with {
+                config: config,
                 data: {
-                    quantity: data.cartQuantity,
-                },
-                attributes: {
-                    'data-toggle-target': '.' ~ config.jsName ~ '__sub-nav-cart',
-                },
-                embed: {
-                    parentConfigName: config.name,
+                    isAjaxMode: data.isAjaxMode,
+                    parentName: config.name,
                 },
             } only %}
-                {% block content %}
-                    {% set linkClass = embed.parentConfigName ~ '__link' %}
-                    {{ parent() }}
-                {% endblock %}
-            {% endembed %}
-            <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-cart">
-                {% widget 'MiniCartWidget' args [cartQuantityText] with {config: config} only %}
-                    {% block body %}
-                        <button class="{{config.name}}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-cart'>
-                            {% include atom('icon') with {
-                                data: {
-                                    name: 'cross',
-                                },
-                            } only %}
-                        </button>
-                        <h4 class="{{ config.name }}__sub-nav-title">
-                            {{ 'multi_cart_widget.cart.carts'|trans }}
-                        </h4>
-                        {% block cartItems %}
-                            <div class="{{ config.name }}__sub-nav-inner">
-                                {{ parent() }}
-                            </div>
-                        {% endblock %}
-
-                        {% block cartActions %}
-                            <div class="{{ config.name }}__sub-nav-actions">
-                                {{ parent() }}
-                            </div>
-                        {% endblock %}
-                    {% endblock %}
-                {% endwidget %}
-            </div>
+            {% endwidget %}
         {% endif %}
     </li>
 

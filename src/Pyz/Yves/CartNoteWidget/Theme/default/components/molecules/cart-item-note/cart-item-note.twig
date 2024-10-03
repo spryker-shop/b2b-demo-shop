@@ -12,6 +12,7 @@
     note: '',
     isNoteNotEmpty: null,
     isTitleVisible: true,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% define attributes = {
@@ -25,7 +26,6 @@
     {% set isNoteNotEmpty = data.isNoteNotEmpty is not null ? data.isNoteNotEmpty : (data.form.vars.value.cartNote is not null and data.form.vars.value.cartNote is not empty) %}
 
     {% if data.canWrite or isNoteNotEmpty %}
-
         {% if isNoteNotEmpty and data.isTitleVisible %}
             <h6 class="{{ config.name }}__title">{{ title | trans }}:</h6>
         {% endif %}
@@ -68,11 +68,12 @@
                             data: {
                                 form: data.form,
                                 options: {
-                                    action: url('cart-note/item'),
+                                    action: url(data.ajaxTriggerAttribute ? 'cart-note/item/async/add' : 'cart-note/item'),
                                 },
                                 submit: {
                                     enable: true,
                                     text: 'cart_note.form.save' | trans,
+                                    attributes: data.ajaxTriggerAttribute,
                                 },
                             },
                         } only %}

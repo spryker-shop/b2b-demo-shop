@@ -1,6 +1,9 @@
 {% extends molecule('variant', '@SprykerShop:DiscountPromotionWidget') %}
 
 {% block body %}
+    {% set submitterKey = data.ajaxTriggerAttribute ?: 'data-form-submitter' %}
+    {% set submitterValue = data.ajaxTriggerAttribute ? 'change' : true %}
+
     <div class="{{ config.name }}__title">{{ data.label }}</div>
     {% if data.selectedValue is null %}
         {% if data.isAvailable %}
@@ -23,7 +26,7 @@
                 },
                 attributes: {
                     name: data.formName,
-                    'data-form-submitter': true,
+                    (submitterKey): submitterValue,
                     'config-width': '100%',
                 },
             } only %}
@@ -32,7 +35,14 @@
         {% endif %}
     {% else %}
         <div class="{{ config.name }}__selected-value">
-            {{ data.selectedValue }} <a class="spacing-left" href="?">{{ 'Reset' | trans }}</a>
+            {{ data.selectedValue }}
+
+            {% if data.ajaxTriggerAttribute %}
+                <button class="link spacing-left" data-form-data-url-builder-skip-field="{{ data.formName }}" {{ data.ajaxTriggerAttribute }}>{{ 'Reset' | trans }}</button>
+            {% else %}
+                <a class="spacing-left" href="?">{{ 'Reset' | trans }}</a>
+            {% endif %}
+
             <input type="hidden" name="{{ data.formName }}" value="{{ data.selectedValue }}" />
         </div>
     {% endif %}

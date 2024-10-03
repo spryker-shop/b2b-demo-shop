@@ -1,51 +1,83 @@
-{% extends template('widget') %}
+{% extends view('shopping-list-shop-list', 'SprykerShop:ShoppingListWidget') %}
 
 {% define data = {
-    shoppingListCollection: _widget.shoppingListCollection
+    parentName: 'shopping-list-shop-list',
 } %}
 
-{% block body %}
-    {% block listItems %}
-        <ul class="menu menu--wide text-left shop-list-item__list">
-            {% if data.shoppingListCollection.shoppingLists | length %}
-                {% for shoppingList in data.shoppingListCollection.shoppingLists %}
+{% define config = {
+    name: config.name,
+    jsName: 'js-' ~ config.name,
+} %}
+
+{% block contentInner %}
+    <a class="{{ config.name }}__link {{ config.jsName }}__trigger" href="{{ url('shopping-list') }}" data-toggle-target='.{{ config.jsName }}__sub-nav-shopping-list'>
+        <span class="{{ config.name }}__icon">
+        {% include atom('icon') with {
+            modifiers: ['header-shopping-list'],
+            data: {
+                name: 'shopping-list',
+            },
+        } only %}
+        </span>
+        <span class="{{ config.name }}__text">{{ 'customer.account.shopping_list'|trans }}</span>
+    </a>
+
+    <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-shopping-list">
+        <button class="{{config.name}}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-shopping-list'>
+            {% include atom('icon') with {
+                data: {
+                    name: 'cross',
+                },
+            } only %}
+        </button>
+
+        <h4 class="{{ config.name }}__sub-nav-title">
+            {{ 'shopping_list.shopping_list' | trans }}
+        </h4>
+
+        <div class="{{ config.name }}__sub-nav-inner">
+            <ul class="menu menu--wide text-left shop-list-item__list">
+                {% if data.shoppingListCollection.shoppingLists | length %}
+                    {% for shoppingList in data.shoppingListCollection.shoppingLists %}
+                        <li class="menu__item">
+                            {% include molecule('shop-list-item', 'ShoppingListWidget') with {
+                                data: {
+                                    shoppingList: shoppingList
+                                }
+                            } only %}
+                        </li>
+                    {% endfor %}
+                {% else %}
                     <li class="menu__item">
-                        {% include molecule('shop-list-item', 'ShoppingListWidget') with {
+                        <div class="spacing-x spacing-x--inner spacing-x--bigger spacing-top spacing-top--inner spacing-top--big">
+                            {{ 'shopping_list.no_lists_created' | trans }}
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="{{ config.name }}__sub-nav-actions">
+            <div class="grid grid--gap grid--justify grid--nowrap-lg-only">
+                {% if data.shoppingListCollection.shoppingLists | length %}
+                    <div class="col col--bottom-indent col--mobile-expand">
+                        <a href="{{ path('shopping-list') }}" class="button button--mobile-tight button--expand button--hollow">
+                            {{ 'shopping_list.all_shopping_lists' | trans }}
+                        </a>
+                    </div>
+                {% endif %}
+                <div class="col col--bottom-indent col--mobile-expand">
+                    <a href="{{ path('shopping-list') }}" class="button button--mobile-tight button--expand">
+                        {% include atom('icon') with {
+                            modifiers: ['create-list'],
                             data: {
-                                shoppingList: shoppingList
+                                name: 'create-list'
                             }
                         } only %}
-                    </li>
-                {% endfor %}
-            {% else %}
-                <li class="menu__item">
-                    <div class="spacing-x spacing-x--inner spacing-x--bigger spacing-top spacing-top--inner spacing-top--big">
-                        {{ 'shopping_list.no_lists_created' | trans }}
-                    </div>
-                </li>
-            {% endif %}
-        </ul>
-    {% endblock %}
-    {% block listActions %}
-        <div class="grid grid--gap grid--justify grid--nowrap-lg-only">
-            {% if data.shoppingListCollection.shoppingLists | length %}
-                <div class="col col--bottom-indent col--mobile-expand">
-                    <a href="{{ path('shopping-list') }}" class="button button--mobile-tight button--expand button--hollow">
-                        {{ 'shopping_list.all_shopping_lists' | trans }}
+                        {{ 'shopping_list.create_new_list' | trans }}
                     </a>
                 </div>
-            {% endif %}
-            <div class="col col--bottom-indent col--mobile-expand">
-                <a href="{{ path('shopping-list') }}" class="button button--mobile-tight button--expand">
-                    {% include atom('icon') with {
-                        modifiers: ['create-list'],
-                        data: {
-                            name: 'create-list'
-                        }
-                    } only %}
-                    {{ 'shopping_list.create_new_list' | trans }}
-                </a>
             </div>
         </div>
-    {% endblock %}
+    </div>
 {% endblock %}

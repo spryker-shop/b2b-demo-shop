@@ -1,5 +1,5 @@
-import Component from 'ShopUi/models/component';
 import FormattedNumberInput from 'ShopUi/components/molecules/formatted-number-input/formatted-number-input';
+import Component from 'ShopUi/models/component';
 
 export default class QuantityCounter extends Component {
     protected incrementButton: HTMLButtonElement;
@@ -8,8 +8,6 @@ export default class QuantityCounter extends Component {
     protected value: number;
     protected duration = 1000;
     protected timeout = 0;
-    protected eventChange: Event = new Event('change');
-    protected eventInput: Event = new Event('input');
     protected numberOfDecimalPlaces = 10;
     protected formattedNumberInput: FormattedNumberInput;
 
@@ -27,64 +25,61 @@ export default class QuantityCounter extends Component {
     }
 
     protected mapEvents(): void {
-        this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
-        this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
-        this.input.addEventListener('keydown', (event: KeyboardEvent) => this.onKeyDown(event));
+        this.decrementButton.addEventListener('click', (event) => this.onChangeQuantity(event, 'decrease'));
+        this.incrementButton.addEventListener('click', (event) => this.onChangeQuantity(event, 'increase'));
+        this.input?.addEventListener('keydown', (event: KeyboardEvent) => this.onKeyDown(event));
 
         if (this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
         }
     }
 
-    protected incrementValue(event: Event): void {
+    protected onChangeQuantity(event: Event, type: 'decrease' | 'increase'): void {
         event.preventDefault();
-        if (this.isAvailable) {
-            const value = this.formattedNumberInput.unformattedValue;
 
-            const potentialValue = Number(
-                ((value * this.precision + this.step * this.precision) / this.precision).toFixed(
-                    this.numberOfDecimalPlaces,
-                ),
-            );
-
-            if (value < this.maxQuantity) {
-                this.input.value = potentialValue.toString();
-                this.triggerInputEvent();
-            }
+        if (!this.isAvailable) {
+            return;
         }
-    }
 
-    protected decrementValue(event: Event): void {
-        event.preventDefault();
-        if (this.isAvailable) {
-            const value = this.formattedNumberInput.unformattedValue;
-            const potentialValue = Number(
-                ((value * this.precision - this.step * this.precision) / this.precision).toFixed(
-                    this.numberOfDecimalPlaces,
-                ),
-            );
+        const value = this.formattedNumberInput.unformattedValue;
+        const step = this.step * this.precision;
+        const calculatedValue = type === 'increase' ? value * this.precision + step : value * this.precision - step;
+        const potentialValue = Number((calculatedValue / this.precision).toFixed(this.numberOfDecimalPlaces));
+        const shouldUpdate = value < this.maxQuantity || potentialValue >= this.minQuantity;
 
-            if (potentialValue >= this.minQuantity) {
-                this.input.value = potentialValue.toString();
-                this.triggerInputEvent();
-            }
+        if (!shouldUpdate) {
+            return;
         }
+
+        this.input.value = potentialValue.toString();
+
+        if (this.isAjaxMode) {
+            this.delayToSubmit(true);
+
+            return;
+        }
+
+        this.input.dispatchEvent(new Event('change'));
+        this.input.dispatchEvent(new Event('input'));
     }
 
-    protected triggerInputEvent(): void {
-        this.input.dispatchEvent(this.eventChange);
-        this.input.dispatchEvent(this.eventInput);
-    }
-
-    protected delayToSubmit(): void {
+    protected delayToSubmit(triggerInput = false): void {
         clearTimeout(this.timeout);
-        this.timeout = window.setTimeout(() => this.onSubmit(), this.duration);
-    }
+        this.timeout = window.setTimeout(() => {
+            if (this.value === this.getValue) {
+                return;
+            }
 
-    protected onSubmit(): void {
-        if (this.value !== this.getValue) {
-            this.input.form.submit();
-        }
+            if (this.isAjaxMode && triggerInput) {
+                this.input.dispatchEvent(new Event('input', { bubbles: true }));
+                this.input.dispatchEvent(new Event('change', { bubbles: true }));
+                return;
+            }
+
+            if (!this.isAjaxMode) {
+                this.input.form.submit();
+            }
+        }, this.duration);
     }
 
     protected onKeyDown(event: KeyboardEvent): void {
@@ -123,5 +118,9 @@ export default class QuantityCounter extends Component {
 
     protected get precision(): number {
         return Number(`1${'0'.repeat(this.numberOfDecimalPlaces)}`);
+    }
+
+    protected get isAjaxMode(): boolean {
+        return !!this.input.getAttribute('data-ajax-mode');
     }
 }

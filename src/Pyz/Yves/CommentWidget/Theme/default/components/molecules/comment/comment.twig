@@ -10,6 +10,7 @@
     returnUrl: required,
     idCustomer: null,
     filterName: required,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% set shouldShowTagForm = data.comment.tagNames | length != data.availableCommentTags | length and data.idCustomer is not null %}
@@ -24,10 +25,11 @@
                 {% include molecule('comment-tag-form', 'CommentWidget') with {
                     class: 'col ' ~ jsTargetSelector,
                     data: {
-                        action: path('comment/tag/add', {'uuid': data.comment.uuid }),
+                        action: path(data.ajaxTriggerAttribute ? 'comment/tag/async/add' : 'comment/tag/add', {'uuid': data.comment.uuid }),
                         availableTags: data.availableCommentTags,
                         tagNames: data.comment.tagNames,
                         returnUrl: data.returnUrl,
+                        ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                     },
                 } only %}
             {% endif %}
@@ -54,6 +56,13 @@
                         idCustomer: data.idCustomer,
                         jsTriggerSelector: jsTriggerSelector,
                         jsTargetSelector: jsTargetSelector,
+                        ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                        submit: {
+                            action: path(data.ajaxTriggerAttribute ? 'comment/async/update' : 'comment/update'),
+                        },
+                        remove: {
+                            action: path(data.ajaxTriggerAttribute ? 'comment/async/remove' : 'comment/remove'),
+                        },
                     },
                 } only %}
             {% endblock %}
@@ -70,6 +79,7 @@
                             uuid: data.comment.uuid,
                             returnUrl: data.returnUrl,
                             idCustomer: data.idCustomer,
+                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                         },
                     } only %}
                 {% endif %}
