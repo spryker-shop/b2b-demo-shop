@@ -26,6 +26,7 @@ jobs:
         env:
             APPLICATION_ENV: ci.mysql
             APPLICATION_STORE: DE
+            SPRYKER_CURRENT_REGION: EU
             PROJECT: suite
 
         services:
@@ -152,6 +153,31 @@ jobs:
             -   name: Run Evaluator for all branches
                 run: vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER --format=compact
 
+    php-83-mariadb-glue-alpine-dynamic-store-off:
+        name: "PHP 8.3 / MariaDB / Glue / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.api.mariadb.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk testing codecept fixtures
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.api.yml
+
     php-83-mariadb-glue-alpine:
         name: "PHP 8.3 / MariaDB / Glue / Alpine"
         if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
@@ -160,6 +186,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -170,8 +198,34 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.api.mariadb.yml -v
-                    docker/sdk up -t -v
+                    docker/sdk boot deploy.ci.api.mariadb.yml
+                    docker/sdk up -t
+                    docker/sdk testing codecept fixtures
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.api.yml
+
+
+    php-83-postgresql-glue-alpine-dynamic-store-off:
+        name: "PHP 8.3 / PostgreSQL / Glue / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.api.dynamic-store-off.yml
+                    docker/sdk up -t
                     docker/sdk testing codecept fixtures
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -185,6 +239,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -195,12 +251,36 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.api.yml -v
-                    docker/sdk up -t -v
+                    docker/sdk boot deploy.ci.api.yml
+                    docker/sdk up -t
                     docker/sdk testing codecept fixtures
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.api.yml
+
+    php-83-mariadb-acceptance-alpine-dynamic-store-off:
+        name: "PHP 8.3 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-83-mariadb-acceptance-alpine:
         name: "PHP 8.3 / MariaDB / Acceptance / Alpine"
@@ -210,6 +290,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -220,7 +302,31 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+                    docker/sdk boot deploy.ci.acceptance.mariadb.yml
+                    docker/sdk up -t
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.acceptance.yml
+
+    php-83-postgresql-acceptance-alpine-dynamic-store-off:
+        name: "PHP 8.3 / PostgreSQL / Acceptance / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml
                     docker/sdk up -t
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -234,6 +340,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -244,14 +352,14 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.yml
+                    docker/sdk boot deploy.ci.acceptance.yml
                     docker/sdk up -t
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.acceptance.yml
 
-    php-83-mariadb-functional-alpine:
-        name: "PHP 8.3 / MariaDB / Functional / Alpine"
+    php-83-mariadb-functional-alpine-dynamic-store-off:
+        name: "PHP 8.3 / MariaDB / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -260,6 +368,7 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
             -   name: Install docker-compose
                 run: |
                     sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -267,8 +376,57 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.functional.mariadb.yml -v
-                    docker/sdk up -t -v
+                    docker/sdk boot deploy.ci.functional.mariadb.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.functional.yml
+
+    php-83-mariadb-functional-alpine:
+        name: "PHP 8.3 / MariaDB / Functional / Alpine"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.functional.mariadb.yml
+                    docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.functional.yml
+
+    php-83-postgresql-functional-alpine-dynamic-store-off:
+        name: "PHP 8.3 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.functional.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
 
@@ -280,6 +438,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -290,11 +450,36 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.functional.yml
+                    docker/sdk boot deploy.ci.functional.yml
                     docker/sdk up -t
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
+
+    php-82-mariadb-glue-alpine-dynamic-store-off:
+        name: "PHP 8.2 / MariaDB / Glue / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.api.mariadb.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk testing codecept fixtures
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.api.yml
 
     php-82-mariadb-glue-alpine:
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
@@ -303,6 +488,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -314,15 +501,15 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.api.mariadb.yml -v
-                    docker/sdk up -t -v
+                    docker/sdk boot deploy.ci.api.mariadb.yml
+                    docker/sdk up -t
                     docker/sdk testing codecept fixtures
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.api.yml
 
-    php-82-postgresql-acceptance-alpine:
-        name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine"
+    php-82-postgresql-acceptance-alpine-dynamic-store-off:
+        name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -331,6 +518,32 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.acceptance.yml
+
+    php-82-postgresql-acceptance-alpine:
+        name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
+
+        steps:
+            -   uses: actions/checkout@v4
             -   name: Install docker-compose
                 run: |
                     sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -339,12 +552,36 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.yml
+                    docker/sdk boot deploy.ci.acceptance.yml
                     docker/sdk up -t
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.acceptance.yml
 
+
+    php-82-postgresql-functional-alpine-dynamic-store-off:
+        name: "PHP 8.2 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.functional.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.functional.yml
 
     php-82-postgresql-functional-alpine:
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine"
@@ -354,6 +591,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -365,11 +604,35 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.functional.yml
+                    docker/sdk boot deploy.ci.functional.yml
                     docker/sdk up -t
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
+
+    php-82-mariadb-acceptance-alpine-dynamic-store-off:
+        name: "PHP 8.2 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-82-mariadb-acceptance-alpine:
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine"
@@ -379,6 +642,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -390,12 +655,35 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+                    docker/sdk boot deploy.ci.acceptance.mariadb.yml
                     docker/sdk up -t
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.acceptance.yml
 
+
+    php-82-mariadb-functional-alpine-dynamic-store-off:
+        name: "PHP 8.2 / MariaDB / Functional / Alpine / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.functional.mariadb.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.functional.yml
 
     php-82-mariadb-functional-alpine:
         name: "PHP 8.2 / MariaDB / Functional / Alpine"
@@ -405,6 +693,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -416,11 +706,34 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.functional.mariadb.yml -v
-                    docker/sdk up -t -v
+                    docker/sdk boot deploy.ci.functional.mariadb.yml
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
 
+
+    php-82-postgres-functional-debian-dynamic-store-off:
+        name: "PHP 8.2 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
+        runs-on: ubuntu-22.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install docker-compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+            -   name: Run docker
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.functional.dynamic-store-off.yml
+                    docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept run -c codeception.functional.yml
 
     php-82-postgres-functional-debian:
         name: "PHP 8.2 / PostgreSQL / Functional / Debian"
@@ -430,6 +743,8 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
             TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -441,8 +756,8 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.functional.yml -v
-                    docker/sdk up -t -v
+                    docker/sdk boot deploy.ci.functional.yml
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
 
@@ -465,8 +780,8 @@ jobs:
             -   run: docker run -t --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
             -   run: docker run -t --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
-    docker-alpine-php-8-2-mariadb-robot:
-        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot /API"
+    docker-alpine-php-8-2-mariadb-robot-dynamic-store-off:
+        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store OFF"
         if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -494,9 +809,9 @@ jobs:
                 continue-on-error: true
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+                    docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store-off.yml
                     sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local glue-backend.de.spryker.local glue-backend.at.spryker.local glue-storefront.de.spryker.local glue-storefront.at.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
-                    docker/sdk up -t -v
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     APPLICATION_STORE=AT docker/sdk console queue:worker:start --stop-when-empty
@@ -508,7 +823,7 @@ jobs:
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci-dynamic-store-off/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
                       --recursive \
                       --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
@@ -521,6 +836,8 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
             -   name: Install packages
@@ -541,26 +858,25 @@ jobs:
                 continue-on-error: true
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.yml
-                    sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local glue-backend.de.spryker.local glue-backend.at.spryker.local glue-storefront.de.spryker.local glue-storefront.at.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
-                    docker/sdk up -t -v
+                    docker/sdk boot deploy.ci.acceptance.robot.yml
+                    sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
-                    docker/sdk testing console queue:worker:start --stop-when-empty
-                    APPLICATION_STORE=AT docker/sdk console queue:worker:start --stop-when-empty
+                    docker/sdk console queue:worker:start --stop-when-empty
 
             -   name: Run Tests
                 run: |
-                    docker/sdk exec robot-framework robot -v env:api_b2b -v db_engine:psycopg2 -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.b2b .
+                    docker/sdk exec robot-framework robot -v env:api_b2b -v db_engine:psycopg2 -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.b2b .
 
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/${GITHUB_RUN_ID}/PHP8.3PostgreSQLRobot/ \
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp ./.robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/${GITHUB_RUN_ID}/PHP8.3PostgreSQLRobot/ \
                       --recursive \
                       --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
-    docker-alpine-php-8-3-mariadb-robot-dynamic-multistore:
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / API / Dynamic Multistore"
+    docker-alpine-php-8-3-mariadb-robot:
+        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / API"
         if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -568,17 +884,13 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Install packages
-                run: |
-                    sudo apt install awscli -q
-
-            -   name: Install robotframework-suite-tests folder
-                run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
-                    cp -r vendor ../vendor
+            -   name: Composer install
+                run: composer install
 
             -   name: Install docker-compose
                 run: |
@@ -588,23 +900,23 @@ jobs:
                 continue-on-error: true
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.api.mariadb.dynamic-store.robot.yml
+                    docker/sdk boot deploy.ci.api.mariadb.robot.yml
                     sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
-                    docker/sdk up -t -v
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+                    docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 run: |
                     docker/sdk exec robot-framework robot -v env:api_b2b -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.b2b .
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci-dynamic-multistore/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
                       --recursive \
                       --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
-    docker-alpine-php-8-3-mariadb-cypress:
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Cypress / UI"
+    docker-alpine-php-8-3-mariadb-cypress-dynamic-store-off:
+        name: "Docker / Alpine / PHP 8.3 / MariaDB / Cypress / UI / Dynamic Store OFF"
         if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -632,9 +944,9 @@ jobs:
                 continue-on-error: true
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.mariadb.cypress.yml
+                    docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store-off.cypress.yml
                     sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local glue-backend.de.spryker.local glue-backend.at.spryker.local glue-storefront.de.spryker.local glue-storefront.at.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
-                    docker/sdk up -t -v
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk cli console queue:worker:start --stop-when-empty
             -   name: Run Tests
@@ -652,8 +964,8 @@ jobs:
                       --recursive \
                       --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
-    docker-alpine-php-8-3-mariadb-cypress-dynamic-multistore:
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Cypress / UI / Dynamic Store"
+    docker-alpine-php-8-3-mariadb-cypress:
+        name: "Docker / Alpine / PHP 8.3 / MariaDB / Cypress / UI"
         if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -661,6 +973,8 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
 
@@ -681,9 +995,9 @@ jobs:
                 continue-on-error: true
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.cypress.yml
+                    docker/sdk boot deploy.ci.acceptance.mariadb.cypress.yml
                     sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
-                    docker/sdk up -t -v
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk cli console queue:worker:start --stop-when-empty
             -   name: Run Tests
@@ -701,8 +1015,8 @@ jobs:
                       --recursive \
                       --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
-    positive-docker-alpine-php-8-2-mariadb-robot-dynamic-multistore:
-        name: "[Hackathon] Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Multistore"
+    positive-docker-alpine-php-8-2-mariadb-robot:
+        name: "[Hackathon] Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
         if: "contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -710,6 +1024,8 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
 
@@ -730,23 +1046,23 @@ jobs:
                 continue-on-error: true
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot -v deploy.ci.api.mariadb.dynamic-store.robot.yml
+                    docker/sdk boot deploy.ci.api.mariadb.robot.yml
                     sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
-                    docker/sdk up -t -v
+                    docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+                    docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 run: |
                     docker/sdk exec robot-framework robot -v env:api_b2b -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.b2b.'*'.positive .
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci-dynamic-multistore/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
                       --recursive \
                       --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
-    negative-docker-alpine-php-8-2-mariadb-robot-dynamic-multistore:
-        name: "[Hackathon] Negative / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Multistore"
+    negative-docker-alpine-php-8-2-mariadb-robot:
+        name: "[Hackathon] Negative / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
         if: "contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -754,6 +1070,8 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
         steps:
             - uses: actions/checkout@v4
 
@@ -774,17 +1092,17 @@ jobs:
               continue-on-error: true
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot -v deploy.ci.api.mariadb.dynamic-store.robot.yml
+                  docker/sdk boot deploy.ci.api.mariadb.robot.yml
                   sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
-                  docker/sdk up -t -v
+                  docker/sdk up -t
                   docker/sdk cli composer dump-autoload -o -a --apcu
-                  SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+                  docker/sdk console queue:worker:start --stop-when-empty
             - name: Run Tests
               run: |
                   docker/sdk exec robot-framework robot -v env:api_b2b -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.b2b.'*'.negative .
             - name: Upload artifacts
               if: failure()
               run: |
-                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci-dynamic-multistore/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
+                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
