@@ -12,14 +12,13 @@ tag: '1.0'
 
 environment: docker.demo
 image:
-    tag: spryker/php:8.1
+    tag: spryker/php:8.2
     environment:
-        SPRYKER_DEFAULT_STORE: "DE"
-        SPRYKER_ACTIVE_STORES: "DE,AT"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
+        SPRYKER_DYNAMIC_STORE_MODE: true
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r pre-deploy.dynamic-store -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r production.dynamic-store --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive.dynamic-store --no-ansi -vvv"
         #AOP
         SPRYKER_AOP_APPLICATION: '{
           "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs.spryker.com/loader",
@@ -78,27 +77,12 @@ regions:
                 username: spryker
                 password: secret
 
-        stores:
-            DE:
-                services:
-                    broker:
-                        namespace: de_queue
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: de_search
-                    session:
-                        namespace: 2
-            AT:
-                services:
-                    broker:
-                        namespace: at_queue
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: at_search
-                    session:
-                        namespace: 2
+            broker:
+                namespace: eu_queue
+                key_value_store:
+                    namespace: 1
+                search:
+                    namespace: eu_search
 
 groups:
     EU:
@@ -107,44 +91,37 @@ groups:
             Yves:
                 application: yves
                 endpoints:
-                    www.de.cco-shared.cloud.spryker.toys:
-                        store: DE
+                    www.eu.cco-shared.cloud.spryker.toys:
+                        region: EU
                         <<: *frontend-auth
-                    www.at.cco-shared.cloud.spryker.toys:
-                        store: AT
-                        <<: *frontend-auth
+                        services:
+                            session:
+                                namespace: 1
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.cco-shared.cloud.spryker.toys:
-                        store: DE
+                    backoffice.eu.cco-shared.cloud.spryker.toys:
+                        region: EU
                         <<: *frontend-auth
-                    backoffice.at.cco-shared.cloud.spryker.toys:
-                        store: AT
-                        <<: *frontend-auth
+                        services:
+                            session:
+                                namespace: 2
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.cco-shared.cloud.spryker.toys:
-                        store: DE
-                    backend-gateway.at.cco-shared.cloud.spryker.toys:
-                        store: AT
+                    backend-gateway.eu.cco-shared.cloud.spryker.toys:
+                        region: EU
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.de.cco-shared.cloud.spryker.toys:
-                        store: DE
-                        entry-point: BackendApi
-                    backend-api.at.cco-shared.cloud.spryker.toys:
-                        store: AT
+                    backend-api.eu.cco-shared.cloud.spryker.toys:
+                        region: EU
                         entry-point: BackendApi
             Glue:
                 application: glue
                 endpoints:
-                    glue.de.cco-shared.cloud.spryker.toys:
-                        store: DE
-                    glue.at.cco-shared.cloud.spryker.toys:
-                        store: AT
+                    glue.eu.cco-shared.cloud.spryker.toys:
+                        region: EU
 services:
     database:
         engine: mysql
