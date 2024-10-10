@@ -12,6 +12,13 @@ use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig as SprykerCheckoutPageConfi
 class CheckoutPageConfig extends SprykerCheckoutPageConfig
 {
     /**
+     * @uses \SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR
+     *
+     * @var string|null
+     */
+    protected const SUCCESS_STEP_ESCAPE_ROUTE = 'checkout-error';
+
+    /**
      * @return array<string>
      */
     public function getLocalizedTermsAndConditionsPageLinks(): array
@@ -20,5 +27,13 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
             'en_US' => '/en/gtc',
             'de_DE' => '/de/agb',
         ];
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSuccessStepEscapeRoute(): ?string
+    {
+        return static::SUCCESS_STEP_ESCAPE_ROUTE;
     }
 }
