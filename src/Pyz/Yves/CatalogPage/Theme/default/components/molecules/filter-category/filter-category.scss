@@ -11,12 +11,16 @@
 
         &--lvl-3 {
             @include helper-breakpoint-media-min($lg) {
-                padding-left: 10px;
+                padding-left: rem(10);
             }
         }
     }
 
     &__menu-item {
+        display: flex;
+        flex-grow: 1;
+        color: $setting-color-gray-3;
+
         &--lvl-2 {
             &:first-child {
                 padding-top: rem(5);
@@ -33,6 +37,35 @@
                     padding-bottom: 0;
                 }
             }
+        }
+    }
+
+    &__category-row {
+        flex-grow: 1;
+    }
+
+    &__category-target {
+        @include helper-effect-transition(max-height);
+        overflow: hidden;
+        max-height: rem(10000);
+        opacity: 1;
+
+        &--hidden {
+            max-height: 0;
+            opacity: 0;
+        }
+    }
+
+    &__category-toggle-button {
+        color: $setting-color-gray-3;
+        @include helper-effect-transition(transform);
+        margin-right: rem(5);
+        background-color: $setting-color-transparent;
+        cursor: pointer;
+
+
+        &--collapsed {
+            transform: rotate(-90deg);
         }
     }
 
