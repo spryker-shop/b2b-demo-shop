@@ -29,7 +29,7 @@
                 {% endif %}
             {% endfor %}
 
-            {% if quantity > 0 %}
+            {% if quantity > 0 or (quantity == 0 and data.isEmptyCategoryFilterValueVisible) %}
                 {% if data.filterPath is not empty %}
                     {% set currentUrl = url(data.filterPath, {categoryPath: (app.request.attributes.get('categoryPath'))}) %}
                 {% else %}
@@ -52,6 +52,7 @@
                 {% set targetCategoryClassName = config.jsName ~ '__category-target-' ~ categoryNamePrepared %}
                 {% set targetTogglerClassName = config.jsName ~ '__toggler-target-' ~ categoryNamePrepared %}
                 {% set classToToggle = config.name ~ '__category-target' %}
+                {% set categoryTargetInner = config.name ~ '__category-target-inner' %}
                 {% set classToToggleModifier = classToToggle ~ '--hidden' %}
                 {% set toggleButtonClassName = config.name  ~ '__category-toggle-button' %}
 
@@ -99,16 +100,18 @@
 
                         {% if hasChildren %}
                             <div class="{{ classToToggle }} {{ targetCategoryClassName }}">
-                                {% include molecule('filter-category', 'CatalogPage') with {
-                                    data: {
-                                        filter: data.filter,
-                                        filterPath: data.filterPath,
-                                        categories: categoryNode.children,
-                                        levelMenu: data.levelMenu + 1,
-                                        parentJsName: data.parentJsName,
-                                        isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
-                                    },
-                                } only %}
+                                <div class="{{ categoryTargetInner }}">
+                                    {% include molecule('filter-category', 'CatalogPage') with {
+                                        data: {
+                                            filter: data.filter,
+                                            filterPath: data.filterPath,
+                                            categories: categoryNode.children,
+                                            levelMenu: data.levelMenu + 1,
+                                            parentJsName: data.parentJsName,
+                                            isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
+                                        },
+                                    } only %}
+                                </div>
                             </div>
                         {% endif %}
                     </div>

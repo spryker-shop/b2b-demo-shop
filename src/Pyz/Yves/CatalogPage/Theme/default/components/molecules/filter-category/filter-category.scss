@@ -49,15 +49,17 @@
     }
 
     &__category-target {
-        @include helper-effect-transition(max-height);
-        overflow: hidden;
-        max-height: rem(10000);
-        opacity: 1;
+        @include helper-effect-transition(grid-template-rows);
+        display: grid;
+        grid-template-rows: 1fr;
 
         &--hidden {
-            max-height: 0;
-            opacity: 0;
+            grid-template-rows: 0fr;
         }
+    }
+
+    &__category-target-inner {
+        overflow: hidden;
     }
 
     &__category-toggle-button {
