@@ -981,7 +981,6 @@ jobs:
             -   name: Install packages
                 run: |
                     sudo apt install awscli -q
-                    sudo apt install jq -q
 
             -   name: Install cypress-tests folder
                 run: |
@@ -1005,16 +1004,11 @@ jobs:
                 run: |
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec cypress-tests git log -2
-                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2c-mp" cypress-tests npm run cy:ci -- --reporter json --reporter-options output=results.json || echo "Initial test run failed, checking for retries..."
-                    if jq -e '.results | any(.state == "failed")' results.json > /dev/null; then
-                        echo "Retrying failed tests..."
-                        failed_tests=$(jq -r '.results[] | select(.state == "failed") | .title | join(" --spec ")' results.json)
-                        for test in $failed_tests; do
-                            docker/sdk exec --env "ENV_REPOSITORY_ID=b2c-mp" cypress-tests npm run cy:ci -- --spec "$test" || echo "Retry of test $test failed"
-                        done
-                    else
-                        echo "All tests passed, no retries needed."
-                    fi
+                    for i in 1 2; do
+                      docker/sdk exec --env "ENV_REPOSITORY_ID=b2c" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
+                      sleep 1
+                    done
+                    (exit $s)
             -   name: Upload artifacts
                 if: failure()
                 run: |
