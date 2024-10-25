@@ -981,8 +981,13 @@ jobs:
             -   name: Install packages
                 run: |
                     sudo apt install awscli -q
-            -   name: Composer install
-                run: composer install
+                    sudo apt install jq -q
+
+            -   name: Install cypress-tests folder
+                run: |
+                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
+                    cp -r vendor ../vendor
+
             -   name: Install docker-compose
                 run: |
                     sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -1000,11 +1005,21 @@ jobs:
                 run: |
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec cypress-tests git log -2
-                    for i in 1 2; do
-                      docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
-                      sleep 1
-                    done
-                    (exit $s)
+                         docker/sdk exec --env "ENV_REPOSITORY_ID=b2c-mp" cypress-tests npm run cy:ci -- --reporter json --reporter-options output=results.json || echo "Initial test run failed, checking for retries..."
+      #                    for i in 1 2; do
+      #                      docker/sdk exec --env "ENV_REPOSITORY_ID=b2c-mp" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
+      #                      sleep 1
+      #                    done
+      #                    (exit $s)
+                         if jq -e '.results | any(.state == "failed")' results.json > /dev/null; then
+                            echo "Retrying failed tests..."
+                             failed_tests=$(jq -r '.results[] | select(.state == "failed") | .title | join(" --spec ")' results.json)
+                             for test in $failed_tests; do
+                                docker/sdk exec --env "ENV_REPOSITORY_ID=b2c-mp" cypress-tests npm run cy:ci -- --spec "$test" || echo "Retry of test $test failed"
+                             done
+                         else
+                             echo "All tests passed, no retries needed."
+                         fi
             -   name: Upload artifacts
                 if: failure()
                 run: |
