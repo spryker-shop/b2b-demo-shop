@@ -13,6 +13,7 @@
     formattedNumberExtraClasses: '',
     inputExtraClasses: '',
     numberFormatConfig: {},
+    ajaxTriggerAttribute: '',
 } %}
 
 {% set isEditable = not data.isReadOnly and not data.isDisabled %}
@@ -29,7 +30,7 @@
 
 {% block attributes %}{% endblock %}
 
-{% set inputAttributes = attributes %}
+{% set inputAttributes = attributes | merge(data.ajaxTriggerAttribute ? { 'data-ajax-mode': data.ajaxTriggerAttribute,  (data.ajaxTriggerAttribute): 'change', } : {}) %}
 
 {% set inputAttributeFilters = {
     type: false,

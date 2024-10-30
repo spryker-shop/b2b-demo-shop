@@ -2,6 +2,8 @@
 
 {% block body %}
     {% if data.isQuoteEditable %}
+        {% set formActionRoute = data.ajaxTriggerAttribute ? 'cart-code/code-async/add' : 'cart-code/code/add' %}
+
         {% include molecule('form') with {
             modifiers: ['discount-voucher'],
             data: {
@@ -10,9 +12,10 @@
                     enable: true,
                     text: 'cart.voucher.redeem' | trans,
                     class: 'button button--hollow-icon',
+                    attributes: data.ajaxTriggerAttribute,
                 },
                 options: {
-                    action: path('cart-code/code/add'),
+                    action: data.redirectRoute ? path(formActionRoute, {'redirectRouteName': data.redirectRoute}) : path(formActionRoute)
                 },
             },
         } only %}

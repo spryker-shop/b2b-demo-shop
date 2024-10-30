@@ -7,20 +7,24 @@
         action: path('product-quick-add')
     },
     submitButtonTitle: _widget.submitButtonTitle,
-    verticalLayout: _widget.verticalLayout
+    verticalLayout: _widget.verticalLayout,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% block body %}
     {% set formModifiers = data.verticalLayout ? [] : ["row"] %}
+    {% set options = data.options | merge({action: data.ajaxTriggerAttribute ? path('cart/async/quick-add') : data.options.action }) %}
+
     {% embed molecule('product-quick-add-form', 'ProductSearchWidget') with {
         class: "grid grid--middle",
         modifiers: formModifiers,
         data: {
             title: data.title,
             form: data.form,
-            options: data.options,
+            options: options,
             submitButtonTitle: data.submitButtonTitle,
-            verticalLayout: data.verticalLayout
+            verticalLayout: data.verticalLayout,
+            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
         }
     } only %}
         {% block body %}
@@ -41,7 +45,7 @@
                     {% endblock %}
 
                     <div class="col col--sm-12 {{ data.verticalLayout ? '' : 'col--md-2' }}">
-                        <button type="submit" class="{{ config.name }}__button button button--expand button--success">
+                        <button {{ data.ajaxTriggerAttribute }} type="submit" class="{{ config.name }}__button button button--expand button--success">
                             {{ data.submitButtonTitle }}
                         </button>
                     </div>

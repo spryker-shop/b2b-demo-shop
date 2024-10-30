@@ -1,8 +1,10 @@
 {% extends view('cart-operations-actions', '@SprykerShop:MultiCartWidget') %}
 
 {% block body %}
-    {{ form_start(data.multiCartClearForm, {'action': path('multi-cart/clear', {'idQuote': data.idQuote}) }) }}
-        <button class="link link link--icon" data-init-single-click>
+    {{ form_start(data.multiCartClearForm, {
+        'action': path(data.ajaxTriggerAttribute ? 'multi-cart-async/clear' : 'multi-cart/clear', {'idQuote': data.idQuote}),
+    })}}
+        <button {{ data.ajaxTriggerAttribute }} class="link link link--icon" data-init-single-click>
             {% include atom('icon') with {
                 modifiers: ['link'],
                 data: {

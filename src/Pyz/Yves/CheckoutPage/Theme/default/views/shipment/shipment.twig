@@ -39,7 +39,7 @@
                         {% do shipmentGroupForm.hash.setRendered %}
                     {% endif %}
 
-                    <article class="col col--sm-12 grid grid--gap spacing-bottom spacing-bottom--big">
+                    <article class="col col--sm-12 grid grid--gap spacing-bottom spacing-bottom--big" data-qa="multi-shipment-group">
                         <h3 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
                             {{ 'page.checkout.shipment.shipment_group_heading' | trans({
                                 '%current%': loop.index | executeFilterIfExists('formatInt', app.locale),

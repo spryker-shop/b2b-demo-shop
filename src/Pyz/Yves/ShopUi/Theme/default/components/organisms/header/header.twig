@@ -12,6 +12,8 @@
     user: app['user'],
     showUserMenu: not (hideUserMenu | default(false)),
     cartQuantity: functionExists('getCartQuantity') ? getCartQuantity() : (cartQuantity is defined ? cartQuantity : app['cart.quantity'] | default),
+    isAjaxMode: false,
+    ajaxCartUrl: '',
 } %}
 
 {% block body %}
@@ -129,6 +131,8 @@
                                 data: {
                                     user: data.user,
                                     cartQuantity: data.cartQuantity,
+                                    isAjaxMode: data.isAjaxMode,
+                                    ajaxCartUrl: data.ajaxCartUrl,
                                 },
                             } only %}
                         {% else %}

@@ -9,6 +9,7 @@
     availableCommentTags: required,
     returnUrl: required,
     idCustomer: null,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% define attributes = {
@@ -25,6 +26,7 @@
                 returnUrl: data.returnUrl,
                 idCustomer: data.idCustomer,
                 filterName: attributes.name,
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
         } only %}
     {% endfor %}

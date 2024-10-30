@@ -14,6 +14,13 @@
     idCustomer: null,
     jsTriggerSelector: 'js-' ~ config.name ~ '__trigger-' ~ data.comment.uuid,
     jsTargetSelector: 'js-' ~ config.name ~ '__target-' ~ data.comment.uuid,
+    ajaxTriggerAttribute: null,
+    submit: {
+        action: '',
+    },
+    remove: {
+        action: '',
+    },
 } %}
 
 {% block body %}
@@ -45,6 +52,7 @@
                                     uuid: data.comment.uuid,
                                     returnUrl: data.returnUrl,
                                     idCustomer: data.idCustomer,
+                                    ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                                 },
                             } only %}
                         {% endif %}
@@ -58,7 +66,7 @@
                             } only %}
                             {{ 'comment_widget.form.edit_comment' | trans }}
                         </button>
-                        <button action="{{ path('comment/remove') }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
+                        <button {{ data.ajaxTriggerAttribute }} formaction="{{ data.remove.action }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
                             {% include atom('icon') with {
                                 data: {
                                     name: 'delete',
@@ -75,7 +83,7 @@
                     {{ messageField }}
                     {{ uuidField }}
                     {{ returnUrlField }}
-                    <button action="{{ path('comment/update') }}" class="button button--small {{ config.jsName }}__submit-button">
+                    <button {{ data.ajaxTriggerAttribute }} formaction="{{ data.submit.action }}" class="button button--small {{ config.jsName }}__submit-button">
                         {{ 'comment_widget.form.update_comment' | trans }}
                     </button>
                     <button class="button button--small button--hollow-icon button--back {{ data.jsTriggerSelector }}">

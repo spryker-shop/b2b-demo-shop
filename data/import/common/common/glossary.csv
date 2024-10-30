@@ -587,8 +587,6 @@ customer.error.confirm_email_link.invalid_or_used,This email verification link i
 customer.error.confirm_email_link.invalid_or_used,Dieser E-Mail-Verifizierungslink ist ungültig oder wurde bereits verwendet.,de_DE
 customer.authorization.validate_email_address,"Almost there! We send you an email to validate your email address. Please confirm it to be able to log in.",en_US
 customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
-customer.authorization.invalid_account,"If this E-mail address is already in use, you will receive a password reset link. Otherwise, you must first validate your E-mail address to finish registration. Please check your E-mail.",en_US
-customer.authorization.invalid_account,"Wenn die E-Mail bereits genutzt wird, werden Sie einen Passwortresetlink erhalten. Wenn nicht dann müssen Sie erst Ihre Emailadresse verifizieren. Bitte prüfen Sie ihre Email.",de_DE
 customer.profile.change.success,Profile was successfully saved,en_US
 customer.profile.change.success,Profil wurde erfolgreich gespeichert,de_DE
 customer.password.invalid_password,Current password is wrong,en_US
@@ -781,8 +779,8 @@ newsletter.subscription.already_subscribed,You are already subscribed to the new
 newsletter.subscription.already_subscribed,Sie sind bereits für den Newsletter angemeldet,de_DE
 newsletter.subscription.email_format_invalid,Invalid Email address format,en_US
 newsletter.subscription.email_format_invalid,Ungültiges E-Mail-Adressformat,de_DE
-customer.authentication.failed,Authentication failed,en_US
-customer.authentication.failed,Authentifizierung fehlgeschlagen,de_DE
+customer.authentication.failed,Please check that your E-mail address and password are correct and that you have confirmed your E-mail address by clicking the link in the registration message,en_US
+customer.authentication.failed,"Bitte stelle sicher, dass deine E-Mail-Adresse und Passwort richtig sind und dass du deine E-Mail-Adresse durch Klicken auf den Link in der Bestätigungsnachricht bestätigt" hast,de_DE
 customer.email.invalid,Email address is invalid,en_US
 customer.email.invalid,E-Mail Adresse ist ungültig,de_DE
 customer.email.format.invalid,Invalid Email address format,en_US
@@ -883,16 +881,20 @@ dynamic_entity.validation.persistence_failed,"Failed to persist the data for `%e
 dynamic_entity.validation.persistence_failed,"Das Speichern der Daten ist fehlgeschlagen für `%errorPath%`. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut.",de_DE
 dynamic_entity.validation.persistence_failed_duplicate_entry,"Failed to persist the data for `%errorPath%`. Please verify the provided data and try again. Entry is duplicated.",en_US
 dynamic_entity.validation.persistence_failed_duplicate_entry,"Das Speichern der Daten ist fehlgeschlagen für `%errorPath%`. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut. Eintrag is doppelt vorhanden.",de_DE
+dynamic_entity.validation.persistence_failed_not_nullable_field,"Failed to persist the data for `%errorPath%`. Please verify the provided data and try again. Field must not be null.",en_US
+dynamic_entity.validation.persistence_failed_not_nullable_field,"Das Speichern der Daten ist fehlgeschlagen für `%errorPath%`. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut. Das Feld darf nicht null sein.",de_DE
+dynamic_entity.validation.delete_foreign_key_constraint_fails,"Failed to delete the data for `%errorPath%`. The entity has a child entity and can not be deleted. Child entity: `%childEntity%`.",en_US
+dynamic_entity.validation.delete_foreign_key_constraint_fails,"Die Daten für `%errorPath%` konnten nicht gelöscht werden. Die Entität hat eine untergeordnete Entität und kann nicht gelöscht werden. Untergeordnete Entität: `%childEntity%`.",de_DE
 dynamic_entity.validation.entity_does_not_exist,"The entity `%errorPath%` could not be found in the database.",en_US
 dynamic_entity.validation.entity_does_not_exist,"Die Entität `%errorPath%` konnte in der Datenbank nicht gefunden werden.",de_DE
 dynamic_entity.validation.invalid_field_type,"Invalid data type `%errorPath%` for field `%fieldName%`",en_US
 dynamic_entity.validation.invalid_field_type,"Ungültiger Datentyp `%errorPath%` für das Feld `%fieldName%`",de_DE
 dynamic_entity.validation.invalid_field_value,"Invalid data value `%errorPath%` for field: `%fieldName%`. Field rules: %validationRules%",en_US
 dynamic_entity.validation.invalid_field_value,"Ungültiger Datenwert `%errorPath%` für das Feld: `%fieldName%`. Feldregeln: %validationRules%",de_DE
-dynamic_entity.validation.required_field_is_missing,"The required field must not be empty. Field: '%errorPath%.%fieldName%'",en_US
-dynamic_entity.validation.required_field_is_missing,"Das erforderlich Feld darf nicht leer sein. Feld: '%errorPath%.%fieldName%'",de_DE
-dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entity `%identifier%` not found by identifier, and new identifier can not be persisted. Please update the request.",en_US
-dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entität `%identifier%` konnte anhand der ID nicht gefunden werden, und die neue ID kann nicht dauerhaft gespeichert werden. Bitte aktualisieren Sie die Anfrage.",de_DE
+dynamic_entity.validation.required_field_is_missing,"The required field must not be empty. Field: `%errorPath%.%fieldName%`",en_US
+dynamic_entity.validation.required_field_is_missing,"Das erforderlich Feld darf nicht leer sein. Feld: `%errorPath%.%fieldName%`",de_DE
+dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entity `%errorPath%.%identifier%` not found by identifier, and new identifier can not be persisted. Please update the request.",en_US
+dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entität `%errorPath%.%identifier%` konnte anhand der ID nicht gefunden werden, und die neue ID kann nicht dauerhaft gespeichert werden. Bitte aktualisieren Sie die Anfrage.",de_DE
 dynamic_entity.validation.modification_of_immutable_field_prohibited,"Modification of immutable field `%errorPath%.%fieldName%` is prohibited",en_US
 dynamic_entity.validation.modification_of_immutable_field_prohibited,"Änderung des unveränderlichen Feldes `%errorPath%.%fieldName%` ist nicht zulässig.",de_DE
 dynamic_entity.validation.missing_identifier,"Incomplete Request - missing identifier for `%errorPath%`",en_US
@@ -907,6 +909,10 @@ dynamic_entity.validation.configuration_not_found,"Dynamic entity configuration 
 dynamic_entity.validation.configuration_not_found,"Dynamische Entitätskonfiguration für Tabellenalias `%aliasName%` nicht gefunden.",de_DE
 dynamic_entity.validation.filter_field_not_found,"Filter field `%filterField%` for table alias `%aliasName%` not found.",en_US
 dynamic_entity.validation.filter_field_not_found,"Filterfeld `%filterField%` für Tabellen alias `%aliasName%` nicht gefunden.",de_DE
+dynamic_entity.validation.invalid_url,"The URL is invalid. `%errorPath%` field `%fieldName%` must have a URL data format.",en_US
+dynamic_entity.validation.invalid_url,"Die URL ist ungültig. `%errorPath%` Feld `%fieldName%` muss ein URL-Datenformat haben.",de_DE
+dynamic_entity.validation.method_not_allowed,"Method not allowed for the entity `%aliasName%`.",en_US
+dynamic_entity.validation.method_not_allowed,"Die Methode ist für die Entität nicht zulässig `%aliasName%`.",de_DE
 validator.constraints.password.do_not_match,Passwords don't match,en_US
 validator.constraints.password.do_not_match,Passwörter stimmen nicht überein,de_DE
 discount.successfully.applied,"The discount ""display_name"" has been successfully applied",en_US

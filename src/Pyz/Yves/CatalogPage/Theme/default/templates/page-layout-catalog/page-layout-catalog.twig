@@ -63,6 +63,7 @@
                             filteredFacets: data.filteredFacets,
                             filterPath: data.filterPath,
                             categories: data.categories,
+                            isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
                             parentJsName: catalogJsName,
                             numberFormatConfig: numberFormatConfig,
                         },
@@ -104,10 +105,11 @@
                 <div class="grid grid--stretch grid--gap">
                     {% if data.products %}
                         {% for product in data.products %}
-                            {% widget 'CatalogPageProductWidget' args [
-                                product,
-                                data.viewMode,
-                            ] only %}
+                            {% widget 'CatalogPageProductWidget' args [product, data.viewMode] with {
+                                data: {
+                                    eventRevealer: data.isAjaxHeader ? 'CART_UPDATE_EVENT' : null,
+                                },
+                            } only %}
                             {% endwidget %}
                         {% endfor %}
                     {% else %}
