@@ -29,6 +29,16 @@ class CompanyRegistrationCest
      *
      * @return void
      */
+    public function _before(CompanyUserPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
+     * @param \PyzTest\Yves\CompanyUser\CompanyUserPresentationTester $i
+     *
+     * @return void
+     */
     public function testICanOpenRegistrationPage(CompanyUserPresentationTester $i): void
     {
         $i->amOnPage(CompanyRegistrationPage::URL);
