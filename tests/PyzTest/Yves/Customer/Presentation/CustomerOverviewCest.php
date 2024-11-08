@@ -29,6 +29,16 @@ class CustomerOverviewCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     *
+     * @return void
+     */
+    public function _before(CustomerPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
+     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
      *
      * @return void

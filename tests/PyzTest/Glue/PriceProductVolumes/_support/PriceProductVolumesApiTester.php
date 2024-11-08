@@ -75,7 +75,7 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
                 ->fromArray($volumePrice, true)
                 ->setNetAmount($volumePrice[PriceProductVolumeConfig::VOLUME_PRICE_NET_PRICE])
                 ->setGrossAmount($volumePrice[PriceProductVolumeConfig::VOLUME_PRICE_GROSS_PRICE])
-                ->toArray();
+                ->toArray(true, true);
         }, $volumePrices);
     }
 }
