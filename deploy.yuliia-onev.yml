@@ -37,35 +37,26 @@ x-frontend-auth: &frontend-auth
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
 
-namespace: yuliia-onev
+namespace: yuliia_onev
 tag: '1.0'
 
 environment: docker.production
 image:
-    tag: spryker/php:8.2
+    tag: spryker/php:8.3
     environment:
-        SPRYKER_DEFAULT_STORE: "US"
-        SPRYKER_ACTIVE_STORES: "US"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r US/pre-deploy -vvv "
+        SPRYKER_DEFAULT_STORE: "DE"
+        SPRYKER_ACTIVE_STORES: "DE,AT"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy.dynamic-store-off -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r US/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r docker --no-ansi -vvv"
-        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator.yuliia-onev.cloud.spryker.toys
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production.dynamic-store-off --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive.dynamic-store-off --no-ansi -vvv"
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: dtc.yuliia-onev.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
-        SPRYKER_YVES_HOST_US: us.yuliia-onev.cloud.spryker.toys
-
-        #AOP
-        SPRYKER_TENANT_IDENTIFIER: "AOP_Demo_B2B-DE"
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: "https://sam-publish.mb-staging.acp.demo-spryker.com/"
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: "https://sam-consume.mb-staging.acp.demo-spryker.com/"
-
-        SPRYKER_AOP_APPLICATION: '{
-            "APP_DOMAINS": [
-                "os.apps-staging.aop.demo-spryker.com",
-                "*.bazaarvoice.com"
-            ],
-            "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs-staging.demo-spryker.com/loader"
-        }'
+        SPRYKER_YVES_HOST_DE: www.de.yuliia-onev.cloud.spryker.toys
+        SPRYKER_YVES_HOST_AT: www.at.yuliia-onev.cloud.spryker.toys
+        SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PUBLIC_KEY: 'BGqNWbv0hWM5CQ1-KwAfSQBMC6TMVFyrnh3vQp37oGCNvQ6eG_HyMjxBFJRWeCPTbzDoxcjhxLJS8Ck8r1G2oFw'
+        SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PRIVATE_KEY: 'UK6DywwjKITPpRHBSY9TLPIXm6BPrHX40sseIoXT9c8'
+        SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
     node:
         version: 18
         npm: 9
@@ -83,11 +74,11 @@ assets:
             level: 5
 
 regions:
-    US:
+    EU:
         services:
             mail:
                 sender:
-                    name: Iron Mountain No-Reply
+                    name: scos2-b2b-No-Reply
                     email: no-reply@yuliia-onev.cloud.spryker.toys
             database:
                 database: yuliia_onev
@@ -95,71 +86,85 @@ regions:
                 password: secret
 
         stores:
-            US:
+            DE:
                 services:
                     broker:
-                        namespace: us_queue
+                        namespace: de_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: us_search
+                        namespace: de_search
+                    session:
+                        namespace: 2
+            AT:
+                services:
+                    broker:
+                        namespace: at_queue
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: at_search
                     session:
                         namespace: 2
 
 groups:
-    US:
-        region: US
+    EU:
+        region: EU
         applications:
             yves:
                 application: yves
                 endpoints:
                     dtc.yuliia-onev.cloud.spryker.toys:
                         entry-point: Configurator
-                    www.us.yuliia-onev.cloud.spryker.toys:
-                        store: US
+                    www.de.yuliia-onev.cloud.spryker.toys:
+                        store: DE
+                    www.at.yuliia-onev.cloud.spryker.toys:
+                        store: AT
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.us.yuliia-onev.cloud.spryker.toys:
-                        store: US
+                    backoffice.de.yuliia-onev.cloud.spryker.toys:
+                        store: DE
+                    backoffice.at.yuliia-onev.cloud.spryker.toys:
+                        store: AT
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.us.yuliia-onev.cloud.spryker.toys:
-                        store: US
+                    backend-gateway.de.yuliia-onev.cloud.spryker.toys:
+                        store: DE
+                    backend-gateway.at.yuliia-onev.cloud.spryker.toys:
+                        store: AT
             glue:
                 application: glue
                 endpoints:
-                    glue.us.yuliia-onev.cloud.spryker.toys:
-                        store: US
+                    glue.de.yuliia-onev.cloud.spryker.toys:
+                        store: DE
+                        cors-allow-origin: '*'
+                    glue.at.yuliia-onev.cloud.spryker.toys:
+                        store: AT
                         cors-allow-origin: '*'
             gluestorefront:
                 application: glue-storefront
                 endpoints:
-                    glue-storefront.us.yuliia-onev.cloud.spryker.toys:
-                        store: US
+                    glue-storefront.de.yuliia-onev.cloud.spryker.toys:
+                        store: DE
+                        cors-allow-origin: '*'
+                    glue-storefront.at.yuliia-onev.cloud.spryker.toys:
+                        store: AT
                         cors-allow-origin: '*'
             gluebackend:
                 application: glue-backend
                 endpoints:
-                    glue-backend.us.yuliia-onev.cloud.spryker.toys:
-                        store: US
+                    glue-backend.de.yuliia-onev.cloud.spryker.toys:
+                        store: DE
                         cors-allow-origin: '*'
-            mportal:
-                application: merchant-portal
-                endpoints:
-                    mp.us.yuliia-onev.cloud.spryker.toys:
-                        entry-point: MerchantPortal
-                        store: US
-                        primal: true
-                        services:
-                            session:
-                                namespace: 7
-
+                    glue-backend.at.yuliia-onev.cloud.spryker.toys:
+                        store: AT
+                        cors-allow-origin: '*'
 services:
     database:
         engine: mysql
-        version: mariadb-10.11
+        version: mariadb-10.4
         root:
             username: "root"
             password: "secret"
@@ -202,6 +207,9 @@ services:
 
 docker:
 
+    blackfire:
+        enabled: true
+
     ssl:
         enabled: true
         redirect: true
@@ -212,7 +220,7 @@ docker:
             enabled: false
 
     testing:
-        store: US
+        store: DE
 
     mount:
         baked:
