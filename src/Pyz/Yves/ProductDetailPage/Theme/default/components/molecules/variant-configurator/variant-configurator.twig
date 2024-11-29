@@ -1,9 +1,33 @@
 {% extends molecule('variant-configurator', '@SprykerShop:ProductDetailPage') %}
 
 {% block variants %}
-    {% block variantsInner %}
-        {{ parent() }}
-    {% endblock %}
+    {% for name, values in data.superAttributes %}
+        {% set selectedValue = data.selectedAttributes[name] | default %}
+        {% set selectedValue = selectedValue in values ? selectedValue : null %}
+        {% set isAvailable = true %}
+        {% set formName = "#{attributeKey}[#{name}]" %}
+        {% set optionResetUrl = transformedParams
+            | filter((value, key) => key != formName)
+            | map((value, key) => "#{key | url_encode}=#{value}")
+            | join('&')
+        %}
+
+        {% for selectedAttributeName, selectedAttributeValue in data.selectedAttributes | filter((v, k) => k != name) %}
+            {% set selectedUrlParameter = ["#{attributeKey}[#{selectedAttributeName}]" | url_encode, selectedAttributeValue] | join('=') %}
+
+            {% if selectedUrlParameter not in optionResetUrl %}
+                {% set optionResetUrl = [optionResetUrl, selectedUrlParameter] | join('&') %}
+            {% endif %}
+        {% endfor %}
+
+        {% if name in data.availableAttributes | keys %}
+            {% set values = data.availableAttributes[name] %}
+        {% else %}
+            {% set isAvailable = selectedValue is empty %}
+        {% endif %}
+
+        {{ block('variant') }}
+    {% endfor %}
 {% endblock %}
 
 {% block variant %}

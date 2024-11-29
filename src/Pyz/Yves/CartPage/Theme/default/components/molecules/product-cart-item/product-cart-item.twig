@@ -23,6 +23,10 @@
     } | json_encode,
 } %}
 
+{% block extraClass %}
+    {{ config.jsName }}
+{% endblock %}
+
 {% block productDescription %}
     <div class="{{ config.name }}__col {{ config.name }}__col--description col">
         <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
