@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9594341e75faedba30328fb003b2ba6f",
+    "content-hash": "c0daab8f0774cd796a5d23d3a74b3e30",
     "packages": [
         {
             "name": "async-aws/core",
@@ -6403,26 +6403,30 @@
         },
         {
             "name": "spryker-feature/payments",
-            "version": "202410.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/payments.git",
-                "reference": "2037387c5c4f21be7157ea0350615f36174a6e21"
+                "reference": "9e9a5e0a4c29c6ac4c5a6f29caf27c239acd78eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/payments/zipball/2037387c5c4f21be7157ea0350615f36174a6e21",
-                "reference": "2037387c5c4f21be7157ea0350615f36174a6e21",
+                "url": "https://api.github.com/repos/spryker-feature/payments/zipball/9e9a5e0a4c29c6ac4c5a6f29caf27c239acd78eb",
+                "reference": "9e9a5e0a4c29c6ac4c5a6f29caf27c239acd78eb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
+                "spryker-shop/payment-app-widget": "^1.0.0",
                 "spryker-shop/payment-page": "^1.4.0",
                 "spryker/payment": "^5.26.0",
+                "spryker/payment-app": "^1.0.0",
+                "spryker/payment-app-shipment": "^1.0.0",
                 "spryker/payment-data-import": "^1.0.0",
                 "spryker/payment-gui": "^1.3.0",
                 "spryker/sales-payment-detail": "^1.3.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -6435,9 +6439,9 @@
             ],
             "description": "Payments [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/payments/tree/202410.0"
+                "source": "https://github.com/spryker-feature/payments/tree/master"
             },
-            "time": "2024-10-30T13:44:17+00:00"
+            "time": "2024-11-28T14:24:21+00:00"
         },
         {
             "name": "spryker-feature/persistent-cart-sharing",
@@ -8534,20 +8538,20 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "3.44.1",
+            "version": "3.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "ae690ff48c623982886656aa05f31d25958e6d62"
+                "reference": "fe12404e4ceb88ce69e745e4a948092e60f1632a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/ae690ff48c623982886656aa05f31d25958e6d62",
-                "reference": "ae690ff48c623982886656aa05f31d25958e6d62",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/fe12404e4ceb88ce69e745e4a948092e60f1632a",
+                "reference": "fe12404e4ceb88ce69e745e4a948092e60f1632a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker-shop/cart-page-extension": "^1.3.0",
                 "spryker-shop/comment-widget-extension": "^1.0.0",
                 "spryker-shop/product-configurator-gateway-page-extension": "^0.1.0 || ^0.2.0 || ^1.0.0",
@@ -8591,6 +8595,7 @@
                 "spryker-shop/gift-card-widget": "If you want to use components from module GiftCardWidget.",
                 "spryker-shop/multi-cart-widget": "If you want to use components from module MultiCartWidget or CartOperationsWidgetPlugin",
                 "spryker-shop/order-custom-reference-widget": "Add the module if you want to use order custom reference functionality",
+                "spryker-shop/payment-app-widget": "If you want to use ExpressCheckoutPaymentWidget.",
                 "spryker-shop/product-configuration-cart-widget": "Add the module if you want to use ProductConfigurationCartItemDisplayWidget or ProductConfigurationCartPageButtonWidget.",
                 "spryker-shop/product-measurement-unit-widget": "^0.7.2: If you want to use measurement-unit-item molecule from module ProductMeasurementUnitWidget",
                 "spryker-shop/product-option-widget": "If you want to use components from module ProductOptionWidget or CartItemProductOptionWidgetPlugin",
@@ -8618,9 +8623,9 @@
             ],
             "description": "CartPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/cart-page/tree/3.44.1"
+                "source": "https://github.com/spryker-shop/cart-page/tree/3.46.1"
             },
-            "time": "2024-09-12T14:55:59+00:00"
+            "time": "2024-11-29T14:43:45+00:00"
         },
         {
             "name": "spryker-shop/cart-page-extension",
@@ -8890,20 +8895,20 @@
         },
         {
             "name": "spryker-shop/checkout-page",
-            "version": "3.31.0",
+            "version": "3.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-page.git",
-                "reference": "92b712c32866c92c0038ec35a57481f541acdc96"
+                "reference": "8c8ac65f661b9679eb6d99d86458f3d8284883c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/92b712c32866c92c0038ec35a57481f541acdc96",
-                "reference": "92b712c32866c92c0038ec35a57481f541acdc96",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/8c8ac65f661b9679eb6d99d86458f3d8284883c0",
+                "reference": "8c8ac65f661b9679eb6d99d86458f3d8284883c0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker-shop/checkout-page-extension": "^1.5.0",
                 "spryker-shop/customer-page": "^2.46.0",
                 "spryker-shop/money-widget": "^1.0.0",
@@ -8977,9 +8982,9 @@
             ],
             "description": "CheckoutPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/checkout-page/tree/3.31.0"
+                "source": "https://github.com/spryker-shop/checkout-page/tree/3.33.0"
             },
-            "time": "2024-08-19T11:28:55+00:00"
+            "time": "2024-11-28T12:12:55+00:00"
         },
         {
             "name": "spryker-shop/checkout-page-extension",
@@ -11637,6 +11642,109 @@
                 "source": "https://github.com/spryker-shop/order-custom-reference-widget/tree/1.1.0"
             },
             "time": "2024-05-22T10:49:07+00:00"
+        },
+        {
+            "name": "spryker-shop/payment-app-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/payment-app-widget.git",
+                "reference": "5fcda8055d97c1c3fa282f03d3341b39baf1904c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/payment-app-widget/zipball/5fcda8055d97c1c3fa282f03d3341b39baf1904c",
+                "reference": "5fcda8055d97c1c3fa282f03d3341b39baf1904c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker-shop/checkout-page-extension": "^1.0.0",
+                "spryker-shop/payment-app-widget-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.80.0",
+                "spryker/application": "^3.8.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/locale": "^4.0.0",
+                "spryker/log": "^3.0.0",
+                "spryker/payment": "^5.25.0",
+                "spryker/payment-app": "^1.0.0",
+                "spryker/quote": "^2.20.0",
+                "spryker/step-engine": "^3.3.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module when using plugins that need Router dependencies.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PaymentAppWidget module",
+            "support": {
+                "source": "https://github.com/spryker-shop/payment-app-widget/tree/1.0.0"
+            },
+            "time": "2024-11-28T12:12:55+00:00"
+        },
+        {
+            "name": "spryker-shop/payment-app-widget-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/payment-app-widget-extension.git",
+                "reference": "ff12bca01697bef5ffd9f508ab04b0e81781553c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/payment-app-widget-extension/zipball/ff12bca01697bef5ffd9f508ab04b0e81781553c",
+                "reference": "ff12bca01697bef5ffd9f508ab04b0e81781553c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PaymentAppWidgetExtension module",
+            "support": {
+                "source": "https://github.com/spryker-shop/payment-app-widget-extension/tree/1.0.0"
+            },
+            "time": "2024-11-28T12:12:55+00:00"
         },
         {
             "name": "spryker-shop/payment-page",
@@ -15490,16 +15598,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.78.0",
+            "version": "1.82.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "345106e734759757f87b9c2e81c16ab047421df5"
+                "reference": "21651c1c72017c484f7c3b11452e5035685d6334"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/345106e734759757f87b9c2e81c16ab047421df5",
-                "reference": "345106e734759757f87b9c2e81c16ab047421df5",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/21651c1c72017c484f7c3b11452e5035685d6334",
+                "reference": "21651c1c72017c484f7c3b11452e5035685d6334",
                 "shasum": ""
             },
             "require": {
@@ -15547,9 +15655,9 @@
             ],
             "description": "ShopUi module",
             "support": {
-                "source": "https://github.com/spryker-shop/shop-ui/tree/1.78.0"
+                "source": "https://github.com/spryker-shop/shop-ui/tree/1.82.0"
             },
-            "time": "2024-10-10T11:46:44+00:00"
+            "time": "2024-11-29T14:43:45+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -28042,16 +28150,16 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.61.0",
+            "version": "7.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "30f6c79c8bd4bd6a6c7616678b787127120b6fcf"
+                "reference": "7b70625c933ff46473ab179338361936a15860e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/30f6c79c8bd4bd6a6c7616678b787127120b6fcf",
-                "reference": "30f6c79c8bd4bd6a6c7616678b787127120b6fcf",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/7b70625c933ff46473ab179338361936a15860e7",
+                "reference": "7b70625c933ff46473ab179338361936a15860e7",
                 "shasum": ""
             },
             "require": {
@@ -28123,9 +28231,9 @@
             ],
             "description": "Customer module",
             "support": {
-                "source": "https://github.com/spryker/customer/tree/7.61.0"
+                "source": "https://github.com/spryker/customer/tree/7.63.0"
             },
-            "time": "2024-11-21T09:26:16+00:00"
+            "time": "2024-12-02T09:58:28+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -32788,20 +32896,20 @@
         },
         {
             "name": "spryker/kernel-app",
-            "version": "1.1.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel-app.git",
-                "reference": "c8b667d8658a48a6ac0d9c028214c91b079cafb2"
+                "reference": "3dd9df5a35e9c9f40063573d92e7e13b256a4fa9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel-app/zipball/c8b667d8658a48a6ac0d9c028214c91b079cafb2",
-                "reference": "c8b667d8658a48a6ac0d9c028214c91b079cafb2",
+                "url": "https://api.github.com/repos/spryker/kernel-app/zipball/3dd9df5a35e9c9f40063573d92e7e13b256a4fa9",
+                "reference": "3dd9df5a35e9c9f40063573d92e7e13b256a4fa9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/message-broker-extension": "^1.0.0",
@@ -32837,9 +32945,9 @@
             ],
             "description": "KernelApp module",
             "support": {
-                "source": "https://github.com/spryker/kernel-app/tree/1.1.0"
+                "source": "https://github.com/spryker/kernel-app/tree/1.3.0"
             },
-            "time": "2024-09-06T13:27:51+00:00"
+            "time": "2024-11-28T12:12:52+00:00"
         },
         {
             "name": "spryker/kernel-app-extension",
@@ -37444,16 +37552,16 @@
         },
         {
             "name": "spryker/payment",
-            "version": "5.26.0",
+            "version": "5.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/payment.git",
-                "reference": "edf64d7132ae55ff9a3bf380ae7a48c57e3a05ad"
+                "reference": "648fe6f5802c97f239cd5d55007300f532d442d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/payment/zipball/edf64d7132ae55ff9a3bf380ae7a48c57e3a05ad",
-                "reference": "edf64d7132ae55ff9a3bf380ae7a48c57e3a05ad",
+                "url": "https://api.github.com/repos/spryker/payment/zipball/648fe6f5802c97f239cd5d55007300f532d442d4",
+                "reference": "648fe6f5802c97f239cd5d55007300f532d442d4",
                 "shasum": ""
             },
             "require": {
@@ -37512,30 +37620,172 @@
             ],
             "description": "Payment module",
             "support": {
-                "source": "https://github.com/spryker/payment/tree/5.26.0"
+                "source": "https://github.com/spryker/payment/tree/5.27.0"
             },
-            "time": "2024-10-17T12:37:07+00:00"
+            "time": "2024-11-28T12:12:52+00:00"
         },
         {
-            "name": "spryker/payment-cart-connector",
-            "version": "1.0.1",
+            "name": "spryker/payment-app",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/payment-cart-connector.git",
-                "reference": "a1e3b2ac39b60bc83cd02660fc9779475dc57a80"
+                "url": "https://github.com/spryker/payment-app.git",
+                "reference": "86fc7549db3d0bacf8487a54b37bb5e1684d50ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/payment-cart-connector/zipball/a1e3b2ac39b60bc83cd02660fc9779475dc57a80",
-                "reference": "a1e3b2ac39b60bc83cd02660fc9779475dc57a80",
+                "url": "https://api.github.com/repos/spryker/payment-app/zipball/86fc7549db3d0bacf8487a54b37bb5e1684d50ac",
+                "reference": "86fc7549db3d0bacf8487a54b37bb5e1684d50ac",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.30.0"
+                "php": ">=8.2",
+                "spryker/cart": "^7.5.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/kernel-app": "^1.0.0",
+                "spryker/payment": "^5.13.0",
+                "spryker/payment-app-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
-                "spryker/cart": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/ramsey-uuid": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PaymentApp module",
+            "support": {
+                "source": "https://github.com/spryker/payment-app/tree/1.0.0"
+            },
+            "time": "2024-11-28T12:12:52+00:00"
+        },
+        {
+            "name": "spryker/payment-app-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/payment-app-extension.git",
+                "reference": "2e44e5e18c29a7dc3b2f22a658d5b41080259f5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/payment-app-extension/zipball/2e44e5e18c29a7dc3b2f22a658d5b41080259f5a",
+                "reference": "2e44e5e18c29a7dc3b2f22a658d5b41080259f5a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PaymentAppExtension module",
+            "support": {
+                "source": "https://github.com/spryker/payment-app-extension/tree/1.0.0"
+            },
+            "time": "2024-11-28T12:12:52+00:00"
+        },
+        {
+            "name": "spryker/payment-app-shipment",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/payment-app-shipment.git",
+                "reference": "7a44481aef34eb002ae1986f4293b6cc29b13d42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/payment-app-shipment/zipball/7a44481aef34eb002ae1986f4293b6cc29b13d42",
+                "reference": "7a44481aef34eb002ae1986f4293b6cc29b13d42",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/payment-app-extension": "^1.0.0",
+                "spryker/shipment": "^8.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PaymentAppShipment module",
+            "support": {
+                "source": "https://github.com/spryker/payment-app-shipment/tree/1.0.0"
+            },
+            "time": "2024-11-28T12:12:52+00:00"
+        },
+        {
+            "name": "spryker/payment-cart-connector",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/payment-cart-connector.git",
+                "reference": "8da805d2e6c174313f67b1daf48b6b408c3a1780"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/payment-cart-connector/zipball/8da805d2e6c174313f67b1daf48b6b408c3a1780",
+                "reference": "8da805d2e6c174313f67b1daf48b6b408c3a1780",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker/cart-extension": "^4.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
@@ -37559,9 +37809,9 @@
             ],
             "description": "PaymentCartConnector module",
             "support": {
-                "source": "https://github.com/spryker/payment-cart-connector/tree/master"
+                "source": "https://github.com/spryker/payment-cart-connector/tree/1.1.0"
             },
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2024-11-28T12:12:52+00:00"
         },
         {
             "name": "spryker/payment-data-import",
@@ -37701,16 +37951,16 @@
         },
         {
             "name": "spryker/payments-rest-api",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/payments-rest-api.git",
-                "reference": "7fe13a6a48067adc1a29be40c176f4730f56812e"
+                "reference": "40def2b91dc3120cc5b23d239f3540b1336899a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/payments-rest-api/zipball/7fe13a6a48067adc1a29be40c176f4730f56812e",
-                "reference": "7fe13a6a48067adc1a29be40c176f4730f56812e",
+                "url": "https://api.github.com/repos/spryker/payments-rest-api/zipball/40def2b91dc3120cc5b23d239f3540b1336899a1",
+                "reference": "40def2b91dc3120cc5b23d239f3540b1336899a1",
                 "shasum": ""
             },
             "require": {
@@ -37719,12 +37969,14 @@
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/payment": "^5.25.0",
+                "spryker/payment": "^5.27.0",
+                "spryker/payment-app": "^1.0.0",
                 "spryker/symfony": "^3.17.0",
                 "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -37744,9 +37996,9 @@
             ],
             "description": "PaymentsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/payments-rest-api/tree/1.3.0"
+                "source": "https://github.com/spryker/payments-rest-api/tree/1.4.0"
             },
-            "time": "2024-10-02T14:46:42+00:00"
+            "time": "2024-11-28T12:12:52+00:00"
         },
         {
             "name": "spryker/permission",
@@ -69092,9 +69344,17 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker-feature/payments",
+            "version": "9999999-dev",
+            "alias": "202410.0",
+            "alias_normalized": "202410.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker-feature/payments": 20,
         "spryker/cypress-tests": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20
