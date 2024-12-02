@@ -10,6 +10,7 @@ namespace PyzTest\Yves\Customer;
 use Codeception\Actor;
 use Codeception\Step\Assertion;
 use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
+use PyzTest\Yves\Customer\PageObject\CustomerOverviewPage;
 use PyzTest\Yves\Customer\PageObject\CustomerRegistrationPage;
 
 /**
@@ -76,5 +77,53 @@ class CustomerPresentationTester extends Actor
         }
 
         $this->getScenario()->runStep(new Assertion('seeCurrentUrlEquals', func_get_args()));
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkToProfilePage(): string
+    {
+        if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
+            return CustomerOverviewPage::DMS_LINK_TO_PROFILE_PAGE;
+        }
+
+        return CustomerOverviewPage::LINK_TO_PROFILE_PAGE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkToAddressesPage(): string
+    {
+        if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
+            return CustomerOverviewPage::DMS_LINK_TO_ADDRESSES_PAGE;
+        }
+
+        return CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkToOrdersPage(): string
+    {
+        if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
+            return CustomerOverviewPage::DMS_LINK_TO_ORDERS_PAGE;
+        }
+
+        return CustomerOverviewPage::LINK_TO_ORDERS_PAGE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkToNewsletterPage(): string
+    {
+        if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
+            return CustomerOverviewPage::DMS_LINK_TO_NEWSLETTER_PAGE;
+        }
+
+        return CustomerOverviewPage::LINK_TO_NEWSLETTER_PAGE;
     }
 }
