@@ -373,7 +373,7 @@ class AddressStepTest extends Unit
         }
 
         $addressStepMock = $this->getMockBuilder(AddressStep::class)
-            ->setMethods(['getDataClass'])
+            ->addMethods(['getDataClass'])
             ->setConstructorArgs([
                 $this->createCalculationClientMock(),
                 $this->createAddressStepExecutorMock($customerClientMock),
