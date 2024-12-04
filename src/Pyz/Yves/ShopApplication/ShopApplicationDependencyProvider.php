@@ -160,6 +160,7 @@ use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
 use SprykerShop\Yves\StoreWidget\Plugin\ShopApplication\StoreApplicationPlugin;
 use SprykerShop\Yves\StoreWidget\Widget\StoreSwitcherWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
+use SprykerShop\Yves\TraceableEventWidget\Widget\TraceableEventWidget;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
 
 /**
@@ -301,6 +302,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MerchantRelationRequestMenuItemWidget::class,
             MerchantRelationshipMenuItemWidget::class,
             MerchantRelationshipLinkListWidget::class,
+            TraceableEventWidget::class,
         ];
     }
 

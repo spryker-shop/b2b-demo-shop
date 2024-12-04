@@ -86,7 +86,7 @@
 {% endblock %}
 
 {% block action %}
-    <a itemprop="url" class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ path(data.url) }}">
+    <a itemprop="url" class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
         {{ 'product.view' | trans }}
     </a>
 {% endblock %}
