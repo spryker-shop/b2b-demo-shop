@@ -79,6 +79,8 @@
 
         <div class="col col--sm-4 col--middle spacing-y spacing-x spacing-x--inner spacing-x--bigger">
             {% block price %}
+                <span itemprop="itemPrice" content="{{ product.prices['DEFAULT'] | default }}">
+
                 {% include molecule('money-price') with {
                     data: {
                         amount: data.price is empty ? null : data.price
