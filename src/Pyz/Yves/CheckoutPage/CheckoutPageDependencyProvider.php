@@ -26,6 +26,7 @@ use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CheckoutAddressFormDataProviderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerStepHandler;
+use SprykerShop\Yves\PaymentAppWidget\Plugin\CheckoutPage\PaymentAppExpressCheckoutWorkflowCheckoutStepResolverStrategyPlugin;
 use SprykerShop\Yves\PaymentPage\Plugin\PaymentPage\PaymentForeignPaymentCollectionExtenderPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
@@ -200,6 +201,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             new QuoteRequestCheckoutWorkflowStepResolverStrategyPlugin(),
             new QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin(),
             new QuoteRequestAgentCheckoutWorkflowStepResolverStrategyPlugin(),
+            new PaymentAppExpressCheckoutWorkflowCheckoutStepResolverStrategyPlugin(),
         ];
     }
 
