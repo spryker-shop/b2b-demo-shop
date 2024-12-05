@@ -1,12 +1,7 @@
-{% extends template('page-layout-main') %}
+{% extends view('set-detail', '@SprykerShop:ProductSetDetailPage') %}
 
 {% define data = {
-    set: _view.productSet,
-    views: _view.productViews,
-    title: _view.productSet.name,
     metaTitle: _view.productSet.metaTitle,
-    metaKeywords: _view.productSet.metaKeywords,
-    metaDescription: _view.productSet.metaDescription
 } %}
 
 {% block pageInfo %}{% endblock %}
