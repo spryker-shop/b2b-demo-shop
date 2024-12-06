@@ -13,11 +13,11 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    docker-alpine-php-8-3-mariadb-robot-ui-group-one:
+    docker-alpine-php-8-2-mariadb-robot-ui-group-one:
         if: >
             (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
             (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One"
+        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / UI / Group One"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -65,12 +65,12 @@ jobs:
               id: run_tests
               continue-on-error: true
               run: |
-                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_one -s '*'.tests.ui.b2b .
+                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eur.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_one -s '*'.tests.ui.b2b .
                   docker/sdk exec robot-framework touch results/time.txt && echo $(date) > results/time.txt
             - name: Rerun Failed Tests
               if: steps.run_tests.outcome != 'success'
               run: |
-                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
+                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eur.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
             - name: Merge Test Results
               if: always() && steps.run_tests.outcome != 'success'
               run: |
@@ -78,15 +78,13 @@ jobs:
             - name: Upload artifacts
               if: failure()
               run: |
-                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/b2b_regression/group1/${GITHUB_RUN_ID}/PHP8.3MariaDBRobotUi/ \
-                    --recursive \
-                    --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.2MariaDB/group1/log.html
 
-    docker-alpine-php-8-3-mariadb-robot-ui-group-two:
+    docker-alpine-php-8-2-mariadb-robot-ui-group-two:
         if: >
             (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
             (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI /Group Two"
+        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / UI /Group Two"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -126,12 +124,12 @@ jobs:
               id: run_tests
               continue-on-error: true
               run: |
-                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_two -s '*'.tests.ui.b2b .
+                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eur.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_two -s '*'.tests.ui.b2b .
                   docker/sdk exec robot-framework touch results/time.txt && echo $(date) > results/time.txt
             - name: Rerun Failed Tests
               if: steps.run_tests.outcome != 'success'
               run: |
-                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
+                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eur.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
             - name: Merge Test Results
               if: always() && steps.run_tests.outcome != 'success'
               run: |
@@ -139,9 +137,7 @@ jobs:
             - name: Upload artifacts
               if: failure()
               run: |
-                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/b2b_regression/group2/${GITHUB_RUN_ID}/PHP8.3MariaDBRobotUi/ \
-                    --recursive \
-                    --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.2MariaDB/group2/log.html
 
     docker-alpine-php-8-3-mariadb-robot-ui-group-three:
         if: >
@@ -187,12 +183,12 @@ jobs:
               id: run_tests
               continue-on-error: true
               run: |
-                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_tree -s '*'.tests.ui.b2b .
+                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eur.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_tree -s '*'.tests.ui.b2b .
                   docker/sdk exec robot-framework touch results/time.txt && echo $(date) > results/time.txt
             - name: Rerun Failed Tests
               if: steps.run_tests.outcome != 'success'
               run: |
-                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
+                  docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eur.spryker.local -v zed_env:http://backoffice.eu.spryker.local -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
             - name: Merge Test Results
               if: always() && steps.run_tests.outcome != 'success'
               run: |
@@ -200,9 +196,7 @@ jobs:
             - name: Upload artifacts
               if: failure()
               run: |
-                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/b2b_regression/group3/${GITHUB_RUN_ID}/PHP8.3MariaDBRobotUi/ \
-                    --recursive \
-                    --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.2MariaDB/group3/log.html
 
     docker-alpine-php-8-2-postgresql-dynamic-store-off-robot-ui-group-one:
         if: >
@@ -255,12 +249,12 @@ jobs:
                 id: run_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_one -s '*'.tests.ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v yves_env:http://yves.eur.spryker.local -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_one -s '*'.tests.ui.b2b .
                     docker/sdk exec robot-framework touch results/time.txt && echo $(date) > results/time.txt
             -   name: Rerun Failed Tests
                 if: steps.run_tests.outcome != 'success'
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v yves_env:http://yves.eur.spryker.local -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
             -   name: Merge Test Results
                 if: always() && steps.run_tests.outcome != 'success'
                 run: |
@@ -268,9 +262,7 @@ jobs:
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/dynamic-store-off/b2b_regression/group1/${GITHUB_RUN_ID}/PHP8.2PostgreSQLRobotUi/ \
-                      --recursive \
-                      --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group1/log.html
 
     docker-alpine-php-8-2-postgresql-dynamic-store-off-robot-ui-group-two:
         if: >
@@ -315,12 +307,12 @@ jobs:
                 id: run_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_two -s '*'.tests.ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v yves_env:http://yves.eur.spryker.local -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_two -s '*'.tests.ui.b2b .
                     docker/sdk exec robot-framework touch results/time.txt && echo $(date) > results/time.txt
             -   name: Rerun Failed Tests
                 if: steps.run_tests.outcome != 'success'
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v yves_env:http://yves.eur.spryker.local -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
             -   name: Merge Test Results
                 if: always() && steps.run_tests.outcome != 'success'
                 run: |
@@ -328,9 +320,7 @@ jobs:
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/dynamic-store-off/b2b_regression/group2/${GITHUB_RUN_ID}/PHP8.2PostgreSQLRobotUi/ \
-                      --recursive \
-                      --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group2/log.html
 
     docker-alpine-php-8-2-postgresql-dynamic-store-off-robot-ui-group-three:
         if: >
@@ -375,12 +365,12 @@ jobs:
                 id: run_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_tree -s '*'.tests.ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v yves_env:http://yves.eur.spryker.local -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_tree -s '*'.tests.ui.b2b .
                     docker/sdk exec robot-framework touch results/time.txt && echo $(date) > results/time.txt
             -   name: Rerun Failed Tests
                 if: steps.run_tests.outcome != 'success'
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v yves_env:http://yves.eur.spryker.local -v docker:True -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.ui.b2b .
             -   name: Merge Test Results
                 if: always() && steps.run_tests.outcome != 'success'
                 run: |
@@ -388,6 +378,4 @@ jobs:
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/master-robot-ui-ci/dynamic-store-off/b2b_regression/group3/${GITHUB_RUN_ID}/PHP8.2PostgreSQLRobotUi/ \
-                      --recursive \
-                      --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group3/log.html
