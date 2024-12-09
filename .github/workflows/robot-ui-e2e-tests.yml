@@ -13,11 +13,11 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    docker-alpine-php-8-2-mariadb-robot-ui-group-one:
+    docker-alpine-php-8-3-mariadb-robot-ui-group-one:
         if: >
             (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
             (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / UI / Group One"
+        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -80,11 +80,11 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.2MariaDB/group1/log.html
 
-    docker-alpine-php-8-2-mariadb-robot-ui-group-two:
+    docker-alpine-php-8-3-mariadb-robot-ui-group-two:
         if: >
             (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
             (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / UI /Group Two"
+        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI /Group Two"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
