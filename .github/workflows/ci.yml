@@ -826,8 +826,8 @@ jobs:
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2MariaDB/log.html
 
-    docker-alpine-php-8-2-postgresql-robot:
-        name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Robot / API"
+    docker-alpine-php-8-3-postgresql-robot:
+        name: "Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API"
         if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -1009,8 +1009,8 @@ jobs:
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
 
-    positive-docker-alpine-php-8-3-mariadb-robot:
-        name: "[Hackathon] Positive / Docker / Alpine / PHP 8.3 / MariaDB / Robot / API"
+    positive-docker-alpine-php-8-2-mariadb-robot:
+        name: "[Hackathon] Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
         if: "contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
         env:
@@ -1054,7 +1054,7 @@ jobs:
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/positive/log.html
 
-    negative-docker-alpine-php-8-3-mariadb-robot:
+    negative-docker-alpine-php-8-2-mariadb-robot:
         name: "[Hackathon] Negative / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
         if: "contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-22.04
