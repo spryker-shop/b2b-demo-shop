@@ -76,10 +76,9 @@
                 {% endblock %}
             </div>
         </div>
-
         <div class="col col--sm-4 col--middle spacing-y spacing-x spacing-x--inner spacing-x--bigger">
             {% block price %}
-                <span itemprop="itemPrice" content="{{ product.prices['DEFAULT'] | default }}">
+                <span itemprop="itemPrice" content="{{ data.product.prices['DEFAULT'] | default }}"></span>
 
                 {% include molecule('money-price') with {
                     data: {
