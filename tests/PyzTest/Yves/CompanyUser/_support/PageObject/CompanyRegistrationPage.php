@@ -82,8 +82,8 @@ class CompanyRegistrationPage
             static::FORM_FIELD_COMPANY_NAME => 'Registered Company',
 
             static::FORM_FIELD_EMAIL => 'registered-company-user@spryker.com',
-            static::FORM_FIELD_PASSWORD => 'sP3yK3r%23',
-            static::FORM_FIELD_PASSWORD_CONFIRM => 'sP3yK3r%23',
+            static::FORM_FIELD_PASSWORD => 'sP3yK3r%23!23',
+            static::FORM_FIELD_PASSWORD_CONFIRM => 'sP3yK3r%23!23',
         ];
     }
 }
