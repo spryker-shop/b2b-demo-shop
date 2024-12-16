@@ -39,10 +39,16 @@
                 {% block inner %}
                     <div class="grid grid--gap">
                         <div class="is-hidden-sm-lg col col--xl-3">
+                            {% include atom('skip-link', '@SprykerShop:ShopUi') with {
+                                data: {
+                                    href: '#customer-content',
+                                    text: 'global.skip-to-customer-content.link.text' | trans,
+                                },
+                            } only %}
                             {{ embed.customerNavigation }}
                         </div>
 
-                        <div class="col col--sm-12 col--xl-9">
+                        <div class="col col--sm-12 col--xl-9" id="customer-content">
                             {{ embed.customerContent }}
                         </div>
                     </div>

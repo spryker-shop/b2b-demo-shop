@@ -43,6 +43,12 @@
         {% block inner %}
             <div class="grid grid--gap">
                 <div class="col col--sm-12 col--xl-3 is-hidden-sm-lg">
+                    {% include atom('skip-link', '@SprykerShop:ShopUi') with {
+                        data: {
+                            href: '#company-content',
+                            text: 'global.skip-to-company-content.link.text' | trans,
+                        },
+                    } only %}
                     {% block companyNavigation %}
                         {% embed molecule('navigation-sidebar', 'ShopUi') with {
                             data: {
@@ -83,7 +89,7 @@
                     {% endblock %}
                 </div>
 
-                <div class="col col--sm-12 col--xl-9">
+                <div class="col col--sm-12 col--xl-9" id="company-content">
                     {{ companyContent }}
                 </div>
             </div>

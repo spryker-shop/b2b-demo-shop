@@ -10,6 +10,13 @@
 {%- block class -%}{{ pageLayoutMainJsClassName }}__side-drawer-container{%- endblock -%}
 
 {% block body %}
+    {% include atom('skip-link', '@SprykerShop:ShopUi') with {
+        data: {
+            href: '#main-navigation',
+            text: 'global.skip-to-navigation.link.text' | trans,
+        },
+    } only %}
+    {% include atom('skip-link', '@SprykerShop:ShopUi') only %}
     {% block notifications %}
         {% include organism('notification-area') only %}
     {% endblock %}
@@ -201,7 +208,7 @@
                 </div>
             {% endblock %}
 
-            <main class="{% block contentClass %}{% endblock %}">
+            <main id="main-content" class="{% block contentClass %}{% endblock %}">
                 {% block contentTop %}{% endblock %}
 
                 {% block contentWrap %}

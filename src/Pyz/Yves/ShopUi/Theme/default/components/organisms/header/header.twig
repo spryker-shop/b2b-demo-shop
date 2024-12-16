@@ -146,7 +146,7 @@
     </div>
 
     {% if data.showNavigation %}
-        <div class="{{ config.name }}__navigation">
+        <div class="{{ config.name }}__navigation" id="main-navigation">
             <div class="container">
                 {% block navigation %}
                     {% widget 'NavigationWidget' args ['MAIN_NAVIGATION', 'navigation-main'] only %}{% endwidget %}

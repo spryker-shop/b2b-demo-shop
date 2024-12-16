@@ -7,14 +7,20 @@ export default class ImageGallery extends Component {
     protected thumbnailSlider: $;
     protected defaultImageUrl: string;
     protected currentSlideImage: HTMLImageElement;
+    protected thumbnailButtons: HTMLButtonElement[];
 
     protected readyCallback(): void {}
 
     protected init(): void {
         this.galleryItems = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__item`));
         this.thumbnailSlider = $(`.${this.jsName}__thumbnails`);
-
         this.initializationSlider();
+
+        this.thumbnailButtons = Array.from(this.querySelectorAll(`.slick-slide`));
+        this.thumbnailButtons.map((button: HTMLButtonElement) => {
+            button.setAttribute('tabindex', '0');
+            button.addEventListener('focusin', (event: Event) => this.onThumbnailHover(event));
+        });
         this.mapEvents();
     }
 
@@ -38,9 +44,16 @@ export default class ImageGallery extends Component {
         this.setDefaultImageUrl();
     }
 
+    protected onThumbnailButtonHover(event: Event): void {
+        const target = event.target as HTMLButtonElement;
+        // target.closest('.slick-slide').dispatchEvent(new Event('mouseenter'));
+        $(target).parent('.slick-slide').trigger('mouseenter');
+    }
+
     protected onThumbnailHover(event: Event): void {
         const slide = $(event.currentTarget);
         const index = slide.data('slick-index');
+        console.log($(event.currentTarget));
 
         if (!slide.hasClass('slick-current')) {
             this.thumbnailSlider.find('.slick-slide').removeClass('slick-current');
