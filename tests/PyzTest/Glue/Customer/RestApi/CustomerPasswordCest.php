@@ -205,12 +205,12 @@ class CustomerPasswordCest
                     [
                         RestErrorMessageTransfer::CODE => RestRequestValidatorConfig::RESPONSE_CODE_REQUEST_INVALID,
                         RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
-                        RestErrorMessageTransfer::DETAIL => 'newPassword => This value is too long. It should have 64 characters or less.',
+                        RestErrorMessageTransfer::DETAIL => 'newPassword => This value is too long. It should have 128 characters or less.',
                     ],
                     [
                         RestErrorMessageTransfer::CODE => RestRequestValidatorConfig::RESPONSE_CODE_REQUEST_INVALID,
                         RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
-                        RestErrorMessageTransfer::DETAIL => 'confirmPassword => This value is too long. It should have 64 characters or less.',
+                        RestErrorMessageTransfer::DETAIL => 'confirmPassword => This value is too long. It should have 128 characters or less.',
                     ],
                 ],
             ],
