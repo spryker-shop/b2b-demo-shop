@@ -55,17 +55,17 @@ image:
         SPRYKER_YVES_HOST_AT: www.at.aop-b2b-testing.demo-spryker.com
 
         #AOP
-        SPRYKER_TENANT_IDENTIFIER: "AOP_B2B_Testing-DE"
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: "https://publish.mb-testing.acp.demo-spryker.com/"
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: "https://consume.mb-testing.acp.demo-spryker.com/"
+        SPRYKER_TENANT_IDENTIFIER: "tenant-7430af69-16a1-466a-8c1f-5a014f6b4ccd"
+        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: "https://publish.mb-staging.acp.demo-spryker.com/"
+        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: "https://consume.mb-staging.acp.demo-spryker.com/"
 
         SPRYKER_AOP_APPLICATION: '{
             "APP_DOMAINS": [
-                "os.apps-testing.aop.demo-spryker.com",
-                "stripe-testing.acp.demo-spryker.com",
+                "os.apps-staging.aop.demo-spryker.com",
+                "stripe-staging.acp.demo-spryker.com",
                 "*.bazaarvoice.com"
             ],
-            "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs-testing.demo-spryker.com/loader"
+            "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs-staging.demo-spryker.com/loader"
         }'
 
     php:

@@ -249,6 +249,111 @@
     {% endif %}
 {% endblock %}
 
+{% block eventTracker %}
+    {% set events = {
+        list: events.list
+            | filter(event => event.event != 'PRODUCT_CLICK')
+            | merge([
+                {
+                    event: 'PRODUCT_CLICK',
+                    name: 'click',
+                    triggers: [
+                        {
+                            selector: '.js-product-item:not(:has(.js-ajax-add-to-cart__button:focus)):not(:has(button[data-cart-ajax-form-submitter]:focus))',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                details: {
+                                    selector: 'self',
+                                    flatten: true,
+                                },
+                            },
+                        },
+                        {
+                            selector: '.suggestion-product',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                sku: {
+                                    selector: 'self',
+                                },
+                                searchId: {
+                                    value: null,
+                                },
+                            },
+                        }
+                    ],
+                },
+                {
+                    event: 'ADD_TO_SHOPPING_LIST',
+                    name: 'click',
+                    triggers: [
+                        {
+                            selector: 'body:has([data-create-shopping-list-from-cart-submitter]:focus)',
+                            data: {
+                                products: {
+                                    multi: true,
+                                    selector: '.js-product-cart-item',
+                                    attribute: 'details',
+                                },
+                            },
+                        },
+                    ],
+                },
+                {
+                    event: 'ADD_TO_CART',
+                    name: 'click',
+                    triggers: [
+                        {
+                            selector: '.product-quick-add-form:has(.js-product-quick-add-form__submit-button:focus)',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                quantity: {
+                                    selector: '.js-formatted-number-input__hidden-input',
+                                    attribute: 'value',
+                                },
+                                sku: {
+                                    selector: 'input[data-name="value"]',
+                                    attribute: 'value',
+                                },
+                            },
+                        },
+                        {
+                            selector: '.js-product-item:has(button[data-cart-ajax-form-submitter]:focus)',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                details: {
+                                    selector: 'self',
+                                    flatten: true,
+                                },
+                                quantity: {
+                                    selector: '.js-formatted-number-input__hidden-input',
+                                    attribute: 'value',
+                                },
+                            },
+                        },
+                    ],
+                }
+            ]),
+
+        data: events.data | merge({
+            page: 'CART',
+        }),
+    } %}
+
+    {{ parent() }}
+{% endblock %}
+
 {% block footer %}
     {% cms_slot 'slt-1' %}
 
