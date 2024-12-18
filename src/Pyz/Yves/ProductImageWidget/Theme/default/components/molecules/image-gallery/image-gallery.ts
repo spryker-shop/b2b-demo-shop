@@ -44,16 +44,9 @@ export default class ImageGallery extends Component {
         this.setDefaultImageUrl();
     }
 
-    protected onThumbnailButtonHover(event: Event): void {
-        const target = event.target as HTMLButtonElement;
-        // target.closest('.slick-slide').dispatchEvent(new Event('mouseenter'));
-        $(target).parent('.slick-slide').trigger('mouseenter');
-    }
-
     protected onThumbnailHover(event: Event): void {
         const slide = $(event.currentTarget);
         const index = slide.data('slick-index');
-        console.log($(event.currentTarget));
 
         if (!slide.hasClass('slick-current')) {
             this.thumbnailSlider.find('.slick-slide').removeClass('slick-current');

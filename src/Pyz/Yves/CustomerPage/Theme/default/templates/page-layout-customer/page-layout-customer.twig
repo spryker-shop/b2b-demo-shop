@@ -39,10 +39,10 @@
                 {% block inner %}
                     <div class="grid grid--gap">
                         <div class="is-hidden-sm-lg col col--xl-3">
-                            {% include atom('skip-link', '@SprykerShop:ShopUi') with {
+                            {% include molecule('skip-link') with {
                                 data: {
                                     href: '#customer-content',
-                                    text: 'global.skip-to-customer-content.link.text' | trans,
+                                    text: 'global.skip-to-content.link.text' | trans,
                                 },
                             } only %}
                             {{ embed.customerNavigation }}

@@ -3,12 +3,13 @@
 {% block contentClass %}page-layout-main page-layout-main--catalog-page{% endblock %}
 
 {% block content %}
-    {% include atom('skip-link', '@SprykerShop:ShopUi') with {
+    {% include molecule('skip-link') with {
         data: {
-            href: '#products-catalog',
+            href: '#catalog-product-list',
             text: 'global.skip-to-products.link.text' | trans,
         },
     } only %}
+
     {% set catalogJsName = 'js-catalog' %}
 
     {% include molecule('window-location-applicator', 'CatalogPage') with {
@@ -77,7 +78,7 @@
                 {% endblock %}
             </div>
 
-            <div class="col col--sm-12 col--lg-8 col--xl-9" id="products-catalog">
+            <div class="col col--sm-12 col--lg-8 col--xl-9" id="catalog-product-list">
                 <div class="grid grid--column-mob-reverse">
                     <div class="col col--sm-12">
                         <div class="grid grid--justify grid--nowrap">

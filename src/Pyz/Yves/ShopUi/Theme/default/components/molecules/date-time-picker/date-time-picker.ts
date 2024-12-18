@@ -4,18 +4,18 @@ export default class DateTimePicker extends Component {
     protected trigger: HTMLInputElement;
     protected dateFrom: HTMLInputElement;
     protected dateTo: HTMLInputElement;
-    protected datepicker: HTMLInputElement;
+    protected datePicker: HTMLInputElement;
 
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.trigger = <HTMLInputElement>this.querySelector('input[type="text"]');
-        this.dateFrom = <HTMLInputElement>document.getElementById(this.dateFromId);
-        this.dateTo = <HTMLInputElement>document.getElementById(this.dateToId);
-        this.datepicker = <HTMLInputElement>this.querySelector(`.${this.jsName}__datepicker`);
-        this.datepicker.value = this.trigger.value;
+        this.trigger = this.querySelector<HTMLInputElement>('input[type="text"]');
+        this.dateFrom = document.getElementById(this.dateFromId) as HTMLInputElement;
+        this.dateTo = document.getElementById(this.dateToId) as HTMLInputElement;
+        this.datePicker = this.querySelector<HTMLInputElement>(`.${this.jsName}__datepicker`);
+        this.datePicker.value = this.trigger.value;
 
-        this.datetimepickerInit();
+        this.datePickerInit();
         this.mapEvents();
     }
 
@@ -30,23 +30,23 @@ export default class DateTimePicker extends Component {
         }
 
         this.trigger.addEventListener('focus', () => {
-            this.datepicker.showPicker();
+            this.datePicker.showPicker();
         });
 
         this.trigger.addEventListener('click', () => {
-            this.datepicker.showPicker();
+            this.datePicker.showPicker();
         });
 
-        this.datepicker.addEventListener('change', () => {
-            this.trigger.value = this.datepicker.value;
+        this.datePicker.addEventListener('change', () => {
+            this.trigger.value = this.datePicker.value;
         });
 
         this.trigger.addEventListener('change', () => {
-            this.datepicker.value = this.trigger.value;
+            this.datePicker.value = this.trigger.value;
         });
     }
 
-    protected datetimepickerInit(): void {
+    protected datePickerInit(): void {
         if (this.formattedDateTime && this.trigger.value) {
             this.trigger.value = this.formattedDateTime;
         }
@@ -54,12 +54,12 @@ export default class DateTimePicker extends Component {
 
     protected setMaxDate(): void {
         const dateTo = document.getElementById(this.dateToId) as HTMLInputElement;
-        this.datepicker.setAttribute('max', dateTo.value);
+        this.datePicker.setAttribute('max', dateTo.value);
     }
 
     protected setMinDate(): void {
         const dateFrom = document.getElementById(this.dateFromId) as HTMLInputElement;
-        this.datepicker.setAttribute('min', dateFrom.value);
+        this.datePicker.setAttribute('min', dateFrom.value);
     }
 
     protected get parent(): string {
