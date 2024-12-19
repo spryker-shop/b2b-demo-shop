@@ -16,14 +16,14 @@
     {% include molecule('skip-link') with {
         data: {
             href: '#' ~ mainNavigationId,
-            text: 'global.skip-to-navigation.link.text' | trans,
+            text: 'global.skip-to-navigation' | trans,
         },
     } only %}
 
     {% include molecule('skip-link') with {
         data: {
             href: '#' ~ mainContentId,
-            text: 'global.skip-to-main-content-link-text' | trans,
+            text: 'global.skip-to-content' | trans,
         },
     } only %}
 
