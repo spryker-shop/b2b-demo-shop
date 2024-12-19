@@ -48,6 +48,7 @@
 
         {% include molecule('suggest-search') with {
             attributes: {
+                'parent-class-name': config.name,
                 'suggestion-url': path('search/suggestion'),
                 'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
                 'wrapper-class-name': attributes['wrapper-class-name'],
