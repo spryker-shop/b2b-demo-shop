@@ -4,6 +4,8 @@
     activePage: 'overview',
 } %}
 
+{% set contentSectionId = 'customer-content' %}
+
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
         data: {
@@ -23,9 +25,17 @@
             {% endwidget %}
         {% endblock %}
     {% endset %}
+
     {% set customerContent %}
         {% block customerContent %}{% endblock %}
     {% endset %}
+
+    {% include molecule('skip-link') with {
+        data: {
+            href: '#' ~ contentSectionId,
+            text: 'global.skip-to-content.link.text' | trans,
+        },
+    } only %}
 
     {% embed organism('section') with {
         modifiers: ['last'],
@@ -39,16 +49,10 @@
                 {% block inner %}
                     <div class="grid grid--gap">
                         <div class="is-hidden-sm-lg col col--xl-3">
-                            {% include molecule('skip-link') with {
-                                data: {
-                                    href: '#customer-content',
-                                    text: 'global.skip-to-content.link.text' | trans,
-                                },
-                            } only %}
                             {{ embed.customerNavigation }}
                         </div>
 
-                        <div class="col col--sm-12 col--xl-9" id="customer-content">
+                        <div class="col col--sm-12 col--xl-9" id="{{ contentSectionId }}">
                             {{ embed.customerContent }}
                         </div>
                     </div>

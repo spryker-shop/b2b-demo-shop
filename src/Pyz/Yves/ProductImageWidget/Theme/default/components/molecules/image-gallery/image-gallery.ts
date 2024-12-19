@@ -7,7 +7,6 @@ export default class ImageGallery extends Component {
     protected thumbnailSlider: $;
     protected defaultImageUrl: string;
     protected currentSlideImage: HTMLImageElement;
-    protected thumbnailButtons: HTMLButtonElement[];
 
     protected readyCallback(): void {}
 
@@ -15,18 +14,16 @@ export default class ImageGallery extends Component {
         this.galleryItems = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__item`));
         this.thumbnailSlider = $(`.${this.jsName}__thumbnails`);
         this.initializationSlider();
-
-        this.thumbnailButtons = Array.from(this.querySelectorAll(`.slick-slide`));
-        this.thumbnailButtons.map((button: HTMLButtonElement) => {
-            button.setAttribute('tabindex', '0');
-            button.addEventListener('focusin', (event: Event) => this.onThumbnailHover(event));
-        });
         this.mapEvents();
     }
 
     protected mapEvents(): void {
         this.thumbnailSlider.on('mouseenter', '.slick-slide', (event: Event) => this.onThumbnailHover(event));
         this.thumbnailSlider.on('afterChange', (event: Event, slider: $) => this.onAfterChange(event, slider));
+        Array.from(this.querySelectorAll(`.slick-slide`)).forEach((button: HTMLButtonElement) => {
+            button.setAttribute('tabindex', '0');
+            button.addEventListener('focusin', (event: Event) => this.onThumbnailHover(event));
+        });
     }
 
     protected initializationSlider(): void {

@@ -2,10 +2,12 @@
 
 {% block contentClass %}page-layout-main page-layout-main--catalog-page{% endblock %}
 
+{% set catalogProductListId = 'catalog-product-list' %}
+
 {% block content %}
     {% include molecule('skip-link') with {
         data: {
-            href: '#catalog-product-list',
+            href: '#' ~ catalogProductListId,
             text: 'global.skip-to-products.link.text' | trans,
         },
     } only %}
@@ -78,7 +80,7 @@
                 {% endblock %}
             </div>
 
-            <div class="col col--sm-12 col--lg-8 col--xl-9" id="catalog-product-list">
+            <div class="col col--sm-12 col--lg-8 col--xl-9" id="{{ catalogProductListId }}">
                 <div class="grid grid--column-mob-reverse">
                     <div class="col col--sm-12">
                         <div class="grid grid--justify grid--nowrap">

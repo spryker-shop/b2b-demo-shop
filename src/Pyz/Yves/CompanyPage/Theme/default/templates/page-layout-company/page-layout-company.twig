@@ -5,6 +5,8 @@
     currentBreadcrumb: 'customer.account.overview',
 } %}
 
+{% set contentSectionId = 'company-content' %}
+
 {% block breadcrumbs %}
     {% set breadcrumbs = [] %}
 
@@ -33,6 +35,13 @@
         {% block companyContent %}{% endblock %}
     {% endset %}
 
+    {% include molecule('skip-link') with {
+        data: {
+            href: '#' ~ contentSectionId,
+            text: 'global.skip-to-content.link.text' | trans,
+        },
+    } only %}
+
     {% embed organism('section') with {
         modifiers: ['last'],
         data: {
@@ -43,12 +52,6 @@
         {% block inner %}
             <div class="grid grid--gap">
                 <div class="col col--sm-12 col--xl-3 is-hidden-sm-lg">
-                    {% include molecule('skip-link') with {
-                        data: {
-                            href: '#company-content',
-                            text: 'global.skip-to-content.link.text' | trans,
-                        },
-                    } only %}
                     {% block companyNavigation %}
                         {% embed molecule('navigation-sidebar', 'ShopUi') with {
                             data: {
@@ -89,7 +92,7 @@
                     {% endblock %}
                 </div>
 
-                <div class="col col--sm-12 col--xl-9" id="company-content">
+                <div class="col col--sm-12 col--xl-9" id="{{ contentSectionId }}">
                     {{ companyContent }}
                 </div>
             </div>

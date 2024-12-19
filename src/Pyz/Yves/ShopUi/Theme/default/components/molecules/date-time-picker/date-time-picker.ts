@@ -13,7 +13,6 @@ export default class DateTimePicker extends Component {
         this.dateFrom = document.getElementById(this.dateFromId) as HTMLInputElement;
         this.dateTo = document.getElementById(this.dateToId) as HTMLInputElement;
         this.datePicker = this.querySelector<HTMLInputElement>(`.${this.jsName}__datepicker`);
-        this.datePicker.value = this.trigger.value;
 
         this.datePickerInit();
         this.mapEvents();
@@ -21,11 +20,10 @@ export default class DateTimePicker extends Component {
 
     protected mapEvents(): void {
         if (this.dateTo) {
-            this.setMaxDate();
             this.dateTo.addEventListener('change', () => this.setMaxDate());
         }
+
         if (this.dateFrom) {
-            this.setMinDate();
             this.dateFrom.addEventListener('change', () => this.setMinDate());
         }
 
@@ -50,6 +48,16 @@ export default class DateTimePicker extends Component {
         if (this.formattedDateTime && this.trigger.value) {
             this.trigger.value = this.formattedDateTime;
         }
+
+        this.datePicker.value = this.trigger.value;
+
+        if (this.dateTo) {
+            this.setMaxDate();
+        }
+
+        if (this.dateFrom) {
+            this.setMinDate();
+        }
     }
 
     protected setMaxDate(): void {
@@ -60,10 +68,6 @@ export default class DateTimePicker extends Component {
     protected setMinDate(): void {
         const dateFrom = document.getElementById(this.dateFromId) as HTMLInputElement;
         this.datePicker.setAttribute('min', dateFrom.value);
-    }
-
-    protected get parent(): string {
-        return this.getAttribute('parent-id');
     }
 
     protected get formattedDateTime(): string {

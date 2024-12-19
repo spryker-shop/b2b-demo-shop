@@ -57,12 +57,12 @@
         {% endif %}
 
         {% widget 'SalesOrderThresholdWidget' args [data.expenses] with {
-            configName: config.name,
+            parentName: config.name,
         } only %}
             {% block body %}
-                {% set listItemClass = configName ~ '__item' %}
-                {% set salesListClass = configName ~ '__text-wrap' %}
-                {% set listItemTitleClass = configName ~ '__text ' ~ configName ~ '__text--bigger' %}
+                {% set listItemClass = parentName ~ '__item' %}
+                {% set salesListClass = parentName ~ '__text-wrap' %}
+                {% set listItemTitleClass = parentName ~ '__text ' ~ parentName ~ '__text--bigger' %}
 
                 {{ parent() }}
             {% endblock %}
