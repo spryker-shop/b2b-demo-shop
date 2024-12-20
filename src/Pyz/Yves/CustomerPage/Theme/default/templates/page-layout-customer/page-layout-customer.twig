@@ -32,7 +32,7 @@
 
     {% include molecule('skip-link') with {
         data: {
-            href: '#' ~ contentSectionId,
+            href: contentSectionId,
             text: 'global.skip-to-content' | trans,
         },
     } only %}

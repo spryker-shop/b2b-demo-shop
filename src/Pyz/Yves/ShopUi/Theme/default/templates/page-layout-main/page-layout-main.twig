@@ -9,20 +9,20 @@
 
 {%- block class -%}{{ pageLayoutMainJsClassName }}__side-drawer-container{%- endblock -%}
 
-{% set mainNavigationId = 'main-navigation' %}
+{% set navigationId = 'main-navigation' %}
 {% set mainContentId = 'main-content' %}
 
 {% block body %}
     {% include molecule('skip-link') with {
         data: {
-            href: '#' ~ mainNavigationId,
+            href: navigationId,
             text: 'global.skip-to-navigation' | trans,
         },
     } only %}
 
     {% include molecule('skip-link') with {
         data: {
-            href: '#' ~ mainContentId,
+            href: mainContentId,
             text: 'global.skip-to-content' | trans,
         },
     } only %}
@@ -187,7 +187,7 @@
                     ajaxCartUrl: data.ajaxCartUrl,
                 },
                 attributes: {
-                    mainNavigationId: mainNavigationId,
+                    navigationId: navigationId,
                 },
             } only %}
                 {% block navigation %}

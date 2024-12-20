@@ -20,11 +20,15 @@ export default class DateTimePicker extends Component {
 
     protected mapEvents(): void {
         if (this.dateTo) {
-            this.dateTo.addEventListener('change', () => this.setMaxDate());
+            this.dateTo.addEventListener('change', () => {
+                this.setMaxDate();
+            });
         }
 
         if (this.dateFrom) {
-            this.dateFrom.addEventListener('change', () => this.setMinDate());
+            this.dateFrom.addEventListener('change', () => {
+                this.setMinDate();
+            });
         }
 
         this.trigger.addEventListener('focus', () => {
