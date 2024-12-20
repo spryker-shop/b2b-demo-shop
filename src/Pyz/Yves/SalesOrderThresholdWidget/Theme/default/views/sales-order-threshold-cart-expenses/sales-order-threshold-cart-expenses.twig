@@ -1,10 +1,14 @@
 {% extends view('sales-order-threshold-cart-expenses', '@SprykerShop:SalesOrderThresholdWidget') %}
 
+{% set listItemClass = 'list__item spacing-top spacing-top--inner spacing-top--bigger' %}
+{% set listItemTitleClass = '' %}
+{% set salesListClass = 'sales-order-threshold-expense-list sales-order-threshold-expense-list--cart' %}
+
 {% block body %}
     {% if data.expenses is not empty %}
-        <li class="list__item spacing-top spacing-top--inner spacing-top--bigger">
-            <span>{{ 'cart.sales-order-threshold' | trans }}</span>
-            <ul class="sales-order-threshold-expense-list sales-order-threshold-expense-list--cart">
+        <li class="{{ listItemClass }}">
+            <span class="{{ listItemTitleClass }}">{{ 'cart.sales-order-threshold' | trans }}</span>
+            <ul class="{{ salesListClass }}">
                 {% for expense in data.expenses %}
                     {% include molecule('sales-order-threshold-expense', 'SalesOrderThresholdWidget') with {
                         modifiers: ['cart'],
