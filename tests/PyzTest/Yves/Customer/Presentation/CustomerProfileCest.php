@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\Customer\Presentation;
 
 use Codeception\Scenario;
@@ -40,7 +42,7 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanUpdateProfileData(CustomerPresentationTester $i, Scenario $scenario): void
+    public function testICanUpdateProfileData(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
@@ -63,7 +65,7 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanUpdateEmail(CustomerPresentationTester $i, Scenario $scenario): void
+    public function testICanUpdateEmail(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
@@ -85,7 +87,7 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i, Scenario $scenario): void
+    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
         $anotherCustomerTransfer = $i->haveRegisteredCustomer();
@@ -104,7 +106,7 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanChangePassword(CustomerPresentationTester $i, Scenario $scenario): void
+    public function testICanChangePassword(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
@@ -127,7 +129,7 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i, Scenario $scenario): void
+    public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);

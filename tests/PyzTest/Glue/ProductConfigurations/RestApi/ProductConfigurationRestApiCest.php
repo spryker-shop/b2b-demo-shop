@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Glue\ProductConfigurations\RestApi;
 
 use Codeception\Util\HttpCode;
@@ -57,7 +59,7 @@ class ProductConfigurationRestApiCest
      */
     public function requestProductConcrete(ProductConfigurationsApiTester $I): void
     {
-        $url = $I->formatFullUrl(
+        $I->formatFullUrl(
             '{resourceConcreteProducts}/{productConcreteSku}',
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,

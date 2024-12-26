@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Checkout;
 
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
@@ -48,7 +50,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
      *
      * @return array<\Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPreConditionPluginInterface>
      */
-    protected function getCheckoutPreConditions(Container $container): array
+    protected function getCheckoutPreConditions(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new CustomerPreConditionCheckerPlugin(),
@@ -75,7 +77,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
      *
      * @return array<\Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutDoSaveOrderInterface>|array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutSaveOrderInterface>
      */
-    protected function getCheckoutOrderSavers(Container $container): array
+    protected function getCheckoutOrderSavers(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new CustomerOrderSavePlugin(),
@@ -105,7 +107,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
      *
      * @return array<\Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPostSaveInterface>
      */
-    protected function getCheckoutPostHooks(Container $container): array
+    protected function getCheckoutPostHooks(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new CloseQuoteRequestCheckoutPostSaveHookPlugin(),
@@ -119,7 +121,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
      *
      * @return array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveInterface>|array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveHookInterface>
      */
-    protected function getCheckoutPreSaveHooks(Container $container): array
+    protected function getCheckoutPreSaveHooks(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new SalesOrderExpanderPlugin(),

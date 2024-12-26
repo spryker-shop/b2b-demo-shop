@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\Product\Repository;
 
 use Generated\Shared\Transfer\PaginationTransfer;
@@ -19,14 +21,14 @@ interface ProductRepositoryInterface
      *
      * @return int
      */
-    public function getIdProductByConcreteSku($sku): int;
+    public function getIdProductByConcreteSku(string $sku): int;
 
     /**
      * @param string $sku
      *
      * @return string
      */
-    public function getAbstractSkuByConcreteSku($sku): string;
+    public function getAbstractSkuByConcreteSku(string $sku): string;
 
     /**
      * @return array<string>
@@ -43,7 +45,7 @@ interface ProductRepositoryInterface
      *
      * @return int
      */
-    public function getIdProductAbstractByAbstractSku($sku): int;
+    public function getIdProductAbstractByAbstractSku(string $sku): int;
 
     /**
      * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
@@ -65,7 +67,7 @@ interface ProductRepositoryInterface
      *
      * @return void
      */
-    public function addProductConcrete(SpyProduct $productEntity, $abstractSku = null): void;
+    public function addProductConcrete(SpyProduct $productEntity, ?string $abstractSku = null): void;
 
     /**
      * @return void
