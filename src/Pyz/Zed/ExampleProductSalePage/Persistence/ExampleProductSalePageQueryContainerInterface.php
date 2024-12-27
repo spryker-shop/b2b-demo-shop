@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ExampleProductSalePage\Persistence;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
@@ -23,7 +25,7 @@ interface ExampleProductSalePageQueryContainerInterface
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
      */
-    public function queryProductLabelByName($labelName): SpyProductLabelQuery;
+    public function queryProductLabelByName(string $labelName): SpyProductLabelQuery;
 
     /**
      * @api
@@ -32,7 +34,7 @@ interface ExampleProductSalePageQueryContainerInterface
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery
      */
-    public function queryRelationsBecomingInactive($idProductLabel): SpyProductLabelProductAbstractQuery;
+    public function queryRelationsBecomingInactive(int $idProductLabel): SpyProductLabelProductAbstractQuery;
 
     /**
      * @api
@@ -41,5 +43,5 @@ interface ExampleProductSalePageQueryContainerInterface
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
-    public function queryRelationsBecomingActive($idProductLabel): SpyProductAbstractQuery;
+    public function queryRelationsBecomingActive(int $idProductLabel): SpyProductAbstractQuery;
 }

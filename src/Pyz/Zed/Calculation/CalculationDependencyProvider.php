@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Calculation;
 
 use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
@@ -183,7 +185,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *
      * @return array<\Spryker\Zed\CalculationExtension\Dependency\Plugin\CalculationPluginInterface>
      */
-    protected function getQuoteCalculatorPluginStack(Container $container): array
+    protected function getQuoteCalculatorPluginStack(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         /** @var array<\Spryker\Zed\Calculation\Dependency\Plugin\CalculationPluginInterface> $pluginStack */
         $pluginStack = [
@@ -239,7 +241,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *
      * @return array<\Spryker\Zed\CalculationExtension\Dependency\Plugin\CalculationPluginInterface>
      */
-    protected function getOrderCalculatorPluginStack(Container $container): array
+    protected function getOrderCalculatorPluginStack(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
 
