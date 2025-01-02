@@ -26,9 +26,11 @@ export default class NavigationMultilevel extends Component {
     protected mapEvents(): void {
         this.triggers.forEach((trigger: HTMLElement) => {
             trigger.addEventListener('mouseover', (event: Event) => this.onTriggerOver(event));
+            trigger.addEventListener('focusin', (event: Event) => this.onTriggerOver(event));
         });
         this.triggers.forEach((trigger: HTMLElement) => {
             trigger.addEventListener('mouseout', (event: Event) => this.onTriggerOut(event));
+            trigger.addEventListener('focusout', (event: Event) => this.onTriggerOut(event));
         });
         this.touchTriggers.forEach((trigger: HTMLElement) => {
             trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));

@@ -13,7 +13,6 @@ export default class ImageGallery extends Component {
     protected init(): void {
         this.galleryItems = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__item`));
         this.thumbnailSlider = $(`.${this.jsName}__thumbnails`);
-
         this.initializationSlider();
         this.mapEvents();
     }
@@ -21,6 +20,10 @@ export default class ImageGallery extends Component {
     protected mapEvents(): void {
         this.thumbnailSlider.on('mouseenter', '.slick-slide', (event: Event) => this.onThumbnailHover(event));
         this.thumbnailSlider.on('afterChange', (event: Event, slider: $) => this.onAfterChange(event, slider));
+        Array.from(this.querySelectorAll(`.slick-slide`)).forEach((button: HTMLButtonElement) => {
+            button.setAttribute('tabindex', '0');
+            button.addEventListener('focusin', (event: Event) => this.onThumbnailHover(event));
+        });
     }
 
     protected initializationSlider(): void {

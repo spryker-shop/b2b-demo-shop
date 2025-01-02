@@ -56,7 +56,16 @@
             {{ _self.itemDiscounts(data.cartRuleDiscounts, 'cart.discounts', config.name) }}
         {% endif %}
 
-        {% widget 'SalesOrderThresholdWidget' args [data.expenses] only %}
+        {% widget 'SalesOrderThresholdWidget' args [data.expenses] with {
+            parentName: config.name,
+        } only %}
+            {% block body %}
+                {% set listItemClass = parentName ~ '__item' %}
+                {% set salesListClass = parentName ~ '__text-wrap' %}
+                {% set listItemTitleClass = parentName ~ '__text ' ~ parentName ~ '__text--bigger' %}
+
+                {{ parent() }}
+            {% endblock %}
         {% elsewidget 'SalesOrderThresholdWidgetPlugin' args [data.expenses] only %} {# @deprecated Use SalesOrderThresholdWidget instead. #}
         {% endwidget %}
 
