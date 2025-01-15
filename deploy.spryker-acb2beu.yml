@@ -25,55 +25,65 @@ environment: docker.production
 image:
     tag: spryker/php:8.3
     environment:
+        SPRYKER_DEFAULT_STORE: "DE"
+        SPRYKER_ACTIVE_STORES: "DE,AT"
         SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy.dynamic-store-off -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
         SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production.dynamic-store-off --no-ansi -vvv"
         SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive.dynamic-store-off --no-ansi -vvv"
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: dtc.academy-b2b.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
-        SPRYKER_YVES_HOST_DE: de.academy-b2b.cloud.spryker.toys
-        SPRYKER_YVES_HOST_AT: at.academy-b2b.cloud.spryker.toys
-    php:
-        ini:
-            "opcache.revalidate_freq": 0
-        enabled-extensions:
-            - blackfire
-            - newrelic
+        SPRYKER_YVES_HOST_DE: www.de.academy-b2b.cloud.spryker.toys
+        SPRYKER_YVES_HOST_AT: www.at.academy-b2b.cloud.spryker.toys
     node:
         version: 18
         npm: 9
 
 composer:
-    mode: '--no-dev'
-    autoload: ' --classmap-authoritative --optimize'
+    mode: --no-dev
+    autoload: --classmap-authoritative
 
 assets:
     image: spryker/nginx-brotli:latest
     mode: production
     compression:
         brotli:
-            static: only
-        gzip:
-            static: true
+            static: on
             level: 5
 
 regions:
-  EU:
-    services:
-      mail:
-        sender:
-          name: Spryker No-Reply
-          email: no-reply@academy-b2b.cloud.spryker.toys
-      database:
-        database: spryker_acb2beu
-        username: spryker
-        password: secret
-      broker:
-        namespace: eu-docker
-      key_value_store:
-        namespace: 1
-      search:
-        namespace: eu_search
+    EU:
+        services:
+            mail:
+                sender:
+                    name: academy-b2b-No-Reply
+                    email: no-reply@academy-b2b.cloud.spryker.toys
+            database:
+                database: spryker_acb2beu
+                username: spryker
+                password: secret
+
+        stores:
+            DE:
+                services:
+                    broker:
+                        namespace: de_queue
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: de_search
+                    session:
+                        namespace: 2
+            AT:
+                services:
+                    broker:
+                        namespace: at_queue
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: at_search
+                    session:
+                        namespace: 2
 
 groups:
     EU:
@@ -82,52 +92,62 @@ groups:
             yves:
                 application: yves
                 endpoints:
-                    www.academy-b2b.cloud.spryker.toys:
-                        region: EU
-                        services:
-                            session:
-                                namespace: 2
                     dtc.academy-b2b.cloud.spryker.toys:
                         entry-point: Configurator
+                    www.de.academy-b2b.cloud.spryker.toys:
+                        store: DE
+                    www.at.spryker-b2b.cloud.spryker.toys:
+                        store: AT
+            boffice:
+                application: backoffice
+                endpoints:
+                    backoffice.de.academy-b2b.cloud.spryker.toys:
+                        store: DE
+                    backoffice.at.academy-b2b.cloud.spryker.toys:
+                        store: AT
+            backgw:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.de.academy-b2b.cloud.spryker.toys:
+                        store: DE
+                    backend-gateway.at.academy-b2b.cloud.spryker.toys:
+                        store: AT
+            backapi:
+                application: zed
+                endpoints:
+                    backend-api.de.academy-b2b.cloud.spryker.toys:
+                        store: DE
+                        entry-point: BackendApi
+                    backend-api.at.academy-b2b.cloud.spryker.toys:
+                        store: AT
+                        entry-point: BackendApi
             glue:
                 application: glue
                 endpoints:
-                    glue.academy-b2b.cloud.spryker.toys:
-                        region: EU
+                    glue.de.academy-b2b.cloud.spryker.toys:
+                        store: DE
+                        cors-allow-origin: '*'
+                    glue.at.academy-b2b.cloud.spryker.toys:
+                        store: AT
                         cors-allow-origin: '*'
             gluestorefront:
                 application: glue-storefront
                 endpoints:
-                    glue-storefront.academy-b2b.cloud.spryker.toys:
-                        region: EU
+                    glue-storefront.de.academy-b2b.cloud.spryker.toys:
+                        store: DE
+                        cors-allow-origin: '*'
+                    glue-storefront.at.academy-b2b.cloud.spryker.toys:
+                        store: AT
                         cors-allow-origin: '*'
             gluebackend:
                 application: glue-backend
                 endpoints:
-                    glue-backend.academy-b2b.cloud.spryker.toys:
-                        region: EU
+                    glue-backend.de.academy-b2b.cloud.spryker.toys:
+                        store: DE
                         cors-allow-origin: '*'
-            boffice:
-                application: backoffice
-                endpoints:
-                    backoffice.academy-b2b.cloud.spryker.toys:
-                        region: EU
-                        primal: true
-                        services:
-                            session:
-                                namespace: 3
-            backgw:
-                application: backend-gateway
-                endpoints:
-                    backend-gateway.academy-b2b.cloud.spryker.toys:
-                        region: EU
-                        primal: true
-            backapi:
-                application: zed
-                endpoints:
-                    backend-api.academy-b2b.cloud.spryker.toys:
-                        region: EU
-                        entry-point: BackendApi
+                    glue-backend.at.academy-b2b.cloud.spryker.toys:
+                        store: AT
+                        cors-allow-origin: '*'
 services:
     database:
         engine: mysql
@@ -140,7 +160,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: 3.13
+        version: '3.9'
         api:
             username: "spryker"
             password: "secret"
@@ -157,13 +177,14 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: 7.6
+        version: '7.10'
         endpoints:
             localhost:9200:
                 protocol: tcp
     scheduler:
         engine: jenkins
         version: '2.442'
+        csrf-protection-enabled: false
         endpoints:
             scheduler.academy-b2b.cloud.spryker.toys:
     mail_catcher:
@@ -186,6 +207,7 @@ docker:
             enabled: false
 
     testing:
+        store: DE
 
     mount:
         baked:
