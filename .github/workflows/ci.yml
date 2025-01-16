@@ -15,8 +15,8 @@ concurrency:
 jobs:
     validation:
         if: >
-            (contains(github.event.pull_request.labels.*.name, 'run-static-ci'))
-            || (contains(github.event.pull_request.labels.*.name, 'run-all-ci'))
+            contains(github.event.pull_request.labels.*.name, 'run-static-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-all-ci')
         name: "Static analysis"
         runs-on: ubuntu-22.04
         strategy:
@@ -158,6 +158,9 @@ jobs:
                 run: vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER --format=compact
 
     php-83-mariadb-glue-alpine-dynamic-store-off:
+        if: >
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-all-ci')
         name: "PHP 8.3 / MariaDB / Glue / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -184,7 +187,10 @@ jobs:
 
     php-83-mariadb-glue-alpine:
         name: "PHP 8.3 / MariaDB / Glue / Alpine"
-        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
+        if: >
+            !contains(github.event.pull_request.head.ref, 'hackathon')
+            && (contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-all-ci'))
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
