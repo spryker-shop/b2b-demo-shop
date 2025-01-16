@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
     validation:
-        if: "contains(github.event.pull_request.labels, 'run-static-ci')"
+        if: "contains(github.event.pull_request.labels.*.name, 'run-static-ci')"
         name: "Static analysis"
         runs-on: ubuntu-22.04
         strategy:
