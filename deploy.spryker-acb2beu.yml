@@ -27,7 +27,7 @@ image:
     environment:
         SPRYKER_DNS_RESOLVER_IP: "10.105.0.2"
         SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
-        SPRYKER_HOOK_AFTER_DEPLOY: "vendor/bin/install -r install-post-deploy-workflow.yml -vvv"
+        SPRYKER_HOOK_AFTER_DEPLOY: ""
         SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
         SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive --no-ansi -vvv"
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: dtc.eu.academy-b2b.cloud.spryker.toys
