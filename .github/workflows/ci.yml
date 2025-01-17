@@ -189,7 +189,7 @@ jobs:
         name: "PHP 8.3 / MariaDB / Glue / Alpine"
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
-            && (contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            && (contains(github.event.pull_request.labels.*.name, 'run-api-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-all-ci'))
         runs-on: ubuntu-22.04
         env:
