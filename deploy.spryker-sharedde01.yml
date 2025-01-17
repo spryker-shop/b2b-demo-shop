@@ -142,6 +142,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
+        version: 3.13
         api:
             username: "spryker"
             password: "secret"
@@ -164,6 +165,7 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.442'
         endpoints:
             scheduler.sharedde01.gtm.demo-spryker.com:
     mail_catcher:
