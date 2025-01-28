@@ -117,6 +117,10 @@ jobs:
                 run: |
                     vendor/bin/console frontend:project:install-dependencies -vvv
 
+            -   name: Install NPM packages
+                run: |
+                    sudo npm i --location=global --unsafe-perm speccy@0.11.0
+
             -   name: Speccy lint Glue specification
                 run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
 
@@ -161,13 +165,8 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Frontend install-dependencies
-                run: |
-                    vendor/bin/console frontend:project:install-dependencies -vvv
-
             -   name: Install NPM packages
-                run: |
-                    sudo npm i --location=global --unsafe-perm speccy@0.11.0
+                run: npm ci
 
             -   name: Style lint
                 run: npm run yves:stylelint
