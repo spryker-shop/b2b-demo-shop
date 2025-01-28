@@ -161,6 +161,10 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Frontend install-dependencies
+                run: |
+                    vendor/bin/console frontend:project:install-dependencies -vvv
+
             -   name: Install NPM packages
                 run: |
                     sudo npm i --location=global --unsafe-perm speccy@0.11.0
