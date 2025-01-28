@@ -163,6 +163,8 @@ jobs:
             PROJECT: suite
 
         steps:
+            -   uses: actions/checkout@v4
+
             -   name: Install NPM packages
                 run: npm ci
 
