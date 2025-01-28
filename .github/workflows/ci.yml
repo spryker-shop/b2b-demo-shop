@@ -177,7 +177,6 @@ jobs:
             -   name: Front-end Formatter
                 run: npm run formatter
 
-
     php-83-mariadb-glue-alpine-dynamic-store-off:
         if: contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
         name: "PHP 8.3 / MariaDB / Glue / Alpine / Dynamic Store OFF"
