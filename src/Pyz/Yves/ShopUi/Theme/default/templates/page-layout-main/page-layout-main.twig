@@ -9,10 +9,28 @@
 
 {%- block class -%}{{ pageLayoutMainJsClassName }}__side-drawer-container{%- endblock -%}
 
+{% set navigationId = 'main-navigation' %}
+{% set mainContentId = 'main-content' %}
+
 {% block body %}
+    {% include molecule('skip-link') with {
+        data: {
+            href: navigationId,
+            text: 'global.skip-to-navigation' | trans,
+        },
+    } only %}
+
+    {% include molecule('skip-link') with {
+        data: {
+            href: mainContentId,
+            text: 'global.skip-to-content' | trans,
+        },
+    } only %}
+
     {% block notifications %}
         {% include organism('notification-area') only %}
     {% endblock %}
+
     <div class="page-layout page-layout--preload">
         {% widget 'AgentControlBarWidget' only %}{% endwidget %}
 
@@ -168,6 +186,9 @@
                     isAjaxMode: data.isAjaxHeader,
                     ajaxCartUrl: data.ajaxCartUrl,
                 },
+                attributes: {
+                    navigationId: navigationId,
+                },
             } only %}
                 {% block navigation %}
                     {% cms_slot 'slt-desktop-header' %}
@@ -201,7 +222,7 @@
                 </div>
             {% endblock %}
 
-            <main class="{% block contentClass %}{% endblock %}">
+            <main id="{{ mainContentId }}" class="{% block contentClass %}{% endblock %}">
                 {% block contentTop %}{% endblock %}
 
                 {% block contentWrap %}

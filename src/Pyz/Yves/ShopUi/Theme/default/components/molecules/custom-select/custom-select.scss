@@ -190,6 +190,12 @@
 
 @mixin shop-ui-select2($name: '.select2') {
     #{$name} {
+        &_selection:focus-visible {
+            #{$name}-selection__rendered {
+                border-color: $setting-color-input-border-focus;
+            }
+        }
+
         &-selection__rendered {
             display: block;
             border-radius: $setting-border-radius;
@@ -226,6 +232,10 @@
             position: relative;
             vertical-align: middle;
             cursor: pointer;
+
+            &--focus {
+                @include helper-outline;
+            }
 
             &--alternative {
                 #{$name}-selection__rendered {
@@ -402,6 +412,10 @@
                         border-color: $setting-color-gray-5;
                     }
                 }
+            }
+
+            &--highlighted {
+                @include helper-outline;
             }
         }
 

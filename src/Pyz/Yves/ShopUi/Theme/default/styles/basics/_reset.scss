@@ -8,6 +8,10 @@
             outline: 0;
         }
 
+        &:focus-visible {
+            @include helper-outline;
+        }
+
         &::before,
         &::after {
             box-sizing: border-box;
@@ -22,6 +26,7 @@
 
     html {
         @include helper-reset;
+        scroll-behavior: smooth;
     }
 
     // HTML5 display-role reset for older browsers
