@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\Customer\Helper;
 
 use Codeception\Module;
@@ -45,12 +47,11 @@ class CustomerHelper extends Module
      *
      * @return \Orm\Zed\Customer\Persistence\SpyCustomer|null
      */
-    public function loadCustomerByEmail($email): ?SpyCustomer
+    public function loadCustomerByEmail(string $email): ?SpyCustomer
     {
         $customerQuery = new SpyCustomerQuery();
-        $customerEntity = $customerQuery->findOneByEmail($email);
 
-        return $customerEntity;
+        return $customerQuery->findOneByEmail($email);
     }
 
     /**
@@ -79,7 +80,7 @@ class CustomerHelper extends Module
      *
      * @return void
      */
-    public function addAddressToCustomer($email, $address, $isDefaultShipping = true, $isDefaultBilling = true): void
+    public function addAddressToCustomer(string $email, string $address, bool $isDefaultShipping = true, bool $isDefaultBilling = true): void
     {
         $customerEntity = $this->loadCustomerByEmail($email);
         $addressTransfer = CustomerAddressesPage::getAddressData($address);
@@ -108,7 +109,7 @@ class CustomerHelper extends Module
      *
      * @return void
      */
-    public function addNewsletterSubscription($email, $type = NewsletterConstants::DEFAULT_NEWSLETTER_TYPE): void
+    public function addNewsletterSubscription(string $email, string $type = NewsletterConstants::DEFAULT_NEWSLETTER_TYPE): void
     {
         $customerEntity = $this->loadCustomerByEmail($email);
         $newsletterSubscriberTransfer = new NewsletterSubscriberTransfer();

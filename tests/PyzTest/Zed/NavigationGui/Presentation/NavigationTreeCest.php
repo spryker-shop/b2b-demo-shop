@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
 use Codeception\Scenario;
@@ -296,7 +298,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i, Scenario $scenario): void
+    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->wantTo('Remove child node.');
         $i->expect('Node should be removed from Zed.');

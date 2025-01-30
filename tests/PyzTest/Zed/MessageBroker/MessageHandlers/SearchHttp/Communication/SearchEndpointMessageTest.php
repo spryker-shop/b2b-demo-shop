@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\MessageBroker\MessageHandlers\SearchHttp\Communication;
 
 use Codeception\Test\Unit;
@@ -42,7 +44,7 @@ class SearchEndpointMessageTest extends Unit
         $this->tester->handleSearchMessage($searchEndpointAvailableTransfer);
 
         // Assert
-        $this->tester->assertSearchHttpConfigExists();
+        $this->tester->assertSearchHttpConfigExistsForStore();
     }
 
     /**

@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\Customer\Presentation;
 
 use Codeception\Scenario;
@@ -40,7 +42,7 @@ class CustomerAddressesCest
      *
      * @return void
      */
-    public function testICanOpenAddAddressPage(CustomerPresentationTester $i, Scenario $scenario): void
+    public function testICanOpenAddAddressPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerAddressesPage::URL);

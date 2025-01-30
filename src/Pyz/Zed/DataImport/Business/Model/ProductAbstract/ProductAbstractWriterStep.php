@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
@@ -193,9 +195,11 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
                 ->setMetaKeywords($localizedAttributes[static::KEY_META_KEYWORDS])
                 ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
 
-            if ($productAbstractLocalizedAttributesEntity->isNew() || $productAbstractLocalizedAttributesEntity->isModified()) {
-                $productAbstractLocalizedAttributesEntity->save();
+            if (!$productAbstractLocalizedAttributesEntity->isNew() && !$productAbstractLocalizedAttributesEntity->isModified()) {
+                continue;
             }
+
+            $productAbstractLocalizedAttributesEntity->save();
         }
     }
 
@@ -233,12 +237,14 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
             $productCategoryEntity
                 ->setProductOrder($productOrder);
 
-            if ($productCategoryEntity->isNew() || $productCategoryEntity->isModified()) {
-                $productCategoryEntity->save();
-
-                $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $productAbstractEntity->getIdProductAbstract());
-                $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+            if (!$productCategoryEntity->isNew() && !$productCategoryEntity->isModified()) {
+                continue;
             }
+
+            $productCategoryEntity->save();
+
+            $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+            $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
         }
     }
 
@@ -247,7 +253,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return array<string>
      */
-    protected function getCategoryKeys($categoryKeys): array
+    protected function getCategoryKeys(string $categoryKeys): array
     {
         $categoryKeys = explode(',', $categoryKeys);
 
@@ -259,7 +265,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return array<int>
      */
-    protected function getCategoryProductOrder($categoryProductOrder): array
+    protected function getCategoryProductOrder(string $categoryProductOrder): array
     {
         $categoryProductOrder = explode(',', $categoryProductOrder);
         $categoryProductOrder = array_map('trim', $categoryProductOrder);
@@ -287,11 +293,13 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
 
             $urlEntity->setUrl($abstractProductUrl);
 
-            if ($urlEntity->isNew() || $urlEntity->isModified()) {
-                $urlEntity->save();
-
-                $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
+            if (!$urlEntity->isNew() && !$urlEntity->isModified()) {
+                continue;
             }
+
+            $urlEntity->save();
+
+            $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
         }
     }
 
@@ -300,7 +308,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function cleanupRedirectUrls($abstractProductUrl): void
+    protected function cleanupRedirectUrls(string $abstractProductUrl): void
     {
         SpyUrlQuery::create()
             ->filterByUrl($abstractProductUrl)

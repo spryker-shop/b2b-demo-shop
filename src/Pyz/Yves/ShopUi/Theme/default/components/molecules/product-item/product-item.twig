@@ -34,6 +34,7 @@
             {% endblock %}
 
             {% block sku %}
+                <meta class="{{ config.jsName }}__abstract-sku" itemprop="abstractSku" content="{{ data.abstractSku }}">
                 <meta class="{{ config.jsName }}__sku" itemprop="sku" content="{{ data.metaSku }}">
             {% endblock %}
 

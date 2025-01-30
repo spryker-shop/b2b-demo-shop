@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ShipmentPrice;
 
 use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
@@ -79,7 +81,7 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function getIdShipmentMethodByShipmentMethodKey($shipmentMethodKey): int
+    protected function getIdShipmentMethodByShipmentMethodKey(string $shipmentMethodKey): int
     {
         if (!isset(static::$idShipmentMethodCache[$shipmentMethodKey])) {
             static::$idShipmentMethodCache[$shipmentMethodKey] = SpyShipmentMethodQuery::create()
@@ -95,7 +97,7 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function getIdCurrencyByIsoCode($currencyIsoCode): int
+    protected function getIdCurrencyByIsoCode(string $currencyIsoCode): int
     {
         if (!isset(static::$idCurrencyCache[$currencyIsoCode])) {
             static::$idCurrencyCache[$currencyIsoCode] = SpyCurrencyQuery::create()
@@ -111,7 +113,7 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function getIdStoreByStoreName($storeName): int
+    protected function getIdStoreByStoreName(string $storeName): int
     {
         if (!isset(static::$idStoreCache[$storeName])) {
             static::$idStoreCache[$storeName] = SpyStoreQuery::create()

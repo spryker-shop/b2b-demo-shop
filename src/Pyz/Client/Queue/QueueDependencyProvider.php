@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Client\Queue;
 
 use Spryker\Client\Kernel\Container;
@@ -17,7 +19,7 @@ class QueueDependencyProvider extends BaseQueueDependencyProvider
      *
      * @return array<\Spryker\Client\Queue\Model\Adapter\AdapterInterface>
      */
-    protected function createQueueAdapters(Container $container): array
+    protected function createQueueAdapters(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             $container->getLocator()->rabbitMq()->client()->createQueueAdapter(),

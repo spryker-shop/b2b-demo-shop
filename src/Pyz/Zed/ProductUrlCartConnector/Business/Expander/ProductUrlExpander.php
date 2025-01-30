@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ProductUrlCartConnector\Business\Expander;
 
 use Generated\Shared\Transfer\CartChangeTransfer;
@@ -65,9 +67,11 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
             ->setIdProductAbstract($itemTransfer->getIdProductAbstract());
         $productUrlTransfer = $this->productFacade->getProductUrl($productAbstractTransfer);
         foreach ($productUrlTransfer->getUrls() as $localizedUrlTransfer) {
-            if ($localizedUrlTransfer->getLocale() !== null && $localizedUrlTransfer->getLocale()->getIdLocale() === $idLocale) {
-                $itemTransfer->setUrl($localizedUrlTransfer->getUrl());
+            if ($localizedUrlTransfer->getLocale() === null || $localizedUrlTransfer->getLocale()->getIdLocale() !== $idLocale) {
+                continue;
             }
+
+            $itemTransfer->setUrl($localizedUrlTransfer->getUrl());
         }
     }
 }

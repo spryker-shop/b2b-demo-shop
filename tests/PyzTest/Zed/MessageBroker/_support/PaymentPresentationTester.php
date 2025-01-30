@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\MessageBroker;
 
 use Codeception\Actor;
@@ -92,6 +94,7 @@ class PaymentPresentationTester extends Actor
     {
         $channelName = 'payment-commands';
         $this->setupMessageBroker($paymentMessageTransfer::class, $channelName);
+        $this->setupMessageBrokerPlugins();
         $messageBrokerFacade = $this->getLocator()->messageBroker()->facade();
         $messageBrokerFacade->sendMessage($paymentMessageTransfer);
         $messageBrokerFacade->startWorker(

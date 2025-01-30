@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\PersistentCart;
 
 use Spryker\Zed\Kernel\Container;
@@ -52,7 +54,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
      *
      * @return array<\Spryker\Zed\CartExtension\Dependency\Plugin\CartOperationStrategyPluginInterface>
      */
-    protected function getCartAddItemStrategyPlugins(Container $container): array
+    protected function getCartAddItemStrategyPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ProductPackagingUnitCartAddItemStrategyPlugin(),
