@@ -42,6 +42,7 @@
         embed: {
             customerNavigation: customerNavigation,
             customerContent: customerContent,
+            contentSectionId: contentSectionId,
         },
     } only %}
         {% block body %}
@@ -52,7 +53,7 @@
                             {{ embed.customerNavigation }}
                         </div>
 
-                        <div class="col col--sm-12 col--xl-9" id="{{ contentSectionId }}">
+                        <div class="col col--sm-12 col--xl-9" id="{{ embed.contentSectionId }}">
                             {{ embed.customerContent }}
                         </div>
                     </div>
