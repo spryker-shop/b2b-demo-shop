@@ -9,28 +9,7 @@
 
 {%- block class -%}{{ pageLayoutMainJsClassName }}__side-drawer-container{%- endblock -%}
 
-{% set navigationId = 'main-navigation' %}
-{% set mainContentId = 'main-content' %}
-
-{% block body %}
-    {% include molecule('skip-link') with {
-        data: {
-            href: navigationId,
-            text: 'global.skip-to-navigation' | trans,
-        },
-    } only %}
-
-    {% include molecule('skip-link') with {
-        data: {
-            href: mainContentId,
-            text: 'global.skip-to-content' | trans,
-        },
-    } only %}
-
-    {% block notifications %}
-        {% include organism('notification-area') only %}
-    {% endblock %}
-
+{% block viewport %}
     <div class="page-layout page-layout--preload">
         {% widget 'AgentControlBarWidget' only %}{% endwidget %}
 
@@ -257,43 +236,4 @@
     </div>
 
     {% include atom('touch-checker') only %}
-
-    {% block globalComponents %}
-        {% include molecule('action-single-click-enforcer') with {
-            attributes: {
-                'target-selector': '[data-init-single-click]',
-            },
-        } only %}
-
-        {% include molecule('form-submitter') with {
-            attributes: {
-                'trigger-selector': '[data-form-submitter]',
-            },
-        } only %}
-
-        {% include molecule('viewport-intersection-observer') only %}
-
-        {% include molecule('node-animator') only %}
-
-        {% include molecule('window-load-class-remover') with {
-            attributes: {
-                'target-class-name': 'page-layout',
-                'trigger-class-name': 'page-layout--preload',
-            },
-        } only %}
-
-        {% include molecule('main-overlay') with {
-            attributes: {
-                'is-open': data.isOverlayOpen,
-            },
-        } only %}
-    {% endblock %}
-
-    {% block traceableEvent %}
-        {{ parent() }}
-    {% endblock %}
-
-    {% block icons %}
-        {% include atom('icon-sprite') only %}
-    {% endblock %}
 {% endblock %}
