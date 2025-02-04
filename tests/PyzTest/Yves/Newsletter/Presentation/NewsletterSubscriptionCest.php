@@ -55,7 +55,7 @@ class NewsletterSubscriptionCest
         $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->executeJS("document.querySelector(\"" . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . "\").click();");
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
 
         $i->seeInPageSource(NewsletterSubscriptionHomePage::SUCCESS_MESSAGE);
     }
@@ -77,7 +77,7 @@ class NewsletterSubscriptionCest
         $i->haveAnAlreadySubscribedEmail($customerTransfer->getEmail());
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->executeJS("document.querySelector(\"" . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . "\").click();");
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
 
         $i->seeInPageSource(NewsletterSubscriptionHomePage::ERROR_MESSAGE);
     }
@@ -97,7 +97,7 @@ class NewsletterSubscriptionCest
         $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->executeJS("document.querySelector(\"" . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . "\").click();");
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
         $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
 
         $i->amLoggedInCustomer([
@@ -125,7 +125,7 @@ class NewsletterSubscriptionCest
         $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->executeJS("document.querySelector(\"" . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . "\").click();");
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
         $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
 
         $i->amLoggedInCustomer([
