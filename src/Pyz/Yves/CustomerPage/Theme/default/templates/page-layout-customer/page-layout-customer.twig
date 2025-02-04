@@ -4,6 +4,8 @@
     activePage: 'overview',
 } %}
 
+{% set contentSectionId = 'customer-content' %}
+
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
         data: {
@@ -23,15 +25,24 @@
             {% endwidget %}
         {% endblock %}
     {% endset %}
+
     {% set customerContent %}
         {% block customerContent %}{% endblock %}
     {% endset %}
+
+    {% include molecule('skip-link') with {
+        data: {
+            href: contentSectionId,
+            text: 'global.skip-to-content' | trans,
+        },
+    } only %}
 
     {% embed organism('section') with {
         modifiers: ['last'],
         embed: {
             customerNavigation: customerNavigation,
             customerContent: customerContent,
+            contentSectionId: contentSectionId,
         },
     } only %}
         {% block body %}
@@ -42,7 +53,7 @@
                             {{ embed.customerNavigation }}
                         </div>
 
-                        <div class="col col--sm-12 col--xl-9">
+                        <div class="col col--sm-12 col--xl-9" id="{{ embed.contentSectionId }}">
                             {{ embed.customerContent }}
                         </div>
                     </div>

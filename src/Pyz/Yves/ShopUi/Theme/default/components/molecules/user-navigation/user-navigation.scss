@@ -40,6 +40,7 @@
                 }
             }
 
+            &:focus-within #{$name}__sub-nav,
             &:hover #{$name}__sub-nav {
                 @include helper-breakpoint-media-min($lg) {
                     transform: translateX(-50%) scale(1);

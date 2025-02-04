@@ -61,8 +61,14 @@
         }
 
         &__input {
-            @include helper-visibility-invisible;
+            @include helper-accessible-visibility-invisible;
             position: absolute;
+
+            &:focus ~ {
+                #{$name}__box {
+                    @include helper-outline;
+                }
+            }
 
             &:checked ~ {
                 #{$name}__box {
