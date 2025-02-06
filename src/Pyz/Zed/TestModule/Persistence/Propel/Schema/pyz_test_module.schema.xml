@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="zed"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\TestModule\Persistence"
+          package="src.Orm.Zed.TestModule.Persistence">
+
+    <table name="pyz_cars" identifierQuoting="true">
+        <column name="id" type="integer" autoIncrement="true" primaryKey="true"/>
+        <column name="name" type="VARCHAR" size="255" required="true"/>
+        <column name="engine" type="VARCHAR" size="255" required="true"/>
+
+        <behavior name="timestampable"/>
+    </table>
+
+</database>
