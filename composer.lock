@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb0e19b4008eb8c5765967b7a0c40e46",
+    "content-hash": "2d164cce7d875844051029477a349ccf",
     "packages": [
         {
             "name": "async-aws/core",
@@ -23141,6 +23141,56 @@
                 "source": "https://github.com/spryker/cms-user-connector/tree/1.3.0"
             },
             "time": "2023-03-03T10:26:17+00:00"
+        },
+        {
+            "name": "spryker/code-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/code-generator.git",
+                "reference": "2a761876f2bc0530a790058b3193b5cdaaffc105"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/2a761876f2bc0530a790058b3193b5cdaaffc105",
+                "reference": "2a761876f2bc0530a790058b3193b5cdaaffc105",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/kernel": "^3.30.0",
+                "spryker/laminas": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "^4.1",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CodeGenerator module",
+            "support": {
+                "issues": "https://github.com/spryker/code-generator/issues",
+                "source": "https://github.com/spryker/code-generator/tree/master"
+            },
+            "abandoned": "spryker-sdk/spryk",
+            "time": "2024-11-01T07:08:00+00:00"
         },
         {
             "name": "spryker/collector",
@@ -69242,6 +69292,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker/code-generator": 20,
         "spryker/cypress-tests": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20

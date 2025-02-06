@@ -15,6 +15,12 @@ use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleSharedCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
@@ -429,6 +435,14 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateRestApiDocumentationConsole();
             $commands[] = new CustomerPasswordResetConsole();
             $commands[] = new CustomerPasswordSetConsole();
+
+            $commands[] = new BundleCodeGeneratorConsole();
+            $commands[] = new BundleClientCodeGeneratorConsole();
+            $commands[] = new BundleServiceCodeGeneratorConsole();
+            $commands[] = new BundleSharedCodeGeneratorConsole();
+            $commands[] = new BundleYvesCodeGeneratorConsole();
+            $commands[] = new BundleZedCodeGeneratorConsole();
+
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();
