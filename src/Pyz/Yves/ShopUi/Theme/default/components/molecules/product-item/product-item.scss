@@ -19,7 +19,10 @@
         &__colors {
             @include helper-breakpoint-media-min($xl) {
                 @include helper-effect-transition(opacity);
-                opacity: 0;
+
+                &:not(:has(:focus-visible)) {
+                    opacity: 0;
+                }
             }
 
             &--category {

@@ -29,7 +29,7 @@ class NewsletterSubscriptionHomePage
     /**
      * @var string
      */
-    public const FORM_BUTTON_SUBMIT = '//button[@type=\'submit\' and @data-qa=\'submit-button\']';
+    public const FORM_BUTTON_SUBMIT = 'button[data-qa=\'submit-button\']';
 
     /**
      * @var string

@@ -34,7 +34,7 @@
             {% block fields %}
                 {{ parent() }}
 
-                <label class="label label--browse-file spacing-bottom spacing-bottom--reset {{ embed.parentJsClass }}__browse-file" for="{{ data.form.children.fileUploadOrder.vars.id }}">
+                <label tabindex="0" class="label label--browse-file spacing-bottom spacing-bottom--reset {{ embed.parentJsClass }}__browse-file" for="{{ data.form.children.fileUploadOrder.vars.id }}">
                     <span class="{{ embed.parentClass }}__browse-file-info">
                         {% include atom('icon') with {
                             class: 'spacing-bottom',

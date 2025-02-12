@@ -25,6 +25,16 @@ export default class QuickOrderFileUpload extends Component {
     protected mapEvents(): void {
         this.inputFile.addEventListener('change', this.inputFileHandler.bind(this, this.inputFile));
         this.removeIcon.addEventListener('click', this.cleanInputFile.bind(this, this.removeIcon));
+        this.browseFileLabel.addEventListener('keydown', (event: KeyboardEvent) => this.browseFileLabelHandler(event));
+    }
+
+    protected browseFileLabelHandler(event: KeyboardEvent): void {
+        if (event.code !== 'Enter') {
+            return;
+        }
+
+        event.preventDefault();
+        this.browseFileLabel.dispatchEvent(new MouseEvent('click'));
     }
 
     protected inputFileHandler(inputFile: HTMLInputElement): void {
