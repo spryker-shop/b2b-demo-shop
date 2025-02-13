@@ -1,7 +1,7 @@
 import Component from 'ShopUi/models/component';
-import flatpickr from "flatpickr";
-import { German } from "flatpickr/dist/l10n/de.js";
-import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
+import flatpickr from 'flatpickr';
+import { German } from 'flatpickr/dist/l10n/de.js';
+import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
 
 export default class DateTimePicker extends Component {
     protected trigger: HTMLInputElement;
@@ -24,13 +24,14 @@ export default class DateTimePicker extends Component {
             ...config,
         };
 
-        if(this.dateToId) {
+        if (this.dateToId) {
             config = {
                 ...config,
                 ...{
-                    "plugins": [new rangePlugin({ input: `#${this.dateToId}`})],
+                    // eslint-disable-next-line new-cap
+                    plugins: [new rangePlugin({ input: `#${this.dateToId}` })],
                 },
-            }
+            };
         }
 
         flatpickr(this.trigger, config);
@@ -38,7 +39,6 @@ export default class DateTimePicker extends Component {
         if (this.formattedDateTime && this.trigger.value) {
             this.trigger.value = this.formattedDateTime;
         }
-
     }
 
     protected get formattedDateTime(): string {
