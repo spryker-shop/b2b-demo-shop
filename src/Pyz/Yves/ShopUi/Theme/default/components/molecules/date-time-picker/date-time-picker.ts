@@ -1,6 +1,7 @@
 import Component from 'ShopUi/models/component';
 import flatpickr from 'flatpickr';
 import { German } from 'flatpickr/dist/l10n/de.js';
+import { Options } from 'flatpickr/dist/types/options';
 import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
 
 export default class DateTimePicker extends Component {
@@ -15,24 +16,17 @@ export default class DateTimePicker extends Component {
     }
 
     protected datePickerInit(): void {
-        let config = this.config;
-        config = {
-            ...{
-                locale: this.language === 'de' ? German : '',
-                enableTime: true,
-            },
-            ...config,
+        const config: Options = {
+            locale: this.language === 'de' ? German : '',
+            enableTime: true,
+            ...this.config,
+            ...(this.dateToId
+                ? {
+                      // eslint-disable-next-line new-cap
+                      plugins: [new rangePlugin({ input: `#${this.dateToId}` })],
+                  }
+                : {}),
         };
-
-        if (this.dateToId) {
-            config = {
-                ...config,
-                ...{
-                    // eslint-disable-next-line new-cap
-                    plugins: [new rangePlugin({ input: `#${this.dateToId}` })],
-                },
-            };
-        }
 
         flatpickr(this.trigger, config);
 
