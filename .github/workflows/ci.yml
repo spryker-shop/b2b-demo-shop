@@ -1169,7 +1169,7 @@ jobs:
 
             -   name: Install cypress-tests folder
                 run: |
-                    cd ./data && composer require "spryker/cypress-tests:dev-feature/frw-9083/master-update-customer-email-confirmation" --dev --no-interaction
+                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
@@ -1223,7 +1223,7 @@ jobs:
 
             -   name: Install cypress-tests folder
                 run: |
-                    cd ./data && composer require "spryker/cypress-tests:dev-feature/frw-9083/master-update-customer-email-confirmation" --dev --no-interaction
+                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
