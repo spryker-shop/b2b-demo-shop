@@ -1,8 +1,8 @@
 @mixin shop-ui-header($name: '.header') {
     #{$name} {
         position: relative;
-        background-color: $setting-color-gray-6;
         z-index: $setting-zi-header;
+        background: $setting-color-white;
 
         .body-has-overlay & {
             z-index: auto;
@@ -28,7 +28,7 @@
             @include helper-breakpoint-media-min($lg) {
                 display: block;
                 padding-left: rem(50);
-                background: $setting-color-gray-1;
+                background: $setting-color-gray-6;
             }
 
             @include helper-breakpoint-media-min($xl) {
@@ -52,9 +52,9 @@
         }
 
         &__main {
-            background: $setting-color-gray-6;
             padding: rem(8) 0 0;
             min-height: rem(56);
+            border-bottom: rem(1) solid $setting-color-gray-1;
 
             @include helper-breakpoint-media-min($lg) {
                 min-height: rem(114);
@@ -155,7 +155,7 @@
         &__back {
             display: flex;
             align-items: center;
-            color: $setting-color-gray-3;
+            color: $setting-color-text;
             font-size: rem(12);
             line-height: rem(13);
             text-align: center;
@@ -165,7 +165,7 @@
                 @include helper-effect-transition(color border-color);
                 display: inline-block;
                 padding: rem(10) rem(30);
-                border: rem(1) solid $setting-color-gray-2;
+                border: rem(1) solid currentColor;
                 border-radius: $setting-border-radius;
                 font-size: rem(14);
                 line-height: rem(18);
@@ -183,15 +183,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: $setting-color-gray-3;
             font-size: rem(10);
-            line-height: rem(12);
             font-weight: fw(medium);
 
             @include helper-breakpoint-media-min($lg) {
                 flex-direction: row;
                 font-size: rem(14);
-                line-height: rem(15);
             }
 
             &-text {

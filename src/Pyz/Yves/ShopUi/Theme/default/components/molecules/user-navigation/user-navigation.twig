@@ -129,13 +129,15 @@
         {% endif %}
     </li>
 
-    {% include molecule('toggler-accordion') with {
-        attributes: {
-            'wrap-class-name': config.jsName,
-            'trigger-class-name': config.jsName ~ '__trigger',
-            'class-to-toggle': config.name ~ '__sub-nav--touch-active',
-            'active-on-touch': 'true',
-        },
-    } only %}
+    <li>
+        {% include molecule('toggler-accordion') with {
+            attributes: {
+                'wrap-class-name': config.jsName,
+                'trigger-class-name': config.jsName ~ '__trigger',
+                'class-to-toggle': config.name ~ '__sub-nav--touch-active',
+                'active-on-touch': 'true',
+            },
+        } only %}
+    </li>
 
 {% endblock %}

@@ -48,6 +48,9 @@
             {{ form_row(data.form.idShoppingList) }}
 
             {{ form_row(data.form.name, {
+                attr: {
+                    'aria-label': data.form.name.vars.value,
+                },
                 rowAttr: {
                     class: 'col col--sm-12',
                 },
