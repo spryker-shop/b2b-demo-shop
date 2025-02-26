@@ -4,12 +4,13 @@
     name: 'mini-cart-detail',
 } %}
 
+{% set cart = data.cart %}
+
 {% define data = {
     cart: required,
     total: cart.totals.grandTotal | default(0),
 } %}
 
-{% set cart = data.cart %}
 {% set itemCount = cart.items | length %}
 
 {% block body %}
