@@ -11,6 +11,7 @@ namespace Pyz\Zed\Publisher;
 
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\PublishAndSynchronizeHealthCheck\PublishAndSynchronizeHealthCheckConfig;
+use Spryker\Zed\Asset\Communication\Plugin\Publisher\Store\RefreshAssetStoreRelationPublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetDeletePublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetWritePublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\AssetPublisherTriggerPlugin;
@@ -117,6 +118,7 @@ use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\CurrencyStore\Curren
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\LocaleStore\LocaleStoreWritePublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\Store\StoreSynchronizationTriggeringPublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\Store\StoreWritePublisherPlugin;
+use Spryker\Zed\TaxApp\Communication\Plugin\Publisher\Store\RefreshTaxAppStoreRelationPublisherPlugin;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Publisher\TaxProductPublisherTriggerPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Publisher\TaxSetPublisherTriggerPlugin;
 
@@ -149,6 +151,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductMessageBrokerPlugins(),
             $this->getMerchantStoragePlugins(),
             $this->getMerchantSearchPlugins(),
+            $this->getAssetPlugins(),
+            $this->getTaxAppPlugins(),
         );
     }
 
@@ -449,6 +453,26 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new CategoryStoreProductAbstractPageSearchWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getAssetPlugins(): array
+    {
+        return [
+            new RefreshAssetStoreRelationPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getTaxAppPlugins(): array
+    {
+        return [
+            new RefreshTaxAppStoreRelationPublisherPlugin(),
         ];
     }
 }
