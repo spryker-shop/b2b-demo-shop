@@ -26,6 +26,7 @@
 {% endmacro %}
 
 {% block customerContent %}
+    {% widget 'CustomerEmailChangeRequestWidget' only %}{% endwidget %}
     {% include molecule('action-bar') with {
         modifiers: ['first'],
         data: {
