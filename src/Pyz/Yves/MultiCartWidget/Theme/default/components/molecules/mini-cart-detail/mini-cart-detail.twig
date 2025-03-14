@@ -4,12 +4,14 @@
     name: 'mini-cart-detail',
 } %}
 
+{% set cart = data.cart %}
+
 {% define data = {
     cart: required,
-    total: data.cart.totals.grandTotal | default(0),
+    total: cart.totals.grandTotal | default(0),
 } %}
 
-{% set itemCount = data.cart.items | length %}
+{% set itemCount = cart.items | length %}
 
 {% block body %}
     <div class="grid grid--nowrap">
@@ -17,17 +19,18 @@
             {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
                 class: 'spacing-right spacing-top spacing-top--big',
                 data: {
-                    idCart: data.cart.idQuote,
-                    isDefault: data.cart.isDefault,
+                    idCart: cart.idQuote,
+                    isDefault: cart.isDefault,
+                    ariaLabel: 'multi_cart_widget.aria_label.mini-cart-radio-switcher' | trans({'%cartName%': cart.name}),
                 }
             } only %}
         </div>
         <div class="col col--expand">
             <div class="grid grid--nowrap">
                 <div class="col col--sm-8 col--md-9">
-                    {% if data.cart.isDefault %}
+                    {% if cart.isDefault %}
                         <a class="{{ config.name }}__title grid grid--nowrap" href="{{ path('cart') }}">
-                            <strong class="col {{ config.name }}__name">{{ data.cart.name }}</strong>
+                            <strong class="col {{ config.name }}__name">{{ cart.name }}</strong>
                             <span class="col {{ config.name }}__marker">
                                 ({{ 'multi_cart_widget.cart.default' | trans }})
                             </span>
@@ -35,8 +38,8 @@
                     {% else %}
                         {% embed molecule('single-button-form') with {
                             data: {
-                                formAction: path('multi-cart/set-default', {idQuote: data.cart.idQuote}),
-                                buttonText: data.cart.name,
+                                formAction: path('multi-cart/set-default', {idQuote: cart.idQuote}),
+                                buttonText: cart.name,
                                 buttonClass: config.name ~ '__title',
                                 fieldName: 'multi_cart_set_default_form[_token]',
                                 fieldValue: csrf_token('multi_cart_set_default_form'),
@@ -68,7 +71,7 @@
                             {% endwidget %}
                         {% endif %}
                         <span class="col">
-                           {{ data.total | money(true, data.cart.currency.code) }}<br>
+                           {{ data.total | money(true, cart.currency.code) }}<br>
                         </span>
                     </div>
                 </div>
@@ -88,12 +91,12 @@
                         {% widget 'SharedCartPermissionGroupWidget' args [data.cart] only %}{% endwidget %}
                     </span>
                 </div>
-                {% if data.cart.priceMode is not empty %}
+                {% if cart.priceMode is not empty %}
                     {% include molecule('price-mode') with {
                         class: config.name ~ '__price-mode col',
                         modifiers: ['small'],
                         data: {
-                            priceMode: data.cart.priceMode
+                            priceMode: cart.priceMode
                         }
                     } only %}
                 {% endif %}

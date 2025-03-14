@@ -1,6 +1,7 @@
 {% extends template('page-layout-main', '@SprykerShop:ShopUi') %}
 
 {% block meta %}
+
     {{ parent() }}
     <meta name="format-detection" content="telephone=no">
 {% endblock %}
@@ -170,7 +171,9 @@
                 },
             } only %}
                 {% block navigation %}
-                    {% cms_slot 'slt-desktop-header' %}
+                    <nav aria-label="{{ 'shop_ui.aria_label.main.navigation' | trans }}">
+                        {% cms_slot 'slt-desktop-header' %}
+                    </nav>
                 {% endblock %}
 
                 {% block mobile %}

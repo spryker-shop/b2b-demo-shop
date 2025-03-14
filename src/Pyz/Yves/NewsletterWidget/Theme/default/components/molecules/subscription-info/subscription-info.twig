@@ -11,9 +11,11 @@
 } %}
 
 {% block body %}
-    <h5 class="title title--subscription {{ data.togglerClass }}__trigger" data-toggle-target=".{{ data.togglerClass }}__target">
-        {{ data.title }}
-        <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xxl"></span>
-    </h5>
+    <div>
+        <strong class="title title--subscription {{ data.togglerClass }}__trigger" data-toggle-target=".{{ data.togglerClass }}__target">
+            {{ data.title }}
+            <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xxl"></span>
+        </strong>
+    </div>
     <p class="{{ config.name }}__text {{ data.togglerClass }}__target is-hidden-sm-only">{{ data.text | raw }}</p>
 {% endblock %}

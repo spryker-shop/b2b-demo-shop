@@ -8,12 +8,14 @@
     <h1 itemprop="name" class="page-info__title title title--h3">
         {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}
             {% block body %}
-                {% include molecule('label-group', 'ProductLabelWidget') with {
-                    modifiers: ['pdp'],
-                    data: {
-                        labels: labels
-                    }
-                } only %}
+                {% if labels | length %}
+                    {% include molecule('label-group', 'ProductLabelWidget') with {
+                        modifiers: ['pdp'],
+                        data: {
+                            labels: labels
+                        }
+                    } only %}
+                {% endif %}
             {% endblock %}
         {% endwidget %}
         {{ data.product.name }}

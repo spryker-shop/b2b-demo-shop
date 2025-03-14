@@ -1,25 +1,17 @@
 @mixin shop-ui-display-address($name: '.display-address') {
     #{$name} {
         font-size: rem(14);
-        line-height: rem(20);
-        color: $setting-color-gray-3;
 
         @include helper-breakpoint-media-min($lg) {
             font-size: rem(15);
-            line-height: rem(22);
         }
 
         &--small {
             font-size: rem(12);
-
-            @include helper-breakpoint-media-min($lg) {
-                line-height: rem(20);
-            }
         }
 
         &__name {
             font-weight: fw(medium);
-            color: $setting-color-gray-5;
         }
 
         &__bottom {

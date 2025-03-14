@@ -16,10 +16,10 @@
     <div class="{{ config.name }}__container">
         {% if not data.shoppingListItemNoteForm.vars.data.note %}
             {% set shoppingListItemNoteClass = 'is-hidden' %}
-            <h6 class="grid grid--justify grid--middle {{ config.name }}__label {{ config.jsName }}__label">
+            <div class="grid grid--justify grid--middle {{ config.name }}__label {{ config.jsName }}__label">
                 <span class="col">{{ 'shopping_list.item_note.add' | trans }}</span>
                 <span class="col icon icon--toggler-cross icon--toggler-cross-link"></span>
-            </h6>
+            </div>
         {% endif %}
         <div class="{{ config.name }}__content {{ config.jsName }}__wrapper {{ shoppingListItemNoteClass }}">
             {{ form_row(data.shoppingListItemNoteForm.note, {

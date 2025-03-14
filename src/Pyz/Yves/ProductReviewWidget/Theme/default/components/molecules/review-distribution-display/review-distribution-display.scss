@@ -1,7 +1,8 @@
 @mixin product-review-distribution-display($name: '.review-distribution-display') {
     #{$name} {
+        color: $setting-color-gray-5;
+
         &__summary-stars {
-            color: $setting-color-gray-3;
             font-size: rem(15);
             padding-right: 21px;
             padding-bottom: 6px;
@@ -38,7 +39,6 @@
         }
 
         &__rating-review {
-            color: $setting-color-gray-3;
             font-size: rem(13);
             padding-left: 15px;
             padding-bottom: 6px;
