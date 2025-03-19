@@ -4,16 +4,15 @@
     name: 'mini-cart-detail',
 } %}
 
-{% set cart = data.cart %}
-
 {% define data = {
     cart: required,
-    total: cart.totals.grandTotal | default(0),
+    total: data.cart.totals.grandTotal | default(0),
 } %}
 
-{% set itemCount = cart.items | length %}
-
 {% block body %}
+    {% set cart = data.cart %}
+    {% set itemCount = cart.items | length %}
+
     <div class="grid grid--nowrap">
         <div class="col">
             {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
