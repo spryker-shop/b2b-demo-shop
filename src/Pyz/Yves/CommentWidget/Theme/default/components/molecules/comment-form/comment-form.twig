@@ -47,6 +47,7 @@
                     {% block tags %}
                         {% if data.comment.tagNames is defined and data.comment.tagNames %}
                             {% include molecule('tag-list', 'CommentWidget') with {
+                                class: 'spacing-bottom--big',
                                 data: {
                                     tagNames: data.comment.tagNames,
                                     uuid: data.comment.uuid,

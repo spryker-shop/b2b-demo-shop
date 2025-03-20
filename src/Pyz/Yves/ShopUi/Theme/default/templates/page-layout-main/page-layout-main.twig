@@ -170,7 +170,9 @@
                 },
             } only %}
                 {% block navigation %}
-                    {% cms_slot 'slt-desktop-header' %}
+                    <nav aria-label="{{ 'shop_ui.aria_label.main.navigation' | trans }}">
+                        {% cms_slot 'slt-desktop-header' %}
+                    </nav>
                 {% endblock %}
 
                 {% block mobile %}
