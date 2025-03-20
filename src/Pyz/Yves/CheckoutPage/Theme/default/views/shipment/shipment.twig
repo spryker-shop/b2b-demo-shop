@@ -40,12 +40,12 @@
                     {% endif %}
 
                     <article class="col col--sm-12 grid grid--gap spacing-bottom spacing-bottom--big" data-qa="multi-shipment-group">
-                        <h3 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
+                        <h2 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
                             {{ 'page.checkout.shipment.shipment_group_heading' | trans({
                                 '%current%': loop.index | executeFilterIfExists('formatInt', app.locale),
                                 '%total%': loop.length | executeFilterIfExists('formatInt', app.locale)
                             }) }}
-                        </h3>
+                        </h2>
 
                         <div class="col col--sm-12 col--xl-8">
                             {% for item in shipmentGroupForm.vars.data.cartItems %}
@@ -75,7 +75,7 @@
                                     {% endblock %}
 
                                     {% block title %}
-                                        <h1 class="{{ config.name }}__title title--h6 spacing spacing--reset">{{ data.listItem.name }}</h1>
+                                        <h3 class="{{ config.name }}__title title--h6 spacing spacing--reset">{{ data.listItem.name }}</h3>
                                     {% endblock %}
 
                                     {% block productConfiguration %}

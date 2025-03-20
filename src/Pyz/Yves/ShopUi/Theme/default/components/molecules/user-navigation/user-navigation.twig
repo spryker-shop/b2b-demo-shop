@@ -2,7 +2,6 @@
 
 {% define config = {
     name: 'user-navigation',
-    tag: 'ul',
 } %}
 
 {% define data = {
@@ -20,105 +19,81 @@
 {%- endblock -%}
 
 {% block body %}
-    <li class="{{ config.name }}__item {{ config.name }}__item--user">
-        <div class="{{ config.name }}__user-name">
-            <span class="{{ config.name }}__icon">
-                {% include atom('icon') with {
-                    modifiers: ['user'],
-                    data: {
-                        name: 'user',
-                    },
-                } only %}
-                {% include atom('icon') with {
-                    class: config.name ~ '__arrow',
-                    data: {
-                        name: 'caret-down',
-                    },
-                } only %}
-            </span>
-            <span class="{{ config.name }}__text">{% widget 'CustomerFullNameWidget' only %}{% endwidget %}</span>
-        </div>
-        {% include molecule('navigation-list') with {
-            modifiers: ['secondary'],
-            class: config.name ~ '__sub-nav',
-            data: {
-                nodes: [{
-                    url: url('customer/overview'),
-                    title: 'customer.account.overview' | trans,
-                },
-                {
-                    url: url('customer/profile'),
-                    title: 'customer.account.profile_data' | trans,
-                },
-                {
-                    url: url('customer/address'),
-                    title: 'customer.account.address' | trans,
-                },
-                {
-                    url: url('customer/order'),
-                    title: 'customer.account.order_history' | trans,
-                },
-                {
-                    url: url('return/list'),
-                    title: 'return_page.default_title' | trans,
-                },
-                {
-                    url: url('customer/newsletter'),
-                    title: 'customer.account.newsletter' | trans,
-                },
-                {
-                    url: url('quote-request'),
-                    title: 'quote_request_widget.request_for_quote.list.title' | trans,
-                },
-                {
-                    url: url('logout'),
-                    title: 'customer.logout' | trans,
-                    additionalClass: 'link--additional',
-                },
-            ]},
-        } only %}
-    </li>
-    <li class="{{ config.name }}__item">
-        <a class="{{ config.name }}__link" href="{{ url('quick-order') }}">
-            <span class="{{ config.name }}__icon">
-                {% include atom('icon') with {
-                    modifiers: ['quick-order'],
-                    data: {
-                        name: 'quick-order',
-                    },
-                } only %}
-            </span>
-            <span class="{{ config.name }}__text">{{ 'quick-order.page-title'|trans }}</span>
-        </a>
-    </li>
-
-    <li class="{{ config.name }}__item">
-        {% widget 'ShoppingListNavigationMenuWidget' with {
-            config: config,
-            data: {
-                isAjaxMode: data.isAjaxMode,
-                parentName: config.name,
-            },
-        } only %}
-        {% endwidget %}
-    </li>
-
-    <li class="{{ config.name }}__item">
-        {% if not shouldShowMiniCart %}
-            <a class="{{ config.name }}__link" href="{{ url('cart') }}">
-                <span class="{{ config.name }}__empty-cart">
+    <ul class="{{ config.name }}__list">
+        <li class="{{ config.name }}__item {{ config.name }}__item--user">
+            <div class="{{ config.name }}__user-name">
+                <span class="{{ config.name }}__icon">
                     {% include atom('icon') with {
-                        modifiers: ['cart'],
+                        modifiers: ['user'],
                         data: {
-                            name: 'cart',
+                            name: 'user',
+                        },
+                    } only %}
+                    {% include atom('icon') with {
+                        class: config.name ~ '__arrow',
+                        data: {
+                            name: 'caret-down',
                         },
                     } only %}
                 </span>
-
-                <span>{{ 'global.my-cart' | trans }}</span>
+                <span class="{{ config.name }}__text">{% widget 'CustomerFullNameWidget' only %}{% endwidget %}</span>
+            </div>
+            {% include molecule('navigation-list') with {
+                modifiers: ['secondary'],
+                class: config.name ~ '__sub-nav',
+                data: {
+                    nodes: [{
+                        url: url('customer/overview'),
+                        title: 'customer.account.overview' | trans,
+                    },
+                    {
+                        url: url('customer/profile'),
+                        title: 'customer.account.profile_data' | trans,
+                    },
+                    {
+                        url: url('customer/address'),
+                        title: 'customer.account.address' | trans,
+                    },
+                    {
+                        url: url('customer/order'),
+                        title: 'customer.account.order_history' | trans,
+                    },
+                    {
+                        url: url('return/list'),
+                        title: 'return_page.default_title' | trans,
+                    },
+                    {
+                        url: url('customer/newsletter'),
+                        title: 'customer.account.newsletter' | trans,
+                    },
+                    {
+                        url: url('quote-request'),
+                        title: 'quote_request_widget.request_for_quote.list.title' | trans,
+                    },
+                    {
+                        url: url('logout'),
+                        title: 'customer.logout' | trans,
+                        additionalClass: 'link--additional',
+                    },
+                ]},
+            } only %}
+        </li>
+        <li class="{{ config.name }}__item">
+            <a class="{{ config.name }}__link" href="{{ url('quick-order') }}">
+                <span class="{{ config.name }}__icon">
+                    {% include atom('icon') with {
+                        modifiers: ['quick-order'],
+                        data: {
+                            name: 'quick-order',
+                        },
+                    } only %}
+                </span>
+                <span class="{{ config.name }}__text">{{ 'quick-order.page-title'|trans }}</span>
             </a>
-        {% else %}
-            {% widget 'MiniCartWidget' args [cartQuantityText] with {
+        </li>
+
+        <li class="{{ config.name }}__item">
+            {% widget 'ShoppingListNavigationMenuWidget' with {
                 config: config,
                 data: {
                     isAjaxMode: data.isAjaxMode,
@@ -126,18 +101,41 @@
                 },
             } only %}
             {% endwidget %}
-        {% endif %}
-    </li>
+        </li>
 
-    <li>
-        {% include molecule('toggler-accordion') with {
-            attributes: {
-                'wrap-class-name': config.jsName,
-                'trigger-class-name': config.jsName ~ '__trigger',
-                'class-to-toggle': config.name ~ '__sub-nav--touch-active',
-                'active-on-touch': 'true',
-            },
-        } only %}
-    </li>
+        <li class="{{ config.name }}__item">
+            {% if not shouldShowMiniCart %}
+                <a class="{{ config.name }}__link" href="{{ url('cart') }}">
+                    <span class="{{ config.name }}__empty-cart">
+                        {% include atom('icon') with {
+                            modifiers: ['cart'],
+                            data: {
+                                name: 'cart',
+                            },
+                        } only %}
+                    </span>
 
+                    <span>{{ 'global.my-cart' | trans }}</span>
+                </a>
+            {% else %}
+                {% widget 'MiniCartWidget' args [cartQuantityText] with {
+                    config: config,
+                    data: {
+                        isAjaxMode: data.isAjaxMode,
+                        parentName: config.name,
+                    },
+                } only %}
+                {% endwidget %}
+            {% endif %}
+        </li>
+    </ul>
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-class-name': config.jsName,
+            'trigger-class-name': config.jsName ~ '__trigger',
+            'class-to-toggle': config.name ~ '__sub-nav--touch-active',
+            'active-on-touch': 'true',
+        },
+    } only %}
 {% endblock %}
