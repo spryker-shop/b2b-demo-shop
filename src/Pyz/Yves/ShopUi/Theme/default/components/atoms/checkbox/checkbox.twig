@@ -25,7 +25,7 @@
     {% set iconName = 'check' %}
 
     <label class="{{ component.renderClass(config.name ~ '__container', modifiers) }}" {{ qa('label') }}>
-        <input class="{{ component.renderClass(config.name ~ '__input', modifiers) }} {% block inputClass %} {{- data.inputClass -}} {% endblock %}" {{ component.renderAttributes(attributes) }}>
+        <input aria-label="{{ 'shop_ui.aria_label.choose-as-active' | trans }}" class="{{ component.renderClass(config.name ~ '__input', modifiers) }} {% block inputClass %} {{- data.inputClass -}} {% endblock %}" {{ component.renderAttributes(attributes) }}>
         <span class="{{ component.renderClass(config.name ~ '__box', modifiers) }}">
             {% block icon %}
                 {% include atom('icon') with {
