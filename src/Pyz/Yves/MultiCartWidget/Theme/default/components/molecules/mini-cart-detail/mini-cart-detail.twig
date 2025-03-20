@@ -57,7 +57,7 @@
                 <div class="col col--sm-4 col--md-3 text-right">
                     <div class="grid grid--right">
                         {% if widgetGlobalExists('QuoteApprovalStatusWidget') %}
-                            {% widget 'QuoteApprovalStatusWidget' args [data.cart] only %}
+                            {% widget 'QuoteApprovalStatusWidget' args [cart] only %}
                                 {% block body %}
                                     {% include molecule('quote-status') with {
                                         class: 'col',
@@ -70,14 +70,14 @@
                             {% endwidget %}
                         {% endif %}
                         <span class="col">
-                           {{ data.total | money(true, cart.currency.code) }}<br>
+                           {{ data.total | money(true, cart.currency.code) }}<br />
                         </span>
                     </div>
                 </div>
             </div>
             <div class="{{ config.name }}__info grid grid--middle">
                 <div class="col grid grid--nowrap grid--middle">
-                    {% widget 'ProductBundleItemCounterWidget' args [data.cart] with {
+                    {% widget 'ProductBundleItemCounterWidget' args [cart] with {
                         configName: config.name
                     } only %}
                         {% block body %}
@@ -87,7 +87,7 @@
                         {% endblock %}
                     {% endwidget %}
                     <span class="spacing-right spacing-right--big">
-                        {% widget 'SharedCartPermissionGroupWidget' args [data.cart] only %}{% endwidget %}
+                        {% widget 'SharedCartPermissionGroupWidget' args [cart] only %}{% endwidget %}
                     </span>
                 </div>
                 {% if cart.priceMode is not empty %}
