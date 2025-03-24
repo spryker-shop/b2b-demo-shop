@@ -25,7 +25,7 @@
                     required: false,
                     attributes: {
                         checked: choice.value == data.checkedValue,
-                    } | merge(ariaLabels|length > 0 ? { 'aria-label': ariaLabels[loop.index0] ?? '' } : {}),
+                    } | merge(ariaLabels | length ? { 'aria-label': ariaLabels[loop.index0] } : {}),
                     rowAttr: {
                         class: 'radio radio--checkout' ~ (key != 0 ? ' radio--border-top-less'),
                     },
