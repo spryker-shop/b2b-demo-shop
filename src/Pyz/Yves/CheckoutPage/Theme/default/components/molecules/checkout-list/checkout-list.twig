@@ -9,9 +9,12 @@
     choices: required,
     form: required,
     checkedValue: '',
+    ariaLabels: [],
 } %}
 
 {% block body %}
+    {% set ariaLabels = data.ariaLabels %}
+
     {% for key, choice in data.choices %}
         <li class="{{ config.name }}__item">
             {% block contentItem %}
@@ -22,6 +25,9 @@
                     required: false,
                     attributes: {
                         checked: choice.value == data.checkedValue,
+                        'aria-label': 'checkout_page.aria_label.choose.as.active' | trans({
+                            '%optionValue%': "#{ariaLabels[loop.index0].shipmentProvider | default} #{ariaLabels[loop.index0].shipmentMethod | default}",
+                        }),
                     },
                     rowAttr: {
                         class: 'radio radio--checkout' ~ (key != 0 ? ' radio--border-top-less'),

@@ -42,11 +42,20 @@
                 } only %}
             </h4>
 
+            {% set ariaLabels = [] %}
+            {% for choice in choices %}
+                {% set ariaLabels = ariaLabels | merge([{
+                    'shipmentProvider': name,
+                    'shipmentMethod': choice.label  | split(':')[0],
+                }]) %}
+            {% endfor %}
+
             {% include molecule('checkout-list', 'CheckoutPage') with {
                 data: {
                     form: shipmentSelection,
                     choices: choices,
                     checkedValue: shipmentSelection.vars.value,
+                    ariaLabels: ariaLabels,
                 },
             } only %}
         {% endfor %}
