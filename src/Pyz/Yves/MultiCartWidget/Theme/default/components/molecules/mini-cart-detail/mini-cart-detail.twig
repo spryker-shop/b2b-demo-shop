@@ -27,7 +27,7 @@
                 <div class="col col--sm-8 col--md-9">
                     {% if data.cart.isDefault %}
                         <a class="{{ config.name }}__title grid grid--nowrap" href="{{ path('cart') }}">
-                            <strong class="col {{ config.name }}__name">{{ data.cart.name }}</strong>
+                            <strong class="col {{ config.name }}__name" title="{{ data.cart.name }}" aria-label="{{ 'multi_cart_widget.cart.cart_name.aria_label' | trans({ '%cartName%': data.cart.name }) }}">{{ data.cart.name }}</strong>
                             <span class="col {{ config.name }}__marker">
                                 ({{ 'multi_cart_widget.cart.default' | trans }})
                             </span>
