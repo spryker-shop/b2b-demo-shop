@@ -25,10 +25,7 @@
                     required: false,
                     attributes: {
                         checked: choice.value == data.checkedValue,
-                        'aria-label': 'checkout_page.aria_label.choose.as.active' | trans({
-                            '%optionValue%': "#{ariaLabels[loop.index0].shipmentProvider | default} #{ariaLabels[loop.index0].shipmentMethod | default}",
-                        }),
-                    },
+                    } | merge(ariaLabels|length > 0 ? { 'aria-label': ariaLabels[loop.index0] ?? '' } : {}),
                     rowAttr: {
                         class: 'radio radio--checkout' ~ (key != 0 ? ' radio--border-top-less'),
                     },
