@@ -26,7 +26,7 @@
             autocomplete="off"
         >
 
-        <button class="{{ config.name }}__button {{ config.name }}__button--submit">
+        <button class="{{ config.name }}__button {{ config.name }}__button--submit" aria-label="{{ 'global.search' | trans }}">
             {% include atom('icon') with {
                 class: config.name ~ '__icon',
                 modifiers: ['search'],

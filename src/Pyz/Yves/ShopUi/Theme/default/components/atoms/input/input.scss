@@ -1,9 +1,14 @@
 @mixin shop-ui-input-extended($name: '.input') {
     @include shop-ui-input($name) {
         border-radius: $setting-border-radius;
-        color: $setting-color-gray-5;
+        color: $setting-color-gray-4;
         font: fw(regular) rem(15) / rem(19) $setting-font-family;
         padding: rem(14) rem(20) rem(13);
+
+        &::placeholder {
+            color: $setting-color-gray-4;
+            opacity: 1;
+        }
 
         &--small {
             font-size: rem(14);

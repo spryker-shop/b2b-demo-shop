@@ -91,6 +91,9 @@
                                     attributes: {
                                         'target-class-name': 'js-payment-method-' ~ embed.index,
                                         'class-to-toggle': 'is-hidden',
+                                        'aria-label': 'checkout_page.aria_label.choose.as.active' | trans({
+                                            '%optionValue%': embed.toggler.vars.label | trans,
+                                        }),
                                     },
                                     rowAttr: {
                                         class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != '1-0' ? 'toggler-radio--border-top-less'),
