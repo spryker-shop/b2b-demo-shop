@@ -368,6 +368,7 @@
             type: 'text',
             autocomplete: 'off',
             placeholder: attr.placeholder | default('yyyy-mm-dd HH:mm'),
+            'aria-label': 'shop_ui.aria_label.choose.date.time' | trans,
         }) -%}
         <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}
@@ -388,6 +389,7 @@
             type: 'text',
             autocomplete: 'off',
             placeholder: attr.placeholder | default('yyyy-mm-dd'),
+            'aria-label': 'shop_ui.aria_label.choose.date' | trans,
         }) -%}
         <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}

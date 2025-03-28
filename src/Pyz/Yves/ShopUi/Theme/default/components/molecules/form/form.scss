@@ -144,6 +144,7 @@ $address-form-width: rem(710);
 
             &::placeholder {
                 color: $setting-color-gray-4;
+                opacity: 1;
             }
 
             @include helper-breakpoint-media-min($lg) {
@@ -342,19 +343,6 @@ $address-form-width: rem(710);
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(12);
-            }
-        }
-
-        .input {
-            @include helper-effect-transition(box-shadow border-color);
-
-            &::placeholder {
-                color: $setting-color-gray-2;
-            }
-
-            &:focus {
-                border-color: $setting-color-main;
-                box-shadow: 0 0 0 rem(1) $setting-color-main;
             }
         }
     }

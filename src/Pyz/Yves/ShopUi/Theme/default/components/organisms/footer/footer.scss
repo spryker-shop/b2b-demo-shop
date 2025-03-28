@@ -1,6 +1,6 @@
 @mixin shop-ui-footer($name: '.footer') {
     #{$name} {
-        background-color: $setting-color-gray-6;
+        background-color: $setting-color-gray-7;
 
         &__subscribe {
             @include helper-breakpoint-media-min($md) {
@@ -117,9 +117,7 @@
 
         &__hint {
             font-size: rem(13);
-            line-height: 1rem;
             text-align: center;
-            color: $setting-color-gray-2;
             letter-spacing: rem(0.54);
             padding-bottom: rem(12);
 
@@ -130,9 +128,7 @@
 
         &__thanks-certeo {
             font-size: rem(13);
-            line-height: 1rem;
             text-align: center;
-            color: $setting-color-gray-3;
             letter-spacing: rem(0.54);
 
             @include helper-breakpoint-media-min($md) {

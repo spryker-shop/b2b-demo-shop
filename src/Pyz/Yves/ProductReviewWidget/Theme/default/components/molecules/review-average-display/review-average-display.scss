@@ -3,6 +3,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: $setting-color-gray-5;
 
         @include helper-breakpoint-media-min($md) {
             display: block;
@@ -17,7 +18,6 @@
             text-align: center;
             font-size: rem(42);
             font-weight: fw(bold);
-            color: $setting-color-gray-5;
         }
 
         &__rating-selector {
@@ -29,8 +29,6 @@
             text-align: center;
             font-size: rem(13);
             font-weight: fw(regular);
-            line-height: 1.1;
-            color: $setting-color-gray-3;
             white-space: nowrap;
 
             @include helper-breakpoint-media-min($md) {
