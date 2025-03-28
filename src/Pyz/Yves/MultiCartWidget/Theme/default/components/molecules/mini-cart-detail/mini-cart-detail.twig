@@ -29,7 +29,11 @@
                 <div class="col col--sm-8 col--md-9">
                     {% if cart.isDefault %}
                         <a class="{{ config.name }}__title grid grid--nowrap" href="{{ path('cart') }}">
-                            <strong class="col {{ config.name }}__name">{{ cart.name }}</strong>
+                            <strong class="col {{ config.name }}__name"
+                                    title="{{ cart.name }}"
+                                    aria-label="{{ 'multi_cart_widget.cart.cart_name.aria_label' | trans({ '%cartName%': cart.name }) }}">
+                                {{ cart.name }}
+                            </strong>
                             <span class="col {{ config.name }}__marker">
                                 ({{ 'multi_cart_widget.cart.default' | trans }})
                             </span>
@@ -70,7 +74,7 @@
                             {% endwidget %}
                         {% endif %}
                         <span class="col">
-                           {{ data.total | money(true, cart.currency.code) }}<br />
+                           {{ data.total | money(true, cart.currency.code) }}<br/>
                         </span>
                     </div>
                 </div>
