@@ -49,7 +49,6 @@ jobs:
               run: |
                   cd ./data && composer require "spryker/robotframework-suite-tests:dev-feature/frw-9914/master-enable-parallel-test-execution" --dev --no-interaction
                   cp -r vendor ../vendor
-
             - name: Install docker-compose
               run: |
                   sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -94,7 +93,6 @@ jobs:
               if: failure()
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
-
             - name: Slack Notification for scheduled job
               uses: ./.github/actions/scheduled-job-slack-notifications
               if: always()
@@ -129,7 +127,6 @@ jobs:
               run: |
                   cd ./data && composer require "spryker/robotframework-suite-tests:dev-feature/frw-9914/master-enable-parallel-test-execution" --dev --no-interaction
                   cp -r vendor ../vendor
-
             - name: Install docker-compose
               run: |
                   sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -175,7 +172,6 @@ jobs:
               if: failure()
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/log.html
-
             - name: Slack Notification for scheduled job
               uses: ./.github/actions/scheduled-job-slack-notifications
               if: always()
