@@ -26,8 +26,8 @@ export default class DateTimePicker extends Component {
             onChange: (selectedDates, dateStr) => {
                 const dateFromPickerInstance = document.querySelector(`#${this.dateFromId}`)?._flatpickr;
                 const dateToPickerInstance = document.querySelector(`#${this.dateToId}`)?._flatpickr;
-                dateFromPickerInstance?.set("maxDate", dateStr);
-                dateToPickerInstance?.set("minDate", dateStr);
+                dateFromPickerInstance?.set('maxDate', dateStr);
+                dateToPickerInstance?.set('minDate', dateStr);
             },
         };
 
