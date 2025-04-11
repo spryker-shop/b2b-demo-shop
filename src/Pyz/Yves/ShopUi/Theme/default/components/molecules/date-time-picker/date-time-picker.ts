@@ -2,10 +2,12 @@ import Component from 'ShopUi/models/component';
 import flatpickr from 'flatpickr';
 import { German } from 'flatpickr/dist/l10n/de.js';
 import { Options } from 'flatpickr/dist/types/options';
-import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
+import Instance = flatpickr.Instance;
 
 export default class DateTimePicker extends Component {
     protected trigger: HTMLInputElement;
+    protected dateFromPicker: Instance | Instance[];
+    protected dateToPicker: Instance | Instance[];
 
     protected readyCallback(): void {}
 
@@ -17,15 +19,16 @@ export default class DateTimePicker extends Component {
 
     protected datePickerInit(): void {
         const config: Options = {
-            locale: this.language === 'de' ? German : '',
+            locale: this.language === 'de' ? German : 'default',
             enableTime: true,
+            allowInput: true,
             ...this.config,
-            ...(this.dateToId
-                ? {
-                      // eslint-disable-next-line new-cap
-                      plugins: [new rangePlugin({ input: `#${this.dateToId}` })],
-                  }
-                : {}),
+            onChange: (selectedDates, dateStr) => {
+                const dateFromPickerInstance = document.querySelector(`#${this.dateFromId}`)?._flatpickr;
+                const dateToPickerInstance = document.querySelector(`#${this.dateToId}`)?._flatpickr;
+                dateFromPickerInstance?.set("maxDate", dateStr);
+                dateToPickerInstance?.set("minDate", dateStr);
+            },
         };
 
         flatpickr(this.trigger, config);
@@ -41,6 +44,10 @@ export default class DateTimePicker extends Component {
 
     protected get dateToId(): string {
         return this.getAttribute('date-to-id');
+    }
+
+    protected get dateFromId(): string {
+        return this.getAttribute('date-from-id');
     }
 
     protected get config(): object {

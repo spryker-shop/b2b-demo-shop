@@ -61,7 +61,9 @@
                                 attributes: {
                                     language: data.currentLanguage,
                                     config: '{
-                                        "format": "Y-m-d H:i"
+                                        "format": "Y-m-d H:i",
+                                        "defaultHour": 8,
+                                        "time_24hr": true
                                     }',
                                     'formatted-date-time': data.field.vars.value | date('Y-m-d H:i'),
                                     'date-from-id': embed.dateFromId,
