@@ -22,19 +22,26 @@
 
 {% block body %}
     <div class="{{ config.name }}__content">
-        {{ form_row(data.field, {
-            attr: {
-                class: config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass),
-            },
-        }) }}
-
-        {% if data.hasIcon %}
-            {% include atom('icon') with {
-                class: config.name ~ '__icon',
-                data: {
-                    name: 'calendar',
+        {% block input %}
+            {{ form_row(data.field, {
+                attr: {
+                    class: config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass),
                 },
-            } only %}
-        {% endif %}
+            }) }}
+        {% endblock %}
+
+        {% block button %}
+            <div class="{{ config.name }}__calendar">
+                <button type="button" class="{{ config.name }}__calendar-button">
+                    {% include atom('icon') with {
+                        class: config.name ~ '__icon',
+                        data: {
+                            name: 'calendar',
+                        },
+                    } only %}
+                </button>
+                <input type="text" class="{{ config.name }}__flatpicker-input" data-id="{{ data.field.vars.id }}" tabindex="-1">
+            </div>
+        {% endblock %}
     </div>
 {% endblock %}
