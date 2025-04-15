@@ -15,7 +15,7 @@ export default class DateTimePicker extends Component {
     protected init(): void {
         this.dateInput = this.querySelector<HTMLInputElement>(`.${this.name}__field`);
         this.dateInput.value = this.dateInput.value ? this.formattedDateTime : '';
-        this.trigger = this.querySelector<HTMLInputElement>(`.${this.name}__flatpicker-input`);
+        this.trigger = this.querySelector<HTMLInputElement>(`.${this.name}__datepicker-input`);
         this.calendarButton = this.querySelector<HTMLButtonElement>(`.${this.name}__calendar-button`);
         this.dateFromPicker = document.querySelector(`[data-id="${this.dateFromId}"]`);
         this.dateToPicker = document.querySelector(`[data-id="${this.dateToId}"]`);
