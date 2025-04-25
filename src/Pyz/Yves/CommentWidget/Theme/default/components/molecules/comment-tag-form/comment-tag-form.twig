@@ -15,6 +15,7 @@
 
 {% define attributes = {
     name: 'name',
+    'ajax-mode': data.ajaxTriggerAttribute,
 } %}
 
 {% block body %}
@@ -51,5 +52,6 @@
         {% endembed %}
 
         <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('comment-tag-form') }}">
     </form>
 {% endblock %}
