@@ -20,14 +20,14 @@
         </div>
         <div class="col col--sm-12">
         {%  if data.shoppingListOptions | length %}
-            {% include atom('select') with {
-                modifiers: ['expand', 'quick-order-page'],
-                attributes: {
-                    name: 'idShoppingList'
-                },
+            {% include molecule('custom-select') with {
+                modifiers: ['full-width'],
                 data: {
-                    options: data.shoppingListOptions
-                }
+                    options: data.shoppingListOptions,
+                },
+                attributes: {
+                    name: 'idShoppingList',
+                },
             } only %}
         {% endif %}
         </div>

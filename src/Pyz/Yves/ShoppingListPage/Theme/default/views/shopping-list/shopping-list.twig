@@ -38,7 +38,6 @@
         <div class="col col--sm-12 col--lg-auto">
             {% set isListEditable = can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
             {% embed molecule('table-action-list') with {
-                modifiers: ['shopping-list'],
                 data: {
                     linkModifiers: ['tight'],
                     items: [
@@ -69,17 +68,15 @@
                 },
             } only %}
                 {% block body %}
-                    <div class="{{ config.name }}__inner">
-                        {{ parent() }}
+                    {{ parent() }}
 
-                        {% widget 'ShoppingListDismissWidget' args [embed.shoppingList] with {config: config} only %}
-                            {% block link %}
-                                <div class="{{ config.name }}__item">
-                                    {{ parent() }}
-                                </div>
-                            {% endblock %}
-                        {% endwidget %}
-                    </div>
+                    {% widget 'ShoppingListDismissWidget' args [embed.shoppingList] with {config: config} only %}
+                        {% block link %}
+                            <div class="{{ config.name }}__item">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
+                    {% endwidget %}
                 {% endblock %}
             {% endembed %}
         </div>

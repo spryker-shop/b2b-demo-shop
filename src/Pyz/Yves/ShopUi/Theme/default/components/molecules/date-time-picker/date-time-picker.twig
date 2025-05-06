@@ -44,7 +44,9 @@
                 {% endblock %}
 
                 {% block calendarInput %}
-                    <input type="text" class="{{ config.name }}__datepicker-input" data-id="{{ data.field.vars.id }}" tabindex="-1">
+                    <input type="text"
+                           aria-label="{{ 'shop_ui.aria_label.choose-date' | trans }}"
+                           class="{{ config.name }}__datepicker-input" data-id="{{ data.field.vars.id }}" tabindex="-1">
                 {% endblock %}
             </div>
         {% endblock %}
