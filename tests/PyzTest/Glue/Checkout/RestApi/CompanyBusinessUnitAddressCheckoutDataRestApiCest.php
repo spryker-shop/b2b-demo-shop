@@ -50,38 +50,38 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiCest
      *
      * @return void
      */
-//    public function requestCheckoutDataReturnsCompanyBusinessUnitAddressesInIncludes(CheckoutApiTester $I): void
-//    {
-//        // Arrange
-//        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
-//        $quoteTransfer = $this->fixtures->getQuoteTransfer();
-//
-//        $requestPayload = [
-//            'data' => [
-//                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-//                'attributes' => [
-//                    'idCart' => $quoteTransfer->getUuid(),
-//                ],
-//            ],
-//        ];
-//
-//        // Act
-//        $I->sendPOST($I->buildCheckoutDataUrl(['company-business-unit-addresses']), $requestPayload);
-//
-//        // Assert
-//        $I->seeResponseCodeIs(HttpCode::OK);
-//        $jsonPath = sprintf('$..included[?(@.type == \'%s\')]', 'company-business-unit-addresses');
-//        $companyBusinessUnitAddresses = $I->getDataFromResponseByJsonPath($jsonPath)[0];
-//
-//        $I->amSure('The response contains includes expected company-business-unit-addresses resource')
-//            ->whenI()
-//            ->assertNotNull($companyBusinessUnitAddresses);
-//
-//        $I->assertSame(
-//            $this->fixtures->getCompanyUnitAddressTransfer()->getUuid(),
-//            $companyBusinessUnitAddresses['id'],
-//        );
-//    }
+    public function requestCheckoutDataReturnsCompanyBusinessUnitAddressesInIncludes(CheckoutApiTester $I): void
+    {
+        // Arrange
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+
+        $requestPayload = [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $quoteTransfer->getUuid(),
+                ],
+            ],
+        ];
+
+        // Act
+        $I->sendPOST($I->buildCheckoutDataUrl(['company-business-unit-addresses']), $requestPayload);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $jsonPath = sprintf('$..included[?(@.type == \'%s\')]', 'company-business-unit-addresses');
+        $companyBusinessUnitAddresses = $I->getDataFromResponseByJsonPath($jsonPath)[0];
+
+        $I->amSure('The response contains includes expected company-business-unit-addresses resource')
+            ->whenI()
+            ->assertNotNull($companyBusinessUnitAddresses);
+
+        $I->assertSame(
+            $this->fixtures->getCompanyUnitAddressTransfer()->getUuid(),
+            $companyBusinessUnitAddresses['id'],
+        );
+    }
 
     /**
      * @depends loadFixtures
@@ -95,10 +95,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiCest
         // Arrange
         $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-
-        $firstItem = $quoteTransfer->getItems()->offsetGet(0);
-
-        $firstItem->getShipment()->getShippingAddress()->setUuid($this->fixtures->getCompanyUnitAddressTransfer()->getUuid());
 
         $requestPayload = [
             'data' => [
@@ -128,36 +124,36 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiCest
             $shipments['attributes']['shippingAddress']['idCompanyBusinessUnitAddress'],
         );
     }
-//
-//    /**
-//     * @depends loadFixtures
-//     *
-//     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-//     *
-//     * @return void
-//     */
-//    public function requestCheckoutDataShouldAcceptCompanyBusinessUnitAddressForBillingAddress(CheckoutApiTester $I): void
-//    {
-//        // Arrange
-//        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
-//        $quoteTransfer = $this->fixtures->getQuoteTransfer();
-//
-//        $requestPayload = [
-//            'data' => [
-//                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-//                'attributes' => [
-//                    'idCart' => $quoteTransfer->getUuid(),
-//                    'billingAddress' => [
-//                        'idCompanyBusinessUnitAddress' => $this->fixtures->getCompanyUnitAddressTransfer()->getUuid(),
-//                    ],
-//                ],
-//            ],
-//        ];
-//
-//        // Act
-//        $I->sendPOST($I->buildCheckoutDataUrl(), $requestPayload);
-//
-//        // Assert
-//        $I->seeResponseCodeIs(HttpCode::OK);
-//    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataShouldAcceptCompanyBusinessUnitAddressForBillingAddress(CheckoutApiTester $I): void
+    {
+        // Arrange
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+
+        $requestPayload = [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $quoteTransfer->getUuid(),
+                    'billingAddress' => [
+                        'idCompanyBusinessUnitAddress' => $this->fixtures->getCompanyUnitAddressTransfer()->getUuid(),
+                    ],
+                ],
+            ],
+        ];
+
+        // Act
+        $I->sendPOST($I->buildCheckoutDataUrl(), $requestPayload);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+    }
 }

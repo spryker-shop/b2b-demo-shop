@@ -477,7 +477,6 @@ class CheckoutApiTester extends ApiEndToEndTester
             RestShipmentsTransfer::ITEMS => [$itemTransfer->getGroupKeyOrFail()],
             RestShipmentsTransfer::SHIPPING_ADDRESS => [
                 RestAddressTransfer::ID_COMPANY_BUSINESS_UNIT_ADDRESS => $companyUnitAddressTransfer->getUuidOrFail(),
-                'companyBusinessUnitAddressUuid' => $companyUnitAddressTransfer->getUuidOrFail(),
             ],
             RestShipmentsTransfer::REQUESTED_DELIVERY_DATE => (new DateTime('tomorrow'))->format('Y-m-d'),
         ];
@@ -602,9 +601,7 @@ class CheckoutApiTester extends ApiEndToEndTester
                 ItemTransfer::QUANTITY => $this->getQuoteItemQuantityFromOverrideItemData($overrideItem),
             ]))->withShipment((new ShipmentBuilder($overrideShipment))
                 ->withMethod()
-                ->withShippingAddress([
-                   'companyBusinessUnitAddressUuid' => 'aa5dbd06-27fe-3929-be18-d5f3ec317c35'
-                ]))
+                ->withShippingAddress())
                 ->build()
                 ->modifiedToArray();
         }

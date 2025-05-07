@@ -102,6 +102,6 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
      */
     public function isAddressesMappedToAttributes(): bool
     {
-        return true;
+        return false;
     }
 }
