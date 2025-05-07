@@ -61,7 +61,7 @@
                         {% block categoryItemToggler %}
                             <div>
                                 {% block categoryItemTogglerIcon %}
-                                    <button type="button" class="spacing-right--small {{ toggleButtonClassName }} {{ triggerClassName }} {{ targetTogglerClassName }}">
+                                    <button type="button" class="{{ toggleButtonClassName }} {{ triggerClassName }} {{ targetTogglerClassName }}">
                                         {% include atom('icon') with {
                                             class: config.name ~ '__category-toggle-button-icon',
                                             modifiers: ['small'],

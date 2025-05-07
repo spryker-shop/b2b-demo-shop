@@ -21,7 +21,6 @@ export default class CustomSelect extends Component {
 
         if (this.autoInit) {
             this.initSelect();
-            this.removeAttributeTitle();
         }
     }
 
@@ -40,7 +39,6 @@ export default class CustomSelect extends Component {
         if (this.isInited) {
             const event = new Event('change', { bubbles: true });
             this.select.dispatchEvent(event);
-            this.removeAttributeTitle();
         }
     }
 
@@ -78,12 +76,6 @@ export default class CustomSelect extends Component {
         } else if (window.innerWidth < this.mobileResolution && this.isInited) {
             this.isInited = false;
             this.$select.select2('destroy');
-        }
-    }
-
-    protected removeAttributeTitle(): void {
-        if (this.isInited) {
-            this.getElementsByClassName('select2-selection__rendered')[0].removeAttribute('title');
         }
     }
 
