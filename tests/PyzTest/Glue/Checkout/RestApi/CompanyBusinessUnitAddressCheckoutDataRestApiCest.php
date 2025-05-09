@@ -100,6 +100,11 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiCest
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
+                    'customer' =>
+                        array_merge(
+                            $this->fixtures->getCustomerTransfer()->toArray(),
+                            ['idCompanyUser' => $this->fixtures->getCompanyUserTransfer()->getIdCompanyUser()],
+                        ),
                     'idCart' => $quoteTransfer->getUuid(),
                     'shipments' => [
                         $I->getSplitShipmentRequestPayloadWithCompanyBusinessUnitAddress(
