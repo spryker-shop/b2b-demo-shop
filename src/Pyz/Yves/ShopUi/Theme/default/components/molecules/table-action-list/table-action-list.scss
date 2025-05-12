@@ -11,18 +11,6 @@
             flex-wrap: nowrap;
         }
 
-        &--shopping-list {
-            display: block;
-            background-color: $setting-color-gray-7;
-            padding: rem(9) rem(20);
-            margin: rem(8) 0 0;
-
-            @include helper-breakpoint-media-min($lg) {
-                padding: 0;
-                background-color: $setting-color-transparent;
-            }
-        }
-
         &__item {
             flex-grow: 1;
             min-width: calc(100% / 3);

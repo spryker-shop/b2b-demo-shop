@@ -1,6 +1,8 @@
+$name: '.select';
+
 @include shop-ui-select() {
     &--quick-order-page {
-        select {
+        #{$name}__select {
             cursor: pointer;
             padding: rem(10);
             color: $setting-color-gray-4;
