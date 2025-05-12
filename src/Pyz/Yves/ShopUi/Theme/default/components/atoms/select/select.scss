@@ -1,12 +1,11 @@
+$name: '.select';
+
 @include shop-ui-select() {
     &--quick-order-page {
-        padding: rem(15) rem(10);
-        background-color: $setting-color-gray-7;
-        border-radius: $setting-border-radius;
-        color: $setting-color-gray-3;
-
-        &:hover {
+        #{$name}__select {
             cursor: pointer;
+            padding: rem(10);
+            color: $setting-color-gray-4;
         }
     }
 
