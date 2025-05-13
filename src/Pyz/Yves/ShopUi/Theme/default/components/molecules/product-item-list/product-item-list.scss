@@ -11,7 +11,7 @@
             @include helper-breakpoint-media-min($md) {
                 padding: 0;
                 margin-bottom: rem(20);
-                background-color: $setting-color-alpha-2;
+                border: rem(1) solid $setting-color-alpha-2;
             }
 
             @include helper-breakpoint-media-min($xl) {
@@ -19,7 +19,6 @@
 
                 &:hover {
                     box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow-1, 0 rem(18) rem(18) 0 $setting-color-shadow-1;
-                    background-color: $setting-color-transparent;
                 }
             }
         }
