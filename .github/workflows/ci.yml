@@ -5,7 +5,7 @@ on:
         types: [ labeled, unlabeled, synchronize ]
     push:
         branches:
-            - master
+            - master-bla-bla
     workflow_dispatch:
 
 env:
@@ -21,7 +21,7 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-static-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "Static analysis"
         runs-on: ubuntu-22.04
         strategy:
@@ -160,7 +160,7 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-npm-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "NPM validation"
         runs-on: ubuntu-22.04
         strategy:
@@ -192,7 +192,7 @@ jobs:
     php-83-mariadb-glue-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / MariaDB / Glue / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -227,7 +227,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-api-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -260,7 +260,7 @@ jobs:
     php-83-postgresql-glue-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / PostgreSQL / Glue / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -294,7 +294,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -326,7 +326,7 @@ jobs:
     php-83-mariadb-acceptance-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -360,7 +360,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -391,7 +391,7 @@ jobs:
     php-83-postgresql-acceptance-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / PostgreSQL / Acceptance / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -423,7 +423,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / PostgreSQL / Acceptance / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -455,7 +455,7 @@ jobs:
     php-83-mariadb-functional-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / MariaDB / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -486,7 +486,7 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -518,7 +518,7 @@ jobs:
     php-83-postgresql-functional-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -550,7 +550,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.3 / PostgreSQL / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -582,7 +582,7 @@ jobs:
     php-82-mariadb-glue-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / MariaDB / Glue / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -614,7 +614,7 @@ jobs:
     php-82-mariadb-glue-alpine:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -648,7 +648,7 @@ jobs:
     php-82-postgresql-acceptance-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -679,7 +679,7 @@ jobs:
     php-82-postgresql-acceptance-alpine:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -713,7 +713,7 @@ jobs:
     php-82-postgresql-functional-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -745,7 +745,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -778,7 +778,7 @@ jobs:
     php-82-mariadb-acceptance-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -810,7 +810,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -844,7 +844,7 @@ jobs:
     php-82-mariadb-functional-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / MariaDB / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -875,7 +875,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -908,7 +908,7 @@ jobs:
     php-82-postgres-functional-debian-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -939,7 +939,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "PHP 8.2 / PostgreSQL / Functional / Debian"
         runs-on: ubuntu-22.04
         env:
@@ -973,7 +973,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "Docker / Alpine / PHP 8.2 / Frontend & Assets"
         runs-on: ubuntu-22.04
         env:
@@ -999,7 +999,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -1052,7 +1052,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API"
         runs-on: ubuntu-22.04
         env:
@@ -1107,7 +1107,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-api-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / API"
         runs-on: ubuntu-22.04
         env:
@@ -1152,7 +1152,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "Docker / Alpine / PHP 8.3 / MariaDB / Cypress / UI / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -1204,7 +1204,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || github.ref == 'refs/heads/master'
+            || github.ref == 'refs/heads/master-bla-bla'
         name: "Docker / Alpine / PHP 8.3 / MariaDB / Cypress / UI"
         runs-on: ubuntu-22.04
         env:
