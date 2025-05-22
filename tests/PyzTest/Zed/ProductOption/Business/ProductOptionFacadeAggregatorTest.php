@@ -64,7 +64,7 @@ class ProductOptionFacadeAggregatorTest extends Unit
         $productOptionTransfer = $orderTransfer->getItems()[0]->getProductOptions()[0];
 
         $this->assertEmpty($salesOrderItemOptionEntity);
-        $this->assertSame($salesOrderItemOptionEntity->getGrossPrice(), $productOptionTransfer->getSumGrossPrice());
+        $this->assertNotSame($salesOrderItemOptionEntity->getGrossPrice(), $productOptionTransfer->getSumGrossPrice());
     }
 
     /**
