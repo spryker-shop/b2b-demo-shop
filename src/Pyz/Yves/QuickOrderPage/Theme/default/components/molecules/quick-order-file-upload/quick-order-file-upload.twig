@@ -33,14 +33,14 @@
             }
         } only %}
 
-        <button type="submit" name="uploadOrder" class="button button--success spacing-top spacing-top--big">
+        <button type="submit" name="uploadOrder" class="button button--expand spacing-top">
             {{ 'quick-order.file-upload-order.button.upload' | trans }}
         </button>
 
         {% if data.fileTemplateExtensions %}
             <div class="grid grid--gap grid--center spacing-top">
                 {% for fileTemplateExt in data.fileTemplateExtensions %}
-                    <div class="col col--sm-10 spacing-top">
+                    <div class="col col--sm-12 spacing-top">
                         <a class="{{ config.name }}__download-link" href="{{ path('quick-order/download-template', {'file-type': fileTemplateExt}) }}">
                             {% include atom('icon') with {
                                 modifiers: ['download-file'],

@@ -26,9 +26,9 @@ class UploadOrderForm extends SprykerUploadOrderForm
                 ],
                 'attr' => [
                     'maxCount' => 1,
-                    'maxTotalSize' => '2 MB',
+                    'maxTotalSize' => '5 MB',
                     'accept' => 'text/csv',
-                    'acceptExtensions' => 'text/csv',
+                    'acceptExtensions' => 'csv',
                 ],
             ],
         );
