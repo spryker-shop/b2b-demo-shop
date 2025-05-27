@@ -18,8 +18,9 @@
     <div class="{{ config.name }}__content">
         <h5 class="{{ config.name }}__title spacing-bottom">{{ 'quick-order.file-upload-order.title' | trans }}</h5>
 
-        {% embed molecule('form') with {
-            modifiers: ['browse-file'],
+        {% include molecule('form') with {
+            modifiers: ['hidden-actions'],
+            class: 'spacing-x--inner spacing-x--reset',
             data: {
                 form: data.uploadOrderForm,
                 enableStart: false,
@@ -31,46 +32,6 @@
                 parentJsClass: config.jsName
             }
         } only %}
-            {% block fields %}
-                {{ parent() }}
-
-                <label tabindex="0" class="label label--browse-file spacing-bottom spacing-bottom--reset {{ embed.parentJsClass }}__browse-file" for="{{ data.form.children.fileUploadOrder.vars.id }}">
-                    <span class="{{ embed.parentClass }}__browse-file-info">
-                        {% include atom('icon') with {
-                            class: 'spacing-bottom',
-                            modifiers: ['browse-file'],
-                            data: {
-                                name: 'browse-file'
-                            }
-                        } only %}
-
-                        <span class="{{ embed.parentClass }}__file-select text-center">
-                            <span class="{{ embed.parentJsClass }}__file-select">
-                                {{ 'quick-order.upload-order.browse-file' | trans }}
-                            </span>
-                            {% include atom('icon') with {
-                                class: 'is-hidden ' ~ embed.parentJsClass ~ '__remove-file',
-                                modifiers: ['small', 'remove-file'],
-                                data: {
-                                    name: 'cross'
-                                }
-                            } only %}
-                        </span>
-
-                        {% if (embed.fileTemplateExtensions is not null) %}
-                            {% set fileExtensions = [] %}
-                            {% for fileExt in embed.fileTemplateExtensions %}
-                                {% set fileExtensions = fileExtensions | merge(['.' ~ fileExt]) %}
-                            {% endfor %}
-                            {% set fileExtensions = '<strong>' ~ fileExtensions | join(', ') ~ '</strong>'%}
-                            <span class="{{ embed.parentJsClass }}__file-extension">
-                                {{ 'quick-order.upload-order.allowed-file-extensions' | trans({"%extensions%": fileExtensions}) | raw }}
-                            </span>
-                        {% endif %}
-                    </span>
-                </label>
-            {% endblock %}
-        {% endembed %}
 
         <button type="submit" name="uploadOrder" class="button button--success spacing-top spacing-top--big">
             {{ 'quick-order.file-upload-order.button.upload' | trans }}
