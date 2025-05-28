@@ -15,22 +15,22 @@
             <state name="new" display="oms.state.new">
                 <flag>cancellable</flag>
             </state>
-            <state name="payment pending" display="oms.state.payment-pending">
+            <state name="payment pending" reserved="true" display="oms.state.payment-pending">
                 <flag>cancellable</flag>
             </state>
             <state name="invalid" display="oms.state.invalid">
                 <flag>exclude from customer</flag>
             </state>
             <state name="cancelled" display="oms.state.canceled"/>
-            <state name="paid" display="oms.state.paid">
+            <state name="paid" reserved="true" display="oms.state.paid">
                 <flag>cancellable</flag>
             </state>
-            <state name="tax invoice submitted" display="oms.state.paid"/>
-            <state name="product review requested" display="oms.state.paid"/>
-            <state name="confirmed" display="oms.state.confirmed"/>
-            <state name="exported" display="oms.state.exported"/>
-            <state name="shipped" display="oms.state.shipped"/>
-            <state name="waiting" display="oms.state.waiting"/>
+            <state name="tax invoice submitted" reserved="true" display="oms.state.paid"/>
+            <state name="product review requested" reserved="true" display="oms.state.paid"/>
+            <state name="confirmed" reserved="true" display="oms.state.confirmed"/>
+            <state name="exported" reserved="true" display="oms.state.exported"/>
+            <state name="shipped" reserved="true" display="oms.state.shipped"/>
+            <state name="waiting" reserved="true" display="oms.state.waiting"/>
             <state name="delivered" display="oms.state.delivered"/>
             <state name="closed" display="oms.state.closed"/>
         </states>
