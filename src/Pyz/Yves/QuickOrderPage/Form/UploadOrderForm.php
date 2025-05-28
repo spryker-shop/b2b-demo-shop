@@ -14,7 +14,7 @@ class UploadOrderForm extends SprykerUploadOrderForm
      *
      * @return $this
      */
-    protected function addFileUploadOrderField(FormBuilderInterface $builder)
+    protected function addFileUploadOrderField(FormBuilderInterface $builder): UploadOrderForm
     {
         $builder->add(
             static::FIELD_FILE_UPLOAD_ORDER,
@@ -25,10 +25,10 @@ class UploadOrderForm extends SprykerUploadOrderForm
                     $this->getFactory()->createUploadOrderCorrectConstraint(),
                 ],
                 'attr' => [
-                    'maxCount' => 1,
-                    'maxTotalSize' => '5 MB',
-                    'accept' => 'text/csv',
-                    'acceptExtensions' => 'csv',
+                    'maxCount' => $this->getConfig()->getMaxFileCount(),
+                    'maxTotalSize' => $this->getConfig()->getMaxTotalFileSize(),
+                    'accept' => implode(',', $this->getConfig()->getAllowedCsvFileMimeTypes()),
+                    'acceptExtensions' => $this->getConfig()->getDisplayAllowedFileTypesText(),
                 ],
             ],
         );
