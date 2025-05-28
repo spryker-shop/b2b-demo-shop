@@ -22387,20 +22387,20 @@
         },
         {
             "name": "spryker/cms-pages-rest-api",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-pages-rest-api.git",
-                "reference": "2f14b726ea875754bea6d6ed403713ddea0dde0f"
+                "reference": "72b126e8560e30512ca83282e72da60fb3b61f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-pages-rest-api/zipball/2f14b726ea875754bea6d6ed403713ddea0dde0f",
-                "reference": "2f14b726ea875754bea6d6ed403713ddea0dde0f",
+                "url": "https://api.github.com/repos/spryker/cms-pages-rest-api/zipball/72b126e8560e30512ca83282e72da60fb3b61f87",
+                "reference": "72b126e8560e30512ca83282e72da60fb3b61f87",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.2",
                 "spryker/cms-page-search": "^2.2.0",
                 "spryker/cms-storage": "^2.4.0",
                 "spryker/glue-application": "^1.0.0",
@@ -22413,7 +22413,9 @@
                 "spryker/uuid-behavior": "^1.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/cms": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -22423,7 +22425,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\CmsPagesRestApi\\Helper\\": "tests/SprykerTest/Shared/CmsPagesRestApi/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -22432,9 +22435,9 @@
             ],
             "description": "CmsPagesRestApi module",
             "support": {
-                "source": "https://github.com/spryker/cms-pages-rest-api/tree/master"
+                "source": "https://github.com/spryker/cms-pages-rest-api/tree/1.0.1"
             },
-            "time": "2020-07-03T12:16:11+00:00"
+            "time": "2025-05-16T09:39:04+00:00"
         },
         {
             "name": "spryker/cms-slot",
@@ -69972,7 +69975,7 @@
         "ext-readline": "*",
         "ext-redis": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },
