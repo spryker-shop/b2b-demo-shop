@@ -19,13 +19,29 @@ class MessageBrokerConfig extends SprykerMessageBrokerConfig
     public function getDefaultWorkerChannels(): array
     {
         return [
+            'app-events',
             'payment-events',
             'payment-method-commands',
             'asset-commands',
             'product-review-commands',
-            'product-commands',
             'search-commands',
+            'product-commands',
             'tax-commands',
+        ];
+    }
+
+    /**
+     * Specification:
+     * - Returns system worker channels used to retrieve service messages.
+     *
+     * @api
+     *
+     * @return list<string>
+     */
+    public function getSystemWorkerChannels(): array
+    {
+        return [
+            'app-events',
         ];
     }
 }

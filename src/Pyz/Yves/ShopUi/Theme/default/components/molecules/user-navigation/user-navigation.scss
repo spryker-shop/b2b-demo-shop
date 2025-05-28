@@ -1,10 +1,12 @@
 @mixin shop-ui-user-navigation($name: '.user-navigation') {
     #{$name} {
-        display: flex;
-        margin: 0 rem(-15);
+        &__list {
+            display: flex;
+            margin: 0 rem(-15);
 
-        @include helper-breakpoint-media-min($xl) {
-            margin: 0;
+            @include helper-breakpoint-media-min($xl) {
+                margin: 0;
+            }
         }
 
         &__item {
@@ -40,6 +42,7 @@
                 }
             }
 
+            &:focus-within #{$name}__sub-nav,
             &:hover #{$name}__sub-nav {
                 @include helper-breakpoint-media-min($lg) {
                     transform: translateX(-50%) scale(1);

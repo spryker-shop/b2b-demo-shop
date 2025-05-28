@@ -68,13 +68,9 @@
         &--original {
             font-size: rem(15);
             display: inline-block;
-            color: $setting-color-gray-2;
+            color: $setting-color-text;
             font-weight: fw(regular);
             margin-left: rem(4);
-
-            @include helper-breakpoint-media-min($lg) {
-                @include helper-font-size(big);
-            }
         }
 
         &--block {
@@ -83,7 +79,7 @@
     }
 
     &__mode {
-        color: $setting-color-gray-2;
+        color: $setting-color-gray-5;
         font-size: rem(12);
         font-weight: fw(regular);
         line-height: rem(14);

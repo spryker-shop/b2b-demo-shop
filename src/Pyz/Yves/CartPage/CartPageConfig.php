@@ -27,4 +27,9 @@ class CartPageConfig extends SprykerCartPageConfig
      * @var bool
      */
     protected const IS_LOADING_UPSELLING_PRODUCTS_VIA_AJAX_ENABLED = true;
+
+    /**
+     * @var bool
+     */
+    protected const IS_QUOTE_VALIDATION_ENABLED_FOR_AJAX_CART_ITEMS = false;
 }

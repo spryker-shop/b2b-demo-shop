@@ -43,7 +43,11 @@
                         },
                         attributes: {
                             'language': data.currentLanguage,
-                            'config': '{"format": "Y-m-d H:i"}',
+                            'config': '{
+                                "format": "Y-m-d H:i",
+                                "defaultHour": 8,
+                                "time_24hr": true
+                            }',
                         },
                     } only %}
                 {% endblock %}

@@ -267,14 +267,14 @@
             font-weight: fw(medium);
             letter-spacing: rem(0.2);
             line-height: rem(52);
-            color: $setting-color-gray-5;
+            color: $setting-color-black;
 
             @include helper-breakpoint-media-min($xl) {
                 @include helper-effect-transition(color);
                 padding: 0 rem(20);
                 font-weight: fw(regular);
                 line-height: rem(68);
-                color: $setting-color-gray-3;
+                color: $setting-color-text;
                 letter-spacing: 0;
             }
 
@@ -409,7 +409,7 @@
             line-height: rem(42);
             font-weight: fw(regular);
             letter-spacing: rem(0.2);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-4;
 
             @include helper-breakpoint-media-min($xl) {
                 display: inline-block;
@@ -420,7 +420,7 @@
         }
 
         &__link--lvl-2:hover {
-            color: $setting-color-gray-4;
+            color: $setting-color-text;
         }
 
         @content;

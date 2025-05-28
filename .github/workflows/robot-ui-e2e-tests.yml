@@ -2,11 +2,15 @@ name: "[b2b][master] Robot Regression UI E2E"
 
 on:
     pull_request:
-        types: [ labeled, synchronize ]
+        types: [ labeled, unlabeled, synchronize ]
     push:
         branches:
             - master
     workflow_dispatch:
+
+env:
+    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    WEEKLY_CI_SLACK_CHANNEL_ID: ${{ secrets.WEEKLY_CI_SLACK_CHANNEL_ID }}
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -15,9 +19,11 @@ concurrency:
 jobs:
     docker-alpine-php-8-3-mariadb-robot-ui-group-one:
         if: >
-            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
-            (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One"
+            (github.event_name == 'pull_request'
+                && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+                    || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
+            ) || github.ref == 'refs/heads/master'
+        name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group One"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -80,11 +86,17 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group1/log.html
 
+            - name: Slack Notification for failed job
+              uses: ./.github/actions/job-slack-notifications
+              if: always()
+
     docker-alpine-php-8-3-mariadb-robot-ui-group-two:
         if: >
-            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
-            (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI /Group Two"
+            (github.event_name == 'pull_request'
+                && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+                    || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
+            ) || github.ref == 'refs/heads/master'
+        name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI /Group Two"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -139,11 +151,17 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group2/log.html
 
+            - name: Slack Notification for failed job
+              uses: ./.github/actions/job-slack-notifications
+              if: always()
+
     docker-alpine-php-8-3-mariadb-robot-ui-group-three:
         if: >
-            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
-            (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three"
+            (github.event_name == 'pull_request'
+                && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+                    || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
+            ) || github.ref == 'refs/heads/master'
+        name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Three"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -198,10 +216,15 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group3/log.html
 
+            - name: Slack Notification for failed job
+              uses: ./.github/actions/job-slack-notifications
+              if: always()
+
     docker-alpine-php-8-2-postgresql-dynamic-store-off-robot-ui-group-one:
         if: >
-            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
-            (github.event_name == 'push' && github.ref == 'refs/heads/master')
+            (github.event_name == 'pull_request'
+                && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            ) || github.ref == 'refs/heads/master'
         name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI / Group One"
         runs-on: ubuntu-22.04
         env:
@@ -264,10 +287,15 @@ jobs:
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2MariaDB/group1/log.html
 
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
+
     docker-alpine-php-8-2-postgresql-dynamic-store-off-robot-ui-group-two:
         if: >
-            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
-            (github.event_name == 'push' && github.ref == 'refs/heads/master')
+            (github.event_name == 'pull_request'
+                && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            ) || github.ref == 'refs/heads/master'
         name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI / Group Two"
         runs-on: ubuntu-22.04
         env:
@@ -322,10 +350,15 @@ jobs:
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2MariaDB/group2/log.html
 
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
+
     docker-alpine-php-8-2-postgresql-dynamic-store-off-robot-ui-group-three:
         if: >
-            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'robot-regression-ui-e2e')) ||
-            (github.event_name == 'push' && github.ref == 'refs/heads/master')
+            (github.event_name == 'pull_request'
+                && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            ) || github.ref == 'refs/heads/master'
         name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI / Group Three"
         runs-on: ubuntu-22.04
         env:
@@ -379,3 +412,7 @@ jobs:
                 if: failure()
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2MariaDB/group3/log.html
+
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()

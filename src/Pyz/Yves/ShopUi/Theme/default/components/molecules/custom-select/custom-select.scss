@@ -190,6 +190,12 @@
 
 @mixin shop-ui-select2($name: '.select2') {
     #{$name} {
+        &_selection:focus-visible {
+            #{$name}-selection__rendered {
+                border-color: $setting-color-input-border-focus;
+            }
+        }
+
         &-selection__rendered {
             display: block;
             border-radius: $setting-border-radius;
@@ -227,34 +233,29 @@
             vertical-align: middle;
             cursor: pointer;
 
+            &--focus {
+                @include helper-outline;
+            }
+
             &--alternative {
                 #{$name}-selection__rendered {
                     border-radius: 0;
                     border: none;
-                    color: $setting-color-gray-4;
                     background: none;
                     font-size: rem(11);
                     line-height: rem(40);
                     font-weight: fw(bold);
                     letter-spacing: rem(0.6);
-                    padding: 0 rem(30) 0 rem(18);
+                    padding: 0 rem(30) 0 rem(10);
                 }
 
                 #{$name}-dropdown {
-                    padding: rem(11) 0 rem(12) rem(19);
                     border-radius: 0 0 $setting-border-radius $setting-border-radius;
                     box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
                 }
 
                 #{$name}-results__option {
-                    padding: 0;
                     font-size: rem(13);
-
-                    &[aria-selected='true'] {
-                        &::before {
-                            display: none;
-                        }
-                    }
                 }
 
                 &#{$name}-container--open {
@@ -283,8 +284,6 @@
                 #{$name}-selection__rendered {
                     border-radius: $setting-border-radius;
                     border: none;
-                    color: $setting-color-gray-2;
-                    background: $setting-color-gray-7;
                     font-size: rem(12);
                     line-height: rem(20);
                     font-weight: fw(regular);
@@ -292,39 +291,25 @@
                 }
 
                 #{$name}-dropdown {
-                    padding: rem(3) rem(12);
+                    padding: rem(3) 0;
                     border-radius: 0 0 $setting-border-radius $setting-border-radius;
                     box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
                 }
 
                 #{$name}-results__option {
-                    padding: 0;
+                    padding: 0 rem(12);
                     font-size: rem(13);
                     line-height: 2.23;
-
-                    &[aria-selected='true'] {
-                        &::before {
-                            display: none;
-                        }
-                    }
                 }
             }
 
             &--group {
                 .select2-dropdown {
-                    padding: rem(20) rem(20) rem(15);
+                    padding: rem(15) rem(20);
                 }
 
                 .select2-results__option {
                     padding-left: rem(20);
-
-                    &[aria-selected='true'] {
-                        color: $setting-color-gray-5;
-
-                        &::before {
-                            border-color: $setting-color-gray-5;
-                        }
-                    }
                 }
 
                 .select2-results__options--nested {
@@ -345,8 +330,6 @@
             box-sizing: border-box;
             display: block;
             border: none;
-            margin: 0;
-            padding: rem(15) rem(20) rem(15) rem(15);
             border-radius: $setting-border-radius;
             background: $setting-color-white;
             box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
@@ -361,47 +344,30 @@
         }
 
         &-results__option {
-            color: $setting-color-gray-3;
+            color: $setting-color-text;
             font-size: rem(15);
             font-weight: fw(regular);
             line-height: 1.87;
             letter-spacing: rem(0.2);
-            padding: 0 0 0 rem(24);
+            padding: rem(10) rem(15);
             word-break: break-word;
 
             &[aria-selected] {
                 cursor: pointer;
             }
 
-            &[aria-selected='true'] {
-                background: none;
-                position: relative;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    border-left: rem(2) solid $setting-color-gray-3;
-                    border-bottom: rem(2) solid $setting-color-gray-3;
-                    width: rem(10);
-                    height: rem(6);
-                    top: rem(9);
-                    left: rem(3);
-                    transform: rotate(-45deg);
-                }
+            &:hover {
+                background: $setting-color-gray-7;
             }
 
-            &--highlighted[aria-selected] {
-                background: none;
-                color: $setting-color-gray-3;
+            &[aria-selected='true'] {
+                position: relative;
+                background: $setting-color-main;
+                color: $setting-color-white;
+            }
 
-                &:hover {
-                    background: none;
-                    color: $setting-color-gray-5;
-
-                    &::before {
-                        border-color: $setting-color-gray-5;
-                    }
-                }
+            &--highlighted:not(:hover) {
+                @include helper-outline;
             }
         }
 

@@ -2,7 +2,7 @@
     &--icon {
         display: flex;
         align-items: center;
-        color: $setting-color-gray-3;
+        color: $setting-color-gray-5;
         font-size: rem(13);
         font-weight: fw(medium);
         line-height: rem(16);
@@ -11,14 +11,14 @@
             @include helper-effect-transition(color);
         }
 
+        .icon {
+            color: currentColor;
+        }
+
         &:hover,
         &:focus {
             text-decoration: none;
-            color: $setting-color-gray-4;
-
-            .icon {
-                color: $setting-color-gray-4;
-            }
+            color: $setting-color-gray-3;
         }
     }
 
@@ -56,7 +56,7 @@
     }
 
     &--action {
-        color: $setting-color-gray-2;
+        color: $setting-color-gray-5;
 
         &:hover,
         &:focus {
@@ -71,7 +71,7 @@
     }
 
     &--company-user {
-        color: $setting-color-gray-3;
+        color: $setting-color-gray-4;
         white-space: nowrap;
 
         @include helper-breakpoint-media-min($xl) {
@@ -81,12 +81,12 @@
         &:focus,
         &:hover {
             text-decoration: none;
-            color: $setting-color-gray-5;
+            color: $setting-color-text;
         }
     }
 
     &--secondary {
-        color: $setting-color-gray-3;
+        color: $setting-color-gray-4;
 
         @include helper-breakpoint-media-min($xl) {
             @include helper-effect-transition(color);
@@ -94,7 +94,7 @@
 
         &:hover {
             text-decoration: none;
-            color: $setting-color-gray-4;
+            color: $setting-color-text;
         }
     }
 

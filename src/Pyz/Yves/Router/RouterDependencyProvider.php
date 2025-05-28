@@ -11,6 +11,7 @@ namespace Pyz\Yves\Router;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Pyz\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
+use Spryker\Yves\CustomerDataChangeRequest\Plugin\Router\CustomerDataChangeRequestRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\SslPostAddRouteManipulatorPlugin;
@@ -20,6 +21,7 @@ use Spryker\Yves\Router\Plugin\Router\YvesRouterPlugin;
 use Spryker\Yves\Router\Plugin\RouterEnhancer\LanguagePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\Plugin\RouterEnhancer\StorePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\RouterDependencyProvider as SprykerRouterDependencyProvider;
+use Spryker\Yves\Sitemap\Plugin\Router\SitemapRouteProviderPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Router\AgentPageRouteProviderPlugin;
 use SprykerShop\Yves\AgentWidget\Plugin\Router\AgentWidgetRouteProviderPlugin;
 use SprykerShop\Yves\AvailabilityNotificationPage\Plugin\Router\AvailabilityNotificationPageRouteProviderPlugin;
@@ -170,6 +172,8 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new OrderCustomReferenceWidgetAsyncRouteProviderPlugin(),
             new ShoppingListWidgetAsyncRouteProviderPlugin(),
             new PaymentAppWidgetRouteProviderPlugin(),
+            new CustomerDataChangeRequestRouteProviderPlugin(),
+            new SitemapRouteProviderPlugin(),
         ];
     }
 

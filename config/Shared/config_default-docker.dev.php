@@ -27,6 +27,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
+use Spryker\Shared\Redis\RedisConstants;
 use Spryker\Shared\Router\RouterConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Testify\TestifyConstants;
@@ -78,6 +79,10 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = getenv('SPRYKER_DEBUG_DEPRECATIONS
 // ----------------------------------------------------------------------------
 // ------------------------------ SERVICES ------------------------------------
 // ----------------------------------------------------------------------------
+
+// >>> STORAGE
+
+$config[RedisConstants::REDIS_IS_DEV_MODE] = getenv('SPRYKER_REDIS_IS_DEV_MODE') !== false ? getenv('SPRYKER_REDIS_IS_DEV_MODE') : true;
 
 // >>> QUEUE
 

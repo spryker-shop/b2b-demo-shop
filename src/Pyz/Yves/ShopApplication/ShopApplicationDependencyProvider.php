@@ -13,6 +13,7 @@ use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlu
 use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
+use Spryker\Yves\CustomerDataChangeRequest\Widget\CustomerEmailChangeRequestWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
@@ -22,6 +23,7 @@ use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Security\Plugin\Application\YvesSecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
+use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
@@ -307,6 +309,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MerchantRelationshipLinkListWidget::class,
             TraceableEventWidget::class,
             ExpressCheckoutPaymentWidget::class,
+            CustomerEmailChangeRequestWidget::class,
+            SitemapWidget::class,
         ];
     }
 

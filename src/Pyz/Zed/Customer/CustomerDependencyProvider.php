@@ -22,6 +22,7 @@ use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\IsActiveCompanyUserExi
 use Spryker\Zed\CompanyUserGui\Communication\Plugin\Customer\CompanyUserCustomerTableActionExpanderPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
+use Spryker\Zed\CustomerDataChangeRequest\Communication\Plugin\Customer\EmailChangeRequestSendVerificationCustomerPreUpdatePlugin;
 use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCustomerFromGroupPlugin;
 use Spryker\Zed\CustomerUserConnector\Communication\Plugin\CustomerTransferUsernameExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
@@ -136,6 +137,16 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
         return [
             new CompanyUserCustomerTableActionExpanderPlugin(),
             new BusinessOnBehalfGuiAttachToCompanyButtonCustomerTableActionExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\CustomerExtension\Dependency\Plugin\CustomerPreUpdatePluginInterface>
+     */
+    protected function getCustomerPreUpdatePlugins(): array
+    {
+        return [
+            new EmailChangeRequestSendVerificationCustomerPreUpdatePlugin(),
         ];
     }
 }

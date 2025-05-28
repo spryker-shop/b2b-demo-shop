@@ -20,10 +20,10 @@
     {% set targetAttribute = toggleClass ? 'data-toggle-target=.' ~ targetClass %}
 
     {% if data.title %}
-        <h5 class="{{ component.renderClass('title', modifiers) }} title--footer {{ triggerClass }}" {{ targetAttribute }}>
+        <strong class="{{ component.renderClass('title', modifiers) }} title--footer {{ triggerClass }}" {{ targetAttribute }}>
             {{ data.title }}
             <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xxl"></span>
-        </h5>
+        </strong>
     {% endif %}
 
     {% if toggleClass %}
