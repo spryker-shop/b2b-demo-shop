@@ -77,6 +77,11 @@ use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestDataImpo
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestVersionDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\SalesReturnDataImport\Communication\Plugin\ReturnReasonDataImportPlugin;
+use Spryker\Zed\ServicePointDataImport\Communication\Plugin\DataImport\ServiceDataImportPlugin;
+use Spryker\Zed\ServicePointDataImport\Communication\Plugin\DataImport\ServicePointAddressDataImportPlugin;
+use Spryker\Zed\ServicePointDataImport\Communication\Plugin\DataImport\ServicePointDataImportPlugin;
+use Spryker\Zed\ServicePointDataImport\Communication\Plugin\DataImport\ServicePointStoreDataImportPlugin;
+use Spryker\Zed\ServicePointDataImport\Communication\Plugin\DataImport\ServiceTypeDataImportPlugin;
 use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
 use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentDataImportPlugin;
 use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentMethodPriceDataImportPlugin;
@@ -370,6 +375,12 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ContentNavigationDataImportPlugin(),
             new CategoryStoreDataImportPlugin(),
             new ProductConfigurationDataImportPlugin(),
+
+            new ServicePointDataImportPlugin(),
+            new ServicePointStoreDataImportPlugin(),
+            new ServicePointAddressDataImportPlugin(),
+            new ServiceTypeDataImportPlugin(),
+            new ServiceDataImportPlugin(),
         ];
     }
 

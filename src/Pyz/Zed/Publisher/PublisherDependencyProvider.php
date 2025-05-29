@@ -112,6 +112,19 @@ use Spryker\Zed\Publisher\PublisherDependencyProvider as SprykerPublisherDepende
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonDeletePublisherPlugin;
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonWritePublisherPlugin;
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Publisher\ReturnReasonPublisherTriggerPlugin;
+use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\Service\ServiceWritePublisherPlugin;
+use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePoint\ServicePointDeletePublisherPlugin;
+use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePoint\ServicePointWritePublisherPlugin;
+use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePointAddress\ServicePointAddressWritePublisherPlugin;
+use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePointPublisherTriggerPlugin;
+use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePointStore\ServicePointStoreWritePublisherPlugin;
+use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\Service\ServiceWritePublisherPlugin as ServicePointStorageServiceWritePublisherPlugin;
+use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePoint\ServicePointWritePublisherPlugin as ServicePointStorageWritePublisherPlugin;
+use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePointAddress\ServicePointAddressWritePublisherPlugin as ServicePointStorageAddressWritePublisherPlugin;
+use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePointPublisherTriggerPlugin as ServicePointStoragePublisherTriggerPlugin;
+use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePointStore\ServicePointStoreWritePublisherPlugin as ServicePointStorageStoreWritePublisherPlugin;
+use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServiceType\ServiceTypeWritePublisherPlugin;
+use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServiceTypePublisherTriggerPlugin;
 use Spryker\Zed\StoreContextStorage\Communication\Plugin\Publisher\ContextStoreWritePublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\CountryStore\CountryStoreWritePublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\CurrencyStore\CurrencyStoreWritePublisherPlugin;
@@ -153,6 +166,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getMerchantSearchPlugins(),
             $this->getAssetPlugins(),
             $this->getTaxAppPlugins(),
+            $this->getServicePlugins(),
+            $this->getServicePointStoragePlugins(),
         );
     }
 
@@ -201,6 +216,9 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new AssetPublisherTriggerPlugin(),
             new CustomerAccessPublisherTriggerPlugin(),
             new MerchantPublisherTriggerPlugin(),
+            new ServicePointPublisherTriggerPlugin(),
+            new ServicePointStoragePublisherTriggerPlugin(),
+            new ServiceTypePublisherTriggerPlugin(),
         ];
     }
 
@@ -473,6 +491,34 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new RefreshTaxAppStoreRelationPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    public function getServicePlugins(): array
+    {
+        return [
+            new ServicePointWritePublisherPlugin(),
+            new ServicePointDeletePublisherPlugin(),
+            new ServicePointAddressWritePublisherPlugin(),
+            new ServicePointStoreWritePublisherPlugin(),
+            new ServiceWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    public function getServicePointStoragePlugins(): array
+    {
+        return [
+            new ServicePointStorageWritePublisherPlugin(),
+            new ServicePointStorageAddressWritePublisherPlugin(),
+            new ServicePointStorageStoreWritePublisherPlugin(),
+            new ServicePointStorageServiceWritePublisherPlugin(),
+            new ServiceTypeWritePublisherPlugin(),
         ];
     }
 }
