@@ -112,7 +112,7 @@ jobs:
             -   name: Generate autocompletion files
                 run: vendor/bin/console dev:ide-auto-completion:generate
 
-            -   name: Generate rest API dcoumentation
+            -   name: Generate rest API documentation
                 run: vendor/bin/console rest-api:generate:documentation
 
             -   name: Frontend install-dependencies
@@ -1116,6 +1116,7 @@ jobs:
                 run: |
                     docker/sdk exec cypress-tests cp .env.example .env
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
             -   name: Upload artifacts
                 if: failure()
                 run: |
@@ -1170,6 +1171,7 @@ jobs:
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec cypress-tests git log -2
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
             -   name: Upload artifacts
                 if: failure()
                 run: |

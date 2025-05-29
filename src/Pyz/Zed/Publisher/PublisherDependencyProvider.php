@@ -125,6 +125,13 @@ use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePointP
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePointStore\ServicePointStoreWritePublisherPlugin as ServicePointStorageStoreWritePublisherPlugin;
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServiceType\ServiceTypeWritePublisherPlugin;
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServiceTypePublisherTriggerPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentCarrier\ShipmentCarrierShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentMethod\ShipmentMethodPublishShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentMethod\ShipmentMethodShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentMethodStore\ShipmentMethodStoreShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentType\ShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentTypePublisherTriggerPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentTypeStore\ShipmentTypeStoreWriterPublisherPlugin;
 use Spryker\Zed\StoreContextStorage\Communication\Plugin\Publisher\ContextStoreWritePublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\CountryStore\CountryStoreWritePublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\CurrencyStore\CurrencyStoreWritePublisherPlugin;
@@ -168,6 +175,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getTaxAppPlugins(),
             $this->getServicePlugins(),
             $this->getServicePointStoragePlugins(),
+            $this->getShipmentTypeStoragePlugins(),
         );
     }
 
@@ -219,6 +227,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ServicePointPublisherTriggerPlugin(),
             new ServicePointStoragePublisherTriggerPlugin(),
             new ServiceTypePublisherTriggerPlugin(),
+            new ShipmentTypePublisherTriggerPlugin(),
         ];
     }
 
@@ -519,6 +528,21 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ServicePointStorageStoreWritePublisherPlugin(),
             new ServicePointStorageServiceWritePublisherPlugin(),
             new ServiceTypeWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    public function getShipmentTypeStoragePlugins(): array
+    {
+        return [
+            new ShipmentTypeWriterPublisherPlugin(),
+            new ShipmentTypeStoreWriterPublisherPlugin(),
+            new ShipmentCarrierShipmentTypeWriterPublisherPlugin(),
+            new ShipmentMethodPublishShipmentTypeWriterPublisherPlugin(),
+            new ShipmentMethodShipmentTypeWriterPublisherPlugin(),
+            new ShipmentMethodStoreShipmentTypeWriterPublisherPlugin(),
         ];
     }
 }

@@ -72,6 +72,7 @@ use Spryker\Zed\SearchHttp\Communication\Plugin\Synchronization\SearchHttpSynchr
 use Spryker\Zed\ServicePointSearch\Communication\Plugin\Synchronization\ServicePointSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Synchronization\ServicePointSynchronizationDataBulkRepositoryPlugin as ServicePointStorageSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Synchronization\ServiceTypeSynchronizationDataBulkRepositoryPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Synchronization\ShipmentTypeSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Synchronization\ShoppingListSynchronizationDataBulkPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Synchronization\StoreListSynchronizationDataPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Synchronization\StoreSynchronizationDataPlugin;
@@ -162,6 +163,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ServicePointSynchronizationDataBulkRepositoryPlugin(),
             new ServicePointStorageSynchronizationDataBulkRepositoryPlugin(),
             new ServiceTypeSynchronizationDataBulkRepositoryPlugin(),
+            new ShipmentTypeSynchronizationDataBulkRepositoryPlugin(),
         ];
     }
 

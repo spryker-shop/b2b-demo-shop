@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" namespace="Orm\Zed\Shipment\Persistence" package="src.Orm.Zed.Shipment.Persistence" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd">
+
+    <table name="spy_shipment_carrier">
+        <behavior name="event">
+            <parameter name="spy_shipment_carrier_is_active" column="is_active"/>
+        </behavior>
+    </table>
+
+    <table name="spy_shipment_method">
+        <behavior name="event">
+            <parameter name="spy_shipment_method_is_active" column="is_active"/>
+            <parameter name="spy_shipment_method_fk_shipment_type" column="fk_shipment_type"/>
+            <parameter name="spy_shipment_method_fk_shipment_carrier" column="fk_shipment_carrier"/>
+        </behavior>
+    </table>
+
+    <table name="spy_shipment_method_store">
+        <behavior name="event">
+            <parameter name="spy_shipment_method_store_all" column="*"/>
+        </behavior>
+    </table>
+
+</database>

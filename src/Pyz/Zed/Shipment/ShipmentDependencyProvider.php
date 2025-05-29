@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Pyz\Zed\Shipment;
 
@@ -13,6 +13,8 @@ use Spryker\Zed\Kernel\Communication\Form\FormTypeInterface;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyCollectionFormTypePlugin;
 use Spryker\Zed\Shipment\ShipmentDependencyProvider as SprykerShipmentDependencyProvider;
+use Spryker\Zed\ShipmentType\Communication\Plugin\Shipment\ShipmentTypeShipmentMethodCollectionExpanderPlugin;
+use Spryker\Zed\ShipmentType\Communication\Plugin\Shipment\ShipmentTypeShipmentMethodFilterPlugin;
 
 class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
 {
@@ -54,5 +56,25 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
     protected function createMoneyCollectionFormTypePlugin(Container $container): FormTypeInterface // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return new MoneyCollectionFormTypePlugin();
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ShipmentExtension\Dependency\Plugin\ShipmentMethodCollectionExpanderPluginInterface>
+     */
+    protected function getShipmentMethodCollectionExpanderPlugins(): array
+    {
+        return [
+            new ShipmentTypeShipmentMethodCollectionExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ShipmentExtension\Dependency\Plugin\ShipmentMethodFilterPluginInterface>
+     */
+    protected function getMethodFilterPlugins(Container $container): array
+    {
+        return [
+            new ShipmentTypeShipmentMethodFilterPlugin(),
+        ];
     }
 }

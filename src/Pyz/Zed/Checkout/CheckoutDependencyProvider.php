@@ -42,8 +42,11 @@ use Spryker\Zed\Sales\Communication\Plugin\SalesOrderExpanderPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdCheckoutPreConditionPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdExpenseSavePlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Checkout\SalesPaymentCheckoutDoSaveOrderPlugin;
+use Spryker\Zed\SalesShipmentType\Communication\Plugin\Checkout\ShipmentTypeCheckoutDoSaveOrderPlugin;
+use Spryker\Zed\ServicePointCart\Communication\Plugin\Checkout\ServicePointCheckoutPreConditionPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Checkout\SalesOrderShipmentSavePlugin;
 use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\ShipmentCheckoutPreCheckPlugin;
+use Spryker\Zed\ShipmentTypeCart\Communication\Plugin\Checkout\ShipmentTypeCheckoutPreConditionPlugin;
 
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
@@ -72,6 +75,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductExistsCheckoutPreConditionPlugin(),
             new ProductConfigurationCheckoutPreConditionPlugin(),
             new ProductQuantityRestrictionCheckoutPreConditionPlugin(),
+            new ServicePointCheckoutPreConditionPlugin(),
+            new ShipmentTypeCheckoutPreConditionPlugin(),
         ];
     }
 
@@ -102,6 +107,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new SalesPaymentCheckoutDoSaveOrderPlugin(),
             new SalesOrderThresholdExpenseSavePlugin(), #SalesOrderThresholdFeature
+            new ShipmentTypeCheckoutDoSaveOrderPlugin(),
         ];
     }
 

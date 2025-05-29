@@ -33,6 +33,7 @@ use Spryker\Zed\SharedCart\Communication\Plugin\Quote\ShareDetailsQuoteExpanderP
 use Spryker\Zed\SharedCart\Communication\Plugin\RemoveSharedQuoteBeforeQuoteDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedQuoteSetDefaultBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\UpdateShareDetailsQuoteAfterSavePlugin;
+use Spryker\Zed\ShipmentTypeCart\Communication\Plugin\Quote\ShipmentTypeQuoteExpanderPlugin;
 use Spryker\Zed\Store\Communication\Plugin\Quote\QuoteStoreValidatorPlugin;
 
 class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
@@ -81,6 +82,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
             new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
             new CommentThreadQuoteExpanderPlugin(),
             new ShareDetailsQuoteExpanderPlugin(),
+            new ShipmentTypeQuoteExpanderPlugin(),
         ];
     }
 
