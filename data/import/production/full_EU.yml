@@ -35,10 +35,18 @@ actions:
     source: data/import/common/common/tax.csv
   - data_entity: shipment
     source: data/import/common/common/shipment.csv
+  - data_entity: shipment-type
+    source: data/import/common/common/shipment_type.csv
+  - data_entity: shipment-method-shipment-type
+    source: data/import/common/common/shipment_method_shipment_type.csv
   - data_entity: shipment-price
     source: data/import/common/DE/shipment_price.csv
   - data_entity: shipment-price
     source: data/import/common/AT/shipment_price.csv
+  - data_entity: shipment-type-store
+    source: data/import/common/DE/shipment_type_store.csv
+  - data_entity: shipment-type-store
+    source: data/import/common/AT/shipment_type_store.csv
   - data_entity: sales-order-threshold
     source: data/import/common/DE/sales_order_threshold.csv
   - data_entity: sales-order-threshold
@@ -293,3 +301,20 @@ actions:
     source: data/import/common/AT/comment.csv
   - data_entity: mime-type
     source: data/import/common/common/mime_type.csv
+
+#9. Click&Collect import
+  - data_entity: service-point
+    source: data/import/common/common/service_point.csv
+  - data_entity: service-point-address
+    source: data/import/common/common/service_point_address.csv
+  - data_entity: service-type
+    source: data/import/common/common/service_type.csv
+  - data_entity: service
+    source: data/import/common/common/service.csv
+  - data_entity: shipment-type-service-type
+    source: data/import/common/common/shipment_type_service_type.csv
+# Store relation
+  - data_entity: service-point-store
+    source: data/import/common/DE/service_point_store.csv
+  - data_entity: service-point-store
+    source: data/import/common/AT/service_point_store.csv
