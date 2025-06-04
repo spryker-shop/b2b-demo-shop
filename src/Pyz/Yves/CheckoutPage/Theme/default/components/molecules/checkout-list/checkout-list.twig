@@ -9,6 +9,7 @@
     choices: required,
     form: required,
     checkedValue: '',
+    ariaLabels: [],
 } %}
 
 {% block body %}
@@ -22,7 +23,7 @@
                     required: false,
                     attributes: {
                         checked: choice.value == data.checkedValue,
-                    },
+                    } | merge(data.ariaLabels | length ? { 'aria-label': data.ariaLabels[loop.index0] } : {}),
                     rowAttr: {
                         class: 'radio radio--checkout' ~ (key != 0 ? ' radio--border-top-less'),
                     },

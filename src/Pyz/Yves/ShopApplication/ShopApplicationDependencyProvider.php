@@ -23,6 +23,7 @@ use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Security\Plugin\Application\YvesSecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
+use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
@@ -309,6 +310,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             TraceableEventWidget::class,
             ExpressCheckoutPaymentWidget::class,
             CustomerEmailChangeRequestWidget::class,
+            SitemapWidget::class,
         ];
     }
 

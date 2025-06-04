@@ -775,8 +775,8 @@ customer.email.already.used,"If this E-mail address is already in use, you will 
 customer.email.already.used,"Wenn die E-Mail bereits genutzt wird, werden Sie einen Passwortresetlink erhalten. Wenn nicht dann müssen Sie erst Ihre Emailadresse verifizieren. Bitte prüfen Sie ihre Email.",de_DE
 customer.data_change_request.email_change.success,"Your email address was successfully changed.",en_US
 customer.data_change_request.email_change.success,"Ihre E-Mail-Adresse wurde erfolgreich geändert.",de_DE
-customer.data_change_request.email_change.requested,"You requested to change your e-mail to `%newEmail%` confirm it by clicking the verification link in the e-mail sent to it.",en_US
-customer.data_change_request.email_change.requested,"Sie haben eine Änderung Ihrer E-Mail-Adresse zu `%newEmail%` angefordert. Bestätigen Sie dies, indem Sie auf den Verifizierungslink in der E-Mail klicken, die an diese Adresse gesendet wurde.",de_DE
+customer.data_change_request.email_change.requested,"You requested to change your e-mail to `%newEmail%`. Confirm it by clicking the verification link sent to this address. Please note that the link is valid for %minutes% minutes.",en_US
+customer.data_change_request.email_change.requested,"Sie haben eine Änderung Ihrer E-Mail-Adresse zu `%newEmail%` angefordert. Bestätigen Sie dies, indem Sie auf den Bestätigungslink klicken, der an diese Adresse gesendet wurde. Bitte beachten Sie, dass der Link %minutes% Minuten gültig ist.",de_DE
 customer.data_change_request.email_change.error,"Something went wrong. Please try again.",en_US
 customer.data_change_request.email_change.error,"Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",de_DE
 customer.data_change_request.invalid,"No valid data change request found.",en_US
@@ -821,6 +821,8 @@ countries.iso.ES,Spain,en_US
 countries.iso.ES,Spanien,de_DE
 countries.iso.GB,United Kingdom,en_US
 countries.iso.GB,Großbritannien,de_DE
+countries.iso.US,United States,en_US
+countries.iso.US,Vereinigte Staaten,de_DE
 customer.billingSameAsShipping,Billing address same as shipping address,en_US
 customer.billingSameAsShipping,Liefer- und Rechnungsadresse sind gleich,de_DE
 checkout.customer.proceed_as_user,Proceed as a registered user (sign up),en_US
@@ -1109,6 +1111,8 @@ mail.customer.restore_password_confirmation.subject,Ihr Passwort wurde erfolgrei
 mail.customer.restore_password_confirmation.subject,Your password was changed successfully!,en_US
 mail.customer.restore_password_confirmation.text,Ihr Passwort wurde erfolgreich geändert!,de_DE
 mail.customer.restore_password_confirmation.text,Your password was changed successfully!,en_US
+mail.customer.customer_email_change_verification.text.second_part ,"Make sure you are logged into the system before clicking the link.",en_US
+mail.customer.customer_email_change_verification.text.second_part ,"Stellen Sie sicher, dass Sie im System angemeldet sind, bevor Sie auf den Link klicken.",de_DE
 mail.newsletter.subscribed.subject,Willkommen beim Spryker Newsletter,de_DE
 mail.newsletter.subscribed.subject,Welcome to Spryker newsletter,en_US
 mail.newsletter.subscribed.text,"Wir freuen uns, dass Sie sich für unseren Newsletter registriert haben. Wir werden unser bestes geben, um Sie mit relevanten und spannenden News und Updates zu versorgen.",de_DE
@@ -1943,6 +1947,8 @@ multi_cart_page.delete_all,Delete all,en_US
 multi_cart_page.delete_all,Alle löschen,de_DE
 multi_cart_widget.cart.cart_name,"Cart Name",en_US
 multi_cart_widget.cart.cart_name,"Name des Warenkorbs",de_DE
+multi_cart_widget.cart.cart_name.aria_label,"Cart name is: %cartName%",en_US
+multi_cart_widget.cart.cart_name.aria_label,"Der Warenkorbname ist: %cartName%",de_DE
 multi_cart_widget.cart.add,"Create New Cart",en_US
 multi_cart_widget.cart.add,"Neuen Warenkorb erstellen",de_DE
 multi_cart_widget.cart.action.change_name,"Change Name",en_US
@@ -1985,6 +1991,8 @@ multi_cart_widget.cart.remove.confirm,Are you sure that you want to remove this 
 multi_cart_widget.cart.remove.confirm,"Sind Sie sicher, dass Sie diesen Warenkorb entfernen möchten?",de_DE
 multi_cart_widget.cart.delete.error,Cart cannot be removed,en_US
 multi_cart_widget.cart.delete.error,Der Wagen kann nicht entfernt werden,de_DE
+multi_cart_widget.aria_label.mini-cart-radio-switcher,Switch current cart to %cartName%,en_US
+multi_cart_widget.aria_label.mini-cart-radio-switcher,Wechseln Sie den aktuellen Warenkorb zu %cartName%,de_DE
 shared_cart_widget.add_product.separate,"Add as separate item",en_US
 shared_cart_widget.add_product.separate,"Als separaten Artikel hinzufügen",de_DE
 shared_cart_widget.cart.share,"Share cart",en_US
@@ -2121,6 +2129,8 @@ shopping_list_page.dismiss.failed,Shopping list was not dismissed.,en_US
 shopping_list_page.dismiss.failed,Einkaufsliste wurde nicht abgelehnt,de_DE
 shopping_list_page.dismiss.success,Shopping list was dismissed successfully.,en_US
 shopping_list_page.dismiss.success,"Einkaufsliste wurde erfolgreich abgelehnt.",de_DE
+shopping_list_page.aria_label.choose.shopping_list,"Choose the shopping list %shoppingListName% to add its items to the cart.",en_US
+shopping_list_page.aria_label.choose.shopping_list,"Wählen Sie die Einkaufsliste %shoppingListName% aus, um ihre Artikel zum Warenkorb hinzuzufügen.",de_DE
 customer.account.shopping_list.share.from.share,Share,en_US
 customer.account.shopping_list.share.from.share,Teilen,de_DE
 customer.account.shopping_list.share.from.share.title,Share "%name%",en_US
@@ -4139,3 +4149,13 @@ payment_app_widget.error.incorrect_quote,"Quote not found, session may have expi
 payment_app_widget.error.incorrect_quote,"Angebot nicht gefunden, Sitzung ist möglicherweise abgelaufen",de_DE
 customer.change_customer_email_mail_sent,"Almost there! We send you an email to validate your email address. Please confirm it to be able to log in.",en_US
 customer.change_customer_email_mail_sent,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
+shop_ui.aria_label.choose.date.time,"Choose the date and time.",en_US
+shop_ui.aria_label.choose.date.time,"Wählen Sie das Datum und die Uhrzeit aus.",de_DE
+shop_ui.aria_label.choose.date,"Choose the date.",en_US
+shop_ui.aria_label.choose.date,"Wählen Sie das Datum aus.",de_DE
+shop_ui.aria_label.main.navigation,Main navigation,en_US
+shop_ui.aria_label.main.navigation,Hauptnavigation,de_DE
+shop_ui.aria_label.choose-as-active,"Choose as active option",en_US
+shop_ui.aria_label.choose-as-active,"Als aktive Option auswählen",de_DE
+shop_ui.aria_label.choose-date,"Choose date",en_US
+shop_ui.aria_label.choose-date,"Datum auswählen",de_DE

@@ -4,6 +4,7 @@
         background: $setting-color-gray-7;
         border-radius: $setting-border-radius;
         padding: rem(15) rem(20) rem(20);
+        color: $setting-color-gray-5;
 
         @include helper-breakpoint-media-min($md) {
             padding: rem(26) rem(30) rem(25);
@@ -12,7 +13,6 @@
         &__summary {
             font-size: rem(16);
             font-weight: fw(medium);
-            color: $setting-color-gray-5;
 
             @include helper-breakpoint-media-min($md) {
                 font-size: rem(18);
@@ -27,7 +27,6 @@
 
         &__author {
             font-size: rem(13);
-            color: $setting-color-gray-3;
             padding-bottom: rem(13);
 
             @include helper-breakpoint-media-min($md) {
@@ -37,13 +36,6 @@
 
         &__description {
             font-size: rem(14);
-            line-height: rem(20);
-            color: $setting-color-gray-3;
-
-            @include helper-breakpoint-media-min($md) {
-                line-height: 1.33;
-                font-size: rem(15);
-            }
         }
     }
 }
