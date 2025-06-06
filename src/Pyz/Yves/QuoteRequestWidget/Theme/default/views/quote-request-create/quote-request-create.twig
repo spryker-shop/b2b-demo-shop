@@ -1,0 +1,14 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isVisible: _widget.isVisible,
+    canProceedCheckout: true,
+} %}
+
+{% block body %}
+    {% set disableButton = not data.canProceedCheckout ? 'button--disabled' %}
+
+    <a class="button button--expand {{ disableButton }}" href="{{ url('quote-request/create') }}">
+        {{ 'quote_request_widget.request_for_quote' | trans }}
+    </a>
+{% endblock %}
