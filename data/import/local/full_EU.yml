@@ -256,6 +256,8 @@ actions:
     source: data/import/common/common/company_user_on_behalf.csv
   - data_entity: merchant
     source : data/import/common/common/merchant.csv
+  - data_entity: merchant-stock
+    source: data/import/common/common/marketplace/merchant_stock.csv
   - data_entity: merchant-store
     source: data/import/common/AT/merchant_store.csv
   - data_entity: merchant-store
@@ -268,6 +270,18 @@ actions:
     source: data/import/common/DE/sales_order_threshold_per_merchant_relationship.csv
   - data_entity: merchant-relationship-sales-order-threshold
     source: data/import/common/AT/sales_order_threshold_per_merchant_relationship.csv
+  - data_entity: merchant-product-offer
+    source: data/import/common/common/marketplace/merchant_product_offer.csv
+  - data_entity: merchant-product-offer-store
+    source: data/import/common/DE/merchant_product_offer_store.csv
+  - data_entity: merchant-product-offer-store
+    source: data/import/common/AT/merchant_product_offer_store.csv
+  - data_entity: product-offer-validity
+    source: data/import/common/common/marketplace/product_offer_validity.csv
+  - data_entity: product-offer-stock
+    source: data/import/common/common/marketplace/product_offer_stock.csv
+  - data_entity: product-offer-shipment-type
+    source: data/import/common/common/product_offer_shipment_type.csv
   - data_entity: product-price-merchant-relationship
     source: data/import/common/DE/price_product_merchant_relationship.csv
   - data_entity: product-price-merchant-relationship
@@ -313,6 +327,8 @@ actions:
     source: data/import/common/common/service.csv
   - data_entity: shipment-type-service-type
     source: data/import/common/common/shipment_type_service_type.csv
+  - data_entity: product-offer-service
+    source: data/import/common/common/product_offer_service.csv
 # Store relation
   - data_entity: service-point-store
     source: data/import/common/DE/service_point_store.csv
