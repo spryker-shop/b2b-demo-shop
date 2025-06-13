@@ -7,6 +7,9 @@ environment: docker.dev
 image:
     tag: spryker/php:8.3
     php:
+        ini:
+            max_execution_time: 300
+            request_terminate_timeout: 300
         enabled-extensions:
             - blackfire
     environment:
@@ -103,6 +106,10 @@ groups:
                         region: EU
             glue_backend_eu:
                 application: glue-backend
+                limits:
+                    request-terminate-timeout: 5m
+                    http:
+                        timeout: 5m
                 endpoints:
                     glue-backend.eu.spryker.local:
                         region: EU
