@@ -19,6 +19,7 @@ $address-form-width: rem(710);
         flex-flow: row wrap;
         align-items: center;
         text-align: center;
+        justify-content: flex-end;
 
         @include helper-breakpoint-media-min($lg) {
             margin-top: rem(16);
@@ -322,18 +323,9 @@ $address-form-width: rem(710);
             }
         }
 
-        #{$name}__actions {
-            flex-direction: column-reverse;
-
-            @include helper-breakpoint-media-min($md) {
-                flex-direction: row-reverse;
-                justify-content: flex-end;
-            }
-        }
-
         #{$name}__action {
             @include helper-breakpoint-media-min($md) {
-                margin: 0 rem(16) 0 0;
+                margin: 0 0 0 rem(16);
             }
         }
 
