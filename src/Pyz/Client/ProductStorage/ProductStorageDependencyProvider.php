@@ -23,6 +23,7 @@ use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConc
 use Spryker\Client\ProductOfferStorage\Plugin\ProductStorage\ProductViewProductOfferExpanderPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductVariantProductViewExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
+use SprykerFeature\Client\SelfServicePortal\Plugin\ProductStorage\ShipmentTypeProductViewExpanderPlugin;
 
 class ProductStorageDependencyProvider extends SprykerProductStorageDependencyProvider
 {
@@ -42,6 +43,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
             new ProductViewImageExpanderPlugin(),
             new ProductBundleProductViewExpanderPlugin(),
             new ProductViewProductOfferExpanderPlugin(),
+            new ShipmentTypeProductViewExpanderPlugin(),
         ];
 
         return $plugins;

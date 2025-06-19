@@ -39,6 +39,14 @@
                 <action>index</action>
                 <visible>1</visible>
             </order-list>
+            <self-service-portal-services>
+                <label>Services</label>
+                <title>Services</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-service</controller>
+                <action>index</action>
+                <icon>fa-paperclip</icon>
+            </self-service-portal-services>
             <sales-reclamations>
                 <label>Reclamations</label>
                 <title>Reclamations</title>
@@ -64,6 +72,34 @@
             </table>
         </pages>
     </sales>
+    <ssp>
+        <label>Customer portal</label>
+        <title>Customer portal</title>
+        <icon>fa-id-badge</icon>
+        <pages>
+            <self-service-portal-asset>
+                <label>Assets</label>
+                <title>Assets</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-asset</controller>
+                <action>index</action>
+            </self-service-portal-asset>
+            <self-service-portal-company-file>
+                <label>File Attachments</label>
+                <title>File Attachments</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-file</controller>
+                <action>index</action>
+            </self-service-portal-company-file>
+            <self-service-portal-inquiries>
+                <label>Ssp Inquiries</label>
+                <title>Ssp Inquiries</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-inquiry</controller>
+                <action>index</action>
+            </self-service-portal-inquiries>
+        </pages>
+    </ssp>
     <customer>
         <label>Customers</label>
         <title>Customers</title>

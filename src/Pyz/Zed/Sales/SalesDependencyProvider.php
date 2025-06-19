@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Pyz\Zed\Sales;
 
@@ -69,6 +69,14 @@ use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnab
 use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointOrderItemExpanderPlugin;
 use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointOrderItemsPostSavePlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductTypeOrderExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductTypeOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ScheduleTimeOrderItemExpanderPreSavePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ServiceDateTimeEnabledOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspAssetOrderExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspAssetOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspProductAbstractTypeSalesOrderItemCollectionPreDeletePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspServiceCancellableOrderItemExpanderPlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
 {
@@ -101,6 +109,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new OmsStatesOrderExpanderPlugin(),
             new IsCancellableOrderExpanderPlugin(),
             new CurrencyOrderExpanderPlugin(),
+            new SspAssetOrderExpanderPlugin(),
+            new ProductTypeOrderExpanderPlugin(),
         ];
     }
 
@@ -115,6 +125,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new AmountSalesUnitOrderItemExpanderPreSavePlugin(),
             new IsQuantitySplittableOrderItemExpanderPreSavePlugin(),
             new OrderItemReferenceExpanderPreSavePlugin(),
+            new ScheduleTimeOrderItemExpanderPreSavePlugin(),
         ];
     }
 
@@ -194,6 +205,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemStateOrderItemExpanderPlugin(),
             new ProductConfigurationOrderItemExpanderPlugin(),
             new ServicePointOrderItemExpanderPlugin(),
+            new SspServiceCancellableOrderItemExpanderPlugin(),
         ];
     }
 
@@ -245,6 +257,19 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemMetadataOrderItemsPostSavePlugin(),
             new ProductConfigurationOrderItemsPostSavePlugin(),
             new ServicePointOrderItemsPostSavePlugin(),
+            new ProductTypeOrderItemsPostSavePlugin(),
+            new SspAssetOrderItemsPostSavePlugin(),
+            new ServiceDateTimeEnabledOrderItemsPostSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\SalesOrderItemCollectionPreDeletePluginInterface>
+     */
+    protected function getSalesOrderItemCollectionPreDeletePlugins(): array
+    {
+        return [
+            new SspProductAbstractTypeSalesOrderItemCollectionPreDeletePlugin(),
         ];
     }
 }

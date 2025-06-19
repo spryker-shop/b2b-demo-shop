@@ -30,6 +30,15 @@ use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductCo
 use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditTabsExpanderPlugin;
 use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ProductAbstractTypeFormExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ProductAbstractTypeProductAbstractFormDataProviderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ProductAbstractTypeProductAbstractTransferMapperPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ServiceDateTimeEnabledProductConcreteFormEditDataProviderExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ServiceDateTimeEnabledProductConcreteFormExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ServiceDateTimeEnabledProductFormTransferMapperExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ShipmentTypeProductConcreteFormEditDataProviderExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ShipmentTypeProductConcreteFormExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ShipmentTypeProductFormTransferMapperExpanderPlugin;
 
 class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
 {
@@ -92,6 +101,8 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         return [
             new DiscontinueProductConcreteFormEditDataProviderExpanderPlugin(), #ProductDiscontinuedFeature
             new ProductConcreteFormEditDataProviderExpanderPlugin(), #ProductAlternativeFeature
+            new ShipmentTypeProductConcreteFormEditDataProviderExpanderPlugin(),
+            new ServiceDateTimeEnabledProductConcreteFormEditDataProviderExpanderPlugin(),
         ];
     }
 
@@ -103,6 +114,8 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         return [
             new ProductFormTransferMapperExpanderPlugin(), #ProductAlternativeFeature
             new DiscontinuedNotesProductFormTransferMapperExpanderPlugin(), #ProductDiscontinuedFeature
+            new ShipmentTypeProductFormTransferMapperExpanderPlugin(),
+            new ServiceDateTimeEnabledProductFormTransferMapperExpanderPlugin(),
         ];
     }
 
@@ -113,6 +126,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new MerchantRelationshipProductAbstractFormExpanderPlugin(),
+            new ProductAbstractTypeFormExpanderPlugin(),
         ];
     }
 
@@ -123,6 +137,8 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new MerchantRelationshipProductConcreteFormExpanderPlugin(),
+            new ShipmentTypeProductConcreteFormExpanderPlugin(),
+            new ServiceDateTimeEnabledProductConcreteFormExpanderPlugin(),
         ];
     }
 
@@ -163,6 +179,26 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new ProductConfigurationProductTableDataBulkExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractFormDataProviderExpanderPluginInterface>
+     */
+    protected function getProductAbstractFormDataProviderExpanderPlugins(): array
+    {
+        return [
+            new ProductAbstractTypeProductAbstractFormDataProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractTransferMapperPluginInterface>
+     */
+    protected function getProductAbstractTransferMapperPlugins(): array
+    {
+        return [
+            new ProductAbstractTypeProductAbstractTransferMapperPlugin(),
         ];
     }
 }

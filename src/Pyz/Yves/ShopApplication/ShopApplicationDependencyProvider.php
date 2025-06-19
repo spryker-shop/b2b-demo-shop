@@ -27,6 +27,22 @@ use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspCompanyFilesMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspListMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspProductOfferPriceWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceChangeScheduledTimeLinkWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceDetectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServicePointNameForItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspShipmentTypeServicePointSelectorWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AssetWidget\Widget\AssetWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
@@ -331,6 +347,22 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductOfferServicePointAvailabilityDisplayWidget::class,
             MerchantProductOfferWidget::class,
             MerchantProductOffersSelectWidget::class,
+            SspInquiryMenuItemWidget::class,
+            CreateOrderSspInquiryWidget::class,
+            SspCompanyFilesMenuItemWidget::class,
+            SspInquiryListWidget::class,
+            SspServiceMenuItemWidget::class,
+            SspServiceChangeScheduledTimeLinkWidget::class,
+            SspShipmentTypeServicePointSelectorWidget::class,
+            SspServicePointNameForItemWidget::class,
+            ListCartItemsByShipmentTypeWidget::class,
+            SspListMenuItemWidget::class,
+            SspAssetInfoForItemWidget::class,
+            SspServiceDetectorWidget::class,
+            SspItemAssetSelectorWidget::class,
+            SspProductOfferPriceWidget::class,
+            SspAddressFormItemsByShipmentTypeWidget::class,
+            ServiceListWidget::class,
         ];
     }
 
