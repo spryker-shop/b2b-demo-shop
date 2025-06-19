@@ -11,6 +11,7 @@ namespace Pyz\Zed\StateMachine;
 
 use Pyz\Zed\ExampleStateMachine\Communication\Plugin\TestStateMachineHandlerPlugin;
 use Spryker\Zed\StateMachine\StateMachineDependencyProvider as SprykerStateMachineDependencyProvider;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\StateMachine\SspInquiryStateMachineHandlerPlugin;
 
 class StateMachineDependencyProvider extends SprykerStateMachineDependencyProvider
 {
@@ -21,6 +22,7 @@ class StateMachineDependencyProvider extends SprykerStateMachineDependencyProvid
     {
         return [
             new TestStateMachineHandlerPlugin(),
+            new SspInquiryStateMachineHandlerPlugin(),
         ];
     }
 }
