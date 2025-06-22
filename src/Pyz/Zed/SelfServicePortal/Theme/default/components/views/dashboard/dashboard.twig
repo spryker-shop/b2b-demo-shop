@@ -1,0 +1,48 @@
+{% extends view('dashboard','@SprykerFeature:SelfServicePortal') %}
+
+{% block customerContent %}
+    {% block userInfo %}
+        <div data-qa="welcome-block">
+            <div data-qa="user-info">
+                <strong>
+                    {{ 'ssp_dashboard.general.welcome' | trans({
+                        '%name%': data.customer.firstName ~ ' ' ~ data.customer.lastName,
+                    }) }}
+                </strong>
+            </div>
+            <span>{{ data.customer.companyUserTransfer.company.name }}</span> | <span>{{ data.customer.companyUserTransfer.companyBusinessUnit.name }}</span>
+        </div>
+    {% endblock %}
+
+    {{ block('information') }}
+
+    {% if canAccessAssets %}
+        {{ block('assets') }}
+    {% endif %}
+
+    {% block news %}
+        {% cms_slot 'ssp-news' %}
+    {% endblock %}
+
+    {{ block('tables') }}
+{% endblock %}
+
+{% block statsCol %}
+    {% set colClasses = 'col col--with-gutter col--sm-12 col--lg-6' %}
+    {{ parent() }}
+{% endblock %}
+
+{% block representativesCol %}
+    {% set colClasses = 'col col--with-gutter col--sm-12 col--lg-6' %}
+    {{ parent() }}
+{% endblock %}
+
+{% block tablesCols %}
+    {% set colClasses = 'col col--with-gutter col--sm-12' %}
+
+    {{ block('inquiryCol') }}
+
+    {% if can('ViewCompanyFilesPermissionPlugin') or can('ViewCompanyUserFilesPermissionPlugin') or can('ViewCompanyBusinessUnitFilesPermissionPlugin') %}
+        {{ block('filesCol') }}
+    {% endif %}
+{% endblock %}

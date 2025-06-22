@@ -1,4 +1,4 @@
-{% extends view('list-asset', '@SprykerFeature:SelfServicePortal') %}
+{% extends view('list-company-file', '@SprykerFeature:SelfServicePortal') %}
 
 {% block filtersToggler %}
     <button class="button button--hollow button--hollow-active button--justify-center js-filter-button">
@@ -25,26 +25,27 @@
     {% include molecule('action-bar') with {
         modifiers: ['first'],
         data: {
-            title: 'customer.account.ssp_assets' | trans,
+            title: 'self_service_portal.company_file' | trans,
             actions: [
                 {
-                    block: block('filtersToggler',)
-                },
-                {
-                    block: block('actions'),
+                    block: block('filtersToggler'),
                 },
             ],
         },
     } only %}
 
-    {{ block('list') }}
+    {{ block('formStart') }}
+    {{ block('filtersSection') }}
+    {{ block('activeFilters') }}
+    {{ block('files') }}
+    {{ block('formEnd') }}
 {% endblock %}
 
 {% block table %}
     {% set rows = rows | map(row => row | merge({
         actions: row.actions | map(action => action | merge({
             iconModifier: 'big',
-            icon: 'eye',
+            icon: 'download',
             title: action.label,
         })),
     })) %}
@@ -63,13 +64,4 @@
             })),
         },
     } only %}
-{% endblock %}
-
-{% block actions %}
-    {% if can('CreateSspAssetPermissionPlugin') %}
-        <a class="button action-bar__action" data-qa="create-ssp-asset"
-            href="{{ url('customer/asset/create') }}">
-            {{ 'customer.ssp_asset.create.button' | trans }}
-        </a>
-    {% endif %}
 {% endblock %}

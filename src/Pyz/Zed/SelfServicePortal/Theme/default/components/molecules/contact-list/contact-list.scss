@@ -1,0 +1,34 @@
+@include ssp-dashboard-management-contact-list($name: '.contact-list') {
+    &.box {
+        padding: 13px 18px 13px;
+    }
+
+    &__representative:last-child {
+        padding-bottom: rem(10);
+    }
+
+    &__representative-mail,
+    &__representative-phone {
+        color: $setting-color-gray-4;
+    }
+
+    &__representative-name {
+        display: block;
+        font-size: rem(13);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    &__representative-logo {
+        background-color: $setting-color-gray-2;
+    }
+
+    &__representative-data {
+        gap: 0;
+        justify-content: flex-start;
+    }
+
+    &__representative-data-col:not(:last-child) {
+        padding-right: rem(20);
+    }
+}

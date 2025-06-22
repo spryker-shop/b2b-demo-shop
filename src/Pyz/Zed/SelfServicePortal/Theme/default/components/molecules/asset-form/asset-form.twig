@@ -36,7 +36,7 @@
 
                     {{ form_errors(data.form.asset_image) }}
 
-                    {% include molecule('image-uploader', 'FeatureUi') with {
+                    {% include molecule('image-uploader', 'SelfServicePortal') with {
                         class: 'spacing-x spacing-top--big',
                         data: {
                             image: fileInput.attr['original-image-url'] | default(null),
