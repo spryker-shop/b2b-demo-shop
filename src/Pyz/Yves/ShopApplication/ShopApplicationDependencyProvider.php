@@ -33,7 +33,11 @@ use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspCompanyFilesMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspFileListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspListMenuItemWidget;
@@ -350,11 +354,15 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspInquiryMenuItemWidget::class,
             CreateOrderSspInquiryWidget::class,
             SspCompanyFilesMenuItemWidget::class,
+            DashboardMenuItemWidget::class,
             SspInquiryListWidget::class,
+            SspAssetListWidget::class,
+            SspFileListWidget::class,
             SspServiceMenuItemWidget::class,
             SspServiceChangeScheduledTimeLinkWidget::class,
             SspShipmentTypeServicePointSelectorWidget::class,
             SspServicePointNameForItemWidget::class,
+            SspAssetMenuItemWidget::class,
             ListCartItemsByShipmentTypeWidget::class,
             SspListMenuItemWidget::class,
             SspAssetInfoForItemWidget::class,

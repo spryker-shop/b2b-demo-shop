@@ -8,17 +8,17 @@
         {% set colClasses = 'col col--with-gutter col--sm-12 col--xl-6' %}
 
         <div class="{{ colClasses }}">
-            {% if data.asset.sspInquiryCollection and (can('ViewBusinessUnitSspInquiryPermissionPlugin') or can('ViewCompanySspInquiryPermissionPlugin')) %}
-                {% widget 'SspInquiryListWidget' args [data.asset.sspInquiryCollection, url('customer/ssp-inquiry', { 'ssp-asset-reference': data.asset.reference })] only %}{% endwidget %}
+            {% if data.asset.sspInquiryCollection.sspInquiries.count and (can('ViewBusinessUnitSspInquiryPermissionPlugin') or can('ViewCompanySspInquiryPermissionPlugin')) %}
+                {% widget 'SspInquiryListWidget' args [data.asset.sspInquiryCollection, url('customer/ssp-inquiry', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}
             {% endif %}
         </div>
 
         <div class="{{ colClasses }}">
             {% if data.asset.fileAttachmentFileCollection.fileAttachments.count and (can('ViewCompanyFilesPermissionPlugin') or can('ViewCompanyUserFilesPermissionPlugin') or can('ViewCompanyBusinessUnitFilesPermissionPlugin')) %}
-                {% widget 'SspFileListWidget' args [data.asset.fileAttachmentFileCollection, url('ssp-file-management', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}
+                {% widget 'SspFileListWidget' args [data.asset.fileAttachmentFileCollection, url('ssp/company-file/list-file', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}
             {% endif %}
         </div>
 
-        {% widget 'ServiceListWidget' args [data.asset.sspServiceCollection, url('customer/ssp-service', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}
+        {% widget 'ServiceListWidget' args [data.asset.sspServiceCollection, url('ssp/service/list', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}    </div>
     </div>
 {% endblock %}

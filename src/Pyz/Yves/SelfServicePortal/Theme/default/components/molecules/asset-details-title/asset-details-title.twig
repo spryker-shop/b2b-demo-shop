@@ -15,7 +15,7 @@
 {% block edit %}
     {% if can('UpdateSspAssetPermissionPlugin') and data.isUpdateAllowed %}
         <a
-            href="{{ url('customer/asset/update', { reference: data.reference }) }}"
+            href="{{ url('ssp/asset/update', { reference: data.reference }) }}"
             class="link"
             title="{{ 'general.edit.button' | trans }}"
             data-qa="edit-ssp-asset">
