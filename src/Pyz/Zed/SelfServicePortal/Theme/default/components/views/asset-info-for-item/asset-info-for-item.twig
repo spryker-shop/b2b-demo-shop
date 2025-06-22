@@ -1,0 +1,19 @@
+{% extends view('asset-info-for-item', '@SprykerFeature:SelfServicePortal') %}
+
+{% block title %}
+    <div class="title--h6"><strong>{{ 'self_service_portal.asset.assigned_asset' | trans }}:</strong></div>
+{% endblock %}
+
+{% block asset %}
+    <ul class="list title--h6">
+        <li class="list__item ">
+            {{ 'self_service_portal.asset.name' | trans }}: <a href="{{ path('customer/asset/details', {'reference': data.asset.reference }) }}">{{ data.asset.name }}</a>
+        </li>
+
+        {% if data.asset.serialNumber %}
+            <li class="list__item">
+                {{ 'self_service_portal.asset.serial_number' | trans }}: {{ data.asset.serialNumber }}
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
