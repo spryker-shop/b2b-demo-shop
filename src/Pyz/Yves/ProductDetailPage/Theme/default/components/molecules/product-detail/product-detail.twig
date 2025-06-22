@@ -15,24 +15,28 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col col--sm-12 col--lg-6">
-        <h2 class="{{ config.name }}__title title title--h4 title--mobile-toggler-section js-pdp-section__trigger" data-toggle-target='.js-pdp-section__target-description'>{{ 'product.attribute.long_description' | trans }}</h2>
-        <div itemprop="description" class="{{ config.name }}__description js-pdp-section__target-description is-hidden-sm-md">
-            {{ data.description | raw }}
+    {% if data.description %}
+        <div class="col col--sm-12 col--lg-6">
+            <h2 class="{{ config.name }}__title title title--h4 title--mobile-toggler-section js-pdp-section__trigger" data-toggle-target='.js-pdp-section__target-description'>{{ 'product.attribute.long_description' | trans }}</h2>
+            <div itemprop="description" class="{{ config.name }}__description js-pdp-section__target-description is-hidden-sm-md">
+                {{ data.description | raw }}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
-    <div class="col col--sm-12 col--lg-5">
-        <h2 class="{{ config.name }}__title title title--h4 title--mobile-toggler-section js-pdp-section__trigger" data-toggle-target='.js-pdp-section__target-details'>{{ 'page.product.details' | trans }}</h2>
-        <div class="grid {{ config.name }}__detail-list js-pdp-section__target-details is-hidden-sm-md">
-            {% for name, value in data.attributes %}
-                {% if name %}
-                    <div class="col col--sm-6 {{ config.name }}__detail-list-item" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
-                        <div class="{{ config.name }}__detail-list-key" itemprop="name">{{ ('product.attribute.' ~ name) | trans }}</div>
-                        <div class="{{ config.name }}__detail-list-value" itemprop="value">{{ value | join(', ') }}</div>
-                    </div>
-                {% endif %}
-            {% endfor %}
+    {% if data.attributes | length %}
+        <div class="col col--sm-12 col--lg-5">
+            <h2 class="{{ config.name }}__title title title--h4 title--mobile-toggler-section js-pdp-section__trigger" data-toggle-target='.js-pdp-section__target-details'>{{ 'page.product.details' | trans }}</h2>
+            <div class="grid {{ config.name }}__detail-list js-pdp-section__target-details is-hidden-sm-md">
+                {% for name, value in data.attributes %}
+                    {% if name %}
+                        <div class="col col--sm-6 {{ config.name }}__detail-list-item" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+                            <div class="{{ config.name }}__detail-list-key" itemprop="name">{{ ('product.attribute.' ~ name) | trans }}</div>
+                            <div class="{{ config.name }}__detail-list-value" itemprop="value">{{ value | join(', ') }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}
