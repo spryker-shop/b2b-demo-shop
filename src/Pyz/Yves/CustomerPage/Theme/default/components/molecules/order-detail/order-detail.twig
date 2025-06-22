@@ -85,6 +85,12 @@
                         } only %}
                     {% endblock %}
                 {% endwidget %}
+
+                {% if widgetGlobalExists('CreateOrderSspInquiryLinkWidget') and can('CreateSspInquiryPermissionPlugin') %}
+                    <div class="{{ config.name }}__action">
+                        {% widget 'CreateOrderSspInquiryLinkWidget' args [embed.order.orderReference, embed.order.idSalesOrder] only %}{% endwidget %}
+                    </div>
+                {% endif %}
             {% endblock %}
         {% endembed %}
     {% endblock %}

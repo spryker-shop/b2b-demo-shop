@@ -1,18 +1,45 @@
 {% extends molecule('product-cart-items-list', 'SprykerShop:CartPage') %}
 
 {% block cartItem %}
-    {% if not cartItem.configuredBundleItem | default %}
-        {% include molecule('product-cart-item', 'CartPage') with {
-            data: {
-                list: data.cart,
-                listItem: cartItem,
-                attributes: data.attributes[cartItem.sku] | default([]),
-                canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
-                canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
-                hasAdditionalTitle: cartItem.cartNote | default(false),
-                currencyIsoCode: data.cart.currency.code | default(null),
-                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
-            },
-        } only %}
-    {% endif %}
+    {% widget 'ListItemsByShipmentTypeWidget' args [data.cartItems] with {
+        embed: {
+            cart: data.cart,
+            cartItems: data.cartItems,
+            isQuoteEditable: data.isQuoteEditable,
+            attributes: data.attributes,
+            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+        },
+    } only %}
+        {% block cartItem %}
+            {% if not cartItem.configuredBundleItem | default %}
+                {% include molecule('product-cart-item', 'CartPage') with {
+                        data: {
+                            list: embed.cart,
+                            listItem: cartItem,
+                            attributes: embed.attributes[cartItem.sku] | default([]),
+                            canEdit: embed.isQuoteEditable and can('ChangeCartItemPermissionPlugin', embed.cart.idQuote),
+                            canRemove: embed.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
+                            hasAdditionalTitle: cartItem.cartNote | default(false),
+                            currencyIsoCode: embed.cart.currency.code | default(null),
+                            ajaxTriggerAttribute: embed.ajaxTriggerAttribute,
+                        },
+                    } only %}
+            {% endif %}
+        {% endblock %}
+    {% nowidget %}
+        {% if not cartItem.configuredBundleItem | default %}
+            {% include molecule('product-cart-item', 'CartPage') with {
+                data: {
+                    list: data.cart,
+                    listItem: cartItem,
+                    attributes: data.attributes[cartItem.sku] | default([]),
+                    canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
+                    canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
+                    hasAdditionalTitle: cartItem.cartNote | default(false),
+                    currencyIsoCode: data.cart.currency.code | default(null),
+                    ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                },
+            } only %}
+        {% endif %}
+    {% endblock %}
 {% endblock %}

@@ -37,6 +37,10 @@
                     }
                 }
 
+                &--push-left-#{$breakpoint}-#{$column} {
+                    margin-left: helper-grid-span($column);
+                }
+
                 &--#{$breakpoint}-auto {
                     width: auto;
                     min-width: 0;
@@ -149,8 +153,13 @@
                 margin-top: 0;
                 margin-bottom: 0;
             }
+
+            .box--stretch {
+                height: 100%;
+            }
         }
 
+        &--with-gutter,
         &--gap {
             margin-left: -$setting-grid-space-mobile;
             margin-right: -$setting-grid-space-mobile;
@@ -171,6 +180,11 @@
                     padding-right: $setting-grid-space;
                 }
             }
+        }
+
+        &--with-gutter > .col {
+            padding-top: $setting-grid-space;
+            padding-bottom: $setting-grid-space;
         }
 
         &--gap-smaller {

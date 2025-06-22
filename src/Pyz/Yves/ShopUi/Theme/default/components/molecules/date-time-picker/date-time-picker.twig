@@ -6,7 +6,8 @@
 } %}
 
 {% define data = {
-    field: required,
+    field: {},
+    input: {},
     fieldClass: '',
     iconName: 'calendar',
 } %}
@@ -23,24 +24,36 @@
 {% block body %}
     <div class="{{ config.name }}__content">
         {% block input %}
-            {{ form_row(data.field, {
-                attr: {
-                    class: config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass),
-                },
-            }) }}
+            {% set class = config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass) %}
+
+            {% if data.field  %}
+                {{ form_row(data.field, {
+                    attr: {
+                        class: class,
+                    },
+                }) }}
+            {% else %}
+                {% if data.input.label %}
+                    <label {% if data.input.attrs.id %}for="{{ data.input.attrs.id }}"{% endif %} class="label">{{ data.input.label | trans }}</label>
+                {% endif %}
+
+                <input type="text" class="input input--expand {{ class }}" {{ _self.renderAttributes(data.input.attrs) }}>
+            {% endif %}
         {% endblock %}
 
         {% block calendar %}
             <div class="{{ config.name }}__calendar">
                 {% block calendarButton %}
-                    <button type="button" class="{{ config.name }}__calendar-button">
-                        {% include atom('icon') with {
-                            class: config.name ~ '__icon',
-                            data: {
-                                name: data.iconName,
-                            },
-                        } only %}
-                    </button>
+                    {% if data.iconName %}
+                        <button type="button" class="{{ config.name }}__calendar-button">
+                            {% include atom('icon') with {
+                                class: config.name ~ '__icon',
+                                data: {
+                                    name: data.iconName,
+                                },
+                            } only %}
+                        </button>
+                    {% endif %}
                 {% endblock %}
 
                 {% block calendarInput %}

@@ -1,0 +1,21 @@
+{% extends molecule('service-point-selector', '@SprykerShop:ClickAndCollectPageExample') %}
+
+{% block selectedLocation %}
+    <div class="{{ config.jsName }}__location-container {{ not isServicePointSelected ? attributes['toggle-class-name'] }}">
+        <div class="spacing-bottom">
+            <strong>{{ 'service_point_widget.location_label' | trans }}</strong>
+            <span class="{{ config.jsName }}__location">
+                {% if data.selectedServicePoint %}
+                    {% set address = data.selectedServicePoint.address %}
+                    {% set formattedAddress = [address.address1, address.address2, address.address3] | filter(address => address) | join(' ') %}
+
+                    {{ data.selectedServicePoint.name }} {{ formattedAddress }},
+                    {{ address.zipCode }} {{ address.city }}
+                {% endif %}
+            </span>
+        </div>
+        <button type="button" class="button button--small {{ attributes['trigger-class-name'] }}">
+            {{ 'service_point_widget.change_action' | trans }}
+        </button>
+    </div>
+{% endblock %}

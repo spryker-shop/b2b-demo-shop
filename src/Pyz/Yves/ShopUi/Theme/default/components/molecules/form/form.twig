@@ -30,7 +30,7 @@
             {% endif %}
         {% endblock %}
 
-        <div class="{{config.name}}__actions">
+        <div class="{{ _self.renderClass(config.name ~ '__actions', modifiers) }}">
             {% block actions %}
                 {{ parent() }}
             {% endblock %}

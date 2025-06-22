@@ -1,0 +1,71 @@
+{% extends molecule('asset-form', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% embed molecule('form') with {
+        modifiers: ['actions-right'],
+        data: {
+            title: false,
+            form: data.form,
+            options: {
+                action: data.formAction,
+                attr: {
+                    novalidate: false,
+                    'data-qa': 'customer-asset-form',
+                },
+            },
+            submit: {
+                enable: true,
+                text: 'ssp_asset.submit.button' | trans,
+            },
+            cancel: {
+                enable: true,
+                url: url('customer/asset'),
+                text: 'ssp_asset.cancel.button' | trans,
+            },
+        },
+        embed: {
+            assetBlock: block('asset'),
+            assetData: data.assetData,
+        },
+    } only %}
+        {% block fields %}
+            <div class="grid">
+                <div class="col col--sm-12 col--lg-6">
+                    {% set fileInput = data.form.asset_image.children.file.vars %}
+                    {% set deleteInput = data.form.asset_image.children.delete.vars %}
+
+                    {{ form_errors(data.form.asset_image) }}
+
+                    {% include molecule('image-uploader', 'FeatureUi') with {
+                        class: 'spacing-x spacing-top--big',
+                        data: {
+                            image: fileInput.attr['original-image-url'] | default(null),
+                            inputAttrs: fileInput.attr | merge({
+                                id: fileInput.id,
+                                name: fileInput.full_name,
+                            }),
+                            deleteAttrs: deleteInput.attr | merge({
+                                id: deleteInput.id,
+                                name: deleteInput.full_name,
+                            }),
+                        },
+                    } only %}
+
+                    {% do data.form.asset_image.setRendered() %}
+                </div>
+
+                <div class="col col--sm-12 col--lg-6">
+                    {{ embed.assetBlock | raw }}
+
+                    <div class="{{ config.name }}__fields grid grid--bottom">
+                        {{ parent() }}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block fieldset %}
+            {{ block('fields') }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

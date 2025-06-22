@@ -1,0 +1,10 @@
+{% extends molecule('shipment-type-toggler', '@SprykerShop:ShipmentTypeWidget') %}
+
+{% block body %}
+    {{ block('radioButtons') }}
+
+    {% set servicePointType = 'on-site-service' %}
+    {% set servicePointHiddenClassName = activeShipmentType != servicePointType ? attributes['toggle-class-name'] %}
+
+    {{ block('servicePointForm') }}
+{% endblock %}

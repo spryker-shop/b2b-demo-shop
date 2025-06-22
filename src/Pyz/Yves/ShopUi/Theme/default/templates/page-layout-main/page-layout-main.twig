@@ -98,6 +98,20 @@
                     }
                 } only %}
 
+                {% include organism('account-navigation') with {
+                    attributes: {
+                        'trigger-selector': pageLayoutMainJsClassName ~ '__ssp-navigation-trigger',
+                        'container-selector': pageLayoutMainJsClassName ~ '__side-drawer-container',
+                        'locked-body-class-name': 'is-locked-mobile',
+                        'overlay-breakpoint': 768,
+                    },
+                    data: {
+                        title: 'ssp_general.customer_navigation.title' | trans,
+                        introIcon: '',
+                        isSSP: true,
+                    }
+                } only %}
+
                 {% if can('SeeCompanyMenuPermissionPlugin') %}
                     {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
                     {% set companyName = menuItemCompanyWidget.companyName %}

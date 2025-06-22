@@ -24,6 +24,14 @@ $address-form-width: rem(710);
             margin-top: rem(16);
             flex-wrap: wrap;
         }
+
+        &--actions-right {
+            justify-content: end;
+
+            #{$name}__action:last-child {
+                margin-right: 0;
+            }
+        }
     }
 
     &__action {

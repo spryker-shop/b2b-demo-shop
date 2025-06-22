@@ -1,0 +1,17 @@
+{% extends molecule('assets-preview','@SprykerFeature:SelfServicePortal') %}
+
+{% block heading %}
+    {% include molecule('title-counter', 'SelfServicePortal') with {
+        class: 'col--sm-12',
+        data: {
+            title: data.title,
+            counter: data.counter,
+        },
+    } only %}
+{% endblock %}
+
+{% block more %}
+    <div class="spacing-top text-right">
+        <a class="link link--alt link--smaller" href="{{ path('customer/asset') }}">{{ 'ssp_dashboard.general.view_all' | trans }}</a>
+    </div>
+{% endblock %}

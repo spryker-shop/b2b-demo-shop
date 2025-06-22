@@ -108,6 +108,14 @@
     </div>
 {% endblock %}
 
+{% block soldBy %}
+    {{ parent() }}
+    {% widget 'SspServicePointNameForItemWidget' args [data.listItem] only %}
+        {% elsewidget 'ServicePointNameForItemWidget' args [data.listItem] only %}
+    {% endwidget %}
+    {% widget 'SspAssetInfoForItemWidget' args [data.listItem] only %}{% endwidget %}
+{% endblock %}
+
 {% block itemAttributes %}
     {% if data.attributes is not empty %}
         {% embed molecule('product-item-variant-selector') with {
