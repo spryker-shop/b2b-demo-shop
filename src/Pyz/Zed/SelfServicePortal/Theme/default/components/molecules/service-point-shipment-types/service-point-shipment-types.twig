@@ -1,0 +1,28 @@
+{% extends molecule('service-point-shipment-types', '@SprykerFeature:SelfServicePortal') %}
+
+{% block ajax %}
+    {% set dynamicParams = {
+        'service-type-key': {
+            selector: ".#{config.name}__radio input:checked",
+            attribute: 'data-service-type-key',
+        },
+        'shipment-type-uuid': {
+            selector: ".#{config.name}__radio input:checked",
+            attribute: 'value',
+        },
+        'service-type-uuid': {
+            selector: ".#{config.name}__radio input:checked",
+            attribute: 'data-service-type-uuid',
+        },
+        sku: {
+            selector: ".#{config.name}",
+            attribute: 'data-service-point-product-sku',
+        },
+        quantity: {
+            selector: '.js-formatted-number-input__hidden-input',
+            attribute: 'value',
+        },
+    } %}
+
+    {{ parent() }}
+{% endblock %}

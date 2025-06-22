@@ -1,0 +1,8 @@
+{% extends view('list-items-by-shipment-type', '@SprykerFeature:SspServiceManagement') %}
+
+{% block title %}
+    {% set groupName = 'shipment_type.name.shipment_type_' ~ group.name %}
+    <div class="title--h3 spacing-bottom--big"><strong>{{ groupName | trans }}</strong></div>
+{% endblock %}
+
+{% block separator %}{% endblock %}
