@@ -1,0 +1,14 @@
+{% extends molecule('inquiry-information', '@SprykerFeature:SelfServicePortal') %}
+
+{% block item %}
+    {% if info is not empty %}
+        <li>
+            {% if info.block | default %}
+                {{ info.block | raw }}
+            {% else %}
+                <span class="{{ config.name }}__info-title text-color-auxiliary">{{ info.title | trans }}:</span>
+                {{ info.value | trans }}
+            {% endif %}
+        </li>
+    {% endif %}
+{% endblock %}
