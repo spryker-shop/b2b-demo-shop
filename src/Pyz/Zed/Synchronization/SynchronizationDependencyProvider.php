@@ -54,6 +54,7 @@ use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductA
 use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductConcreteProductListSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductMeasurementUnitSynchronizationDataBulkPlugin;
+use Spryker\Zed\ProductOfferAvailabilityStorage\Communication\Plugin\Synchronization\ProductOfferAvailabilitySynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductOfferServicePointStorage\Communication\Plugin\Synchronization\ProductOfferServiceSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ProductOfferShipmentTypeStorage\Communication\Plugin\Synchronization\ProductOfferShipmentTypeSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Synchronization\ProductConcreteProductOffersSynchronizationDataBulkRepositoryPlugin;
@@ -172,6 +173,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductOfferShipmentTypeSynchronizationDataBulkRepositoryPlugin(),
             new ProductConcreteProductOffersSynchronizationDataBulkRepositoryPlugin(),
             new ProductOfferSynchronizationDataBulkRepositoryPlugin(),
+            new ProductOfferAvailabilitySynchronizationDataBulkPlugin(),
         ];
     }
 
