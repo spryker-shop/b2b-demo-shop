@@ -124,7 +124,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductAbstractTypeItemExpanderPlugin(),
             new ProductConfigurationGroupKeyItemExpanderPlugin(),
             new RemoveQuotePaymentCartItemExpanderPlugin(),
-            new ShipmentTypeItemExpanderPlugin(),
             new SspAssetItemExpanderPlugin(),
             new ServicePointItemExpanderPlugin(),
         ];
