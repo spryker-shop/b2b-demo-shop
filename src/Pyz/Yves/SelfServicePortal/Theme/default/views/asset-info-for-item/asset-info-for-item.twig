@@ -7,7 +7,7 @@
 {% block asset %}
     <ul class="list title--h6">
         <li class="list__item ">
-            {{ 'self_service_portal.asset.name' | trans }}: <a href="{{ path('customer/asset/details', {'reference': data.asset.reference }) }}">{{ data.asset.name }}</a>
+            {{ 'self_service_portal.asset.name' | trans }}: <a href="{{ path('ssp/asset/details', {'reference': data.asset.reference }) }}">{{ data.asset.name }}</a>
         </li>
 
         {% if data.asset.serialNumber %}
