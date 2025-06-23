@@ -68,6 +68,11 @@
                 {% endblock %}
 
                 {{ block('productOptions') }}
+
+                {% widget 'SspServicePointNameForItemWidget' args [listItem] only %}
+                    {% elsewidget 'ServicePointNameForItemWidget' args [listItem] only %}
+                {% endwidget %}
+                {% widget 'SspAssetInfoForItemWidget' args [listItem] only %}{% endwidget %}
             </div>
 
             <div class="{{ config.name }}__col {{ config.name }}__col--total col">
@@ -106,14 +111,6 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block soldBy %}
-    {{ parent() }}
-    {% widget 'SspServicePointNameForItemWidget' args [data.listItem] only %}
-        {% elsewidget 'ServicePointNameForItemWidget' args [data.listItem] only %}
-    {% endwidget %}
-    {% widget 'SspAssetInfoForItemWidget' args [data.listItem] only %}{% endwidget %}
 {% endblock %}
 
 {% block itemAttributes %}
