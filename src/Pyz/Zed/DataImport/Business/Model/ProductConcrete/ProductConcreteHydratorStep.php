@@ -163,6 +163,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     protected function importProduct(DataSetInterface $dataSet): void
     {
         $productEntityTransfer = new SpyProductEntityTransfer();
+        $productEntityTransfer->fromArray($dataSet->getArrayCopy(), true);
         $productEntityTransfer->setSku($dataSet[static::COLUMN_CONCRETE_SKU]);
         $productEntityTransfer
             ->setIsActive($dataSet[static::KEY_IS_ACTIVE] ?? true)
