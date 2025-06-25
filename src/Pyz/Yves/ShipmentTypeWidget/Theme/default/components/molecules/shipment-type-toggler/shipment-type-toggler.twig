@@ -3,7 +3,7 @@
 {% block body %}
     {{ block('radioButtons') }}
 
-    {% set servicePointType = 'on-site-service' %}
+    {% set servicePointType = 'in-center-service' %}
     {% set servicePointHiddenClassName = activeShipmentType != servicePointType ? attributes['toggle-class-name'] %}
 
     {{ block('servicePointForm') }}
