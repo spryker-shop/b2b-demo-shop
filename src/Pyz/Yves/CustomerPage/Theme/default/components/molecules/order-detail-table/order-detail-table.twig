@@ -140,9 +140,11 @@
                                     {% endblock %}
                                 {% endwidget %}
                                 {% widget 'SspAssetInfoForItemWidget' args [data.listItem] only %}{% endwidget %}
-                                    <div class="spacing-y">
-                                        {% widget 'SspServiceChangeScheduledTimeLinkWidget' args [data.listItem] only %}{% endwidget %}
-                                    </div>
+
+                                <div class="spacing-y">
+                                    {% widget 'SspServiceChangeScheduledTimeLinkWidget' args [data.listItem] only %}{% endwidget %}
+                                </div>
+
                                 {% widget 'SspServiceCancelWidget' args [data.listItem] only %}{% endwidget %}
                             {% endblock %}
 
