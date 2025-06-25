@@ -26,3 +26,37 @@
 
     {{ parent() }}
 {% endblock %}
+
+{% block datepicker %}
+    {% if data.isServiceDateTimeEnabled %}
+        <div class="spacing-bottom--big">
+            {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
+                embed: {
+                    input: {
+                        label: 'self_service_portal.service.product.service_date_time',
+                        attrs: {
+                            id: 'service-point-shipment-type-datetime',
+                            name: data.formFieldItemMetadataScheduledAt,
+                            placeholder: 'yyyy-mm-dd HH:mm',
+                        },
+                    },
+                },
+            } only %}
+                {% block body %}
+                    {% include molecule('date-time-picker') with {
+                        data: {
+                            input: embed.input,
+                        },
+                        attributes: {
+                            language: data.currentLanguage,
+                            config: {
+                                dateFormat: 'Y-m-d H:i',
+                                minDate: 'today',
+                            } | json_encode,
+                        },
+                    } only %}
+                {% endblock %}
+            {% endwidget %}
+        </div>
+    {% endif %}
+{% endblock %}
