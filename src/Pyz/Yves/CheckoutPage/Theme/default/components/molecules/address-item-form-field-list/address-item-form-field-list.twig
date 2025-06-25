@@ -106,12 +106,10 @@
                                             deliverySelectClassName: embed.deliverySelectClassName,
                                             shipmentTypesClassName: embed.validatorTriggerClassName,
                                             servicePointClassName: embed.itemShippingClassName,
-
+                                            hideChoices: true,
                                         },
                                     } only %}{% endwidget %}
                                 {% endif %}
-
-                                {# hideChoices: true, #}
 
                                 <div class="{{ embed.deliveryContainerClassName }} {{ embed.shipmentTypeHiddenClassName }}">
                                     {% if embed.hasShippingAddressesAndApplicable and embed.isCompanyBusinessUnitShippingAddressApplicable %}
