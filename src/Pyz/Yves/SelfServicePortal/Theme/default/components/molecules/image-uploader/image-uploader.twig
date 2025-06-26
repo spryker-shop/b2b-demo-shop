@@ -1,157 +1,28 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'image-uploader',
-    tag: 'image-uploader',
-} %}
-
-{% define data = {
-    image: '',
-    inputAttrs: required,
-    deleteAttrs: required,
-} %}
+{% extends molecule('image-uploader', '@SprykerFeature:SelfServicePortal') %}
 
 {% define attributes = {
-    'initial-image': data.image | default(null),
     placeholder: null,
-    'loading-class': 'is-loading',
-    'hidden-class': 'is-hidden',
-    'confirmation-trigger': "js-#{config.name}-confirmation-trigger",
-    'data-id': "delete-image-uploader-#{random()}",
 } %}
-
-{% block body %}
-    {% block container %}
-        <div class="{{ _self.renderClass(config.name ~ '__container', modifiers) }}">
-            {% block content %}
-                {% block image %}
-                    {% set image = data.image | default(attributes.placeholder) %}
-
-                    <img
-                        alt="image-preview"
-                        src="{{ image }}"
-                        class="{{ config.name }}__image {{ config.jsName }}__image"
-                    >
-                {% endblock %}
-
-                {% block input %}
-                    <input
-                        class="{{ config.name }}__input {{ config.jsName }}__input"
-                        {{ _self.renderAttributes(data.inputAttrs) }}
-                        type="file"
-                    >
-                {% endblock %}
-
-                {% block button %}
-                    <label inert for="{{ data.inputAttrs.id }}" class="{{ config.name }}__button button button--small-space">
-                         {% include atom('icon') with {
-                            data: {
-                                name: 'upload',
-                            }
-                        } only %}
-
-                        <span class="{{ config.name }}__button-text">{{ 'self_service_portal.asset.image.upload' | trans }}</span>
-                    </label>
-                {% endblock %}
-
-                {% block delete %}
-                    {% set deleteClass = attributes['initial-image'] ? attributes['confirmation-trigger'] : "#{config.jsName}__delete" %}
-                    {% set hidden = attributes['initial-image'] ?: attributes['hidden-class'] %}
-
-                    <button
-                        type="button"
-                        data-id="{{ attributes['data-id'] }}"
-                        title="{{ 'general.remove.button' | trans }}"
-                        class="{{ deleteClass }} {{ hidden }} {{ config.name }}__delete button button--small-space button--alert"
-                    >
-                        {% include atom('icon') with {
-                            data: {
-                                name: 'remove',
-                            }
-                        } only %}
-                    </button>
-                {% endblock %}
-
-                {% block spinner %}
-                    <span class="{{ config.name }}__spinner">
-                        {% include atom('icon') with {
-                            modifiers: ['spinner'],
-                            data: {
-                                name: 'spinner',
-                            },
-                        } only %}
-                    </span>
-                {% endblock %}
-            {% endblock %}
-        </div>
-    {% endblock %}
-
-    {% block info %}
-        <div class="{{ config.name }}__info">
-            {{ 'self_service_portal.asset.form.image.description' | trans({
-                '%size%': data.inputAttrs.maxTotalSize | default(0),
-                '%format%': data.inputAttrs.acceptExtensions | default('') | split('.')
-                    | reduce((carry, format) => "#{format | upper}", ''),
-            }) }}
-        </div>
-    {% endblock %}
-
-    {% block popup %}
-        {% include molecule('main-popup') with {
-            data: {
-                title: 'self_service_portal.asset.details.confirm_delete_title' | trans,
-                content: block('popupContent'),
-            },
-            attributes: {
-                'content-id': 'delete-confirmation',
-                'trigger-class-name': attributes['confirmation-trigger'],
-            },
-        } only %}
-    {% endblock %}
-
-    {% block deleteInput %}
-        <input
-            type="checkbox"
-            class="{{ config.name }}__delete-input {{ config.jsName }}__delete-input"
-            {{ _self.renderAttributes(data.deleteAttrs) }}
-        >
-    {% endblock %}
-{% endblock %}
-
-{% block popupContent %}
-    <div class="spacing-x">
-        <p>{{ 'self_service_portal.asset.details.confirm_delete_body' | trans }}</p>
-
-        <div class="spacing-top--inner grid grid--right">
-            <div class="col spacing-right">
-                <button type="button" class="js-main-popup-close button button--hollow">
-                    {{ 'general.cancel.button' | trans }}
-                </button>
-            </div>
-            <div class="col">
-                <button type="button" data-id="{{ attributes['data-id'] }}" class="js-main-popup-close {{ config.jsName }}__delete button">
-                    {{ 'general.confirm.button' | trans }}
-                </button>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-
-
-{# {% extends molecule('image-uploader', '@SprykerFeature:SelfServicePortal') %}
 
 {% block button %}
     <label inert for="{{ data.inputAttrs.id }}" class="{{ config.name }}__button button button--small-space">
-        {{ 'self_service_portal.asset.image.upload' | trans }}
+        {% include atom('icon') with {
+            data: {
+                name: 'upload',
+            }
+        } only %}
+
+        <span class="{{ config.name }}__button-text">{{ 'self_service_portal.asset.image.upload' | trans }}</span>
     </label>
 {% endblock %}
 
 {% block delete %}
     {% set deleteClass = attributes['initial-image'] ? attributes['confirmation-trigger'] : "#{config.jsName}__delete" %}
-    {% set hidden = attributes['initial-image'] ?: 'hidden' %}
+    {% set hidden = attributes['initial-image'] ?: attributes['hidden-class'] %}
 
     <button
         type="button"
+        data-id="{{ attributes['data-id'] }}"
         title="{{ 'general.remove.button' | trans }}"
         class="{{ deleteClass }} {{ hidden }} {{ config.name }}__delete button button--small-space button--alert"
     >
@@ -161,4 +32,4 @@
             }
         } only %}
     </button>
-{% endblock %} #}
+{% endblock %}

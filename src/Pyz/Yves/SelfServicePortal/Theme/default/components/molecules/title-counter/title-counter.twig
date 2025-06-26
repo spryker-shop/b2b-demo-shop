@@ -4,6 +4,6 @@
 
 {% block counter %}
     {% if data.counter %}
-        <span class="{{ config.name }}__counter col badge badge--counter badge--round">{{ data.counter }}</span>
+        <span class="{{ config.name }}__counter col badge badge--counter badge--round" data-qa="{{ qa ~ '-counter' }}">{{ data.counter }}</span>
     {% endif %}
 {% endblock %}
