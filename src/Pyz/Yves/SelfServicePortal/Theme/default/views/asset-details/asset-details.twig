@@ -1,14 +1,7 @@
 {% extends view('asset-details', '@SprykerFeature:SelfServicePortal') %}
 
-{% block customerContent %}
-    {{ block('heading') }}
-    {{ block('information') }}
+{% block separator %}{% endblock %}
 
-    {% if data.asset.fileAttachmentFileCollection.fileAttachments.count and (can('ViewCompanyFilesPermissionPlugin') or can('ViewCompanyUserFilesPermissionPlugin') or can('ViewCompanyBusinessUnitFilesPermissionPlugin')) %}
-        {% widget 'SspFileListWidget' args [data.asset.fileAttachmentFileCollection, url('ssp/company-file/list-file', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}
-    {% endif %}
-    {% if data.asset.sspInquiryCollection.sspInquiries.count and (can('ViewBusinessUnitSspInquiryPermissionPlugin') or can('ViewCompanySspInquiryPermissionPlugin')) %}
-        {% widget 'SspInquiryListWidget' args [data.asset.sspInquiryCollection, url('customer/ssp-inquiry', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}
-    {% endif %}
-    {% widget 'ServiceListWidget' args [data.asset.sspServiceCollection, url('ssp/service/list', {'ssp-asset-reference': data.asset.reference})] only %}{% endwidget %}
+{% block customerContent %}
+    {{ block('customerContentInner') }}
 {% endblock %}

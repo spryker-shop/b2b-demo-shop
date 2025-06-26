@@ -1,34 +1,13 @@
 {% extends view('dashboard-inquiry', '@SprykerFeature:SelfServicePortal') %}
 
 {% block table %}
-    {% set columns = [
-        {
-            id: 'reference',
-            title: 'customer.self_service_portal.inquiry.list.reference' | trans,
-        },
-        {
-            id: 'type',
-            title: 'customer.self_service_portal.inquiry.list.type' | trans,
-        },
-        {
+    {% set columns = columns[:2]
+        | merge([{
             id: 'subject',
             title: 'customer.self_service_portal.inquiry.list.subject' | trans,
-        },
-        {
-            id: 'date',
-            title: 'customer.self_service_portal.inquiry.list.date_created' | trans,
-            type: 'date',
-        },
-        {
-            id: 'status',
-            title: 'customer.self_service_portal.inquiry.list.status' | trans,
-            type: 'status',
-        },
-        {
-            id: 'actions',
-            type: 'actions',
-        },
-    ] %}
+        }])
+        | merge(columns[2:])
+    %}
 
     {% set rows = rows | map((row, index) => row | merge({
         subject: data.inquiries[index].subject,
