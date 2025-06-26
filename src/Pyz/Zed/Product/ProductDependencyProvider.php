@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Pyz\Zed\Product;
 
@@ -207,6 +207,9 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
         ];
     }
 
+    /**
+     * @return array<\Spryker\Zed\ProductExtension\Dependency\Plugin\ProductAbstractPostCreatePluginInterface>
+     */
     protected function getProductAbstractPostCreatePlugins(): array
     {
         return [
@@ -222,7 +225,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\ProductExtension\Dependency\Plugin\ProductAbstractExpanderPluginInterface>
      */
-    protected function getProductAbstractExpanderPlugins(Container $container): array
+    protected function getProductAbstractExpanderPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ProductAbstractTypesProductAbstractExpanderPlugin(),

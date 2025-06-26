@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Pyz\Zed\Shipment;
 
@@ -69,9 +69,11 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
      * @return array<\Spryker\Zed\ShipmentExtension\Dependency\Plugin\ShipmentMethodFilterPluginInterface>
      */
-    protected function getMethodFilterPlugins(Container $container): array
+    protected function getMethodFilterPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ShipmentTypeShipmentMethodFilterPlugin(),
