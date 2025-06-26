@@ -6,10 +6,6 @@
         font-weight: fw(bold);
     }
 
-    &__row:nth-child(even) &__col {
-        background: none;
-    }
-
     &__col {
         padding: rem(16) rem(15);
         text-align: left;
@@ -29,6 +25,10 @@
                 padding: 0;
             }
         }
+    }
+
+    &__row:nth-child(even) &__col {
+        background: none;
     }
 
     &__row:not(&__row--head) {
