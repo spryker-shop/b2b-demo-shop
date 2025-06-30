@@ -46,7 +46,7 @@ regions:
         services:
             mail:
                 sender:
-                    name: ssp-ssp-b2b-No-Reply
+                    name: scos2-b2b-No-Reply
                     email: no-reply@ssp-b2b.cloud.spryker.toys
             database:
                 database: ssp_ssp_b2b
@@ -111,16 +111,6 @@ groups:
                     glue-backend.eu.ssp-b2b.cloud.spryker.toys:
                         region: EU
                         cors-allow-origin: '*'
-            mportal:
-                application: merchant-portal
-                endpoints:
-                    mp.eu.ssp-b2b.cloud.spryker.toys:
-                        entry-point: MerchantPortal
-                        region: EU
-                        primal: true
-                        services:
-                            session:
-                                namespace: 7
 services:
     database:
         engine: mysql
