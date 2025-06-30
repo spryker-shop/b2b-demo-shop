@@ -111,6 +111,16 @@ groups:
                     glue-backend.eu.ssp-b2b.cloud.spryker.toys:
                         region: EU
                         cors-allow-origin: '*'
+            mportal:
+                application: merchant-portal
+                endpoints:
+                    mp.eu.ssp-b2b.cloud.spryker.toys:
+                        entry-point: MerchantPortal
+                        region: EU
+                        primal: true
+                        services:
+                            session:
+                                namespace: 7
 services:
     database:
         engine: mysql
