@@ -23,12 +23,14 @@ suites:
                 - \SprykerFeatureTest\Shared\SelfServicePortal\Helper\SalesDataHelper
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper
+                - \SprykerTest\Shared\MultiFactorAuth\Helper\MultiFactorAuthDataHelper
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
                 - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
                 - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
                 - \SprykerTest\Zed\SalesOrderThreshold\Helper\SalesOrderThresholdHelper
+                - \SprykerTest\Zed\PickingList\Helper\PickingListHelper
                 - \SprykerTest\Shared\StockAddress\Helper\StockAddressDataHelper
                 - \SprykerTest\Shared\Stock\Helper\StockDataHelper
                 - \SprykerTest\Zed\Testify\Helper\Communication\CommunicationHelper
@@ -38,6 +40,7 @@ suites:
                 - \SprykerTest\Zed\Acl\Helper\AclHelper
                 - \SprykerTest\Zed\Merchant\Helper\MerchantHelper
                 - \SprykerTest\Zed\MerchantUser\Helper\MerchantUserHelper
+                - \SprykerTest\Zed\MerchantProduct\Helper\MerchantProductHelper
                 - \SprykerTest\Zed\ProductOffer\Helper\ProductOfferHelper
                 - \SprykerTest\Shared\ProductOfferStock\Helper\ProductOfferStockDataHelper
                 - \SprykerTest\Shared\PriceProductOffer\Helper\PriceProductOfferHelper
@@ -56,25 +59,30 @@ suites:
                 - \SprykerTest\Shared\Discount\Helper\DiscountDataHelper
                 - \SprykerTest\Zed\Category\Helper\CategoryDataHelper
                 - \SprykerTest\Zed\ProductCategory\Helper\ProductCategoryDataHelper
-                - \SprykerTest\Shared\Store\Helper\StoreDataHelper
+                - \SprykerTest\Shared\MerchantCommission\Helper\MerchantCommissionHelper
+                - \SprykerTest\Shared\ProductMeasurementUnit\Helper\ProductMeasurementUnitDataHelper
+                - \SprykerTest\Zed\ProductPackagingUnit\Helper\ProductPackagingUnitTypeHelper
+                - \SprykerTest\Zed\ProductPackagingUnit\Helper\ProductPackagingUnitHelper
+                - \SprykerTest\Shared\ProductOption\Helper\ProductOptionDataHelper
+                - \SprykerTest\Shared\ProductBundle\Helper\ProductBundleHelper
                 - \SprykerTest\Zed\Oms\Helper\OmsHelper
                 - \SprykerTest\Shared\ShipmentType\Helper\ShipmentTypeHelper
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentDataHelper
                 - \SprykerTest\Zed\SalesPayment\Helper\SalesPaymentHelper
                 - \SprykerTest\Shared\Sales\Helper\SalesHelper
-                - SprykerTest\Shared\FileManager\Helper\FileManagerHelper
+                - \SprykerTest\Shared\FileManager\Helper\FileManagerHelper
+                - \SprykerTest\Shared\Tax\Helper\TaxSetDataHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDataHelper
+                - \SprykerTest\Zed\ProductLabel\Helper\ProductLabelDataHelper
+                - \SprykerTest\Shared\ProductReview\Helper\ProductReviewDataHelper
+                - \SprykerTest\Zed\Locale\Helper\LocaleDataHelper
                 - \SprykerFeatureTest\Shared\SelfServicePortal\Helper\SelfServicePortalHelper
                 - \SprykerTest\Shared\ProductOfferShipmentType\Helper\ProductOfferShipmentTypeHelper
+                - \SprykerTest\Zed\Cms\Helper\CmsPageDataHelper
+                - \SprykerTest\Shared\CmsPagesRestApi\Helper\CmsPagesRestApiDataHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
                 - \SprykerTest\Zed\Twig\Helper\TwigHelper:
-                      twigPlugins:
-                          - \Spryker\Zed\Application\Communication\Plugin\Twig\ApplicationTwigPlugin
-                          - \Spryker\Zed\CmsBlock\Communication\Plugin\Twig\CmsBlockTwigExtensionPlugin
-                      loaderPlugins:
-                          - \Spryker\Zed\Twig\Communication\Plugin\FilesystemTwigLoaderPlugin
-                          - \Spryker\Zed\Twig\Communication\Plugin\FormFilesystemTwigLoaderPlugin
-                          - \Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigLoaderPlugin
-                          - \Spryker\Zed\CmsBlock\Communication\Plugin\Twig\CmsBlockTemplateTwigLoaderPlugin
             config:
                 \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
                     cleanup: false
