@@ -25,8 +25,6 @@
             z-index: $setting-zi-custom-select + 1;
             top: 50%;
             right: rem(16);
-            width: rem(12);
-            height: rem(7);
             transform: translateY(-50%);
             pointer-events: none;
 
@@ -37,13 +35,8 @@
 
         &--different-mob-caret {
             #{$name}__caret {
-                width: rem(7);
-                height: rem(11);
-
-                @include helper-breakpoint-media-min($lg) {
-                    width: rem(12);
-                    height: rem(7);
-                }
+                width: rem(12);
+                height: rem(12);
             }
         }
 
@@ -80,15 +73,10 @@
             }
 
             #{$name}__caret {
-                width: rem(7);
-                height: rem(11);
                 right: rem(10);
 
                 @include helper-breakpoint-media-min($lg) {
                     right: rem(13);
-                    width: rem(7);
-                    height: rem(4);
-                    transform: translateY(rem(-2));
                 }
             }
         }
@@ -102,13 +90,6 @@
                 @include helper-breakpoint-media-min($lg) {
                     font-size: rem(14);
                     font-weight: fw(regular);
-                }
-            }
-
-            #{$name}__caret {
-                @include helper-breakpoint-media-min($lg) {
-                    width: rem(9);
-                    height: rem(5);
                 }
             }
         }
@@ -129,8 +110,6 @@
             }
 
             #{$name}__caret {
-                width: rem(8);
-                height: rem(20);
                 right: rem(6);
                 color: $setting-color-gray-2;
             }

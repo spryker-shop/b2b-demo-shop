@@ -64,12 +64,11 @@
         }
 
         #{$name}__company-icon {
-            width: rem(7);
-            height: rem(4);
             margin: 0 rem(-5) 0 rem(5);
             position: absolute;
-            top: calc(50% - #{rem(2)});
+            top: 50%;
             right: rem(17);
+            translate: 0 -50%;
         }
 
         @content;
