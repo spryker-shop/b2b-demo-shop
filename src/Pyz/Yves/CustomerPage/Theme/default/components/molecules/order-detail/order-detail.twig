@@ -6,6 +6,10 @@
 
 {% block body %}
     {% block orderActions %}
+        {% if widgetGlobalExists('CreateOrderSspInquiryWidget') and can('CreateSspInquiryPermissionPlugin') %}
+            {% widget 'CreateOrderSspInquiryWidget' args [data.order.orderReference, data.order.idSalesOrder] only %}{% endwidget %}
+        {% endif %}
+
         {% embed molecule('action-bar') with {
             modifiers: ['first'],
             data: {

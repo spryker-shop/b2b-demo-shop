@@ -11096,16 +11096,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "2.63.1",
+            "version": "2.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "4b5710534c23052f394d945802eb22fbc132c06a"
+                "reference": "62f32c3689c656cba87f2da980dbff6a180fc6d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/4b5710534c23052f394d945802eb22fbc132c06a",
-                "reference": "4b5710534c23052f394d945802eb22fbc132c06a",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/62f32c3689c656cba87f2da980dbff6a180fc6d8",
+                "reference": "62f32c3689c656cba87f2da980dbff6a180fc6d8",
                 "shasum": ""
             },
             "require": {
@@ -11119,6 +11119,7 @@
                 "spryker/customer": "^7.30.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/log": "^3.17.0",
+                "spryker/multi-factor-auth-extension": "^1.1.0",
                 "spryker/product-bundle": "^4.1.0 || ^6.0.0 || ^7.0.0",
                 "spryker/quote": "^1.0.0 || ^2.1.0",
                 "spryker/router": "^1.6.0",
@@ -11191,9 +11192,9 @@
             ],
             "description": "CustomerPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/customer-page/tree/2.63.1"
+                "source": "https://github.com/spryker-shop/customer-page/tree/2.67.0"
             },
-            "time": "2025-05-07T15:01:06+00:00"
+            "time": "2025-06-17T15:50:14+00:00"
         },
         {
             "name": "spryker-shop/customer-page-extension",
@@ -38300,6 +38301,53 @@
                 "source": "https://github.com/spryker/multi-carts-rest-api/tree/1.0.0"
             },
             "time": "2019-05-20T13:28:09+00:00"
+        },
+        {
+            "name": "spryker/multi-factor-auth-extension",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/multi-factor-auth-extension.git",
+                "reference": "d6ca1e0543ee0959f65b4d094e947aed8664dbb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/multi-factor-auth-extension/zipball/d6ca1e0543ee0959f65b4d094e947aed8664dbb8",
+                "reference": "d6ca1e0543ee0959f65b4d094e947aed8664dbb8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*"
+            },
+            "suggest": {
+                "spryker/kernel": "If you want to use kernel functionality with certain plugins",
+                "spryker/symfony": "If you want to use the Symfony component."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MultiFactorAuthExtension module",
+            "support": {
+                "source": "https://github.com/spryker/multi-factor-auth-extension/tree/1.1.0"
+            },
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/navigation",
@@ -74293,14 +74341,14 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cypress-tests.git",
-                "reference": "f2dd48f6b03dc3a76384b8cbff667bd80b266b34"
+                "reference": "d2b33cdde5b3c2a95d4ffb0494cdbf7d749c9141"
             },
             "type": "library",
             "license": [
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-07-01T20:22:58+00:00"
+            "time": "2025-07-02T12:36:15+00:00"
         },
         {
             "name": "spryker/development",
