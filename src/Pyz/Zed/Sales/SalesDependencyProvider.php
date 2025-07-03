@@ -57,6 +57,7 @@ use Spryker\Zed\SalesPayment\Communication\Plugin\Sales\SalesPaymentOrderExpande
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemsPostSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataOrderItemsPostSavePlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSalesOrderItemCollectionPostUpdatePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSearchOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdOrderItemExpanderPlugin;
@@ -68,6 +69,7 @@ use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnab
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnableByItemStatePlugin;
 use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointOrderItemExpanderPlugin;
 use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointOrderItemsPostSavePlugin;
+use Spryker\Zed\Shipment\Communication\Plugin\Sales\ShipmentOrderItemExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductClassOrderExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductClassOrderItemsPostSavePlugin;
@@ -204,6 +206,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemStateOrderItemExpanderPlugin(),
             new ProductConfigurationOrderItemExpanderPlugin(),
             new ServicePointOrderItemExpanderPlugin(),
+            new ShipmentOrderItemExpanderPlugin(),
             new SspServiceCancellableOrderItemExpanderPlugin(),
         ];
     }
@@ -268,6 +271,16 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new SspProductClassSalesOrderItemCollectionPreDeletePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\SalesOrderItemCollectionPostUpdatePluginInterface>
+     */
+    protected function getOrderItemCollectionPostUpdatePlugins(): array
+    {
+        return [
+            new ItemMetadataSalesOrderItemCollectionPostUpdatePlugin(),
         ];
     }
 }
