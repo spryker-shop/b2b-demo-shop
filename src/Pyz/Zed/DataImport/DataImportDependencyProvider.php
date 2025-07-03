@@ -60,6 +60,7 @@ use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImpo
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
+use Spryker\Zed\ProductApprovalDataImport\Communication\Plugin\DataImport\ProductAbstractApprovalStatusDataImportPlugin;
 use Spryker\Zed\ProductConfigurationDataImport\Communication\Plugin\ProductConfigurationDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
 use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelDataImportPlugin;
@@ -409,6 +410,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductOfferServiceDataImportPlugin(),
             new MerchantProductOfferStoreDataImportPlugin(),
             new ProductShipmentTypeDataImportPlugin(),
+            new ProductAbstractApprovalStatusDataImportPlugin(),
             new SspInquiryDataImportPlugin(),
             new ProductClassDataImportPlugin(),
             new ProductToProductClassDataImportPlugin(),

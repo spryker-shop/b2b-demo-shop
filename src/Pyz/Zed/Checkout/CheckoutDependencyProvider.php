@@ -10,6 +10,7 @@ declare(strict_types = 1);
 namespace Pyz\Zed\Checkout;
 
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Checkout\ProductApprovalCheckoutPreConditionPlugin;
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerAddressSalutationCheckoutPreConditionPlugin;
@@ -78,6 +79,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductQuantityRestrictionCheckoutPreConditionPlugin(),
             new ServicePointCheckoutPreConditionPlugin(),
             new ShipmentTypeCheckoutPreConditionPlugin(),
+            new ProductApprovalCheckoutPreConditionPlugin(),
         ];
     }
 
