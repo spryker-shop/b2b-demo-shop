@@ -28,7 +28,7 @@
 {% endblock %}
 
 {% block datepicker %}
-    {% if data.isServiceDateTimeEnabled %}
+    {% if data.isServiceDateTimeFieldVisible %}
         <div class="spacing-bottom--big">
             {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
                 embed: {
