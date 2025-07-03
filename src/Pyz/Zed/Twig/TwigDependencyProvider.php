@@ -53,7 +53,7 @@ use Spryker\Zed\User\Communication\Plugin\Twig\UserTwigPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Twig\WebProfilerTwigLoaderPlugin;
 use Spryker\Zed\ZedNavigation\Communication\Plugin\Twig\ZedNavigationTwigPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\FileSizeFormatterTwigPlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\ProductServiceTypeNameTwigPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\ProductServiceClassNameTwigPlugin;
 
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
 {
@@ -105,7 +105,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new GuiFilterTwigPlugin(),
 
             new FileSizeFormatterTwigPlugin(),
-            new ProductServiceTypeNameTwigPlugin(),
+            new ProductServiceClassNameTwigPlugin(),
             new NavigationLinkTwigPlugin(),
         ];
     }

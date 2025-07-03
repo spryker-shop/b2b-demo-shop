@@ -10,7 +10,7 @@ declare(strict_types = 1);
 namespace Pyz\Zed\ProductStorage;
 
 use Spryker\Zed\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductStorage\ProductTypeProductConcreteStorageCollectionExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductStorage\ProductClassProductConcreteStorageCollectionExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductStorage\ShipmentTypeProductConcreteStorageCollectionExpanderPlugin;
 
 class ProductStorageDependencyProvider extends SprykerProductStorageDependencyProvider
@@ -22,7 +22,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     {
         return [
             new ShipmentTypeProductConcreteStorageCollectionExpanderPlugin(),
-            new ProductTypeProductConcreteStorageCollectionExpanderPlugin(),
+            new ProductClassProductConcreteStorageCollectionExpanderPlugin(),
         ];
     }
 }

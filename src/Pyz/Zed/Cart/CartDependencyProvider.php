@@ -80,7 +80,7 @@ use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItem
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\SanitizeCartShipmentItemExpanderPlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\ProductAbstractTypeItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\ProductClassItemExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\ServicePointItemExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspAssetItemExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspServiceShipmentTypePreReloadItemsPlugin;
@@ -120,7 +120,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new SanitizeCartShipmentItemExpanderPlugin(),
             new GroupKeyWithCartIdentifierItemExpanderPlugin(),
             new SspShipmentTypeItemExpanderPlugin(),
-            new ProductAbstractTypeItemExpanderPlugin(),
+            new ProductClassItemExpanderPlugin(),
             new ProductConfigurationGroupKeyItemExpanderPlugin(),
             new RemoveQuotePaymentCartItemExpanderPlugin(),
             new SspAssetItemExpanderPlugin(),
