@@ -10,6 +10,8 @@ declare(strict_types = 1);
 namespace Pyz\Zed\ProductPageSearch;
 
 use Spryker\Shared\MerchantProductOfferSearch\MerchantProductOfferSearchConfig;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductConcreteCollectionFilterPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductPageSearchCollectionFilterPlugin;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
@@ -99,6 +101,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getConcreteProductMapExpanderPlugins(): array
     {
         return [
+            new ProductApprovalProductConcreteCollectionFilterPlugin(),
             new ProductConcreteProductListPageMapExpanderPlugin(),
             new ProductImageProductConcretePageMapExpanderPlugin(),
             new MerchantProductOfferProductConcretePageMapExpanderPlugin(),
@@ -122,6 +125,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getProductAbstractMapExpanderPlugins(): array
     {
         return [
+            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
             new ProductPriceMapExpanderPlugin(),
             new ProductCategoryMapExpanderPlugin(),
             new ProductImageMapExpanderPlugin(),

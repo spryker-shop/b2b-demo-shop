@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c721ea5fc6d33e9dc4764895a859fdb5",
+    "content-hash": "8084c251380f054709bf3e126a2144bc",
     "packages": [
         {
             "name": "async-aws/core",
@@ -43304,6 +43304,106 @@
             "time": "2018-07-24T08:04:43+00:00"
         },
         {
+            "name": "spryker/product-approval",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-approval.git",
+                "reference": "470a4257def31cafdcaeff43ea97ec4fef1f419d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-approval/zipball/470a4257def31cafdcaeff43ea97ec4fef1f419d",
+                "reference": "470a4257def31cafdcaeff43ea97ec4fef1f419d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/cart-extension": "^4.0.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/messenger": "^3.0.0",
+                "spryker/product": "^6.27.0",
+                "spryker/product-extension": "^1.4.0",
+                "spryker/product-page-search-extension": "^1.6.0",
+                "spryker/product-storage-extension": "^1.7.0",
+                "spryker/shopping-list-extension": "^1.1.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductApproval module",
+            "support": {
+                "source": "https://github.com/spryker/product-approval/tree/1.1.2"
+            },
+            "time": "2024-09-11T10:30:31+00:00"
+        },
+        {
+            "name": "spryker/product-approval-data-import",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-approval-data-import.git",
+                "reference": "4d40e33d8ce5b671e248ef4287a0118203a7d090"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-approval-data-import/zipball/4d40e33d8ce5b671e248ef4287a0118203a7d090",
+                "reference": "4d40e33d8ce5b671e248ef4287a0118203a7d090",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product": "^6.0.0",
+                "spryker/product-approval": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ProductApprovalDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/product-approval-data-import/tree/0.1.1"
+            },
+            "time": "2023-03-31T19:36:11+00:00"
+        },
+        {
             "name": "spryker/product-attribute",
             "version": "1.15.0",
             "source": {
@@ -75412,7 +75512,7 @@
         "ext-readline": "*",
         "ext-redis": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },

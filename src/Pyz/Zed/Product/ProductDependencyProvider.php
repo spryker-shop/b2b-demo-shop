@@ -11,6 +11,8 @@ namespace Pyz\Zed\Product;
 
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProductOffer\Communication\Plugin\Product\MerchantProductOfferProductConcreteExpanderPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Product\ApprovalStatusProductConcreteMergerPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Product\ProductApprovalProductAbstractPreCreatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductAbstractPostCreatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductConcreteMergerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductProductConcreteExpanderPlugin;
@@ -68,7 +70,9 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      */
     protected function getProductAbstractBeforeCreatePlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
-        return [];
+        return [
+            new ProductApprovalProductAbstractPreCreatePlugin(),
+        ];
     }
 
     /**
@@ -204,6 +208,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
     protected function getProductConcreteMergerPlugins(): array
     {
         return [
+            new ApprovalStatusProductConcreteMergerPlugin(),
             new ImageSetProductConcreteMergerPlugin(),
             new PriceProductConcreteMergerPlugin(),
         ];
