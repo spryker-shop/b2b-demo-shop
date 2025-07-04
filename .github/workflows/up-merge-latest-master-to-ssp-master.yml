@@ -1,0 +1,78 @@
+name: Up-merge latest master to "ssp-master" branch
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  up-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitHub CLI
+        run: sudo apt install gh
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Fetch all branches
+        run: |
+          git fetch origin ssp-master
+
+      - name: Checkout ssp-master branch
+        run: |
+          git checkout ssp-master
+
+      - name: Merge master into ssp-master
+        id: merge
+        run: |
+          if git merge --no-commit --no-ff origin/master; then
+            echo "Merge successful, committing and pushing."
+            git checkout -b ssp-master-merge
+            git commit -m "Upmerge master into ssp-master"
+            git push origin ssp-master-merge
+            echo "merge_result=success" >> $GITHUB_OUTPUT
+          else
+            echo "Merge conflicts detected. Aborting merge."
+            git merge --abort
+            echo "merge_result=conflict" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Slack on Failure
+        if: steps.merge.outputs.merge_result == 'conflict'
+        uses: slackapi/slack-github-action@v1.26.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: "❌Failed to merge tag ${{ env.latest_tag }} into master-deploy. Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Create PR for Upmerge
+        run: |
+          gh pr create \
+            --title "Upmerge master into ssp-master" \
+            --body "Automated upmerge from master to ssp-master." \
+            --base ssp-master \
+            --head ssp-master-merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Slack on Success
+        if: steps.merge.outputs.merge_result == 'success'
+        uses: slackapi/slack-github-action@v1.26.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: "✅Successfully merged master into ssp-master of the ${{ github.repository }} repository. The deployment will be triggered shortly."
