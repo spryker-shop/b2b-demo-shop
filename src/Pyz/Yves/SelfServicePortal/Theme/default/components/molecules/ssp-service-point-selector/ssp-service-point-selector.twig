@@ -1,0 +1,19 @@
+{% extends molecule('ssp-service-point-selector', '@SprykerFeature:SelfServicePortal') %}
+
+{% block noLocation %}
+    <div class="{{ config.jsName }}__no-location {{ config.name }}__location-container">
+        <button type="button" class="link link--additional {{ attributes['trigger-class-name'] }}">
+            {{ 'service_point_widget.select_location_action' | trans }}
+        </button>
+    </div>
+{% endblock %}
+
+{% block selectedLocation %}
+    <div class="{{ config.jsName }}__location-container {{ config.name }}__location-container {{ attributes['toggle-class-name'] }}">
+        <span class="{{ config.jsName }}__location {{ config.name }}__location"></span>
+
+        <button type="button" class="link link--additional {{ attributes['trigger-class-name'] }}">
+            {{ 'service_point_widget.change_action' | trans }}
+        </button>
+    </div>
+{% endblock %}

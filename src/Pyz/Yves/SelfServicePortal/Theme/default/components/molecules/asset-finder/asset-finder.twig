@@ -1,3 +1,33 @@
 {% extends molecule('asset-finder', '@SprykerFeature:SelfServicePortal') %}
 
 {% block separator %}{% endblock %}
+
+{% block finder %}
+    <div class="{{ config.name }}__finder">
+        {% block label %}
+            <div class="label">{{ 'self_service_portal.asset.selector.label' | trans }}</div>
+        {% endblock %}
+
+        {% block search %}
+            <div class="{{ config.name }}__search">
+                <input placeholder="{{ data.placeholder }}" class="input input--expand {{ config.jsName }}__search-field {{ config.name }}__search-field" {% if data.isDisabled %}disabled{% endif %}>
+            </div>
+        {% endblock %}
+
+        {% block result %}
+            <div class="{{ config.name }}__results">
+                <input type="hidden" name="{{ data.formFieldName }}" class="{{ config.jsName }}__value">
+                <div class="{{ config.name }}__results-container {{ config.jsName }}__results-container {{ attributes['hidden-class'] }}"></div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block selected %}
+    <div class="{{ config.name }}__selected">
+        <span class="{{ config.jsName }}__selected-text"></span>
+        <button type="button" class="button {{ config.jsName }}__change-button">
+            {{ 'self_service_portal.asset.selector.change' | trans }}
+        </button>
+    </div>
+{% endblock %}
