@@ -1,3 +1,48 @@
 {% extends molecule('asset-finder', '@SprykerFeature:SelfServicePortal') %}
 
+{% define attributes = {
+    'hidden-class': 'dummy',
+    'input-class-name': '',
+    'selected-asset-class-name': '',
+    'selected-name-class-name': '',
+    'container-class-name': '',
+    'popup-class-name': '',
+} %}
+
 {% block separator %}{% endblock %}
+
+{% block provider %}
+    {% include molecule('ajax-provider') with {
+        class: "#{config.jsName}__ajax-provider",
+        attributes: {
+            'fetch-on-load': true,
+            url: path('ssp/asset/widget-content'),
+            method: 'GET',
+            'dynamic-params': {
+                'searchString': {
+                    selector: ".#{config.jsName}__search-field",
+                    attribute: 'value',
+                },
+
+            } | json_encode,
+        },
+    } only %}
+{% endblock %}
+
+{% block finder %}
+    <div class="{{ config.name }}__finder">
+        {% block search %}
+            <div class="{{ config.name }}__search">
+                <input placeholder="{{ data.placeholder }}" class="input input--expand {{ config.jsName }}__search-field {{ config.name }}__search-field" {% if data.isDisabled %}disabled{% endif %}>
+            </div>
+        {% endblock %}
+
+        {% block result %}
+            <div class="{{ config.name }}__results">
+                <div class="{{ config.name }}__results-container {{ config.jsName }}__results-container {{ attributes['hidden-class'] }}"></div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block selected %}{% endblock %}

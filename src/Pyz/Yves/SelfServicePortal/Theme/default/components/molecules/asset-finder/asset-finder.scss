@@ -1,0 +1,23 @@
+@include self-service-portal-asset-finder($name: '.asset-finder') {
+    padding: 0 8px;
+    width: 80vw;
+
+    @include helper-breakpoint-media-min($lg) {
+        width: rem(580);
+    }
+
+    &.is-selected {
+        .asset-finder__finder {
+            display: block;
+        }
+    }
+
+    &__search {
+        padding-bottom: rem(20);
+    }
+
+    &__results-container {
+        position: static;
+        border: none;
+    }
+}

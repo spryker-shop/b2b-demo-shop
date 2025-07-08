@@ -61,11 +61,11 @@
             {% endif %}
 
             {% if can('SeeAddToCartPermissionPlugin') %}
-                {% widget 'SspItemAssetSelectorWidget' args [data.product, data.isDisabled] only %}{% endwidget %}
-
                 {% if shipmentTypeServicePointSelectorWidget %}
                     {% widget shipmentTypeServicePointSelectorWidget only %}{% endwidget %}
                 {% endif %}
+
+                {% widget 'SspItemAssetSelectorWidget' args [data.product, data.isDisabled] only %}{% endwidget %}
 
                 <div class="{{ data.config.name }}__add-to-cart">
                     {% widget 'ProductPackagingUnitWidget' args [data.product, data.isDisabled, data.options] only %}
