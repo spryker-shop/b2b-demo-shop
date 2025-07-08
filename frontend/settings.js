@@ -236,7 +236,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             // do not change unless necessary
             componentStyles: {
                 // absolute dirs in which look for
-                dirs: [join(globalSettings.context, paths.core),join(globalSettings.context, paths.sprykerCore)],
+                dirs: [join(globalSettings.context, paths.core), join(globalSettings.context, paths.sprykerCore)],
                 // files/dirs patterns
                 patterns: [
                     `**/Theme/${namespaceConfig.defaultTheme}/components/atoms/*/*.scss`,
