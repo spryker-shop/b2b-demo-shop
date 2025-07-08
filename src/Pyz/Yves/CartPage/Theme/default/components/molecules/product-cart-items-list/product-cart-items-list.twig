@@ -1,7 +1,7 @@
 {% extends molecule('product-cart-items-list', 'SprykerShop:CartPage') %}
 
 {% block body %}
-    {% widget 'ListItemsByShipmentTypeWidget' args [data.cartItems] with {
+    {% widget 'ListCartItemsByShipmentTypeWidget' args [data.cartItems] with {
         embed: {
             cart: data.cart,
             cartItems: data.cartItems,

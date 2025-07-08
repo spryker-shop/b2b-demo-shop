@@ -17,7 +17,7 @@
             {% set isItemRelatedToBundle = item.vars.data.relatedBundleItemIdentifier %}
 
             {% if not isItemRelatedToBundle %}
-                <div class="{{ config.name }}__wrapper grid grid--middle {{ config.jsName }}__item-shipping-{{ loop.index }}">
+                <div class="{{ embed.config.name }}__wrapper grid grid--middle {{ embed.config.jsName }}__item-shipping-{{ loop.index }}">
                     {% set shippingAddress = item.shippingAddress %}
                     {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
                     {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
@@ -29,16 +29,16 @@
                     {% set formFieldUniqueName = 'multiShippingAddresses' %}
                     {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 %}
                     {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
-                    {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' ' ~ data.hiddenClassName %}
+                    {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' ' ~ embed.hiddenClassName %}
 
-                    {% set deliveryContainerClassName = config.jsName ~ '__delivery--' ~ loop.index %}
-                    {% set deliverySelectClassName = config.jsName ~ '__trigger--' ~ loop.index %}
-                    {% set formItemShippingClassName = config.jsName ~ '__item-shipping--' ~ loop.index %}
+                    {% set deliveryContainerClassName = embed.config.jsName ~ '__delivery--' ~ loop.index %}
+                    {% set deliverySelectClassName = embed.config.jsName ~ '__trigger--' ~ loop.index %}
+                    {% set formItemShippingClassName = embed.config.jsName ~ '__item-shipping--' ~ loop.index %}
                     {% set hasShipmentTypes = item.shipmentType is defined %}
-                    {% set defaultShipmentType = 'delivery' %}
+                    {% set defaultShipmentTypes = ['delivery', 'on-site-service'] %}
                     {% set currentShipmentType = item.shipmentType.key.vars.value | default %}
-                    {% set isDefaultShipmentType = currentShipmentType == defaultShipmentType %}
-                    {% set shipmentTypeHiddenClassName = hasShipmentTypes and not isDefaultShipmentType ? data.hiddenClassName %}
+                    {% set isDefaultShipmentType = currentShipmentType in defaultShipmentTypes %}
+                    {% set shipmentTypeHiddenClassName = hasShipmentTypes and not isDefaultShipmentType ? embed.hiddenClassName %}
 
                     {% block multiShippingAddressesInner %}
                         {% embed molecule('product-card-item') with {
@@ -49,7 +49,7 @@
                                 priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'text-right-from-tablet'],
                             },
                             embed: {
-                                jsName: config.jsName,
+                                jsName: embed.config.jsName,
                                 item: item,
                                 index: loop.index,
                                 hasShippingAddressesAndApplicable: hasShippingAddressesAndApplicable,
@@ -62,13 +62,15 @@
                                 isSavedAddressSelected: isSavedAddressSelected,
                                 shippingAddressValue: shippingAddressValue,
                                 shippingCompanyAddressValue: shippingCompanyAddressValue,
-                                addressSelectClassName: data.addressSelectClassName,
+                                addressSelectClassName: embed.addressSelectClassName,
                                 deliveryContainerClassName: deliveryContainerClassName,
                                 deliverySelectClassName: deliverySelectClassName,
                                 shipmentTypeHiddenClassName: shipmentTypeHiddenClassName,
-                                validatorTriggerClassName: data.validatorTriggerClassName,
-                                itemShippingClassName: data.itemShippingClassName,
-                                addressSelectClassName: data.addressSelectClassName,
+                                validatorTriggerClassName: embed.validatorTriggerClassName,
+                                itemShippingClassName: embed.itemShippingClassName,
+                                addressSelectClassName: embed.addressSelectClassName,
+                                group: group,
+                                isDefaultShipmentType: isDefaultShipmentType
                             },
                         } only %}
                             {% block image %}
@@ -176,6 +178,9 @@
                                         {% endif %}
                                     </div>
                                 </div>
+                                {% if embed.group.items | length > 1 %}
+                                    {% widget 'SingleAddressPerShipmentTypeWidget' args [embed.item] only %}{% endwidget %}
+                                {% endif %}
                             {% endblock %}
 
                             {% block note %}
@@ -195,9 +200,9 @@
                         {% endembed %}
                     {% endblock %}
 
-                    <div class="{{ data.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
+                    <div class="{{ embed.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
                         {% include molecule('form') with {
-                            class: data.itemShippingClassName ~ ' ' ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ newAddressHiddenClassName ~ ' ' ~ config.name ~ '__content ' ~ config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
+                            class: embed.itemShippingClassName ~ ' ' ~ embed.config.jsName ~ '__item-shipping--' ~ loop.index ~ newAddressHiddenClassName ~ ' ' ~ embed.config.name ~ '__content ' ~ embed.config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
                             modifiers: ['checkout-address-content'],
                             data: {
                                 form: item.shippingAddress,
@@ -218,11 +223,11 @@
 
                         {% if hasShippingAddressesAndApplicable %}
                             {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
-                                class: config.jsName ~ '__toggler',
+                                class: embed.config.jsName ~ '__toggler',
                                 attributes: {
-                                    'trigger-selector': '.' ~ config.jsName ~ '__trigger--' ~ loop.index,
-                                    'target-selector': '.' ~ config.jsName ~ '__item-shipping--' ~ loop.index,
-                                    'parent-target-class-name': config.jsName,
+                                    'trigger-selector': '.' ~ embed.config.jsName ~ '__trigger--' ~ loop.index,
+                                    'target-selector': '.' ~ embed.config.jsName ~ '__item-shipping--' ~ loop.index,
+                                    'parent-target-class-name': embed.config.jsName,
                                 },
                             } only %}
                         {% endif %}
