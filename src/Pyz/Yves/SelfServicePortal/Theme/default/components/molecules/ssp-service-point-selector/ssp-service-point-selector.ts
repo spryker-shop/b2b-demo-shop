@@ -1,8 +1,5 @@
-
 import CoreSspServicePointSelector from 'SelfServicePortal/components/molecules/ssp-service-point-selector/ssp-service-point-selector';
-import {
-    ServicePointEventDetail,
-} from 'ServicePointWidget/components/molecules/service-point-finder/service-point-finder';
+import { ServicePointEventDetail } from 'ServicePointWidget/components/molecules/service-point-finder/service-point-finder';
 
 declare module 'ServicePointWidget/components/molecules/service-point-finder/service-point-finder' {
     interface ProductOfferAvailability {
