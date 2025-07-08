@@ -1,0 +1,28 @@
+{% extends molecule('asset-list', '@SprykerFeature:SelfServicePortal') %}
+
+{% block option %}
+    {% set information = {
+        serial: asset.serialNumber,
+        name: asset.name,
+        reference: asset.reference,
+        id: asset.idSspAsset,
+    } %}
+
+    <li class="{{ config.name }}__item">
+        <span class="{{ config.name }}__content">
+            <strong class="{{ config.name }}__name">{{ asset.name }}</strong>
+
+            <span class="{{ config.name }}__data">
+                {% if asset.serialNumber %}
+                    <span>{{ 'self_service_portal.asset.item.serial' | trans }}: {{ asset.serialNumber }}</span>
+                {% endif %}
+
+                <span class="{{ config.name }}__status"></span>
+            </span>
+        </span>
+
+        <button class="button button--hollow button--small-space {{ config.jsName }}__item" data-information="{{ information | json_encode }}">
+            {{ 'self_service_portal.asset.item.button' | trans }}
+        </button>
+    </li>
+{% endblock %}
