@@ -22,9 +22,18 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     protected function getProductConcreteStorageCollectionExpanderPlugins(): array
     {
         return [
-            new ProductApprovalProductConcreteStorageCollectionFilterPlugin(),
             new ShipmentTypeProductConcreteStorageCollectionExpanderPlugin(),
             new ProductClassProductConcreteStorageCollectionExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductApproval\Communication\Plugin\ProductStorage\ProductApprovalProductConcreteStorageCollectionFilterPlugin>
+     */
+    protected function getProductConcreteStorageCollectionFilterPlugins(): array
+    {
+        return [
+            new ProductApprovalProductConcreteStorageCollectionFilterPlugin(),
         ];
     }
 }
