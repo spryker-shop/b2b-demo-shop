@@ -1,2 +1,15 @@
 @include self-service-portal-asset-finder($name: '.asset-finder') {
+    &.is-selected {
+        .asset-finder__finder {
+            display: block;
+        }
+    }
+
+    &__search {
+        padding-bottom: rem(20);
+    }
+
+    &__results-container {
+        position: static;
+    }
 }

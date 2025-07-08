@@ -1,0 +1,65 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'asset-selector',
+} %}
+
+{% define data = {
+    id: random(),
+} %}
+
+{% define data = {
+    formFieldName: required,
+    isDisabled: false,
+    placeholder: '',
+} %}
+
+{% define attributes = {
+    'trigger-class-name': 'js-asset-finder__trigger-' ~ data.id,
+} %}
+
+{% block body %}
+    <button type="button" class="button button--expand {{ attributes['trigger-class-name'] }} {{ config.name }}__select">
+        {{ 'service_point_widget.select_location_action' | trans }}
+    </button>
+
+    <input type="hidden" name="{{ data.formFieldName }}" class="{{ config.jsName }}__value">
+
+    <div class="{{ config.name }}__selected">
+        <span class="{{ config.jsName }}__selected-asset"></span>
+
+        <button type="button" class="button {{ attributes['trigger-class-name'] }}">
+            {{ 'self_service_portal.asset.selector.change' | trans }}
+        </button>
+    </div>
+
+    {% include molecule('main-popup') with {
+        class: config.jsName ~ '__popup',
+        data: {
+            title: 'self_service_portal.asset.selector.label' | trans,
+            content: block('finder'),
+        },
+        attributes: {
+            'content-id': config.jsName ~ '__popup-content-' ~ data.id,
+            'trigger-class-name': attributes['trigger-class-name'],
+            'has-content-mount': true,
+        },
+    } only %}
+{% endblock %}
+
+{% block finder %}
+    {% include molecule('asset-finder', 'SelfServicePortal') with {
+        data: {
+            formFieldName: data.formFieldName,
+            isDisabled: data.isDisabled,
+            placeholder: data.placeholder,
+        },
+        attributes: {
+            'input-class-name': "#{config.jsName}__value",
+            'selected-asset-class-name': "#{config.jsName}__selected-asset",
+            'container-class-name': config.name,
+            'popup-class-name': "#{config.jsName}__popup",
+        },
+    } only %}
+{% endblock %}
+

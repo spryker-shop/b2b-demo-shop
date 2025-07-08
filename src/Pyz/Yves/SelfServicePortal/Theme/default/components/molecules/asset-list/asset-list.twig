@@ -1,0 +1,17 @@
+{% extends molecule('asset-list', '@SprykerFeature:SelfServicePortal') %}
+
+{% block option %}
+    {% set information = {
+        serial: asset.serialNumber,
+        name: asset.name,
+        reference: asset.reference,
+        id: asset.idSspAsset,
+    } %}
+
+    <li class="list__item {{ config.name }}__item {{ config.jsName }}__item"
+        data-name="{{ asset.name }}"
+        tabIndex="0"
+        data-information="{{ information | json_encode }}">
+        <span>{{ asset.name }}{% if asset.serialNumber %}, {{ asset.serialNumber }}{% endif %}</span>
+    </li>
+{% endblock %}

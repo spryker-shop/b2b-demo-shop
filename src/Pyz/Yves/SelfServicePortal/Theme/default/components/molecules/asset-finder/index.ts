@@ -6,6 +6,6 @@ export default register(
         import(
             /* webpackMode: "lazy" */
             /* webpackChunkName: "asset-finder" */
-            'SelfServicePortal/components/molecules/asset-finder/asset-finder'
+            './asset-finder'
         ),
 );
