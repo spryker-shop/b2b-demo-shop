@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\ShoppingList;
 
+use Spryker\Zed\ProductApproval\Communication\Plugin\ShoppingList\ProductApprovalAddItemPreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\ShoppingList\ReplaceBundledQuoteItemsPreConvertPlugin;
 use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ItemProductConfigurationItemToShoppingListItemMapperPlugin;
 use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ProductConfigurationShoppingListAddItemPreCheckPlugin;
@@ -37,6 +38,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
             new ProductDiscontinuedAddItemPreCheckPlugin(), #ProductDiscontinuedFeature
             new ShoppingListItemProductConcreteActiveAddItemPreCheckPlugin(),
             new ProductConfigurationShoppingListAddItemPreCheckPlugin(),
+            new ProductApprovalAddItemPreCheckPlugin(),
         ];
     }
 

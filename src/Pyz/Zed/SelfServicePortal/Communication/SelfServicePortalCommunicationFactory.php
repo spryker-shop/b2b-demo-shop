@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types = 1);
 
 namespace Pyz\Zed\SelfServicePortal\Communication;
 
@@ -11,7 +13,7 @@ use Pyz\Zed\SelfServicePortal\Communication\Asset\Form\DataProvider\SspAssetForm
 use SprykerFeature\Zed\SelfServicePortal\Communication\SelfServicePortalCommunicationFactory as SprykerSelfServicePortalCommunicationFactory;
 
 /**
- * @method \SprykerFeature\Zed\SelfServicePortal\SelfServicePortalConfig getConfig()
+ * @method \Pyz\Zed\SelfServicePortal\SelfServicePortalConfig getConfig()
  * @method \SprykerFeature\Zed\SelfServicePortal\Business\SelfServicePortalFacadeInterface getFacade()
  * @method \SprykerFeature\Zed\SelfServicePortal\Persistence\SelfServicePortalEntityManagerInterface getEntityManager()
  * @method \SprykerFeature\Zed\SelfServicePortal\Persistence\SelfServicePortalRepositoryInterface getRepository()

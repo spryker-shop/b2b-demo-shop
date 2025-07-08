@@ -31,6 +31,8 @@ use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePrice
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\FilterItemsWithoutPricePlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalCartPreCheckPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalPreReloadItemsPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleActivePreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;
@@ -148,6 +150,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getCartPreCheckPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
+            new ProductApprovalCartPreCheckPlugin(),
             new ProductExistsCartPreCheckPlugin(),
             new CheckAvailabilityPlugin(),
             new CartItemPricePreCheckPlugin(),
@@ -195,6 +198,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getPreReloadPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
+            new ProductApprovalPreReloadItemsPlugin(),
             new CartConfigurableBundlePreReloadPlugin(),
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
