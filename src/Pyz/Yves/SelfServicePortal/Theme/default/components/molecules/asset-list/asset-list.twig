@@ -8,10 +8,21 @@
         id: asset.idSspAsset,
     } %}
 
-    <li class="list__item {{ config.name }}__item {{ config.jsName }}__item"
-        data-name="{{ asset.name }}"
-        tabIndex="0"
-        data-information="{{ information | json_encode }}">
-        <span>{{ asset.name }}{% if asset.serialNumber %}, {{ asset.serialNumber }}{% endif %}</span>
+    <li class="{{ config.name }}__item">
+        <span class="{{ config.name }}__content">
+            <strong class="{{ config.name }}__name">{{ asset.name }}</strong>
+
+            <span class="{{ config.name }}__data">
+                {% if asset.serialNumber %}
+                    <span>{{ 'self_service_portal.asset.item.serial' | trans }}: {{ asset.serialNumber }}</span>
+                {% endif %}
+
+                <span class="{{ config.name }}__status"></span>
+            </span>
+        </span>
+
+        <button class="button button--hollow button--small-space {{ config.jsName }}__item" data-information="{{ information | json_encode }}">
+            {{ 'self_service_portal.asset.item.button' | trans }}
+        </button>
     </li>
 {% endblock %}

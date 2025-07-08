@@ -4,6 +4,7 @@
     'hidden-class': 'dummy',
     'input-class-name': '',
     'selected-asset-class-name': '',
+    'selected-name-class-name': '',
     'container-class-name': '',
     'popup-class-name': '',
 } %}
@@ -30,10 +31,6 @@
 
 {% block finder %}
     <div class="{{ config.name }}__finder">
-        {% block label %}
-            <div class="label">{{ 'self_service_portal.asset.selector.label' | trans }}</div>
-        {% endblock %}
-
         {% block search %}
             <div class="{{ config.name }}__search">
                 <input placeholder="{{ data.placeholder }}" class="input input--expand {{ config.jsName }}__search-field {{ config.name }}__search-field" {% if data.isDisabled %}disabled{% endif %}>

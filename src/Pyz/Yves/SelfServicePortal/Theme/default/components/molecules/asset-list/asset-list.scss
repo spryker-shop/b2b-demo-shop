@@ -1,2 +1,30 @@
 @include self-service-portal-asset-list($name: '.asset-list') {
+    &__item {
+        display: flex;
+        align-items: flex-start;
+        padding: rem(16) 0;
+        font-size: rem(14);
+        gap: rem(20);
+        color: $setting-color-gray-3;
+        cursor: auto;
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    &__content {
+        flex-grow: 1;
+    }
+
+    &__name {
+        display: block;
+        color: $setting-color-gray-8;
+        word-wrap: break-word;
+    }
+
+    &__data {
+        display: flex;
+        gap: rem(20);
+    }
 }

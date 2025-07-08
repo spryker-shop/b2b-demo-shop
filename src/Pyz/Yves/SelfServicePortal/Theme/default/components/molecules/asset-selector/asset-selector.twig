@@ -19,24 +19,46 @@
 } %}
 
 {% block body %}
-    <button type="button" class="button button--expand {{ attributes['trigger-class-name'] }} {{ config.name }}__select">
-        {{ 'service_point_widget.select_location_action' | trans }}
-    </button>
+    <div class="{{ config.name }}__container {{ config.name }}__container--select">
+        <strong class="{{ config.name }}__subtitle">{{ 'self_service_portal.asset.selector.label' | trans }}</strong>
 
-    <input type="hidden" name="{{ data.formFieldName }}" class="{{ config.jsName }}__value">
-
-    <div class="{{ config.name }}__selected">
-        <span class="{{ config.jsName }}__selected-asset"></span>
-
-        <button type="button" class="button {{ attributes['trigger-class-name'] }}">
-            {{ 'self_service_portal.asset.selector.change' | trans }}
+        <button type="button" class="link link--additional {{ attributes['trigger-class-name'] }}">
+            {{ 'self_service_portal.asset.selector.button' | trans }}
         </button>
     </div>
 
+    <input type="hidden" name="{{ data.formFieldName }}" class="{{ config.jsName }}__value">
+
+    <div class="{{ config.name }}__container {{ config.name }}__container--selected">
+        <div class="{{ config.name }}__data spacing-bottom--big">
+            <div class="{{ config.name }}__content">
+                <strong class="{{ config.name }}__subtitle">{{ 'self_service_portal.asset.assigned_asset' | trans }}</strong>
+            </div>
+
+            <button type="button" class="link link--additional {{ attributes['trigger-class-name'] }}">
+                {{ 'self_service_portal.asset.selector.change' | trans }}
+            </button>
+        </div>
+
+        <div class="{{ config.name }}__content">
+            <strong class="{{ config.name }}__subtitle {{ config.jsName }}__asset-name"></strong>
+
+            <span class="{{ config.name }}__data">
+                <span class="{{ config.name }}__information">
+                    <span>{{ 'self_service_portal.asset.item.serial' | trans }}:</span>
+                    <span class="{{ config.jsName }}__asset-text {{ config.name }}__asset-text"></span>
+                </span>
+
+                <span class="{{ config.name }}__status"></span>
+            </span>
+        </div>
+    </div>
+
     {% include molecule('main-popup') with {
+        modifiers: ['auto'],
         class: config.jsName ~ '__popup',
         data: {
-            title: 'self_service_portal.asset.selector.label' | trans,
+            title: 'self_service_portal.asset.modal.header' | trans,
             content: block('finder'),
         },
         attributes: {
@@ -56,7 +78,8 @@
         },
         attributes: {
             'input-class-name': "#{config.jsName}__value",
-            'selected-asset-class-name': "#{config.jsName}__selected-asset",
+            'selected-asset-class-name': "#{config.jsName}__asset-text",
+            'selected-name-class-name': "#{config.jsName}__asset-name",
             'container-class-name': config.name,
             'popup-class-name': "#{config.jsName}__popup",
         },
