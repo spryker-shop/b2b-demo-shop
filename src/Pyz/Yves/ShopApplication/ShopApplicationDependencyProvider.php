@@ -27,10 +27,12 @@ use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\SingleAddressPerShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SingleAddressPerShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
@@ -377,6 +379,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ServiceListWidget::class,
             SspServicePointSearchWidget::class,
             SspServicePointGeoCodeWidget::class,
+            SingleAddressPerShipmentTypeWidget::class,
         ];
     }
 
@@ -393,6 +396,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new SingleAddressPerShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 
