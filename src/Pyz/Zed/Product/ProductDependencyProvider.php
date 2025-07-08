@@ -11,8 +11,6 @@ namespace Pyz\Zed\Product;
 
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProductOffer\Communication\Plugin\Product\MerchantProductOfferProductConcreteExpanderPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\Product\ApprovalStatusProductConcreteMergerPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\Product\ProductApprovalProductAbstractPreCreatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductAbstractPostCreatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductConcreteMergerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductProductConcreteExpanderPlugin;
@@ -23,6 +21,8 @@ use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductCo
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\Product\ProductDependencyProvider as SprykerProductDependencyProvider;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\Product\ProductConcretePluginUpdate as ProductAlternativeGuiProductConcretePluginUpdate;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Product\ApprovalStatusProductConcreteMergerPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Product\ProductApprovalProductAbstractPreCreatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleDeactivatorProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterUpdatePlugin;
@@ -70,9 +70,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      */
     protected function getProductAbstractBeforeCreatePlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
-        return [
-            new ProductApprovalProductAbstractPreCreatePlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -223,6 +221,16 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new ImageSetProductAbstractPostCreatePlugin(),
             new TaxSetProductAbstractPostCreatePlugin(),
             new PriceProductAbstractPostCreatePlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductApproval\Communication\Plugin\Product\ProductApprovalProductAbstractPreCreatePlugin>
+     */
+    protected function getProductAbstractPreCreatePlugins(): array
+    {
+        return [
+            new ProductApprovalProductAbstractPreCreatePlugin(),
         ];
     }
 }

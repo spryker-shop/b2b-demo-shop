@@ -10,8 +10,6 @@ declare(strict_types = 1);
 namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\Cart\CheckAvailabilityPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalCartPreCheckPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalPreReloadItemsPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\Cart\GroupKeyWithCartIdentifierItemExpanderPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
@@ -33,6 +31,8 @@ use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePrice
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\FilterItemsWithoutPricePlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalCartPreCheckPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalPreReloadItemsPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleActivePreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;

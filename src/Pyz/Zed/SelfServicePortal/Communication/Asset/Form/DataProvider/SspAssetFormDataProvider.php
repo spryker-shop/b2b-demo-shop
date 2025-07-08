@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types = 1);
 
 namespace Pyz\Zed\SelfServicePortal\Communication\Asset\Form\DataProvider;
 
@@ -13,12 +15,11 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Asset\Form\DataProvider\S
 
 class SspAssetFormDataProvider extends SprykerSspAssetFormDataProvider
 {
-
-    /**
-     * @param \Generated\Shared\Transfer\SspAssetTransfer $sspAssetTransfer
-     *
-     * @return string|null
-     */
+ /**
+  * @param \Generated\Shared\Transfer\SspAssetTransfer $sspAssetTransfer
+  *
+  * @return string|null
+  */
     public function getAssetImageUrl(SspAssetTransfer $sspAssetTransfer): ?string
     {
         if (!$sspAssetTransfer->getImage()) {
