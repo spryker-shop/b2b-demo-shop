@@ -30,8 +30,6 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
      *      ],
      * ]
      *
-     * @api
-     *
      * @return array<string, mixed>
      */
     public function getProtectedPaths(): array
