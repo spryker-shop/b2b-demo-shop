@@ -26,7 +26,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     }
 
     /**
-     * @return list<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantBulkExpanderPluginInterface>
+     * @return list<\Spryker\Zed\MerchantExtension\Dependency\Plugin\>
      */
     protected function getMerchantBulkExpanderPlugins(): array
     {
