@@ -33,11 +33,11 @@
             {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
                 embed: {
                     input: {
-                        label: 'self_service_portal.service.product.service_date_time',
+                        label: 'self_service_portal.service.product.label.service_date_time',
                         attrs: {
                             id: 'service-point-shipment-type-datetime',
                             name: data.formFieldItemMetadataScheduledAt,
-                            placeholder: 'yyyy-mm-dd HH:mm',
+                            placeholder: 'self_service_portal.service.product.service_date_time' | trans,
                         },
                     },
                 },
@@ -58,5 +58,29 @@
                 {% endblock %}
             {% endwidget %}
         </div>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set shipmentTypeLength = data.shipmentTypes | length %}
+
+    {% if shipmentTypeLength %}
+        {{ block('types') }}
+
+        {% if requiredServicePoint %}
+            {{ block('servicePointSelector') }}
+            <input data-service-point-uuid-input type="hidden" name="{{ data.formFieldServicePointUuid }}" value="">
+        {% endif %}
+
+        {{ block('datepicker') }}
+
+         <input data-product-offer-reference-input type="hidden" name="{{ data.formFieldProductOfferReference }}" value="{{ data.product.productOfferReference }}">
+
+        {% if data.hasOnlyDeliveryShipmentType %}
+            {% set shipmentType = data.shipmentTypes | first %}
+		    <input type="hidden" name="{{ data.formFieldShipmentTypeUuid }}" value="{{ shipmentType.value }}">
+        {% endif %}
+    {% else %}
+        {{ block('empty') }}
     {% endif %}
 {% endblock %}

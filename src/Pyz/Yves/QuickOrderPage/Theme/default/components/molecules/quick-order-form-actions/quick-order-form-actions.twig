@@ -27,21 +27,15 @@
                 {{ 'quick-order.button.clear-all-rows' | trans }}
             </a>
         </div>
+    </div>
 
-        {% if can("SeeAddToCartPermissionPlugin") %}
-            <div class="spacing-top spacing-top--big">
-                <button type="submit" name="addToCart" class="button button--expand button--big button--alert">
-                    {% include atom('icon') with {
-                        modifiers: ['cart-plus'],
-                        data: {
-                            name: 'cart-plus',
-                        },
-                    } only %}
-
-                    {{ 'page.detail.add-to-cart' | trans }}
-                </button>
-
-                <button type="submit" name="createOrder" class="button button--expand button--big button--success spacing-top spacing-top--big">
+    <div class="col col--sm-12">
+        <div class="{{ config.name }}__action-buttons">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% widget 'AddItemsToShoppingListWidget' only %}{% endwidget %}
+            {% endif %}
+            {% if can("SeeAddToCartPermissionPlugin") %}
+                <button type="submit" name="createOrder" class="button button--hollow button--small">
                     {% include atom('icon') with {
                         modifiers: ['cart-plus'],
                         data: {
@@ -51,17 +45,21 @@
 
                     {{ 'quick-order.button.create-order' | trans }}
                 </button>
-            </div>
 
-            <div class="spacing-top spacing-top--big is-hidden">
-                {% widget 'QuickOrderPageWidget' only %}{% endwidget %}
-            </div>
-        {% endif %}
+                <button type="submit" name="addToCart" class="button button--small">
+                    {% include atom('icon') with {
+                        modifiers: ['cart-plus'],
+                        data: {
+                            name: 'cart-plus',
+                        },
+                    } only %}
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="spacing-top spacing-top--big">
-                {% widget 'AddItemsToShoppingListWidget' only %}{% endwidget %}
-            </div>
-        {% endif %}
+                    {{ 'page.detail.add-to-cart' | trans }}
+                </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="is-hidden">
+        {% widget 'QuickOrderPageWidget' only %}{% endwidget %}
     </div>
 {% endblock %}

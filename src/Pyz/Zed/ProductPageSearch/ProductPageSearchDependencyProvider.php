@@ -10,8 +10,6 @@ declare(strict_types = 1);
 namespace Pyz\Zed\ProductPageSearch;
 
 use Spryker\Shared\MerchantProductOfferSearch\MerchantProductOfferSearchConfig;
-use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductConcreteCollectionFilterPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductPageSearchCollectionFilterPlugin;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
@@ -22,6 +20,8 @@ use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearc
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataExpanderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataLoaderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantReferencesProductAbstractsMapExpanderPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductConcreteCollectionFilterPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductPageSearchCollectionFilterPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryMapExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataLoaderPlugin;
@@ -101,7 +101,6 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getConcreteProductMapExpanderPlugins(): array
     {
         return [
-            new ProductApprovalProductConcreteCollectionFilterPlugin(),
             new ProductConcreteProductListPageMapExpanderPlugin(),
             new ProductImageProductConcretePageMapExpanderPlugin(),
             new MerchantProductOfferProductConcretePageMapExpanderPlugin(),
@@ -125,7 +124,6 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getProductAbstractMapExpanderPlugins(): array
     {
         return [
-            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
             new ProductPriceMapExpanderPlugin(),
             new ProductCategoryMapExpanderPlugin(),
             new ProductImageMapExpanderPlugin(),
@@ -147,6 +145,26 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductMeasurementUnitProductAbstractAddToCartPlugin(),
             new ProductPackagingUnitProductAbstractAddToCartPlugin(),
             new AvailabilityProductAbstractAddToCartPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcreteCollectionFilterPluginInterface>
+     */
+    protected function getProductConcreteCollectionFilterPlugins(): array
+    {
+        return [
+            new ProductApprovalProductConcreteCollectionFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageSearchCollectionFilterPluginInterface>
+     */
+    protected function getProductPageSearchCollectionFilterPlugins(): array
+    {
+        return [
+            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
         ];
     }
 }

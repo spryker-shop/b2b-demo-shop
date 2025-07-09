@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Merchant;
 
 use Spryker\Zed\Merchant\MerchantDependencyProvider as SprykerMerchantDependencyProvider;
@@ -8,7 +15,6 @@ use Spryker\Zed\MerchantStock\Communication\Plugin\Merchant\MerchantStockMerchan
 
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
 {
-
     /**
      * @return array<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostCreatePluginInterface>
      */
@@ -20,7 +26,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     }
 
     /**
-     * @return list<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostUpdatePluginInterface>
+     * @return list<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantBulkExpanderPluginInterface>
      */
     protected function getMerchantBulkExpanderPlugins(): array
     {
