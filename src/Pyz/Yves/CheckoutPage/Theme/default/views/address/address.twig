@@ -110,7 +110,7 @@
                         {% endblock %}
                     {% endwidget %}
 
-                    <div class="address-wrapper {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }}">
+                    <div class="address-wrapper {{ shipmentTypeHiddenClassName }}">
                         <div class="address-wrapper__header col col--sm-12">
                             {% if embed.isCompanyBusinessUnitShippingAddressApplicable %}
                                 {% widget embed.companyBusinessUnitShippingAddressWidget with {
@@ -146,7 +146,7 @@
                     </div>
                 {% endif %}
 
-                <div class="{{ addressFormContainerClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
+                <div class="{{ addressFormContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
                     {% include molecule('form') with {
                         class: shippingClassName ~ ' ' ~ addressFormClassName ~ newAddressHiddenClassName ~ ' address-wrapper__content address-wrapper__content--mobile-background',
                         modifiers: ['checkout-address-content'],
@@ -169,7 +169,7 @@
                 </div>
 
                 {% if embed.isMultipleShipmentEnabled %}
-                    <div class="{{ deliveryContainerClassName }}">
+                    <div class="{{ deliveryContainerClassName }} col col--sm-12">
                         {% include molecule('address-item-form', 'CheckoutPage') with {
                             class: multishipmentTargetClassName ~ multipleShipmentHiddenClassName ~ ' address-wrapper__content col col--sm-12',
                             data: {
