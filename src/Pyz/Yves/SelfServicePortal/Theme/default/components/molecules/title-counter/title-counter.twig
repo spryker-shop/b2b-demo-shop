@@ -1,0 +1,9 @@
+{% extends molecule('title-counter', '@SprykerFeature:SelfServicePortal') %}
+
+{%- block extraClass %} spacing-bottom {{ parent() }}{% endblock -%}
+
+{% block counter %}
+    {% if data.counter %}
+        <span class="{{ config.name }}__counter col badge badge--counter badge--round" data-qa="{{ qa ~ '-counter' }}">{{ data.counter }}</span>
+    {% endif %}
+{% endblock %}

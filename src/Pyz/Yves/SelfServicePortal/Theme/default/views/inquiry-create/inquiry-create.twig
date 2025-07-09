@@ -1,0 +1,12 @@
+{% extends view('inquiry-create', '@SprykerFeature:SelfServicePortal') %}
+
+{% block customerContent %}
+    {% include molecule('action-bar') with {
+        modifiers: ['first'],
+        data: {
+            title: data.title | trans,
+        },
+    } only %}
+
+    {{ block('form') }}
+{% endblock %}

@@ -14,17 +14,22 @@
     </div>
 
     {% if can('SeePricePermissionPlugin') %}
-        {% widget 'CurrentProductPriceVolumeWidget' args [data.product.currentProductPrice] only %}
-        {% elsewidget 'ProductPriceVolumeWidget' args [data.product] only %} {# @deprecated Use CurrentProductPriceVolumeWidget instead. #}
-        {% nowidget %}
-            {% include molecule('money-price') with {
-                modifiers: ['big'],
-                data: {
-                    amount: data.product.price,
-                    originalAmount: data.product.prices.ORIGINAL ?? null,
-                },
-            } only %}
-        {% endwidget %}
+        {% set sspServiceDetectorWidget = findWidget('SspServiceDetectorWidget', [data.product]) %}
+        {% if (sspServiceDetectorWidget and sspServiceDetectorWidget.isService) %}
+            {% widget 'SspProductOfferPriceWidget' args [data.product] only %}{% endwidget %}
+        {% else %}
+            {% widget 'CurrentProductPriceVolumeWidget' args [data.product.currentProductPrice] only %}
+            {% elsewidget 'ProductPriceVolumeWidget' args [data.product] only %} {# @deprecated Use CurrentProductPriceVolumeWidget instead. #}
+            {% nowidget %}
+                {% include molecule('money-price') with {
+                    modifiers: ['big'],
+                    data: {
+                        amount: data.product.price,
+                        originalAmount: data.product.prices.ORIGINAL ?? null,
+                    },
+                } only %}
+            {% endwidget %}
+        {% endif %}
     {% endif %}
 
     {% block bundleProducts %}
@@ -49,7 +54,19 @@
     {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled, options] only %}
         {% block embeddedData %}
             {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}{% endwidget %}
+            {% set shipmentTypeServicePointSelectorWidget = findWidget('SspShipmentTypeServicePointSelectorWidget', [data.product, data.isDisabled]) %}
+
+            {% if not shipmentTypeServicePointSelectorWidget %}
+                {% set shipmentTypeServicePointSelectorWidget = findWidget('ShipmentTypeServicePointSelectorWidget', [data.product, data.isDisabled]) %}
+            {% endif %}
+
             {% if can('SeeAddToCartPermissionPlugin') %}
+                {% if shipmentTypeServicePointSelectorWidget %}
+                    {% widget shipmentTypeServicePointSelectorWidget only %}{% endwidget %}
+                {% endif %}
+
+                {% widget 'SspItemAssetSelectorWidget' args [data.product, data.isDisabled] only %}{% endwidget %}
+
                 <div class="{{ data.config.name }}__add-to-cart">
                     {% widget 'ProductPackagingUnitWidget' args [data.product, data.isDisabled, data.options] only %}
                     {% elsewidget 'ManageProductMeasurementUnitWidget' args [data.product, data.isDisabled, data.options] only %}

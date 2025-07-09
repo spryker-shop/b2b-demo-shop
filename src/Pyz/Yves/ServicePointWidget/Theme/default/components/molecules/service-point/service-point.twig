@@ -1,0 +1,28 @@
+{% extends molecule('service-point', '@SprykerShop:ServicePointWidget') %}
+
+{% block actions %}
+    {% set sspServicePointGeoCodeWidget = findWidget('SspServicePointGeoCodeWidget', [data.servicePoint]) %}
+    {% set address = "#{data.servicePoint.name} #{fullAddress}" %}
+
+    <div class="{{ config.name }}__actions">
+        <button type="button"
+                class="button {{ config.jsName }}__select-button {{ disabledButtonClass }}"
+                data-service-point-uuid="{{ data.servicePoint.uuid }}"
+                data-service-point-address="{{ fullAddress }}"
+                data-service-point-product-offer-availability="{{
+                    data.productOfferAvailabilityDataPerServicePoint is iterable
+                        ? data.productOfferAvailabilityDataPerServicePoint
+                            | map(product => sspServicePointGeoCodeWidget ? product | merge({
+                                lat: sspServicePointGeoCodeWidget.latitude,
+                                lng: sspServicePointGeoCodeWidget.longitude,
+                                address: address,
+                                name: data.servicePoint.name,
+                            }) : product)
+                            | json_encode()
+                        : data.productOfferAvailabilityDataPerServicePoint
+                }}"
+                {{ partiallyAvailableAttribute }}>
+            {{ 'service_point_widget.select_store_action' | trans }}
+        </button>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends view('item-asset-selector', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% if data.isVisible %}
+        {% include molecule('asset-selector', 'SelfServicePortal') with {
+            class: 'spacing-bottom--big',
+            data: {
+                formFieldName: 'assetReference',
+                isDisabled: data.isDisabled,
+                placeholder: 'self_service_portal.asset.selector.search_placeholder' | trans
+            }
+        } only %}
+    {% endif %}
+{% endblock %}

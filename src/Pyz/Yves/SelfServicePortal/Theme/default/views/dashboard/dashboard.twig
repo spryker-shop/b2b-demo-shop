@@ -1,0 +1,26 @@
+{% extends view('dashboard','@SprykerFeature:SelfServicePortal') %}
+
+{% block customerContent %}
+    {{ block('userInfo') }}
+    {{ block('information') }}
+
+    {% if canAccessAssets %}
+        {{ block('assets') }}
+    {% endif %}
+
+    {% block news %}
+        {% cms_slot 'ssp-news' %}
+    {% endblock %}
+
+    {{ block('tables') }}
+{% endblock %}
+
+{% block userTitle %}
+    <div data-qa="user-info">
+        <strong>
+            {{ 'ssp_dashboard.general.welcome' | trans({
+                '%name%': data.customer.firstName ~ ' ' ~ data.customer.lastName,
+            }) }}
+        </strong>
+    </div>
+{% endblock %}

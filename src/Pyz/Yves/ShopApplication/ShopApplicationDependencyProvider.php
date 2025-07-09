@@ -27,6 +27,29 @@ use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspCompanyFilesMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspFileListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspListMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspProductOfferPriceWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceCancelWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceChangeScheduledTimeLinkWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceDetectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServicePointGeoCodeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServicePointNameForItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServicePointSearchWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspShipmentTypeServicePointSelectorWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AssetWidget\Widget\AssetWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
@@ -46,6 +69,8 @@ use SprykerShop\Yves\CartPage\Widget\RemoveFromCartFormWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
+use SprykerShop\Yves\ClickAndCollectPageExample\Plugin\ShopApplication\ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerShop\Yves\ClickAndCollectPageExample\Widget\ClickAndCollectServicePointAddressFormWidget;
 use SprykerShop\Yves\CommentWidget\Widget\CommentThreadWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
@@ -64,6 +89,8 @@ use SprykerShop\Yves\CustomerValidationPage\Plugin\ShopApplication\LogoutInvalid
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\ShopApplication\CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOffersSelectWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
 use SprykerShop\Yves\MerchantRelationRequestWidget\Widget\MerchantRelationRequestCreateButtonWidget;
 use SprykerShop\Yves\MerchantRelationRequestWidget\Widget\MerchantRelationRequestCreateLinkWidget;
 use SprykerShop\Yves\MerchantRelationRequestWidget\Widget\MerchantRelationRequestMenuItemWidget;
@@ -111,6 +138,8 @@ use SprykerShop\Yves\ProductLabelWidget\Widget\ProductAbstractLabelWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductConcreteLabelWidget;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementUnitQuantitySelectorWidget;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\ManageProductMeasurementUnitWidget;
+use SprykerShop\Yves\ProductOfferServicePointAvailabilityWidget\Widget\ProductOfferServicePointAvailabilityDisplayWidget;
+use SprykerShop\Yves\ProductOfferServicePointAvailabilityWidget\Widget\ProductOfferServicePointAvailabilityWidget;
 use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Widget\ProductPackagingUnitWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
@@ -146,12 +175,17 @@ use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBu
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
+use SprykerShop\Yves\SalesServicePointWidget\Widget\SalesServicePointNameForShipmentGroupWidget;
+use SprykerShop\Yves\ServicePointWidget\Widget\ServicePointNameForShipmentGroupWidget;
+use SprykerShop\Yves\ServicePointWidget\Widget\ServicePointSearchWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
+use SprykerShop\Yves\ShipmentTypeWidget\Plugin\ShopApplication\ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerShop\Yves\ShipmentTypeWidget\Widget\ShipmentTypeAddressFormWidget;
 use SprykerShop\Yves\ShopApplication\Plugin\Application\ShopApplicationApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
@@ -311,6 +345,38 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ExpressCheckoutPaymentWidget::class,
             CustomerEmailChangeRequestWidget::class,
             SitemapWidget::class,
+            ServicePointSearchWidget::class,
+            ClickAndCollectServicePointAddressFormWidget::class,
+            SalesServicePointNameForShipmentGroupWidget::class,
+            ServicePointNameForShipmentGroupWidget::class,
+            ShipmentTypeAddressFormWidget::class,
+            ProductOfferServicePointAvailabilityWidget::class,
+            ProductOfferServicePointAvailabilityDisplayWidget::class,
+            MerchantProductOfferWidget::class,
+            MerchantProductOffersSelectWidget::class,
+            SspInquiryMenuItemWidget::class,
+            CreateOrderSspInquiryWidget::class,
+            SspCompanyFilesMenuItemWidget::class,
+            DashboardMenuItemWidget::class,
+            SspInquiryListWidget::class,
+            SspAssetListWidget::class,
+            SspFileListWidget::class,
+            SspServiceMenuItemWidget::class,
+            SspServiceChangeScheduledTimeLinkWidget::class,
+            SspServiceCancelWidget::class,
+            SspShipmentTypeServicePointSelectorWidget::class,
+            SspServicePointNameForItemWidget::class,
+            SspAssetMenuItemWidget::class,
+            ListCartItemsByShipmentTypeWidget::class,
+            SspListMenuItemWidget::class,
+            SspAssetInfoForItemWidget::class,
+            SspServiceDetectorWidget::class,
+            SspItemAssetSelectorWidget::class,
+            SspProductOfferPriceWidget::class,
+            SspAddressFormItemsByShipmentTypeWidget::class,
+            ServiceListWidget::class,
+            SspServicePointSearchWidget::class,
+            SspServicePointGeoCodeWidget::class,
         ];
     }
 
@@ -325,6 +391,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new QuoteApprovalWidgetCacheKeyGeneratorStrategyPlugin(),
             new CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin(),
             new CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 

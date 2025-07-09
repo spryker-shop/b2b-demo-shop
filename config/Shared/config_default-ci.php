@@ -41,6 +41,7 @@ use Spryker\Shared\SymfonyMailer\SymfonyMailerConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
 // ############################################################################
@@ -251,6 +252,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[ProductManagementConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
     = $config[MerchantRelationshipConstants::BASE_URL_YVES]
+    = $config[SelfServicePortalConstants::BASE_URL_YVES]
     = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
     = sprintf(
         'http://%s',

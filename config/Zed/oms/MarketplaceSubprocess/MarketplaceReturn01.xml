@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
+
+    <process name="MarketplaceReturn">
+        <states>
+            <state name="waiting for return"/>
+            <state name="returned"/>
+            <state name="return canceled"/>
+            <state name="shipped to customer"/>
+        </states>
+
+        <transitions>
+            <transition>
+                <source>shipped by merchant</source>
+                <target>waiting for return</target>
+                <event>start-return</event>
+            </transition>
+
+            <transition>
+                <source>delivered</source>
+                <target>waiting for return</target>
+                <event>start-return</event>
+            </transition>
+
+            <transition>
+                <source>waiting for return</source>
+                <target>returned</target>
+                <event>execute-return</event>
+            </transition>
+
+            <transition>
+                <source>waiting for return</source>
+                <target>return canceled</target>
+                <event>cancel-return</event>
+            </transition>
+
+            <transition>
+                <source>return canceled</source>
+                <target>shipped to customer</target>
+                <event>ship-return</event>
+            </transition>
+
+            <transition>
+                <source>shipped to customer</source>
+                <target>delivered</target>
+                <event>deliver-return</event>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="start-return" command="MerchantOms/ReturnOrderItem"/>
+            <event name="execute-return"/>
+            <event name="cancel-return"/>
+            <event name="ship-return"/>
+            <event name="deliver-return"/>
+        </events>
+    </process>
+
+</statemachine>

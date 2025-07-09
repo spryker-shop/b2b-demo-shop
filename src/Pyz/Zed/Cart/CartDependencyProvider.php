@@ -31,6 +31,8 @@ use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePrice
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\FilterItemsWithoutPricePlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalCartPreCheckPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalPreReloadItemsPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleActivePreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;
@@ -80,6 +82,11 @@ use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItem
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\SanitizeCartShipmentItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\ProductClassItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\ServicePointItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspAssetItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspServiceShipmentTypePreReloadItemsPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspShipmentTypeItemExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -114,8 +121,12 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductUrlItemExpanderPlugin(),
             new SanitizeCartShipmentItemExpanderPlugin(),
             new GroupKeyWithCartIdentifierItemExpanderPlugin(),
+            new SspShipmentTypeItemExpanderPlugin(),
+            new ProductClassItemExpanderPlugin(),
             new ProductConfigurationGroupKeyItemExpanderPlugin(),
             new RemoveQuotePaymentCartItemExpanderPlugin(),
+            new SspAssetItemExpanderPlugin(),
+            new ServicePointItemExpanderPlugin(),
         ];
     }
 
@@ -139,6 +150,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getCartPreCheckPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
+            new ProductApprovalCartPreCheckPlugin(),
             new ProductExistsCartPreCheckPlugin(),
             new CheckAvailabilityPlugin(),
             new CartItemPricePreCheckPlugin(),
@@ -186,6 +198,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getPreReloadPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
+            new ProductApprovalPreReloadItemsPlugin(),
             new CartConfigurableBundlePreReloadPlugin(),
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
@@ -193,6 +206,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CleanUpItemsPreReloadPlugin(),
             new FilterItemsWithoutPricePlugin(),
             new ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin(),
+            new SspServiceShipmentTypePreReloadItemsPlugin(),
         ];
     }
 

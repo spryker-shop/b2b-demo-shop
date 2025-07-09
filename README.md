@@ -1,6 +1,6 @@
 # Spryker B2B Demo Shop
-[![Build Status](https://github.com/spryker-shop/b2b-demo-shop/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/spryker-shop/b2b-demo-shop/actions?query=branch:master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/?branch=master)
+[![Build Status](https://github.com/spryker-shop/b2b-demo-shop/actions/workflows/ci.yml/badge.svg?branch=ssp-master)](https://github.com/spryker-shop/b2b-demo-shop/actions?query=branch:ssp-master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/badges/quality-score.png?b=ssp-master)](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/?branch=ssp-master)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.2-8892BF.svg)](https://php.net/)
 
 ## Description

@@ -1,0 +1,43 @@
+{% extends molecule('dashboard-table', '@SprykerFeature:SelfServicePortal') %}
+
+{% block component %}
+    {% if data.rows | length %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{%- block extraClass %} box--hollow box--spacingless {{ parent() }}{% endblock -%}
+
+{% block table %}
+    <div class="{{ config.name }}__content">
+        {% set emptyClass = data.rows | length ? '' : "#{config.name}__table--empty" %}
+
+        {% include molecule('advanced-table', 'SelfServicePortal') with {
+            class: "#{config.name}__table #{emptyClass}",
+            data: {
+                columns: data.columns,
+                rows: data.rows | map(row => row | merge({
+                    actions: row.actions | map(action => action | merge({
+                        iconModifier: 'big',
+                        icon: 'file' in data.moreLink ? 'download' : 'eye',
+                        title: action.label,
+                    })),
+                })),
+                emptyText: data.emptyText,
+            },
+        } only %}
+
+        {% block more %}
+            {% if data.rows | length %}
+                <div class="spacing--inner spacing--big col--sm-12 text-right">
+                    <a class="link link--alt link--smaller" href="{{ data.moreLink }}">{{ 'ssp_dashboard.general.view_all' | trans }}</a>
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block body %}
+    {{ block('title') }}
+    {{ block('table') }}
+{% endblock %}

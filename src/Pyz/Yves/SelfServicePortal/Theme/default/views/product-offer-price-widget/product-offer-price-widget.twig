@@ -1,0 +1,7 @@
+{% extends view('product-offer-price-widget', '@SprykerFeature:SelfServicePortal') %}
+
+{% block defaultProductPrice %}
+    <div data-product-price-offer>
+        {% widget 'CurrentProductPriceVolumeWidget' args [data.product.currentProductPrice] only %}{% endwidget %}
+    </div>
+{% endblock %}
