@@ -1,7 +1,9 @@
 name: Up-merge latest master to "ssp-master" branch
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - ssp-master
   push:
     branches:
       - master
