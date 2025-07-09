@@ -15,9 +15,9 @@ use Spryker\Zed\MerchantStock\Communication\Plugin\Merchant\MerchantStockMerchan
 
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
 {
- /**
-  * @return array<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostCreatePluginInterface>
-  */
+    /**
+     * @return array<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostCreatePluginInterface>
+     */
     protected function getMerchantPostCreatePlugins(): array
     {
         return [
@@ -26,7 +26,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     }
 
     /**
-     * @return list<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostUpdatePluginInterface>
+     * @return list<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantBulkExpanderPluginInterface>
      */
     protected function getMerchantBulkExpanderPlugins(): array
     {
