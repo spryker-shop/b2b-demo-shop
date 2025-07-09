@@ -87,6 +87,8 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new TabsTwigPlugin(),
             new UrlTwigPlugin(),
             new UrlDecodeTwigPlugin(),
+
+            new NavigationLinkTwigPlugin(),
             // navigation buttons
             new ButtonGroupTwigPlugin(),
             new BackActionButtonTwigPlugin(),

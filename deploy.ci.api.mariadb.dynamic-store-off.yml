@@ -16,8 +16,8 @@ image:
         version: 18
         npm: 9
 composer:
-    mode: "--no-dev --quiet"
-    autoload: --classmap-authoritative
+    mode: '--no-dev --quiet -o -a'
+    autoload: '--classmap-authoritative'
 
 regions:
     EU:
@@ -128,7 +128,7 @@ services:
             password: "secret"
     broker:
         engine: rabbitmq
-        version: '3.9'
+        version: '3.13'
         api:
             username: "spryker"
             password: "secret"
