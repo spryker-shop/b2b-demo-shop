@@ -42,7 +42,7 @@
                 items: data.forms.items,
                 bundleItems: data.forms.bundleItems,
             },
-            isMultipleShipmentEnabled: data.isMultipleShipmentEnabled,
+            isMultipleShipmentEnabled: true,
             companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
             isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
             jsAddressClass: jsAddressClass,
@@ -102,7 +102,7 @@
                 {% if hasShippingAddressesAndApplicable %}
                     {% set singleDeliveryContainerHiddenClassName = hasShipmentTypes and isMultipleShipmentSelected ? hiddenClassName %}
 
-                    <div class="{{ elementToToggleOnMultiShipment }} {{ singleDeliveryContainerClassName }} {{ singleDeliveryContainerHiddenClassName }} spacing-y">
+                    <div class="{{ hiddenClassName }}">
                         {% widget 'ShipmentTypeAddressFormWidget' args [data.form] with {
                             data: {
                                 deliveryContainerClassName: deliveryContainerClassName,
@@ -131,6 +131,7 @@
                                         jsAddressClass: embed.jsAddressClass,
                                         addressFormClassName: shippingFormHandlerClassName,
                                         addressSelectClassName: shippingSelectClassName,
+                                        isMultipleShipmentSelected: true,
                                     },
                                 } only %}
                                 {% endwidget %}

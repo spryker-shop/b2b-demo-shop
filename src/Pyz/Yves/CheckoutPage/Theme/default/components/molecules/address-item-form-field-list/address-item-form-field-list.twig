@@ -17,7 +17,7 @@
             {% set isItemRelatedToBundle = item.vars.data.relatedBundleItemIdentifier %}
 
             {% if not isItemRelatedToBundle %}
-                <div class="{{ embed.config.name }}__wrapper grid grid--middle {{ embed.config.jsName }}__item-shipping-{{ loop.index }}">
+                <div class="{{ embed.config.name }}__wrapper grid grid--middle {{ embed.config.jsName }}__item-shipping-{{ loopIndex }}">
                     {% set shippingAddress = item.shippingAddress %}
                     {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
                     {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
@@ -31,9 +31,9 @@
                     {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
                     {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' ' ~ embed.hiddenClassName %}
 
-                    {% set deliveryContainerClassName = embed.config.jsName ~ '__delivery--' ~ loop.index %}
-                    {% set deliverySelectClassName = embed.config.jsName ~ '__trigger--' ~ loop.index %}
-                    {% set formItemShippingClassName = embed.config.jsName ~ '__item-shipping--' ~ loop.index %}
+                    {% set deliveryContainerClassName = embed.config.jsName ~ '__delivery--' ~ loopIndex %}
+                    {% set deliverySelectClassName = embed.config.jsName ~ '__trigger--' ~ loopIndex %}
+                    {% set formItemShippingClassName = embed.config.jsName ~ '__item-shipping--' ~ loopIndex %}
                     {% set hasShipmentTypes = item.shipmentType is defined %}
                     {% set defaultShipmentTypes = ['delivery', 'on-site-service'] %}
                     {% set currentShipmentType = item.shipmentType.key.vars.value | default %}
@@ -51,7 +51,7 @@
                             embed: {
                                 jsName: embed.config.jsName,
                                 item: item,
-                                index: loop.index,
+                                index: loopIndex,
                                 hasShippingAddressesAndApplicable: hasShippingAddressesAndApplicable,
                                 companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
                                 isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
@@ -178,9 +178,10 @@
                                         {% endif %}
                                     </div>
                                 </div>
-                                {% if embed.group.items | length > 1 %}
+
+                                <div class="{{ embed.group.items | length > 1 ?: 'is-hidden' }}">
                                     {% widget 'SingleAddressPerShipmentTypeWidget' args [embed.item] only %}{% endwidget %}
-                                {% endif %}
+                                </div>
                             {% endblock %}
 
                             {% block note %}
@@ -202,7 +203,7 @@
 
                     <div class="{{ embed.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
                         {% include molecule('form') with {
-                            class: embed.itemShippingClassName ~ ' ' ~ embed.config.jsName ~ '__item-shipping--' ~ loop.index ~ newAddressHiddenClassName ~ ' ' ~ embed.config.name ~ '__content ' ~ embed.config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
+                            class: embed.itemShippingClassName ~ ' ' ~ embed.config.jsName ~ '__item-shipping--' ~ loopIndex ~ newAddressHiddenClassName ~ ' ' ~ embed.config.name ~ '__content ' ~ embed.config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
                             modifiers: ['checkout-address-content'],
                             data: {
                                 form: item.shippingAddress,
@@ -225,8 +226,8 @@
                             {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
                                 class: embed.config.jsName ~ '__toggler',
                                 attributes: {
-                                    'trigger-selector': '.' ~ embed.config.jsName ~ '__trigger--' ~ loop.index,
-                                    'target-selector': '.' ~ embed.config.jsName ~ '__item-shipping--' ~ loop.index,
+                                    'trigger-selector': '.' ~ embed.config.jsName ~ '__trigger--' ~ loopIndex,
+                                    'target-selector': '.' ~ embed.config.jsName ~ '__item-shipping--' ~ loopIndex,
                                     'parent-target-class-name': embed.config.jsName,
                                 },
                             } only %}

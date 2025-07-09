@@ -1,5 +1,9 @@
 {% extends view('company-business-unit-address', '@SprykerShop:CompanyWidget') %}
 
+{% define data = {
+    isMultipleShipmentSelected: false,
+} %}
+
 {% block body %}
     {% set defaultAddressKey = null %}
     {% set optionValueDeliverToMultipleAddresses = '-1' %}
@@ -54,6 +58,7 @@
             itemShippingTriggerJsClass: data.itemShippingTriggerJsClass,
             isShippingAddressFormType: isShippingAddressFormType,
             hasPreselectedOption: data.hasPreselectedOption,
+            isMultipleShipmentSelected: data.isMultipleShipmentSelected,
         },
     } only %}
         {%- block selectClass -%}
@@ -104,7 +109,7 @@
             {% endif %}
 
             {% if embed.isShippingAddressFormType and embed.isMultipleShipmentEnabled %}
-                <option value="{{ embed.optionValueDeliverToMultipleAddresses }}" {% if embed.defaultAddressKey == embed.optionValueDeliverToMultipleAddresses %}selected{% endif %}>
+                <option  value="{{ embed.optionValueDeliverToMultipleAddresses }}" {% if embed.defaultAddressKey == embed.optionValueDeliverToMultipleAddresses %}selected{% endif %}>
                     {{ 'customer.account.deliver_to_multiple_addresses' | trans }}
                 </option>
             {% endif %}
