@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:state-machine-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:state-machine-01 http://static.spryker.com/state-machine-01.xsd"
+>
+    <process name="SspInquiryDefaultStateMachine" main="true">
+
+        <states>
+            <state name="created"/>
+            <state name="pending"/>
+            <state name="in_review"/>
+            <state name="canceled"/>
+            <state name="approved"/>
+            <state name="rejected"/>
+            <state name="closed"/>
+        </states>
+        <transitions>
+            <transition happy="true">
+                <source>created</source>
+                <target>pending</target>
+                <event>initiate</event>
+            </transition>
+            <transition happy="true">
+                <source>pending</source>
+                <target>in_review</target>
+                <event>start_review</event>
+            </transition>
+            <transition happy="true">
+                <source>pending</source>
+                <target>canceled</target>
+                <event>cancel</event>
+            </transition>
+            <transition>
+                <source>in_review</source>
+                <target>approved</target>
+                <event>approve</event>
+            </transition>
+            <transition>
+                <source>in_review</source>
+                <target>rejected</target>
+                <event>reject</event>
+            </transition>
+        </transitions>
+        <events>
+            <event name="initiate" onEnter="true"/>
+            <event name="start_review" manual="true"/>
+            <event name="cancel" manual="true"/>
+            <event name="approve" manual="true" command="SspInquiry/Approve"/>
+            <event name="reject" manual="true" command="SspInquiry/Reject"/>
+        </events>
+    </process>
+
+</statemachine>

@@ -1,40 +1,40 @@
-@mixin shop-ui-box($name: '.box') {
-    #{$name} {
-        background-color: $setting-color-gray-7;
-        border: 0 none;
-        padding: rem(27) rem(20) rem(30);
-        margin: 0;
+@include shop-ui-box($name: '.box') {
+    background-color: $setting-color-gray-7;
+    border: none;
+    padding: rem(27) rem(20) rem(30);
+    margin: 0;
 
-        @include helper-breakpoint-media-min($lg) {
+    @include helper-breakpoint-media-min($lg) {
+        &:not(&--spacingless) {
             padding: rem(32);
         }
+    }
 
-        &--small {
-            padding: rem(16) rem(32);
+    &--hollow {
+        background-color: transparent;
+    }
+
+    &--small {
+        padding: rem(16) rem(32);
+    }
+
+    &--smaller {
+        padding: rem(16) rem(20);
+    }
+
+    &--medium {
+        margin: 0 rem(-15) rem(15);
+        padding: rem(15);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin: 0 0 rem(30);
+            padding: rem(27) rem(30) rem(30);
         }
+    }
 
-        &--smaller {
-            padding: rem(16) rem(20);
-        }
-
-        &--medium {
-            margin: 0 rem(-15) rem(15);
-            padding: rem(15);
-
-            @include helper-breakpoint-media-min($lg) {
-                margin: 0 0 rem(30);
-                padding: rem(27) rem(30) rem(30);
-            }
-        }
-
-        &__separator {
-            border: none;
-            border-bottom: rem(1) solid $setting-color-gray-1;
-            margin: rem(15) rem(-20);
-        }
-
-        @content;
+    &__separator {
+        border: none;
+        border-bottom: rem(1) solid $setting-color-gray-1;
+        margin: rem(15) rem(-20);
     }
 }
-
-@include shop-ui-box();

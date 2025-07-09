@@ -4,6 +4,16 @@ $shop-ui-icon-size-bigger: 1.5rem;
 @include shop-ui-icon {
     z-index: $setting-zi-icon;
 
+    &--ssp {
+        width: rem(35);
+        height: rem(35);
+    }
+
+    &--ssp-header {
+        position: relative;
+        bottom: 4px;
+    }
+
     &--logo {
         width: rem(96);
         height: rem(32);

@@ -1,0 +1,35 @@
+@include self-service-portal-image-uploader($name: '.image-uploader') {
+    &__container {
+        max-height: rem(225);
+        max-width: rem(360);
+        border-width: rem(2);
+        border-radius: rem(10);
+    }
+
+    &__container:has(.image-uploader__delete:not(.is-hidden)) {
+        border: 0;
+
+        .image-uploader {
+            &__button {
+                left: auto;
+                right: rem(60);
+                bottom: 0.3125rem;
+                translate: none;
+            }
+
+            &__button-text {
+                display: none;
+            }
+        }
+    }
+
+    &__image[src=''] {
+        display: none;
+    }
+
+    &__button {
+        left: 50%;
+        translate: -50% 50%;
+        bottom: 50%;
+    }
+}

@@ -4,6 +4,13 @@
         max-width: 100%;
         display: inline-block;
 
+        &:has(.light) {
+            .select2-selection__rendered,
+            #{$name}__select {
+                background: $setting-color-white;
+            }
+        }
+
         &__select {
             border-radius: $setting-border-radius;
             border: rem(1) solid $setting-color-gray-1;

@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Spryker\Shared\Kernel\Container\GlobalContainer;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Kernel\Container;
+use Spryker\Yves\MerchantShipment\Plugin\CheckoutPage\MerchantShipmentCheckoutPageStepEnginePreRenderPlugin;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
@@ -37,6 +38,8 @@ use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\CheckoutPage\QuoteRequestAgent
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckoutWorkflowStepResolverStrategyPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
+use SprykerShop\Yves\ServicePointCartPage\Plugin\CartPage\ServicePointCheckoutAddressStepPostExecutePlugin;
+use SprykerShop\Yves\ShipmentTypeWidget\Plugin\CheckoutPage\ShipmentTypeCheckoutPageStepEnginePreRenderPlugin;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\FormInterface;
 
@@ -214,6 +217,27 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new PaymentForeignPaymentCollectionExtenderPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepPostExecutePluginInterface>
+     */
+    protected function getCheckoutAddressStepPostExecutePlugins(): array
+    {
+        return [
+            new ServicePointCheckoutAddressStepPostExecutePlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\StepEngine\CheckoutPageStepEnginePreRenderPluginInterface>
+     */
+    protected function getCheckoutPageStepEnginePreRenderPlugins(): array
+    {
+        return [
+            new MerchantShipmentCheckoutPageStepEnginePreRenderPlugin(),
+            new ShipmentTypeCheckoutPageStepEnginePreRenderPlugin(),
         ];
     }
 }

@@ -22,6 +22,7 @@ use Spryker\Yves\Router\Plugin\RouterEnhancer\LanguagePrefixRouterEnhancerPlugin
 use Spryker\Yves\Router\Plugin\RouterEnhancer\StorePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\RouterDependencyProvider as SprykerRouterDependencyProvider;
 use Spryker\Yves\Sitemap\Plugin\Router\SitemapRouteProviderPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\Router\SelfServicePortalPageRouteProviderPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Router\AgentPageRouteProviderPlugin;
 use SprykerShop\Yves\AgentWidget\Plugin\Router\AgentWidgetRouteProviderPlugin;
 use SprykerShop\Yves\AvailabilityNotificationPage\Plugin\Router\AvailabilityNotificationPageRouteProviderPlugin;
@@ -54,6 +55,7 @@ use SprykerShop\Yves\DiscountWidget\Plugin\Router\DiscountWidgetRouteProviderPlu
 use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
 use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
+use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\Router\MerchantProductOfferWidgetRouteProviderPlugin;
 use SprykerShop\Yves\MerchantRelationRequestPage\Plugin\Router\MerchantRelationRequestPageRouteProviderPlugin;
 use SprykerShop\Yves\MerchantRelationshipPage\Plugin\Router\MerchantRelationshipPageRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageAsyncRouteProviderPlugin;
@@ -80,6 +82,7 @@ use SprykerShop\Yves\QuoteRequestPage\Plugin\Router\QuoteRequestPageRouteProvide
 use SprykerShop\Yves\QuoteRequestWidget\Plugin\Router\QuoteRequestWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ResourceSharePage\Plugin\Router\ResourceSharePageRouteProviderPlugin;
 use SprykerShop\Yves\SalesReturnPage\Plugin\Router\SalesReturnPageRouteProviderPlugin;
+use SprykerShop\Yves\ServicePointWidget\Plugin\Router\ServicePointWidgetRouteProviderPlugin;
 use SprykerShop\Yves\SharedCartPage\Plugin\Router\SharedCartPageRouteProviderPlugin;
 use SprykerShop\Yves\ShoppingListPage\Plugin\Router\ShoppingListPageRouteProviderPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\Router\ShoppingListWidgetAsyncRouteProviderPlugin;
@@ -174,6 +177,9 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new PaymentAppWidgetRouteProviderPlugin(),
             new CustomerDataChangeRequestRouteProviderPlugin(),
             new SitemapRouteProviderPlugin(),
+            new ServicePointWidgetRouteProviderPlugin(),
+            new MerchantProductOfferWidgetRouteProviderPlugin(),
+            new SelfServicePortalPageRouteProviderPlugin(),
         ];
     }
 

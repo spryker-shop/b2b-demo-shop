@@ -5,13 +5,18 @@
 } %}
 
 {% block body %}
+    {% set isBanner = data.banner.altText == 'ssp-banner-image' %}
+
     {% embed molecule('jumbotron') with {
+        modifiers: isBanner ? ['banner'] : [],
         data: {
             imageUrl: data.banner.imageUrl,
             link: data.banner.clickUrl,
             headline: data.banner.title,
             subHeadline: data.banner.subtitle,
             btnTitle: 'main_slider.btn.title',
+            btnTitle: isBanner ? '' : 'main_slider.btn.title',
+            isBanner: isBanner,
         },
     } only %}
         {% block contentPositionClass %}grid--bottom{% endblock %}

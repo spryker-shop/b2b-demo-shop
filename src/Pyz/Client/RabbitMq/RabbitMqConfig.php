@@ -30,10 +30,15 @@ use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\MerchantSearch\MerchantSearchConfig;
 use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
+use Spryker\Shared\PriceProductOfferStorage\PriceProductOfferStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductConfigurationStorage\ProductConfigurationStorageConfig;
 use Spryker\Shared\ProductImageStorage\ProductImageStorageConfig;
+use Spryker\Shared\ProductOfferAvailabilityStorage\ProductOfferAvailabilityStorageConfig;
+use Spryker\Shared\ProductOfferServicePointStorage\ProductOfferServicePointStorageConfig;
+use Spryker\Shared\ProductOfferShipmentTypeStorage\ProductOfferShipmentTypeStorageConfig;
+use Spryker\Shared\ProductOfferStorage\ProductOfferStorageConfig;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
@@ -46,6 +51,9 @@ use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\SalesReturnSearch\SalesReturnSearchConfig;
 use Spryker\Shared\SearchHttp\SearchHttpConfig;
+use Spryker\Shared\ServicePointSearch\ServicePointSearchConfig;
+use Spryker\Shared\ServicePointStorage\ServicePointStorageConfig;
+use Spryker\Shared\ShipmentTypeStorage\ShipmentTypeStorageConfig;
 use Spryker\Shared\ShoppingListStorage\ShoppingListStorageConfig;
 use Spryker\Shared\StoreStorage\StoreStorageConfig;
 use Spryker\Shared\TaxProductStorage\TaxProductStorageConfig;
@@ -165,6 +173,14 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             SearchHttpConfig::SEARCH_HTTP_CONFIG_SYNC_QUEUE,
             MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
             MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
+            ShipmentTypeStorageConfig::QUEUE_NAME_SYNC_STORAGE_SHIPMENT_TYPE,
+            ServicePointSearchConfig::QUEUE_NAME_SYNC_SEARCH_SERVICE_POINT,
+            ServicePointStorageConfig::QUEUE_NAME_SYNC_STORAGE_SERVICE_POINT,
+            ProductOfferServicePointStorageConfig::QUEUE_NAME_SYNC_STORAGE_PRODUCT_OFFER_SERVICE,
+            ProductOfferShipmentTypeStorageConfig::PRODUCT_OFFER_SHIPMENT_TYPE_SYNC_STORAGE_QUEUE,
+            ProductOfferStorageConfig::PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
+            PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
+            ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
         ];
     }
 
