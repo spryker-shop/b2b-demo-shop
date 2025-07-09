@@ -6,6 +6,7 @@ on:
     push:
         branches:
             - master
+            - ssp-master
     workflow_dispatch:
 
 env:
@@ -22,7 +23,7 @@ jobs:
             (github.event_name == 'pull_request'
                 && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                     || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            ) || github.ref == 'refs/heads/master'
+            ) || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
         name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group One"
         runs-on: ubuntu-22.04
         env:
@@ -95,7 +96,7 @@ jobs:
             (github.event_name == 'pull_request'
                 && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                     || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            ) || github.ref == 'refs/heads/master'
+            ) || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
         name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI /Group Two"
         runs-on: ubuntu-22.04
         env:
@@ -160,7 +161,7 @@ jobs:
             (github.event_name == 'pull_request'
                 && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                     || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            ) || github.ref == 'refs/heads/master'
+            ) || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
         name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Three"
         runs-on: ubuntu-22.04
         env:
@@ -224,7 +225,7 @@ jobs:
         if: >
             (github.event_name == 'pull_request'
                 && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            ) || github.ref == 'refs/heads/master'
+            ) || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
         name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI / Group One"
         runs-on: ubuntu-22.04
         env:
@@ -295,7 +296,7 @@ jobs:
         if: >
             (github.event_name == 'pull_request'
                 && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            ) || github.ref == 'refs/heads/master'
+            ) || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
         name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI / Group Two"
         runs-on: ubuntu-22.04
         env:
@@ -358,7 +359,7 @@ jobs:
         if: >
             (github.event_name == 'pull_request'
                 && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            ) || github.ref == 'refs/heads/master'
+            ) || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
         name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI / Group Three"
         runs-on: ubuntu-22.04
         env:
