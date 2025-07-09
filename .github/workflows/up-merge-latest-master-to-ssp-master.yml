@@ -58,7 +58,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          slack-message: "❌Failed to merge tag ${{ env.latest_tag }} into master-deploy. Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          slack-message: "❌Failed to merge tag latest master into ssp-master. Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
       - name: Create PR for Upmerge
         if: steps.merge.outputs.merge_result == 'success'
