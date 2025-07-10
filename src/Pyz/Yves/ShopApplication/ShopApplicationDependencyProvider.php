@@ -398,7 +398,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new SingleAddressPerShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin(),
-            new AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin()
+            new AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 
