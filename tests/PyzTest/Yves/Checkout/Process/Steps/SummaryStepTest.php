@@ -84,7 +84,7 @@ class SummaryStepTest extends Unit
             [],
             [],
             'shipment',
-            'escape_route'
+            'escape_route',
         );
     }
 
