@@ -80,9 +80,11 @@ class SummaryStepTest extends Unit
             $productBundleClient,
             $this->createShipmentServiceMock(),
             $this->createConfigMock(),
-            'shipment',
-            'escape_route',
             $this->getCheckoutClientMock(),
+            [],
+            [],
+            'shipment',
+            'escape_route'
         );
     }
 
