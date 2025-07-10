@@ -1,7 +1,12 @@
 {% extends view('address', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    stepNumder: 1,
+    step: 1,
+    titleLink: {
+        visibleIf: is_granted('ROLE_USER'),
+        url: url('customer/address'),
+        text: 'page.checkout.address.manage_your_addresses' | trans,
+    }
 } %}
 
 {% block containerClass %}container--medium{% endblock %}
@@ -17,13 +22,6 @@
     {% set jsAddressClass = 'js-address' %}
     {% set formSubmitClassName = jsAddressClass ~ '__form-submit' %}
     {% set billingSameAsShippingData = data.forms.billingSameAsShipping.vars.data %}
-
-    <div class="grid grid--justify grid--baseline">
-        <h5 class="title title--second col col--sm-6 col--lg-8">{{ 'page.checkout.address.shipping-address' | trans }}</h5>
-        {% if is_granted('ROLE_USER') %}
-            <a class="link link--secondary link--checkout text-right col col--sm-6 col--lg-4" href="{{ url('customer/address') }}">{{ 'page.checkout.address.manage_your_addresses' | trans }}</a>
-        {% endif %}
-    </div>
 
     {% embed molecule('form') with {
         modifiers: ['checkout-form'],
@@ -79,7 +77,7 @@
             {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
             {% set hasShippingAddressesAndApplicable = embed.isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
             {% set shippingAddressValue = shippingAddress.id_customer_address.vars.value | default %}
-            {% set companyUnitAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
+            {% set companyUnitAddressValue = embed.isMultipleShipmentEnabled ? optionValueDeliverToMultipleAddresses : shippingAddress.id_company_unit_address.vars.value | default %}
             {% set isNewAddressSelected = shippingAddressValue == 0 or companyUnitAddressValue == 0 or (shippingAddressValue is empty and companyUnitAddressValue is empty) %}
             {% set newAddressHiddenClassName = hasShippingAddressesAndApplicable and not isNewAddressSelected ? ' ' ~ hiddenClassName %}
             {% set isMultipleShipmentSelected = shippingAddressValue == optionValueDeliverToMultipleAddresses or companyUnitAddressValue == optionValueDeliverToMultipleAddresses %}
@@ -91,36 +89,28 @@
             {% set validatorTriggerClassName = embed.jsAddressClass ~ '__validator-trigger' %}
             {% set billingSameAsShippingContainerClassName = embed.jsAddressClass ~ '__billing-same-as-shipping-container' %}
 
-            {% set hasShipmentTypes = data.form.shipmentType is defined %}
-            {% set defaultShipmentType = 'delivery' %}
-            {% set currentShipmentType = data.form.shipmentType.key.vars.value | default(defaultShipmentType) %}
-            {% set isDefaultShipmentType = currentShipmentType == defaultShipmentType %}
-            {% set shipmentTypeHiddenClassName = hasShipmentTypes and not isDefaultShipmentType ? hiddenClassName %}
-            {% set elementToToggleOnMultiShipment = "#{embed.jsAddressClass}__toggler-on-multi-shipment" %}
+            {% set shipmentTypeHiddenClassName = isMultipleShipmentSelected ? hiddenClassName %}
 
             <div class="{{ shippingFormHandlerClassName }} grid grid--bottom spacing-bottom spacing-bottom--big col col--sm-12">
                 {% if hasShippingAddressesAndApplicable %}
-                    {% set singleDeliveryContainerHiddenClassName = hasShipmentTypes and isMultipleShipmentSelected ? hiddenClassName %}
+                    {% widget 'ShipmentTypeAddressFormWidget' args [data.form] with {
+                        data: {
+                            deliveryContainerClassName: deliveryContainerClassName,
+                            billingSameAsShippingContainerClassName: billingSameAsShippingContainerClassName,
+                            shipmentTypesClassName: validatorTriggerClassName,
+                            servicePointClassName: addressFormClassName,
+                            deliverySelectClassName: '.' ~ shippingSelectClassName,
+                            hideChoices: true,
+                        },
+                    } only %}
+                        {% block body %}
+                            <div class="spacing-y">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
+                    {% endwidget %}
 
-                    <div class="{{ elementToToggleOnMultiShipment }} {{ singleDeliveryContainerClassName }} {{ singleDeliveryContainerHiddenClassName }} spacing-y">
-                        {% widget 'ShipmentTypeAddressFormWidget' args [data.form] with {
-                            data: {
-                                deliveryContainerClassName: deliveryContainerClassName,
-                                billingSameAsShippingContainerClassName: billingSameAsShippingContainerClassName,
-                                shipmentTypesClassName: validatorTriggerClassName,
-                                servicePointClassName: addressFormClassName,
-                                deliverySelectClassName: '.' ~ shippingSelectClassName,
-                            },
-                        } only %}
-                            {% block body %}
-                                <div class="spacing-y">
-                                    {{ parent() }}
-                                </div>
-                            {% endblock %}
-                        {% endwidget %}
-                    </div>
-
-                    <div class="address-wrapper {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }}">
+                    <div class="address-wrapper {{ shipmentTypeHiddenClassName }}">
                         <div class="address-wrapper__header col col--sm-12">
                             {% if embed.isCompanyBusinessUnitShippingAddressApplicable %}
                                 {% widget embed.companyBusinessUnitShippingAddressWidget with {
@@ -131,6 +121,7 @@
                                         jsAddressClass: embed.jsAddressClass,
                                         addressFormClassName: shippingFormHandlerClassName,
                                         addressSelectClassName: shippingSelectClassName,
+                                        currentAddressId: embed.isMultipleShipmentEnabled ? '-1' : null,
                                     },
                                 } only %}
                                 {% endwidget %}
@@ -155,7 +146,7 @@
                     </div>
                 {% endif %}
 
-                <div class="{{ addressFormContainerClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
+                <div class="{{ addressFormContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
                     {% include molecule('form') with {
                         class: shippingClassName ~ ' ' ~ addressFormClassName ~ newAddressHiddenClassName ~ ' address-wrapper__content address-wrapper__content--mobile-background',
                         modifiers: ['checkout-address-content'],
@@ -178,7 +169,7 @@
                 </div>
 
                 {% if embed.isMultipleShipmentEnabled %}
-                    <div class="{{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }}">
+                    <div class="{{ deliveryContainerClassName }} col col--sm-12">
                         {% include molecule('address-item-form', 'CheckoutPage') with {
                             class: multishipmentTargetClassName ~ multipleShipmentHiddenClassName ~ ' address-wrapper__content col col--sm-12',
                             data: {
@@ -335,7 +326,6 @@
                     'billing-same-as-shipping-selector': '.' ~ billingSameAsShippingClassName,
                     'billing-same-as-shipping-toggler-selector': 'input[name="addressesForm[billingSameAsShipping]"]',
                     'toggle-option-value': optionValueDeliverToMultipleAddresses,
-                    'elements-to-toggle': '.' ~ elementToToggleOnMultiShipment,
                 },
             } only %}
 
@@ -348,11 +338,7 @@
         {% endblock %}
 
         {% block actions %}
-            <div class="grid grid--middle grid--justify grid--expand">
-                <div class="spacing-top col col--sm-12 text-left">
-                    {{ parent() }}
-                </div>
-            </div>
+            {{ parent() }}
         {% endblock %}
     {% endembed %}
 {% endblock %}
