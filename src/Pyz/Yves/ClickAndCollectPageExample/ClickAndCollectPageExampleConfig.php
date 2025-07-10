@@ -29,6 +29,7 @@ class ClickAndCollectPageExampleConfig extends SprykerClickAndCollectPageExample
     protected const CLICK_AND_COLLECT_SHIPMENT_TYPES = [
         self::SHIPMENT_TYPE_IN_CENTER_SERVICE,
         self::ON_SITE_SERVICE_TYPE,
+        self::SHIPMENT_TYPE_DELIVERY,
     ];
 
     /**

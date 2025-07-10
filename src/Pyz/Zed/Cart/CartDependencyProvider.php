@@ -9,7 +9,6 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Cart;
 
-use Pyz\Zed\ClickAndCollectExample\Communication\Plugin\Cart\ClickAndCollectMerchantReferenceItemExpanderPlugin;
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\Cart\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\Cart\GroupKeyWithCartIdentifierItemExpanderPlugin;
@@ -128,7 +127,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemoveQuotePaymentCartItemExpanderPlugin(),
             new SspAssetItemExpanderPlugin(),
             new ServicePointItemExpanderPlugin(),
-            new ClickAndCollectMerchantReferenceItemExpanderPlugin(),
         ];
     }
 
