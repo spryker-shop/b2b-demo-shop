@@ -115,7 +115,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new CurrencyBackendGatewayApplicationPlugin(),
             new MockArraySessionApplicationPlugin(),
             new TranslatorApplicationPlugin(),
-            new TwigApplicationPlugin(),
+            new TwigGatewayApplicationPlugin(),
             new PropelApplicationPlugin(),
             new BackendGatewayRouterApplicationPlugin(),
             new HttpApplicationPlugin(),
