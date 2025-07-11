@@ -1148,7 +1148,6 @@ jobs:
             -   name: Run SSP Tests
                 run: |
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
-                if: always()
             -   name: Upload SSP artifacts
                 if: failure()
                 run: |
@@ -1213,7 +1212,6 @@ jobs:
             -   name: Run SSP Tests
                 run: |
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
-                if: always()
             -   name: Upload SSP artifacts
                 if: failure()
                 run: |
