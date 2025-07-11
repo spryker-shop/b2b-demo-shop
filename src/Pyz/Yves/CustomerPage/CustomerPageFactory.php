@@ -16,7 +16,7 @@ use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFact
 class CustomerPageFactory extends SprykerCustomerPageFactory
 {
     /**
-     * @return \SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider
+     * @return \Pyz\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider
      */
     public function createCheckoutAddressFormDataProvider(): CheckoutAddressFormDataProvider
     {
