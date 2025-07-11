@@ -190,8 +190,8 @@
                 {% endif %}
             </div>
 
-            <div class="col col--sm-12 {{ billingSameAsShippingContainerClassName }} {{ shipmentTypeHiddenClassName }}">
-                <div class="{{ billingSameAsShippingClassName }} {{ billingSameAsShippingHiddenClassName }}">
+            <div class="col col--sm-12 {{ billingSameAsShippingContainerClassName }}">
+                <div class="{{ billingSameAsShippingClassName }}">
                     {{ form_row(data.form.billingSameAsShipping, {
                         component: molecule('toggler-checkbox'),
                         label: 'customer.billingSameAsShipping' | trans,
