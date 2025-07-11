@@ -92,22 +92,24 @@
 
             <div class="{{ shippingFormHandlerClassName }} grid grid--bottom spacing-bottom spacing-bottom--big col col--sm-12">
                 {% if hasShippingAddressesAndApplicable %}
-                    {% widget 'ShipmentTypeAddressFormWidget' args [data.form] with {
-                        data: {
-                            deliveryContainerClassName: deliveryContainerClassName,
-                            billingSameAsShippingContainerClassName: billingSameAsShippingContainerClassName,
-                            shipmentTypesClassName: validatorTriggerClassName,
-                            servicePointClassName: addressFormClassName,
-                            deliverySelectClassName: '.' ~ shippingSelectClassName,
-                            hideChoices: true,
-                        },
-                    } only %}
-                        {% block body %}
-                            <div class="spacing-y">
-                                {{ parent() }}
-                            </div>
-                        {% endblock %}
-                    {% endwidget %}
+                    <div class="is-hidden">
+                        {% widget 'ShipmentTypeAddressFormWidget' args [data.form] with {
+                            data: {
+                                deliveryContainerClassName: deliveryContainerClassName,
+                                billingSameAsShippingContainerClassName: billingSameAsShippingContainerClassName,
+                                shipmentTypesClassName: validatorTriggerClassName,
+                                servicePointClassName: addressFormClassName,
+                                deliverySelectClassName: '.' ~ shippingSelectClassName,
+                                hideChoices: true,
+                            },
+                        } only %}
+                            {% block body %}
+                                <div class="spacing-y">
+                                    {{ parent() }}
+                                </div>
+                            {% endblock %}
+                        {% endwidget %}
+                    </div>
 
                     <div class="address-wrapper {{ shipmentTypeHiddenClassName }}">
                         <div class="address-wrapper__header col col--sm-12">
@@ -168,7 +170,7 @@
                 </div>
 
                 {% if embed.isMultipleShipmentEnabled %}
-                    <div class="{{ deliveryContainerClassName }} col col--sm-12">
+                    <div class="col col--sm-12">
                         {% include molecule('address-item-form', 'CheckoutPage') with {
                             class: multishipmentTargetClassName ~ multipleShipmentHiddenClassName ~ ' address-wrapper__content col col--sm-12',
                             data: {
