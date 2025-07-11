@@ -108,7 +108,6 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
 
             new FileSizeFormatterTwigPlugin(),
             new ProductServiceClassNameTwigPlugin(),
-            new NavigationLinkTwigPlugin(),
         ];
     }
 
