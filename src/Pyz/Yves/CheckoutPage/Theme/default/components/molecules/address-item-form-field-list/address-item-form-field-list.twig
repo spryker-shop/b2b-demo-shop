@@ -144,7 +144,7 @@
                                                 },
                                             } only %}
                                                 {% block addressHandler %}
-                                                    {% set index = embed.index - 1 %}
+                                                    {% set index = embed.index %}
                                                     {% include molecule('company-business-unit-address-handler', 'CompanyWidget') ignore missing with {
                                                         attributes: {
                                                             'form-selector': '.' ~ embed.jsName ~ '__item-shipping-' ~ embed.index,
@@ -158,7 +158,7 @@
                                                 {% endblock %}
 
                                                 {% block hiddenFields %}
-                                                    {% set index = embed.index - 1 %}
+                                                    {% set index = embed.index %}
                                                     <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_customer_address]" value="{{ embed.shippingAddressValue }}">
                                                     <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_company_unit_address]" value="{{ embed.shippingCompanyAddressValue }}">
                                                     <input type="hidden" class="{{ embed.jsName }}__default-address-item-shipping-{{ embed.index }}" value="{{ defaultAddressKey }}">

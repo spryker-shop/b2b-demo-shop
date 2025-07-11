@@ -17,9 +17,8 @@
 
         <div class="spacing-bottom">
             {{ block('title') }}
-
             {% for item in group.items %}
-                {% set loopIndex = loopIndex + 1 %}
+                {% set loopIndex = item.vars.name %}
 
                 {{ block('content') }}
             {% endfor %}
