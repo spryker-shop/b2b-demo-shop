@@ -22,7 +22,6 @@
     {% set jsAddressClass = 'js-address' %}
     {% set formSubmitClassName = jsAddressClass ~ '__form-submit' %}
     {% set billingSameAsShippingData = data.forms.billingSameAsShipping.vars.data %}
-
     {% embed molecule('form') with {
         modifiers: ['checkout-form'],
         data: {
