@@ -27,6 +27,7 @@ use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCust
 use Spryker\Zed\CustomerUserConnector\Communication\Plugin\CustomerTransferUsernameExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\Customer\ProductListCustomerTransferExpanderPlugin;
+use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Customer\RemoveMultiFactorAuthCustomerTableActionExpanderPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\CustomerAnonymizer\CustomerUnsubscribePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionCustomerExpanderPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionCustomerExpanderPlugin;
@@ -137,6 +138,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
         return [
             new CompanyUserCustomerTableActionExpanderPlugin(),
             new BusinessOnBehalfGuiAttachToCompanyButtonCustomerTableActionExpanderPlugin(),
+            new RemoveMultiFactorAuthCustomerTableActionExpanderPlugin(),
         ];
     }
 

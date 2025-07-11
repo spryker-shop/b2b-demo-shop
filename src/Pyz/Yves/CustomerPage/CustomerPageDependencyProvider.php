@@ -10,6 +10,7 @@ declare(strict_types = 1);
 namespace Pyz\Yves\CustomerPage;
 
 use Spryker\Yves\Kernel\Container;
+use Spryker\Yves\MultiFactorAuth\Plugin\AuthenticationHandler\Customer\CustomerMultiFactorAuthenticationHandlerPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Security\UpdateAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
@@ -147,6 +148,16 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new CompanyUserPreAuthUserCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\AuthenticationHandlerPluginInterface>
+     */
+    protected function getCustomerAuthenticationHandlerPlugins(): array
+    {
+        return [
+            new CustomerMultiFactorAuthenticationHandlerPlugin(),
         ];
     }
 }

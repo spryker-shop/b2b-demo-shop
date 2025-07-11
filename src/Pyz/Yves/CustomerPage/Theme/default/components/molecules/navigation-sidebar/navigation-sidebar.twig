@@ -69,4 +69,8 @@
             } only %}
         {% endblock %}
     {% endwidget %}
+
+    {% if widgetGlobalExists('SetMultiFactorAuthMenuItemWidget') %}
+        {% widget 'SetMultiFactorAuthMenuItemWidget' args [data.activePage] only %}{% endwidget %}
+    {% endif %}
 {% endblock %}

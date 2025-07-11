@@ -1,0 +1,13 @@
+{% extends view('multi-factor-auth-menu-item', '@Spryker:MultiFactorAuth') %}
+
+{% block body %}
+    {% include molecule('navigation-sidebar-item') with {
+        data: {
+            url: url(data.setMultiFactorAuthRouteName),
+            icon: 'security',
+            label: 'multi_factor_auth.multi_factor_auth.list.title' | trans,
+            name: 'multi-factor-auth'
+        },
+        modifiers: data.isActivePage ? ['active'] : []
+    } only %}
+{% endblock %}
