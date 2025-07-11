@@ -47,6 +47,7 @@ use Spryker\Zed\LocaleDataImport\Communication\Plugin\DataImport\DefaultLocaleSt
 use Spryker\Zed\LocaleDataImport\Communication\Plugin\DataImport\LocaleStoreDataImportPlugin;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportPlugin;
+use Spryker\Zed\MerchantProductApprovalDataImport\Communication\Plugin\DataImport\MerchantProductApprovalStatusDefaultDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\DataImport\MerchantProductOfferDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\DataImport\MerchantProductOfferStoreDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
@@ -414,6 +415,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new SspInquiryDataImportPlugin(),
             new ProductClassDataImportPlugin(),
             new ProductToProductClassDataImportPlugin(),
+            new MerchantProductApprovalStatusDefaultDataImportPlugin(),
         ];
     }
 

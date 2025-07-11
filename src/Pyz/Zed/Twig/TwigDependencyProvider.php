@@ -105,7 +105,6 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             // Form buttons
             new SubmitButtonTwigPlugin(),
             new GuiFilterTwigPlugin(),
-
             new FileSizeFormatterTwigPlugin(),
             new ProductServiceClassNameTwigPlugin(),
         ];
