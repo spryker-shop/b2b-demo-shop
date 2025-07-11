@@ -15,6 +15,11 @@ use SprykerShop\Yves\ShipmentTypeWidget\ShipmentTypeWidgetConfig as SprykerShipm
 class ShipmentTypeWidgetConfig extends SprykerShipmentTypeWidgetConfig
 {
     /**
+     * @var string
+     */
+    protected const SHIPMENT_TYPE_ON_SITE_SERVICE = 'on-site-service';
+
+    /**
      * @return list<string>
      */
     public function getNotApplicableShipmentTypeAddressStepFormItemPropertiesForHydration(): array
@@ -22,6 +27,17 @@ class ShipmentTypeWidgetConfig extends SprykerShipmentTypeWidgetConfig
         return [
             ItemTransfer::BUNDLE_ITEM_IDENTIFIER,
             ItemTransfer::RELATED_BUNDLE_ITEM_IDENTIFIER,
+        ];
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    public function getDeliveryShipmentTypes(): array
+    {
+        return [
+            static::SHIPMENT_TYPE_DELIVERY,
+            static::SHIPMENT_TYPE_ON_SITE_SERVICE,
         ];
     }
 }

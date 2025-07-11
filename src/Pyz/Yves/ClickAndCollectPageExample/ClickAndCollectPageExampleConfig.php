@@ -19,19 +19,23 @@ class ClickAndCollectPageExampleConfig extends SprykerClickAndCollectPageExample
     protected const SHIPMENT_TYPE_IN_CENTER_SERVICE = 'in-center-service';
 
     /**
+     * @var string
+     */
+    protected const ON_SITE_SERVICE_TYPE = 'on-site-service';
+
+    /**
      * @var list<string>
      */
     protected const CLICK_AND_COLLECT_SHIPMENT_TYPES = [
         self::SHIPMENT_TYPE_IN_CENTER_SERVICE,
+        self::ON_SITE_SERVICE_TYPE,
         self::SHIPMENT_TYPE_DELIVERY,
-        self::SHIPMENT_TYPE_PICKUP,
     ];
 
     /**
      * @var list<string>
      */
     protected const DEFAULT_PICKABLE_SERVICE_TYPES = [
-        self::SERVICE_TYPE_PICKUP,
         self::SHIPMENT_TYPE_IN_CENTER_SERVICE,
     ];
 }

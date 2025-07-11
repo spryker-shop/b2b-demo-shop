@@ -1,0 +1,18 @@
+{% extends view('single-address-per-shipment-type', '@SprykerFeature:SelfServicePortal') %}
+
+{% define data = {
+    targetToHideClass: targetToHideClass,
+} %}
+
+{% block body %}
+    {% if data.isVisible and data.singleAddressPerShipmentTypeFormField %}
+        {{ form_row(data.singleAddressPerShipmentTypeFormField, {
+            component: molecule('toggler-checkbox'),
+            attributes: {
+                'target-class-name': data.targetToHideClass,
+                'class-to-toggle': 'is-hidden',
+                'add-class-when-checked': true,
+            },
+        }) }}
+    {% endif %}
+{% endblock %}
