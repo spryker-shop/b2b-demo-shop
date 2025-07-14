@@ -45,7 +45,9 @@ class CustomerAddressCest
     public function testICanAddNewAddress(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
+        $i->wait(5);
         $i->amOnPage(CustomerAddressPage::URL);
+        $i->wait(5);
 
         $addressTransfer = CustomerAddressesPage::getAddressData(CustomerAddressesPage::ADDRESS_A);
 
