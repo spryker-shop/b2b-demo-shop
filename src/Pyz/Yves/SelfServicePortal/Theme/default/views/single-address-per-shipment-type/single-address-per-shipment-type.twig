@@ -2,16 +2,19 @@
 
 {% define data = {
     targetToHideClass: targetToHideClass,
+    className: className,
 } %}
 
 {% block body %}
     {% if data.isVisible and data.singleAddressPerShipmentTypeFormField %}
         {{ form_row(data.singleAddressPerShipmentTypeFormField, {
             component: molecule('toggler-checkbox'),
+            componentClass: className,
             attributes: {
                 'target-class-name': data.targetToHideClass,
                 'class-to-toggle': 'is-hidden',
                 'add-class-when-checked': true,
+                checked: true,
             },
         }) }}
     {% endif %}

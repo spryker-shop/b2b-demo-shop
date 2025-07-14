@@ -28,6 +28,9 @@
                 width: rem(20);
                 height: rem(20);
                 line-height: rem(20);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
             }
 
             &--filter {
@@ -85,7 +88,7 @@
                     }
                 }
 
-                #{$name}__label {
+                #{$name}__label.label {
                     font-weight: fw(bold);
 
                     &--alternative {
@@ -108,7 +111,7 @@
                     border-color: $setting-color-gray-1;
                 }
 
-                & ~ #{$name}__label {
+                & ~ #{$name}__label.label {
                     color: $setting-color-gray-2;
                     cursor: not-allowed;
                 }
@@ -127,7 +130,7 @@
             }
         }
 
-        &__label {
+        &__label.label {
             display: inline-block;
             vertical-align: middle;
             text-transform: none;

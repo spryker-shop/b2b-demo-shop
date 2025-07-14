@@ -1,5 +1,16 @@
 {% extends molecule('address-item-form-field-list', '@SprykerShop:CheckoutPage') %}
 
+{% define config = {
+    name: 'address-item-form-field-list',
+    tag: 'address-item-form-field-list',
+} %}
+
+{% define attributes = {
+    'same-for-all-control': "js-#{config.name}__same-for-all",
+    'product-item': "js-#{config.name}__product-item",
+    'elements-to-toggle-class': null,
+} %}
+
 {% block body %}
     {% set isCompanyBusinessUnitShippingAddressApplicable = false %}
 
@@ -11,6 +22,7 @@
             hiddenClassName: data.hiddenClassName,
             validationClassName: data.validationClassName,
             config: config,
+            attributes: attributes,
         },
     } only %}
         {% block item %}
@@ -44,7 +56,12 @@
 
                     {% block multiShippingAddressesInner %}
                         {% embed molecule('product-card-item') with {
+                            class: embed.attributes['product-item'],
                             modifiers: ['checkout', 'checkout-address'],
+                            attributes: {
+                                'group-index': groupIndex,
+                                'address-control': "#{embed.config.jsName}__control-#{groupIndex}"
+                            },
                             data: {
                                 listItem: item.vars.data,
                                 quantity: item.vars.data.quantity,
@@ -75,6 +92,7 @@
                                 group: group,
                                 isDefaultShipmentType: isDefaultShipmentType,
                                 elementsToGroupToggle: elementsToGroupToggle,
+                                attributes: embed.attributes
                             },
                         } only %}
                             {% block image %}
@@ -141,6 +159,7 @@
                                                     formFieldUniqueName: embed.formFieldUniqueName,
                                                     shippingAddressValue: embed.shippingAddressValue,
                                                     shippingCompanyAddressValue: embed.shippingCompanyAddressValue,
+                                                    attributes: attributes,
                                                 },
                                             } only %}
                                                 {% block addressHandler %}
@@ -161,7 +180,7 @@
                                                     {% set index = embed.index %}
                                                     <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_customer_address]" value="{{ embed.shippingAddressValue }}">
                                                     <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_company_unit_address]" value="{{ embed.shippingCompanyAddressValue }}">
-                                                    <input type="hidden" class="{{ embed.jsName }}__default-address-item-shipping-{{ embed.index }}" value="{{ defaultAddressKey }}">
+                                                    <input type="hidden" class="{{ embed.jsName }}__default-address-item-shipping-{{ embed.index }} {{ embed.attributes['address-control'] }}" value="{{ defaultAddressKey }}">
                                                 {% endblock %}
                                             {% endwidget %}
 
@@ -185,6 +204,7 @@
 
                                 <div class="{{ embed.group.items | length > 1 ?: 'is-hidden' }}">
                                     {% widget 'SingleAddressPerShipmentTypeWidget' args [embed.item] with {
+                                        className: embed.subIndex == 1 ? embed.attributes['same-for-all-control'],
                                         targetToHideClass: embed.elementsToGroupToggle,
                                     } only %}{% endwidget %}
                                 </div>

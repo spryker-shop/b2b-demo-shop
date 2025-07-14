@@ -1,0 +1,141 @@
+import Component from 'ShopUi/models/component';
+
+interface ControlInfo {
+    valid: boolean;
+    main: {
+        checked?: boolean;
+        value?: string;
+    };
+    items: {
+        item: HTMLElement;
+        value: string;
+    }[];
+}
+
+export default class AddressItemFormFieldList extends Component {
+    protected controls: Record<string, ControlInfo> = {};
+    protected DEFAULT_VALUE = '0';
+
+    protected sameForAllControl: HTMLElement[];
+    protected elementsToToggle: HTMLElement[];
+
+    protected observer = new MutationObserver(this.onInputChangeCallback.bind(this));
+
+    protected readyCallback(): void { }
+    protected init(): void {
+        this.sameForAllControl = Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-for-all-control')} input`));
+        this.elementsToToggle = Array.from(document.querySelectorAll<HTMLElement>(`.${this.getAttribute('elements-to-toggle-class')}`));
+
+        this.mapEvents();
+    }
+
+    disconnectedCallback() {
+        this.observer.disconnect();
+    }
+
+    protected mapEvents(): void {
+        this.sameForAllControl.forEach((control: HTMLInputElement) => {
+            const wrapper = control.closest<HTMLElement>(`.${this.getAttribute('product-item')}`);
+            const groupIndex = wrapper.getAttribute('group-index');
+            const controlClass = wrapper.getAttribute('address-control');
+            const main = {
+                checked: control.checked,
+                value: this.DEFAULT_VALUE,
+            }
+
+            this.controls[groupIndex] = {
+                valid: false,
+                main: {},
+                items: Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('product-item')}[group-index="${groupIndex}"]`)).map(item => {
+                    const value = item.querySelector<HTMLInputElement>(`.${controlClass}`).value
+
+                    if (item.querySelector(`.${this.getAttribute('same-for-all-control')}`)) {
+                        main.value = value;
+                    }
+
+                    return {
+                        item,
+                        value,
+                    }
+                }),
+            };
+            this.controls[groupIndex].main = main;
+
+            control?.addEventListener('change', (event) => {
+                this.controls[groupIndex].main.checked = (event.target as HTMLInputElement).checked;
+                this.onValidationEvent();
+            })
+        })
+
+        Object.values(this.controls).forEach((data) => {
+            data.items.forEach(({ item }) => {
+                const input = item.querySelector<HTMLInputElement>(`.${item.getAttribute('address-control')}`);
+                this.observer.observe(input, { attributes: true, attributeFilter: ['value'] });
+            })
+        });
+
+        this.onValidationEvent();
+    }
+
+    protected onInputChangeCallback(event: MutationRecord[]): void {
+        const target = (event[0].target as HTMLInputElement);
+        const element = target.closest<HTMLElement>(`.${this.getAttribute('product-item')}`);
+        const groupIndex = element.getAttribute('group-index');
+        const value = (event[0].target as HTMLInputElement).value;
+
+        this.controls[groupIndex].items.find((child) => child.item === element).value = value;
+
+        if (element.querySelector(`.${this.getAttribute('same-for-all-control')}`)) {
+            this.controls[groupIndex].main.value = value;
+        }
+
+        this.onValidationEvent();
+    }
+
+    protected onValidationEvent(): void {
+        const isValid = this.validation();
+
+        this.elementsToToggle.forEach((element) => {
+            element.classList.toggle('is-hidden', !isValid);
+
+            const input = element.querySelector<HTMLInputElement>('input');
+
+            if (!isValid && input) {
+                input.checked = false;
+                input.value = null;
+            }
+        })
+    }
+
+    protected validation(): boolean {
+        const valuesToCompare: string[] = [];
+
+        for (const key in this.controls) {
+            const control = this.controls[key];
+            let valueToUse: string;
+
+            if (control.main.checked) {
+                valueToUse = control.main.value;
+            } else {
+                const firstItemValue = control.items[0]?.value;
+
+                if (
+                    !firstItemValue ||
+                    control.items.some(i => i.value !== firstItemValue)
+                ) {
+                    return false;
+                }
+
+                valueToUse = firstItemValue;
+            }
+
+            if (valueToUse === this.DEFAULT_VALUE || !valueToUse) {
+                return false;
+            }
+
+            valuesToCompare.push(valueToUse);
+        }
+
+        return valuesToCompare.every(val => val === valuesToCompare[0]);
+    }
+}

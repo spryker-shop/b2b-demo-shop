@@ -1,5 +1,9 @@
 {% extends molecule('address-item-form', '@SprykerShop:CheckoutPage') %}
 
+{% define data = {
+    billingSameAsShippingClassName: '',
+} %}
+
 {% block body %}
     {% block title %}
         <h5 class="title title--second title--underline">{{ 'page.checkout.address.multi_shipment.title' | trans }}</h5>
@@ -24,6 +28,7 @@
                 itemShippingClassName: itemShippingClassName,
                 itemDeliveryValidationClassName: itemDeliveryValidationClassName,
                 hiddenClassName: data.hiddenClassName,
+                billingSameAsShippingClassName: data.billingSameAsShippingClassName,
             },
         } only %}
             {% block fields %}
@@ -39,6 +44,9 @@
                             validationClassName: embed.itemDeliveryValidationClassName,
                             hiddenClassName: embed.hiddenClassName,
                         },
+                        attributes: {
+                            'elements-to-toggle-class': embed.billingSameAsShippingClassName,
+                        }
                     } only %}
                 </div>
             {% endblock %}
