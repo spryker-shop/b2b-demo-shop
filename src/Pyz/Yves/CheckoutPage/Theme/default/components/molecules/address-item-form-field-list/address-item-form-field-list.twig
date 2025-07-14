@@ -9,6 +9,7 @@
     'same-for-all-control': "js-#{config.name}__same-for-all",
     'product-item': "js-#{config.name}__product-item",
     'elements-to-toggle-class': null,
+    'excluded-types': ['in-center-service'] | json_encode,
 } %}
 
 {% block body %}
@@ -60,7 +61,8 @@
                             modifiers: ['checkout', 'checkout-address'],
                             attributes: {
                                 'group-index': groupIndex,
-                                'address-control': "#{embed.config.jsName}__control-#{groupIndex}"
+                                'address-control': "#{embed.config.jsName}__control-#{groupIndex}",
+                                'shipment-type': currentShipmentType,
                             },
                             data: {
                                 listItem: item.vars.data,
