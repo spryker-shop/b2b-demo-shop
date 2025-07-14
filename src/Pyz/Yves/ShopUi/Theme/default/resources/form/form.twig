@@ -144,7 +144,7 @@
     {% define attributes = {
         id: id,
         name: full_name,
-        checked: checked | default(false),
+        checked: attr.checked | default(checked | default(false)),
         required: required | default(false),
         disabled: disabled ?: attr.disabled | default(false),
         value: value | default()

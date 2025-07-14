@@ -227,7 +227,7 @@
                         {% endembed %}
                     {% endblock %}
 
-                    <div class="{{ elementsToGroupToggle }} {{ embed.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
+                    <div class="{{ loop.index != 1 ? elementsToGroupToggle }} {{ embed.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
                         {% include molecule('form') with {
                             class: embed.itemShippingClassName ~ ' ' ~ embed.config.jsName ~ '__item-shipping--' ~ loopIndex ~ newAddressHiddenClassName ~ ' ' ~ embed.config.name ~ '__content ' ~ embed.config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
                             modifiers: ['checkout-address-content'],
