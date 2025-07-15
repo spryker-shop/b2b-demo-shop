@@ -19,7 +19,6 @@ use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyUserPreAuthUserCheck
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
-use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
 use SprykerShop\Yves\SessionAgentValidation\Plugin\CustomerPage\UpdateAgentSessionAfterCustomerAuthenticationSuccessPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
@@ -41,36 +40,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         $container = $this->addSessionClient($container);
 
         return $container;
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOverviewWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOrderListWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOrderViewWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
     }
 
     /**

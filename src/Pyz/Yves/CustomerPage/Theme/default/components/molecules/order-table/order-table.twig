@@ -7,7 +7,7 @@
 {% block extraClass %}{% endblock %}
 
 {% block customReorderAction %}
-    {% widget 'CustomerReorderFormWidget' args [order] only %}
+    {% widget 'CartReorderWidget' args [order] only %}
         {% block body %}
             {% embed molecule('remote-form-submit') with {
                 data: {
@@ -15,11 +15,11 @@
                     buttonClass: 'button--expand-sm-lg link',
                 },
                 attributes: {
-                    'form-name': 'customerReorderWidgetForm_' ~ data.order.idSalesOrder,
-                    'form-action': path('customer/order/reorder', {'idSalesOrder': data.order.idSalesOrder}),
-                    'field-id': 'customerReorderWidgetForm__token_' ~ data.order.idSalesOrder,
-                    'field-name': 'customerReorderWidgetForm[_token]',
-                    'field-value': csrf_token('customerReorderWidgetForm'),
+                    'form-name': 'cartReorderForm_' ~ data.order.orderReference,
+                    'form-action': path('cart-reorder', {'orderReference': data.order.orderReference}),
+                    'field-id': 'cartReorderForm__token_' ~ data.order.orderReference,
+                    'field-name': 'cartReorderForm[_token]',
+                    'field-value': csrf_token('cartReorderForm'),
                 },
             } only %}
                 {% block innerSubmitActionContent %}
@@ -65,6 +65,52 @@
             {% endembed %}
         {% endblock %}
     {% endwidget %}
+{% endblock %}
+
+{% block customOrderAmendmentAction %}
+    {% if widgetGlobalExists('OrderAmendmentWidget') %}
+        {% widget 'OrderAmendmentWidget' args [order] only %}
+            {% block body %}
+                {% embed molecule('order-amendment', 'SalesOrderAmendmentWidget') with {
+                    data: {
+                        form: data.form,
+                        order: data.order,
+                        hasConfirmationPopup: data.hasConfirmationPopup,
+                    }
+                } only %}
+                    {% block form %}
+                        {% set formVars = data.form.vars %}
+
+                        {% embed molecule('remote-form-submit') with {
+                            data: {
+                                label: (data.hasConfirmationPopup ? 'sales_order_amendment_widget.edit_order.confirm' : 'sales_order_amendment_widget.edit_order') | trans,
+                                buttonClass: 'button--expand-sm-lg link',
+                            },
+                            attributes: {
+                                'form-name': formVars.id ~ order.orderReference,
+                                'form-action': path('order-amendment', {'orderReference': order.orderReference}),
+                                'field-id': formVars.id ~ '_token_' ~ order.idSalesOrder,
+                                'field-name': formVars.id ~ '[_token]',
+                                'field-value': csrf_token(formVars.id),
+                            } | merge(data.hasConfirmationPopup ? {
+                                'initial-mount': false,
+                            }: {}),
+                        } only %}
+                            {% block innerSubmitActionContent %}
+                                {% include molecule('table-action-span') with {
+                                    class: 'link link--alt link--action',
+                                    data: {
+                                        icon: 'edit',
+                                        title: data.label,
+                                    },
+                                } only %}
+                            {% endblock %}
+                        {% endembed %}
+                    {% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endwidget %}
+    {% endif %}
 {% endblock %}
 
 {% block body %}
@@ -148,6 +194,9 @@
                                         },
                                         {
                                             customAction: block('customReorderAction'),
+                                        },
+                                        {
+                                            customAction: block('customOrderAmendmentAction'),
                                         },
                                         {
                                             url: path('return/create', { orderReference: order.orderReference }),
