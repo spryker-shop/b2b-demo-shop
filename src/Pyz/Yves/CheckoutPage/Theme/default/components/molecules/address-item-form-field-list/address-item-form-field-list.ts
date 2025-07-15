@@ -22,10 +22,14 @@ export default class AddressItemFormFieldList extends Component {
 
     protected observer = new MutationObserver(this.onInputChangeCallback.bind(this));
 
-    protected readyCallback(): void { }
+    protected readyCallback(): void {}
     protected init(): void {
-        this.sameForAllControl = Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-for-all-control')} input`));
-        this.elementsToToggle = Array.from(document.querySelectorAll<HTMLElement>(`.${this.getAttribute('elements-to-toggle-class')}`));
+        this.sameForAllControl = Array.from(
+            this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-for-all-control')} input`),
+        );
+        this.elementsToToggle = Array.from(
+            document.querySelectorAll<HTMLElement>(`.${this.getAttribute('elements-to-toggle-class')}`),
+        );
 
         for (const element of Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('product-item')}`))) {
             const excludedTypes: string[] = JSON.parse(this.getAttribute('excluded-types') || '[]');
@@ -52,13 +56,17 @@ export default class AddressItemFormFieldList extends Component {
             const main = {
                 checked: control.checked,
                 value: this.DEFAULT_VALUE,
-            }
+            };
 
             this.controls[groupIndex] = {
                 valid: false,
                 main: {},
-                items: Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('product-item')}[group-index="${groupIndex}"]`)).map(item => {
-                    const value = item.querySelector<HTMLInputElement>(`.${controlClass}`).value
+                items: Array.from(
+                    this.querySelectorAll<HTMLElement>(
+                        `.${this.getAttribute('product-item')}[group-index="${groupIndex}"]`,
+                    ),
+                ).map((item) => {
+                    const value = item.querySelector<HTMLInputElement>(`.${controlClass}`).value;
 
                     if (item.querySelector(`.${this.getAttribute('same-for-all-control')}`)) {
                         main.value = value;
@@ -67,7 +75,7 @@ export default class AddressItemFormFieldList extends Component {
                     return {
                         item,
                         value,
-                    }
+                    };
                 }),
             };
             this.controls[groupIndex].main = main;
@@ -75,21 +83,21 @@ export default class AddressItemFormFieldList extends Component {
             control?.addEventListener('change', (event) => {
                 this.controls[groupIndex].main.checked = (event.target as HTMLInputElement).checked;
                 this.onValidationEvent();
-            })
-        })
+            });
+        });
 
         Object.values(this.controls).forEach((data) => {
             data.items.forEach(({ item }) => {
                 const input = item.querySelector<HTMLInputElement>(`.${item.getAttribute('address-control')}`);
                 this.observer.observe(input, { attributes: true, attributeFilter: ['value'] });
-            })
+            });
         });
 
         this.onValidationEvent();
     }
 
     protected onInputChangeCallback(event: MutationRecord[]): void {
-        const target = (event[0].target as HTMLInputElement);
+        const target = event[0].target as HTMLInputElement;
         const element = target.closest<HTMLElement>(`.${this.getAttribute('product-item')}`);
         const groupIndex = element.getAttribute('group-index');
         const value = (event[0].target as HTMLInputElement).value;
@@ -115,7 +123,7 @@ export default class AddressItemFormFieldList extends Component {
                 input.checked = false;
                 input.value = null;
             }
-        })
+        });
     }
 
     protected validation(): boolean {
@@ -134,10 +142,7 @@ export default class AddressItemFormFieldList extends Component {
             } else {
                 const firstItemValue = control.items[0]?.value;
 
-                if (
-                    !firstItemValue ||
-                    control.items.some(i => i.value !== firstItemValue)
-                ) {
+                if (!firstItemValue || control.items.some((i) => i.value !== firstItemValue)) {
                     return false;
                 }
 
@@ -151,6 +156,6 @@ export default class AddressItemFormFieldList extends Component {
             valuesToCompare.push(valueToUse);
         }
 
-        return valuesToCompare.every(val => val === valuesToCompare[0]);
+        return valuesToCompare.every((val) => val === valuesToCompare[0]);
     }
 }
