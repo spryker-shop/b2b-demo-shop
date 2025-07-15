@@ -20,8 +20,8 @@ use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearc
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataExpanderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataLoaderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantReferencesProductAbstractsMapExpanderPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductConcreteCollectionFilterPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductPageSearchCollectionFilterPlugin;
+//use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductConcreteCollectionFilterPlugin;
+//use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductPageSearchCollectionFilterPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryMapExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataLoaderPlugin;
@@ -154,7 +154,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getProductConcreteCollectionFilterPlugins(): array
     {
         return [
-            new ProductApprovalProductConcreteCollectionFilterPlugin(),
+//            new ProductApprovalProductConcreteCollectionFilterPlugin(),
         ];
     }
 
@@ -164,7 +164,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getProductPageSearchCollectionFilterPlugins(): array
     {
         return [
-            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
+//            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
         ];
     }
 }
