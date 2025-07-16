@@ -200,7 +200,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         return [
             new ProductApprovalPreReloadItemsPlugin(),
             new CartConfigurableBundlePreReloadPlugin(),
-            new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
             new RemoveRestrictedItemsPreReloadPlugin(),
             new CleanUpItemsPreReloadPlugin(),
