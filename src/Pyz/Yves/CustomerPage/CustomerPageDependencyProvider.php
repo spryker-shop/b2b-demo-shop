@@ -11,6 +11,7 @@ namespace Pyz\Yves\CustomerPage;
 
 use Spryker\Yves\Kernel\Container;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\CustomerPage\SingleAddressPerShipmentTypeCheckoutMultiShippingAddressesFormExpanderPlugin;
+use Spryker\Yves\MultiFactorAuth\Plugin\AuthenticationHandler\Customer\CustomerMultiFactorAuthenticationHandlerPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Security\UpdateAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\ClickAndCollectPageExample\Plugin\CustomerPage\ClickAndCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin;
@@ -36,7 +37,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     /**
      * @var string
      */
-    public const CLIENT_SESSION = 'CLIENT_SESSION';
+    public const CLIENT_PYZ_SESSION = 'CLIENT_PYZ_SESSION';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -47,7 +48,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         $container = parent::provideDependencies($container);
 
-        $container = $this->addSessionClient($container);
+        $container = $this->addPyzSessionClient($container);
 
         return $container;
     }
@@ -120,9 +121,9 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addSessionClient(Container $container): Container
+    protected function addPyzSessionClient(Container $container): Container
     {
-        $container->set(static::CLIENT_SESSION, function (Container $container) {
+        $container->set(static::CLIENT_PYZ_SESSION, function (Container $container) {
             return $container->getLocator()->session()->client();
         });
 
@@ -192,6 +193,16 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new ShipmentTypeCheckoutAddressStepPreGroupItemsByShipmentPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\AuthenticationHandlerPluginInterface>
+     */
+    protected function getCustomerAuthenticationHandlerPlugins(): array
+    {
+        return [
+            new CustomerMultiFactorAuthenticationHandlerPlugin(),
         ];
     }
 }
