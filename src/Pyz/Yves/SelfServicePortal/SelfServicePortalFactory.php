@@ -10,8 +10,10 @@ declare(strict_types = 1);
 namespace Pyz\Yves\SelfServicePortal;
 
 use Pyz\Yves\SelfServicePortal\Service\Checker\AddressFormChecker;
+use Pyz\Yves\SelfServicePortal\Service\Handler\SingleAddressPerShipmentTypePreSubmitHandler;
 use SprykerFeature\Yves\SelfServicePortal\SelfServicePortalFactory as SprykerSelfServicePortalFactory;
 use SprykerFeature\Yves\SelfServicePortal\Service\Checker\AddressFormCheckerInterface;
+use SprykerFeature\Yves\SelfServicePortal\Service\Handler\SingleAddressPerShipmentTypePreSubmitHandlerInterface;
 
 class SelfServicePortalFactory extends SprykerSelfServicePortalFactory
 {
@@ -21,5 +23,13 @@ class SelfServicePortalFactory extends SprykerSelfServicePortalFactory
     public function createAddressFormChecker(): AddressFormCheckerInterface
     {
         return new AddressFormChecker($this->getConfig());
+    }
+
+    /**
+     * @return \SprykerFeature\Yves\SelfServicePortal\Service\Handler\SingleAddressPerShipmentTypePreSubmitHandlerInterface
+     */
+    public function createSingleAddressPerShipmentTypePreSubmitHandler(): SingleAddressPerShipmentTypePreSubmitHandlerInterface
+    {
+        return new SingleAddressPerShipmentTypePreSubmitHandler($this->createAddressFormChecker());
     }
 }
