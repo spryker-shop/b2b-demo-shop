@@ -7,11 +7,15 @@ $shop-ui-icon-size-bigger: 1.5rem;
     &--ssp {
         width: rem(35);
         height: rem(35);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(-10);
+        }
     }
 
     &--ssp-header {
         position: relative;
-        bottom: 4px;
+        bottom: rem(4);
     }
 
     &--logo {

@@ -47,4 +47,15 @@
             } only %}
         {% endblock %}
     {% endembed %}
+
+    {% widget 'MultiFactorAuthHandlerWidget' with {
+        data: {
+            id: _view.loginForm.vars.name,
+            url: '/multi-factor-auth/get-customer-enabled-types',
+            formSelector: '[name="' ~ _view.loginForm.vars.name ~ '"]',
+            isLoginFlow: 'true',
+            isJsEnabledHandler: 'true',
+        }
+    } only %}
+    {% endwidget %}
 {% endblock %}

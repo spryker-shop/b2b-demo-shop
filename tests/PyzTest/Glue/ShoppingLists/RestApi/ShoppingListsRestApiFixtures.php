@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ShoppingListItemTransfer;
 use Generated\Shared\Transfer\ShoppingListTransfer;
@@ -170,7 +171,10 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     protected function createShoppingList(ShoppingListsApiTester $I): void
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
+        $expectedTaxSetTransfer = $I->haveTaxSetWithTaxRates();
+        $this->productConcreteTransfer = $I->haveFullProduct([], [
+            ProductAbstractTransfer::ID_TAX_SET => $expectedTaxSetTransfer->getIdTaxSet(),
+        ]);
 
         $this->shoppingListTransfer = $I->haveShoppingList([
             ShoppingListTransfer::CUSTOMER_REFERENCE => $this->customerTransfer->getCustomerReference(),

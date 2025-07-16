@@ -20,6 +20,8 @@ use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
 use Spryker\Yves\Http\Plugin\Application\YvesHttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
+use Spryker\Yves\MultiFactorAuth\Widget\MultiFactorAuthHandlerWidget;
+use Spryker\Yves\MultiFactorAuth\Widget\SetMultiFactorAuthMenuItemWidget;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Security\Plugin\Application\YvesSecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
@@ -27,10 +29,13 @@ use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\SingleAddressPerShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SingleAddressPerShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
@@ -344,6 +349,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             TraceableEventWidget::class,
             ExpressCheckoutPaymentWidget::class,
             CustomerEmailChangeRequestWidget::class,
+            SetMultiFactorAuthMenuItemWidget::class,
+            MultiFactorAuthHandlerWidget::class,
             SitemapWidget::class,
             ServicePointSearchWidget::class,
             ClickAndCollectServicePointAddressFormWidget::class,
@@ -377,6 +384,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ServiceListWidget::class,
             SspServicePointSearchWidget::class,
             SspServicePointGeoCodeWidget::class,
+            SingleAddressPerShipmentTypeWidget::class,
         ];
     }
 
@@ -393,6 +401,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new SingleAddressPerShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin(),
+            new AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 

@@ -13,6 +13,8 @@ use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProvide
 use Pyz\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use Spryker\Yves\CustomerDataChangeRequest\Plugin\Router\CustomerDataChangeRequestRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
+use Spryker\Yves\MultiFactorAuth\Plugin\Router\Agent\MultiFactorAuthAgentRouteProviderPlugin;
+use Spryker\Yves\MultiFactorAuth\Plugin\Router\Customer\MultiFactorAuthCustomerRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\SslPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\StoreDefaultPostAddRouteManipulatorPlugin;
@@ -176,6 +178,8 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new ShoppingListWidgetAsyncRouteProviderPlugin(),
             new PaymentAppWidgetRouteProviderPlugin(),
             new CustomerDataChangeRequestRouteProviderPlugin(),
+            new MultiFactorAuthCustomerRouteProviderPlugin(),
+            new MultiFactorAuthAgentRouteProviderPlugin(),
             new SitemapRouteProviderPlugin(),
             new ServicePointWidgetRouteProviderPlugin(),
             new MerchantProductOfferWidgetRouteProviderPlugin(),

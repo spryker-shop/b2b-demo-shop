@@ -1,223 +1,274 @@
 {% extends molecule('address-item-form-field-list', '@SprykerShop:CheckoutPage') %}
 
+{% define config = {
+    name: 'address-item-form-field-list',
+    tag: 'address-item-form-field-list',
+} %}
+
+{% define data = {
+    isBundle: false,
+} %}
+
+{% define attributes = {
+    'address-item-form-drop-validation': data.isBundle,
+    'same-address-for-all-items-control': "js-#{config.name}__same-for-all",
+    'product-item': "js-#{config.name}__product-item",
+    'elements-to-toggle-class': false,
+    'excluded-types': ['in-center-service'] | json_encode,
+} %}
+
 {% block body %}
     {% set isCompanyBusinessUnitShippingAddressApplicable = false %}
 
-    {% for item in data.items %}
-        {% set isItemRelatedToBundle = item.vars.data.relatedBundleItemIdentifier %}
+    {% widget 'SspAddressFormItemsByShipmentTypeWidget' args [data.items] with {
+        embed: {
+            addressSelectClassName: data.addressSelectClassName,
+            validatorTriggerClassName: data.validatorTriggerClassName,
+            itemShippingClassName: data.itemShippingClassName,
+            hiddenClassName: data.hiddenClassName,
+            validationClassName: data.validationClassName,
+            config: config,
+            attributes: attributes,
+            isBundle: data.isBundle,
+        },
+    } only %}
+        {% block item %}
+            {% set isItemRelatedToBundle = item.vars.data.relatedBundleItemIdentifier %}
 
-        {% if not isItemRelatedToBundle %}
-            <div class="{{ config.name }}__wrapper grid grid--middle {{ config.jsName }}__item-shipping-{{ loop.index }}">
-                {% set shippingAddress = item.shippingAddress %}
-                {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
-                {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
-                {% set shippingAddressValue = shippingAddress.id_customer_address.vars.value | default %}
-                {% set shippingCompanyAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
-                {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', item.shippingAddress.vars.data]) %}
-                {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
-                {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
-                {% set formFieldUniqueName = 'multiShippingAddresses' %}
-                {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 %}
-                {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
-                {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' ' ~ data.hiddenClassName %}
+            {% if not isItemRelatedToBundle %}
+                <div class="{{ embed.config.name }}__wrapper grid grid--middle {{ embed.config.jsName }}__item-shipping-{{ loopIndex }}">
+                    {% set shippingAddress = item.shippingAddress %}
+                    {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
+                    {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
+                    {% set shippingAddressValue = shippingAddress.id_customer_address.vars.value | default %}
+                    {% set shippingCompanyAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
+                    {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', item.shippingAddress.vars.data]) %}
+                    {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
+                    {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
+                    {% set formFieldUniqueName = embed.isBundle ? 'multiShippingAddressesForBundleItems' : 'multiShippingAddresses' %}
+                    {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 %}
+                    {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
+                    {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' ' ~ embed.hiddenClassName %}
 
-                {% set deliveryContainerClassName = config.jsName ~ '__delivery--' ~ loop.index %}
-                {% set deliverySelectClassName = config.jsName ~ '__trigger--' ~ loop.index %}
-                {% set formItemShippingClassName = config.jsName ~ '__item-shipping--' ~ loop.index %}
-                {% set hasShipmentTypes = item.shipmentType is defined %}
-                {% set defaultShipmentType = 'delivery' %}
-                {% set currentShipmentType = item.shipmentType.key.vars.value | default %}
-                {% set isDefaultShipmentType = currentShipmentType == defaultShipmentType %}
-                {% set shipmentTypeHiddenClassName = hasShipmentTypes and not isDefaultShipmentType ? data.hiddenClassName %}
+                    {% set deliveryContainerClassName = embed.config.jsName ~ '__delivery--' ~ loopIndex %}
+                    {% set deliverySelectClassName = embed.config.jsName ~ '__trigger--' ~ loopIndex %}
+                    {% set formItemShippingClassName = embed.config.jsName ~ '__item-shipping--' ~ loopIndex %}
+                    {% set hasShipmentTypes = item.shipmentType is defined %}
+                    {% set defaultShipmentTypes = ['delivery', 'on-site-service'] %}
+                    {% set currentShipmentType = item.shipmentType.key.vars.value | default %}
+                    {% set isDefaultShipmentType = currentShipmentType in defaultShipmentTypes %}
+                    {% set shipmentTypeHiddenClassName = hasShipmentTypes and not isDefaultShipmentType ? embed.hiddenClassName %}
 
-                {% block multiShippingAddressesInner %}
-                    {% embed molecule('product-card-item') with {
-                        modifiers: ['checkout', 'checkout-address'],
-                        data: {
-                            listItem: item.vars.data,
-                            quantity: item.vars.data.quantity,
-                            priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'text-right-from-tablet'],
-                        },
-                        embed: {
-                            jsName: config.jsName,
-                            item: item,
-                            index: loop.index,
-                            hasShippingAddressesAndApplicable: hasShippingAddressesAndApplicable,
-                            companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
-                            isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
-                            hasShippingAddresses: hasShippingAddresses,
-                            hasCompanyUnitAddresses: hasCompanyUnitAddresses,
-                            formFieldUniqueName: formFieldUniqueName,
-                            isNewAddressSelected: isNewAddressSelected,
-                            isSavedAddressSelected: isSavedAddressSelected,
-                            shippingAddressValue: shippingAddressValue,
-                            shippingCompanyAddressValue: shippingCompanyAddressValue,
-                            addressSelectClassName: data.addressSelectClassName,
-                            deliveryContainerClassName: deliveryContainerClassName,
-                            deliverySelectClassName: deliverySelectClassName,
-                            shipmentTypeHiddenClassName: shipmentTypeHiddenClassName,
-                            validatorTriggerClassName: data.validatorTriggerClassName,
-                            itemShippingClassName: data.itemShippingClassName,
-                            addressSelectClassName: data.addressSelectClassName,
-                        },
-                    } only %}
-                        {% block image %}
-                            {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
+                    {% set elementsToGroupToggle = "#{embed.config.jsName}__toggle-on-same-address-#{groupIndex}" %}
 
-                            {% include molecule('product-item-image') with {
-                                modifiers: ['small'],
-                                data: {
-                                    name: data.listItem.name,
-                                    image: imageUrl,
-                                },
-                            } only %}
-                        {% endblock %}
-
-                        {% block title %}
-                            <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
-                        {% endblock %}
-
-                        {% block productConfiguration %}
-                            {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.listItem] only %}
-                                {% block status %}{% endblock %}
-                            {% endwidget %}
-                        {% endblock %}
-
-                        {% block subQuantity %}
-                            {% if data.listItem.quantitySalesUnit is not empty %}
-                                {% include atom('quantity-option') with {
-                                    data: {
-                                        value: data.listItem.quantitySalesUnit.value,
-                                        precision: data.listItem.quantitySalesUnit.precision,
-                                        optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
-                                    },
-                                } only %}
-                            {% endif %}
-                        {% endblock %}
-
-                        {% block productTotal %}
-                            {{ parent() }}
-
-                            <div class="{{ config.name }}__dropdown">
-                                {% if embed.hasShippingAddresses %}
-                                    {% widget 'ShipmentTypeAddressFormWidget' args [embed.item] with {
-                                        data: {
-                                            deliveryContainerClassName: embed.deliveryContainerClassName,
-                                            deliverySelectClassName: embed.deliverySelectClassName,
-                                            shipmentTypesClassName: embed.validatorTriggerClassName,
-                                            servicePointClassName: embed.itemShippingClassName,
-                                            hideChoices: true,
-                                        },
-                                    } only %}{% endwidget %}
-                                {% endif %}
-
-                                <div class="{{ embed.deliveryContainerClassName }} {{ embed.shipmentTypeHiddenClassName }}">
-                                    {% if embed.hasShippingAddressesAndApplicable and embed.isCompanyBusinessUnitShippingAddressApplicable %}
-                                        {% widget embed.companyBusinessUnitShippingAddressWidget with {
-                                            data: {
-                                                itemShippingTriggerJsClass: embed.addressSelectClassName ~ ' ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
-                                                hasPreselectedOption: not embed.isSavedAddressSelected and not embed.isNewAddressSelected,
-                                            },
-                                            embed: {
-                                                index: embed.index,
-                                                item: embed.item,
-                                                jsName: embed.jsName,
-                                                formFieldUniqueName: embed.formFieldUniqueName,
-                                                shippingAddressValue: embed.shippingAddressValue,
-                                                shippingCompanyAddressValue: embed.shippingCompanyAddressValue,
-                                            },
-                                        } only %}
-                                            {% block addressHandler %}
-                                                {% set index = embed.index - 1 %}
-                                                {% include molecule('company-business-unit-address-handler', 'CompanyWidget') ignore missing with {
-                                                    attributes: {
-                                                        'form-selector': '.' ~ embed.jsName ~ '__item-shipping-' ~ embed.index,
-                                                        'data-selector': '.' ~ embed.jsName ~ '__trigger--' ~ embed.index,
-                                                        'default-address-selector': '.' ~ embed.jsName ~ '__default-address-item-shipping-' ~ embed.index,
-                                                        'address-hidden-input-selector': '[name="addressesForm[' ~ embed.formFieldUniqueName ~ '][' ~ index ~ '][shippingAddress][id_customer_address]"]',
-                                                        'company-address-hidden-input-selector': '[name="addressesForm[' ~ embed.formFieldUniqueName ~ '][' ~ index ~ '][shippingAddress][id_company_unit_address]"]',
-                                                        'addresses': data.addresses,
-                                                    },
-                                                } only %}
-                                            {% endblock %}
-
-                                            {% block hiddenFields %}
-                                                {% set index = embed.index - 1 %}
-                                                <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_customer_address]" value="{{ embed.shippingAddressValue }}">
-                                                <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_company_unit_address]" value="{{ embed.shippingCompanyAddressValue }}">
-                                                <input type="hidden" class="{{ embed.jsName }}__default-address-item-shipping-{{ embed.index }}" value="{{ defaultAddressKey }}">
-                                            {% endblock %}
-                                        {% endwidget %}
-
-                                        {% if embed.hasShippingAddresses %}
-                                            {% do embed.item.shippingAddress.id_customer_address.setRendered %}
-                                        {% endif %}
-
-                                        {% if embed.hasCompanyUnitAddresses %}
-                                            {% do embed.item.shippingAddress.id_company_unit_address.setRendered %}
-                                        {% endif %}
-                                    {% else %}
-                                        {{ form_row(embed.item.shippingAddress.id_customer_address, {
-                                            label: 'page.checkout.address.delivery.address_select' | trans,
-                                            attr: {
-                                                class: embed.addressSelectClassName ~ ' ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
-                                            },
-                                        }) }}
-                                    {% endif %}
-                                </div>
-                            </div>
-                        {% endblock %}
-
-                        {% block note %}
-                            {% if data.listItem.cartNote is not empty %}
-                                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
-                                    data: {
-                                        isNoteNotEmpty: true,
-                                        canWrite: false,
-                                        label: 'cart_note.checkout_page.quote_note',
-                                        note: data.listItem.cartNote,
-                                    },
-                                } only %}
-                            {% endif %}
-                        {% endblock %}
-
-                        {% block bundle %}{% endblock %}
-                    {% endembed %}
-                {% endblock %}
-
-                <div class="{{ data.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
-                    {% include molecule('form') with {
-                        class: data.itemShippingClassName ~ ' ' ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ newAddressHiddenClassName ~ ' ' ~ config.name ~ '__content ' ~ config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
-                        modifiers: ['checkout-address-content'],
-                        data: {
-                            form: item.shippingAddress,
-                            enableStart: false,
-                            enableEnd: false,
-                            layout: {
-                                salutation: 'col col--sm-12 col--lg-4',
-                                first_name: 'col col--sm-12 col--lg-4',
-                                last_name: 'col col--sm-12 col--lg-4',
-                                address1: 'col col--sm-12 col--lg-8',
-                                address2: 'col col--sm-12 col--lg-4',
-                                zip_code: 'col col--sm-12 col--lg-4',
-                                city: 'col col--sm-12 col--lg-4',
-                                iso2_code: 'col col--sm-12 col--lg-4',
-                            },
-                        },
-                    } only %}
-
-                    {% if hasShippingAddressesAndApplicable %}
-                        {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
-                            class: config.jsName ~ '__toggler',
+                    {% block multiShippingAddressesInner %}
+                        {% embed molecule('product-card-item') with {
+                            class: embed.attributes['product-item'],
+                            modifiers: ['checkout', 'checkout-address'],
                             attributes: {
-                                'trigger-selector': '.' ~ config.jsName ~ '__trigger--' ~ loop.index,
-                                'target-selector': '.' ~ config.jsName ~ '__item-shipping--' ~ loop.index,
-                                'parent-target-class-name': config.jsName,
+                                'group-index': groupIndex,
+                                'address-control': "#{embed.config.jsName}__control-#{groupIndex}",
+                                'shipment-type': currentShipmentType,
+                            },
+                            data: {
+                                listItem: item.vars.data,
+                                quantity: item.vars.data.quantity,
+                                priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'text-right-from-tablet'],
+                            },
+                            embed: {
+                                jsName: embed.config.jsName,
+                                item: item,
+                                subIndex: loop.index,
+                                index: loopIndex,
+                                hasShippingAddressesAndApplicable: hasShippingAddressesAndApplicable,
+                                companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
+                                isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
+                                hasShippingAddresses: hasShippingAddresses,
+                                hasCompanyUnitAddresses: hasCompanyUnitAddresses,
+                                formFieldUniqueName: formFieldUniqueName,
+                                isNewAddressSelected: isNewAddressSelected,
+                                isSavedAddressSelected: isSavedAddressSelected,
+                                shippingAddressValue: shippingAddressValue,
+                                shippingCompanyAddressValue: shippingCompanyAddressValue,
+                                addressSelectClassName: embed.addressSelectClassName,
+                                deliveryContainerClassName: deliveryContainerClassName,
+                                deliverySelectClassName: deliverySelectClassName,
+                                shipmentTypeHiddenClassName: shipmentTypeHiddenClassName,
+                                validatorTriggerClassName: embed.validatorTriggerClassName,
+                                itemShippingClassName: embed.itemShippingClassName,
+                                addressSelectClassName: embed.addressSelectClassName,
+                                group: group,
+                                isDefaultShipmentType: isDefaultShipmentType,
+                                elementsToGroupToggle: elementsToGroupToggle,
+                                attributes: embed.attributes
                             },
                         } only %}
-                    {% endif %}
+                            {% block image %}
+                                {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
+
+                                {% include molecule('product-item-image') with {
+                                    modifiers: ['small'],
+                                    data: {
+                                        name: data.listItem.name,
+                                        image: imageUrl,
+                                    },
+                                } only %}
+                            {% endblock %}
+
+                            {% block title %}
+                                <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                            {% endblock %}
+
+                            {% block productConfiguration %}
+                                {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.listItem] only %}
+                                    {% block status %}{% endblock %}
+                                {% endwidget %}
+                            {% endblock %}
+
+                            {% block subQuantity %}
+                                {% if data.listItem.quantitySalesUnit is not empty %}
+                                    {% include atom('quantity-option') with {
+                                        data: {
+                                            value: data.listItem.quantitySalesUnit.value,
+                                            precision: data.listItem.quantitySalesUnit.precision,
+                                            optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
+                                        },
+                                    } only %}
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block productTotal %}
+                                {{ parent() }}
+
+                                <div class="{{ config.name }}__dropdown">
+                                    {% if embed.hasShippingAddresses %}
+                                        {% widget 'ShipmentTypeAddressFormWidget' args [embed.item] with {
+                                            data: {
+                                                deliveryContainerClassName: embed.deliveryContainerClassName,
+                                                deliverySelectClassName: embed.deliverySelectClassName,
+                                                shipmentTypesClassName: embed.validatorTriggerClassName,
+                                                servicePointClassName: embed.itemShippingClassName,
+                                                hideChoices: true,
+                                            },
+                                        } only %}{% endwidget %}
+                                    {% endif %}
+
+                                    <div class="{{ embed.subIndex != 1 ? embed.elementsToGroupToggle }} {{ embed.deliveryContainerClassName }} {{ embed.shipmentTypeHiddenClassName }}">
+                                        {% if embed.hasShippingAddressesAndApplicable and embed.isCompanyBusinessUnitShippingAddressApplicable %}
+                                            {% widget embed.companyBusinessUnitShippingAddressWidget with {
+                                                data: {
+                                                    itemShippingTriggerJsClass: embed.addressSelectClassName ~ ' ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
+                                                    hasPreselectedOption: not embed.isSavedAddressSelected and not embed.isNewAddressSelected,
+                                                },
+                                                embed: {
+                                                    index: embed.index,
+                                                    item: embed.item,
+                                                    jsName: embed.jsName,
+                                                    formFieldUniqueName: embed.formFieldUniqueName,
+                                                    shippingAddressValue: embed.shippingAddressValue,
+                                                    shippingCompanyAddressValue: embed.shippingCompanyAddressValue,
+                                                    attributes: attributes,
+                                                },
+                                            } only %}
+                                                {% block addressHandler %}
+                                                    {% set index = embed.index %}
+                                                    {% include molecule('company-business-unit-address-handler', 'CompanyWidget') ignore missing with {
+                                                        attributes: {
+                                                            'form-selector': '.' ~ embed.jsName ~ '__item-shipping-' ~ embed.index,
+                                                            'data-selector': '.' ~ embed.jsName ~ '__trigger--' ~ embed.index,
+                                                            'default-address-selector': '.' ~ embed.jsName ~ '__default-address-item-shipping-' ~ embed.index,
+                                                            'address-hidden-input-selector': '[name="addressesForm[' ~ embed.formFieldUniqueName ~ '][' ~ index ~ '][shippingAddress][id_customer_address]"]',
+                                                            'company-address-hidden-input-selector': '[name="addressesForm[' ~ embed.formFieldUniqueName ~ '][' ~ index ~ '][shippingAddress][id_company_unit_address]"]',
+                                                            'addresses': data.addresses,
+                                                        },
+                                                    } only %}
+                                                {% endblock %}
+
+                                                {% block hiddenFields %}
+                                                    {% set index = embed.index %}
+                                                    <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_customer_address]" value="{{ embed.shippingAddressValue }}">
+                                                    <input type="hidden" name="addressesForm[{{ embed.formFieldUniqueName }}][{{ index }}][shippingAddress][id_company_unit_address]" value="{{ embed.shippingCompanyAddressValue }}">
+                                                    <input type="hidden" class="{{ embed.jsName }}__default-address-item-shipping-{{ embed.index }} {{ embed.attributes['address-control'] }}" value="{{ defaultAddressKey }}">
+                                                {% endblock %}
+                                            {% endwidget %}
+
+                                            {% if embed.hasShippingAddresses %}
+                                                {% do embed.item.shippingAddress.id_customer_address.setRendered %}
+                                            {% endif %}
+
+                                            {% if embed.hasCompanyUnitAddresses %}
+                                                {% do embed.item.shippingAddress.id_company_unit_address.setRendered %}
+                                            {% endif %}
+                                        {% else %}
+                                            {{ form_row(embed.item.shippingAddress.id_customer_address, {
+                                                label: 'page.checkout.address.delivery.address_select' | trans,
+                                                attr: {
+                                                    class: embed.addressSelectClassName ~ ' ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
+                                                },
+                                            }) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="{{ embed.group.items | length > 1 ?: 'is-hidden' }}">
+                                    {% widget 'SingleAddressPerShipmentTypeWidget' args [embed.item] with {
+                                        className: embed.subIndex == 1 ? embed.attributes['same-address-for-all-items-control'],
+                                        targetToHideClass: embed.elementsToGroupToggle,
+                                    } only %}{% endwidget %}
+                                </div>
+                            {% endblock %}
+
+                            {% block note %}
+                                {% if data.listItem.cartNote is not empty %}
+                                    {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                        data: {
+                                            isNoteNotEmpty: true,
+                                            canWrite: false,
+                                            label: 'cart_note.checkout_page.quote_note',
+                                            note: data.listItem.cartNote,
+                                        },
+                                    } only %}
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block bundle %}{% endblock %}
+                        {% endembed %}
+                    {% endblock %}
+
+                    <div class="{{ loop.index != 1 ? elementsToGroupToggle }} {{ embed.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
+                        {% include molecule('form') with {
+                            class: embed.itemShippingClassName ~ ' ' ~ embed.config.jsName ~ '__item-shipping--' ~ loopIndex ~ newAddressHiddenClassName ~ ' ' ~ embed.config.name ~ '__content ' ~ embed.config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
+                            modifiers: ['checkout-address-content'],
+                            data: {
+                                form: item.shippingAddress,
+                                enableStart: false,
+                                enableEnd: false,
+                                layout: {
+                                    salutation: 'col col--sm-12 col--lg-4',
+                                    first_name: 'col col--sm-12 col--lg-4',
+                                    last_name: 'col col--sm-12 col--lg-4',
+                                    address1: 'col col--sm-12 col--lg-8',
+                                    address2: 'col col--sm-12 col--lg-4',
+                                    zip_code: 'col col--sm-12 col--lg-4',
+                                    city: 'col col--sm-12 col--lg-4',
+                                    iso2_code: 'col col--sm-12 col--lg-4',
+                                },
+                            },
+                        } only %}
+
+                        {% if hasShippingAddressesAndApplicable %}
+                            {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
+                                class: embed.config.jsName ~ '__toggler',
+                                attributes: {
+                                    'trigger-selector': '.' ~ embed.config.jsName ~ '__trigger--' ~ loopIndex,
+                                    'target-selector': '.' ~ embed.config.jsName ~ '__item-shipping--' ~ loopIndex,
+                                    'parent-target-class-name': embed.config.jsName,
+                                },
+                            } only %}
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        {% endif %}
-    {% endfor %}
+            {% endif %}
+        {% endblock %}
+    {% endwidget %}
 {% endblock %}
