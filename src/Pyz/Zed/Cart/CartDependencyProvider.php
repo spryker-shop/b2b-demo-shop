@@ -149,7 +149,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getCartPreCheckPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
-            new ProductApprovalCartPreCheckPlugin(),
+//            new ProductApprovalCartPreCheckPlugin(),
             new ProductExistsCartPreCheckPlugin(),
             new CheckAvailabilityPlugin(),
             new CartItemPricePreCheckPlugin(),
