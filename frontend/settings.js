@@ -244,7 +244,8 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                 // absolute dirs in which look for
                 dirs: [
                     join(globalSettings.context, paths.core),
-                    join(globalSettings.context, paths.features, paths.sprykerCore),
+                    join(globalSettings.context, paths.features),
+                    join(globalSettings.context, paths.sprykerCore),
                 ],
                 // files/dirs patterns
                 patterns: [
