@@ -28,7 +28,6 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionStorageP
 use Spryker\Zed\ShoppingList\Communication\Plugin\WriteShoppingListPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\CreateSspAssetPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\CreateSspInquiryPermissionPlugin;
-use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\DownloadCompanyFilesPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\UnassignSspAssetPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\UpdateSspAssetPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewBusinessUnitSspAssetPermissionPlugin;
@@ -38,7 +37,6 @@ use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanyFilesPe
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspAssetPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspInquiryPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanyUserFilesPermissionPlugin;
-use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewDashboardPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
@@ -79,14 +77,12 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
             new SeeBusinessUnitOrdersPermissionPlugin(),
             new SeeCompanyOrdersPermissionPlugin(),
-            new DownloadCompanyFilesPermissionPlugin(),
             new ViewCompanyUserFilesPermissionPlugin(),
             new ViewCompanyBusinessUnitFilesPermissionPlugin(),
             new ViewCompanyFilesPermissionPlugin(),
             new CreateSspInquiryPermissionPlugin(),
             new ViewCompanySspInquiryPermissionPlugin(),
             new ViewBusinessUnitSspInquiryPermissionPlugin(),
-            new ViewDashboardPermissionPlugin(),
             new ViewCompanySspAssetPermissionPlugin(),
             new ViewBusinessUnitSspAssetPermissionPlugin(),
             new UpdateSspAssetPermissionPlugin(),

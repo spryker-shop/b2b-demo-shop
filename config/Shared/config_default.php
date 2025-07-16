@@ -653,6 +653,8 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
 ];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[SelfServicePortalConstants::STORAGE_NAME] = 'ssp-files';
+$config[SelfServicePortalConstants::INQUIRY_STORAGE_NAME] = 'ssp-inquiry';
+$config[SelfServicePortalConstants::ASSET_STORAGE_NAME] = 'ssp-asset-image';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 
 // ----------------------------------------------------------------------------

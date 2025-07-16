@@ -13,14 +13,14 @@ use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConfig as SprykerSe
 
 class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
 {
-    public function getInquiryInitialStateMap(): array
+    public function getInquiryInitialStateMachineMap(): array
     {
         return [
             'SspInquiryDefaultStateMachine' => 'created',
         ];
     }
 
-    public function getInquiryStateMachineProcessInquiryTypeMap(): array
+    public function getSspInquiryStateMachineProcessInquiryTypeMap(): array
     {
         return [
             'general' => 'SspInquiryDefaultStateMachine',
@@ -32,7 +32,7 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     /**
      * @return string
      */
-    public function getInquiryCancelStateMachineEventName(): string
+    public function getSspInquiryCancelStateMachineEventName(): string
     {
         return 'cancel';
     }
@@ -49,13 +49,5 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
             'rejected',
             'canceled',
         ];
-    }
-
-    /**
-     * @return string
-     */
-    public function getInquiryStorageName(): string
-    {
-        return 'ssp-inquiry';
     }
 }
