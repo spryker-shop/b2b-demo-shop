@@ -59,7 +59,7 @@
                     {% endblock %}
                 {% endwidget %}
 
-                <button class="{{ config.name }}__action button button--small-space {{ embed.jsName }}__trigger" disabled>
+                <button class="{{ config.name }}__action button button--small-space {{ embed.jsName }}__trigger" data-qa="reorder-selected-button" disabled>
                     {{ 'customer.order.reorder_selected' | trans }}
                 </button>
 
