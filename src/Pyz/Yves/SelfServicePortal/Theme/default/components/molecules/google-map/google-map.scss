@@ -1,9 +1,9 @@
-@include self-service-portal-google-map();
+@include self-service-portal-google-map($name: '.google-map') {
+    .gm-style-iw-c {
+        padding-top: rem(12) !important;
+    }
 
-.gm-style-iw-c {
-    padding-top: 12px !important;
-}
-
-.gm-style-iw-chr {
-    display: none;
+    .gm-style-iw-chr {
+        display: none;
+    }
 }

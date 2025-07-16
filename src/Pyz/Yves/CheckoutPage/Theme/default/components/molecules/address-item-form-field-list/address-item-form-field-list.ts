@@ -1,6 +1,6 @@
 import Component from 'ShopUi/models/component';
 
-interface ControlInfo {
+interface ControlState {
     valid: boolean;
     main: {
         checked?: boolean;
@@ -14,10 +14,10 @@ interface ControlInfo {
 
 export default class AddressItemFormFieldList extends Component {
     protected excludeValidation: boolean = null;
-    protected controls: Record<string, ControlInfo> = {};
+    protected controls: Record<string, ControlState> = {};
     protected DEFAULT_VALUE = '0';
 
-    protected sameForAllControl: HTMLElement[];
+    protected sameAddressForAllItemsControl: HTMLElement[];
     protected elementsToToggle: HTMLElement[];
 
     protected observer = new MutationObserver(this.onInputChangeCallback.bind(this));
@@ -28,8 +28,8 @@ export default class AddressItemFormFieldList extends Component {
             this.excludeValidation = true;
         }
 
-        this.sameForAllControl = Array.from(
-            this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-for-all-control')} input`),
+        this.sameAddressForAllItemsControl = Array.from(
+            this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-address-for-all-items-control')} input`),
         );
         this.elementsToToggle = Array.from(
             document.querySelectorAll<HTMLElement>(`.${this.getAttribute('elements-to-toggle-class')}`),
@@ -53,7 +53,7 @@ export default class AddressItemFormFieldList extends Component {
     }
 
     protected mapEvents(): void {
-        this.sameForAllControl.forEach((control: HTMLInputElement) => {
+        this.sameAddressForAllItemsControl.forEach((control: HTMLInputElement) => {
             const wrapper = control.closest<HTMLElement>(`.${this.getAttribute('product-item')}`);
             const groupIndex = wrapper.getAttribute('group-index');
             const controlClass = wrapper.getAttribute('address-control');
@@ -72,7 +72,7 @@ export default class AddressItemFormFieldList extends Component {
                 ).map((item) => {
                     const value = item.querySelector<HTMLInputElement>(`.${controlClass}`).value;
 
-                    if (item.querySelector(`.${this.getAttribute('same-for-all-control')}`)) {
+                    if (item.querySelector(`.${this.getAttribute('same-address-for-all-items-control')}`)) {
                         main.value = value;
                     }
 
@@ -86,7 +86,7 @@ export default class AddressItemFormFieldList extends Component {
 
             control?.addEventListener('change', (event) => {
                 this.controls[groupIndex].main.checked = (event.target as HTMLInputElement).checked;
-                this.onValidationEvent();
+                this.validation();
             });
         });
 
@@ -97,7 +97,7 @@ export default class AddressItemFormFieldList extends Component {
             });
         });
 
-        this.onValidationEvent();
+        this.validation();
     }
 
     protected onInputChangeCallback(event: MutationRecord[]): void {
@@ -108,15 +108,15 @@ export default class AddressItemFormFieldList extends Component {
 
         this.controls[groupIndex].items.find((child) => child.item === element).value = value;
 
-        if (element.querySelector(`.${this.getAttribute('same-for-all-control')}`)) {
+        if (element.querySelector(`.${this.getAttribute('same-address-for-all-items-control')}`)) {
             this.controls[groupIndex].main.value = value;
         }
 
-        this.onValidationEvent();
+        this.validation();
     }
 
-    protected onValidationEvent(): void {
-        const isValid = this.validation();
+    protected validation(): void {
+        const isValid = this.isValid();
 
         this.elementsToToggle.forEach((element) => {
             element.classList.toggle('is-hidden', !isValid);
@@ -130,7 +130,7 @@ export default class AddressItemFormFieldList extends Component {
         });
     }
 
-    protected validation(): boolean {
+    protected isValid(): boolean {
         const valuesToCompare: string[] = [];
 
         if (this.excludeValidation) {
