@@ -13,7 +13,7 @@ interface ControlInfo {
 }
 
 export default class AddressItemFormFieldList extends Component {
-    protected hasExcludedTypes: boolean = null;
+    protected excludeValidation: boolean = null;
     protected controls: Record<string, ControlInfo> = {};
     protected DEFAULT_VALUE = '0';
 
@@ -24,6 +24,10 @@ export default class AddressItemFormFieldList extends Component {
 
     protected readyCallback(): void {}
     protected init(): void {
+        if (document.querySelector(`[address-item-form-drop-validation]`)) {
+            this.excludeValidation = true;
+        }
+
         this.sameForAllControl = Array.from(
             this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-for-all-control')} input`),
         );
@@ -36,7 +40,7 @@ export default class AddressItemFormFieldList extends Component {
             const currentShipmentType = element.getAttribute('shipment-type');
 
             if (excludedTypes.includes(currentShipmentType)) {
-                this.hasExcludedTypes = true;
+                this.excludeValidation = true;
                 break;
             }
         }
@@ -129,7 +133,7 @@ export default class AddressItemFormFieldList extends Component {
     protected validation(): boolean {
         const valuesToCompare: string[] = [];
 
-        if (this.hasExcludedTypes) {
+        if (this.excludeValidation) {
             return false;
         }
 
