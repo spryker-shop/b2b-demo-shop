@@ -1,7 +1,7 @@
 {% extends view('order-detail', '@SprykerShop:CustomerPage') %}
 
 {% block customerContent %}
-    {% embed molecule('cart-reorder-form', 'CartReorderPage') ignore missing with {
+    {% embed molecule('customer-reorder-form', 'CustomerReorderWidget') ignore missing with {
         data: {
             order: data.order,
         },
@@ -17,6 +17,7 @@
                     order: embed.order,
                     shipmentGroups: embed.shipmentGroups,
                     orderShipmentExpenses: embed.orderShipmentExpenses,
+                    reorderSelectionClassName: config.jsName ~ '__selection',
                 },
             } only %}
         {% endblock %}
