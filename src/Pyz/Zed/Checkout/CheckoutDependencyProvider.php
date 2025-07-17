@@ -78,7 +78,6 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductQuantityRestrictionCheckoutPreConditionPlugin(),
             new ServicePointCheckoutPreConditionPlugin(),
             new ShipmentTypeCheckoutPreConditionPlugin(),
-//            new ProductApprovalCheckoutPreConditionPlugin(),
         ];
     }
 
