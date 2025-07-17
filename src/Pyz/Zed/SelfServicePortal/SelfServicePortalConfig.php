@@ -38,7 +38,7 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     /**
      * @return string|null
      */
-    public function getInquiryPendingStatus(): ?string
+    public function getInquiryPendingStatus(): string
     {
         return 'pending';
     }
