@@ -68,7 +68,7 @@
 {% block actions %}
     {% if can('CreateSspAssetPermissionPlugin') %}
         <a class="button action-bar__action" data-qa="create-ssp-asset"
-            href="{{ url('ssp/asset/create') }}">
+            href="{{ url('customer/ssp-asset/create') }}">
             {{ 'customer.ssp_asset.create.button' | trans }}
         </a>
     {% endif %}

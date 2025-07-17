@@ -1,7 +1,7 @@
 {% extends view('company-file-menu-item', '@SprykerFeature:SelfServicePortal') %}
 
 {% define data = {
-    url: url('ssp/company-file/list-file'),
+    url: url('customer/ssp-file/list-file'),
     label: 'self_service_portal.company_file' | trans,
     name: 'ssp-file-management',
 } %}
@@ -9,7 +9,6 @@
 {% block body %}
     {% set modifiers = data.modifiers | default([]) %}
 
-    {% if data.canViewFiles %}
         {% block content %}
             {% include molecule('navigation-sidebar-item') with {
                 data: {
@@ -22,5 +21,4 @@
                 modifiers: data.isActivePage ? ['active'] | merge(modifiers) : modifiers,
             } only %}
         {% endblock %}
-    {% endif %}
 {% endblock %}
