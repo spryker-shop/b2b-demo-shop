@@ -55,11 +55,6 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductPageSearch\
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
     /**
-     * @var string
-     */
-    public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
-
-    /**
      * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataExpanderPluginInterface>
      */
     protected function getDataExpanderPlugins(): array
@@ -145,26 +140,6 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductMeasurementUnitProductAbstractAddToCartPlugin(),
             new ProductPackagingUnitProductAbstractAddToCartPlugin(),
             new AvailabilityProductAbstractAddToCartPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcreteCollectionFilterPluginInterface>
-     */
-    protected function getProductConcreteCollectionFilterPlugins(): array
-    {
-        return [
-//            new ProductApprovalProductConcreteCollectionFilterPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageSearchCollectionFilterPluginInterface>
-     */
-    protected function getProductPageSearchCollectionFilterPlugins(): array
-    {
-        return [
-//            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
         ];
     }
 }
