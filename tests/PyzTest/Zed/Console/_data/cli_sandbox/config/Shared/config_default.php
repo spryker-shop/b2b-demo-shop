@@ -182,7 +182,7 @@ $config[TwigConstants::YVES_THEME]
 
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
-$config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
+$config[ErrorHandlerConstants::ERROR_RENDERER] = \Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer::class;
 
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
 $config[ApplicationConstants::YVES_COOKIE_DEVICE_ID_NAME] = 'did';
