@@ -72,8 +72,6 @@ actions:
       source: data/import/common/US/product_price_schedule.csv
     - data_entity: product-stock
       source: data/import/common/common/product_stock.csv
-    - data_entity: product-approval-status
-      source: data/import/common/common/product_abstract_approval_status.csv
     - data_entity: product-configuration
       source: data/import/common/common/product_configuration.csv
     # Store relation
@@ -256,6 +254,7 @@ actions:
       source: data/import/common/common/service.csv
     - data_entity: shipment-type-service-type
       source: data/import/common/common/shipment_type_service_type.csv
+
     # Store relation
     - data_entity: service-point-store
       source: data/import/common/US/service_point_store.csv
