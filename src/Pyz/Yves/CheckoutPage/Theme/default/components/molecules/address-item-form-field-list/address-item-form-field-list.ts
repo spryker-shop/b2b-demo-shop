@@ -13,7 +13,7 @@ interface ControlState {
 }
 
 export default class AddressItemFormFieldList extends Component {
-    protected excludeValidation: boolean = null;
+    protected visibleWithoutValidation: boolean = null;
     protected controls: Record<string, ControlState> = {};
     protected DEFAULT_VALUE = '0';
 
@@ -24,15 +24,20 @@ export default class AddressItemFormFieldList extends Component {
 
     protected readyCallback(): void {}
     protected init(): void {
+        this.elementsToToggle = Array.from(
+            document.querySelectorAll<HTMLElement>(`.${this.getAttribute('elements-to-toggle-class')}`),
+        );
+
         if (document.querySelector(`[address-item-form-drop-validation]`)) {
-            this.excludeValidation = true;
+            this.visibleWithoutValidation = false;
+
+            this.validation();
+
+            return;
         }
 
         this.sameAddressForAllItemsControl = Array.from(
             this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-address-for-all-items-control')} input`),
-        );
-        this.elementsToToggle = Array.from(
-            document.querySelectorAll<HTMLElement>(`.${this.getAttribute('elements-to-toggle-class')}`),
         );
 
         for (const element of Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('product-item')}`))) {
@@ -40,7 +45,7 @@ export default class AddressItemFormFieldList extends Component {
             const currentShipmentType = element.getAttribute('shipment-type');
 
             if (excludedTypes.includes(currentShipmentType)) {
-                this.excludeValidation = true;
+                this.visibleWithoutValidation = false;
                 break;
             }
         }
@@ -90,12 +95,18 @@ export default class AddressItemFormFieldList extends Component {
             });
         });
 
-        Object.values(this.controls).forEach((data) => {
+        const items = Object.values(this.controls).flatMap((data) => {
             data.items.forEach(({ item }) => {
                 const input = item.querySelector<HTMLInputElement>(`.${item.getAttribute('address-control')}`);
                 this.observer.observe(input, { attributes: true, attributeFilter: ['value'] });
             });
+
+            return data.items;
         });
+
+        if (items.length === 1) {
+            this.visibleWithoutValidation = true;
+        }
 
         this.validation();
     }
@@ -126,6 +137,7 @@ export default class AddressItemFormFieldList extends Component {
             if (!isValid && input) {
                 input.checked = false;
                 input.value = null;
+                input.dispatchEvent(new Event('change'));
             }
         });
     }
@@ -133,8 +145,8 @@ export default class AddressItemFormFieldList extends Component {
     protected isValid(): boolean {
         const valuesToCompare: string[] = [];
 
-        if (this.excludeValidation) {
-            return false;
+        if (this.visibleWithoutValidation !== null) {
+            return this.visibleWithoutValidation;
         }
 
         for (const key in this.controls) {
