@@ -197,7 +197,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getPreReloadPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
-            new ProductApprovalPreReloadItemsPlugin(),
+//            new ProductApprovalPreReloadItemsPlugin(),
             new CartConfigurableBundlePreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
             new RemoveRestrictedItemsPreReloadPlugin(),
