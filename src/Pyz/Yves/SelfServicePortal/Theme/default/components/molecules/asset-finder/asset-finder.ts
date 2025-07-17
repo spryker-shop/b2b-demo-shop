@@ -1,6 +1,7 @@
 import { AssetEventDetail } from 'SelfServicePortal/components/molecules/asset-list/asset-list';
 import CoreAssetFinder from 'SelfServicePortal/components/molecules/asset-finder/asset-finder';
 import { EVENT_CLOSE_POPUP } from 'ShopUi/components/molecules/main-popup/main-popup';
+import debounce from 'lodash-es/debounce';
 
 export default class AssetFinder extends CoreAssetFinder {
     protected popup: HTMLElement;
@@ -28,6 +29,11 @@ export default class AssetFinder extends CoreAssetFinder {
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     protected mapChangeButtonClickEvent(): void {}
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    protected async onSearchFocus(): Promise<void> {}
+
+    protected mapSearchInputEvents(): void {
+        this.searchInput.addEventListener(
+            'keyup',
+            debounce(() => this.onInputKeyUp(), this.debounceDelay),
+        );
+    }
 }

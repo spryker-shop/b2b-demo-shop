@@ -1,6 +1,6 @@
 import Component from 'ShopUi/models/component';
 
-interface ControlInfo {
+interface ControlState {
     valid: boolean;
     main: {
         checked?: boolean;
@@ -13,22 +13,31 @@ interface ControlInfo {
 }
 
 export default class AddressItemFormFieldList extends Component {
-    protected hasExcludedTypes: boolean = null;
-    protected controls: Record<string, ControlInfo> = {};
+    protected visibleWithoutValidation: boolean = null;
+    protected controls: Record<string, ControlState> = {};
     protected DEFAULT_VALUE = '0';
 
-    protected sameForAllControl: HTMLElement[];
+    protected sameAddressForAllItemsControl: HTMLElement[];
     protected elementsToToggle: HTMLElement[];
 
     protected observer = new MutationObserver(this.onInputChangeCallback.bind(this));
 
     protected readyCallback(): void {}
     protected init(): void {
-        this.sameForAllControl = Array.from(
-            this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-for-all-control')} input`),
-        );
         this.elementsToToggle = Array.from(
             document.querySelectorAll<HTMLElement>(`.${this.getAttribute('elements-to-toggle-class')}`),
+        );
+
+        if (document.querySelector(`[address-item-form-drop-validation]`)) {
+            this.visibleWithoutValidation = false;
+
+            this.validation();
+
+            return;
+        }
+
+        this.sameAddressForAllItemsControl = Array.from(
+            this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-address-for-all-items-control')} input`),
         );
 
         for (const element of Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('product-item')}`))) {
@@ -36,7 +45,7 @@ export default class AddressItemFormFieldList extends Component {
             const currentShipmentType = element.getAttribute('shipment-type');
 
             if (excludedTypes.includes(currentShipmentType)) {
-                this.hasExcludedTypes = true;
+                this.visibleWithoutValidation = false;
                 break;
             }
         }
@@ -49,7 +58,7 @@ export default class AddressItemFormFieldList extends Component {
     }
 
     protected mapEvents(): void {
-        this.sameForAllControl.forEach((control: HTMLInputElement) => {
+        this.sameAddressForAllItemsControl.forEach((control: HTMLInputElement) => {
             const wrapper = control.closest<HTMLElement>(`.${this.getAttribute('product-item')}`);
             const groupIndex = wrapper.getAttribute('group-index');
             const controlClass = wrapper.getAttribute('address-control');
@@ -68,7 +77,7 @@ export default class AddressItemFormFieldList extends Component {
                 ).map((item) => {
                     const value = item.querySelector<HTMLInputElement>(`.${controlClass}`).value;
 
-                    if (item.querySelector(`.${this.getAttribute('same-for-all-control')}`)) {
+                    if (item.querySelector(`.${this.getAttribute('same-address-for-all-items-control')}`)) {
                         main.value = value;
                     }
 
@@ -82,18 +91,24 @@ export default class AddressItemFormFieldList extends Component {
 
             control?.addEventListener('change', (event) => {
                 this.controls[groupIndex].main.checked = (event.target as HTMLInputElement).checked;
-                this.onValidationEvent();
+                this.validation();
             });
         });
 
-        Object.values(this.controls).forEach((data) => {
+        const items = Object.values(this.controls).flatMap((data) => {
             data.items.forEach(({ item }) => {
                 const input = item.querySelector<HTMLInputElement>(`.${item.getAttribute('address-control')}`);
                 this.observer.observe(input, { attributes: true, attributeFilter: ['value'] });
             });
+
+            return data.items;
         });
 
-        this.onValidationEvent();
+        if (items.length === 1) {
+            this.visibleWithoutValidation = true;
+        }
+
+        this.validation();
     }
 
     protected onInputChangeCallback(event: MutationRecord[]): void {
@@ -104,15 +119,15 @@ export default class AddressItemFormFieldList extends Component {
 
         this.controls[groupIndex].items.find((child) => child.item === element).value = value;
 
-        if (element.querySelector(`.${this.getAttribute('same-for-all-control')}`)) {
+        if (element.querySelector(`.${this.getAttribute('same-address-for-all-items-control')}`)) {
             this.controls[groupIndex].main.value = value;
         }
 
-        this.onValidationEvent();
+        this.validation();
     }
 
-    protected onValidationEvent(): void {
-        const isValid = this.validation();
+    protected validation(): void {
+        const isValid = this.isValid();
 
         this.elementsToToggle.forEach((element) => {
             element.classList.toggle('is-hidden', !isValid);
@@ -122,15 +137,16 @@ export default class AddressItemFormFieldList extends Component {
             if (!isValid && input) {
                 input.checked = false;
                 input.value = null;
+                input.dispatchEvent(new Event('change'));
             }
         });
     }
 
-    protected validation(): boolean {
+    protected isValid(): boolean {
         const valuesToCompare: string[] = [];
 
-        if (this.hasExcludedTypes) {
-            return false;
+        if (this.visibleWithoutValidation !== null) {
+            return this.visibleWithoutValidation;
         }
 
         for (const key in this.controls) {
