@@ -42,12 +42,4 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     {
         return 'pending';
     }
-
-    /**
-     * @return string|null
-     */
-    public function getAssetStorageName(): ?string
-    {
-        return 'ssp-asset-image';
-    }
 }
