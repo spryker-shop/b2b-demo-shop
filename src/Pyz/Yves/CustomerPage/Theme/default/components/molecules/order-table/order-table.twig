@@ -68,49 +68,47 @@
 {% endblock %}
 
 {% block customOrderAmendmentAction %}
-    {% if widgetGlobalExists('OrderAmendmentWidget') %}
-        {% widget 'OrderAmendmentWidget' args [order] only %}
-            {% block body %}
-                {% embed molecule('order-amendment', 'SalesOrderAmendmentWidget') with {
-                    data: {
-                        form: data.form,
-                        order: data.order,
-                        hasConfirmationPopup: data.hasConfirmationPopup,
-                    }
-                } only %}
-                    {% block form %}
-                        {% set formVars = data.form.vars %}
+    {% widget 'OrderAmendmentWidget' args [order] only %}
+        {% block body %}
+            {% embed molecule('order-amendment', 'SalesOrderAmendmentWidget') with {
+                data: {
+                    form: data.form,
+                    order: data.order,
+                    hasConfirmationPopup: data.hasConfirmationPopup,
+                }
+            } only %}
+                {% block form %}
+                    {% set formVars = data.form.vars %}
 
-                        {% embed molecule('remote-form-submit') with {
-                            data: {
-                                label: (data.hasConfirmationPopup ? 'sales_order_amendment_widget.edit_order.confirm' : 'sales_order_amendment_widget.edit_order') | trans,
-                                buttonClass: 'button--expand-sm-lg link',
-                            },
-                            attributes: {
-                                'form-name': formVars.id ~ order.orderReference,
-                                'form-action': path('order-amendment', {'orderReference': order.orderReference}),
-                                'field-id': formVars.id ~ '_token_' ~ order.idSalesOrder,
-                                'field-name': formVars.id ~ '[_token]',
-                                'field-value': csrf_token(formVars.id),
-                            } | merge(data.hasConfirmationPopup ? {
-                                'initial-mount': false,
-                            }: {}),
-                        } only %}
-                            {% block innerSubmitActionContent %}
-                                {% include molecule('table-action-span') with {
-                                    class: 'link link--alt link--action',
-                                    data: {
-                                        icon: 'edit',
-                                        title: data.label,
-                                    },
-                                } only %}
-                            {% endblock %}
-                        {% endembed %}
-                    {% endblock %}
-                {% endembed %}
-            {% endblock %}
-        {% endwidget %}
-    {% endif %}
+                    {% embed molecule('remote-form-submit') with {
+                        data: {
+                            label: (data.hasConfirmationPopup ? 'sales_order_amendment_widget.edit_order.confirm' : 'sales_order_amendment_widget.edit_order') | trans,
+                            buttonClass: 'button--expand-sm-lg link',
+                        },
+                        attributes: {
+                            'form-name': formVars.id ~ order.orderReference,
+                            'form-action': path('order-amendment', {'orderReference': order.orderReference}),
+                            'field-id': formVars.id ~ '_token_' ~ order.idSalesOrder,
+                            'field-name': formVars.id ~ '[_token]',
+                            'field-value': csrf_token(formVars.id),
+                        } | merge(data.hasConfirmationPopup ? {
+                            'initial-mount': false,
+                        }: {}),
+                    } only %}
+                        {% block innerSubmitActionContent %}
+                            {% include molecule('table-action-span') with {
+                                class: 'link link--alt link--action',
+                                data: {
+                                    icon: 'edit',
+                                    title: data.label,
+                                },
+                            } only %}
+                        {% endblock %}
+                    {% endembed %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endwidget %}
 {% endblock %}
 
 {% block body %}

@@ -69,27 +69,19 @@
                                 {% block title %}
                                     <div>
                                         {% set quote = data.list is defined and data.list is not empty ? data.list : null %}
-                                        {% if widgetGlobalExists('OrderAmendmentItemLinkWidget') and listItem.url %}
-                                            {% widget 'OrderAmendmentItemLinkWidget' args [listItem.url, listItem.name, quote, listItem] with {
-                                                data: {
-                                                    configName: config.name,
-                                                },
-                                            } only %}
-                                                {% block body %}
-                                                    {% if data.url %}
-                                                        <a class="{{ data.configName}}__title" href="{{ data.url }}">{{ data.name }}</a>
-                                                    {% else %}
-                                                        {{ data.name }}
-                                                    {% endif %}
-                                                {% endblock %}
-                                            {% endwidget %}
-                                        {% else %}
-                                            {% if listItem.url %}
-                                                <a href="{{ listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }} title title--h6" title="{{ listItem.name }}" itemprop="name">{{ listItem.name }}</a>
-                                            {% else %}
-                                                {{ listItem.name }}
-                                            {% endif %}
-                                        {% endif %}
+                                        {% widget 'OrderAmendmentItemLinkWidget' args [listItem.url, listItem.name, quote, listItem] with {
+                                            data: {
+                                                configName: config.name,
+                                            },
+                                        } only %}
+                                            {% block body %}
+                                                {% if data.url %}
+                                                    <a class="{{ data.configName}}__title" href="{{ data.url }}">{{ data.name }}</a>
+                                                {% else %}
+                                                    {{ data.name }}
+                                                {% endif %}
+                                            {% endblock %}
+                                        {% endwidget %}
                                     </div>
                                 {% endblock %}
 

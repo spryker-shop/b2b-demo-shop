@@ -41,7 +41,7 @@
 
                         {% if message %}
                             <p class="{{ config.name }}__success-text">
-                                {% if widgetGlobalExists('UpdateOrderCheckoutSuccessTitleWidget') and embed.quote %}
+                                {% if embed.quote %}
                                     {% widget 'UpdateOrderCheckoutSuccessTitleWidget' args [message, embed.quote] only %}{% endwidget %}
                                 {% else %}
                                     {{ message }}
