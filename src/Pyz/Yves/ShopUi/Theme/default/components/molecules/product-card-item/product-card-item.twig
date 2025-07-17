@@ -69,19 +69,23 @@
                                 {% block title %}
                                     <div>
                                         {% set quote = data.list is defined and data.list is not empty ? data.list : null %}
-                                        {% widget 'OrderAmendmentItemLinkWidget' args [listItem.url, listItem.name, quote, listItem] with {
-                                            data: {
-                                                configName: config.name,
-                                            },
-                                        } only %}
-                                            {% block body %}
-                                                {% if data.url %}
-                                                    <a class="{{ data.configName}}__title" href="{{ data.url }}">{{ data.name }}</a>
-                                                {% else %}
-                                                    {{ data.name }}
-                                                {% endif %}
-                                            {% endblock %}
-                                        {% endwidget %}
+                                        {% if listItem.url %}
+                                            {% widget 'OrderAmendmentItemLinkWidget' args [listItem.url, listItem.name, quote, listItem] with {
+                                                data: {
+                                                    configName: config.name,
+                                                },
+                                            } only %}
+                                                {% block body %}
+                                                    {% if data.url %}
+                                                        <a class="{{ data.configName}}__title" href="{{ data.url }}">{{ data.name }}</a>
+                                                    {% else %}
+                                                        {{ data.name }}
+                                                    {% endif %}
+                                                {% endblock %}
+                                            {% endwidget %}
+                                        {% else %}
+                                            {{ listItem.name }}
+                                        {% endif %}
                                     </div>
                                 {% endblock %}
 
