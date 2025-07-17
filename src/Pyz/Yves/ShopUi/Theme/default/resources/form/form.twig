@@ -144,7 +144,7 @@
     {% define attributes = {
         id: id,
         name: full_name,
-        checked: checked | default(false),
+        checked: attr.checked | default(checked | default(false)),
         required: required | default(false),
         disabled: disabled ?: attr.disabled | default(false),
         value: value | default()
@@ -417,3 +417,13 @@
         </div>
     {%- endif -%}
 {%- endblock date_widget -%}
+
+{% block form_start %}
+    {% if form.vars.multiFactorHandlers is defined %}
+        {% for handler in form.vars.multiFactorHandlers %}
+            {{ handler|raw }}
+        {% endfor %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock form_start %}

@@ -20,8 +20,6 @@ use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearc
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataExpanderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataLoaderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearch\MerchantReferencesProductAbstractsMapExpanderPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductConcreteCollectionFilterPlugin;
-use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductPageSearchCollectionFilterPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryMapExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataLoaderPlugin;
@@ -54,11 +52,6 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductPageSearch\
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
-    /**
-     * @var string
-     */
-    public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
-
     /**
      * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataExpanderPluginInterface>
      */
@@ -145,26 +138,6 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductMeasurementUnitProductAbstractAddToCartPlugin(),
             new ProductPackagingUnitProductAbstractAddToCartPlugin(),
             new AvailabilityProductAbstractAddToCartPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcreteCollectionFilterPluginInterface>
-     */
-    protected function getProductConcreteCollectionFilterPlugins(): array
-    {
-        return [
-            new ProductApprovalProductConcreteCollectionFilterPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageSearchCollectionFilterPluginInterface>
-     */
-    protected function getProductPageSearchCollectionFilterPlugins(): array
-    {
-        return [
-            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
         ];
     }
 }

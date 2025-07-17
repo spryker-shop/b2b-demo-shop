@@ -1,7 +1,7 @@
 {% extends molecule('product-cart-items-list', 'SprykerShop:CartPage') %}
 
 {% block body %}
-    {% widget 'ListItemsByShipmentTypeWidget' args [data.cartItems] with {
+    {% widget 'ListCartItemsByShipmentTypeWidget' args [data.cartItems] with {
         embed: {
             cart: data.cart,
             cartItems: data.cartItems,
@@ -27,21 +27,23 @@
             {% endif %}
         {% endblock %}
     {% nowidget %}
-        {% block cartItem %}
-            {% if not cartItem.configuredBundleItem | default %}
-                {% include molecule('product-cart-item', 'CartPage') with {
-                    data: {
-                        list: data.cart,
-                        listItem: cartItem,
-                        attributes: data.attributes[cartItem.sku] | default([]),
-                        canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
-                        canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
-                        hasAdditionalTitle: cartItem.cartNote | default(false),
-                        currencyIsoCode: data.cart.currency.code | default(null),
-                        ajaxTriggerAttribute: data.ajaxTriggerAttribute,
-                    },
-                } only %}
-            {% endif %}
-        {% endblock %}
+        {% for cartItem in data.cartItems %}
+            {% block cartItem %}
+                {% if not cartItem.configuredBundleItem | default %}
+                    {% include molecule('product-cart-item', 'CartPage') with {
+                        data: {
+                            list: data.cart,
+                            listItem: cartItem,
+                            attributes: data.attributes[cartItem.sku] | default([]),
+                            canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
+                            canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
+                            hasAdditionalTitle: cartItem.cartNote | default(false),
+                            currencyIsoCode: data.cart.currency.code | default(null),
+                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                        },
+                    } only %}
+                {% endif %}
+            {% endblock %}
+        {% endfor %}
     {% endwidget %}
 {% endblock %}

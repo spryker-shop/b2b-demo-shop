@@ -1067,7 +1067,7 @@ jobs:
 
             -   name: Install robotframework-suite-tests folder
                 run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-feature/ssp-772/dev-shipment-type-grouping-on-address-step" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
@@ -1140,7 +1140,7 @@ jobs:
                     docker/sdk exec cypress-tests cp .env.example .env
             -   name: Run Tests
                 run: |
-                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" --env "ENV_IS_SSP_ENABLED=true" cypress-tests npm run cy:ci
             -   name: Upload artifacts
                 if: failure()
                 run: |
@@ -1205,7 +1205,7 @@ jobs:
                     docker/sdk exec cypress-tests git log -2
             -   name: Run Tests
                 run: |
-                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" --env "ENV_IS_SSP_ENABLED=true" cypress-tests npm run cy:ci
             -   name: Upload artifacts
                 if: failure()
                 run: |

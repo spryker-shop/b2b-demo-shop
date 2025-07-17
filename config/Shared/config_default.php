@@ -326,6 +326,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
+        'bundle' => 'multi-factor-auth',
+        'controller' => '*',
+        'action' => '*',
+        'type' => 'allow',
+    ],
+    [
         'bundle' => 'acl',
         'controller' => 'index',
         'action' => 'denied',
@@ -653,6 +659,8 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
 ];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[SelfServicePortalConstants::STORAGE_NAME] = 'ssp-files';
+$config[SelfServicePortalConstants::INQUIRY_STORAGE_NAME] = 'ssp-inquiry';
+$config[SelfServicePortalConstants::ASSET_STORAGE_NAME] = 'ssp-asset-image';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 
 // ----------------------------------------------------------------------------
@@ -820,6 +828,15 @@ $config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
     $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
 );
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '*';
+
+if ($isTestifyConstantsClassExists) {
+    $config[TestifyConstants::GLUE_STOREFRONT_API_DOMAIN] = sprintf(
+        'https://%s%s',
+        $sprykerGlueStorefrontHost,
+        $gluePort !== 443 ? ':' . $gluePort : '',
+    );
+    $config[TestifyConstants::GLUE_STOREFRONT_API_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml';
+}
 
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;

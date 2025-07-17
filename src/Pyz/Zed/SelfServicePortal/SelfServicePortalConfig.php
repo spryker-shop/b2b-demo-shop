@@ -36,18 +36,10 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getInquiryPendingStatus(): ?string
+    public function getInquiryPendingStatus(): string
     {
         return 'pending';
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getAssetStorageName(): ?string
-    {
-        return 'ssp-asset-image';
     }
 }

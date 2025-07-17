@@ -10,6 +10,7 @@ declare(strict_types = 1);
 namespace Pyz\Yves\ProductDetailPage\Controller;
 
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\ProductStorageCriteriaTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
 use SprykerShop\Yves\ProductDetailPage\Exception\ProductAccessDeniedException;
@@ -39,9 +40,16 @@ class ProductController extends SprykerShopProductController
     {
         $selectedAttributes = $this->getSelectedAttributesWithoutPostfix($productData, $request);
 
+        $shopContextTransfer = $this->getFactory()
+            ->createShopContextResolver()
+            ->resolve();
+
+        $productStorageCriteriaTransfer = (new ProductStorageCriteriaTransfer())
+            ->fromArray($shopContextTransfer->toArray());
+
         $productViewTransfer = $this->getFactory()
             ->getProductStoragePyzClient()
-            ->mapProductStorageData($productData, $this->getLocale(), $selectedAttributes);
+            ->mapProductStorageData($productData, $this->getLocale(), $selectedAttributes, $productStorageCriteriaTransfer);
 
         try {
             $this->assertProductRestrictions($productViewTransfer);
