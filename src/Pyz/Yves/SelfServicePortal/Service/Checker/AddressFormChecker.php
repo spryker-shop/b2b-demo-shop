@@ -23,7 +23,7 @@ class AddressFormChecker extends SprykerAddressFormChecker
     public function isApplicableForSingleAddressPerShipmentType(
         ItemTransfer $itemTransfer,
     ): bool {
-        if ($itemTransfer->getRelatedBundleItemIdentifier()) {
+        if ($itemTransfer->getRelatedBundleItemIdentifier() || $itemTransfer->getBundleItemIdentifier()) {
             return false;
         }
 
