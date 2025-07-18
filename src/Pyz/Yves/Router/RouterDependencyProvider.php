@@ -36,6 +36,7 @@ use SprykerShop\Yves\CartNoteWidget\Plugin\Router\CartNoteWidgetAsyncRouteProvid
 use SprykerShop\Yves\CartNoteWidget\Plugin\Router\CartNoteWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CartPage\Plugin\Router\CartPageAsyncRouteProviderPlugin;
 use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
+use SprykerShop\Yves\CartReorderPage\Plugin\Router\CartReorderPageRouteProviderPlugin;
 use SprykerShop\Yves\CatalogPage\Plugin\Router\CatalogPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use SprykerShop\Yves\CmsPage\Plugin\Router\CmsPageRouteProviderPlugin;
@@ -52,7 +53,6 @@ use SprykerShop\Yves\ConfigurableBundleWidget\Plugin\Router\ConfigurableBundleWi
 use SprykerShop\Yves\ConfigurableBundleWidget\Plugin\Router\ConfigurableBundleWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Router\CurrencyWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
-use SprykerShop\Yves\CustomerReorderWidget\Plugin\Router\CustomerReorderWidgetRouteProviderPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\Router\DiscountWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
@@ -83,6 +83,7 @@ use SprykerShop\Yves\QuoteRequestAgentWidget\Plugin\Router\QuoteRequestAgentWidg
 use SprykerShop\Yves\QuoteRequestPage\Plugin\Router\QuoteRequestPageRouteProviderPlugin;
 use SprykerShop\Yves\QuoteRequestWidget\Plugin\Router\QuoteRequestWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ResourceSharePage\Plugin\Router\ResourceSharePageRouteProviderPlugin;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Plugin\Router\SalesOrderAmendmentWidgetRouteProviderPlugin;
 use SprykerShop\Yves\SalesReturnPage\Plugin\Router\SalesReturnPageRouteProviderPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\Router\ServicePointWidgetRouteProviderPlugin;
 use SprykerShop\Yves\SharedCartPage\Plugin\Router\SharedCartPageRouteProviderPlugin;
@@ -116,7 +117,6 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new HomePageRouteProviderPlugin(),
             new CheckoutPageRouteProviderPlugin(),
             new CustomerPageRouteProviderPlugin(),
-            new CustomerReorderWidgetRouteProviderPlugin(),
             new NewsletterPageRouteProviderPlugin(),
             new CartPageRouteProviderPlugin(),
             new HealthCheckRouteProviderPlugin(),
@@ -181,6 +181,8 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new MultiFactorAuthCustomerRouteProviderPlugin(),
             new MultiFactorAuthAgentRouteProviderPlugin(),
             new SitemapRouteProviderPlugin(),
+            new CartReorderPageRouteProviderPlugin(),
+            new SalesOrderAmendmentWidgetRouteProviderPlugin(),
             new ServicePointWidgetRouteProviderPlugin(),
             new MerchantProductOfferWidgetRouteProviderPlugin(),
             new SelfServicePortalPageRouteProviderPlugin(),

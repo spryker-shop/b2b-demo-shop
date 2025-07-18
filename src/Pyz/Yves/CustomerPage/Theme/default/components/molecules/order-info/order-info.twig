@@ -13,7 +13,7 @@
 {% block body %}
     <div class="{{ config.name }}__item">
         <span class="{{ config.name }}__name">{{ 'customer.order.order_id' | trans }}:</span>
-        <span>{{ data.id }}</span>
+        <span data-qa="order-reference">{{ data.id }}</span>
     </div>
     <div class="{{ config.name }}__item">
         <span class="{{ config.name }}__name">{{ 'customer.order.date' | trans }}:</span>
