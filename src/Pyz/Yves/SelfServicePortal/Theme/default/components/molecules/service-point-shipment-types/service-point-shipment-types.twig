@@ -24,7 +24,37 @@
         },
     } %}
 
-    {{ parent() }}
+    {% include molecule('ajax-provider') with {
+        class: ajaxProviderClass,
+        attributes: {
+            'fetch-on-load': true,
+            url: url('customer/ssp-service-point-widget-content'),
+            'dynamic-params': dynamicParams | json_encode,
+        },
+    } only %}
+
+    {% include molecule('ajax-loader') with {
+        attributes: {
+            'provider-class-name': ajaxProviderClass,
+        },
+    } only %}
+
+    {% include molecule('ajax-renderer') with {
+        attributes: {
+            'provider-class-name': ajaxProviderClass,
+            'target-class-name': ajaxContainerClass,
+            'mount-after-render': true,
+        },
+    } only %}
+
+    {% include molecule('ajax-form-submitter') with {
+        attributes: {
+            'provider-class-name': ajaxProviderClass,
+            'trigger-attribute': ajaxTriggerAttribute,
+            event: 'change',
+            'is-provider-trigger': 'true',
+        },
+    } only %}
 {% endblock %}
 
 {% block datepicker %}

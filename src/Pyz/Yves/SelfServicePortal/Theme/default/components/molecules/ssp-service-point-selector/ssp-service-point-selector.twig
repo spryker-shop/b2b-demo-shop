@@ -1,5 +1,16 @@
 {% extends molecule('ssp-service-point-selector', '@SprykerFeature:SelfServicePortal') %}
 
+{% block locationsWidget %}
+    {% widget 'SspServicePointSearchWidget' args [data.serviceTypeKey, data.serviceTypeUuid, data.shipmentTypeUuid, [], null, true, data.items, 'customer/ssp-service-point-widget/search'] with {
+        data: {
+            extraClassName: attributes['finder-class-name'],
+            quantity: data.quantity,
+            sku: data.sku,
+        },
+    } only %}
+    {% endwidget %}
+{% endblock %}
+
 {% block noLocation %}
     <div class="{{ config.jsName }}__no-location {{ config.name }}__location-container">
         <button type="button" class="link link--additional {{ attributes['trigger-class-name'] }}">
