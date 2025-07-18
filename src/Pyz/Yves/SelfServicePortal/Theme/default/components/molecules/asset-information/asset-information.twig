@@ -1,0 +1,30 @@
+{% extends molecule('asset-information', '@SprykerFeature:SelfServicePortal') %}
+
+{% block actions %}
+    <div class="grid grid--right">
+        {% if can('CreateSspInquiryPermissionPlugin') and data.reference %}
+            <div class="col spacing-right">
+                <a
+                    href="{{ url('customer/ssp-inquiry/create', { sspAssetReference: data.reference, backUrlType: 'ssp-asset', backUrlIdentifier: data.reference }) }}"
+                    class="button button--hollow"
+                    {{ qa('ssp-aset-create-inquiry') }}
+                >{{ 'customer.self_service_portal.inquiry.create.button' | trans }}</a>
+            </div>
+        {% endif %}
+
+        <div class="col">
+            {% set currentLocale = app.locale | slice(0, 2) %}
+            {% set url = "/#{ currentLocale }" %}
+
+            {% if currentLocale == 'de' %}
+                {% set url = "#{url}/dienstleistungen" %}
+            {% else %}
+                {% set url = "#{url}/services" %}
+            {% endif %}
+
+            <a href="{{ url }}" class="button button--hollow" {{ qa('ssp-asset-services') }}>
+                {{ 'self_service_portal.asset.details_page.search_service' | trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

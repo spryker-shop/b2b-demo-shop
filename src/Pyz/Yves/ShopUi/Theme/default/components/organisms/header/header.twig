@@ -158,7 +158,9 @@
                                 },
                             } only %}
                         {% else %}
-                            <a href="{{ url('login') }}"
+                            <a href="{{ path('login', {
+                                'redirectUri': url('customer/ssp-dashboard') ,
+                            }) }}"
                                class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.please_login'|trans }}</a>
                         {% endif %}
                     {% endif %}
