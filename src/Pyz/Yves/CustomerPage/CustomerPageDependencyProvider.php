@@ -54,36 +54,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     }
 
     /**
-     * @return array<string>
-     */
-    protected function getCustomerOverviewWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOrderListWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOrderViewWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
-    /**
      * @return array<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface>
      */
     protected function getPreRegistrationCustomerTransferExpanderPlugins(): array
