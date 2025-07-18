@@ -28,7 +28,8 @@
             @include helper-breakpoint-media-min($lg) {
                 display: block;
                 padding-left: rem(50);
-                background: $setting-color-gray-6;
+                color: $setting-color-white;
+                background: $setting-color-main;
             }
 
             @include helper-breakpoint-media-min($xl) {
@@ -37,53 +38,43 @@
         }
 
         &__logo {
-            flex-grow: 1;
-            text-align: center;
+            @include helper-breakpoint-media-max($lg) {
+                margin-right: rem(16);
+            }
 
             @include helper-breakpoint-media-min($lg) {
-                margin-top: rem(-17);
-                padding: 0 rem(30) 0 0;
-                flex-grow: 0;
+                margin-right: rem(32);
             }
 
             @include helper-breakpoint-media-min($xl) {
-                padding-right: rem(58);
+                margin-right: rem(64);
             }
         }
 
         &__main {
-            padding: rem(8) 0 0;
             min-height: rem(56);
-            border-bottom: rem(1) solid $setting-color-gray-1;
 
             @include helper-breakpoint-media-min($lg) {
                 min-height: rem(114);
-                padding: rem(30) 0 0;
             }
 
             &--checkout {
                 position: relative;
-                padding-top: rem(14);
-                padding-bottom: rem(14);
                 min-height: 0;
-
-                @include helper-breakpoint-media-min($lg) {
-                    padding-top: rem(20);
-                    padding-bottom: rem(20);
-                }
             }
         }
 
         &__search {
             width: 0;
             flex-grow: 0;
+            margin-right: rem(20);
 
             @include helper-breakpoint-media-min($lg) {
                 flex-grow: 1;
             }
 
             @include helper-breakpoint-media-min($xl) {
-                max-width: rem(515);
+                max-width: rem(502);
             }
         }
 

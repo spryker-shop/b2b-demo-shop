@@ -1,0 +1,48 @@
+{% extends template('page-layout-catalog', 'CatalogPage') %}
+
+{% define data = {
+    products: _view.products | default([]),
+    facets: _view.facets | default([]),
+    filteredFacets: _view.filteredFacets | default([]),
+    searchString: _view.searchString,
+    suggestion: _view.spellingSuggestion | default([]),
+    category: _view.category | default,
+    categories: categories | default([]),
+    categoryId: _view.idCategory | default,
+    isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible | default,
+    filterPath: _view.filterPath | default,
+    viewMode: _view.viewMode | default,
+
+    title: ('global.search.results' | trans) ~ ' ' ~ _view.searchString,
+    metaTitle: _view.pageTitle | default(_view.category.name | default),
+    metaDescription: _view.pageDescription | default,
+    metaKeywords: _view.pageKeywords | default,
+
+    pagination: {
+        parameters: app.request.query.all(),
+        currentPage: _view.pagination.currentPage | default,
+        paginationPath: app.request.attributes.get('_route'),
+        maxPage: _view.pagination.maxPage | default,
+        showAlwaysFirstAndLast: true
+    }
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'global.search' | trans
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block form %}
+    {{ parent() }}
+
+    {% if data.searchString is not empty %}
+        <input type="hidden" name="q" value="{{ data.searchString }}">
+    {% endif %}
+{% endblock %}

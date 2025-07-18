@@ -1,69 +1,35 @@
 {% extends view('home', '@SprykerShop:HomePage') %}
 
 {% block contentTop %}
-    {% embed molecule('slick-carousel') with {
-        class: 'spacing-bottom spacing-bottom--big',
-        modifiers: ['jumbotron'],
-        attributes: {
-            'slider-config': '{
-                "slidesToShow": 1,
-                "dots": true,
-                "autoplay": true,
-                "nextArrow": false,
-                "prevArrow": false,
-                "autoplaySpeed": 4000,
-                "centerMode": true,
-                "centerPadding": "240px",
-                "responsive": [{
-                     "breakpoint": 1400,
-                     "settings": {
-                         "centerPadding": "130px"
-                     }
-                },
-                {
-                    "breakpoint": 1200,
-                    "settings": {
-                        "centerPadding": "40px"
-                    }
-                },
-                {
-                    "breakpoint": 768,
-                    "settings": {
-                        "centerPadding": "12px",
-                        "autoplay": false
-                    }
-                },
-                {
-                    "breakpoint": 375,
-                    "settings": {
-                        "centerMode": false,
-                        "autoplay": false
-                    }
-                }]
-            }',
-        },
+    {% embed molecule('amag-banner', 'HomePage') with {
+        data: {
+            imageUrl: publicPath('images/homepage-image-1.webp'),
+            title: 'banner-title-1' | trans,
+            subtitle: 'banner-title-2' | trans,
+            buttonText: 'banner-button-text-1' | trans,
+            buttonUrl: '#',
+        }
     } only %}
-        {% block slides %}
-            {% cms_slot 'slt-2' %}
-        {% endblock %}
-    {% endembed %}
-{% endblock %}
-
-{% block content %}
-    {% cms_slot 'slt-3' %}
-
-    {% embed organism('section') with {
-        modifiers: ['secondary', 'full-width'],
-        class: 'spacing-top spacing-top--inner spacing-top--big',
-    } only %}
-        {% block inner %}
-            <div class="grid grid--left grid--middle">
-                {% cms_slot 'slt-4' %}
+        {% block button %}
+            <div class="grid grid--gap-smaller grid--middle">
+                <div class="col">
+                    <a href="{{ data.buttonUrl }}" class="button button--big">{{ data.buttonText }}</a>
+                </div>
+                <div class="col">
+                    <img src="{{ publicPath('images/ai-button.svg') }}">
+                </div>
+                <div class="col {{ config.name }}__button-subtext">
+                    {{ 'banner-button-subtext' | trans }}
+                </div>
             </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}
 
-{% block contentBottom %}
-    {% cms_slot 'slt-5' %}
+{% block contentWrap %}
+    {% include molecule('homepage-content', 'HomePage') only %}
 {% endblock %}
+
+{% block contentBottom %}{% endblock %}
+
+

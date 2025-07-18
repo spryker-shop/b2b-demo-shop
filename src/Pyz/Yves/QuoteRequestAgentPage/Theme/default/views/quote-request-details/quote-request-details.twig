@@ -28,14 +28,14 @@
         {% set showSendToCustomerButton = data.isQuoteRequestEditable and data.quoteRequest.latestVersion.quote.items is not empty %}
         {% if showSendToCustomerButton %}
             {% block actionSendToCustomer %}
-                {% set buttonSendToCustomerClass = 'spacing-bottom button button--expand button--success' %}
+                {% set buttonSendToCustomerClass = 'spacing-bottom button button--expand ' %}
                 {{ parent() }}
             {% endblock %}
         {% endif %}
 
         {% if data.isQuoteRequestRevisable %}
             {% block actionRevise %}
-                {% set buttonReviseClass = 'spacing-bottom button button--expand ' ~ (data.quoteRequest.status == 'ready' ? 'button--hollow' : 'button--success') %}
+                {% set buttonReviseClass = 'spacing-bottom button button--expand ' ~ (data.quoteRequest.status == 'ready' ? 'button--hollow' : '') %}
                 {{ parent() }}
             {% endblock %}
         {% endif %}
@@ -43,7 +43,7 @@
         {% set readyStatus = 'ready' %}
         {% if data.quoteRequest.status == readyStatus %}
             {% block actionConvertToCart %}
-                {% set buttonConvertToCartClass = 'spacing-bottom button button--expand button--success' %}
+                {% set buttonConvertToCartClass = 'spacing-bottom button button--expand ' %}
                 {{ parent() }}
             {% endblock %}
         {% endif %}

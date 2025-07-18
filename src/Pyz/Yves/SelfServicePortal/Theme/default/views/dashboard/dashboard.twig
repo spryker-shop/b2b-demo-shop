@@ -1,18 +1,27 @@
 {% extends view('dashboard','@SprykerFeature:SelfServicePortal') %}
 
 {% block customerContent %}
-    {{ block('userInfo') }}
-    {{ block('information') }}
+    <div class="ssp-content">
+        <h3 class="spacing-bottom">{{ 'amag.smart_hub' | trans }}</h3>
 
-    {% if canAccessAssets %}
-        {{ block('assets') }}
-    {% endif %}
+        {{ block('userInfo') }}
 
-    {% block news %}
-        {% cms_slot 'ssp-news' %}
-    {% endblock %}
+        {% block userCompany %}{% endblock %}
 
-    {{ block('tables') }}
+        {{ block('information') }}
+
+        <div class="box box--amag text-center spacing-bottom--big">
+            <h4>{{ 'new.used.offer' | trans }}</h4>
+            <p>{{ 'dream.car.from.amag' | trans }}</p>
+            <a href="{{ path('search', {}) }}" class="button button--big">{{ 'find.vehicle' | trans }}</a>
+        </div>
+
+        {% if canAccessAssets %}
+            {{ block('assets') }}
+        {% endif %}
+
+        {{ block('tables') }}
+    </div>
 {% endblock %}
 
 {% block userTitle %}

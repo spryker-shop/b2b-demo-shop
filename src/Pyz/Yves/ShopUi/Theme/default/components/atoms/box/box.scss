@@ -10,6 +10,41 @@
         }
     }
 
+    .ssp-content & {
+        background: none;
+        border: rem(1) solid #e7e6e6;
+
+        &--amag {
+            background: linear-gradient(to right, #2e2381, #db017b);
+            color: $setting-color-white;
+
+            h4 {
+                color: currentColor;
+            }
+
+            p {
+                margin-bottom: rem(20);
+            }
+
+            .button {
+                @include helper-effect-transition(background-color color border-color);
+                background-color: $setting-color-white;
+                color: $setting-color-main;
+                border-color: $setting-color-transparent;
+
+                &:hover {
+                    background: $setting-color-main;
+                    color: $setting-color-white;
+                    border-color: $setting-color-white;
+                }
+            }
+        }
+    }
+
+    &.dashboard-table {
+        border: none;
+    }
+
     &--hollow {
         background-color: transparent;
     }

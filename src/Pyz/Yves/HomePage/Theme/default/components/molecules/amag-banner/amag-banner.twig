@@ -1,0 +1,24 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'amag-banner',
+} %}
+
+{% define data = {
+    imageUrl: '',
+    title: '',
+    subtitle: '',
+    buttonText: '',
+    buttonUrl: '',
+} %}
+
+{% block body %}
+    <img class="{{ config.name }}__img" src="{{ data.imageUrl }}">
+    <div class="container {{ config.name }}__content">
+        <h1 class="{{ config.name }}__title">{{ data.title }}</h1>
+        <h2 class="{{ config.name }}__subtitle">{{ data.subtitle }}</h2>
+        {% block button %}
+            <a href="{{ data.buttonUrl }}" class="button button--big">{{ data.buttonText }}</a>
+        {% endblock %}
+    </div>
+{% endblock %}

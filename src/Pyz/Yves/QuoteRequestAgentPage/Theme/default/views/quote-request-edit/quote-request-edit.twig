@@ -634,7 +634,7 @@
 
     {% if data.quoteRequest.latestVersion.quote.items | length %}
         {% block actionSend %}
-            {% set buttonSendClass = 'spacing-bottom button button--expand button--success' %}
+            {% set buttonSendClass = 'spacing-bottom button button--expand ' %}
             {{ parent() }}
         {% endblock %}
     {% endif %}

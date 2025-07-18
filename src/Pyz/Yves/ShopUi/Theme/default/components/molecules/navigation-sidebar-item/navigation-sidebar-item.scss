@@ -1,14 +1,11 @@
 @mixin shop-ui-navigation-sidebar-item($name: '.navigation-sidebar-item') {
     #{$name} {
         &--active {
-            background-color: $setting-color-gray-7;
+            background-color: $setting-color-black;
 
-            #{$name}__icon {
-                color: $setting-color-alt;
-            }
-
+            #{$name}__icon,
             #{$name}__label {
-                color: $setting-color-gray-5;
+                color: $setting-color-white;
             }
         }
 

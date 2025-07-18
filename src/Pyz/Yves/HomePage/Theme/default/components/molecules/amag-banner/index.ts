@@ -1,0 +1,1 @@
+import './amag-banner.scss';

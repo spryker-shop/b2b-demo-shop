@@ -29,19 +29,16 @@
 
         &__button {
             position: absolute;
-            top: 0;
-            width: rem(45);
-            height: 100%;
+            top: 50%;
+            width: rem(34);
+            height: rem(40);
             padding: 0;
             border: none;
             background: $setting-color-transparent;
             color: $setting-color-gray-4;
             z-index: $setting-zi-search-suggestions + 3;
             cursor: pointer;
-
-            @include helper-breakpoint-media-min($lg) {
-                width: rem(55);
-            }
+            translate: 0 -50%;
 
             &--submit {
                 left: 0;
@@ -49,9 +46,23 @@
 
             &--close {
                 right: 0;
+                color: $setting-color-black;
 
                 @include helper-breakpoint-media-min($lg) {
                     display: none;
+                }
+            }
+
+            &--photo-search,
+            &--image-search {
+                right: rem(34);
+
+                @include helper-breakpoint-media-min($lg) {
+                    right: rem(10);
+                }
+
+                svg {
+                    pointer-events: none;
                 }
             }
 

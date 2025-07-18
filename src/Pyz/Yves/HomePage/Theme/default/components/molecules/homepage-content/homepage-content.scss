@@ -1,0 +1,56 @@
+@mixin homepage-homepage-content($name: '.homepage-content') {
+    #{$name} {
+        &__title {
+            font-size: rem(58);
+            font-weight: 800;
+            color: #172983;
+            margin-bottom: rem(50);
+        }
+
+        &__nav {
+            margin-bottom: rem(47);
+        }
+
+        &__link {
+            color: #172983;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &__image {
+            width: 100%;
+            height: rem(400);
+            display: block;
+            object-fit: cover;
+        }
+
+        &__blocks {
+            display: grid;
+            justify-content: center;
+            gap: rem(54);
+            grid-template-columns: repeat(3, 1fr);
+            margin: rem(-150) auto rem(150);
+        }
+
+        &__block {
+            background: $setting-color-main;
+            padding: rem(99) rem(48);
+            font-size: rem(22);
+            font-weight: 400;
+            color: $setting-color-white;
+        }
+
+        &__block-title {
+            font-size: rem(36);
+            font-weight: 600;
+            color: currentColor;
+            margin-bottom: rem(24);
+        }
+
+        @content;
+    }
+}
+
+@include homepage-homepage-content;

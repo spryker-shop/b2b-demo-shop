@@ -39,10 +39,6 @@
 {% endblock %}
 
 {% block form %}
-    <div class="col col--sm-12 spacing-y spacing-y--inner">
-        {% widget 'FullTextSearchTabsWidget' args [data.searchString, 'FullTextSearchCmsPage'] only %}{% endwidget %}
-    </div>
-
     <div class="col col--sm-12">
         {% include molecule('sort', 'CmsSearchPage') with {
             data: {

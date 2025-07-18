@@ -22,14 +22,14 @@
 
 {% block body %}
     <div class="{{ component.renderClass(config.name ~ '__top', modifiers) }}">
-        {% include organism('navigation-top') with {
-            class: 'grid grid--justify grid--stretch container',
-        } only %}
+        <div class="container">
+            {% include organism('navigation-top') only %}
+        </div>
     </div>
 
     <div class="{{ component.renderClass(config.name ~ '__main', modifiers) }}">
         {% block headerMainContent %}
-            <div class="grid grid--middle container">
+            <div class="grid grid--bottom container">
                 <div class="col {{ config.name }}__actions">
                     <div class="grid">
                         <div class="col {{ config.name }}__actions-item">
@@ -78,6 +78,12 @@
                             {% endblock %}
                         {% endembed %}
                     {% endif %}
+                </div>
+
+                <div class="col">
+                    <a href="#">
+                        <img src="{{ publicPath('images/ai-button.svg') }}" style="display: block">
+                    </a>
                 </div>
 
                 {% if is_granted('ROLE_USER') %}

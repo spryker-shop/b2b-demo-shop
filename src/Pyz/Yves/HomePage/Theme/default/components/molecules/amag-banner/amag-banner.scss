@@ -1,0 +1,48 @@
+@mixin homepage-amag-banner($name: '.amag-banner') {
+    #{$name} {
+        position: relative;
+        color: $setting-color-white;
+        margin-bottom: rem(54);
+
+        &__img {
+            width: 100%;
+            height: rem(695);
+            object-fit: cover;
+            object-position: center 80%;
+        }
+
+        &__content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &__title {
+            font-size: rem(64);
+            font-weight: 800;
+            color: $setting-color-white;
+            margin-bottom: rem(8);
+        }
+
+        &__subtitle {
+            font-size: rem(30);
+            font-weight: 500;
+            color: $setting-color-white;
+            margin-bottom: rem(49);
+        }
+
+        &__button-subtext {
+            font-size: rem(14);
+            font-weight: 600;
+        }
+
+        img {
+            display: block;
+        }
+
+        @content;
+    }
+}
+
+@include homepage-amag-banner;

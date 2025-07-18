@@ -22,23 +22,12 @@
 
         &__input,
         &__hint {
-            padding: rem(20) rem(45);
-            border: rem(1) solid $setting-color-gray-4;
-            font: fw(bold) rem(18) / rem(20) $setting-font-family;
+            font: rem(16) / rem(48) $setting-font-family;
+            padding: 0 rem(75) 0 rem(36);
+            border: rem(1) solid var(--gray-9);
             width: 100%;
-            border-radius: rem(40);
-
-            @include helper-breakpoint-media-min($lg) {
-                padding: rem(15) rem(10) rem(15) rem(55);
-                font-size: rem(15);
-                font-weight: fw(regular);
-            }
-
-            &--active {
-                border-radius: rem(30) rem(30) 0 0;
-                outline: none;
-                border-color: transparent;
-            }
+            color: var(--gray-11);
+            border-radius: rem(4);
         }
 
         &__input {

@@ -5,41 +5,13 @@
     tag: 'div'
 } %}
 
-{% set benefits = [
-    'global.benefit.free_returns',
-    'global.benefit.warranty',
-    'global.benefit.competitive_prices'
-] %}
-
-{% block benefit %}
-    {% include molecule('panel-info-item') with {
-        class: 'col',
-        data: {
-            info: text,
-        },
-    } only %}
-{% endblock %}
-
 {% block body %}
-
-    {% for text in benefits %}
-        {% if not loop.last %}
-            {{ block('benefit') }}
-        {% elseif not is_granted('ROLE_USER') %}
-            {{ block('benefit') }}
+    <ul class="grid grid--nowrap grid--right grid--stretch navigation-top__actions">
+        {% if is_granted('ROLE_USER') %}
+            <li class="col {{ config.name }}__action-item">
+                <a href="{{ path('customer/ssp-dashboard') }}">{{ 'amag.smart_hub' | trans }}</a>
+            </li>
         {% endif %}
-    {% endfor %}
-
-    <ul class="col grid grid--nowrap grid--stretch navigation-top__actions">
-        <li class="col {{ config.name }}__action-item {{ config.name }}__action-item--tel">
-            {% include atom('icon') with {
-                modifiers: ['phone'],
-                data: {
-                    name: 'phone'
-                }
-            } only %}
-            {{ 'global.phone.number' | trans }}
-        </li>
 
         {% if can('SeePricePermissionPlugin') %}
             <li class="col {{ config.name }}__action-item">
@@ -53,18 +25,6 @@
         <li class="col {{ config.name }}__action-item">
             {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
         </li>
-
-        {% widget 'StoreSwitcher' with {
-            embed: {
-                configName: config.name,
-            },
-        } only %}
-            {% block body %}
-                <li class="col {{ embed.configName }}__action-item">
-                    {{ parent() }}
-                </li>
-            {% endblock %}
-        {% endwidget %}
 
         {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
         {% set hasCompanyAccess = menuItemCompanyWidget.hasCompanyAccess %}
