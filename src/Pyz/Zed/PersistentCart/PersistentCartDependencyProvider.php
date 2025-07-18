@@ -16,6 +16,7 @@ use Spryker\Zed\PersistentCartExtension\Dependency\Plugin\QuoteItemFinderPluginI
 use Spryker\Zed\ProductBundle\Communication\Plugin\PersistentCart\BundleProductQuoteItemFinderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\PersistentCart\RemoveBundleChangeRequestExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\PersistentCart\ProductPackagingUnitCartAddItemStrategyPlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\PersistentCart\ResetAmendmentQuoteProcessFlowQuotePostMergePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartQuoteResponseExpanderPlugin;
 
 class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyProvider
@@ -58,6 +59,16 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     {
         return [
             new ProductPackagingUnitCartAddItemStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PersistentCartExtension\Dependency\Plugin\QuotePostMergePluginInterface>
+     */
+    protected function getQuotePostMergePlugins(): array
+    {
+        return [
+            new ResetAmendmentQuoteProcessFlowQuotePostMergePlugin(),
         ];
     }
 }
