@@ -35,7 +35,7 @@
             {% widget 'CartDeleteSharingCompanyUsersListWidget' args [data.cart] only %}{% endwidget %}
 
             <div class="grid">
-                <a href="{{ data.backUrl }}" class="col col--sm-12 col--md-auto button button--hollow spacing-right spacing-right--big spacing-top spacing-top">
+                <a href="{{ functionExists('generatePath') ? generatePath(data.backUrl) : data.backUrl }}" class="col col--sm-12 col--md-auto button button--hollow spacing-right spacing-right--big spacing-top spacing-top">
                     {{ "general.back.button" | trans }}
                 </a>
                 {{ form_start(data.multiCartDeleteForm, {'attr': {'class': 'col col--sm-12 col--md-auto'}, 'action': url('multi-cart/delete', { 'idQuote' : data.cartIdQuote })}) }}

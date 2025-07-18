@@ -31,7 +31,7 @@
         </a>
     </div>
     <div class="{{ config.name }}__col {{ config.name }}__button-wrapper">
-        <a href="{{ data.buttonLink }}" class="{{ config.name }}__button" title="{{ data.buttonTitle }}">
+        <a href="{{ functionExists('generatePath') ? generatePath(data.buttonLink) : data.buttonLink }}" class="{{ config.name }}__button" title="{{ data.buttonTitle }}">
             {% include atom('icon') with {
                 modifiers: ['small'],
                 data: {

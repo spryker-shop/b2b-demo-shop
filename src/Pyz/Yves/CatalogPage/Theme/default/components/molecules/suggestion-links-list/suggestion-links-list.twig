@@ -23,7 +23,7 @@
                 {% set value = data.isSuggestion ? item : item.name %}
 
                 <li class="{{ config.name }}__item">
-                    <a class="{{ config.name }}__link js-suggest-search__item--navigable" href="{{ href }}">{{ value }}</a>
+                    <a class="{{ config.name }}__link js-suggest-search__item--navigable" href="{{ functionExists('generatePath') ? generatePath(href) : href }}">{{ value }}</a>
                 </li>
             {% endfor %}
         </ul>
