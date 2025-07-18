@@ -42,7 +42,12 @@
                         enable: true,
                         class: 'button button--big form__action--primary',
                         text: 'forms.submit.login' | trans
-                    }
+                    },
+                    options: {
+                        attr: {
+                            'data-qa': 'agent-login-form',
+                        },
+                    },
                 }
             } only %}
         {% endblock %}
@@ -51,7 +56,7 @@
     {% widget 'MultiFactorAuthHandlerWidget' with {
         data: {
             id: data.forms.login.vars.name,
-            url: '/multi-factor-auth/get-customer-enabled-types',
+            url: '/multi-factor-auth/get-user-enabled-types',
             formSelector: '[name="' ~ data.forms.login.vars.name ~ '"]',
             isLoginFlow: 'true',
             isJsEnabledHandler: 'true',
