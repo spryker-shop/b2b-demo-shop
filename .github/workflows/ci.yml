@@ -1135,16 +1135,24 @@ jobs:
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk cli console queue:worker:start --stop-when-empty
-            -   name: Run Tests
+            -   name: Init test env
                 run: |
                     docker/sdk exec cypress-tests cp .env.example .env
+            -   name: Run Tests
+                run: |
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" --env "ENV_IS_SSP_ENABLED=true" cypress-tests npm run cy:ci
-                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
             -   name: Upload artifacts
                 if: failure()
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
-
+            -   name: Run SSP Tests
+                run: |
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
+                if: always()
+            -   name: Upload SSP artifacts
+                if: failure()
+                run: |
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
@@ -1191,17 +1199,25 @@ jobs:
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk cli console queue:worker:start --stop-when-empty
-            -   name: Run Tests
+            -   name: Init test env
                 run: |
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec cypress-tests git log -2
+            -   name: Run Tests
+                run: |
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" --env "ENV_IS_SSP_ENABLED=true" cypress-tests npm run cy:ci
-                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
             -   name: Upload artifacts
                 if: failure()
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
-
+            -   name: Run SSP Tests
+                run: |
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
+                if: always()
+            -   name: Upload SSP artifacts
+                if: failure()
+                run: |
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
