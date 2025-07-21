@@ -32,7 +32,7 @@
                     {% endblock %}
 
                     {% block externalUrl %}
-                        <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ functionExists('generatePath') ? generatePath(data.node.url) : data.node.url }}" target="_blank">{{ data.node.title }}</a>
+                        <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
                     {% endblock %}
 
                     {% block other %}
