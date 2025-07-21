@@ -9,11 +9,9 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\CustomerPage\Form;
 
-use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\CustomerPage\Dependency\Service\CustomerPageToShipmentServiceInterface;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm as SprykerCheckoutAddressCollectionForm;
-use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressForm;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -67,7 +65,7 @@ class CheckoutAddressCollectionForm extends SprykerCheckoutAddressCollectionForm
      */
     protected function hydrateShippingAddressSubFormDataFromItemLevelShippingAddresses(
         FormEvent $event,
-        CustomerPageToShipmentServiceInterface $shipmentService
+        CustomerPageToShipmentServiceInterface $shipmentService,
     ): void {
         $quoteTransfer = $event->getData();
 
