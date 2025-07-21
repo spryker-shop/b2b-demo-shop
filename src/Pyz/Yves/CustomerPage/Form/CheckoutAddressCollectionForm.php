@@ -82,7 +82,9 @@ class CheckoutAddressCollectionForm extends SprykerCheckoutAddressCollectionForm
 
         $shippingAddressForm = $event->getForm()->get(static::FIELD_SHIPPING_ADDRESS);
 
-        $this->setDeliverToMultipleAddressesEnabled($shippingAddressForm);
+        if ($quoteTransfer->getItems()->count() || $quoteTransfer->getBundleItems()->count()) {
+            $this->setDeliverToMultipleAddressesEnabled($shippingAddressForm);
+        }
 
         if ($this->isDeliverToMultipleAddressesEnabled($shippingAddressForm) || $shipmentGroupCollection->count() < 1) {
             return;
