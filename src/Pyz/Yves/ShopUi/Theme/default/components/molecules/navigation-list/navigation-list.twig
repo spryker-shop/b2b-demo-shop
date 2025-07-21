@@ -43,7 +43,7 @@
                 {% set additionalClass = node.cssClass ?? '' %}
 
                 {% if node.url %}
-                    <li><a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ functionExists('generatePath') ? generatePath(node.url) : node.url }}">{{ node.title }}</a></li>
+                    <li><a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ node.url }}">{{ node.title }}</a></li>
                 {% else %}
                     <li><span class="{{ component.renderClass('text', modifiers) }} {{ additionalClass }}">{{ node.title }}</span></li>
                 {% endif %}
