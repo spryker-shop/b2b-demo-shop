@@ -1185,7 +1185,7 @@
         "spryker/resource-share": "1.0.3",
         "spryker/resource-share-extension": "1.0.0",
         "spryker/rest-request-validator": "1.6.1",
-        "spryker/robotframework-suite-tests": "dev-feature/ssp-772/dev-shipment-type-grouping-on-address-step",
+        "spryker/robotframework-suite-tests": "dev-master",
         "spryker/router": "1.23.0",
         "spryker/router-extension": "1.1.0",
         "spryker/rule-engine": "1.0.0",
@@ -1529,6 +1529,10 @@
         "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
         "prefer-mid": [
             "COMPOSER_MEMORY_LIMIT=-1 composer require twig/twig:\"^2.9.0\""
-        ]
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     }
 }
