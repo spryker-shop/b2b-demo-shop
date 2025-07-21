@@ -1203,13 +1203,13 @@ jobs:
                 run: |
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec cypress-tests git log -2
-#            -   name: Run Tests
-#                run: |
-#                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" --env "ENV_IS_SSP_ENABLED=true" cypress-tests npm run cy:ci
-#            -   name: Upload artifacts
-#                if: failure()
-#                run: |
-#                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
+            -   name: Run Tests
+                run: |
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" --env "ENV_IS_SSP_ENABLED=true" cypress-tests npm run cy:ci
+            -   name: Upload artifacts
+                if: failure()
+                run: |
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
             -   name: Run SSP Tests
                 run: |
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci:ssp
