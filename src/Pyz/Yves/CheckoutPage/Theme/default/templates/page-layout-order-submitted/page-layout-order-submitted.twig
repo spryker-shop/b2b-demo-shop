@@ -19,6 +19,7 @@
                 },
                 embed: {
                     message: data.message,
+                    quote: data.quote | default(null),
                 },
             } only %}
                 {% import _self as component %}
@@ -39,7 +40,13 @@
                         {% endif %}
 
                         {% if message %}
-                            <p class="{{ config.name }}__success-text">{{ message }}</p>
+                            <p class="{{ config.name }}__success-text">
+                                {% if embed.quote %}
+                                    {% widget 'UpdateOrderCheckoutSuccessTitleWidget' args [message, embed.quote] only %}{% endwidget %}
+                                {% else %}
+                                    {{ message }}
+                                {% endif %}
+                            </p>
                         {% endif %}
                     </div>
                 {% endblock %}

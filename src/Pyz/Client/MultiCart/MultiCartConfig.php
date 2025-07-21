@@ -51,6 +51,7 @@ class MultiCartConfig extends SprykerMultiCartConfig
                 StoreTransfer::ID_STORE,
                 StoreTransfer::NAME,
             ],
+            QuoteTransfer::AMENDMENT_ORDER_REFERENCE,
         ]);
     }
 }
