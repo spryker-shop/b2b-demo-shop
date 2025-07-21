@@ -47,7 +47,7 @@
                 <tr>
                     <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}">
                         {% if quote.isDefault %}
-                            <a href="{{ url('cart') }}">
+                            <a class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}" href="{{ url('cart') }}">
                                 {{ quote.name }}
                             </a>
                         {% else %}

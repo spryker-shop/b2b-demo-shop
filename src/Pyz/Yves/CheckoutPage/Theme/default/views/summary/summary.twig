@@ -188,7 +188,7 @@
             acceptTermsFieldName: data.acceptTermsFieldName,
             submit: {
                 enable: data.isPlaceableOrder and can('WriteSharedCartPermissionPlugin', data.cart.idQuote),
-                text: 'checkout.step.place.order' | trans,
+                text: data.cart.amendmentOrderReference ? 'sales_order_amendment_widget.summary_step.update.order' | trans : 'checkout.step.place.order' | trans,
                 class: 'form__action--expand-sm-md button button--big js-summary__submit-button',
             },
             cancel: {
