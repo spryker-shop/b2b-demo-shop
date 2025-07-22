@@ -1,0 +1,14 @@
+{% extends template('page-layout-payment', '@SprykerShop:PaymentPage') %}
+
+{% block content %}
+    <div class="box spacing-bottom--biggest">
+        <div class="container text-center">
+            <h3>{{ data.title }}</h3>
+            <p>{{ data.message }}</p>
+
+            {% if isUserLoggedIn %}
+                <a href="{{ url('customer/overview') }}">{{ 'payment_foreign.go_to_my_account' | trans }}</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

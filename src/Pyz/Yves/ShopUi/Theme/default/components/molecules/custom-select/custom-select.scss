@@ -33,13 +33,6 @@
             }
         }
 
-        &--different-mob-caret {
-            #{$name}__caret {
-                width: rem(12);
-                height: rem(12);
-            }
-        }
-
         &--alternative {
             text-transform: uppercase;
             width: 100%;
@@ -52,7 +45,7 @@
                 width: 100%;
                 font-size: rem(12);
                 line-height: rem(38);
-                padding: 0 rem(20) 0 rem(10);
+                padding: 0 rem(20) 0 rem(6);
                 border: rem(1) solid $setting-color-gray-1;
                 color: $setting-color-gray-5;
                 background: $setting-color-gray-6;
@@ -73,11 +66,7 @@
             }
 
             #{$name}__caret {
-                right: rem(10);
-
-                @include helper-breakpoint-media-min($lg) {
-                    right: rem(13);
-                }
+                right: rem(3);
             }
         }
 
@@ -104,14 +93,12 @@
                 font-weight: fw(regular);
                 border-radius: $setting-border-radius;
                 border: none;
-                color: $setting-color-gray-2;
                 background: $setting-color-gray-7;
                 padding: 0 rem(27) 0 rem(8);
             }
 
             #{$name}__caret {
-                right: rem(6);
-                color: $setting-color-gray-2;
+                right: rem(3);
             }
         }
 

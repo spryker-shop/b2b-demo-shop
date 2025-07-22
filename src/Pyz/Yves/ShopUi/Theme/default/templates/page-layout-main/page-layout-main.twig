@@ -239,3 +239,16 @@
 
     {% include atom('touch-checker') only %}
 {% endblock %}
+
+{% block globalComponents %}
+    {{ parent() }}
+
+    {% include molecule('node-animator') only %}
+
+    {% include molecule('window-load-class-remover') with {
+        attributes: {
+            'target-class-name': 'page-layout',
+            'trigger-class-name': 'page-layout--preload',
+        },
+    } only %}
+{% endblock %}
