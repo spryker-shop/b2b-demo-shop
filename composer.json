@@ -1189,7 +1189,7 @@
         "spryker/router-extension": "1.1.0",
         "spryker/rule-engine": "1.0.0",
         "spryker/rule-engine-extension": "1.0.0",
-        "spryker/sales": "11.70.0",
+        "spryker/sales": "11.70.1",
         "spryker/sales-configurable-bundle": "1.7.0",
         "spryker/sales-data-export": "0.2.2",
         "spryker/sales-discount-connector": "1.1.0",
@@ -1528,6 +1528,10 @@
         "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
         "prefer-mid": [
             "COMPOSER_MEMORY_LIMIT=-1 composer require twig/twig:\"^2.9.0\""
-        ]
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     }
 }
