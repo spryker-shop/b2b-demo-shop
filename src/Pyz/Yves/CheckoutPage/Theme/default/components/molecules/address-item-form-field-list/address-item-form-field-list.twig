@@ -153,7 +153,7 @@
                                         } only %}{% endwidget %}
                                     {% endif %}
 
-                                    <div class="{{ embed.subIndex != 1 ? embed.elementsToGroupToggle }} {{ embed.deliveryContainerClassName }} {{ embed.shipmentTypeHiddenClassName }}">
+                                    <div class="{{ embed.subIndex != 1 ? embed.elementsToGroupToggle }} {{ embed.deliveryContainerClassName }} {{ embed.subIndex != 1 ? embed.shipmentTypeHiddenClassName : '' }}">
                                         {% if embed.hasShippingAddressesAndApplicable and embed.isCompanyBusinessUnitShippingAddressApplicable %}
                                             {% widget embed.companyBusinessUnitShippingAddressWidget with {
                                                 data: {
@@ -235,7 +235,7 @@
                         {% endembed %}
                     {% endblock %}
 
-                    <div class="{{ loop.index != 1 ? elementsToGroupToggle }} {{ embed.validationClassName }} {{ deliveryContainerClassName }} {{ shipmentTypeHiddenClassName }} col col--sm-12">
+                    <div class="{{ loop.index != 1 ? elementsToGroupToggle }} {{ embed.validationClassName }} {{ deliveryContainerClassName }} {{ loop.index != 1 ? shipmentTypeHiddenClassName : ' ' }} col col--sm-12">
                         {% include molecule('form') with {
                             class: embed.itemShippingClassName ~ ' ' ~ embed.config.jsName ~ '__item-shipping--' ~ loopIndex ~ newAddressHiddenClassName ~ ' ' ~ embed.config.name ~ '__content ' ~ embed.config.name ~ '__content--mobile-background spacing-x spacing-x--inner spacing-x--reset',
                             modifiers: ['checkout-address-content'],
