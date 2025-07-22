@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34bdf170fd47024d16d835d6ebab5125",
+    "content-hash": "749ac288baa9da763b03a0567b5cdace",
     "packages": [
         {
             "name": "async-aws/core",
@@ -6719,12 +6719,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/order-amendment.git",
-                "reference": "d3400d8161ee80f9abe4bf7a1469361b1ce46451"
+                "reference": "62c64adba286cbc8def71cbff40cce5fad1dd073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/order-amendment/zipball/d3400d8161ee80f9abe4bf7a1469361b1ce46451",
-                "reference": "d3400d8161ee80f9abe4bf7a1469361b1ce46451",
+                "url": "https://api.github.com/repos/spryker-feature/order-amendment/zipball/62c64adba286cbc8def71cbff40cce5fad1dd073",
+                "reference": "62c64adba286cbc8def71cbff40cce5fad1dd073",
                 "shasum": ""
             },
             "require": {
@@ -6749,7 +6749,7 @@
             "support": {
                 "source": "https://github.com/spryker-feature/order-amendment/tree/master"
             },
-            "time": "2025-07-15T09:27:24+00:00"
+            "time": "2025-07-18T08:10:02+00:00"
         },
         {
             "name": "spryker-feature/order-management",
@@ -8006,16 +8006,16 @@
         },
         {
             "name": "spryker-feature/self-service-portal",
-            "version": "0.8.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/self-service-portal.git",
-                "reference": "864cbec41e9ba7668e5bea200eb51385c1b852fc"
+                "reference": "073e58eb57a7455020ae973addb0513dea02cff8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/864cbec41e9ba7668e5bea200eb51385c1b852fc",
-                "reference": "864cbec41e9ba7668e5bea200eb51385c1b852fc",
+                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/073e58eb57a7455020ae973addb0513dea02cff8",
+                "reference": "073e58eb57a7455020ae973addb0513dea02cff8",
                 "shasum": ""
             },
             "require": {
@@ -8118,6 +8118,7 @@
                 "spryker/container": "Add this module when you want to use the Container.",
                 "spryker/search": "If you want to use the search feature, you need to install this module."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8136,9 +8137,9 @@
             ],
             "description": "SelfServicePortal module",
             "support": {
-                "source": "https://github.com/spryker-feature/self-service-portal/tree/0.8.2"
+                "source": "https://github.com/spryker-feature/self-service-portal/tree/0.8.4"
             },
-            "time": "2025-07-18T15:49:50+00:00"
+            "time": "2025-07-22T08:21:05+00:00"
         },
         {
             "name": "spryker-feature/service-points",
@@ -18009,68 +18010,6 @@
                 "source": "https://github.com/spryker/acl/tree/3.23.0"
             },
             "time": "2025-07-11T12:57:07+00:00"
-        },
-        {
-            "name": "spryker/acl-entity",
-            "version": "1.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/acl-entity.git",
-                "reference": "607cbe5843be20e95c0940bd2ab33795b60e3419"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/acl-entity/zipball/607cbe5843be20e95c0940bd2ab33795b60e3419",
-                "reference": "607cbe5843be20e95c0940bd2ab33795b60e3419",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2",
-                "spryker/acl": "^3.8.0",
-                "spryker/acl-entity-extension": "^1.0.0",
-                "spryker/acl-extension": "^1.1.0",
-                "spryker/acl-merchant-portal-extension": "^1.0.0",
-                "spryker/application-extension": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/price-product-extension": "^1.7.0",
-                "spryker/propel-orm": "^1.16.0",
-                "spryker/transfer": "^3.27.0",
-                "spryker/user": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/container": "*",
-                "spryker/locale": "*",
-                "spryker/merchant": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/container": "If you want to use AclEntityApplicationPlugin."
-            },
-            "type": "library",
-            "extra": {
-                "name": "acl",
-                "class": "\\Spryker\\Zed\\AclEntity\\Persistence\\Propel\\Behavior\\AclEntityBehavior",
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Zed\\AclEntity\\Helper\\": "tests/SprykerTest/Zed/AclEntity/_support/Helper/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "AclEntity module",
-            "support": {
-                "source": "https://github.com/spryker/acl-entity/tree/1.13.0"
-            },
-            "time": "2025-02-28T12:34:48+00:00"
         },
         {
             "name": "spryker/acl-entity-extension",
@@ -37426,65 +37365,6 @@
             "time": "2019-02-06T10:10:03+00:00"
         },
         {
-            "name": "spryker/merchant-sales-order",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-sales-order.git",
-                "reference": "4d33a9aaea2d8d5e463d4ff4c9cb8c6cfb527ae5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/4d33a9aaea2d8d5e463d4ff4c9cb8c6cfb527ae5",
-                "reference": "4d33a9aaea2d8d5e463d4ff4c9cb8c6cfb527ae5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2",
-                "spryker/acl-merchant-portal-extension": "^1.0.0",
-                "spryker/calculation": "^4.0.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^3.0.0",
-                "spryker/merchant-sales-order-extension": "^1.1.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/refund-extension": "^1.0.0",
-                "spryker/sales": "^11.18.0",
-                "spryker/sales-extension": "^1.1.0",
-                "spryker/shipment-extension": "^1.1.0",
-                "spryker/transfer": "^3.27.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/container": "*",
-                "spryker/oms": "*",
-                "spryker/product-offer": "*",
-                "spryker/propel": "*",
-                "spryker/store": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Zed\\MerchantSalesOrder\\Helper\\": "tests/SprykerTest/Zed/MerchantSalesOrder/_support/Helper/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantSalesOrder module",
-            "support": {
-                "source": "https://github.com/spryker/merchant-sales-order/tree/1.7.0"
-            },
-            "time": "2025-03-11T14:06:04+00:00"
-        },
-        {
             "name": "spryker/merchant-sales-order-extension",
             "version": "1.1.0",
             "source": {
@@ -56750,16 +56630,16 @@
         },
         {
             "name": "spryker/search-http",
-            "version": "0.5.3",
+            "version": "0.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search-http.git",
-                "reference": "8d62c388eaa395d2b660bf6ee1751b68e77f2308"
+                "reference": "003d61769eebccddf0536a1cb33a15929457de3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search-http/zipball/8d62c388eaa395d2b660bf6ee1751b68e77f2308",
-                "reference": "8d62c388eaa395d2b660bf6ee1751b68e77f2308",
+                "url": "https://api.github.com/repos/spryker/search-http/zipball/003d61769eebccddf0536a1cb33a15929457de3d",
+                "reference": "003d61769eebccddf0536a1cb33a15929457de3d",
                 "shasum": ""
             },
             "require": {
@@ -56816,9 +56696,9 @@
             ],
             "description": "SearchHttp module",
             "support": {
-                "source": "https://github.com/spryker/search-http/tree/0.5.3"
+                "source": "https://github.com/spryker/search-http/tree/0.5.4"
             },
-            "time": "2025-04-03T13:02:19+00:00"
+            "time": "2025-07-17T13:04:54+00:00"
         },
         {
             "name": "spryker/secrets-manager",
@@ -61295,20 +61175,20 @@
         },
         {
             "name": "spryker/store-context-gui",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store-context-gui.git",
-                "reference": "1dacbec8ac2e50b7cde5c5b4f6837c8abe7a1429"
+                "reference": "6814d54e7622c2f78ea9f69847516e3cf1090647"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store-context-gui/zipball/1dacbec8ac2e50b7cde5c5b4f6837c8abe7a1429",
-                "reference": "1dacbec8ac2e50b7cde5c5b4f6837c8abe7a1429",
+                "url": "https://api.github.com/repos/spryker/store-context-gui/zipball/6814d54e7622c2f78ea9f69847516e3cf1090647",
+                "reference": "6814d54e7622c2f78ea9f69847516e3cf1090647",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker/gui": "^3.45.0",
                 "spryker/kernel": "^3.71.0",
                 "spryker/store-context": "^1.0.0",
@@ -61336,9 +61216,9 @@
             ],
             "description": "StoreContextGui module",
             "support": {
-                "source": "https://github.com/spryker/store-context-gui/tree/2.0.0"
+                "source": "https://github.com/spryker/store-context-gui/tree/2.0.1"
             },
-            "time": "2024-06-18T09:53:39+00:00"
+            "time": "2025-07-18T10:05:44+00:00"
         },
         {
             "name": "spryker/store-context-storage",
@@ -71475,16 +71355,16 @@
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/composer-installer.git",
-                "reference": "6e0fa428497bf560152ee73ffbb8af5c6a56b0dd"
+                "reference": "e9cf5e4bbf7eeaf9ef5db34938942602838fc2b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/6e0fa428497bf560152ee73ffbb8af5c6a56b0dd",
-                "reference": "6e0fa428497bf560152ee73ffbb8af5c6a56b0dd",
+                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/e9cf5e4bbf7eeaf9ef5db34938942602838fc2b1",
+                "reference": "e9cf5e4bbf7eeaf9ef5db34938942602838fc2b1",
                 "shasum": ""
             },
             "require": {
@@ -71567,7 +71447,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-06-27T17:24:01+00:00"
+            "time": "2025-07-17T20:45:56+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -75345,18 +75225,18 @@
         },
         {
             "name": "spryker/cypress-tests",
-            "version": "dev-ssp-1333/master-fix-tests",
+            "version": "dev-ssp-master-b2b",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cypress-tests.git",
-                "reference": "80f0b50341f5711db16f78d8f589476bb5abe908"
+                "reference": "4cb2882ce6352531ce6c33170031a728edbc0a7a"
             },
             "type": "library",
             "license": [
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-07-21T14:25:14+00:00"
+            "time": "2025-07-21T17:10:06+00:00"
         },
         {
             "name": "spryker/development",
@@ -75558,18 +75438,19 @@
         },
         {
             "name": "spryker/robotframework-suite-tests",
-            "version": "dev-feature/ssp-995-adjusted-ssp-permissions-b2b",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "8759df84b381109c153489a4cc8d69c06c161833"
+                "reference": "d1710635107fa3bcb9bed45bc6ada28e50d2c00a"
             },
+            "default-branch": true,
             "type": "library",
             "license": [
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2025-07-21T13:18:13+00:00"
+            "time": "2025-07-18T10:54:26+00:00"
         },
         {
             "name": "spryker/testify",
@@ -76843,6 +76724,12 @@
             "alias_normalized": "202507.0"
         },
         {
+            "package": "spryker-feature/self-service-portal",
+            "version": "9999999-dev",
+            "alias": "202507.0",
+            "alias_normalized": "202507.0"
+        },
+        {
             "package": "spryker-feature/service-points",
             "version": "9999999-dev",
             "alias": "202507.0",
@@ -76975,6 +76862,7 @@
         "spryker-feature/return-management": 20,
         "spryker-feature/scheduled-prices": 20,
         "spryker-feature/search": 20,
+        "spryker-feature/self-service-portal": 20,
         "spryker-feature/service-points": 20,
         "spryker-feature/service-points-cart": 20,
         "spryker-feature/shared-carts": 20,
