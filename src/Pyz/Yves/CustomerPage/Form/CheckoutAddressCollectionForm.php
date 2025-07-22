@@ -9,9 +9,12 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\CustomerPage\Form;
 
+use Generated\Shared\Transfer\QuoteTransfer;
+use SprykerShop\Yves\CustomerPage\Dependency\Service\CustomerPageToShipmentServiceInterface;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm as SprykerCheckoutAddressCollectionForm;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormInterface;
 
 /**
@@ -52,5 +55,47 @@ class CheckoutAddressCollectionForm extends SprykerCheckoutAddressCollectionForm
         );
 
         return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormEvent $event
+     * @param \SprykerShop\Yves\CustomerPage\Dependency\Service\CustomerPageToShipmentServiceInterface $shipmentService
+     *
+     * @return void
+     */
+    protected function hydrateShippingAddressSubFormDataFromItemLevelShippingAddresses(
+        FormEvent $event,
+        CustomerPageToShipmentServiceInterface $shipmentService,
+    ): void {
+        $quoteTransfer = $event->getData();
+
+        if (!($quoteTransfer instanceof QuoteTransfer)) {
+            return;
+        }
+
+        $quoteTransfer = $this->executeCheckoutAddressStepPreGroupItemsByShipmentPlugins($quoteTransfer);
+
+        $shipmentGroupCollection = $this->mergeShipmentGroupsByShipmentHash(
+            $shipmentService->groupItemsByShipment($quoteTransfer->getItems()),
+            $shipmentService->groupItemsByShipment($quoteTransfer->getBundleItems()),
+        );
+
+        $shippingAddressForm = $event->getForm()->get(static::FIELD_SHIPPING_ADDRESS);
+
+        if ($quoteTransfer->getItems()->count() || $quoteTransfer->getBundleItems()->count()) {
+            $this->setDeliverToMultipleAddressesEnabled($shippingAddressForm);
+        }
+
+        if ($this->isDeliverToMultipleAddressesEnabled($shippingAddressForm) || $shipmentGroupCollection->count() < 1) {
+            return;
+        }
+
+        $shipmentGroupTransfer = $shipmentGroupCollection->getIterator()->current();
+
+        if (!$shipmentGroupTransfer->getShipment() || !$shipmentGroupTransfer->getShipment()->getShippingAddress()) {
+            return;
+        }
+
+        $shippingAddressForm->setData(clone $shipmentGroupTransfer->getShipment()->getShippingAddress());
     }
 }
