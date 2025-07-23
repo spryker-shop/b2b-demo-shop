@@ -2,7 +2,6 @@
 
 declare(strict_types = 1);
 
-use \SprykerShop\Shared\AgentPage\AgentPageConstants;
 use Generated\Shared\Transfer\AddPaymentMethodTransfer;
 use Generated\Shared\Transfer\AddReviewsTransfer;
 use Generated\Shared\Transfer\AppConfigUpdatedTransfer;
@@ -134,6 +133,7 @@ use Spryker\Zed\OauthAuth0\OauthAuth0Config;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
+use SprykerShop\Shared\AgentPage\AgentPageConstants;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use SprykerShop\Shared\StorageRouter\StorageRouterConstants;
