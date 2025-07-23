@@ -51,7 +51,7 @@
     {% widget 'MultiFactorAuthHandlerWidget' with {
         data: {
             id: _view.loginForm.vars.name,
-            url: '/multi-factor-auth/get-customer-enabled-types',
+            url: 'multiFactorAuth/getCustomerEnabledTypes',
             formSelector: '[name="' ~ _view.loginForm.vars.name ~ '"]',
             isLoginFlow: 'true',
             isJsEnabledHandler: 'true',
