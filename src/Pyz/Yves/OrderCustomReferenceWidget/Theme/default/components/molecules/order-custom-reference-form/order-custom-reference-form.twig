@@ -1,20 +1,7 @@
 {% extends molecule('order-custom-reference-form', 'SprykerShop:OrderCustomReferenceWidget') %}
 
-{% block title %}{% endblock %}
-
 {% block form %}
-    {% include molecule('form') with {
-        data: {
-            form: data.form,
-            submit: {
-                enable: true,
-                text: 'order_custom_reference.save' | trans,
-                attributes: data.ajaxTriggerAttribute,
-                class: 'form__action--expand button',
-            },
-            options: {
-                action: path(data.ajaxTriggerAttribute ? 'order-custom-reference/async/save' : 'order-custom-reference/save'),
-            },
-        },
-    } only %}
+    {% set classButton = 'form__action--expand button' %}
+
+    {{ parent() }}
 {% endblock %}
