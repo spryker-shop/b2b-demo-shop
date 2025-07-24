@@ -18,6 +18,7 @@ export default class AddressItemFormFieldList extends Component {
     protected DEFAULT_VALUE = '0';
 
     protected sameAddressForAllItemsControl: HTMLElement[];
+    protected productItems: HTMLElement[];
     protected elementsToToggle: HTMLElement[];
 
     protected observer = new MutationObserver(this.onInputChangeCallback.bind(this));
@@ -40,7 +41,9 @@ export default class AddressItemFormFieldList extends Component {
             this.querySelectorAll<HTMLElement>(`.${this.getAttribute('same-address-for-all-items-control')} input`),
         );
 
-        for (const element of Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('product-item')}`))) {
+        this.productItems = Array.from(this.querySelectorAll<HTMLElement>(`.${this.getAttribute('product-item')}`));
+
+        for (const element of this.productItems) {
             const excludedTypes: string[] = JSON.parse(this.getAttribute('excluded-types') || '[]');
             const currentShipmentType = element.getAttribute('shipment-type');
 
@@ -104,7 +107,7 @@ export default class AddressItemFormFieldList extends Component {
             return data.items;
         });
 
-        if (items.length === 1) {
+        if (items.length === 1 && this.productItems.length === 1) {
             this.visibleWithoutValidation = true;
         }
 
