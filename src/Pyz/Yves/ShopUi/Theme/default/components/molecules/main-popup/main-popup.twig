@@ -1,0 +1,11 @@
+{% extends molecule('main-popup', '@SprykerShop:ShopUi') %}
+
+{% define attributes = {
+    'additional-overlay-class-name': '',
+} %}
+
+{% block extraClass %}
+    {{ attributes['additional-overlay-class-name'] }}
+
+    {{ parent() }}
+{% endblock %}
