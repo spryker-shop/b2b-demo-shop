@@ -4,20 +4,6 @@ $shop-ui-icon-size-bigger: 1.5rem;
 @include shop-ui-icon {
     z-index: $setting-zi-icon;
 
-    &--ssp {
-        width: rem(35);
-        height: rem(35);
-
-        @include helper-breakpoint-media-min($lg) {
-            margin-top: rem(-10);
-        }
-    }
-
-    &--ssp-header {
-        position: relative;
-        bottom: rem(4);
-    }
-
     &--logo {
         width: rem(96);
         height: rem(32);
