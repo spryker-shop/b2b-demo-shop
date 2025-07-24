@@ -19,7 +19,7 @@
                 },
                 embed: {
                     message: data.message,
-                    quote: data.quote | default(null),
+                    quote: data.quote is defined ? data.quote : null,
                 },
             } only %}
                 {% import _self as component %}
