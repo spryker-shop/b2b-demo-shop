@@ -1,0 +1,16 @@
+{% extends molecule('multi-factor-authentication-handler', '@Spryker:MultiFactorAuth') %}
+
+{% block popup %}
+    {% include molecule('main-popup') with {
+        class: config.jsName ~ '__popup',
+        data: {
+            content: block('popupContent'),
+        },
+        attributes: {
+            'content-id': "#{popupContentId}",
+            'trigger-class-name': attributes['trigger-class-name'],
+            'has-content-mount': true,
+            'additional-overlay-class-name': 'main-popup--top',
+        },
+    } only %}
+{% endblock %}

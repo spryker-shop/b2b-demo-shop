@@ -19,7 +19,7 @@
             {% block actions %}
                 {% for action in data.actions %}
                     <a class="link link--alt link--action spacing-left col"
-                        href="{{ action.url }}"
+                        href="{{ functionExists('generatePath') ? generatePath(action.url) : action.url }}"
                         >
                         {% if action.icon | default(false) %}
                             {% include molecule('icon-tooltip') with {

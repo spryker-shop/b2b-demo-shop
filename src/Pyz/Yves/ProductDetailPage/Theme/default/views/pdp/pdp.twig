@@ -20,7 +20,7 @@
         {% endwidget %}
         {{ data.product.name }}
     </h1>
-    <link itemprop="url" href="{{ data.productUrl }}" />
+    <link itemprop="url" href="{{ functionExists('generatePath') ? generatePath(data.productUrl) : data.productUrl }}" />
 {% endblock %}
 
 {% block contentClass %}page-layout-main page-layout-main--pdp{% endblock %}

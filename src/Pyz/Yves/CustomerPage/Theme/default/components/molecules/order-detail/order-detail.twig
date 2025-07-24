@@ -6,10 +6,6 @@
 
 {% block body %}
     {% block orderActions %}
-        {% if widgetGlobalExists('CreateOrderSspInquiryWidget') and can('CreateSspInquiryPermissionPlugin') %}
-            {% widget 'CreateOrderSspInquiryWidget' args [data.order.orderReference, data.order.idSalesOrder] only %}{% endwidget %}
-        {% endif %}
-
         {% embed molecule('action-bar') with {
             modifiers: ['first'],
             data: {
@@ -30,6 +26,12 @@
         } only %}
             {% block actions %}
                 {{ parent() }}
+
+                {% if widgetGlobalExists('CreateOrderSspInquiryWidget') and can('CreateSspInquiryPermissionPlugin') %}
+                    <div class="{{ config.name }}__action">
+                        {% widget 'CreateOrderSspInquiryWidget' args [embed.order.orderReference, embed.order.idSalesOrder] only %}{% endwidget %}
+                    </div>
+                {% endif %}
 
                 {% embed molecule('return-create-link', 'SalesReturnPage') ignore missing with {
                     class: config.name ~ '__action ' ~ embed.jsName ~ '__target-state-toggler button',
