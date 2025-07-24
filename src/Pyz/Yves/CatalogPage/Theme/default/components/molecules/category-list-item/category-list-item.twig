@@ -13,7 +13,7 @@
     } only %}
         {% block image %}
             <div class="col col--sm-3 col--xl-2">
-                <a href="{{ data.url }}">
+                <a href="{{ functionExists('generatePath') ? generatePath(data.url) : data.url }}">
                     {% widget 'CategoryImageStorageWidget' args [embed.id, data.name] with {
                         data: {
                             modifiers: ['category-list-item'],
@@ -34,7 +34,7 @@
         {% block actionsContainer %}
             <div class="col col--sm-3 col--xl-2 text-right">
                 {% block actions %}
-                    <a class="button button--small-on-mobile" href="{{ data.url }}">
+                    <a class="button button--small-on-mobile" href="{{ functionExists('generatePath') ? generatePath(data.url) : data.url }}">
                         {{ 'product.view' | trans }}
                     </a>
                 {% endblock %}
