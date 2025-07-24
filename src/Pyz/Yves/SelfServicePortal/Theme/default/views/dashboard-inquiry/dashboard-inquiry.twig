@@ -1,10 +1,6 @@
 {% extends view('dashboard-inquiry', '@SprykerFeature:SelfServicePortal') %}
 
 {% block table %}
-    {% set columns = columns[:2]
-        | merge(columns[2:])
-    %}
-
     {% set rows = rows | map((row, index) => row | merge({
         actions: row.actions | map(action => action | merge({
             iconModifier: 'big',
