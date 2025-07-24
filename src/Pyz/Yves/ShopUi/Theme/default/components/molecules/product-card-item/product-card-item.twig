@@ -38,7 +38,7 @@
                 {% set imageUrl = listItem.images[0].externalUrlLarge ?? '' %}
 
                 {% if listItem.url ?? false %}
-                    <a itemprop="url" href="{{ listItem.url }}" title="{{ listItem.name }}">
+                    <a itemprop="url" href="{{ functionExists('generatePath') ? generatePath(listItem.url) : listItem.url }}" title="{{ listItem.name }}">
                         {% include molecule('product-item-image') with {
                             modifiers: data.imageModifiers,
                             data: {
@@ -77,7 +77,7 @@
                                             } only %}
                                                 {% block body %}
                                                     {% if data.url %}
-                                                        <a class="{{ data.configName}}__title" href="{{ data.url }}">{{ data.name }}</a>
+                                                        <a class="{{ data.configName}}__title" href="{{ functionExists('generatePath') ? generatePath(data.url) : data.url }}">{{ data.name }}</a>
                                                     {% else %}
                                                         {{ data.name }}
                                                     {% endif %}
