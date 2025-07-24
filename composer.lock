@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35388483c5693a0d4114e7880dd71c0b",
+    "content-hash": "af40d1f8577d22077e5868df9afa079e",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7813,18 +7813,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/reorder.git",
-                "reference": "be122e0edaae012b6c02bc38d540277e3db53a6b"
+                "reference": "c5d6c835cb993e8d1a094cb8acc6f8ba55400bdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/reorder/zipball/be122e0edaae012b6c02bc38d540277e3db53a6b",
-                "reference": "be122e0edaae012b6c02bc38d540277e3db53a6b",
+                "url": "https://api.github.com/repos/spryker-feature/reorder/zipball/c5d6c835cb993e8d1a094cb8acc6f8ba55400bdc",
+                "reference": "c5d6c835cb993e8d1a094cb8acc6f8ba55400bdc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
                 "spryker-shop/cart-reorder-page": "^1.0.0",
-                "spryker-shop/customer-reorder-widget": "^6.16.0",
                 "spryker/cart-reorder": "^1.0.0"
             },
             "suggest": {
@@ -7845,7 +7844,7 @@
             "support": {
                 "source": "https://github.com/spryker-feature/reorder/tree/master"
             },
-            "time": "2025-07-15T06:53:06+00:00"
+            "time": "2025-07-24T10:53:24+00:00"
         },
         {
             "name": "spryker-feature/resource-sharing",
@@ -8010,12 +8009,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/self-service-portal.git",
-                "reference": "93d0478f1fb499970dc92d7fcebed1500714b40a"
+                "reference": "f3610342deb253a252a065007bc683008def19fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/93d0478f1fb499970dc92d7fcebed1500714b40a",
-                "reference": "93d0478f1fb499970dc92d7fcebed1500714b40a",
+                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/f3610342deb253a252a065007bc683008def19fe",
+                "reference": "f3610342deb253a252a065007bc683008def19fe",
                 "shasum": ""
             },
             "require": {
@@ -8139,9 +8138,9 @@
             ],
             "description": "SelfServicePortal module",
             "support": {
-                "source": "https://github.com/spryker-feature/self-service-portal/tree/0.8.9"
+                "source": "https://github.com/spryker-feature/self-service-portal/tree/0.8.10"
             },
-            "time": "2025-07-24T10:28:13+00:00"
+            "time": "2025-07-24T12:49:41+00:00"
         },
         {
             "name": "spryker-feature/service-points",
@@ -11496,74 +11495,6 @@
                 "source": "https://github.com/spryker-shop/customer-page-extension/tree/1.7.0"
             },
             "time": "2025-04-10T08:17:34+00:00"
-        },
-        {
-            "name": "spryker-shop/customer-reorder-widget",
-            "version": "6.17.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
-                "reference": "a96d28d1ced695a00024cc3d32302757151d1427"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/a96d28d1ced695a00024cc3d32302757151d1427",
-                "reference": "a96d28d1ced695a00024cc3d32302757151d1427",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2",
-                "spryker-shop/customer-reorder-widget-extension": "^1.3.0",
-                "spryker-shop/shop-application": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/application": "^3.0.0",
-                "spryker/availability-storage": "^1.0.0 || ^2.0.0",
-                "spryker/cart": "^4.6.0 || ^5.0.0 || ^7.0.0",
-                "spryker/customer": "^7.4.0",
-                "spryker/glossary-storage": "^1.0.0",
-                "spryker/kernel": "^3.52.0",
-                "spryker/locale": "^3.0.0 || ^4.0.0",
-                "spryker/messenger": "^3.1.0",
-                "spryker/product-bundle": "^4.4.0 || ^6.0.0 || ^7.0.0",
-                "spryker/product-storage": "^1.1.0",
-                "spryker/sales": "^8.5.0 || ^10.0.0 || ^11.0.0",
-                "spryker/symfony": "^3.1.0",
-                "spryker/transfer": "^3.27.0",
-                "spryker/zed-request": "^3.6.0"
-            },
-            "require-dev": {
-                "spryker-shop/customer-page": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/router": "*",
-                "spryker/silex": "*"
-            },
-            "suggest": {
-                "spryker-shop/cart-page": "The default widget redirect is heading to a cart controller. Please redefine the redirect URL if you would like to use a custom behavior.",
-                "spryker-shop/customer-page": "Module with interface to implement (^0.2.0), to use the reorder widget on a customer page",
-                "spryker/router": "Use this module when you want to use the Router.",
-                "spryker/silex": "If you want use the widget's router provider"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CustomerReorderWidget module",
-            "support": {
-                "source": "https://github.com/spryker-shop/customer-reorder-widget/tree/6.17.1"
-            },
-            "abandoned": true,
-            "time": "2025-03-17T09:01:31+00:00"
         },
         {
             "name": "spryker-shop/customer-reorder-widget-extension",
@@ -52123,16 +52054,16 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.21.0",
+            "version": "1.21.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "e3afb4b9719fd5ba72592846c10ac5c4e636effb"
+                "reference": "6f6d7ac7bb2b96db91705642a8ab7d555efe0c7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/e3afb4b9719fd5ba72592846c10ac5c4e636effb",
-                "reference": "e3afb4b9719fd5ba72592846c10ac5c4e636effb",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/6f6d7ac7bb2b96db91705642a8ab7d555efe0c7b",
+                "reference": "6f6d7ac7bb2b96db91705642a8ab7d555efe0c7b",
                 "shasum": ""
             },
             "require": {
@@ -52168,9 +52099,9 @@
             ],
             "description": "PropelOrm module",
             "support": {
-                "source": "https://github.com/spryker/propel-orm/tree/1.21.0"
+                "source": "https://github.com/spryker/propel-orm/tree/1.21.1"
             },
-            "time": "2024-09-20T14:38:30+00:00"
+            "time": "2025-07-22T08:02:09+00:00"
         },
         {
             "name": "spryker/propel-orm-extension",
@@ -56472,16 +56403,16 @@
         },
         {
             "name": "spryker/search-elasticsearch",
-            "version": "1.18.0",
+            "version": "1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search-elasticsearch.git",
-                "reference": "97400390fedf169fed8d68669f6a0e58e7185721"
+                "reference": "512a5c7a794ffab5f88c7dc0cabffdd79fad3c44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/97400390fedf169fed8d68669f6a0e58e7185721",
-                "reference": "97400390fedf169fed8d68669f6a0e58e7185721",
+                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/512a5c7a794ffab5f88c7dc0cabffdd79fad3c44",
+                "reference": "512a5c7a794ffab5f88c7dc0cabffdd79fad3c44",
                 "shasum": ""
             },
             "require": {
@@ -56530,9 +56461,9 @@
             ],
             "description": "SearchElasticsearch module",
             "support": {
-                "source": "https://github.com/spryker/search-elasticsearch/tree/1.18.0"
+                "source": "https://github.com/spryker/search-elasticsearch/tree/1.18.1"
             },
-            "time": "2024-11-04T14:07:47+00:00"
+            "time": "2025-07-23T09:15:39+00:00"
         },
         {
             "name": "spryker/search-elasticsearch-gui",
@@ -75049,6 +74980,74 @@
             "time": "2024-09-19T15:52:17+00:00"
         },
         {
+            "name": "spryker-shop/customer-reorder-widget",
+            "version": "6.17.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
+                "reference": "a96d28d1ced695a00024cc3d32302757151d1427"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/a96d28d1ced695a00024cc3d32302757151d1427",
+                "reference": "a96d28d1ced695a00024cc3d32302757151d1427",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker-shop/customer-reorder-widget-extension": "^1.3.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.0.0",
+                "spryker/availability-storage": "^1.0.0 || ^2.0.0",
+                "spryker/cart": "^4.6.0 || ^5.0.0 || ^7.0.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/locale": "^3.0.0 || ^4.0.0",
+                "spryker/messenger": "^3.1.0",
+                "spryker/product-bundle": "^4.4.0 || ^6.0.0 || ^7.0.0",
+                "spryker/product-storage": "^1.1.0",
+                "spryker/sales": "^8.5.0 || ^10.0.0 || ^11.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/zed-request": "^3.6.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "The default widget redirect is heading to a cart controller. Please redefine the redirect URL if you would like to use a custom behavior.",
+                "spryker-shop/customer-page": "Module with interface to implement (^0.2.0), to use the reorder widget on a customer page",
+                "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/silex": "If you want use the widget's router provider"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomerReorderWidget module",
+            "support": {
+                "source": "https://github.com/spryker-shop/customer-reorder-widget/tree/6.17.1"
+            },
+            "abandoned": true,
+            "time": "2025-03-17T09:01:31+00:00"
+        },
+        {
             "name": "spryker-shop/web-profiler-widget",
             "version": "1.4.2",
             "source": {
@@ -75227,18 +75226,19 @@
         },
         {
             "name": "spryker/cypress-tests",
-            "version": "dev-ssp-bugfixes",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cypress-tests.git",
-                "reference": "9c3aa4a6213ff9d1e7c8a9aaee521c119ea9a4cc"
+                "reference": "f8bb818e3791fe8f5a85e02e4e5958bea3df7ea3"
             },
+            "default-branch": true,
             "type": "library",
             "license": [
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-07-24T12:41:09+00:00"
+            "time": "2025-07-24T13:28:06+00:00"
         },
         {
             "name": "spryker/development",
@@ -75444,7 +75444,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "63c3464e26ee4e9d2804fbcab1d90ec417506ae2"
+                "reference": "4ea6fd255aac448c1b0d86954e793321bce78f2b"
             },
             "default-branch": true,
             "type": "library",
@@ -75452,7 +75452,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2025-07-23T08:52:53+00:00"
+            "time": "2025-07-24T09:03:43+00:00"
         },
         {
             "name": "spryker/testify",
