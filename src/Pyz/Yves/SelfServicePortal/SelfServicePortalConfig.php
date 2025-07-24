@@ -26,18 +26,18 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     /**
      * @api
      *
+     * @var string
+     */
+    public const SHIPMENT_TYPE_ON_SITE_SERVICE = 'on-site-service';
+
+    /**
+     * @api
+     *
      * @uses \Spryker\Shared\ShipmentType\ShipmentTypeConfig::SHIPMENT_TYPE_DELIVERY
      *
      * @var string
      */
     public const SHIPMENT_TYPE_DELIVERY = 'delivery';
-
-    /**
-     * @api
-     *
-     * @var string
-     */
-    public const SHIPMENT_TYPE_ON_SITE_SERVICE = 'on-site-service';
 
     /**
      * Specification:
@@ -52,7 +52,6 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     {
         return [
             static::SHIPMENT_TYPE_DELIVERY,
-            static::SHIPMENT_TYPE_ON_SITE_SERVICE,
             static::SHIPMENT_TYPE_IN_CENTER_SERVICE,
         ];
     }
