@@ -1,6 +1,7 @@
 {% extends view('dashboard-inquiry', '@SprykerFeature:SelfServicePortal') %}
 
 {% block table %}
+
     {% set rows = rows | map((row, index) => row | merge({
         actions: row.actions | map(action => action | merge({
             iconModifier: 'big',
