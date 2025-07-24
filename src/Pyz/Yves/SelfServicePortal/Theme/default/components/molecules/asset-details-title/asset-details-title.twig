@@ -18,7 +18,7 @@
             href="{{ url('customer/ssp-asset/update', { reference: data.reference }) }}"
             class="link"
             title="{{ 'general.edit.button' | trans }}"
-            data-qa="edit-ssp-asset">
+            {{ qa('edit-ssp-asset') }}>
             {% include atom('icon') with {
                 data: {
                     name: 'edit',
