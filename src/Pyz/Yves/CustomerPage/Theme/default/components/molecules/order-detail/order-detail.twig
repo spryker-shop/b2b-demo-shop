@@ -21,7 +21,7 @@
             embed: {
                 order: data.order,
                 requestUri: data.requestUri,
-                jsName: 'js-customer-reorder-form',
+                jsName: 'js-cart-reorder-form',
             },
         } only %}
             {% block actions %}
@@ -60,7 +60,7 @@
                 {% endwidget %}
 
                 <button class="{{ config.name }}__action button button--small-space {{ embed.jsName }}__trigger" data-qa="reorder-selected-button" disabled>
-                    {{ 'customer.order.reorder_selected' | trans }}
+                    {{ 'cart_reorder_page.reorder_selected' | trans }}
                 </button>
 
                 {% widget 'CartReorderWidget' args [embed.order] with {
@@ -72,7 +72,7 @@
                         {% include molecule('remote-form-submit') with {
                             class: embed.configName ~ '__action',
                             data: {
-                                label: 'customer.order.reorder_all' | trans,
+                                label: 'cart_reorder_page.reorder_all' | trans,
                                 buttonClass: 'button button--small-space button--expand',
                                 buttonExtraAttributes: {
                                     'data-qa': 'reorder-all-button',
@@ -170,8 +170,8 @@
     {% block buttonsStateHandler %}
         {% include molecule('order-buttons-disable-toggler', 'SalesReturnPage') ignore missing with {
             attributes: {
-                'trigger-class-name': 'js-customer-reorder-form__selection',
-                'target-class-name': 'js-customer-reorder-form__target-state-toggler',
+                'trigger-class-name': 'js-cart-reorder-form__selection',
+                'target-class-name': 'js-cart-reorder-form__target-state-toggler',
                 'is-disabled-when-checked': 'false',
                 'disabled-class-name': 'button--disabled',
             },
