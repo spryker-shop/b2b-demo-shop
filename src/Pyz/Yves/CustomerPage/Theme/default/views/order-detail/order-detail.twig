@@ -1,27 +1,14 @@
 {% extends view('order-detail', '@SprykerShop:CustomerPage') %}
 
 {% block customerContent %}
-    {% embed molecule('customer-reorder-form', 'CustomerReorderWidget') ignore missing with {
-        data: {
-            order: data.order,
-        },
-        embed: {
-            order: data.order,
-            shipmentGroups: data.shipmentGroups,
-            orderShipmentExpenses: data.orderShipmentExpenses,
-        },
-    } only %}
-        {% block formContent %}
-            {% include molecule('order-detail', 'CustomerPage') with {
-                data: {
-                    order: embed.order,
-                    shipmentGroups: embed.shipmentGroups,
-                    orderShipmentExpenses: embed.orderShipmentExpenses,
-                    reorderSelectionClassName: config.jsName ~ '__selection',
-                },
-            } only %}
-        {% endblock %}
-    {% endembed %}
+
+    {% widget 'CartReorderItemsWidget' args [
+        data.order,
+        data.shipmentGroups,
+        data.orderShipmentExpenses,
+    ] only %}
+    {% endwidget %}
+
     <div class="box box--medium">
         {% widget 'CommentThreadWidget' args [
             data.order.idSalesOrder,
