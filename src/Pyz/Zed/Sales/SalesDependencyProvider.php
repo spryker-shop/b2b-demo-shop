@@ -98,6 +98,7 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductClass
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductClassOrderItemsPostSavePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ScheduleTimeOrderItemExpanderPreSavePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspAssetOrderExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspAssetOrderItemExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspAssetOrderItemsPostSavePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspProductClassSalesOrderItemCollectionPreDeletePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspServiceCancellableOrderItemExpanderPlugin;
@@ -248,6 +249,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ServicePointOrderItemExpanderPlugin(),
             new ShipmentOrderItemExpanderPlugin(),
             new SspServiceCancellableOrderItemExpanderPlugin(),
+            new SspAssetOrderItemExpanderPlugin(),
         ];
     }
 
