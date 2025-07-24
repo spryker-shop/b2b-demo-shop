@@ -91,6 +91,7 @@ use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnab
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnableByItemStatePlugin;
 use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointOrderItemExpanderPlugin;
 use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointOrderItemsPostSavePlugin;
+use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointSalesOrderItemCollectionPreDeletePlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Sales\ShipmentOrderItemExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductClassOrderExpanderPlugin;
@@ -327,6 +328,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemMetadataSalesOrderItemCollectionPreDeletePlugin(),
             new OmsItemHistorySalesOrderItemCollectionPreDeletePlugin(),
             new ProductOptionSalesOrderItemCollectionPreDeletePlugin(),
+            new ServicePointSalesOrderItemCollectionPreDeletePlugin(),
             new SalesConfigurableBundleSalesOrderItemCollectionPreDeletePlugin(),
             new SalesProductConfigurationSalesOrderItemCollectionPreDeletePlugin(),
             new NopaymentSalesOrderItemCollectionPreDeletePlugin(),

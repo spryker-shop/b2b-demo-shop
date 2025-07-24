@@ -18,7 +18,7 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
      */
     public function getDefaultMerchantReference(): string
     {
-        return 'MER000001';
+        return 'MERSPRYKER';
     }
 
     /**
