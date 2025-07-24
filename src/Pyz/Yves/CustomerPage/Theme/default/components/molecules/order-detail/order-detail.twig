@@ -60,7 +60,7 @@
                 {% endwidget %}
 
                 <button class="{{ config.name }}__action button button--small-space {{ embed.jsName }}__trigger" data-qa="reorder-selected-button" disabled>
-                    {{ 'customer.order.reorder_selected' | trans }}
+                    {{ 'cart_reorder_page.reorder_selected' | trans }}
                 </button>
 
                 {% widget 'CartReorderWidget' args [embed.order] with {
@@ -72,7 +72,7 @@
                         {% include molecule('remote-form-submit') with {
                             class: embed.configName ~ '__action',
                             data: {
-                                label: 'customer.order.reorder_all' | trans,
+                                label: 'cart_reorder_page.reorder_all' | trans,
                                 buttonClass: 'button button--small-space button--expand',
                                 buttonExtraAttributes: {
                                     'data-qa': 'reorder-all-button',
