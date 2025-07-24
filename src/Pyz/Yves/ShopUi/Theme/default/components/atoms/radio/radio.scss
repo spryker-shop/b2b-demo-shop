@@ -73,18 +73,6 @@
             }
 
             #{$name}__input:checked ~ {
-                #{$name}__box {
-                    background-color: $setting-color-bg;
-                    box-shadow: inset 0 0 0 rem(4) $setting-color-main;
-
-                    &::before {
-                        border-color: $setting-color-gray-7;
-                        box-shadow: 0 rem(10) rem(18) 0 $setting-color-shadow-1,
-                            0 rem(3) rem(3) 0 $setting-color-shadow-1;
-                        z-index: $setting-zi-element;
-                    }
-                }
-
                 #{$name}__label {
                     color: $setting-color-gray-5;
                     font-weight: fw(medium);
