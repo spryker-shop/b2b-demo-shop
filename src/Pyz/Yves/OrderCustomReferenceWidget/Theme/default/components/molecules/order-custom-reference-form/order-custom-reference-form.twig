@@ -1,3 +1,7 @@
 {% extends molecule('order-custom-reference-form', 'SprykerShop:OrderCustomReferenceWidget') %}
 
-{% block title %}{% endblock %}
+{% block form %}
+    {% set classButton = 'form__action--expand button' %}
+
+    {{ parent() }}
+{% endblock %}
