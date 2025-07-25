@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\QuickOrderPage;
 
+use SprykerShop\Yves\ProductOfferWidget\Plugin\QuickOrderPage\ProductOfferQuickOrderItemMapperPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\QuickOrder\QuickOrderItemDefaultPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrder\QuickOrderFormMeasurementUnitColumnPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderPage\QuickOrderCsvFileTemplateStrategyPlugin;
@@ -76,6 +77,16 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             new QuickOrderCsvUploadedFileValidatorStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderItemMapperPluginInterface>
+     */
+    protected function getQuickOrderItemMapperPlugins(): array
+    {
+        return [
+            new ProductOfferQuickOrderItemMapperPlugin(),
         ];
     }
 }
