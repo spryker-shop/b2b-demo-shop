@@ -74,6 +74,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     protected function getCheckoutPreConditions(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
+            new ProductOfferCheckoutPreConditionPlugin(),
             new DisallowedQuoteCheckoutPreConditionPlugin(),
             new CustomerPreConditionCheckerPlugin(),
             new CustomerAddressSalutationCheckoutPreConditionPlugin(),
@@ -93,7 +94,6 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductQuantityRestrictionCheckoutPreConditionPlugin(),
             new ServicePointCheckoutPreConditionPlugin(),
             new ShipmentTypeCheckoutPreConditionPlugin(),
-            new ProductOfferCheckoutPreConditionPlugin(),
         ];
     }
 
