@@ -47,6 +47,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderItemE
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\UniqueOrderBundleItemsExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\QuantitySalesUnitOrderItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
+use Spryker\Zed\ProductOfferSales\Communication\Plugin\Sales\ProductOfferReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderItemsPostSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSalesOrderItemCollectionPostUpdatePlugin;
@@ -151,6 +152,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductPackagingUnitOrderItemExpanderPreSavePlugin(),
             new AmountSalesUnitOrderItemExpanderPreSavePlugin(),
             new IsQuantitySplittableOrderItemExpanderPreSavePlugin(),
+            new ProductOfferReferenceOrderItemExpanderPreSavePlugin(),
             new OrderItemReferenceExpanderPreSavePlugin(),
             new ScheduleTimeOrderItemExpanderPreSavePlugin(),
         ];
