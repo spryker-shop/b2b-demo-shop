@@ -36,7 +36,7 @@
                 <a class="{{config.name}}__step {{config.name}}__step--previous" href="{{ path(data.paginationPath, data.parameters|merge({page: data.currentPage-1})) }}{{ data.anchor }}">
                     {% include atom('icon') with {
                         class: config.name ~ '__reset-icon',
-                        modifiers: ['smaller', 'reverse'],
+                        modifiers: ['reverse'],
                         data: {
                             name: 'chevron-right'
                         }
@@ -74,7 +74,7 @@
                 <span class="{{config.name}}__step {{config.name}}__step--previous {{config.name}}__step--disabled">
                     {% include atom('icon') with {
                         class: config.name ~ '__reset-icon',
-                        modifiers: ['smaller', 'reverse'],
+                        modifiers: ['reverse'],
                         data: {
                             name: 'chevron-right'
                         }
@@ -118,7 +118,6 @@
                 <a class="{{config.name}}__step {{config.name}}__step--next" href="{{ path(data.paginationPath, data.parameters|merge({page: data.currentPage + 1})) }}{{ data.anchor }}">
                     {% include atom('icon') with {
                         class: config.name ~ '__reset-icon',
-                        modifiers: ['smaller'],
                         data: {
                             name: 'chevron-right'
                         }
@@ -130,7 +129,6 @@
                 <span class="{{config.name}}__step {{config.name}}__step--next {{config.name}}__step--disabled">
                     {% include atom('icon') with {
                         class: config.name ~ '__reset-icon',
-                        modifiers: ['smaller'],
                         data: {
                             name: 'chevron-right'
                         }

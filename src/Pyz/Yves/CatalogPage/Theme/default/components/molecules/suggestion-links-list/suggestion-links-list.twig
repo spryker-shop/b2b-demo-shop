@@ -19,7 +19,7 @@
         <h6 class="{{ config.name }}__title {{ titleHiddenClass }}">{{ data.name }}</h6>
         <ul>
             {% for item in data.items | slice(0, data.length) %}
-                {% set href = data.isSuggestion ? path('search', {'q': item}) : item.url %}
+                {% set href = data.isSuggestion ? path('search', {'q': item}) : functionExists('generatePath') ? generatePath(item.url) : item.url %}
                 {% set value = data.isSuggestion ? item : item.name %}
 
                 <li class="{{ config.name }}__item">

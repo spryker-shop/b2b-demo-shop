@@ -16,14 +16,14 @@ $address-form-width: rem(710);
 
     &__actions {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column-reverse wrap;
         align-items: center;
         text-align: center;
         justify-content: flex-end;
 
         @include helper-breakpoint-media-min($lg) {
             margin-top: rem(16);
-            flex-wrap: wrap;
+            flex-flow: row wrap;
         }
     }
 
@@ -35,6 +35,15 @@ $address-form-width: rem(710);
         @include helper-breakpoint-media-min($lg) {
             width: auto;
             margin: 0 rem(16) 0 0;
+        }
+
+        &--expand {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-right: 0;
+                margin-left: 0;
+            }
         }
 
         &--expand-sm-md {
@@ -171,16 +180,6 @@ $address-form-width: rem(710);
                 min-height: rem(54);
                 padding-right: rem(22);
                 padding-bottom: rem(10);
-            }
-        }
-
-        .icon {
-            width: rem(12);
-            height: rem(12);
-
-            @include helper-breakpoint-media-min($lg) {
-                width: rem(16);
-                height: rem(16);
             }
         }
     }
