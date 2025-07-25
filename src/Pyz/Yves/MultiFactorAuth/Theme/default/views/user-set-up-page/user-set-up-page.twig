@@ -43,20 +43,20 @@
                         {% set formName = 'activateForm' %}
                         {% set path = path('agent/multiFactorAuth/activate', { type: method.type }) %}
                         {% set flowType = 'is_activation' %}
-                        {% set buttonName = 'Activate' %}
+                        {% set buttonName = 'multi_factor_auth.activate' | trans %}
                         {% set buttonClass = 'button--success' %}
                         {% set csrfToken = data.csrf_token_activate %}
                     {% else %}
                         {% set formName = 'deactivateForm' %}
                         {% set path = path('agent/multiFactorAuth/deactivate', { type: method.type }) %}
                         {% set flowType = 'is_deactivation' %}
-                        {% set buttonName = 'Deactivate' %}
+                        {% set buttonName = 'multi_factor_auth.deactivate' | trans %}
                         {% set buttonClass = 'button--alert' %}
                         {% set csrfToken = data.csrf_token_deactivate %}
                     {% endif %}
 
                     {% set formClass = formName ~ loop.index0 %}
-                    {% set url = "/multi-factor-auth/get-user-enabled-types?#{flowType}=true&type_to_set_up=#{method.type}" %}
+                    {% set url = path('multiFactorAuth/getUserEnabledTypes', { (flowType): true, type_to_set_up: method.type }) %}
 
                     <form name="{{ formName }}" class="col-sm-push-2 col-sm-10 {{ formClass }}" method="post" action="{{ path }}">
                         <input type="hidden" name="_csrf_token" value="{{ csrfToken }}">
@@ -68,7 +68,8 @@
                             id: formName ~ loop.index0,
                             url: url,
                             formSelector: '.' ~ formClass,
-                            isJsEnabledHandler: 'true'
+                            isJsEnabledHandler: 'true',
+                            isRoute: true
                         }
                     } only %}
                     {% endwidget %}

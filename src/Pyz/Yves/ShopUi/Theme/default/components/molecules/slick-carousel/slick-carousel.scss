@@ -125,30 +125,27 @@
                     background: $setting-color-light;
                     border-radius: 50%;
                     border: rem(2) solid $setting-color-transparent;
-
-                    &[aria-selected] {
-                        width: rem(10);
-                        height: rem(10);
-                        background: $setting-color-transparent;
-                        border: rem(2) solid $setting-color-gray-4;
-                    }
+                    cursor: pointer;
                 }
 
                 li {
                     display: block;
                     position: relative;
-                    margin: 0 rem(6);
+                    padding: rem(5);
                     background: $setting-color-transparent;
                     font-size: 0;
+                    cursor: pointer;
 
-                    @include helper-breakpoint-media-min($lg) {
-                        margin-top: 0.3rem;
-                        margin-bottom: 0.3rem;
+                    /* stylelint-disable selector-max-compound-selectors  */
+                    &.slick-active {
+                        button {
+                            width: rem(10);
+                            height: rem(10);
+                            background: $setting-color-transparent;
+                            border: rem(2) solid $setting-color-gray-4;
+                        }
                     }
-
-                    &:hover {
-                        cursor: pointer;
-                    }
+                    /* stylelint-enable selector-max-compound-selectors  */
                 }
             }
         }
@@ -190,7 +187,7 @@
             }
 
             @include helper-breakpoint-media-min($xxxl) {
-                left: rem(-30);
+                left: rem(-5);
             }
         }
 
@@ -204,7 +201,7 @@
             }
 
             @include helper-breakpoint-media-min($xxxl) {
-                right: rem(-30);
+                right: rem(-5);
             }
         }
     }

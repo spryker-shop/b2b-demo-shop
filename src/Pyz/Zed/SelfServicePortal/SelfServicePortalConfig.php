@@ -18,7 +18,7 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
      */
     public function getDefaultMerchantReference(): string
     {
-        return 'MER000001';
+        return 'MERSPRYKER';
     }
 
     /**
@@ -41,5 +41,18 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     public function getInquiryPendingStatus(): string
     {
         return 'pending';
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getAssetStatusClassMap(): array
+    {
+        return [
+            'pending' => 'label-warning',
+            'in_review' => 'label-primary',
+            'approved' => 'label-success',
+            'deactivated' => 'label-danger',
+        ];
     }
 }

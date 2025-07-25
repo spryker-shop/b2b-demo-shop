@@ -54,7 +54,7 @@
                     {% set deliverySelectClassName = embed.config.jsName ~ '__trigger--' ~ loopIndex %}
                     {% set formItemShippingClassName = embed.config.jsName ~ '__item-shipping--' ~ loopIndex %}
                     {% set hasShipmentTypes = item.shipmentType is defined %}
-                    {% set defaultShipmentTypes = ['delivery', 'on-site-service'] %}
+                    {% set defaultShipmentTypes = ['delivery'] %}
                     {% set currentShipmentType = item.shipmentType.key.vars.value | default %}
                     {% set isDefaultShipmentType = currentShipmentType in defaultShipmentTypes %}
                     {% set shipmentTypeHiddenClassName = hasShipmentTypes and not isDefaultShipmentType ? embed.hiddenClassName %}

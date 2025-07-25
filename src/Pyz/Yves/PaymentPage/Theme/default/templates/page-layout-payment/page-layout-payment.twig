@@ -1,0 +1,9 @@
+{% extends template('page-layout-payment', '@SprykerShop:PaymentPage') %}
+
+{% block contentInner %}
+    {% set wrapperClass = "container text-center" %}
+
+    <div class="box spacing-bottom--big">
+        {{ parent() }}
+    </div>
+{% endblock %}
