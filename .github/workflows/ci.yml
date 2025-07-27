@@ -1118,7 +1118,7 @@ jobs:
 
             -   name: Install cypress-tests folder
                 run: |
-                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
+                    cd ./data && composer require "spryker/cypress-tests:dev-bugfix/frw-10788/master-fixed-cypress-test" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
@@ -1173,7 +1173,7 @@ jobs:
 
             -   name: Install cypress-tests folder
                 run: |
-                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
+                    cd ./data && composer require "spryker/cypress-tests:dev-bugfix/frw-10788/master-fixed-cypress-test" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
