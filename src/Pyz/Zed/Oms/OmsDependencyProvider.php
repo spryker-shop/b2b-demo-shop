@@ -18,6 +18,10 @@ use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderStatusChangedMessa
 use Spryker\Zed\Oms\Communication\Plugin\Oms\ReservationHandler\ReservationVersionPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
+use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationAggregationPlugin;
+use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationReaderStrategyPlugin;
+use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationWriterStrategyPlugin;
+use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitOmsReservationAggregationPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationPostSaveTerminationAwareStrategyPlugin;
@@ -60,6 +64,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     protected function getReservationPostSaveTerminationAwareStrategyPlugins(): array
     {
         return [
+            new ProductOfferReservationPostSaveTerminationAwareStrategyPlugin(),
             new ReservationVersionPostSaveTerminationAwareStrategyPlugin(),
             new AvailabilityReservationPostSaveTerminationAwareStrategyPlugin(),
             new ProductBundleReservationPostSaveTerminationAwareStrategyPlugin(),
@@ -97,7 +102,28 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     protected function getOmsReservationAggregationPlugins(): array
     {
         return [
+            new ProductOfferOmsReservationAggregationPlugin(),
             new ProductPackagingUnitOmsReservationAggregationPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationReaderStrategyPluginInterface>
+     */
+    protected function getOmsReservationReaderStrategyPlugins(): array
+    {
+        return [
+            new ProductOfferOmsReservationReaderStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationWriterStrategyPluginInterface>
+     */
+    protected function getOmsReservationWriterStrategyPlugins(): array
+    {
+        return [
+            new ProductOfferOmsReservationWriterStrategyPlugin(),
         ];
     }
 
