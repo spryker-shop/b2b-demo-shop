@@ -89,14 +89,7 @@
                     {% endblock %}
                 {% endwidget %}
 
-                <div class="{{ config.name }}__action">
-                    {% widget 'OrderAmendmentWidget' args [embed.order] with {
-                        data: {
-                            buttonClass: 'button button--small-space button--expand',
-                        },
-                    } only %}
-                    {% endwidget %}
-                </div>
+                {% widget 'OrderAmendmentWidget' args [embed.order] only %}{% endwidget %}
             {% endblock %}
         {% endembed %}
     {% endblock %}
