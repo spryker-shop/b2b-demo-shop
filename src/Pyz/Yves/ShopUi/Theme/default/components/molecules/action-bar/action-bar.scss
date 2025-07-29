@@ -50,13 +50,13 @@
         }
 
         &__actions {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: rem(8);
 
             @include helper-breakpoint-media-min($md) {
-                display: flex;
-                flex-flow: row wrap;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
         }
 
