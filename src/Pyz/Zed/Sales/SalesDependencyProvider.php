@@ -5,10 +5,13 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Sales;
 
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
+use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\SaveOrderCommentThreadOrderPostSavePlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitCustomerFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitCustomerOrderAccessCheckPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitCustomerSortingOrderSearchQueryExpanderPlugin;
@@ -22,14 +25,20 @@ use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuid
 use Spryker\Zed\Currency\Communication\Plugin\Sales\CurrencyOrderExpanderPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
+use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountSalesOrderItemCollectionPreDeletePlugin;
+use Spryker\Zed\Discount\Communication\Plugin\Sales\SalesDiscountSalesExpensePreDeletePlugin;
+use Spryker\Zed\Nopayment\Communication\Plugin\Sales\NopaymentSalesOrderItemCollectionPreDeletePlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\DefaultOrderItemInitialStateProviderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableSearchOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\ItemStateOrderItemExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\OmsItemHistorySalesOrderItemCollectionPreDeletePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\OmsStatesOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\OrderAggregatedItemStateSearchOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\StateHistoryOrderItemExpanderPlugin;
 use Spryker\Zed\OmsMultiThread\Communication\Plugin\Sales\OmsMultiThreadProcessorIdentifierOrderExpanderPreSavePlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\OrderCustomReferenceOrderPostSavePlugin;
+use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\UpdateOrderCustomReferenceOrderPostSavePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleIdHydratorPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOptionItemExpanderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOptionOrderExpanderPlugin;
@@ -39,6 +48,9 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\UniqueOrderBundleItemsE
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\QuantitySalesUnitOrderItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
+use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderItemsPostSavePlugin;
+use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSalesOrderItemCollectionPostUpdatePlugin;
+use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSalesOrderItemCollectionPreDeletePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionsOrderItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\PackagingUnitSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProductOrderItemExpanderPlugin;
@@ -50,16 +62,29 @@ use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleItemPreTransformerPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderItemExpanderPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderItemsPostSavePlugin;
+use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\SalesConfigurableBundleSalesOrderItemCollectionPreDeletePlugin;
+use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\SalesConfiguredBundlesSalesOrderItemCollectionPostUpdatePlugin;
 use Spryker\Zed\SalesOms\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\Sales\CreateSalesOrderAmendmentOrderPostSavePlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\Sales\SalesOrderAmendmentOrderExpanderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Sales\IsAmendableOrderExpanderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Sales\IsAmendableOrderSearchOrderExpanderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Sales\OrderAmendmentDefaultOrderItemInitialStateProviderPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Sales\SalesPaymentOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemsPostSavePlugin;
+use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\SalesProductConfigurationSalesOrderItemCollectionPostUpdatePlugin;
+use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\SalesProductConfigurationSalesOrderItemCollectionPreDeletePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataOrderItemsPostSavePlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSalesOrderItemCollectionPostUpdatePlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSalesOrderItemCollectionPreDeletePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSearchOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdOrderItemExpanderPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
+use Spryker\Zed\SalesQuoteRequestConnector\Communication\Plugin\Sales\QuoteRequestVersionReferenceOrderPostSavePlugin;
+use Spryker\Zed\SalesReclamation\Communication\Plugin\Sales\SalesReclamationSalesOrderItemCollectionPreDeletePlugin;
 use Spryker\Zed\SalesReclamationGui\Communication\Plugin\Sales\ReclamationSalesTablePlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\RemunerationTotalOrderExpanderPlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnableByGlobalReturnableNumberOfDaysPlugin;
@@ -97,6 +122,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new OmsStatesOrderExpanderPlugin(),
             new IsCancellableOrderExpanderPlugin(),
             new CurrencyOrderExpanderPlugin(),
+            new SalesOrderAmendmentOrderExpanderPlugin(),
+            new IsAmendableOrderExpanderPlugin(),
         ];
     }
 
@@ -145,6 +172,21 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new OrderCustomReferenceOrderPostSavePlugin(),
             new SaveCompanyBusinessUnitUuidOrderPostSavePlugin(),
             new SaveCompanyUuidOrderPostSavePlugin(),
+            new QuoteRequestVersionReferenceOrderPostSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\OrderPostSavePluginInterface>
+     */
+    protected function getOrderPostSavePluginsForOrderAmendment(): array
+    {
+        return [
+            new SaveOrderCommentThreadOrderPostSavePlugin(),
+            new UpdateOrderCustomReferenceOrderPostSavePlugin(),
+            new SaveCompanyBusinessUnitUuidOrderPostSavePlugin(),
+            new SaveCompanyUuidOrderPostSavePlugin(),
+            new CreateSalesOrderAmendmentOrderPostSavePlugin(),
         ];
     }
 
@@ -201,6 +243,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemMetadataSearchOrderExpanderPlugin(),
             new OrderAggregatedItemStateSearchOrderExpanderPlugin(),
             new IsCancellableSearchOrderExpanderPlugin(),
+            new IsAmendableOrderSearchOrderExpanderPlugin(),
         ];
     }
 
@@ -239,6 +282,67 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ConfiguredBundlesOrderItemsPostSavePlugin(),
             new ItemMetadataOrderItemsPostSavePlugin(),
             new ProductConfigurationOrderItemsPostSavePlugin(),
+            new ProductOptionOrderItemsPostSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\SalesExpensePreDeletePluginInterface>
+     */
+    protected function getSalesExpensePreDeletePlugins(): array
+    {
+        return [
+            new SalesDiscountSalesExpensePreDeletePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\SalesOrderItemCollectionPreDeletePluginInterface>
+     */
+    protected function getSalesOrderItemCollectionPreDeletePlugins(): array
+    {
+        return [
+            new DiscountSalesOrderItemCollectionPreDeletePlugin(),
+            new ItemMetadataSalesOrderItemCollectionPreDeletePlugin(),
+            new OmsItemHistorySalesOrderItemCollectionPreDeletePlugin(),
+            new ProductOptionSalesOrderItemCollectionPreDeletePlugin(),
+            new SalesConfigurableBundleSalesOrderItemCollectionPreDeletePlugin(),
+            new SalesProductConfigurationSalesOrderItemCollectionPreDeletePlugin(),
+            new NopaymentSalesOrderItemCollectionPreDeletePlugin(),
+            new SalesReclamationSalesOrderItemCollectionPreDeletePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\SalesOrderItemCollectionPostUpdatePluginInterface>
+     */
+    protected function getOrderItemCollectionPostUpdatePlugins(): array
+    {
+        return [
+            new SalesConfiguredBundlesSalesOrderItemCollectionPostUpdatePlugin(),
+            new SalesProductConfigurationSalesOrderItemCollectionPostUpdatePlugin(),
+            new ItemMetadataSalesOrderItemCollectionPostUpdatePlugin(),
+            new ProductOptionSalesOrderItemCollectionPostUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemInitialStateProviderPluginInterface>
+     */
+    protected function getOrderItemInitialStateProviderPlugins(): array
+    {
+        return [
+            new DefaultOrderItemInitialStateProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemInitialStateProviderPluginInterface>
+     */
+    protected function getOrderItemInitialStateProviderPluginsForOrderAmendment(): array
+    {
+        return [
+            new OrderAmendmentDefaultOrderItemInitialStateProviderPlugin(),
         ];
     }
 }

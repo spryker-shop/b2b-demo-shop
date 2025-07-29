@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\CompanyUser\Helper;
 
 use Codeception\Module;
@@ -58,14 +60,13 @@ class CompanyUserHelper extends Module
         $companyBusinessUnitTransfer = $this->createCompanyBusinessUnit([
             CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
         ]);
-        $companyUserTransfer = $this->createCompanyUser([
+
+        return $this->createCompanyUser([
             CompanyUserTransfer::CUSTOMER => $customerTransfer,
             CompanyUserTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
             CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $companyBusinessUnitTransfer->getIdCompanyBusinessUnit(),
             CompanyUserTransfer::COMPANY_ROLE_COLLECTION => (new CompanyRoleCollectionTransfer())->addRole($companyRoleTransfer),
         ]);
-
-        return $companyUserTransfer;
     }
 
     /**
@@ -83,9 +84,11 @@ class CompanyUserHelper extends Module
 
         $permissionCollectionTransfer = new PermissionCollectionTransfer();
         foreach ($availablePermissions as $permissionTransfer) {
-            if (in_array($permissionTransfer->getKey(), static::COMPANY_USER_PERMISSIONS_KEY_LIST, true)) {
-                $permissionCollectionTransfer->addPermission($permissionTransfer);
+            if (!in_array($permissionTransfer->getKey(), static::COMPANY_USER_PERMISSIONS_KEY_LIST, true)) {
+                continue;
             }
+
+            $permissionCollectionTransfer->addPermission($permissionTransfer);
         }
 
         return $permissionCollectionTransfer;

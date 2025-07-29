@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\CustomerPage;
 
 use Spryker\Client\Session\SessionClientInterface;
@@ -15,8 +17,8 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     /**
      * @return \Spryker\Client\Session\SessionClientInterface
      */
-    public function getSessionClient(): SessionClientInterface
+    public function getPyzSessionClient(): SessionClientInterface
     {
-        return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_SESSION);
+        return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_PYZ_SESSION);
     }
 }

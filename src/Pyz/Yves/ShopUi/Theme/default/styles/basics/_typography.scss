@@ -34,9 +34,10 @@
         @include helper-font-size(default);
         @include helper-font-weight(regular);
         @include helper-font-line-height(default);
+        letter-spacing: rem(0.12);
         position: relative;
         background-color: $setting-color-white;
-        color: $setting-color-gray-4;
+        color: $setting-color-text;
         font-family: $setting-font-family;
         overflow-x: hidden;
     }
@@ -52,7 +53,7 @@
             @include helper-font-size($i);
             @include helper-font-line-height($i);
             display: block;
-            color: $setting-color-gray-5;
+            color: $setting-color-text;
         }
     }
 

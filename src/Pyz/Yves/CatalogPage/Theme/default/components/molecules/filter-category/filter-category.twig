@@ -36,7 +36,7 @@
                     {% set currentUrl = app.request.attributes.get('categoryNode') ? app.request.attributes.get('categoryNode').url : null %}
                 {% endif %}
 
-                {% set categoryUrl = data.filterPath is not empty ? url(data.filterPath, {categoryPath: (categoryNode.url | trimLocale)}) : categoryNode.url %}
+                {% set categoryUrl = functionExists('generatePath') ? generatePath(categoryNode.url) : categoryNode.url %}
                 {% set isActive = (currentUrl == categoryUrl) %}
                 {% set isHidden = (data.levelMenu != 1 and data.isEmptyCategoryFilterValueVisible) %}
                 {% set disableAttribute = quantity == 0 ? 'disabled' %}
@@ -61,10 +61,9 @@
                         {% block categoryItemToggler %}
                             <div>
                                 {% block categoryItemTogglerIcon %}
-                                    <button type="button" class="spacing-right--small {{ toggleButtonClassName }} {{ triggerClassName }} {{ targetTogglerClassName }}">
+                                    <button type="button" class="{{ toggleButtonClassName }} {{ triggerClassName }} {{ targetTogglerClassName }}">
                                         {% include atom('icon') with {
                                             class: config.name ~ '__category-toggle-button-icon',
-                                            modifiers: ['small'],
                                             data: {
                                                 name: 'caret-down',
                                             },
@@ -94,7 +93,7 @@
                     {% endif %}
 
                     <div class="{{ config.name }}__category-row {{ not hasChildren ? config.name ~ '__category-row--no-children' }}">
-                        <button class="{{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {{ menuLinkActiveClass }} {{ triggerButtonJsName }}" type="button" {{ disableAttribute }} data-url={{ categoryUrl }}>
+                        <button class="{{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {{ menuLinkActiveClass }} {{ triggerButtonJsName }}" type="button" {{ disableAttribute }} data-url={{ categoryUrl }} data-name="{{ categoryNode.name }}">
                             <span class="{{ config.name }}__link-text {{ linkTextActiveClass }}">{{ categoryNode.name }}</span> <span>{{ quantity | executeFilterIfExists('formatInt', app.locale) }}</span>
                         </button>
 

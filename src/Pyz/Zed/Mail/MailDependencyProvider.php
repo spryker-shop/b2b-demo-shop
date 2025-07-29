@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Mail;
 
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationMailTypeBuilderPlugin;
@@ -16,10 +18,14 @@ use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRegistrationConfirmat
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRegistrationMailTypeBuilderPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestoredPasswordConfirmationMailTypeBuilderPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestorePasswordMailTypeBuilderPlugin;
+use Spryker\Zed\CustomerDataChangeRequest\Communication\Plugin\Mail\CustomerEmailChangeNotificationMailTypePlugin;
+use Spryker\Zed\CustomerDataChangeRequest\Communication\Plugin\Mail\CustomerEmailChangeVerificationMailTypePlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Mail\Business\Model\Provider\MailProviderCollectionAddInterface;
 use Spryker\Zed\Mail\MailConfig;
 use Spryker\Zed\Mail\MailDependencyProvider as SprykerMailDependencyProvider;
+use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Mail\Customer\CustomerEmailMultiFactorAuthMailTypeBuilderPlugin;
+use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Mail\User\UserEmailMultiFactorAuthMailTypeBuilderPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterSubscribedMailTypeBuilderPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterUnsubscribedMailTypeBuilderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypeBuilderPlugin;
@@ -84,6 +90,10 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
             new AvailabilityNotificationMailTypeBuilderPlugin(),
             new UserPasswordResetMailTypeBuilderPlugin(),
             new OrderInvoiceMailTypeBuilderPlugin(),
+            new CustomerEmailChangeVerificationMailTypePlugin(),
+            new CustomerEmailChangeNotificationMailTypePlugin(),
+            new CustomerEmailMultiFactorAuthMailTypeBuilderPlugin(),
+            new UserEmailMultiFactorAuthMailTypeBuilderPlugin(),
         ];
     }
 }

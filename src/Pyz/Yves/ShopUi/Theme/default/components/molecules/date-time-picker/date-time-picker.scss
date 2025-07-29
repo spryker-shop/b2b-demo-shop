@@ -1,7 +1,32 @@
-@import '~jquery-datetimepicker/build/jquery.datetimepicker.min.css';
+@import 'flatpickr/dist/flatpickr.min.css';
 
 @mixin shop-ui-date-time-picker($name: '.date-time-picker') {
     #{$name} {
+        &__calendar-button {
+            background: none;
+            cursor: pointer;
+        }
+
+        &__datepicker-input {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        &__calendar {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: rem(46);
+            padding: 0 rem(12);
+            display: grid;
+            align-items: center;
+        }
+
         &__content {
             position: relative;
         }
@@ -16,15 +41,20 @@
             fill: $setting-color-gray-2;
             width: rem(20);
             height: rem(20);
-            position: absolute;
-            bottom: rem(14);
-            right: rem(12);
+            display: block;
         }
 
         &--with-icon {
             .input {
                 padding-right: rem(40);
             }
+        }
+
+        &__datepicker {
+            @include helper-accessible-visibility-invisible;
+            position: absolute;
+            left: 0;
+            bottom: 0;
         }
 
         @content;

@@ -15,6 +15,9 @@
     {% include atom('icon') with {
         modifiers: modifiers,
         class: data.classIcon,
+        attributes: {
+            'aria-label': data.text,
+        },
         data: {
             name: data.icon
         }

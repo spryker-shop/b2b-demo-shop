@@ -19,7 +19,10 @@
         &__colors {
             @include helper-breakpoint-media-min($xl) {
                 @include helper-effect-transition(opacity);
-                opacity: 0;
+
+                &:not(:has(:focus-visible)) {
+                    opacity: 0;
+                }
             }
 
             &--category {
@@ -148,9 +151,7 @@
             @include helper-font-size(small);
             color: $setting-color-gray-4;
             font-weight: fw(medium);
-            letter-spacing: rem(0.1);
-            line-height: rem(16);
-            height: rem(33);
+            height: rem(42);
             overflow: hidden;
 
             // Styles for multiline truncation with ellipsis Chrome only
@@ -178,8 +179,7 @@
 
             @include helper-breakpoint-media-min($lg) {
                 @include helper-font-size(big);
-                height: rem(64);
-                line-height: rem(21);
+                height: rem(81);
 
                 // Styles for multiline truncation with ellipsis Chrome only
                 /* stylelint-disable */
@@ -188,14 +188,11 @@
 
                 &::before {
                     @include helper-effect-transition(background-color box-shadow);
-                    background-color: $setting-color-alpha-2;
                     height: 100%;
                 }
             }
 
             @include helper-breakpoint-media-min($xl) {
-                height: rem(76);
-                line-height: rem(25);
                 letter-spacing: rem(0.2);
             }
 
@@ -206,7 +203,6 @@
                     @include helper-font-size(default);
                     height: rem(61);
                     line-height: normal;
-                    letter-spacing: rem(0.1);
                 }
 
                 &::before {
@@ -219,7 +215,6 @@
                     @include helper-font-size(default);
                     height: rem(61);
                     line-height: normal;
-                    letter-spacing: rem(0.1);
                 }
             }
 
@@ -256,7 +251,7 @@
             line-height: rem(16);
             letter-spacing: rem(0.2);
             font-weight: fw(regular);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-5;
             margin-top: rem(3);
 
             @include helper-breakpoint-media-min($lg) {

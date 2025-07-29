@@ -17,7 +17,7 @@
 {% block content %}
     {{ data.content | raw }}
 
-    {% set clickUrl = data.clickUrl %}
+    {% set clickUrl = functionExists('generatePath') ? generatePath(data.clickUrl) : data.clickUrl %}
     {% if clickUrl %}
         <a href="{{ clickUrl | trans }}" class="button button--medium button--tight button--hollow button--hollow-second">
             {{ (data.buttonTitle ?: 'show_more.btn.title') | trans }}

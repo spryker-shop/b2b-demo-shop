@@ -36,7 +36,7 @@
             {{ "shopping_list_page.dismiss_confirmation.trying_to_dismiss" | trans }}
         </p>
         <div class="spacing-top spacing-top--bigger">
-            <a href="{{ data.backUrl }}" class="button button--hollow spacing-right">
+            <a href="{{ functionExists('generatePath') ? generatePath(data.backUrl) : data.backUrl }}" class="button button--hollow spacing-right">
                 {{ "general.cancel.button" | trans }}
             </a>
             <a href="{{ url('shopping-list/dismiss', { 'idShoppingList': data.idShoppingList }) }}" class="button button--alert">

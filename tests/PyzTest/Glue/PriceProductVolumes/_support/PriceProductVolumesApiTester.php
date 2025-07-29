@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Glue\PriceProductVolumes;
 
 use Generated\Shared\Transfer\CustomerTransfer;
@@ -75,7 +77,7 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
                 ->fromArray($volumePrice, true)
                 ->setNetAmount($volumePrice[PriceProductVolumeConfig::VOLUME_PRICE_NET_PRICE])
                 ->setGrossAmount($volumePrice[PriceProductVolumeConfig::VOLUME_PRICE_GROSS_PRICE])
-                ->toArray();
+                ->toArray(true, true);
         }, $volumePrices);
     }
 }

@@ -30,78 +30,21 @@ $shop-ui-icon-size-bigger: 1.5rem;
     }
 
     &--header-check {
-        width: rem(12);
-        height: rem(9);
         margin: rem(-2) rem(9) 0 0;
     }
 
-    &--progress-check {
-        width: rem(7);
-        height: rem(5);
-
-        @include helper-breakpoint-media-min($md) {
-            width: rem(10);
-            height: rem(8);
-        }
-    }
-
     &--phone {
-        width: rem(15);
-        height: rem(15);
         margin-right: rem(6);
     }
 
     &--search {
-        width: rem(20);
-        height: rem(20);
         fill: $setting-color-gray-4;
         stroke: $setting-color-gray-4;
         stroke-width: rem(0.5);
     }
 
-    &--user {
-        width: rem(18);
-        height: rem(21);
-        margin-top: rem(7);
-    }
-
-    &--quick-order {
-        width: rem(21);
-        height: rem(15);
-
-        @include helper-breakpoint-media-min($lg) {
-            width: rem(32);
-            height: rem(19);
-            margin-top: rem(10);
-        }
-    }
-
     &--quick-order-delete-row {
-        width: rem(14);
-        height: rem(15);
-        fill: $setting-color-gray-2;
-    }
-
-    &--header-shopping-list {
-        width: rem(13);
-        height: rem(12);
-
-        @include helper-breakpoint-media-min($lg) {
-            width: rem(17);
-            height: rem(16);
-            margin-top: rem(10);
-        }
-    }
-
-    &--cart {
-        width: rem(20);
-        height: rem(17);
-
-        @include helper-breakpoint-media-min($lg) {
-            width: rem(30);
-            height: rem(26);
-            margin-top: rem(5);
-        }
+        fill: $setting-color-gray-4;
     }
 
     &--contact {
@@ -132,7 +75,7 @@ $shop-ui-icon-size-bigger: 1.5rem;
         &::after {
             content: '';
             position: absolute;
-            background-color: $setting-color-gray-5;
+            background-color: $setting-color-text;
         }
 
         &::before {
@@ -186,13 +129,13 @@ $shop-ui-icon-size-bigger: 1.5rem;
     &--toggler-cross-link {
         &::before,
         &::after {
-            background-color: $setting-color-gray-3;
+            background-color: $setting-color-text;
         }
     }
 
     &--link {
         @include helper-effect-transition(color);
-        color: $setting-color-gray-2;
+        color: $setting-color-text;
         margin-right: rem(6);
     }
 
@@ -229,36 +172,6 @@ $shop-ui-icon-size-bigger: 1.5rem;
 
     &--summary-shipping {
         width: rem(53);
-    }
-
-    &--overview {
-        width: rem(17);
-        height: rem(16);
-    }
-
-    &--users {
-        width: rem(29);
-        height: rem(19);
-    }
-
-    &--business-unit {
-        width: rem(22);
-        height: rem(22);
-    }
-
-    &--role {
-        height: rem(14);
-    }
-
-    &--plus-small {
-        width: rem(10);
-        height: rem(10);
-        position: relative;
-        top: rem(-1);
-    }
-
-    &--share {
-        width: rem(20);
     }
 
     &--add-to-list {
@@ -384,11 +297,6 @@ $shop-ui-icon-size-bigger: 1.5rem;
     &--clock {
         width: rem(12);
         height: rem(12);
-    }
-
-    &--message {
-        width: rem(24);
-        height: rem(22);
     }
 
     &--cart-locked {

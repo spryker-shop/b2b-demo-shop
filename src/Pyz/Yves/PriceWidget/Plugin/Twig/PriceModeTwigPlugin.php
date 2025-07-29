@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\PriceWidget\Plugin\Twig;
 
 use Spryker\Service\Container\ContainerInterface;
@@ -33,7 +35,7 @@ class PriceModeTwigPlugin extends AbstractPlugin implements TwigPluginInterface
      *
      * @return \Twig\Environment
      */
-    public function extend(Environment $twig, ContainerInterface $container): Environment
+    public function extend(Environment $twig, ContainerInterface $container): Environment // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $twig = $this->addPriceModeFunction($twig);
 

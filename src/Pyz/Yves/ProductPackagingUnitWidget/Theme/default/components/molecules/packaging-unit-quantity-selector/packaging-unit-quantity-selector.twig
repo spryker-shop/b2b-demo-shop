@@ -26,7 +26,7 @@
 
             <div class="{{ config.name }}__button-wrapper">
                 {% block addToCartButton %}
-                    <button class="{{ config.jsName }}__add-to-cart-button button button--alternative button--big button--expand button--no-horizontal-padding"
+                    <button class="{{ config.jsName }}__add-to-cart-button button button--big button--expand button--no-horizontal-padding"
                             data-init-single-click {{ isAddToCartDisabled }} {{ qa('add-to-cart-button') }}>
                         {% include atom('icon') with {
                             modifiers: ['cart-plus'],

@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Glue\Checkout\RestApi;
 
 use Codeception\Util\HttpCode;
@@ -98,6 +100,11 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiCest
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
+                    'customer' =>
+                        array_merge(
+                            $this->fixtures->getCustomerTransfer()->toArray(),
+                            ['idCompanyUser' => $this->fixtures->getCompanyUserTransfer()->getIdCompanyUser()],
+                        ),
                     'idCart' => $quoteTransfer->getUuid(),
                     'shipments' => [
                         $I->getSplitShipmentRequestPayloadWithCompanyBusinessUnitAddress(

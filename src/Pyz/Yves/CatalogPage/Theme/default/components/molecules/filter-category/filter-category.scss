@@ -19,7 +19,7 @@
     &__menu-item {
         display: flex;
         flex-grow: 1;
-        color: $setting-color-gray-3;
+        color: $setting-color-gray-4;
 
         &--lvl-2 {
             &:first-child {
@@ -64,10 +64,17 @@
 
     &__category-toggle-button {
         @include helper-effect-transition(transform);
-        color: $setting-color-gray-3;
+        color: $setting-color-gray-4;
         margin-right: rem(5);
         background-color: $setting-color-transparent;
         cursor: pointer;
+        width: rem(20);
+
+        @include helper-breakpoint-media-max($lg) {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: rem(-5);
+        }
 
         &--collapsed {
             transform: rotate(-90deg);
@@ -80,7 +87,7 @@
         justify-content: space-between;
         width: 100%;
         margin-bottom: rem(13);
-        color: $setting-color-gray-3;
+        color: $setting-color-gray-4;
         cursor: pointer;
         background-color: $setting-color-transparent;
         font: fw(regular) rem(13) / rem(16) $setting-font-family;
@@ -94,21 +101,17 @@
         &--lvl-1 {
             font-size: rem(15);
             font-weight: fw(medium);
-            color: $setting-color-gray-5;
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(18);
-                color: $setting-color-gray-2;
             }
         }
 
         &--lvl-2 {
             font-size: rem(15);
-            color: $setting-color-gray-5;
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(16);
-                color: $setting-color-gray-2;
             }
         }
 
@@ -122,21 +125,18 @@
 
         &:hover,
         &:focus {
-            color: $setting-color-gray-5;
+            color: $setting-color-text;
             text-decoration: none;
         }
 
         &[disabled] {
-            &,
-            &:hover,
-            &:focus {
-                color: $setting-color-gray-2;
-            }
+            pointer-events: none;
+            color: $setting-color-gray-3;
         }
 
         &--active {
             font-weight: fw(bold);
-            color: $setting-color-gray-5;
+            color: $setting-color-text;
         }
     }
 

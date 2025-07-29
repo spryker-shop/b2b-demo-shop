@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\CompanyPage\Plugin\ShopApplication;
 
 use Generated\Shared\Transfer\CompanyUserTransfer;
@@ -40,7 +42,7 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
             return;
         }
 
-        [$controllerInstance, $actionName] = $eventController;
+        [$controllerInstance] = $eventController;
 
         if (!($controllerInstance instanceof AbstractCompanyController)) {
             return;

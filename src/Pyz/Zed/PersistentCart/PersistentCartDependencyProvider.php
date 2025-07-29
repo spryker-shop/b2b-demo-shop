@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\PersistentCart;
 
 use Spryker\Zed\Kernel\Container;
@@ -14,6 +16,7 @@ use Spryker\Zed\PersistentCartExtension\Dependency\Plugin\QuoteItemFinderPluginI
 use Spryker\Zed\ProductBundle\Communication\Plugin\PersistentCart\BundleProductQuoteItemFinderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\PersistentCart\RemoveBundleChangeRequestExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\PersistentCart\ProductPackagingUnitCartAddItemStrategyPlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\PersistentCart\ResetAmendmentQuoteProcessFlowQuotePostMergePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartQuoteResponseExpanderPlugin;
 
 class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyProvider
@@ -52,10 +55,20 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
      *
      * @return array<\Spryker\Zed\CartExtension\Dependency\Plugin\CartOperationStrategyPluginInterface>
      */
-    protected function getCartAddItemStrategyPlugins(Container $container): array
+    protected function getCartAddItemStrategyPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ProductPackagingUnitCartAddItemStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PersistentCartExtension\Dependency\Plugin\QuotePostMergePluginInterface>
+     */
+    protected function getQuotePostMergePlugins(): array
+    {
+        return [
+            new ResetAmendmentQuoteProcessFlowQuotePostMergePlugin(),
         ];
     }
 }

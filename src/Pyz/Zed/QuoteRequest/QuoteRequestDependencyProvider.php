@@ -5,12 +5,16 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\QuoteRequest;
 
 use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestUserValidatorPlugin;
 use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestValidatorPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\QuoteRequest\QuoteApprovalQuoteRequestPreCreateCheckPlugin;
 use Spryker\Zed\QuoteRequest\QuoteRequestDependencyProvider as SprykerQuoteRequestDependencyProvider;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\QuoteRequest\OrderAmendmentQuoteRequestUserValidatorPlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\QuoteRequest\OrderAmendmentQuoteRequestValidatorPlugin;
 
 class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvider
 {
@@ -31,6 +35,7 @@ class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvid
     {
         return [
             new ProductConfigurationQuoteRequestValidatorPlugin(),
+            new OrderAmendmentQuoteRequestValidatorPlugin(),
         ];
     }
 
@@ -41,6 +46,7 @@ class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvid
     {
         return [
             new ProductConfigurationQuoteRequestUserValidatorPlugin(),
+            new OrderAmendmentQuoteRequestUserValidatorPlugin(),
         ];
     }
 }

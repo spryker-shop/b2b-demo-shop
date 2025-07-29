@@ -5,6 +5,8 @@
     currentBreadcrumb: 'customer.account.overview',
 } %}
 
+{% set contentSectionId = 'company-content' %}
+
 {% block breadcrumbs %}
     {% set breadcrumbs = [] %}
 
@@ -32,6 +34,13 @@
     {% set companyContent %}
         {% block companyContent %}{% endblock %}
     {% endset %}
+
+    {% include molecule('skip-link') with {
+        data: {
+            href: contentSectionId,
+            text: 'global.skip-to-content' | trans,
+        },
+    } only %}
 
     {% embed organism('section') with {
         modifiers: ['last'],
@@ -69,7 +78,7 @@
                                         name: 'role',
                                         url: path('company/company-role'),
                                         label: 'company.account.company_role' | trans,
-                                        icon: 'user',
+                                        icon: 'role',
                                     },
                                 ],
                                 activePage: data.activePage,
@@ -83,7 +92,7 @@
                     {% endblock %}
                 </div>
 
-                <div class="col col--sm-12 col--xl-9">
+                <div class="col col--sm-12 col--xl-9" id="{{ contentSectionId }}">
                     {{ companyContent }}
                 </div>
             </div>

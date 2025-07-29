@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Event;
 
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
@@ -54,6 +56,7 @@ use Spryker\Zed\ProductSetStorage\Communication\Plugin\Event\Subscriber\ProductS
 use Spryker\Zed\ProductStorage\Communication\Plugin\Event\Subscriber\ProductStorageEventSubscriber;
 use Spryker\Zed\Publisher\Communication\Plugin\Event\PublisherSubscriber;
 use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Event\Subscriber\ShoppingListStorageEventSubscriber;
+use Spryker\Zed\Stock\Communication\Plugin\Event\Subscriber\PostUpdateStockRelationsEventSubscriber;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Event\Subscriber\TaxProductStorageSubscriber;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Event\Subscriber\TaxStorageSubscriber;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Event\Subscriber\UrlStorageEventSubscriber;
@@ -123,6 +126,9 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductLocalizedAttributesEventSubscriber());
 
         $eventSubscriberCollection->add(new PublisherSubscriber());
+
+        /* Custom Events */
+        $eventSubscriberCollection->add(new PostUpdateStockRelationsEventSubscriber());
 
         return $eventSubscriberCollection;
     }

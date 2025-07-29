@@ -85,8 +85,8 @@
 
         &--active {
             font-weight: fw(medium);
-            border-bottom: rem(1) solid $setting-color-gray-4;
-            color: $setting-color-gray-4;
+            border-bottom: rem(1) solid $setting-color-text;
+            color: $setting-color-text;
         }
 
         &__link {
@@ -96,7 +96,7 @@
         &__link,
         &--disabled:not(&--active) {
             @include helper-effect-transition(color);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-4;
 
             &:hover,
             &:focus {

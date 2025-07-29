@@ -28,12 +28,13 @@
             {{ block('labels') }}
 
             {% block name %}
-                <a itemprop="name" class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
+                <a itemprop="name" class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ functionExists('generatePath') ? generatePath(data.url) : data.url }}">
                     {{ data.name }}
                 </a>
             {% endblock %}
 
             {% block sku %}
+                <meta class="{{ config.jsName }}__abstract-sku" itemprop="abstractSku" content="{{ data.abstractSku }}">
                 <meta class="{{ config.jsName }}__sku" itemprop="sku" content="{{ data.metaSku }}">
             {% endblock %}
 
@@ -86,7 +87,7 @@
 {% endblock %}
 
 {% block action %}
-    <a itemprop="url" class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ path(data.url) }}">
+    <a itemprop="url" class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ functionExists('generatePath') ? generatePath(data.url) : data.url }}">
         {{ 'product.view' | trans }}
     </a>
 {% endblock %}

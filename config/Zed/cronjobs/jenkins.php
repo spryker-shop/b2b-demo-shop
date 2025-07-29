@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Notes:
  *
@@ -168,6 +170,13 @@ $jobs[] = [
     'schedule' => '*/1 * * * *',
     'enable' => true,
     'global' => true,
+];
+
+$jobs[] = [
+    'name' => 'generate-sitemap-files',
+    'command' => '$PHP_BIN vendor/bin/console sitemap:generate',
+    'schedule' => '0 0 * * *',
+    'enable' => true,
 ];
 
 /* Message broker */

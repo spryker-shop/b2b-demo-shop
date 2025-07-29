@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\CustomerPage\Controller;
 
 use SprykerShop\Yves\CustomerPage\Controller\RegisterController as SprykerRegisterController;
@@ -35,7 +37,7 @@ class RegisterController extends SprykerRegisterController
             return $response;
         }
 
-        if ($this->getFactory()->getSessionClient()->get(static::INVITATION_SESSION_ID)) {
+        if ($this->getFactory()->getPyzSessionClient()->get(static::INVITATION_SESSION_ID)) {
             return $this->view($response, [], '@CustomerPage/views/register/register.twig');
         }
 

@@ -3,7 +3,7 @@
         &__clear-all-trigger,
         &__add-row-trigger {
             font-size: rem(13);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-4;
             vertical-align: bottom;
         }
 
@@ -21,6 +21,23 @@
                 text-align: center;
                 border: rem(2) solid $setting-color-main;
                 border-radius: $setting-border-radius-2;
+            }
+        }
+
+        &__action-buttons {
+            display: grid;
+            gap: map-get($setting-spacing, 'big') map-get($setting-spacing, 'default');
+            margin-top: map-get($setting-spacing, 'big');
+
+            @include helper-breakpoint(md) {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 0;
+            }
+
+            @include helper-breakpoint(lg) {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
             }
         }
 
