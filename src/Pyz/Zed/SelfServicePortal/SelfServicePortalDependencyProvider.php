@@ -15,6 +15,7 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\SspAssetManagement
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\SspDashboardManagement\SspAssetDashboardDataExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\SspDashboardManagement\SspFileDashboardDataExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\SspDashboardManagement\SspInquiryDashboardDataExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\SspDashboardManagement\SspServiceDashboardDataExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\StateMachine\ApproveSspInquiryCommandPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\StateMachine\RejectSspInquiryCommandPlugin;
 use SprykerFeature\Zed\SelfServicePortal\SelfServicePortalDependencyProvider as SprykerSelfServicePortalDependencyProvider;
@@ -30,6 +31,7 @@ class SelfServicePortalDependencyProvider extends SprykerSelfServicePortalDepend
             new SspInquiryDashboardDataExpanderPlugin(),
             new SspFileDashboardDataExpanderPlugin(),
             new SspAssetDashboardDataExpanderPlugin(),
+            new SspServiceDashboardDataExpanderPlugin(),
         ];
     }
 
