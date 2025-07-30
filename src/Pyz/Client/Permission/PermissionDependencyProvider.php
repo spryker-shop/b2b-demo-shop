@@ -52,6 +52,8 @@ use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspAsse
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspInquiryPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanyUserFilesPermissionPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\DownloadCompanyFilesPermissionPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\ViewBusinessUnitSspServicePermissionPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\ViewCompanySspServicePermissionPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\ViewDashboardPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
@@ -123,6 +125,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new CreateSspAssetPermissionPlugin(),
             new UpdateSspAssetPermissionPlugin(),
             new UnassignSspAssetPermissionPlugin(),
+            new ViewCompanySspServicePermissionPlugin(),
+            new ViewBusinessUnitSspServicePermissionPlugin(),
         ];
     }
 }
