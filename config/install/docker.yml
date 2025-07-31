@@ -45,6 +45,9 @@ sections:
         generate-scope-collection-file:
             command: 'vendor/bin/console oauth:scope-collection-file:generate'
 
+        generate-open-telemetry:
+            command: 'vendor/bin/console open-telemetry:generate'
+
     build-production:
         excluded: true
         cache-class-resolver-build:
