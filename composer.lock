@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de40b66ae07f3ee199744029e6da40b3",
+    "content-hash": "fece9a84e47952142679333316a21e04",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7902,16 +7902,16 @@
         },
         {
             "name": "spryker-sdk/evaluator",
-            "version": "0.2.11",
+            "version": "dev-bugfix/frw-10624/master-fixed-command-failing",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "e6dd505abc98793e442db06517c9227ec4357663"
+                "reference": "54b68de61db62e6b18a9a3e9de05f2f4ea3c1e2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/e6dd505abc98793e442db06517c9227ec4357663",
-                "reference": "e6dd505abc98793e442db06517c9227ec4357663",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/54b68de61db62e6b18a9a3e9de05f2f4ea3c1e2a",
+                "reference": "54b68de61db62e6b18a9a3e9de05f2f4ea3c1e2a",
                 "shasum": ""
             },
             "require": {
@@ -7922,7 +7922,7 @@
                 "guzzlehttp/guzzle": "^7.5",
                 "nikic/php-parser": "^5.1.0",
                 "php": ">=8.2",
-                "spryker-sdk/security-checker": "^0.2.0",
+                "spryker-sdk/security-checker": "dev-bugfix/frw-10624/master-fixed-command-failing",
                 "spryker-sdk/utils": "^0.2.1",
                 "symfony/console": "^6.0",
                 "symfony/dotenv": "^6.0",
@@ -7972,22 +7972,22 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/0.2.11"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/bugfix/frw-10624/master-fixed-command-failing"
             },
-            "time": "2025-06-19T12:46:56+00:00"
+            "time": "2025-07-31T14:45:55+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
-            "version": "0.2.2",
+            "version": "dev-bugfix/frw-10624/master-fixed-command-failing",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/security-checker.git",
-                "reference": "ffd518ab7f8cb5b6b856abf9b5ec3c4e880b197c"
+                "reference": "124f80aecae7d228aab8bdede43912e8c91177c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/security-checker/zipball/ffd518ab7f8cb5b6b856abf9b5ec3c4e880b197c",
-                "reference": "ffd518ab7f8cb5b6b856abf9b5ec3c4e880b197c",
+                "url": "https://api.github.com/repos/spryker-sdk/security-checker/zipball/124f80aecae7d228aab8bdede43912e8c91177c1",
+                "reference": "124f80aecae7d228aab8bdede43912e8c91177c1",
                 "shasum": ""
             },
             "require": {
@@ -8020,9 +8020,9 @@
             "description": "A security checker for your composer.lock",
             "support": {
                 "issues": "https://github.com/spryker-sdk/security-checker/issues",
-                "source": "https://github.com/spryker-sdk/security-checker/tree/0.2.2"
+                "source": "https://github.com/spryker-sdk/security-checker/tree/bugfix/frw-10624/master-fixed-command-failing"
             },
-            "time": "2025-07-03T07:18:14+00:00"
+            "time": "2025-07-31T14:41:53+00:00"
         },
         {
             "name": "spryker-sdk/utils",
@@ -71011,6 +71011,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker-sdk/evaluator": 20,
+        "spryker-sdk/security-checker": 20,
         "spryker/cypress-tests": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20

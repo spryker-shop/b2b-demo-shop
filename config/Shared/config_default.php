@@ -627,10 +627,10 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     's3-import' => [
         'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
         'path' => '/',
-        'key' => '',
-        'secret' => '',
-        'bucket' => '',
-        'region' => 'eu-central-1',
+        'key' => getenv('AWS_ACCESS_KEY_ID') ?: '',
+        'secret' => getenv('AWS_SECRET_ACCESS_KEY') ?: '',
+        'bucket' => getenv('AWS_S3_BUCKET') ?: '',
+        'region' => getenv('AWS_DEFAULT_REGION') ?: 'eu-central-1',
     ],
     'files-import' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
