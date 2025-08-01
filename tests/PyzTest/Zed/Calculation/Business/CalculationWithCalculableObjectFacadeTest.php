@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\Calculation\Business;
 
 use ArrayObject;
@@ -565,7 +567,7 @@ class CalculationWithCalculableObjectFacadeTest extends Unit
      *
      * @return void
      */
-    public function testCalculationTotalQuoteValues($priceMode, $items, $expense, $results): void
+    public function testCalculationTotalQuoteValues(string $priceMode, array $items, array $expense, array $results): void
     {
         $calculationFacade = $this->tester->createCalculationFacade();
         $quoteTransfer = $this->createFixtureDataForTestCases($priceMode, $items, $expense);
@@ -588,7 +590,7 @@ class CalculationWithCalculableObjectFacadeTest extends Unit
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected function createFixtureDataForTestCases($priceMode, $items, $expense): QuoteTransfer
+    protected function createFixtureDataForTestCases(string $priceMode, array $items, array $expense): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setShippingAddress($this->tester->getCurrentShippingAddress());

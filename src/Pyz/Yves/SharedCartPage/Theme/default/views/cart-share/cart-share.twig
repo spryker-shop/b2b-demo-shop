@@ -76,7 +76,7 @@
 
             <div class="grid grid--gap grid--justify">
                 <div class="col col--sm-12 col--md-auto">
-                    <a href="{{ data.backUrl }}" class="button button--expand button--hollow spacing-top">
+                    <a href="{{ functionExists('generatePath') ? generatePath(data.backUrl) : data.backUrl }}" class="button button--expand button--hollow spacing-top">
                         {{ "general.back.button" | trans }}
                     </a>
                 </div>
@@ -92,7 +92,7 @@
         <div {{ qa('share-cart-table') }}>
             {{ 'shared_cart.form.data_empty' | trans }}
             <div class="grid spacing-top spacing-top--big">
-                <a href="{{ data.backUrl }}" class="col col--sm-12 col--md-auto button button--secondary button--hollow">
+                <a href="{{ functionExists('generatePath') ? generatePath(data.backUrl) : data.backUrl }}" class="col col--sm-12 col--md-auto button button--secondary button--hollow">
                     {{ "general.back.button" | trans }}
                 </a>
             </div>

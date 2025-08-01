@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\CompanyUser\_support\PageObject;
 
 class CompanyRegistrationPage
@@ -82,8 +84,8 @@ class CompanyRegistrationPage
             static::FORM_FIELD_COMPANY_NAME => 'Registered Company',
 
             static::FORM_FIELD_EMAIL => 'registered-company-user@spryker.com',
-            static::FORM_FIELD_PASSWORD => 'sP3yK3r%23',
-            static::FORM_FIELD_PASSWORD_CONFIRM => 'sP3yK3r%23',
+            static::FORM_FIELD_PASSWORD => 'sP3yK3r%23!23',
+            static::FORM_FIELD_PASSWORD_CONFIRM => 'sP3yK3r%23!23',
         ];
     }
 }

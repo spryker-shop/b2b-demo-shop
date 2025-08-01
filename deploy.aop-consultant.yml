@@ -47,10 +47,10 @@ image:
     environment:
         SPRYKER_DEFAULT_STORE: "DE"
         SPRYKER_ACTIVE_STORES: "DE,AT"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy.dynamic-store-off -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production.dynamic-store-off --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive.dynamic-store-off --no-ansi -vvv"
 
         #AOP
         SPRYKER_TENANT_IDENTIFIER: "AOP_Production_Consultant_b2b-DE"
@@ -81,13 +81,11 @@ composer:
     autoload: --classmap-authoritative
 
 assets:
-    image: fholzer/nginx-brotli:v1.18.0
+    image: spryker/nginx-brotli:latest
     mode: production
     compression:
         brotli:
-            static: only
-        gzip:
-            static: true
+            static: on
             level: 5
 
 regions:
@@ -219,12 +217,12 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
-        version: '2.442'
+        version: '2.492.3'
         csrf-protection-enabled: true
         endpoints:
             scheduler.consultant.demo-spryker.com:
     mail_catcher:
-        engine: mailhog
+        engine: mailpit
         endpoints:
             mail.consultant.demo-spryker.com:
 

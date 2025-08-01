@@ -5,21 +5,27 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
+use Spryker\Yves\CustomerDataChangeRequest\Widget\CustomerEmailChangeRequestWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
 use Spryker\Yves\Http\Plugin\Application\YvesHttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
+use Spryker\Yves\MultiFactorAuth\Widget\MultiFactorAuthHandlerWidget;
+use Spryker\Yves\MultiFactorAuth\Widget\SetMultiFactorAuthMenuItemWidget;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Security\Plugin\Application\YvesSecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
+use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
@@ -39,6 +45,9 @@ use SprykerShop\Yves\CartPage\Widget\CartChangeQuantityFormWidget;
 use SprykerShop\Yves\CartPage\Widget\CartSummaryHideTaxAmountWidget;
 use SprykerShop\Yves\CartPage\Widget\ProductAbstractAddToCartButtonWidget;
 use SprykerShop\Yves\CartPage\Widget\RemoveFromCartFormWidget;
+use SprykerShop\Yves\CartReorderPage\Widget\CartReorderItemCheckboxWidget;
+use SprykerShop\Yves\CartReorderPage\Widget\CartReorderItemsWidget;
+use SprykerShop\Yves\CartReorderPage\Widget\CartReorderWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
@@ -52,10 +61,6 @@ use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Plugin\Application\CustomerConfirmationUserCheckerApplicationPlugin;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
-use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderFormWidget;
-use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemsFormWidget;
-use SprykerShop\Yves\CustomerReorderWidget\Widget\CustomerReorderBundleItemCheckboxWidget;
-use SprykerShop\Yves\CustomerReorderWidget\Widget\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\CustomerValidationPage\Plugin\ShopApplication\LogoutInvalidatedCustomerFilterControllerEventHandlerPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\ShopApplication\CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
@@ -76,6 +81,7 @@ use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
 use SprykerShop\Yves\OrderCancelWidget\Widget\OrderCancelButtonWidget;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Widget\OrderCustomReferenceWidget;
+use SprykerShop\Yves\PaymentAppWidget\Widget\ExpressCheckoutPaymentWidget;
 use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\CurrentProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceProductWidget\Widget\PriceProductWidget;
@@ -138,6 +144,11 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBundleWidget;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\CancelOrderAmendmentWidget;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\OrderAmendmentItemLinkWidget;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\OrderAmendmentWidget;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\UpdateOrderCheckoutSubmitButtonTextWidget;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\UpdateOrderCheckoutSuccessTitleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
@@ -160,6 +171,7 @@ use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
 use SprykerShop\Yves\StoreWidget\Plugin\ShopApplication\StoreApplicationPlugin;
 use SprykerShop\Yves\StoreWidget\Widget\StoreSwitcherWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
+use SprykerShop\Yves\TraceableEventWidget\Widget\TraceableEventWidget;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
 
 /**
@@ -271,8 +283,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AddToCartFormWidget::class,
             AddItemsFormWidget::class,
             CartChangeQuantityFormWidget::class,
-            CustomerReorderFormWidget::class,
-            CustomerReorderItemsFormWidget::class,
             OrderItemsProductBundleWidget::class,
             RemoveFromCartFormWidget::class,
             ProductAbstractAddToCartButtonWidget::class,
@@ -283,8 +293,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartAddProductAsSeparateItemWidget::class,
             ProductSchemaOrgCategoryWidget::class,
             AssetWidget::class,
-            CustomerReorderItemCheckboxWidget::class,
-            CustomerReorderBundleItemCheckboxWidget::class,
             ProductBundleProductDetailPageItemsListWidget::class,
             ProductConfigurationCartPageButtonWidget::class,
             ProductConfigurationCartItemDisplayWidget::class,
@@ -301,6 +309,20 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MerchantRelationRequestMenuItemWidget::class,
             MerchantRelationshipMenuItemWidget::class,
             MerchantRelationshipLinkListWidget::class,
+            TraceableEventWidget::class,
+            ExpressCheckoutPaymentWidget::class,
+            CustomerEmailChangeRequestWidget::class,
+            SetMultiFactorAuthMenuItemWidget::class,
+            MultiFactorAuthHandlerWidget::class,
+            SitemapWidget::class,
+            CartReorderWidget::class,
+            CartReorderItemCheckboxWidget::class,
+            CartReorderItemsWidget::class,
+            OrderAmendmentWidget::class,
+            OrderAmendmentItemLinkWidget::class,
+            CancelOrderAmendmentWidget::class,
+            UpdateOrderCheckoutSubmitButtonTextWidget::class,
+            UpdateOrderCheckoutSuccessTitleWidget::class,
         ];
     }
 

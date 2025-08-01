@@ -9,7 +9,9 @@
     superAttributes: [],
     selectedAttributes: [],
     availableAttributes: [],
-    useExternalForm: false
+    useExternalForm: false,
+    ajaxTriggerAttribute: null,
+    formAction: null,
 } %}
 
 {% block component %}
@@ -18,7 +20,7 @@
 
 {% block body %}
     {% if not data.useExternalForm %}
-        <form method="GET">
+        <form method="GET" {% if data.formAction %} data-form-data-url-builder action="{{ data.formAction }}" {% endif %}>
     {% endif %}
 
     {% for name, values in data.superAttributes %}
@@ -43,7 +45,8 @@
                             values: values,
                             selectedValue: selectedValue,
                             label: ('product.attribute.' ~ name) | trans,
-                            isAvailable: isAvailable
+                            isAvailable: isAvailable,
+                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                         }
                     } only %}
                 </div>

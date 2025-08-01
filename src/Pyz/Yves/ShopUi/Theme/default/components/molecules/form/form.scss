@@ -16,13 +16,14 @@ $address-form-width: rem(710);
 
     &__actions {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column-reverse wrap;
         align-items: center;
         text-align: center;
+        justify-content: flex-end;
 
         @include helper-breakpoint-media-min($lg) {
             margin-top: rem(16);
-            flex-wrap: wrap;
+            flex-flow: row wrap;
         }
     }
 
@@ -34,6 +35,15 @@ $address-form-width: rem(710);
         @include helper-breakpoint-media-min($lg) {
             width: auto;
             margin: 0 rem(16) 0 0;
+        }
+
+        &--expand {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-right: 0;
+                margin-left: 0;
+            }
         }
 
         &--expand-sm-md {
@@ -144,6 +154,7 @@ $address-form-width: rem(710);
 
             &::placeholder {
                 color: $setting-color-gray-4;
+                opacity: 1;
             }
 
             @include helper-breakpoint-media-min($lg) {
@@ -171,16 +182,6 @@ $address-form-width: rem(710);
                 padding-bottom: rem(10);
             }
         }
-
-        .icon {
-            width: rem(12);
-            height: rem(12);
-
-            @include helper-breakpoint-media-min($lg) {
-                width: rem(16);
-                height: rem(16);
-            }
-        }
     }
 
     &--browse-file {
@@ -205,7 +206,7 @@ $address-form-width: rem(710);
             padding: rem(17) rem(20) rem(18);
             font-size: rem(13);
             font-weight: fw(regular);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-4;
             border-radius: $setting-border-radius;
             border: none;
             box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
@@ -321,18 +322,9 @@ $address-form-width: rem(710);
             }
         }
 
-        #{$name}__actions {
-            flex-direction: column-reverse;
-
-            @include helper-breakpoint-media-min($md) {
-                flex-direction: row-reverse;
-                justify-content: flex-end;
-            }
-        }
-
         #{$name}__action {
             @include helper-breakpoint-media-min($md) {
-                margin: 0 rem(16) 0 0;
+                margin: 0 0 0 rem(16);
             }
         }
 
@@ -342,19 +334,6 @@ $address-form-width: rem(710);
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(12);
-            }
-        }
-
-        .input {
-            @include helper-effect-transition(box-shadow border-color);
-
-            &::placeholder {
-                color: $setting-color-gray-2;
-            }
-
-            &:focus {
-                border-color: $setting-color-main;
-                box-shadow: 0 0 0 rem(1) $setting-color-main;
             }
         }
     }

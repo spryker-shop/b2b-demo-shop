@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\Customer\PageObject;
 
 class CustomerOverviewPage
@@ -42,7 +44,17 @@ class CustomerOverviewPage
     /**
      * @var string
      */
+    public const DMS_LINK_TO_PROFILE_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/DE/en/customer/profile\']';
+
+    /**
+     * @var string
+     */
     public const LINK_TO_ADDRESSES_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/en/customer/address\']';
+
+    /**
+     * @var string
+     */
+    public const DMS_LINK_TO_ADDRESSES_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/DE/en/customer/address\']';
 
     /**
      * @var string
@@ -52,5 +64,15 @@ class CustomerOverviewPage
     /**
      * @var string
      */
+    public const DMS_LINK_TO_ORDERS_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/DE/en/customer/order\']';
+
+    /**
+     * @var string
+     */
     public const LINK_TO_NEWSLETTER_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/en/customer/newsletter\']';
+
+    /**
+     * @var string
+     */
+    public const DMS_LINK_TO_NEWSLETTER_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/DE/en/customer/newsletter\']';
 }

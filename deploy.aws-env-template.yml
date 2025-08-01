@@ -42,7 +42,7 @@ tag: '1.0'
 
 environment: docker
 image:
-    tag: spryker/php:8.2  # Last actual image
+    tag: spryker/php:8.3  # Last actual image
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
@@ -201,7 +201,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: '3.9'
+        version: '3.13'
         api:
             username: "spryker"
             password: "secret"
@@ -224,10 +224,11 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.492.3'
         endpoints:
             scheduler.example.cloud.spryker.toys:
     mail_catcher:
-        engine: mailhog
+        engine: mailpit
         endpoints:
             mail.example.cloud.spryker.toys:
 

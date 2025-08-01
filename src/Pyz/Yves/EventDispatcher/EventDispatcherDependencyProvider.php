@@ -5,10 +5,13 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\EventDispatcher;
 
 use Spryker\Shared\Http\Plugin\EventDispatcher\ResponseListenerEventDispatcherPlugin;
 use Spryker\Yves\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
+use Spryker\Yves\Customer\Plugin\EventDispatcher\AnonymousIdSessionAssignEventDispatcherPlugin;
 use Spryker\Yves\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Yves\Http\Plugin\EventDispatcher\CacheControlHeaderEventDispatcherPlugin;
 use Spryker\Yves\Http\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
@@ -23,6 +26,7 @@ use Spryker\Yves\Profiler\Plugin\EventDispatcher\ProfilerRequestEventDispatcherP
 use Spryker\Yves\Router\Plugin\EventDispatcher\RouterListenerEventDispatcherPlugin;
 use Spryker\Yves\Router\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
 use Spryker\Yves\Router\Plugin\EventDispatcher\RouterSslRedirectEventDispatcherPlugin;
+use Spryker\Yves\Session\Plugin\EventDispatcher\SaveSessionEventDispatcherPlugin;
 use Spryker\Yves\Session\Plugin\EventDispatcher\SessionEventDispatcherPlugin;
 use Spryker\Yves\Storage\Plugin\EventDispatcher\StorageCacheEventDispatcherPlugin;
 use SprykerShop\Yves\ErrorPage\Plugin\EventDispatcher\ErrorPageEventDispatcherPlugin;
@@ -59,11 +63,13 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new MonitoringRequestTransactionEventDispatcherPlugin(),
             new AutoloaderCacheEventDispatcherPlugin(),
             new SessionEventDispatcherPlugin(),
+            new SaveSessionEventDispatcherPlugin(),
             new RedirectUrlValidationEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
             new SecurityBlockerCustomerEventDispatcherPlugin(),
             new SecurityBlockerAgentEventDispatcherPlugin(),
             new EnvironmentInfoHeaderEventDispatcherPlugin(),
+            new AnonymousIdSessionAssignEventDispatcherPlugin(),
         ];
 
         if (class_exists(ProfilerRequestEventDispatcherPlugin::class)) {

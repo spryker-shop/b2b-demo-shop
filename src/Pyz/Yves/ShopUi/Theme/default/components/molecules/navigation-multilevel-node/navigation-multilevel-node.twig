@@ -43,11 +43,10 @@
    {% if(data.node.children | length > 0) %}
        <button class="menu__trigger-button menu__trigger-button--lvl-{{ data.levelMenu - 1 }} {{ data.parentJsName }}__touch-trigger" data-toggle-target=".{{ data.parentJsName }}__wrapper" data-class-to-toggle="is-hidden-sm-lg">
            {% include atom('icon') with {
-               modifiers: ['small'],
                class: 'menu__trigger-button-icon',
                data: {
-                   name: 'caret-down'
-               }
+                   name: 'caret-down',
+               },
            } only %}
        </button>
    {% endif %}
@@ -55,7 +54,7 @@
 
 {% block url %}
     <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
-        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ functionExists('generatePath') ? generatePath(data.node.url) : data.node.url }}">{{ data.node.title }}</a>
 
         {{block('mobileTrigger')}}
     </span>
@@ -63,7 +62,7 @@
 
 {% block link %}
     <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
-        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ functionExists('generatePath') ? generatePath(data.node.url) : data.node.url }}">{{ data.node.title }}</a>
 
         {{block('mobileTrigger')}}
     </span>

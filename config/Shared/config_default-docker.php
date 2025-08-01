@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Acl\AclConstants;

@@ -46,7 +46,7 @@
             font-size: rem(13);
             font-weight: fw(regular);
             line-height: rem(15);
-            color: $setting-color-gray-3;
+            color: $setting-color-gray-4;
             border: none;
 
             @include helper-breakpoint-media-min($lg) {
@@ -121,12 +121,18 @@
 
             .form__action {
                 margin-top: rem(3);
-                margin-left: 0;
                 width: 100%;
+
+                &:not(.form__action--expand) {
+                    margin-left: 0;
+                }
 
                 @include helper-breakpoint-media-min($lg) {
                     margin-top: rem(12);
-                    width: auto;
+
+                    &:not(.form__action--expand) {
+                        width: auto;
+                    }
                 }
             }
         }
@@ -140,7 +146,7 @@
             border-radius: $setting-border-radius;
             font-size: rem(11);
             line-height: normal;
-            color: $setting-color-gray-3;
+            color: $setting-color-text;
             padding: rem(5) rem(8);
         }
 

@@ -8,7 +8,7 @@
 {% define data = {
     field: required,
     fieldClass: '',
-    hasIcon: false,
+    iconName: 'calendar',
 } %}
 
 {% define attributes = {
@@ -22,19 +22,32 @@
 
 {% block body %}
     <div class="{{ config.name }}__content">
-        {{ form_row(data.field, {
-            attr: {
-                class: config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass),
-            },
-        }) }}
-
-        {% if data.hasIcon %}
-            {% include atom('icon') with {
-                class: config.name ~ '__icon',
-                data: {
-                    name: 'calendar',
+        {% block input %}
+            {{ form_row(data.field, {
+                attr: {
+                    class: config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass),
                 },
-            } only %}
-        {% endif %}
+            }) }}
+        {% endblock %}
+
+        {% block calendar %}
+            <div class="{{ config.name }}__calendar">
+                {% block calendarButton %}
+                    <button type="button" class="{{ config.name }}__calendar-button">
+                        {% include atom('icon') with {
+                            class: config.name ~ '__icon',
+                            data: {
+                                name: data.iconName,
+                            },
+                        } only %}
+                    </button>
+                {% endblock %}
+
+                {% block calendarInput %}
+                    <input aria-label="{{ 'shop_ui.aria_label.choose-date' | trans }}"
+                           class="{{ config.name }}__datepicker-input" data-id="{{ data.field.vars.id }}" tabindex="-1">
+                {% endblock %}
+            </div>
+        {% endblock %}
     </div>
 {% endblock %}

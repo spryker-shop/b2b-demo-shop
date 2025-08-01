@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Product;
 
 use Spryker\Shared\ProductBundleStorage\ProductBundleStorageConfig;
@@ -73,5 +75,13 @@ class ProductConfig extends SprykerProductConfig
             ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_CREATE,
             ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_UPDATE,
         ]);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFullLocaleNamesInUrlEnabled(): bool
+    {
+        return true;
     }
 }

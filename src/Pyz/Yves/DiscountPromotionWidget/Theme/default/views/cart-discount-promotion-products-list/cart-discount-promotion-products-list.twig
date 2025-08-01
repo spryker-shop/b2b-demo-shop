@@ -16,6 +16,7 @@
         embed: {
             promotionProducts: data.promotionProducts,
             idDiscountPromotion: discount.discountPromotion.idDiscountPromotion,
+            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
         },
         attributes: {
             'slider-config': '{
@@ -53,6 +54,9 @@
                     data: {
                         product: embed.promotionProducts[slide ~ "-" ~ embed.idDiscountPromotion],
                     },
+                    embed: {
+                        ajaxTriggerAttribute: embed.ajaxTriggerAttribute,
+                    },
                 } only %}
                     {% block colors %}{% endblock %}
 
@@ -68,6 +72,8 @@
                                         superAttributes: data.product.attributeMap.superAttributes,
                                         selectedAttributes: data.product.selectedAttributes,
                                         availableAttributes: data.product.availableAttributes,
+                                        ajaxTriggerAttribute: embed.ajaxTriggerAttribute,
+                                        formAction: embed.ajaxTriggerAttribute ? path('cart/async/view'),
                                     },
                                 } only %}
                             </div>
@@ -75,7 +81,14 @@
                             <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
                                 {% set isDisabled = not data.product.idProductConcrete or not data.product.available %}
 
-                                {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled] only %}
+                                {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled] with {
+                                    data: {
+                                        isAsyncMode: embed.ajaxTriggerAttribute,
+                                    },
+                                    embed: {
+                                        ajaxTriggerAttribute: embed.ajaxTriggerAttribute,
+                                    },
+                                } only %}
                                     {% block embeddedData %}
                                         {% set disabledAttribute = data.isDisabled ? 'disabled' %}
 
@@ -92,7 +105,7 @@
                                                 <input type="hidden" value="{{ productSku }}" name="groupKey">
                                                 <input type="hidden" value="{{ data.product.promotionItem.discount.discountPromotion.idDiscountPromotion }}" name="idDiscountPromotion">
 
-                                                <button class="button button--expand" {{ disabledAttribute }} data-init-single-click>
+                                                <button {{ embed.ajaxTriggerAttribute }} class="button button--expand" {{ disabledAttribute }} data-init-single-click>
                                                     {{ 'page.detail.add-to-cart' | trans }}
                                                 </button>
                                             </div>

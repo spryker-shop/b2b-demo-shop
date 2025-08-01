@@ -10,6 +10,23 @@
     hasAdditionalTitle: false,
 } %}
 
+{% set listItem = data.listItem %}
+{% set metaSku = listItem.sku is defined ? listItem.sku : (listItem.abstract_sku is defined ? listItem.abstract_sku : '') %}
+{% set price = listItem.unitPrice is defined ? listItem.unitPrice : listItem.price %}
+
+{% define attributes = {
+    details: {
+        sku: listItem.add_to_cart_sku
+            | default((listItem.attributeMap is defined ? listItem.attributeMap.productConcreteIds | keys | first)
+            | default(metaSku)),
+        price: can('SeePricePermissionPlugin') ? price | default : null,
+    } | json_encode,
+} %}
+
+{% block extraClass %}
+    {{ config.jsName }}
+{% endblock %}
+
 {% block productDescription %}
     <div class="{{ config.name }}__col {{ config.name }}__col--description col">
         <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
@@ -44,6 +61,7 @@
                     {% widget 'CartItemNoteFormWidget' args [listItem, data.list] with {
                         data: {
                             isTitleVisible: false,
+                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                         },
                     } only %}
                     {% endwidget %}
@@ -55,7 +73,7 @@
             <div class="{{ config.name }}__col {{ config.name }}__col--total col">
                 <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
                     <div class="col col--sm-12">
-                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
+                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column" data-qa="cart-item-summary">
                             {% block totalPrice %}
                                 {% if can('SeePricePermissionPlugin') %}
                                     {% set totalPrice = listItem.unitPrice is defined ? listItem.sumSubtotalAggregation : listItem.price %}
@@ -97,6 +115,7 @@
                 productItem: listItem,
                 productItemAttributes: data.attributes,
                 canEdit: data.canEdit,
+                ajaxTriggerAttribute: data.ajaxTriggerAttribute,
             },
         } only %}
             {% block variantSelector %}
@@ -109,7 +128,7 @@
                     attributes: {
                         name: 'preselectedAttributes[' ~ attributeName ~ ']',
                         disabled: not data.canEdit or isProductSalesUnit,
-                        'data-cart-form-submitter': true,
+                        (submitterKey): submitterValue,
                         'config-theme': 'small',
                     },
                 } only %}

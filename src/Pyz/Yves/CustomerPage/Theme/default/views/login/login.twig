@@ -32,7 +32,7 @@
                     shouldRequireMessage: true,
                     submit: {
                         enable: true,
-                        class: 'button button--big form__action--primary',
+                        class: 'button button--big',
                         text: 'forms.submit.login' | trans,
                     },
                     cancel: {
@@ -47,4 +47,15 @@
             } only %}
         {% endblock %}
     {% endembed %}
+
+    {% widget 'MultiFactorAuthHandlerWidget' with {
+        data: {
+            id: _view.loginForm.vars.name,
+            url: 'multiFactorAuth/getCustomerEnabledTypes',
+            formSelector: '[name="' ~ _view.loginForm.vars.name ~ '"]',
+            isLoginFlow: 'true',
+            isJsEnabledHandler: 'true',
+        }
+    } only %}
+    {% endwidget %}
 {% endblock %}

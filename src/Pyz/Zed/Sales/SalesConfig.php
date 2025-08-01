@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Sales;
 
 use Spryker\Zed\Sales\SalesConfig as SprykerSalesConfig;
@@ -31,6 +33,7 @@ class SalesConfig extends SprykerSalesConfig
             'comment' => '/comment-sales-connector/sales/list',
             'cart_note_bundle_items' => '/cart-note-product-bundle-connector/sales/list', #CartNoteFeature
             'payments' => '/payment/sales/list',
+            'sales_payment_details' => '/sales-payment-detail/sales/list',
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',
         ];
@@ -56,5 +59,21 @@ class SalesConfig extends SprykerSalesConfig
     public function isOldDeterminationForOrderItemProcessEnabled(): bool
     {
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function useUniqueRandomIdOrderReferenceGenerator(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getItemHashColumn(): string
+    {
+        return 'OrderItemReference';
     }
 }

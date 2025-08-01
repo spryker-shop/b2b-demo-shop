@@ -13,6 +13,7 @@
             position: relative;
             z-index: $setting-zi-element + 4;
 
+            &:has(:focus) .list--company-user,
             &:hover .list--company-user {
                 transform: scale(1);
             }
@@ -31,7 +32,7 @@
             font-weight: fw(bold);
             letter-spacing: rem(0.6);
             line-height: rem(40);
-            color: $setting-color-gray-4;
+            color: $setting-color-black;
             padding: 0 rem(30) 0 rem(18);
             height: 100%;
             text-transform: uppercase;
@@ -46,7 +47,7 @@
             }
 
             &:hover {
-                color: helper-color-light($setting-color-gray-4, 25);
+                color: helper-color-light($setting-color-black, 25);
             }
 
             .is-touch & {
@@ -63,12 +64,11 @@
         }
 
         #{$name}__company-icon {
-            width: rem(7);
-            height: rem(4);
             margin: 0 rem(-5) 0 rem(5);
             position: absolute;
-            top: calc(50% - #{rem(2)});
+            top: 50%;
             right: rem(17);
+            translate: 0 -50%;
         }
 
         @content;

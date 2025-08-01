@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\StoreGui;
 
 use Spryker\Zed\CountryGui\Communication\Plugin\StoreGui\AssignedCountriesStoreViewExpanderPlugin;
@@ -23,6 +25,8 @@ use Spryker\Zed\LocaleGui\Communication\Plugin\StoreGui\LocaleStoreFormExpanderP
 use Spryker\Zed\LocaleGui\Communication\Plugin\StoreGui\LocaleStoreFormTabExpanderPlugin;
 use Spryker\Zed\LocaleGui\Communication\Plugin\StoreGui\LocaleStoreFormViewExpanderPlugin;
 use Spryker\Zed\LocaleGui\Communication\Plugin\StoreGui\LocaleStoreTableExpanderPlugin;
+use Spryker\Zed\StoreContextGui\Communication\Plugin\StoreGui\ContextStoreFormExpanderPlugin;
+use Spryker\Zed\StoreContextGui\Communication\Plugin\StoreGui\ContextStoreFormTabExpanderPlugin;
 use Spryker\Zed\StoreGui\StoreGuiDependencyProvider as SprykerStoreGuiDependencyProvider;
 
 class StoreGuiDependencyProvider extends SprykerStoreGuiDependencyProvider
@@ -36,6 +40,7 @@ class StoreGuiDependencyProvider extends SprykerStoreGuiDependencyProvider
             new LocaleStoreFormExpanderPlugin(),
             new CurrencyStoreFormExpanderPlugin(),
             new CountryStoreFormExpanderPlugin(),
+            new ContextStoreFormExpanderPlugin(),
         ];
     }
 
@@ -60,6 +65,7 @@ class StoreGuiDependencyProvider extends SprykerStoreGuiDependencyProvider
             new LocaleStoreFormTabExpanderPlugin(),
             new CurrencyStoreFormTabExpanderPlugin(),
             new CountryStoreFormTabExpanderPlugin(),
+            new ContextStoreFormTabExpanderPlugin(),
         ];
     }
 

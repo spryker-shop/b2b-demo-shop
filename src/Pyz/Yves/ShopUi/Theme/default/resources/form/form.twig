@@ -368,6 +368,7 @@
             type: 'text',
             autocomplete: 'off',
             placeholder: attr.placeholder | default('yyyy-mm-dd HH:mm'),
+            'aria-label': 'shop_ui.aria_label.choose.date.time' | trans,
         }) -%}
         <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}
@@ -388,6 +389,7 @@
             type: 'text',
             autocomplete: 'off',
             placeholder: attr.placeholder | default('yyyy-mm-dd'),
+            'aria-label': 'shop_ui.aria_label.choose.date' | trans,
         }) -%}
         <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}
@@ -400,3 +402,13 @@
         </div>
     {%- endif -%}
 {%- endblock date_widget -%}
+
+{% block form_start %}
+    {% if form.vars.multiFactorHandlers is defined %}
+        {% for handler in form.vars.multiFactorHandlers %}
+            {{ handler|raw }}
+        {% endfor %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock form_start %}

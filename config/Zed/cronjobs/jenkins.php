@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Notes:
  *
@@ -159,6 +161,21 @@ $jobs[] = [
     'name' => 'glue-api-generate-documentation',
     'command' => '$PHP_BIN vendor/bin/glue api:generate:documentation --invalidated-after-interval 90sec',
     'schedule' => '*/1 * * * *',
+    'enable' => true,
+];
+
+$jobs[] = [
+    'name' => 'sync-order-matrix',
+    'command' => '$PHP_BIN vendor/bin/console order-matrix:sync',
+    'schedule' => '*/1 * * * *',
+    'enable' => true,
+    'global' => true,
+];
+
+$jobs[] = [
+    'name' => 'generate-sitemap-files',
+    'command' => '$PHP_BIN vendor/bin/console sitemap:generate',
+    'schedule' => '0 0 * * *',
     'enable' => true,
 ];
 

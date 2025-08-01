@@ -39,7 +39,7 @@
 
 {% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
 
-{% block content %}
+{% block contentInner %}
     {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
     {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
     {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
@@ -68,7 +68,8 @@
                         cartItems: data.cartItems,
                         isQuoteEditable: data.isQuoteEditable,
                         isQuoteValid: data.isQuoteValid,
-                    },
+                        ajaxTriggerAttribute: ajaxTriggerAttribute,
+                    }
                 } only %}
                     {% block body %}
                         {% if data.isQuoteEditable %}
@@ -77,6 +78,7 @@
                                     title: 'cart.quick_add_to_cart' | trans,
                                     cart: data.cart,
                                     isAccordionItem: false,
+                                    ajaxTriggerAttribute: data.ajaxTriggerAttribute,
                                 },
                             } only %}
                                 {% block contentInner %}
@@ -85,7 +87,11 @@
                                         'cart.quick_add_to_cart.submit' | trans,
                                         'cart/quick-add',
                                         true,
-                                    ] only %}
+                                    ] with {
+                                        data: {
+                                            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                                        },
+                                    } only %}
                                     {% endwidget %}
                                 {% endblock %}
                             {% endembed %}
@@ -98,6 +104,9 @@
                                     cart: data.cart,
                                     isAccordionItem: false,
                                 },
+                                embed: {
+                                    ajaxTriggerAttribute: data.ajaxTriggerAttribute,
+                                },
                             } only %}
                                 {% block contentClasses %}{% endblock %}
                                 {% block contentInner %}
@@ -106,11 +115,22 @@
                                         'quote',
                                         app.request.requestUri,
                                         data.cart.commentThread,
-                                    ] only %}
+                                    ] with {
+                                        data: {
+                                            ajaxTriggerAttribute: embed.ajaxTriggerAttribute,
+                                        },
+                                    } only %}
                                     {% endwidget %}
                                 {% endblock %}
                             {% endembed %}
                         {% endif %}
+
+                        {% widget 'CancelOrderAmendmentWidget' args [data.cart] only %}
+                            {% block body %}
+                                <hr>
+                                {{ parent() }}
+                            {% endblock %}
+                        {% endwidget %}
                     {% endblock %}
                 {% endembed %}
             </div>
@@ -169,6 +189,7 @@
                 {% widget 'QuoteConfiguredBundleWidget' args [data.cart] with {
                     data: {
                         isEditable: data.isQuoteEditable,
+                        ajaxTriggerAttribute: ajaxTriggerAttribute,
                     },
                 } only %}
                 {% endwidget %}
@@ -180,20 +201,27 @@
                         isQuoteEditable: data.isQuoteEditable,
                         attributes: data.attributes,
                         isUpsellingProductsViaAjaxEnabled: data.isCartItemsViaAjaxLoadEnabled,
+                        ajaxTriggerAttribute: ajaxTriggerAttribute,
                     },
                 } only %}
 
                 {% if isQuoteEnadled and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
-                        {% widget 'CartOperationsWidget' args [data.cart] use view('cart-operations-actions', 'MultiCartWidget') only %}{% endwidget %}
+                        {% widget 'CartOperationsWidget' args [data.cart] use view('cart-operations-actions', 'MultiCartWidget') with {
+                            data: {
+                                ajaxTriggerAttribute: ajaxTriggerAttribute,
+                            },
+                        } only %}
+                        {% endwidget %}
                     </div>
                 {% endif %}
 
                 {% if data.isQuoteEditable %}
-                    {% widget 'CartDiscountPromotionProductListWidget' args [
-                        data.cart,
-                        data.request,
-                    ] only %}
+                    {% widget 'CartDiscountPromotionProductListWidget' args [data.cart, data.request] with {
+                        data: {
+                            ajaxTriggerAttribute: ajaxTriggerAttribute,
+                        },
+                    } only %}
                     {% endwidget %}
                 {% endif %}
             </div>
@@ -206,6 +234,7 @@
                         cartItemsCount: cartItemsCount,
                         isQuoteEditable: data.isQuoteEditable,
                         isQuoteValid: data.isQuoteValid,
+                        ajaxTriggerAttribute: ajaxTriggerAttribute,
                     },
                 } only %}
             {% endblock %}
@@ -216,10 +245,120 @@
                 data: {
                     cart: data.cart,
                     isUpsellingProductsViaAjaxEnabled: data.isUpsellingProductsViaAjaxEnabled,
+                    ajaxTriggerAttribute: ajaxTriggerAttribute,
                 },
             } only %}
         {% endif %}
     {% endif %}
+
+    {% if data.isCartActionsAsyncModeEnabled %}
+        {{ block('ajaxLoader') }}
+    {% endif %}
+{% endblock %}
+
+{% block eventTracker %}
+    {% set events = {
+        list: events.list
+            | filter(event => event.event != 'PRODUCT_CLICK')
+            | merge([
+                {
+                    event: 'PRODUCT_CLICK',
+                    name: 'click',
+                    triggers: [
+                        {
+                            selector: '.js-product-item:not(:has(.js-ajax-add-to-cart__button:focus)):not(:has(button[data-cart-ajax-form-submitter]:focus))',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                details: {
+                                    selector: 'self',
+                                    flatten: true,
+                                },
+                            },
+                        },
+                        {
+                            selector: '.suggestion-product',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                sku: {
+                                    selector: 'self',
+                                },
+                                searchId: {
+                                    value: null,
+                                },
+                            },
+                        }
+                    ],
+                },
+                {
+                    event: 'ADD_TO_SHOPPING_LIST',
+                    name: 'click',
+                    triggers: [
+                        {
+                            selector: 'body:has([data-create-shopping-list-from-cart-submitter]:focus)',
+                            data: {
+                                products: {
+                                    multi: true,
+                                    selector: '.js-product-cart-item',
+                                    attribute: 'details',
+                                },
+                            },
+                        },
+                    ],
+                },
+                {
+                    event: 'ADD_TO_CART',
+                    name: 'click',
+                    triggers: [
+                        {
+                            selector: '.product-quick-add-form:has(.js-product-quick-add-form__submit-button:focus)',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                quantity: {
+                                    selector: '.js-formatted-number-input__hidden-input',
+                                    attribute: 'value',
+                                },
+                                sku: {
+                                    selector: 'input[data-name="value"]',
+                                    attribute: 'value',
+                                },
+                            },
+                        },
+                        {
+                            selector: '.js-product-item:has(button[data-cart-ajax-form-submitter]:focus)',
+                            groupAs: {
+                                key: 'products',
+                                toArray: true,
+                            },
+                            data: {
+                                details: {
+                                    selector: 'self',
+                                    flatten: true,
+                                },
+                                quantity: {
+                                    selector: '.js-formatted-number-input__hidden-input',
+                                    attribute: 'value',
+                                },
+                            },
+                        },
+                    ],
+                }
+            ]),
+
+        data: events.data | merge({
+            page: 'CART',
+        }),
+    } %}
+
+    {{ parent() }}
 {% endblock %}
 
 {% block footer %}

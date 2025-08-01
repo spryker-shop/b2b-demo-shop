@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\Customer\Presentation;
 
 use Codeception\Scenario;
@@ -26,13 +28,24 @@ class CustomerAddressCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     *
+     * @return void
+     */
+    public function _before(CustomerPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
+     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanAddNewAddress(CustomerPresentationTester $i, Scenario $scenario): void
+    public function testICanAddNewAddress(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
+        $i->wait(5);
         $i->amOnPage(CustomerAddressPage::URL);
 
         $addressTransfer = CustomerAddressesPage::getAddressData(CustomerAddressesPage::ADDRESS_A);

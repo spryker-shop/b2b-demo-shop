@@ -12,6 +12,12 @@
     user: app['user'],
     showUserMenu: not (hideUserMenu | default(false)),
     cartQuantity: functionExists('getCartQuantity') ? getCartQuantity() : (cartQuantity is defined ? cartQuantity : app['cart.quantity'] | default),
+    isAjaxMode: false,
+    ajaxCartUrl: '',
+} %}
+
+{% define attributes = {
+    navigationId: '',
 } %}
 
 {% block body %}
@@ -29,6 +35,7 @@
                         <div class="col {{ config.name }}__actions-item">
                             <button class="link link--alternative js-page-layout-main__side-drawer-trigger">
                                 {% include atom('icon') with {
+                                    modifiers: ['big'],
                                     data: {
                                         name: 'bars',
                                     },
@@ -129,6 +136,8 @@
                                 data: {
                                     user: data.user,
                                     cartQuantity: data.cartQuantity,
+                                    isAjaxMode: data.isAjaxMode,
+                                    ajaxCartUrl: data.ajaxCartUrl,
                                 },
                             } only %}
                         {% else %}
@@ -142,7 +151,7 @@
     </div>
 
     {% if data.showNavigation %}
-        <div class="{{ config.name }}__navigation">
+        <div class="{{ config.name }}__navigation" id="{{ attributes.navigationId }}">
             <div class="container">
                 {% block navigation %}
                     {% widget 'NavigationWidget' args ['MAIN_NAVIGATION', 'navigation-main'] only %}{% endwidget %}

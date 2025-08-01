@@ -46,13 +46,13 @@ image:
     tag: spryker/php:8.2
     environment:
         SPRYKER_DEFAULT_STORE: "DE"
-        SPRYKER_ACTIVE_STORES: "DE,AT"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
+        SPRYKER_ACTIVE_STORES: ""
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r pre-deploy -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r production --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive --no-ansi -vvv"
         SPRYKER_YVES_HOST_DE: www.de.aop-b2b.demo-spryker.com
-        SPRYKER_YVES_HOST_AT: www.at.aop-b2b.demo-spryker.com
+        SPRYKER_DYNAMIC_STORE_MODE: true
 
         #AOP
         SPRYKER_TENANT_IDENTIFIER: "AOP_Demo_B2B-DE"
@@ -83,13 +83,11 @@ composer:
     autoload: --classmap-authoritative
 
 assets:
-    image: fholzer/nginx-brotli:v1.18.0
+    image: spryker/nginx-brotli:latest
     mode: production
     compression:
         brotli:
-            static: only
-        gzip:
-            static: true
+            static: on
             level: 5
 
 regions:
@@ -99,28 +97,14 @@ regions:
                 database: aop_demoshop_b2b
                 username: spryker
                 password: secret
-
-        stores:
-            DE:
-                services:
-                    broker:
-                        namespace: de_queue
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: de_search
-                    session:
-                        namespace: 2
-            AT:
-                services:
-                    broker:
-                        namespace: at_queue
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: at_search
-                    session:
-                        namespace: 2
+        broker:
+            namespace: de_queue
+        key_value_store:
+            namespace: 1
+        search:
+            namespace: de_search
+        session:
+            namespace: 2
 
 groups:
     EU:
@@ -130,61 +114,44 @@ groups:
                 application: static
                 endpoints:
                     aop-b2b.demo-spryker.com:
-                        store: DE
+                        region: EU
                         redirect:
                             type: 302
                             url: www.de.aop-b2b.demo-spryker.com
                     de.aop-b2b.demo-spryker.com:
-                        store: DE
+                        region: EU
                         redirect:
                             code: 302
                             url: www.de.aop-b2b.demo-spryker.com
-                    at.aop-b2b.demo-spryker.com:
-                        store: AT
-                        redirect:
-                            code: 302
-                            url: www.at.aop-b2b.demo-spryker.com
             yves:
                 application: yves
                 endpoints:
                     www.de.aop-b2b.demo-spryker.com:
-                        store: DE
-                        <<: *frontend-auth
-                    www.at.aop-b2b.demo-spryker.com:
-                        store: AT
+                        region: EU
                         <<: *frontend-auth
             boffice:
                 application: backoffice
                 endpoints:
                     backoffice.de.aop-b2b.demo-spryker.com:
-                        store: DE
-                        <<: *frontend-auth
-                    backoffice.at.aop-b2b.demo-spryker.com:
-                        store: AT
+                        region: EU
                         <<: *frontend-auth
             backgw:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.de.aop-b2b.demo-spryker.com:
-                        store: DE
-                    backend-gateway.at.aop-b2b.demo-spryker.com:
-                        store: AT
-            backapi:
-                application: zed
-                endpoints:
-                    backend-api.de.aop-b2b.demo-spryker.com:
-                        store: DE
-                        entry-point: BackendApi
-                    backend-api.at.aop-b2b.demo-spryker.com:
-                        store: AT
-                        entry-point: BackendApi
+                        region: EU
             Glue:
                 application: glue
                 endpoints:
                     glue.de.aop-b2b.demo-spryker.com:
-                        store: DE
-                    glue.at.aop-b2b.demo-spryker.com:
-                        store: AT
+                        region: EU
+            mportal:
+                application: merchant-portal
+                endpoints:
+                    mp.de.aop-b2b.demo-spryker.com:
+                        region: EU
+                        entry-point: MerchantPortal
+                        primal: true
 
 services:
     database:
@@ -221,11 +188,12 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.492.3'
         csrf-protection-enabled: true
         endpoints:
             scheduler.aop-b2b.demo-spryker.com:
     mail_catcher:
-        engine: mailhog
+        engine: mailpit
         endpoints:
             mail.aop-b2b.demo-spryker.com:
 
@@ -244,7 +212,7 @@ docker:
             enabled: false
 
     testing:
-        store: DE
+        region: EU
 
     mount:
         baked:

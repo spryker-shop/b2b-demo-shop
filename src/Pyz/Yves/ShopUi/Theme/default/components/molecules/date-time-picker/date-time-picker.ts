@@ -1,124 +1,70 @@
 import Component from 'ShopUi/models/component';
-import $ from 'jquery/dist/jquery';
-import 'jquery-datetimepicker/build/jquery.datetimepicker.full';
+import flatpickr from 'flatpickr';
+import { German } from 'flatpickr/dist/l10n/de.js';
+import { Options } from 'flatpickr/dist/types/options';
 
 export default class DateTimePicker extends Component {
     protected trigger: HTMLInputElement;
-    protected dateFrom: HTMLInputElement;
-    protected dateTo: HTMLInputElement;
+    protected dateInput: HTMLInputElement;
+    protected dateFromPicker: HTMLInputElement;
+    protected dateToPicker: HTMLInputElement;
+    protected calendarButton: HTMLButtonElement;
 
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.trigger = <HTMLInputElement>this.getElementsByTagName('input')[0];
-        this.dateFrom = <HTMLInputElement>document.getElementById(this.dateFromId);
-        this.dateTo = <HTMLInputElement>document.getElementById(this.dateToId);
+        this.dateInput = this.querySelector<HTMLInputElement>(`.${this.name}__field`);
+        this.dateInput.value = this.dateInput.value ? this.formattedDateTime : '';
+        this.trigger = this.querySelector<HTMLInputElement>(`.${this.name}__datepicker-input`);
+        this.calendarButton = this.querySelector<HTMLButtonElement>(`.${this.name}__calendar-button`);
+        this.dateFromPicker = document.querySelector(`[data-id="${this.dateFromId}"]`);
+        this.dateToPicker = document.querySelector(`[data-id="${this.dateToId}"]`);
 
-        this.mapEvents();
+        this.mountEvents();
+        this.datePickerInit();
     }
 
-    protected mapEvents(): void {
-        this.datetimepickerInit();
-        this.setLanguage(this.language);
+    protected mountEvents(): void {
+        this.calendarButton.addEventListener('click', () => this.trigger.focus());
+        this.dateInput.addEventListener('blur', () => this.trigger._flatpickr.setDate(this.dateInput.value, true));
+    }
 
-        if (this.dateTo) {
-            this.setMaxDate();
+    protected datePickerInit(): void {
+        const config: Options = {
+            locale: this.language === 'de' ? German : 'default',
+            enableTime: true,
+            ...this.config,
+            onChange: (selectedDates, dateStr) => {
+                this.dateInput.value = dateStr;
+                this.dateFromPicker?._flatpickr.set('maxDate', dateStr);
+                this.dateToPicker?._flatpickr.set('minDate', dateStr);
+            },
+        };
+
+        flatpickr(this.trigger, config);
+
+        if (this.formattedDateTime && this.trigger.value) {
+            this.trigger.value = this.formattedDateTime;
         }
-        if (this.dateFrom) {
-            this.setMinDate();
-        }
-    }
-
-    protected datetimepickerInit(): void {
-        if (this.formattedDateTime && $(this.trigger).val()) {
-            $(this.trigger).val(this.formattedDateTime);
-        }
-
-        $(this.trigger).datetimepicker(this.config);
-    }
-
-    protected setLanguage(language: string): void {
-        $.datetimepicker.setLocale(language);
-    }
-
-    protected setMaxDate(): void {
-        const $dateFrom = $(this.trigger);
-        const $dateTo = $(this.dateTo);
-
-        $dateFrom.datetimepicker({
-            onShow() {
-                if (!$dateTo.val()) {
-                    return;
-                }
-
-                this.setOptions({ maxDate: $dateTo.datetimepicker('getValue') });
-            },
-            onClose() {
-                if (!$dateTo.val()) {
-                    return;
-                }
-
-                const dateFromValue = $dateFrom.datetimepicker('getValue');
-                const dateToValue = $dateTo.datetimepicker('getValue');
-
-                if (dateFromValue > dateToValue) {
-                    $dateTo.datetimepicker({ value: dateFromValue });
-                }
-            },
-        });
-    }
-
-    protected setMinDate(): void {
-        const $dateFrom = $(this.dateFrom);
-        const $dateTo = $(this.trigger);
-
-        $dateTo.datetimepicker({
-            onShow() {
-                if (!$dateFrom.val()) {
-                    return;
-                }
-
-                this.setOptions({ minDate: $dateFrom.datetimepicker('getValue') });
-            },
-            onClose() {
-                if (!$dateFrom.val()) {
-                    return;
-                }
-
-                const dateFromValue = $dateFrom.datetimepicker('getValue');
-                const dateToValue = $dateTo.datetimepicker('getValue');
-
-                if (dateFromValue > dateToValue) {
-                    $dateFrom.datetimepicker({ value: dateToValue });
-                }
-            },
-        });
-    }
-
-    protected get parent(): string {
-        return this.getAttribute('parent-id');
-    }
-
-    protected get language(): string {
-        return this.getAttribute('language');
-    }
-
-    protected get config(): object {
-        const config = JSON.parse(this.getAttribute('config'));
-        config.parentID = this.parent;
-
-        return config;
     }
 
     protected get formattedDateTime(): string {
         return this.getAttribute('formatted-date-time');
     }
 
+    protected get dateToId(): string {
+        return this.getAttribute('date-to-id');
+    }
+
     protected get dateFromId(): string {
         return this.getAttribute('date-from-id');
     }
 
-    protected get dateToId(): string {
-        return this.getAttribute('date-to-id');
+    protected get config(): object {
+        return JSON.parse(this.getAttribute('config'));
+    }
+
+    protected get language(): string {
+        return this.getAttribute('language');
     }
 }

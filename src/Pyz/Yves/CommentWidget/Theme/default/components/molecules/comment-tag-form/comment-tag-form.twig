@@ -10,14 +10,18 @@
     availableTags: required,
     tagNames: required,
     returnUrl: required,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% define attributes = {
     name: 'name',
+    'ajax-mode': data.ajaxTriggerAttribute,
 } %}
 
 {% block body %}
-    <form class="{{ config.jsName }}__form" method="GET" action="{{ data.action }}">
+    {% set method = data.ajaxTriggerAttribute ? 'POST' : 'GET' %}
+
+    <form class="{{ config.jsName }}__form" method="{{ method }}" action="{{ data.action }}">
         {% embed molecule('custom-select') with {
             modifiers: ['full-width', 'smaller'],
             attributes: {
@@ -26,6 +30,7 @@
                 'config-theme': 'smaller',
                 'config-dropdown-auto-width': 'true',
                 'config-dropdown-right': 'true',
+                (data.ajaxTriggerAttribute): 'change',
             },
             embed: {
                 availableTags: data.availableTags,
@@ -47,5 +52,6 @@
         {% endembed %}
 
         <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('comment-tag-form') }}">
     </form>
 {% endblock %}

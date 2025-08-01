@@ -27,7 +27,7 @@
                 <h2 class="{{ config.name }}__text title title--h4">{{ data.subHeadline }}</h2>
             {% endif %}
             {% if data.btnTitle %}
-                <a href="{{ data.link | trans }}" class="button button--big button--alternative">{{ data.btnTitle | trans }}</a>
+                <a href="{{ functionExists('generatePath') ? generatePath(data.link | trans) : data.link | trans }}" class="button button--big button--alternative">{{ data.btnTitle | trans }}</a>
             {% endif %}
         </div>
     </div>

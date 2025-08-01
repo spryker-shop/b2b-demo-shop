@@ -4,6 +4,7 @@
     idQuote: _view.cart.idQuote,
     form: _widget.cartNoteForm,
     isTitleVisible: true,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% set canWrite = not is_granted('ROLE_USER') or not data.idQuote or can('WriteSharedCartPermissionPlugin', data.idQuote) %}
@@ -15,6 +16,7 @@
             form: data.form,
             canWrite: canWrite,
             isTitleVisible: data.isTitleVisible,
+            ajaxTriggerAttribute: data.ajaxTriggerAttribute,
         },
     } only %}
 {% endblock %}

@@ -42,11 +42,17 @@
                 } only %}
             </h4>
 
+            {% set ariaLabels = choices | reduce(
+                (carry, choice) => carry | merge(['checkout_page.aria_label.choose.as.active' | trans({
+                '%optionValue%': "#{name} #{choice.label | split(':')[0]}"
+            })]), []) %}
+
             {% include molecule('checkout-list', 'CheckoutPage') with {
                 data: {
                     form: shipmentSelection,
                     choices: choices,
                     checkedValue: shipmentSelection.vars.value,
+                    ariaLabels: ariaLabels,
                 },
             } only %}
         {% endfor %}
@@ -65,14 +71,13 @@
                     modifiers: ['with-icon'],
                     data: {
                         field: data.field,
-                        hasIcon: true,
                     },
                     attributes: {
                         language: data.currentLanguage,
                         config: '{
                             "format": "Y-m-d",
-                            "timepicker": false,
-                            "minDate": 0,
+                            "enableTime": false,
+                            "minDate": "today",
                             "scrollInput": false,
                             "scrollMonth": false
                         }',

@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Quote;
 
 use Spryker\Zed\Comment\Communication\Plugin\Quote\CommentThreadQuoteExpanderPlugin;
@@ -15,6 +17,7 @@ use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreate
 use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\Quote\AddDefaultQuoteChangedMessageQuoteUpdateBeforePlugin;
+use Spryker\Zed\MultiCart\Communication\Plugin\Quote\DefaultQuoteCollectionFilterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Quote\OrderCustomReferenceQuoteFieldsAllowedForSavingProviderPlugin;
 use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatorPlugin;
@@ -23,6 +26,7 @@ use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalExpanderPl
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalQuoteFieldsAllowedForSavingProviderPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\RemoveQuoteApprovalsBeforeQuoteDeletePlugin;
 use Spryker\Zed\QuoteApprovalShipmentConnector\Communication\Plugin\Quote\QuoteApprovalShipmentQuoteFieldsAllowedForSavingProviderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Quote\CancelOrderAmendmentQuoteDeleteAfterPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\MarkAsDefaultQuoteAfterSavePlugin;
@@ -116,6 +120,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new InitDefaultQuoteCustomerQuoteDeleteAfterPlugin(), #MultiCartFeature
+            new CancelOrderAmendmentQuoteDeleteAfterPlugin(),
         ];
     }
 
@@ -150,6 +155,16 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
             new QuoteApprovalQuoteFieldsAllowedForSavingProviderPlugin(),
             new QuoteApprovalShipmentQuoteFieldsAllowedForSavingProviderPlugin(),
             new OrderCustomReferenceQuoteFieldsAllowedForSavingProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteCollectionFilterPluginInterface>
+     */
+    protected function getQuoteCollectionFilterPlugins(): array
+    {
+        return [
+            new DefaultQuoteCollectionFilterPlugin(),
         ];
     }
 }

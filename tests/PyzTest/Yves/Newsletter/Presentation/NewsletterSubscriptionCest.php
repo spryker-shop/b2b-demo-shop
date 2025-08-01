@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\Newsletter\Presentation;
 
 use Codeception\Scenario;
@@ -33,6 +35,16 @@ class NewsletterSubscriptionCest
      *
      * @return void
      */
+    public function _before(NewsletterPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
+     * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
+     *
+     * @return void
+     */
     public function iCanSubscribeWithAnUnsubscribedEmail(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an unsubscribed new email.');
@@ -43,7 +55,7 @@ class NewsletterSubscriptionCest
         $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
 
         $i->seeInPageSource(NewsletterSubscriptionHomePage::SUCCESS_MESSAGE);
     }
@@ -65,7 +77,7 @@ class NewsletterSubscriptionCest
         $i->haveAnAlreadySubscribedEmail($customerTransfer->getEmail());
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
 
         $i->seeInPageSource(NewsletterSubscriptionHomePage::ERROR_MESSAGE);
     }
@@ -85,7 +97,7 @@ class NewsletterSubscriptionCest
         $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
         $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
 
         $i->amLoggedInCustomer([
@@ -113,7 +125,7 @@ class NewsletterSubscriptionCest
         $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
+        $i->executeJS('document.querySelector("' . NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT . '").click();');
         $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
 
         $i->amLoggedInCustomer([

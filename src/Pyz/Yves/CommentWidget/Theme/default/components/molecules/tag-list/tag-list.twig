@@ -10,16 +10,25 @@
     uuid: '',
     returnUrl: '',
     idCustomer: null,
+    ajaxTriggerAttribute: null,
 } %}
 
 {% set disableClassName = data.idCustomer is null ? config.name ~ '__item-link--disabled' %}
 
 {% block body %}
     {% for tagName in data.tagNames %}
-        <li class="{{ config.name }}__item">
-            <a class="{{ config.name }}__item-link {{ disableClassName }}" href="{{ path('comment/tag/remove', {'uuid': data.uuid, 'name': tagName, 'returnUrl': data.returnUrl }) }}">
+        {% set linkClass = config.name ~ '__item-link' %}
+
+        {% if data.ajaxTriggerAttribute %}
+            <button {{ data.ajaxTriggerAttribute }} class="{{ linkClass }} {{ disableClassName }}" formaction="{{ path('comment/tag/async/remove', {'uuid': data.uuid, 'name': tagName }) }}">
                 {{ tagName }}
-            </a>
-        </li>
+            </button>
+        {% else %}
+            <li class="{{ config.name }}__item">
+                <a class="{{ linkClass }} {{ disableClassName }}" href="{{ path('comment/tag/remove', {'uuid': data.uuid, 'name': tagName, 'returnUrl': data.returnUrl }) }}">
+                    {{ tagName }}
+                </a>
+            </li>
+        {% endif %}
     {% endfor %}
 {% endblock %}

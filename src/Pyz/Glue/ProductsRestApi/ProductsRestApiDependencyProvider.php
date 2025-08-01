@@ -5,8 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Glue\ProductsRestApi;
 
+use Spryker\Glue\ProductAttributesRestApi\Plugin\ProductsRestApi\MultiSelectAttributeAbstractProductsResourceExpanderPlugin;
+use Spryker\Glue\ProductAttributesRestApi\Plugin\ProductsRestApi\MultiSelectAttributeConcreteProductsResourceExpanderPlugin;
 use Spryker\Glue\ProductConfigurationsRestApi\Plugin\ProductsRestApi\ProductConfigurationConcreteProductsResourceExpanderPlugin;
 use Spryker\Glue\ProductDiscontinuedRestApi\Plugin\ProductDiscontinuedConcreteProductsResourceExpanderPlugin;
 use Spryker\Glue\ProductReviewsRestApi\Plugin\ProductsRestApi\ProductReviewsAbstractProductsResourceExpanderPlugin;
@@ -24,6 +28,7 @@ class ProductsRestApiDependencyProvider extends SprykerProductsRestApiDependency
             new ProductDiscontinuedConcreteProductsResourceExpanderPlugin(),
             new ProductReviewsConcreteProductsResourceExpanderPlugin(),
             new ProductConfigurationConcreteProductsResourceExpanderPlugin(),
+            new MultiSelectAttributeConcreteProductsResourceExpanderPlugin(), // remove if the project is accept product attribute values as array of strings
         ];
     }
 
@@ -34,6 +39,7 @@ class ProductsRestApiDependencyProvider extends SprykerProductsRestApiDependency
     {
         return [
             new ProductReviewsAbstractProductsResourceExpanderPlugin(),
+            new MultiSelectAttributeAbstractProductsResourceExpanderPlugin(), // remove if the project is accept product attribute values as array of strings
         ];
     }
 }

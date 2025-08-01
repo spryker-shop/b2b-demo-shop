@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Yves\Newsletter\PageObject;
 
 class NewsletterSubscriptionHomePage
@@ -27,7 +29,7 @@ class NewsletterSubscriptionHomePage
     /**
      * @var string
      */
-    public const FORM_BUTTON_SUBMIT = '//button[@type=\'submit\' and @data-qa=\'submit-button\']';
+    public const FORM_BUTTON_SUBMIT = 'button[data-qa=\'submit-button\']';
 
     /**
      * @var string

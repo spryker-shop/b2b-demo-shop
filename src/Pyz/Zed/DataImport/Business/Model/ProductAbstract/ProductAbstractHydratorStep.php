@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract;
 
 use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
@@ -179,7 +181,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $productAbstractEntityTransfer
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
-            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
+            ->setAttributes(json_encode($this->formatMultiSelectProductAttributes($dataSet[static::KEY_ATTRIBUTES] ?? [])))
             ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
             ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
 
@@ -204,7 +206,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
                 ->setMetaDescription($localizedAttributes[static::COLUMN_META_DESCRIPTION])
                 ->setMetaKeywords($localizedAttributes[static::COLUMN_META_KEYWORDS])
                 ->setFkLocale($idLocale)
-                ->setAttributes((string)json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
+                ->setAttributes((string)json_encode($this->formatMultiSelectProductAttributes($localizedAttributes[static::KEY_ATTRIBUTES] ?? [])));
 
             $localizedAttributeTransfer[] = [
                 static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],
@@ -285,7 +287,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
      *
      * @return array<string>
      */
-    protected function getCategoryKeys($categoryKeys): array
+    protected function getCategoryKeys(string $categoryKeys): array
     {
         $categoryKeys = explode(',', $categoryKeys);
 
@@ -297,10 +299,34 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
      *
      * @return array<string>
      */
-    protected function getCategoryProductOrder($categoryProductOrder): array
+    protected function getCategoryProductOrder(string $categoryProductOrder): array
     {
         $categoryProductOrder = explode(',', $categoryProductOrder);
 
         return array_map('trim', $categoryProductOrder);
+    }
+
+    /**
+     * @param array<mixed> $attributes
+     *
+     * @return array<mixed>
+     */
+    protected function formatMultiSelectProductAttributes(array $attributes): array
+    {
+        foreach ($attributes as $key => $value) {
+            if (!is_string($value) || !preg_match('/^\[.*\]$/', $value)) {
+                continue;
+            }
+
+            $json = str_replace("'", '"', $value);
+            $decoded = json_decode($json, true);
+            if (json_last_error() !== JSON_ERROR_NONE || !is_array($decoded)) {
+                continue;
+            }
+
+            $attributes[$key] = $decoded;
+        }
+
+        return $attributes;
     }
 }

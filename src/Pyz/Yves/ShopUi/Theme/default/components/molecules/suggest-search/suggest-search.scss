@@ -23,9 +23,10 @@
         &__input,
         &__hint {
             padding: rem(20) rem(45);
-            border: none;
+            border: rem(1) solid $setting-color-gray-4;
             font: fw(bold) rem(18) / rem(20) $setting-font-family;
             width: 100%;
+            border-radius: rem(40);
 
             @include helper-breakpoint-media-min($lg) {
                 padding: rem(15) rem(10) rem(15) rem(55);
@@ -34,14 +35,18 @@
             }
 
             &--active {
-                border-radius: $setting-border-radius $setting-border-radius 0 0;
+                border-radius: 0;
+                outline: none;
+                border-color: transparent;
+
+                @include helper-breakpoint(lg) {
+                    border-radius: rem(30) rem(30) 0 0;
+                }
             }
         }
 
         &__input {
             position: relative;
-            border-radius: $setting-border-radius;
-            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
             z-index: $setting-zi-search-suggestions + 2;
 
             &--transparent {

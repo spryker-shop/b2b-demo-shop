@@ -5,13 +5,21 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Client\Permission;
 
 use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermissionPlugin;
 use Spryker\Client\CompanyBusinessUnitSalesConnector\Plugin\Permission\SeeBusinessUnitOrdersPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\CreateCompanyRolesPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\DeleteCompanyRolesPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\EditCompanyRolesPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\SeeCompanyRolesPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\CompanySalesConnector\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\CompanyUserStatusChangePermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\Permission\DeleteCompanyUsersPermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\Permission\EditCompanyUsersPermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\Permission\SeeCompanyUsersPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStoragePlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
@@ -80,6 +88,15 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new SeeBusinessUnitOrdersPermissionPlugin(),
             new SeeCompanyUsersPermissionPlugin(),
             new CreateMerchantRelationRequestPermissionPlugin(),
+            new CreateCompanyRolesPermissionPlugin(),
+            new DeleteCompanyRolesPermissionPlugin(),
+            new EditCompanyRolesPermissionPlugin(),
+            new SeeCompanyRolesPermissionPlugin(),
+            new CompanyUserStatusChangePermissionPlugin(),
+            new DeleteCompanyUsersPermissionPlugin(),
+            new EditCompanyUsersPermissionPlugin(),
+            new AddCompanyUserPermissionPlugin(),
+            new ManageCompanyUserInvitationPermissionPlugin(),
         ];
     }
 }

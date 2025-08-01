@@ -1,45 +1,58 @@
-{% extends template('widget') %}
+{% extends view('mini-cart', 'SprykerShop:MultiCartWidget') %}
 
 {% define data = {
-    cartQuantity: _widget.cartQuantity | default,
-    activeCart: _widget.activeCart,
-    carts: _widget.cartList,
-    isMultiCartAllowed: _widget.isMultiCartAllowed,
+    parentName: 'mini-cart',
 } %}
 
-{% set cartAmount = data.carts | length + 1 %}
+{% define config = {
+    name: data.parentName,
+    jsName: 'js-' ~ config.name,
+} %}
 
-{% block body %}
-    {% block cartItems %}
-        {% if data.isMultiCartAllowed %}
-            <ul class="menu menu--wide">
-                {% if data.activeCart %}
-                    <li class="menu__item">
-                        {% include molecule('mini-cart-detail', 'MultiCartWidget') with {
-                            data: {
-                                cart: data.activeCart,
-                            },
-                        } only %}
-                    </li>
-                {% endif %}
+{% block separatorCartItem %}{% endblock %}
 
-                {% if data.carts %}
-                    {% for cart in data.carts %}
-                        <li class="menu__item">
-                            {% include molecule('mini-cart-detail', 'MultiCartWidget') with {
-                                data: {
-                                    cart: cart,
-                                },
-                            } only %}
-                        </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-        {% endif %}
-    {% endblock %}
+{% block menuItem %}{% endblock %}
 
-    {% block cartActions %}
-        {% if data.isMultiCartAllowed %}
+{% block contentInner %}
+    {% embed molecule('cart-counter') with {
+        class: config.jsName ~ '__trigger',
+        data: {
+            quantity: data.cartQuantity,
+        },
+        attributes: {
+            'data-toggle-target': '.' ~ config.jsName ~ '__sub-nav-cart',
+        },
+        embed: {
+            parentConfigName: config.name,
+        },
+    } only %}
+        {% block content %}
+            {% set linkClass = embed.parentConfigName ~ '__link' %}
+            {{ parent() }}
+        {% endblock %}
+    {% endembed %}
+
+    <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-cart">
+        <button class="{{ config.name }}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-cart'>
+            {% include atom('icon') with {
+                data: {
+                    name: 'cross',
+                },
+            } only %}
+        </button>
+
+        <h4 class="{{ config.name }}__sub-nav-title">
+            {{ 'multi_cart_widget.cart.carts'|trans }}
+        </h4>
+
+        <div class="{{ config.name }}__sub-nav-inner">
+            {% set menuClassName = 'menu menu--wide' %}
+            {% set menuItemClassName = 'menu__item' %}
+
+            {{ block('cartList') }}
+        </div>
+
+        <div class="{{ config.name }}__sub-nav-actions">
             <div class="grid grid--gap grid--justify grid--nowrap-lg-only">
                 <div class="col col--bottom-indent col--mobile-expand">
                     <a class="button button--mobile-tight button--expand button--hollow spacing-right spacing-right--big" href="{{ path('multi-cart') }}">
@@ -58,14 +71,6 @@
                     </a>
                 </div>
             </div>
-        {% endif %}
-    {% endblock %}
-
-    {% if not data.isMultiCartAllowed%}
-        {% include molecule('cart-counter') with {
-            data: {
-                quantity: data.cartQuantity,
-            },
-        } only %}
-    {% endif %}
+        </div>
+    </div>
 {% endblock %}

@@ -45,21 +45,12 @@
                                     {% block body %}
                                         {% if embed.order is not empty %}
                                             <span class="{{ config.name }}__checkbox">
-                                                {% if embed.listItem.bundleItemIdentifier ?? false %}
-                                                    {% widget 'CustomerReorderBundleItemCheckboxWidget' args [embed.listItem] with {
-                                                        data: {
-                                                            checkboxClasses: embed.reorderSelectionClassName,
-                                                        },
-                                                    } only %}
-                                                    {% endwidget %}
-                                                {% else %}
-                                                    {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] with {
-                                                        data: {
-                                                            checkboxClasses: embed.reorderSelectionClassName,
-                                                        },
-                                                    } only %}
-                                                    {% endwidget %}
-                                                {% endif %}
+                                                {% widget 'CartReorderItemCheckboxWidget' args [embed.listItem] with {
+                                                    data: {
+                                                        checkboxClasses: embed.reorderSelectionClassName,
+                                                    },
+                                                } only %}
+                                                {% endwidget %}
                                             </span>
                                         {% endif %}
 
@@ -69,7 +60,7 @@
                             {% endblock %}
 
                             {% block title %}
-                                <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                                <h1 class="{{ config.name }}__title title--h6 spacing spacing--reset">{{ data.listItem.name }}</h1>
                             {% endblock %}
 
                             {% block productConfiguration %}

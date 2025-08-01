@@ -37,7 +37,7 @@ export default class CartItemNote extends Component {
                 const form = <HTMLFormElement>this.formTarget.getElementsByTagName('form')[0];
                 const textarea = <HTMLTextAreaElement>form.getElementsByTagName('textarea')[0];
                 textarea.value = '';
-                form.submit();
+                form.querySelector<HTMLButtonElement>('button[type="submit"]').click();
 
                 return;
             }
