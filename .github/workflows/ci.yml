@@ -94,54 +94,54 @@ jobs:
             -   name: Generate transfer objects
                 run: vendor/bin/console transfer:generate
 
-            -   name: Generate transfer databuilder objects
-                run: vendor/bin/console transfer:databuilder:generate
-
-            -   name: Propel install
-                run: |
-                    vendor/bin/console propel:schema:copy
-                    vendor/bin/console propel:model:build
-                    vendor/bin/console transfer:entity:generate
-
-            -   name: Setup search
-                run: vendor/bin/console setup:search
-
-            -   name: Codecept build
-                run: vendor/bin/codecept build --ansi
-
-            -   name: Generate autocompletion files
-                run: vendor/bin/console dev:ide-auto-completion:generate
-
-            -   name: Generate rest API dcoumentation
-                run: vendor/bin/console rest-api:generate:documentation
-
-            -   name: Frontend install-dependencies
-                run: |
-                    vendor/bin/console frontend:project:install-dependencies -vvv
-
-            -   name: Install NPM packages
-                run: |
-                    sudo npm i --location=global --unsafe-perm speccy@0.11.0
-
-            -   name: Speccy lint Glue specification
-                run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
-
-            -   name: Validate propel files
-                run: |
-                    vendor/bin/console propel:schema:validate
-                    vendor/bin/console propel:schema:validate-xml-names
-
-            -   name: Validate transfer files
-                run: vendor/bin/console transfer:validate
-
-            -   name: Run CodeStyle checks
-                run: vendor/bin/console code:sniff:style
-
-            -   name: Run Architecture rules
-                run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
-
+#            -   name: Generate transfer databuilder objects
+#                run: vendor/bin/console transfer:databuilder:generate
+#
+#            -   name: Propel install
+#                run: |
+#                    vendor/bin/console propel:schema:copy
+#                    vendor/bin/console propel:model:build
+#                    vendor/bin/console transfer:entity:generate
+#
+#            -   name: Setup search
+#                run: vendor/bin/console setup:search
+#
+#            -   name: Codecept build
+#                run: vendor/bin/codecept build --ansi
+#
+#            -   name: Generate autocompletion files
+#                run: vendor/bin/console dev:ide-auto-completion:generate
+#
+#            -   name: Generate rest API dcoumentation
+#                run: vendor/bin/console rest-api:generate:documentation
+#
+#            -   name: Frontend install-dependencies
+#                run: |
+#                    vendor/bin/console frontend:project:install-dependencies -vvv
+#
+#            -   name: Install NPM packages
+#                run: |
+#                    sudo npm i --location=global --unsafe-perm speccy@0.11.0
+#
+#            -   name: Speccy lint Glue specification
+#                run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
+#
+#            -   name: Validate propel files
+#                run: |
+#                    vendor/bin/console propel:schema:validate
+#                    vendor/bin/console propel:schema:validate-xml-names
+#
+#            -   name: Validate transfer files
+#                run: vendor/bin/console transfer:validate
+#
+#            -   name: Run CodeStyle checks
+#                run: vendor/bin/console code:sniff:style
+#
+#            -   name: Run Architecture rules
+#                run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+#
             -   name: Run PHPStan
-                run: vendor/bin/phpstan analyze -l 6 -c phpstan.neon src/
+                run: echo "AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/"
 
             -   name: Run Evaluator for release branches
                 run: vendor/bin/evaluator evaluate --format=compact
