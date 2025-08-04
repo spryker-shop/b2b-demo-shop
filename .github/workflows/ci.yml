@@ -94,34 +94,34 @@ jobs:
             -   name: Generate transfer objects
                 run: vendor/bin/console transfer:generate
 
-#            -   name: Generate transfer databuilder objects
-#                run: vendor/bin/console transfer:databuilder:generate
-#
-#            -   name: Propel install
-#                run: |
-#                    vendor/bin/console propel:schema:copy
-#                    vendor/bin/console propel:model:build
-#                    vendor/bin/console transfer:entity:generate
-#
-#            -   name: Setup search
-#                run: vendor/bin/console setup:search
-#
-#            -   name: Codecept build
-#                run: vendor/bin/codecept build --ansi
-#
-#            -   name: Generate autocompletion files
-#                run: vendor/bin/console dev:ide-auto-completion:generate
-#
+            -   name: Generate transfer databuilder objects
+                run: vendor/bin/console transfer:databuilder:generate
+
+            -   name: Propel install
+                run: |
+                    vendor/bin/console propel:schema:copy
+                    vendor/bin/console propel:model:build
+                    vendor/bin/console transfer:entity:generate
+
+            -   name: Setup search
+                run: vendor/bin/console setup:search
+
+            -   name: Codecept build
+                run: vendor/bin/codecept build --ansi
+
+            -   name: Generate autocompletion files
+                run: vendor/bin/console dev:ide-auto-completion:generate
+
 #            -   name: Generate rest API dcoumentation
 #                run: vendor/bin/console rest-api:generate:documentation
 #
-#            -   name: Frontend install-dependencies
-#                run: |
-#                    vendor/bin/console frontend:project:install-dependencies -vvv
-#
-#            -   name: Install NPM packages
-#                run: |
-#                    sudo npm i --location=global --unsafe-perm speccy@0.11.0
+            -   name: Frontend install-dependencies
+                run: |
+                    vendor/bin/console frontend:project:install-dependencies -vvv
+
+            -   name: Install NPM packages
+                run: |
+                    sudo npm i --location=global --unsafe-perm speccy@0.11.0
 #
 #            -   name: Speccy lint Glue specification
 #                run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
