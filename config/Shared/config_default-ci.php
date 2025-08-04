@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
+use Spryker\Service\FlysystemAws3v3FileSystem\Plugin\Flysystem\Aws3v3FilesystemBuilderPlugin;
+use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -12,6 +14,7 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
+use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
 use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
@@ -315,3 +318,42 @@ $config[MessageBrokerConstants::IS_ENABLED] = true;
 //----------------------------------- ACP -------------------------------------
 //-----------------------------------------------------------------------------
 $config[ProductConstants::PUBLISHING_TO_MESSAGE_BROKER_ENABLED] = false;
+
+//-----------------------------------------------------------------------------
+//----------------------------------- FILESYSTEM -------------------------------------
+//-----------------------------------------------------------------------------
+$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
+    's3-import' => [
+        'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
+        'path' => '/',
+        'key' => getenv('ROBOT_TESTS_ARTIFACTS_KEY') ?: '',
+        'secret' => getenv('ROBOT_TESTS_ARTIFACTS_SECRET') ?: '',
+        'bucket' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET') ?: '',
+        'region' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET_REGION') ?: 'eu-central-1',
+    ],
+    'files-import' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/',
+        'path' => '/',
+    ],
+    'files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/',
+        'path' => '/',
+    ],
+    'ssp-files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/',
+        'path' => '/data/data/media',
+    ],
+    'ssp-inquiry' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/ssp-inquiry',
+    ],
+    'merchant-files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/merchant-files',
+    ],
+];
