@@ -141,7 +141,7 @@ jobs:
 #                run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 #
 #            -   name: Run PHPStan
-#                run: echo "AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/"
+#                run: vendor/bin/phpstan analyze -l 6 -c phpstan.neon src/
 
             -   name: Run Evaluator for release branches
                 run: vendor/bin/evaluator evaluate --format=compact

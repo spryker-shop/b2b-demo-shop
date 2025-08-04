@@ -71,29 +71,4 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'bucket' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET') ?: '',
         'region' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET_REGION') ?: 'eu-central-1',
     ],
-    'files-import' => [
-        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => '/',
-        'path' => '/',
-    ],
-    'files' => [
-        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => '/',
-        'path' => '/',
-    ],
-    'ssp-files' => [
-        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => '/',
-        'path' => '/data/data/media',
-    ],
-    'ssp-inquiry' => [
-        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => '/data',
-        'path' => '/data/ssp-inquiry',
-    ],
-    'merchant-files' => [
-        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => '/data',
-        'path' => '/data/merchant-files',
-    ],
 ];
