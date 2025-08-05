@@ -328,7 +328,7 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'path' => '/',
         'key' => getenv('ROBOT_TESTS_ARTIFACTS_KEY') ?: '',
         'secret' => getenv('ROBOT_TESTS_ARTIFACTS_SECRET') ?: '',
-        'bucket' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET') ?: '',
+        'bucket' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET') ?: 'robot-api-ci',
         'region' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET_REGION') ?: 'eu-central-1',
     ],
 ];
