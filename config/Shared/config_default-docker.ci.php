@@ -62,13 +62,13 @@ $config[RedisConstants::REDIS_IS_DEV_MODE] = false;
 //-----------------------------------------------------------------------------
 //----------------------------------- FILESYSTEM -------------------------------------
 //-----------------------------------------------------------------------------
-$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
-    's3-import' => [
-        'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
-        'path' => '/',
-        'key' => getenv('ROBOT_TESTS_ARTIFACTS_KEY') ?: '',
-        'secret' => getenv('ROBOT_TESTS_ARTIFACTS_SECRET') ?: '',
-        'bucket' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET') ?: '',
-        'region' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET_REGION') ?: 'eu-central-1',
-    ],
-];
+//$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
+//    's3-import' => [
+//        'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
+//        'path' => '/',
+//        'key' => getenv('ROBOT_TESTS_ARTIFACTS_KEY') ?: '',
+//        'secret' => getenv('ROBOT_TESTS_ARTIFACTS_SECRET') ?: '',
+//        'bucket' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET') ?: '',
+//        'region' => getenv('ROBOT_TESTS_ARTIFACTS_BUCKET_REGION') ?: 'eu-central-1',
+//    ],
+//];
