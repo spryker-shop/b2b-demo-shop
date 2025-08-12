@@ -5,8 +5,10 @@ tag: '1.0'
 
 environment: docker.production
 image:
-    tag: spryker/php:8.3
+    tag: spryker/php:8.3-rc
     php:
+        enabled-extensions:
+            - otel
         ini:
             "opcache.revalidate_freq": 0
             "opcache.validate_timestamps": 0
