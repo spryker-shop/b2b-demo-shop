@@ -72,17 +72,18 @@ jobs:
               with:
                   channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
                   slack-message: |
-                      ❌Failed to merge tag latest master into ssp-master. Manual intervention is required!
+                      ❌ Failed to merge tag latest master into ssp-master. Manual intervention is required!
                       *Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             - name: Create PR for Upmerge
               if: steps.merge.outputs.merge_result == 'success'
               run: |
-                  gh pr create \
-                    --title "Upmerge master into ssp-master" \
-                    --body "Automated upmerge from master to ssp-master." \
-                    --base ssp-master \
-                    --head ssp-master-merge
+                pr_url=$(gh pr create \
+                --title "Upmerge master into ssp-master" \
+                --body "Automated upmerge from master to ssp-master." \
+                --base ssp-master \
+                --head ssp-master-merge)
+                echo "pr_url=$pr_url" >> $GITHUB_OUTPUT
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -94,4 +95,4 @@ jobs:
               with:
                   channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
                   slack-message: |
-                      ✅Successfully merged master into ssp-master of the ${{ github.repository }} repository. The deployment will be triggered shortly.
+                      ✅ Successfully merged master into ssp-master of the ${{ github.repository }} repository, please find it here ${{ steps.create_pr.outputs.pr_url }} and merge it
