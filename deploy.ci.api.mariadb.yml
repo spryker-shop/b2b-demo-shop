@@ -100,6 +100,12 @@ services:
     search:
         engine: elastic
         version: '7.10'
+    api-specs:
+        volumes:
+            # Mounts the host's Storefront directory to the container's generation path.
+            - ./src/Generated/GlueStorefront/Specification/:/data/src/Generated/GlueStorefront/Specification/:rw
+            # Mounts the host's Backend directory to the container's generation path.
+            - ./src/Generated/GlueBackend/Specification/:/data/src/Generated/GlueBackend/Specification/:rw
 
 docker:
     ssl:
@@ -114,6 +120,4 @@ docker:
         region: EU
 
     mount:
-        native:
-            platforms:
-                - linux
+        baked:
