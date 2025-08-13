@@ -114,7 +114,8 @@ docker:
         region: EU
 
     mount:
-        # Mounts the host's Storefront directory to the container's generation path.
-        - './src/Generated/GlueStorefront/Specification/:/data/src/Generated/GlueStorefront/Specification/:rw'
-        # Mounts the host's Backend directory to the container's generation path.
-        - './src/Generated/GlueBackend/Specification/:/data/src/Generated/GlueBackend/Specification/:rw'
+        baked:
+            # Mounts the host's Storefront directory to the container's generation path.
+            - './src/Generated/GlueStorefront/Specification/:/data/src/Generated/GlueStorefront/Specification/:rw'
+            # Mounts the host's Backend directory to the container's generation path.
+            - './src/Generated/GlueBackend/Specification/:/data/src/Generated/GlueBackend/Specification/:rw'
