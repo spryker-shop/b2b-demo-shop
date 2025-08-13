@@ -87,6 +87,9 @@ jobs:
           APP_TYPE: b2b
           S3_BUCKET: spryker
           S3_PREFIX: docs/api-specs
+          API_UPLOAD_S3_AWS_REGION: "eu-centra-1"
+          API_UPLOAD_S3_AWS_ACCESS_KEY_ID: ${{ secrets.API_UPLOAD_S3_AWS_ACCESS_KEY_ID }}
+          API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY: ${{ secrets.API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY }}
         run: |
           # Set variables specific to the storefront API and run the script
           API_TYPE=storefront \

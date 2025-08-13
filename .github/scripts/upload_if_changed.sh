@@ -7,6 +7,9 @@ set -euo pipefail
 # - SOURCE_YAML:   e.g., "spryker_storefront_api.schema.yml"
 # - S3_BUCKET:     e.g., "spryker"
 # - S3_PREFIX:     e.g., "docs/api-specs"
+# - API_UPLOAD_S3_AWS_REGION e.g., "eu-centra-1"
+# - API_UPLOAD_S3_AWS_ACCESS_KEY_ID
+# - API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY
 
 # Define filenames
 if [ "$API_TYPE" == "backoffice" ]; then
@@ -44,7 +47,8 @@ if [ "${LOCAL_MD5}" == "${REMOTE_ETAG}" ]; then
     echo "Content is unchanged. No upload needed for ${TARGET_JSON_FILENAME}."
 else
     echo "Content has changed or is new. Uploading ${TARGET_JSON_FILENAME}..."
-    aws s3 cp "${TEMP_JSON_FILE}" "${S3_URI}" --acl public-read
+    AWS_DEFAULT_REGION=${API_UPLOAD_S3_AWS_REGION} AWS_ACCESS_KEY_ID=${API_UPLOAD_S3_AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY} aws s3 cp "${TEMP_JSON_FILE}" "${S3_URI}"
+#    aws s3 cp "${TEMP_JSON_FILE}" "${S3_URI}" --acl public-read
     echo "Upload complete."
 fi
 echo "-------------------------------------------"
