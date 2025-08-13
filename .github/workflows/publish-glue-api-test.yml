@@ -32,8 +32,8 @@ concurrency:
 env:
   AWS_REGION: eu-central-1
   S3_BUCKET_PREFIX: docs/api-schema
-  STOREFRONT_SOURCE: data/data/src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml
-  BACKEND_SOURCE: data/data/src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml
+  STOREFRONT_SOURCE: src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml
+  BACKEND_SOURCE: src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml
   STOREFRONT_S3_FILE: b2b_storefront_api.json
   BACKEND_S3_FILE: b2b_backoffice_api.json
   BUILD_DIR: build/glue-api-test
@@ -64,8 +64,8 @@ jobs:
             git clone https://github.com/spryker/docker-sdk.git ./docker
             docker/sdk boot deploy.ci.api.mariadb.yml
             docker/sdk up -t
-            docker/sdk testing glue api:generate:specification -a=storefront
-            docker/sdk testing glue api:generate:specification -a=backend
+            docker/sdk testing glue api:generate:documentation -a=storefront
+            docker/sdk testing glue api:generate:documentation -a=backend
 
       - name: Resolve filenames
         id: names
