@@ -1,12 +1,12 @@
 name: "[b2b][master] Robot Regression UI E2E"
 
 on:
-    pull_request:
-        types: [ labeled, unlabeled, synchronize ]
-    push:
-        branches:
-            - master
-    workflow_dispatch:
+#    pull_request:
+#        types: [ labeled, unlabeled, synchronize ]
+#    push:
+#        branches:
+#            - master
+#    workflow_dispatch:
 
 env:
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

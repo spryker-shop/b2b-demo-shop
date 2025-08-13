@@ -1,0 +1,105 @@
+name: Generate and Publish API Specs
+
+on:
+  pull_request:
+    types: [ labeled, unlabeled, synchronize, opened ]
+#  workflow_run:
+#    workflows: ["B2B-CI"]
+#    types:
+#      - completed
+#    branches:
+#      - master
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-and-publish:
+    name: Generate and Publish API Specs
+    # This job will only run if the B2B-CI workflow was successful on the master branch, or if triggered manually.
+    if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      # These env vars are based on the successful API test jobs in your ci.yml
+      SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+      SPRYKER_CURRENT_REGION: EU
+      DYNAMIC_STORE_MODE: true
+
+    # These permissions are required for the AWS OIDC authentication to work.
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          # Using OIDC is the recommended secure way to authenticate with AWS.
+          # You will need to create an IAM role in your AWS account that trusts your GitHub repository.
+          # See: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_FOR_DOCS }}
+          aws-region: eu-central-1 # Please change this to the region of your S3 bucket
+
+      - name: Install yq for YAML to JSON conversion
+        run: |
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
+          yq --version
+
+      - name: Install docker-compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+
+      - name: Start Docker environment
+        run: |
+          git clone https://github.com/spryker/docker-sdk.git ./docker
+          # Using the deploy file from the API test jobs in ci.yml
+          docker/sdk boot deploy.ci.api.mariadb.yml
+          docker/sdk up -t
+
+      - name: Generate API Schemas
+        run: |
+          echo "Generating Storefront API schema..."
+          docker/sdk cli vendor/bin/glue api:generate:documentation -a storefront
+          echo "Generating Backend API schema..."
+          docker/sdk cli vendor/bin/glue api:generate:documentation -a backend
+
+      - name: Copy generated schemas from Docker container
+        run: |
+          # The 'cli' service is where the commands were executed.
+          # We use `docker/sdk exec` to run `cat` inside the container and redirect the output to a local file.
+          docker/sdk exec cli cat src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml > spryker_storefront_api.schema.yml
+          docker/sdk exec cli cat src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml > spryker_backend_api.schema.yml
+          echo "Generated schema files copied to runner:"
+          ls -l *.yml
+
+      - name: Make upload script executable
+        run: chmod +x .github/scripts/upload_if_changed.sh
+
+      - name: Process and Upload Schemas to S3
+        env:
+          APP_TYPE: b2b
+          S3_BUCKET: spryker
+          S3_PREFIX: docs/api-specs
+        run: |
+          # Set variables specific to the storefront API and run the script
+          API_TYPE=storefront \
+          SOURCE_YAML=spryker_storefront_api.schema.yml \
+          .github/scripts/upload_if_changed.sh
+
+          # Set variables specific to the backoffice API and run the script
+          API_TYPE=backoffice \
+          SOURCE_YAML=spryker_backend_api.schema.yml \
+          .github/scripts/upload_if_changed.sh
+
+      - name: Stop Docker environment
+        if: always()
+        run: |
+          echo "Shutting down Docker environment..."
+          docker/sdk down
