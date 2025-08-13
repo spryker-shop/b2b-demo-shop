@@ -91,3 +91,9 @@ sections:
 
         api-generate-documentation:
             command: 'vendor/bin/glue api:generate:documentation'
+
+        api-generate-documentation-storefront:
+            command: 'vendor/bin/glue api:generate:documentation -a storefront'
+
+        api-generate-documentation-backend:
+            command: 'vendor/bin/glue api:generate:documentation -a backend'

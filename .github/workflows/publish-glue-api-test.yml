@@ -64,8 +64,6 @@ jobs:
             git clone https://github.com/spryker/docker-sdk.git ./docker
             docker/sdk boot deploy.ci.api.mariadb.yml
             docker/sdk up -t
-            docker/sdk testing glue api:generate:documentation -a=storefront
-            docker/sdk testing glue api:generate:documentation -a=backend
 
       - name: Resolve filenames
         id: names
