@@ -5,7 +5,8 @@
 
         @include helper-breakpoint-media-min($md) {
             display: flex;
-            flex-flow: row nowrap;
+            flex-flow: row wrap;
+            gap: rem(16);
         }
 
         &--first {
@@ -36,7 +37,7 @@
         }
 
         &__title {
-            flex: 1;
+            flex-grow: 1;
 
             &--small {
                 @include helper-font-size(4);
@@ -49,16 +50,17 @@
         }
 
         &__actions {
+            display: flex;
+            flex-direction: column;
+            gap: rem(8);
+
             @include helper-breakpoint-media-min($md) {
-                flex: none;
-                display: flex;
-                flex-flow: row nowrap;
-                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
         }
 
         &__action {
-            margin-top: rem(8);
             width: 100%;
             display: flex;
             flex-flow: row nowrap;
@@ -67,8 +69,6 @@
             justify-content: center;
 
             @include helper-breakpoint-media-min($md) {
-                margin-top: 0;
-                margin-left: rem(8);
                 width: auto;
             }
         }
