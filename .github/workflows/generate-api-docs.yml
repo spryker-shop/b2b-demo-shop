@@ -36,14 +36,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v4
+#        with:
           # Using OIDC is the recommended secure way to authenticate with AWS.
           # You will need to create an IAM role in your AWS account that trusts your GitHub repository.
           # See: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
-          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_FOR_DOCS }}
-          aws-region: eu-central-1 # Please change this to the region of your S3 bucket
+#          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_FOR_DOCS }}
+#          aws-region: eu-central-1 # Please change this to the region of your S3 bucket
 
       - name: Install yq for YAML to JSON conversion
         run: |
