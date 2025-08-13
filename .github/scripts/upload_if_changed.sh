@@ -40,7 +40,7 @@ fi
 LOCAL_MD5=$(md5sum "${TEMP_JSON_FILE}" | awk '{ print $1 }')
 echo "Local file MD5: ${LOCAL_MD5}"
 
-REMOTE_ETAG=$(aws s3api head-object --bucket "${S3_BUCKET}" --key "${S3_KEY}" --query 'ETag' --output text 2>/dev/null | tr -d '"' || echo "not_found")
+REMOTE_ETAG=$(AWS_DEFAULT_REGION=${API_UPLOAD_S3_AWS_REGION} AWS_ACCESS_KEY_ID=${API_UPLOAD_S3_AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY} aws s3api head-object --bucket "${S3_BUCKET}" --key "${S3_KEY}" --query 'ETag' --output text 2>/dev/null | tr -d '"' || echo "not_found")
 echo "Remote object ETag: ${REMOTE_ETAG}"
 
 if [ "${LOCAL_MD5}" == "${REMOTE_ETAG}" ]; then
