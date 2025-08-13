@@ -26,11 +26,12 @@ concurrency:
 
 # Central config (mirrors production workflow but uses a sandbox bucket/prefix)
 # TODO: Adjust bucket / prefix / filenames for the repo before real upload tests.
+
+# s3://spryker/docs/api-schema/
+
 env:
   AWS_REGION: eu-central-1
-  AWS_ROLE_ARN: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/ci-api-publisher
-  S3_BUCKET: your-sandbox-bucket-name
-  S3_FIXED_PREFIX: glue-api-test
+  S3_BUCKET_PREFIX: docs/api-schema
   STOREFRONT_SOURCE: data/data/src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml
   BACKEND_SOURCE: data/data/src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml
   STOREFRONT_S3_FILE: b2b_storefront_api.json
@@ -63,8 +64,8 @@ jobs:
             git clone https://github.com/spryker/docker-sdk.git ./docker
             docker/sdk boot deploy.ci.api.mariadb.yml
             docker/sdk up -t
-            docker/sdk cli glue api:generate:specification -a=storefront
-            docker/sdk cli glue api:generate:specification -a=backend
+            docker/sdk testing glue api:generate:specification -a=storefront
+            docker/sdk testing glue api:generate:specification -a=backend
 
       - name: Resolve filenames
         id: names
@@ -137,26 +138,26 @@ jobs:
       - name: Show artifact
         run: ls -al out
 
-      - name: Configure AWS (skip if dry-run)
-        if: github.event.inputs.dry_run != 'true'
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
+#      - name: Configure AWS (skip if dry-run)
+#        if: github.event.inputs.dry_run != 'true'
+#        uses: aws-actions/configure-aws-credentials@v4
+#        with:
+#          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+#          aws-region: ${{ env.AWS_REGION }}
 
       - name: Upload to sandbox bucket
         if: github.event.inputs.dry_run != 'true'
         run: |
           set -euo pipefail
-          base_path="s3://${{ env.S3_BUCKET }}"
-          if [ -n "${{ env.S3_FIXED_PREFIX }}" ]; then base_path="$base_path/${{ env.S3_FIXED_PREFIX }}"; fi
+          base_path="s3://${{ var.API_SPEC_S3_BUCKET }}"
+          if [ -n "${{ env.S3_BUCKET_PREFIX }}" ]; then base_path="$base_path/${{ env.S3_BUCKET_PREFIX }}"; fi
           for f in out/*.json; do
-            aws s3 cp "$f" "$base_path/$(basename "$f")" --acl private --only-show-errors
-            aws s3 cp "$f.sha256" "$base_path/$(basename "$f").sha256" --acl private --only-show-errors
+            AWS_DEFAULT_REGION=${{env.AWS_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp "$f" "$base_path/$(basename "$f")" --acl private --only-show-errors
+            AWS_DEFAULT_REGION=${{env.AWS_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp "$f.sha256" "$base_path/$(basename "$f").sha256" --acl private --only-show-errors
             echo "Uploaded: $base_path/$(basename "$f")"
           done
 
       - name: Dry run summary
         if: github.event.inputs.dry_run == 'true'
         run: |
-          echo "Dry run: would upload these files to s3://${{ env.S3_BUCKET }}/${{ env.S3_FIXED_PREFIX }}:" && ls -1 out/*.json | sed 's|^| - |'
+          echo "Dry run: would upload these files to s3://${{ var.API_SPEC_S3_BUCKET }}/${{ env.S3_BUCKET_PREFIX }}:" && ls -1 out/*.json | sed 's|^| - |'
