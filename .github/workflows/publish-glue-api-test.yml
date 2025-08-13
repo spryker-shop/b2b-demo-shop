@@ -149,7 +149,7 @@ jobs:
         if: github.event.inputs.dry_run != 'true'
         run: |
           set -euo pipefail
-          base_path="s3://${{ var.API_SPEC_S3_BUCKET }}"
+          base_path="s3://${{ vars.API_SPEC_S3_BUCKET }}"
           if [ -n "${{ env.S3_BUCKET_PREFIX }}" ]; then base_path="$base_path/${{ env.S3_BUCKET_PREFIX }}"; fi
           for f in out/*.json; do
             AWS_DEFAULT_REGION=${{env.AWS_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp "$f" "$base_path/$(basename "$f")" --acl private --only-show-errors
@@ -160,4 +160,4 @@ jobs:
       - name: Dry run summary
         if: github.event.inputs.dry_run == 'true'
         run: |
-          echo "Dry run: would upload these files to s3://${{ var.API_SPEC_S3_BUCKET }}/${{ env.S3_BUCKET_PREFIX }}:" && ls -1 out/*.json | sed 's|^| - |'
+          echo "Dry run: would upload these files to s3://${{ vars.API_SPEC_S3_BUCKET }}/${{ env.S3_BUCKET_PREFIX }}:" && ls -1 out/*.json | sed 's|^| - |'
