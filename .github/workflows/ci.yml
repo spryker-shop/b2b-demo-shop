@@ -522,6 +522,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
         steps:
             -   uses: actions/checkout@v4
@@ -552,6 +553,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
             SPRYKER_CURRENT_REGION: EU
             DYNAMIC_STORE_MODE: true
@@ -905,7 +907,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-rc-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian-rc
             TRAVIS: 1
         steps:
             -   uses: actions/checkout@v4
@@ -935,7 +937,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-rc-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian-rc
             TRAVIS: 1
             SPRYKER_CURRENT_REGION: EU
             DYNAMIC_STORE_MODE: true
