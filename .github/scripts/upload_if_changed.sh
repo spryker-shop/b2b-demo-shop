@@ -47,7 +47,7 @@ if [ "${LOCAL_MD5}" == "${REMOTE_ETAG}" ]; then
     echo "Content is unchanged. No upload needed for ${TARGET_JSON_FILENAME}."
 else
     echo "Content has changed or is new. Uploading ${TARGET_JSON_FILENAME}..."
-    AWS_DEFAULT_REGION=${API_UPLOAD_S3_AWS_REGION} AWS_ACCESS_KEY_ID=${API_UPLOAD_S3_AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY} aws s3 cp "${TEMP_JSON_FILE}" "${S3_URI}"
+    AWS_DEFAULT_REGION=${API_UPLOAD_S3_AWS_REGION} AWS_ACCESS_KEY_ID=${API_UPLOAD_S3_AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY} aws s3 cp "${TEMP_JSON_FILE}" "${S3_URI}" --acl public-read
 #    aws s3 cp "${TEMP_JSON_FILE}" "${S3_URI}" --acl public-read
     echo "Upload complete."
 fi
