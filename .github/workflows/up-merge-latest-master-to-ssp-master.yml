@@ -72,7 +72,7 @@ jobs:
               with:
                   channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
                   slack-message: |
-                      ❌ Failed to merge tag latest master into ssp-master. Manual intervention is required!
+                      ❌ Failed to merge latest b2b master branch into ssp-master branch. Manual intervention is required!
                       *Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             - name: Create PR for Upmerge
@@ -95,4 +95,4 @@ jobs:
               with:
                   channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
                   slack-message: |
-                      ✅ Successfully merged master into ssp-master of the ${{ github.repository }} repository, please find it here ${{ steps.create_pr.outputs.pr_url }} and merge it
+                      ✅ Successfully prepared merge request with latest b2b master branch into ssp-master branch of the ${{ github.repository }} repository, please find it here ${{ steps.create_pr.outputs.pr_url }} and merge it
