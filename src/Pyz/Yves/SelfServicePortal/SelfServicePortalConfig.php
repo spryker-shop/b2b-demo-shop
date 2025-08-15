@@ -57,8 +57,6 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     }
 
     /**
-     * @api
-     *
      * @return list<string>
      */
     public function getDeliveryLikeShipmentTypes(): array
