@@ -55,4 +55,15 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
             static::SHIPMENT_TYPE_IN_CENTER_SERVICE,
         ];
     }
+
+    /**
+     * @return list<string>
+     */
+    public function getDeliveryLikeShipmentTypes(): array
+    {
+        return [
+            static::SHIPMENT_TYPE_DELIVERY,
+            static::SHIPMENT_TYPE_ON_SITE_SERVICE,
+        ];
+    }
 }
