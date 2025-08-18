@@ -36,7 +36,7 @@ jobs:
           # --- Configure Inputs ---
           app-type: 'b2b'
           deploy-file: 'deploy.ci.api.mariadb.yml'
-          s3-bucket: 'spryker' # Your S3 bucket name
-          aws-region: 'eu-central-1'
+          s3-bucket: ${{ vars.API_SPEC_S3_BUCKET }}
+          aws-region: ${{ vars.API_UPLOAD_AWS_REGION }}
           aws-access-key-id: ${{ secrets.API_UPLOAD_S3_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.API_UPLOAD_S3_AWS_SECRET_ACCESS_KEY }}
