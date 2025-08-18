@@ -39,4 +39,14 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => '/ssp-asset-image',
         'path' => '',
     ],
+    'ssp-model-image' => [
+        'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
+        'key' => getenv('TEST_BUCKET_9_SSP_ASSETS_STORAGE_S3_KEY_ACTUAL') ?: '',
+        'secret' => getenv('TEST_BUCKET_9_SSP_ASSETS_STORAGE_S3_SECRET_ACTUAL') ?: '',
+        'bucket' => 'test-bucket-9-ssp-assets-storage',
+        'region' => getenv('AWS_REGION'),
+        'version' => 'latest',
+        'root' => '/ssp-model-image',
+        'path' => '',
+    ],
 ];
