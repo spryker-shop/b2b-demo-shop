@@ -68,6 +68,11 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => '/',
         'path' => '/data/ssp-asset-image',
     ],
+    'ssp-model-image' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/ssp-model-image',
+    ],
 ];
 
 // ----------------------------------------------------------------------------
