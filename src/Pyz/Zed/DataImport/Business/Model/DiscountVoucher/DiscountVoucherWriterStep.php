@@ -79,7 +79,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * 
+     *
      * @throws \Exception
      *
      * @return void
