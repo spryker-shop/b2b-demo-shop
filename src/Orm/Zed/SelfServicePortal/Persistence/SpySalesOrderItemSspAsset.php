@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpySalesOrderItemSspAsset as BaseSpySalesOrderItemSspAsset;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySalesOrderItemSspAsset as BaseSpySalesOrderItemSspAsset;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_sales_order_item_ssp_asset' table.

@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpySspAssetQuery as BaseSpySspAssetQuery;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspAssetQuery as BaseSpySspAssetQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_ssp_asset' table.

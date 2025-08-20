@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpySspModelToProductList as BaseSpySspModelToProductList;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspModelToProductList as BaseSpySspModelToProductList;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_ssp_model_to_product_list' table.
