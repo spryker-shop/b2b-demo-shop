@@ -9,6 +9,8 @@ on:
     workflow_dispatch:
 
 env:
+    DOCKER_BUILDKIT: "1"
+    COMPOSE_DOCKER_CLI_BUILD: "1"
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     WEEKLY_CI_SLACK_CHANNEL_ID: ${{ secrets.WEEKLY_CI_SLACK_CHANNEL_ID }}
 
@@ -35,6 +37,22 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-awscli
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Composer cache (host)
+                uses: actions/cache@v4
+                with:
+                    path: ~/.composer/cache
+                    key: ${{ runner.os }}-composer-robot-${{ hashFiles('data/composer.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-robot-
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -46,6 +64,9 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
+            -   name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v3
 
             -   name: Install docker-compose
                 run: |
@@ -110,6 +131,22 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-awscli
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Composer cache (host)
+                uses: actions/cache@v4
+                with:
+                    path: ~/.composer/cache
+                    key: ${{ runner.os }}-composer-robot-${{ hashFiles('data/composer.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-robot-
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -121,6 +158,9 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
+            -   name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v3
 
             -   name: Install docker-compose
                 run: |
@@ -185,6 +225,22 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-awscli
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Composer cache (host)
+                uses: actions/cache@v4
+                with:
+                    path: ~/.composer/cache
+                    key: ${{ runner.os }}-composer-robot-${{ hashFiles('data/composer.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-robot-
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -196,6 +252,9 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
+            -   name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v3
 
             -   name: Install docker-compose
                 run: |
@@ -257,6 +316,22 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-awscli
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Composer cache (host)
+                uses: actions/cache@v4
+                with:
+                    path: ~/.composer/cache
+                    key: ${{ runner.os }}-composer-robot-${{ hashFiles('data/composer.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-robot-
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -268,6 +343,9 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
+            -   name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v3
 
             -   name: Install docker-compose
                 run: |
@@ -330,6 +408,22 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-awscli
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Composer cache (host)
+                uses: actions/cache@v4
+                with:
+                    path: ~/.composer/cache
+                    key: ${{ runner.os }}-composer-robot-${{ hashFiles('data/composer.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-robot-
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -341,6 +435,9 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
+            -   name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v3
 
             -   name: Install docker-compose
                 run: |
@@ -403,6 +500,22 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-awscli
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Composer cache (host)
+                uses: actions/cache@v4
+                with:
+                    path: ~/.composer/cache
+                    key: ${{ runner.os }}-composer-robot-${{ hashFiles('data/composer.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-robot-
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -414,6 +527,9 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
+            -   name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v3
 
             -   name: Install docker-compose
                 run: |
