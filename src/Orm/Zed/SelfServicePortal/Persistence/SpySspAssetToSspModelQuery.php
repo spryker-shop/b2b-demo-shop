@@ -9,10 +9,10 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspAssetQuery as BaseSpySspAssetQuery;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspAssetToSspModelQuery as BaseSpySspAssetToSspModelQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_ssp_asset' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_ssp_asset_to_ssp_model' table.
  *
  *
  *
@@ -20,6 +20,6 @@ use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspAssetQ
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpySspAssetQuery extends BaseSpySspAssetQuery
+class SpySspAssetToSspModelQuery extends BaseSpySspAssetToSspModelQuery
 {
 }

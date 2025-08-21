@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpySalesOrderItemProductClass as BaseSpySalesOrderItemProductClass;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySalesOrderItemProductClass as BaseSpySalesOrderItemProductClass;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_sales_order_item_product_class' table.

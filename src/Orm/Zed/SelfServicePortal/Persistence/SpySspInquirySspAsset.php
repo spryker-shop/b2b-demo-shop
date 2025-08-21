@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpySspInquirySspAsset as BaseSpySspInquirySspAsset;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspInquirySspAsset as BaseSpySspInquirySspAsset;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_ssp_inquiry_ssp_asset' table.

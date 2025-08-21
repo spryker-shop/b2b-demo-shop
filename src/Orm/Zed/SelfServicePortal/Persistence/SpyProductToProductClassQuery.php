@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpyProductToProductClassQuery as BaseSpyProductToProductClassQuery;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpyProductToProductClassQuery as BaseSpyProductToProductClassQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_to_product_class' table.
