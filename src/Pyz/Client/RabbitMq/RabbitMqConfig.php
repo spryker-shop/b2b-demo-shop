@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Client\RabbitMq;
 
+use Pyz\Shared\SelfServicePortal\SelfServicePortalConfig;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AssetStorage\AssetStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConfig;
@@ -181,6 +182,9 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ProductOfferStorageConfig::PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_MODEL,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_ASSET,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_SEARCH_SSP_ASSET,
         ];
     }
 

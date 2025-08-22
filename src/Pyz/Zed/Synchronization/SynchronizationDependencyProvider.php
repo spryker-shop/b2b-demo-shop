@@ -89,6 +89,9 @@ use Spryker\Zed\TaxProductStorage\Communication\Plugin\Synchronization\TaxProduc
 use Spryker\Zed\TaxStorage\Communication\Plugin\Synchronization\TaxSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlRedirectSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlSynchronizationDataPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Synchronization\SspAsset\Search\SspAssetListSynchronizationDataBulkRepositoryPlugin as SearchSspAssetListSynchronizationDataBulkRepositoryPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Synchronization\Storage\SspAssetListSynchronizationDataBulkRepositoryPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Synchronization\Storage\SspModelListSynchronizationDataBulkRepositoryPlugin;
 
 class SynchronizationDependencyProvider extends SprykerSynchronizationDependencyProvider
 {
@@ -176,6 +179,9 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductOfferSynchronizationDataBulkRepositoryPlugin(),
             new ProductOfferAvailabilitySynchronizationDataBulkPlugin(),
             new PriceProductOfferSynchronizationDataBulkRepositoryPlugin(),
+            new SspModelListSynchronizationDataBulkRepositoryPlugin(),
+            new SspAssetListSynchronizationDataBulkRepositoryPlugin(),
+            new SearchSspAssetListSynchronizationDataBulkRepositoryPlugin(),
         ];
     }
 
