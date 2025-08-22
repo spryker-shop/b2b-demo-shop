@@ -174,6 +174,9 @@ use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\Store\StoreWritePubl
 use Spryker\Zed\TaxApp\Communication\Plugin\Publisher\Store\RefreshTaxAppStoreRelationPublisherPlugin;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Publisher\TaxProductPublisherTriggerPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Publisher\TaxSetPublisherTriggerPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Search\SspAssetToCompanyBusinessUnitWritePublisherPlugin as SearchSspAssetToCompanyBusinessUnitWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Search\SspAssetToModelWritePublisherPlugin as SearchSspAssetToModelWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Search\SspAssetWritePublisherPlugin as SearchSspAssetWritePublisherPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetToCompanyBusinessUnitWritePublisherPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetToModelWritePublisherPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetWritePublisherPlugin;
@@ -227,6 +230,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductStoragePlugins(),
             $this->getSspModelStoragePlugins(),
             $this->getSspAssetStoragePlugins(),
+            $this->getSspAssetSearchPlugins(),
         );
     }
 
@@ -737,6 +741,17 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new SspAssetWritePublisherPlugin(),
             new SspAssetToModelWritePublisherPlugin(),
             new SspAssetToCompanyBusinessUnitWritePublisherPlugin(),
+        ];
+    }
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getSspAssetSearchPlugins(): array
+    {
+        return [
+            new SearchSspAssetWritePublisherPlugin(),
+            new SearchSspAssetToModelWritePublisherPlugin(),
+            new SearchSspAssetToCompanyBusinessUnitWritePublisherPlugin(),
         ];
     }
 }
