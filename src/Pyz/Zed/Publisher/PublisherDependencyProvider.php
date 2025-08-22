@@ -721,6 +721,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductLocalizedAttributesProductAbstractWritePublisherPlugin(),
         ];
     }
+
     /**
      * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
      */
@@ -743,6 +744,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new SspAssetToCompanyBusinessUnitWritePublisherPlugin(),
         ];
     }
+
     /**
      * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
      */
