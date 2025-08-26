@@ -31,12 +31,15 @@ use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\SingleAddressPerShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Widget\AssetCompatibilityLabelWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SingleAddressPerShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetFilterNameWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetFilterWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetMenuItemWidget;
@@ -395,6 +398,9 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspServicePointGeoCodeWidget::class,
             SingleAddressPerShipmentTypeWidget::class,
             SspServiceListWidget::class,
+            AssetCompatibilityLabelWidget::class,
+            SspAssetFilterNameWidget::class,
+            SspAssetFilterWidget::class,
         ];
     }
 
