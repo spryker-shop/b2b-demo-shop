@@ -14,6 +14,7 @@ export default class AssetFinder extends CoreAssetFinder {
         this.selectedName = document.querySelector(`.${this.getAttribute('selected-name-class-name')}`);
         this.popup = document.querySelector(`.${this.getAttribute('popup-class-name')}`);
         this.container = document.querySelector(`.${this.getAttribute('container-class-name')}`);
+        this.clearElement = document.querySelector(`.${this.getAttribute('clear-class-name')}`);
 
         super.mapEvents();
     }
@@ -28,12 +29,21 @@ export default class AssetFinder extends CoreAssetFinder {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    protected mapChangeButtonClickEvent(): void {}
+    protected mapChangeButtonClickEvent(): void { }
 
     protected mapSearchInputEvents(): void {
         this.searchInput.addEventListener(
             'keyup',
             debounce(() => this.onInputKeyUp(), this.debounceDelay),
         );
+    }
+
+    protected mapClearClickEvent(): void {
+        this.clearElement?.addEventListener('click', (event) => this.clearStateEvent(event));
+    }
+
+    protected clearStateEvent(event?: Event): void {
+        this.clearState(event);
+        this.container.classList.remove(this.selectedClass);
     }
 }

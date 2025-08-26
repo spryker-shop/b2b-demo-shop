@@ -1,11 +1,19 @@
 {% extends molecule('asset-list', '@SprykerFeature:SelfServicePortal') %}
 
 {% block option %}
+    {% set compatibilityLabel %}
+        {% if data.idProduct %}
+            {% widget 'AssetCompatibilityLabelWidget' args [asset.reference, data.idProduct] only %}
+            {% endwidget %}
+        {% endif %}
+    {% endset %}
+
     {% set information = {
         serial: asset.serialNumber,
         name: asset.name,
         reference: asset.reference,
         id: asset.idSspAsset,
+        compatibilityLabel: compatibilityLabel,
     } %}
 
     <li class="{{ config.name }}__item">
@@ -17,7 +25,7 @@
                     <span>{{ 'self_service_portal.asset.item.serial' | trans }}: {{ asset.serialNumber }}</span>
                 {% endif %}
 
-                <span class="{{ config.name }}__status"></span>
+                <span class="{{ config.name }}__status">{{ compatibilityLabel | raw }}</span>
             </span>
         </span>
 
