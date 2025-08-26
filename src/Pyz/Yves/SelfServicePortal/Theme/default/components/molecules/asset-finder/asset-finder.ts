@@ -29,7 +29,7 @@ export default class AssetFinder extends CoreAssetFinder {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    protected mapChangeButtonClickEvent(): void { }
+    protected mapChangeButtonClickEvent(): void {}
 
     protected mapSearchInputEvents(): void {
         this.searchInput.addEventListener(
