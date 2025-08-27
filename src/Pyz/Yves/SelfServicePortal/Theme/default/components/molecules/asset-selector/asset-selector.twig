@@ -15,6 +15,7 @@
     selected: null,
     subtitle: 'self_service_portal.asset.selector.label',
     clearable: false,
+    product: null,
 } %}
 
 {% define attributes = {
@@ -62,11 +63,11 @@
                 <span class="{{ config.name }}__information">
                     <span>{{ 'self_service_portal.asset.item.serial' | trans }}:</span>
                     <span class="{{ config.jsName }}__asset-text {{ config.name }}__asset-text">
-                        {{ data.selected is not empty ? data.selected.serial_number }}
+                        {{- data.selected is not empty ? data.selected.serial_number -}}
                     </span>
                 </span>
 
-                <span class="{{ config.name }}__status"></span>
+                <span class="{{ config.name }}__status {{ config.jsName }}__status"></span>
             </span>
         </div>
     </div>
@@ -92,11 +93,13 @@
             formFieldName: data.formFieldName,
             isDisabled: data.isDisabled,
             placeholder: data.placeholder,
+            product: data.product,
         },
         attributes: {
             'input-class-name': "#{config.jsName}__value",
             'selected-asset-class-name': "#{config.jsName}__asset-text",
             'selected-name-class-name': "#{config.jsName}__asset-name",
+            'selected-status-class-name': "#{config.jsName}__status",
             'clear-class-name': "#{config.jsName}__clear",
             'container-class-name': config.name,
             'popup-class-name': "#{config.jsName}__popup",

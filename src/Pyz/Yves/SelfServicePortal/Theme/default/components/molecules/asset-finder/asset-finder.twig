@@ -8,6 +8,7 @@
     'container-class-name': '',
     'popup-class-name': '',
     'clear-class-name': '',
+    'selected-status-class-name': '',
 } %}
 
 {% block separator %}{% endblock %}
@@ -24,7 +25,10 @@
                     selector: ".#{config.jsName}__search-field",
                     attribute: 'value',
                 },
-
+                'idProduct': {
+                    selector: ".#{config.jsName}__product-id",
+                    attribute: 'value',
+                },
             } | json_encode,
         },
     } only %}
@@ -40,6 +44,7 @@
 
         {% block result %}
             <div class="{{ config.name }}__results">
+                <input type="hidden" class="{{ config.jsName }}__product-id" value="{{ data.product ? data.product.idProductConcrete : '' }}">
                 <div class="{{ config.name }}__results-container {{ config.jsName }}__results-container {{ attributes['hidden-class'] }}"></div>
             </div>
         {% endblock %}

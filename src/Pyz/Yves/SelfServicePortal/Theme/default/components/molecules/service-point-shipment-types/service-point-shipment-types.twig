@@ -110,7 +110,7 @@
 
          <input data-product-offer-reference-input type="hidden" name="{{ data.formFieldProductOfferReference }}">
 
-        {% if data.hasOnlyDeliveryShipmentType %}
+        {% if data.hasOnlyDeliveryLikeShipmentType %}
             {% set shipmentType = data.shipmentTypes | first %}
 		    <input type="hidden" name="{{ data.formFieldShipmentTypeUuid }}" value="{{ shipmentType.value }}">
         {% endif %}
