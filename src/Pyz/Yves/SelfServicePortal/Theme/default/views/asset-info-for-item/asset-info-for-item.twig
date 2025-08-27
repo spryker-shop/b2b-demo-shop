@@ -16,8 +16,10 @@
             </li>
         {% endif %}
 
-        <li class="list__item">
-            {% widget 'AssetCompatibilityLabelWidget' args [data.asset.reference, data.idProduct] %}{% endwidget %}
-        </li>
+        {% if data.idProduct %}
+            <li class="list__item">
+                {% widget 'AssetCompatibilityLabelWidget' args [data.asset.reference, data.idProduct] %}{% endwidget %}
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}
