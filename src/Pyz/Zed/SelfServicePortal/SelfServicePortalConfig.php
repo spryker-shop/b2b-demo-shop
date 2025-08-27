@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\SelfServicePortal;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use SprykerFeature\Zed\SelfServicePortal\SelfServicePortalConfig as SprykerSelfServicePortalConfig;
 
 class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
@@ -54,5 +55,13 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
             'approved' => 'label-success',
             'deactivated' => 'label-danger',
         ];
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSspAssetSearchSynchronizationPoolName(): ?string
+    {
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

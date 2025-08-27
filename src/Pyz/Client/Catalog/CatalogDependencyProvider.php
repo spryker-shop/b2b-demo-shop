@@ -69,6 +69,7 @@ use Spryker\Client\SearchHttp\Plugin\Search\ProductConcreteCatalogSearchHttpResu
 use Spryker\Client\SearchHttp\Plugin\Search\SearchHttpSearchResultCountPlugin;
 use Spryker\Shared\SearchHttp\SearchHttpConfig;
 use SprykerFeature\Client\SelfServicePortal\Plugin\Catalog\ProductClassFacetConfigTransferBuilderPlugin;
+use SprykerFeature\Client\SelfServicePortal\Plugin\Catalog\SspAssetQueryExpanderPlugin;
 
 class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
 {
@@ -126,6 +127,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveInDateRangeQueryExpanderPlugin(),
             new CustomerCatalogProductListQueryExpanderPlugin(),
             new MerchantReferenceQueryExpanderPlugin(),
+            new SspAssetQueryExpanderPlugin(),
 
             /*
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.

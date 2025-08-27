@@ -22,5 +22,6 @@ class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
         'return_reason',
         'merchant',
         'service_point',
+        'ssp_asset',
     ];
 }
