@@ -1,7 +1,7 @@
 {% extends view('list-service', '@SprykerFeature:SelfServicePortal') %}
 
 {% block filtersToggler %}
-    <button class="button button--hollow button--hollow-active button--justify-center js-filter-button" data-qa="component filters-button">
+    <button class="button button--hollow button--hollow-active js-filter-button" data-qa="component filters-button">
         {% include atom('icon') with {
             modifiers: ['filter'],
             class: 'spacing-right',
