@@ -15,5 +15,9 @@
                 {{ 'self_service_portal.asset.serial_number' | trans }}: {{ data.asset.serialNumber }}
             </li>
         {% endif %}
+
+        <li class="list__item">
+            {% widget 'AssetCompatibilityLabelWidget' args [data.asset.reference, data.idProduct] %}{% endwidget %}
+        </li>
     </ul>
 {% endblock %}
