@@ -1,0 +1,95 @@
+name: Up-merge latest master to "ssp-master" branch
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    up-merge:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Set up Git configuration
+              run: |
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
+
+            - name: Fetch ssp-master branch
+              run: git fetch origin ssp-master
+
+            - name: Checkout ssp-master branch
+              run: git checkout ssp-master
+
+            - name: Attempt to merge master into ssp-master
+              id: merge
+              run: |
+                  echo "Attempt to merging origin/master into current ssp-master branch (auto-resolving composer.lock)"
+                  git merge --no-commit --no-ff origin/master || true
+
+                  conflicted_files=$(git diff --name-only --diff-filter=U || true)
+                  non_resolvable_conflicts=$(echo "$conflicted_files" | grep -v '^composer.lock$' || true)
+
+                  # Abort if conflicts in files other than composer.lock detected
+                  if [ -n "$non_resolvable_conflicts" ]; then
+                    echo "Conflicts in files other than composer.lock detected:"
+                    echo "$non_resolvable_conflicts"
+                    echo "Aborting merge."
+                    git merge --abort
+                    echo "merge_result=conflict" >> $GITHUB_OUTPUT
+                    exit 0
+                  fi
+
+                  # Auto-resolve composer.lock
+                  if git ls-files -u | grep -q "composer.lock"; then
+                    git checkout --theirs composer.lock
+                    echo "Running composer update..."
+                    composer update --no-interaction --no-scripts
+                    git add composer.lock
+                  fi
+
+                  echo "Merge successful, committing and pushing..."
+                  git checkout -b ssp-master-merge
+                  git commit -m "Up-merge master into ssp-master after latest changes in master"
+                  git push origin ssp-master-merge
+                  echo "merge_result=success" >> $GITHUB_OUTPUT
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Notify Slack on Failure
+              if: steps.merge.outputs.merge_result == 'conflict'
+              uses: slackapi/slack-github-action@v1.26.0
+              env:
+                  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+              with:
+                  channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+                  slack-message: |
+                      ❌ Failed to merge latest b2b master branch into ssp-master branch. Manual intervention is required!
+                      *Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            - name: Create PR for Upmerge
+              if: steps.merge.outputs.merge_result == 'success'
+              run: |
+                pr_url=$(gh pr create \
+                --title "Upmerge master into ssp-master" \
+                --body "Automated upmerge from master to ssp-master." \
+                --base ssp-master \
+                --head ssp-master-merge)
+                echo "pr_url=$pr_url" >> $GITHUB_OUTPUT
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Notify Slack on Success
+              if: steps.merge.outputs.merge_result == 'success'
+              uses: slackapi/slack-github-action@v1.26.0
+              env:
+                  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+              with:
+                  channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+                  slack-message: |
+                      ✅ Successfully prepared merge request with latest b2b master branch into ssp-master branch of the ${{ github.repository }} repository, please find it here ${{ steps.create_pr.outputs.pr_url }} and merge it

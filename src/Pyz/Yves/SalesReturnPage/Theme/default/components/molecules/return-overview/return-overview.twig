@@ -27,7 +27,7 @@
                 {% set modifiers = action.modifiers | default((action.primary | default) ? [] : ['hollow']) %}
                 {% set targetValue = loop.last ? '_blank' %}
 
-                <a class="{{ component.renderClass('button', modifiers) }} {{ config.name }}__action" href="{{ action.url }}" target="{{ targetValue }}">
+                <a class="{{ component.renderClass('button', modifiers) }} {{ config.name }}__action" href="{{ functionExists('generatePath') ? generatePath(action.url) : action.url }}" target="{{ targetValue }}">
                     {% if action.icon | default %}
                         {% include atom('icon') with {
                             class: config.name ~ '__icon',

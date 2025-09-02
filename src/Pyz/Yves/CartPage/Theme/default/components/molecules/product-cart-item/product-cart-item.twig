@@ -73,7 +73,7 @@
             <div class="{{ config.name }}__col {{ config.name }}__col--total col">
                 <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
                     <div class="col col--sm-12">
-                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
+                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column" data-qa="cart-item-summary">
                             {% block totalPrice %}
                                 {% if can('SeePricePermissionPlugin') %}
                                     {% set totalPrice = listItem.unitPrice is defined ? listItem.sumSubtotalAggregation : listItem.price %}

@@ -121,12 +121,18 @@
 
             .form__action {
                 margin-top: rem(3);
-                margin-left: 0;
                 width: 100%;
+
+                &:not(.form__action--expand) {
+                    margin-left: 0;
+                }
 
                 @include helper-breakpoint-media-min($lg) {
                     margin-top: rem(12);
-                    width: auto;
+
+                    &:not(.form__action--expand) {
+                        width: auto;
+                    }
                 }
             }
         }

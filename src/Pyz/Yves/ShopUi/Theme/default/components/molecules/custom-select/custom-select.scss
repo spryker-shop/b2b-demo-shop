@@ -25,25 +25,11 @@
             z-index: $setting-zi-custom-select + 1;
             top: 50%;
             right: rem(16);
-            width: rem(12);
-            height: rem(7);
             transform: translateY(-50%);
             pointer-events: none;
 
             @include helper-breakpoint-media-min($lg) {
                 right: rem(21);
-            }
-        }
-
-        &--different-mob-caret {
-            #{$name}__caret {
-                width: rem(7);
-                height: rem(11);
-
-                @include helper-breakpoint-media-min($lg) {
-                    width: rem(12);
-                    height: rem(7);
-                }
             }
         }
 
@@ -59,7 +45,7 @@
                 width: 100%;
                 font-size: rem(12);
                 line-height: rem(38);
-                padding: 0 rem(20) 0 rem(10);
+                padding: 0 rem(20) 0 rem(6);
                 border: rem(1) solid $setting-color-gray-1;
                 color: $setting-color-gray-5;
                 background: $setting-color-gray-6;
@@ -80,16 +66,7 @@
             }
 
             #{$name}__caret {
-                width: rem(7);
-                height: rem(11);
-                right: rem(10);
-
-                @include helper-breakpoint-media-min($lg) {
-                    right: rem(13);
-                    width: rem(7);
-                    height: rem(4);
-                    transform: translateY(rem(-2));
-                }
+                right: rem(3);
             }
         }
 
@@ -104,13 +81,6 @@
                     font-weight: fw(regular);
                 }
             }
-
-            #{$name}__caret {
-                @include helper-breakpoint-media-min($lg) {
-                    width: rem(9);
-                    height: rem(5);
-                }
-            }
         }
 
         &--smaller {
@@ -123,16 +93,12 @@
                 font-weight: fw(regular);
                 border-radius: $setting-border-radius;
                 border: none;
-                color: $setting-color-gray-2;
                 background: $setting-color-gray-7;
                 padding: 0 rem(27) 0 rem(8);
             }
 
             #{$name}__caret {
-                width: rem(8);
-                height: rem(20);
-                right: rem(6);
-                color: $setting-color-gray-2;
+                right: rem(3);
             }
         }
 

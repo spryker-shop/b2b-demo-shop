@@ -7,6 +7,9 @@ environment: docker.ci
 pipeline: docker.ci.acceptance
 image:
     tag: spryker/php:8.3
+    php:
+        enabled-extensions:
+            - otel
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
@@ -22,8 +25,8 @@ image:
         npm: 9
 
 composer:
-    mode: "--no-dev --quiet"
-    autoload: --classmap-authoritative
+    mode: '--no-dev --quiet -o -a'
+    autoload: '--classmap-authoritative'
 
 regions:
     EU:
@@ -102,19 +105,19 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: '3.9'
+        version: '3.13'
         api:
             username: 'spryker'
             password: 'secret'
     session:
-        engine: redis
+        engine: valkey
     key_value_store:
-        engine: redis
+        engine: valkey
     search:
         engine: elastic
         version: '7.10'
     mail_catcher:
-        engine: mailhog
+        engine: mailpit
 
 docker:
     ssl:

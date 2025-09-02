@@ -10,6 +10,8 @@
     images: [],
 } %}
 
+{% set imageGalleryArrow = publicPath('icons/sprite.svg#:caret-down') %}
+
 {% define attributes = {
     'active-class': config.name ~ '__item--active',
     'config-thumbnail-slider': '{
@@ -20,8 +22,8 @@
         "dots": false,
         "arrows": true,
         "accessibility": true,
-        "prevArrow": "<div class=\'thumb-prev\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
-        "nextArrow": "<div class=\'thumb-next\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
+        "prevArrow": "<div class=\'thumb-prev\'><svg class=\'icon\'><use href=\'' ~ publicPath('icons/sprite.svg#:caret-down') ~ '\'></use></svg></div>",
+        "nextArrow": "<div class=\'thumb-next\'><svg class=\'icon\'><use href=\'' ~ publicPath('icons/sprite.svg#:caret-down') ~ '\'></use></svg></div>",
         "responsive": [
             {
                 "breakpoint": 768,
@@ -47,7 +49,7 @@
             {% for image in data.images %}
                 <div class="{{ config.name }}__thumbnail-item">
                     {% if image.externalUrlLarge is not empty %}
-                        <img class="{{ config.name }}__thumbnail-img" src="{{ image.externalUrlLarge }}" alt="">
+                        <img class="{{ config.name }}__thumbnail-img" src="{{ image.externalUrlLarge }}" alt="{{ image.altTextLarge }}">
                     {% endif %}
                 </div>
             {% endfor %}
@@ -61,7 +63,7 @@
 
             <div class="{{ config.name }}__item {{ config.jsName }}__item {{ leftIndentItemClass }} {{ activeItemClass }}">
                 {% if image.externalUrlLarge is not empty %}
-                    <img class="{{ config.name }}__image" src="{{ image.externalUrlLarge }}" alt="">
+                    <img class="{{ config.name }}__image" src="{{ image.externalUrlLarge }}" alt="{{ image.altTextLarge }}">
                 {% endif %}
             </div>
         {% endfor %}

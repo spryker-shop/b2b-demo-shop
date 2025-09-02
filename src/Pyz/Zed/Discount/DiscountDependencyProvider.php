@@ -11,7 +11,10 @@ namespace Pyz\Zed\Discount;
 
 use Spryker\Zed\CategoryDiscountConnector\Communication\Plugin\Discount\CategoryDecisionRulePlugin;
 use Spryker\Zed\CategoryDiscountConnector\Communication\Plugin\Discount\CategoryDiscountableItemCollectorPlugin;
+use Spryker\Zed\CustomerDiscountConnector\Communication\Plugin\Discount\CustomerOrderAmountDecisionRulePlugin;
+use Spryker\Zed\CustomerDiscountConnector\Communication\Plugin\Discount\CustomerReferenceDecisionRulePlugin;
 use Spryker\Zed\CustomerGroupDiscountConnector\Communication\Plugin\DecisionRule\CustomerGroupDecisionRulePlugin;
+use Spryker\Zed\Discount\Communication\Plugin\Discount\DeleteDiscountVoucherPoolDiscountPostUpdatePlugin;
 use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormDataExpanderPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormExpanderPlugin;
@@ -57,6 +60,8 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
             new ProductAttributeDecisionRulePlugin(),
             new CategoryDecisionRulePlugin(),
             new CustomerOrderCountDecisionRulePlugin(),
+            new CustomerReferenceDecisionRulePlugin(),
+            new CustomerOrderAmountDecisionRulePlugin(),
         ]);
     }
 
@@ -133,6 +138,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
         return [
             new DiscountPromotionDiscountPostUpdatePlugin(),
             new DiscountPromotionCleanerPostUpdatePlugin(),
+            new DeleteDiscountVoucherPoolDiscountPostUpdatePlugin(),
         ];
     }
 

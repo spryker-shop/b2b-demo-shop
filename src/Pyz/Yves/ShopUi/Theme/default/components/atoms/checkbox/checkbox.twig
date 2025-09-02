@@ -30,7 +30,6 @@
             {% block icon %}
                 {% include atom('icon') with {
                     class: component.renderClass(config.name ~ '__' ~ iconName, modifiers),
-                    modifiers: ['small'],
                     data: {
                         name: iconName,
                     },

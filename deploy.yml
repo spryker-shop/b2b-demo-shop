@@ -7,6 +7,8 @@ environment: docker.production
 image:
     tag: spryker/php:8.3
     php:
+        enabled-extensions:
+            - otel
         ini:
             "opcache.revalidate_freq": 0
             "opcache.validate_timestamps": 0
@@ -194,7 +196,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: '3.9'
+        version: '3.13'
         api:
             username: 'spryker'
             password: 'secret'
@@ -203,9 +205,9 @@ services:
             localhost:5672:
                 protocol: tcp
     session:
-        engine: redis
+        engine: valkey
     key_value_store:
-        engine: redis
+        engine: valkey
         endpoints:
             localhost:16379:
                 protocol: tcp
@@ -222,7 +224,7 @@ services:
         endpoints:
             scheduler.spryker.local:
     mail_catcher:
-        engine: mailhog
+        engine: mailpit
         endpoints:
             mail.spryker.local:
     swagger:

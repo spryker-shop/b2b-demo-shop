@@ -11,6 +11,7 @@ namespace Pyz\Client\Currency;
 
 use Spryker\Client\CartCurrencyConnector\CurrencyChange\CartUpdateCurrencyOnCurrencyChangePlugin;
 use Spryker\Client\Currency\CurrencyDependencyProvider as SprykerCurrencyDependencyProvider;
+use Spryker\Client\SalesOrderAmendment\Plugin\Currency\SalesOrderAmendmentCurrentCurrencyIsoCodePreCheckPlugin;
 
 class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
 {
@@ -21,6 +22,16 @@ class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
     {
         return [
             new CartUpdateCurrencyOnCurrencyChangePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Client\CurrencyExtension\Dependency\Plugin\CurrentCurrencyIsoCodePreCheckPluginInterface>
+     */
+    protected function getCurrentCurrencyIsoCodePreCheckPlugins(): array
+    {
+        return [
+            new SalesOrderAmendmentCurrentCurrencyIsoCodePreCheckPlugin(),
         ];
     }
 }

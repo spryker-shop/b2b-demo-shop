@@ -15,6 +15,8 @@ use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerAddressPage;
 
 /**
+ * @skip This test was temporarily skipped due to flikerness. See {@link https://spryker.atlassian.net/browse/CC-35660} for details
+ *
  * Auto-generated group annotations
  *
  * @group PyzTest
@@ -45,6 +47,7 @@ class CustomerAddressCest
     public function testICanAddNewAddress(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
+        $i->wait(5);
         $i->amOnPage(CustomerAddressPage::URL);
 
         $addressTransfer = CustomerAddressesPage::getAddressData(CustomerAddressesPage::ADDRESS_A);
