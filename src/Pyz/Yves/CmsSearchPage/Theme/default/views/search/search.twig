@@ -1,22 +1,4 @@
-{% extends template('search-cms-template', '@SprykerShop:CmsSearchPage') %}
-
-{%- block contentClass -%}page-layout-main page-layout-main--cms-search-page{%- endblock -%}
-
-{% block formContentSort %}
-    {% include molecule('sort', 'CatalogPage') with {
-        data: {
-            pagination: data.pagination,
-            sort: data.sort,
-            parentJsName: pageJsName,
-        },
-    } only %}
-{% endblock %}
-
-{% block formContentPaginationBottom %}
-    {% include molecule('pagination') with {
-        data: data.pagination,
-    } only %}
-{% endblock %}
+{% extends view('search', '@SprykerShop:CmsSearchPage') %}
 
 {% block form %}
     <div class="col col--sm-12 spacing-y spacing-y--inner">
@@ -25,7 +7,56 @@
         {% endblock %}
     </div>
 
-    {{ parent() }}
+    <div class="col col--sm-12 grid grid--gap">
+        {% block formFilters %}
+            {% block filterBar %}
+                {% if data.facets | length %}
+                    <div class="{{ formFiltersClassName }}">
+                        <button
+                            class="button button--justify button--additional js-catalog-filters-trigger is-hidden-lg-xxl spacing-bottom spacing-bottom--big">
+                            {{ 'catalog.filter.and.sorting.button' | trans }}
+                            {% include atom('icon') with {
+                                modifiers: ['filter'],
+                                data: {
+                                    name: 'filter',
+                                },
+                            } only %}
+                        </button>
+
+                        {% include molecule('toggler-click') with {
+                            attributes: {
+                                'trigger-class-name': 'js-catalog-filters-trigger',
+                                'target-class-name': 'js-filter-section',
+                                'class-to-toggle': 'is-hidden-sm-md',
+                            },
+                        } only %}
+
+                        {% include molecule('sticky-body-toggler') with {
+                            attributes: {
+                                'trigger-class-name': 'js-catalog-filters-trigger',
+                                'class-to-fix-body': 'is-locked-mobile',
+                            },
+                        } only %}
+
+                        {% include organism('filter-section', 'CatalogPage') with {
+                            class: 'is-hidden-sm-md',
+                            data: {
+                                facets: data.facets,
+                                filteredFacets: data.filteredFacets,
+                                filterPath: data.filterPath,
+                                parentJsName: pageJsName,
+                                numberFormatConfig: numberFormatConfig,
+                            },
+                        } only %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
+
+        {% block formContentWrapper %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
 
     {% if data.searchString is not empty %}
         <input type="hidden" name="q" value="{{ data.searchString }}">
