@@ -437,7 +437,6 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             MerchantStorageConfig::PUBLISH_MERCHANT => [
                 new MerchantStoragePublisherPlugin(),
-                new MerchantCategoryStoragePublisherPlugin(),
             ],
         ];
     }
