@@ -1,5 +1,5 @@
 # Start the final image
-FROM cypress/browsers:node-20.13.0-chrome-124.0.6367.155-1-ff-125.0.3-edge-124.0.2478.80-1
+FROM cypress/browsers:node-22.19.0-chrome-139.0.7258.154-1-ff-142.0.1-edge-139.0.3405.125-1
 
 # Set and create the working directory
 ENV CYPRESS_TESTS_WORK_DIR /opt/cypress-tests
