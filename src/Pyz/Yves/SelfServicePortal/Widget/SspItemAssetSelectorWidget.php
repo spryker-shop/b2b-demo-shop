@@ -1,9 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types = 1);
+
 namespace Pyz\Yves\SelfServicePortal\Widget;
 
 use Generated\Shared\Transfer\CompanyUserTransfer;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget as SprykerFeatureSspItemAssetSelectorWidget;
+
 class SspItemAssetSelectorWidget extends SprykerFeatureSspItemAssetSelectorWidget
 {
     protected function addAssetParameter(CompanyUserTransfer $companyUserTransfer): void
