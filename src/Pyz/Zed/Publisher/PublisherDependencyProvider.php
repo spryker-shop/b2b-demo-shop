@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Publisher;
 
-use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
+use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\PublishAndSynchronizeHealthCheck\PublishAndSynchronizeHealthCheckConfig;
 use Spryker\Zed\Asset\Communication\Plugin\Publisher\Store\RefreshAssetStoreRelationPublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetDeletePublisherPlugin;
@@ -301,11 +301,9 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     protected function getGlossaryStoragePlugins(): array
     {
         return [
-            GlossaryStorageConfig::PUBLISH_TRANSLATION => [
-                new GlossaryKeyDeletePublisherPlugin(),
-                new GlossaryKeyWriterPublisherPlugin(),
-                new GlossaryTranslationWritePublisherPlugin(),
-            ],
+            new GlossaryKeyDeletePublisherPlugin(),
+            new GlossaryKeyWriterPublisherPlugin(),
+            new GlossaryTranslationWritePublisherPlugin(),
         ];
     }
 
@@ -517,12 +515,14 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     }
 
     /**
-     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     * @return array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>|array<string, array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>>
      */
     protected function getMerchantStoragePlugins(): array
     {
         return [
-            new MerchantStoragePublisherPlugin(),
+            MerchantStorageConfig::PUBLISH_MERCHANT => [
+                new MerchantStoragePublisherPlugin(),
+            ],
         ];
     }
 

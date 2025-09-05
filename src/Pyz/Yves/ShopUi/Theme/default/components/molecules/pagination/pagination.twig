@@ -28,7 +28,7 @@
     anchor: '#'
 } %}
 
-{% block body %}
+{%- block body -%}
     {% if data.maxPage > 1 %}
     <ul class="{{config.name}}__list">
         {% if data.currentPage > 1 %}
@@ -138,4 +138,4 @@
         {% endif %}
     </ul>
     {% endif %}
-{% endblock %}
+{%- endblock -%}

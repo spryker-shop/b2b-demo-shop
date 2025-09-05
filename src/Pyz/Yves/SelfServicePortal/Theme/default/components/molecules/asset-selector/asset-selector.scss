@@ -1,95 +1,18 @@
+@include self-service-portal-asset-selector($name: '.asset-selector');
+
 .asset-selector {
     &__container {
         padding: rem(14) rem(20);
         background-color: $setting-color-gray-7;
-        border-radius: rem(2);
-        gap: rem(20);
         color: $setting-color-gray-3;
-        font-size: rem(14);
-        margin-bottom: rem(20);
 
         &--filter {
-            margin-bottom: 0;
             background: none;
-            padding: rem(16) 0 0;
-            flex-direction: column;
+            padding: 1rem 0 0;
+
+            .asset-selector__subtitle {
+                color: $setting-color-gray-8;
+            }
         }
-    }
-
-    &__container--select {
-        display: flex;
-        align-items: flex-start;
-    }
-
-    &__container--selected {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    /* stylelint-disable selector-max-class */
-    &.is-selected {
-        .asset-selector__container--select {
-            display: none;
-        }
-
-        .asset-selector__container--selected {
-            display: flex;
-        }
-
-        .asset-selector__container--filter {
-            flex-direction: column-reverse;
-        }
-    }
-    /* stylelint-enable selector-max-class */
-
-    &__subtitle {
-        display: block;
-        color: $setting-color-gray-8;
-        word-wrap: break-word;
-        padding-bottom: 5px;
-
-        &--filter {
-            font-weight: 500;
-        }
-    }
-
-    &__content {
-        flex-grow: 1;
-        min-width: 0;
-    }
-
-    &__data {
-        display: flex;
-        gap: rem(20);
-        align-items: center;
-
-        .status {
-            padding: 0 rem(8);
-        }
-
-        &--actions {
-            margin-bottom: 1rem;
-        }
-
-        &--filter {
-            margin-bottom: 0;
-            justify-content: space-between;
-            margin-top: 1rem;
-        }
-    }
-
-    &__information {
-        display: flex;
-        flex-wrap: wrap;
-        gap: rem(4);
-    }
-
-    &__information:has(.asset-selector__asset-text:empty) {
-        display: none;
-    }
-
-    &__asset-text {
-        word-wrap: break-word;
     }
 }
