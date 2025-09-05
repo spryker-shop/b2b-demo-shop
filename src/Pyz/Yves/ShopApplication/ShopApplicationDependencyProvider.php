@@ -47,7 +47,7 @@ use SprykerFeature\Yves\SelfServicePortal\Widget\SspCompanyFilesMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspFileListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryMenuItemWidget;
-use SprykerFeature\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
+use Pyz\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspListMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspProductOfferPriceWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceCancelWidget;
