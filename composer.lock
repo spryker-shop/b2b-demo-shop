@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "047d25da9f1a4ba04f7c1c28443e8611",
+    "content-hash": "dcf212a9f2a4b2da5631c3ac38abec72",
     "packages": [
         {
             "name": "async-aws/core",
@@ -8638,12 +8638,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/self-service-portal.git",
-                "reference": "9455f8091303891ba1854245fb8909ee584b3276"
+                "reference": "0c687137db1bb6df39f38f7164208c856d28fcb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/9455f8091303891ba1854245fb8909ee584b3276",
-                "reference": "9455f8091303891ba1854245fb8909ee584b3276",
+                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/0c687137db1bb6df39f38f7164208c856d28fcb9",
+                "reference": "0c687137db1bb6df39f38f7164208c856d28fcb9",
                 "shasum": ""
             },
             "require": {
@@ -8667,7 +8667,7 @@
                 "spryker/file-manager": "^2.6.0",
                 "spryker/file-system-extension": "^1.0.0",
                 "spryker/glossary-storage": "^1.0.0",
-                "spryker/gui": "^3.45.0",
+                "spryker/gui": "^3.66.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^4.0.0",
                 "spryker/log": "^3.16.0",
@@ -8778,9 +8778,9 @@
             ],
             "description": "SelfServicePortal module",
             "support": {
-                "source": "https://github.com/spryker-feature/self-service-portal/tree/5.0.0"
+                "source": "https://github.com/spryker-feature/self-service-portal/tree/6.0.0"
             },
-            "time": "2025-08-26T13:23:25+00:00"
+            "time": "2025-09-03T09:41:45+00:00"
         },
         {
             "name": "spryker-feature/service-points",
@@ -18700,35 +18700,42 @@
         },
         {
             "name": "spryker/agent",
-            "version": "1.7.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/agent.git",
-                "reference": "4ee8651af0c54e795d5d4aa9562392959aaa884f"
+                "reference": "1ef233a4b4372e193a23ad682eb5fc576eb45dea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/agent/zipball/4ee8651af0c54e795d5d4aa9562392959aaa884f",
-                "reference": "4ee8651af0c54e795d5d4aa9562392959aaa884f",
+                "url": "https://api.github.com/repos/spryker/agent/zipball/1ef233a4b4372e193a23ad682eb5fc576eb45dea",
+                "reference": "1ef233a4b4372e193a23ad682eb5fc576eb45dea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker/agent-extension": "^1.0.0",
                 "spryker/customer": "^7.10.0",
                 "spryker/customer-extension": "^1.2.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/propel": "^3.46.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/quote-extension": "^1.10.0",
+                "spryker/sales-extension": "^1.13.0",
                 "spryker/session": "^3.2.0 || ^4.0.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/user": "^3.2.0",
                 "spryker/zed-request": "^3.4.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
-                "spryker/propel": "*",
                 "spryker/store": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/quote": "For saving Agent info to orders.",
+                "spryker/sales": "For saving Agent info to orders."
             },
             "type": "library",
             "extra": {
@@ -18748,9 +18755,9 @@
             ],
             "description": "Agent module",
             "support": {
-                "source": "https://github.com/spryker/agent/tree/1.7.0"
+                "source": "https://github.com/spryker/agent/tree/1.9.0"
             },
-            "time": "2024-08-08T15:27:43+00:00"
+            "time": "2025-08-29T14:19:30+00:00"
         },
         {
             "name": "spryker/agent-auth-rest-api",
@@ -18847,23 +18854,24 @@
         },
         {
             "name": "spryker/agent-gui",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/agent-gui.git",
-                "reference": "d46de9ff353f6e0ad451f23198903ec421047b4c"
+                "reference": "341ab9b5e81fe2275ef3f14bbf2af8f685d963ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/agent-gui/zipball/d46de9ff353f6e0ad451f23198903ec421047b4c",
-                "reference": "d46de9ff353f6e0ad451f23198903ec421047b4c",
+                "url": "https://api.github.com/repos/spryker/agent-gui/zipball/341ab9b5e81fe2275ef3f14bbf2af8f685d963ff",
+                "reference": "341ab9b5e81fe2275ef3f14bbf2af8f685d963ff",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker/gui": "^3.13.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/user": "^3.2.0",
                 "spryker/user-extension": "^1.0.0"
             },
@@ -18887,9 +18895,9 @@
             ],
             "description": "AgentGui module",
             "support": {
-                "source": "https://github.com/spryker/agent-gui/tree/1.2.0"
+                "source": "https://github.com/spryker/agent-gui/tree/1.3.0"
             },
-            "time": "2024-02-06T10:56:40+00:00"
+            "time": "2025-08-29T14:19:30+00:00"
         },
         {
             "name": "spryker/alternative-products-rest-api",
@@ -32099,16 +32107,16 @@
         },
         {
             "name": "spryker/discount",
-            "version": "9.48.0",
+            "version": "9.48.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "5201d122729a49aeacfe9f1d7eb834300103c4ea"
+                "reference": "5d2f6883a1e5e49ca3455b8aa55f56ad9bb1327c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/5201d122729a49aeacfe9f1d7eb834300103c4ea",
-                "reference": "5201d122729a49aeacfe9f1d7eb834300103c4ea",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/5d2f6883a1e5e49ca3455b8aa55f56ad9bb1327c",
+                "reference": "5d2f6883a1e5e49ca3455b8aa55f56ad9bb1327c",
                 "shasum": ""
             },
             "require": {
@@ -32173,9 +32181,9 @@
             ],
             "description": "Discount module",
             "support": {
-                "source": "https://github.com/spryker/discount/tree/9.48.0"
+                "source": "https://github.com/spryker/discount/tree/9.48.1"
             },
-            "time": "2025-08-19T12:23:34+00:00"
+            "time": "2025-09-02T17:10:01+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -35045,16 +35053,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.64.1",
+            "version": "3.66.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "19d8abd2a551a2a5f6228c0258216295ed5b71ca"
+                "reference": "43c162bd60e069d5a2a051cefa88be102276c0c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/19d8abd2a551a2a5f6228c0258216295ed5b71ca",
-                "reference": "19d8abd2a551a2a5f6228c0258216295ed5b71ca",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/43c162bd60e069d5a2a051cefa88be102276c0c2",
+                "reference": "43c162bd60e069d5a2a051cefa88be102276c0c2",
                 "shasum": ""
             },
             "require": {
@@ -35104,9 +35112,9 @@
             ],
             "description": "Gui module",
             "support": {
-                "source": "https://github.com/spryker/gui/tree/3.64.1"
+                "source": "https://github.com/spryker/gui/tree/3.66.0"
             },
-            "time": "2025-08-15T14:21:40+00:00"
+            "time": "2025-09-03T09:41:45+00:00"
         },
         {
             "name": "spryker/gui-extension",
@@ -53438,16 +53446,16 @@
         },
         {
             "name": "spryker/quote",
-            "version": "2.24.0",
+            "version": "2.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote.git",
-                "reference": "7bc57c292a8097e9e659fd86e27c4701f1bcfaf8"
+                "reference": "84e0b871fb924a0f7242f7c8b8bfd7105dd37ef6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote/zipball/7bc57c292a8097e9e659fd86e27c4701f1bcfaf8",
-                "reference": "7bc57c292a8097e9e659fd86e27c4701f1bcfaf8",
+                "url": "https://api.github.com/repos/spryker/quote/zipball/84e0b871fb924a0f7242f7c8b8bfd7105dd37ef6",
+                "reference": "84e0b871fb924a0f7242f7c8b8bfd7105dd37ef6",
                 "shasum": ""
             },
             "require": {
@@ -53459,7 +53467,7 @@
                 "spryker/customer": "^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/quote-extension": "^1.9.0",
+                "spryker/quote-extension": "^1.10.0",
                 "spryker/session": "^3.3.0 || ^4.14.0",
                 "spryker/store": "^1.19.0",
                 "spryker/symfony": "^3.0.0",
@@ -53492,9 +53500,9 @@
             ],
             "description": "Quote module",
             "support": {
-                "source": "https://github.com/spryker/quote/tree/2.24.0"
+                "source": "https://github.com/spryker/quote/tree/2.26.1"
             },
-            "time": "2025-07-03T11:11:32+00:00"
+            "time": "2025-09-02T17:10:01+00:00"
         },
         {
             "name": "spryker/quote-approval",
@@ -53704,16 +53712,16 @@
         },
         {
             "name": "spryker/quote-extension",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-extension.git",
-                "reference": "a0ed11250aa6877a2576b3d3744058b905b09b41"
+                "reference": "e6e26328b2cf349be31f0b4200d5ed8e19ff4794"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-extension/zipball/a0ed11250aa6877a2576b3d3744058b905b09b41",
-                "reference": "a0ed11250aa6877a2576b3d3744058b905b09b41",
+                "url": "https://api.github.com/repos/spryker/quote-extension/zipball/e6e26328b2cf349be31f0b4200d5ed8e19ff4794",
+                "reference": "e6e26328b2cf349be31f0b4200d5ed8e19ff4794",
                 "shasum": ""
             },
             "require": {
@@ -53739,9 +53747,9 @@
             ],
             "description": "QuoteExtension module",
             "support": {
-                "source": "https://github.com/spryker/quote-extension/tree/1.9.0"
+                "source": "https://github.com/spryker/quote-extension/tree/1.10.0"
             },
-            "time": "2025-04-16T09:16:24+00:00"
+            "time": "2025-08-29T14:19:30+00:00"
         },
         {
             "name": "spryker/quote-request",
@@ -54656,16 +54664,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.72.0",
+            "version": "11.74.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "8956da805b37702efee6d21000bfcc2d290a674d"
+                "reference": "a92c3f4f798bc124c80462f36628c3b9c9bacc5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/8956da805b37702efee6d21000bfcc2d290a674d",
-                "reference": "8956da805b37702efee6d21000bfcc2d290a674d",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/a92c3f4f798bc124c80462f36628c3b9c9bacc5b",
+                "reference": "a92c3f4f798bc124c80462f36628c3b9c9bacc5b",
                 "shasum": ""
             },
             "require": {
@@ -54682,7 +54690,7 @@
                 "spryker/oms": "^10.3.0 || ^11.0.0",
                 "spryker/propel": "^3.43.0",
                 "spryker/propel-orm": "^1.16.0",
-                "spryker/sales-extension": "^1.12.0",
+                "spryker/sales-extension": "^1.13.0",
                 "spryker/sales-order-amendment-extension": "^1.3.0",
                 "spryker/sales-split": "^3.0.0 || ^5.0.0",
                 "spryker/sequence-number": "^3.0.0",
@@ -54737,9 +54745,9 @@
             ],
             "description": "Sales module",
             "support": {
-                "source": "https://github.com/spryker/sales/tree/11.72.0"
+                "source": "https://github.com/spryker/sales/tree/11.74.0"
             },
-            "time": "2025-07-24T16:25:10+00:00"
+            "time": "2025-08-29T14:19:30+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -54909,16 +54917,16 @@
         },
         {
             "name": "spryker/sales-extension",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-extension.git",
-                "reference": "13f19acc81729877bdc991939e6201d0346d2682"
+                "reference": "91f4f0af7b75a6cd757fb9aed65a3e8c46c720ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/13f19acc81729877bdc991939e6201d0346d2682",
-                "reference": "13f19acc81729877bdc991939e6201d0346d2682",
+                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/91f4f0af7b75a6cd757fb9aed65a3e8c46c720ff",
+                "reference": "91f4f0af7b75a6cd757fb9aed65a3e8c46c720ff",
                 "shasum": ""
             },
             "require": {
@@ -54945,9 +54953,9 @@
             ],
             "description": "SalesExtension module",
             "support": {
-                "source": "https://github.com/spryker/sales-extension/tree/1.12.0"
+                "source": "https://github.com/spryker/sales-extension/tree/1.13.0"
             },
-            "time": "2025-02-27T08:01:24+00:00"
+            "time": "2025-08-29T14:19:30+00:00"
         },
         {
             "name": "spryker/sales-invoice",
@@ -60262,16 +60270,16 @@
         },
         {
             "name": "spryker/shopping-list",
-            "version": "4.19.0",
+            "version": "4.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shopping-list.git",
-                "reference": "808c5618b198713f700d219b74ba6f3fa12168a9"
+                "reference": "a90b54e049d17e9c21fca8264f9df7a96a391eb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shopping-list/zipball/808c5618b198713f700d219b74ba6f3fa12168a9",
-                "reference": "808c5618b198713f700d219b74ba6f3fa12168a9",
+                "url": "https://api.github.com/repos/spryker/shopping-list/zipball/a90b54e049d17e9c21fca8264f9df7a96a391eb2",
+                "reference": "a90b54e049d17e9c21fca8264f9df7a96a391eb2",
                 "shasum": ""
             },
             "require": {
@@ -60328,9 +60336,9 @@
             ],
             "description": "ShoppingList module",
             "support": {
-                "source": "https://github.com/spryker/shopping-list/tree/4.19.0"
+                "source": "https://github.com/spryker/shopping-list/tree/4.20.1"
             },
-            "time": "2025-01-23T09:30:46+00:00"
+            "time": "2025-09-02T17:10:01+00:00"
         },
         {
             "name": "spryker/shopping-list-data-import",
@@ -75954,7 +75962,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cypress-tests.git",
-                "reference": "a46cdd2ae83741fe2f2254952897c529d5e8441c"
+                "reference": "48e24873f205fa8f30f4cc80d820c8d4367b5c91"
             },
             "default-branch": true,
             "type": "library",
@@ -75962,7 +75970,7 @@
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-08-21T08:10:05+00:00"
+            "time": "2025-09-05T07:06:09+00:00"
         },
         {
             "name": "spryker/development",
