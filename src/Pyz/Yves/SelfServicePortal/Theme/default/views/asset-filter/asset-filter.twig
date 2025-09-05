@@ -3,7 +3,7 @@
 {% block body %}
     {% if not data.isDisabled %}
         <div class="spacing-bottom--big">
-            <div class="filter-section__item">
+            <div data-qa="component asset-list" class="filter-section__item">
                 {{ block('information') }}
             </div>
         </div>
