@@ -3,31 +3,9 @@
 {% block body %}
     {% if not data.isDisabled %}
         <div class="spacing-bottom--big">
-            {% block information %}
-                <div class="filter-section__item">
-                    {% block title %}
-                        <h3 class="title--h6 spacing-bottom">{{ 'self_service_portal.asset_filter.title' | trans }}</h3>
-                    {% endblock %}
-
-                    {% block content %}
-                        {% set selected = data.assetData is not empty ? data.assetData.serial_number ? "#{data.assetData.name}, #{data.assetData.serial_number}" : data.assetData.name %}
-
-                        {% include molecule('asset-selector', 'SelfServicePortal') with {
-                            modifiers: ['filter'],
-                            data: {
-                                hasSubtitle: false,
-                                label: 'self_service_portal.asset_filter.select_label',
-                                subtitle: 'self_service_portal.asset_filter.description',
-                                formFieldName: 'ssp-asset-reference',
-                                selected: data.assetData,
-                                clearable: true,
-                            }
-                        } only %}
-                    {% endblock %}
-                </div>
-            {% endblock %}
+            <div data-qa="component asset-list" class="filter-section__item">
+                {{ block('information') }}
+            </div>
         </div>
     {% endif %}
 {% endblock %}
-
-{% block description %}{% endblock %}

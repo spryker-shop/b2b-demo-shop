@@ -1,38 +1,52 @@
 @mixin cms-search-page-search-cms-results($name: '.search-cms-results') {
     #{$name} {
-        &__list {
-            margin-bottom: rem(20);
-        }
+        margin: 0 0 rem(50);
+        border-top: rem(1) dotted $setting-color-gray-3;
 
         &__item {
-            background-color: $setting-color-gray-7;
-            margin-bottom: rem(10);
-            padding: rem(22) rem(20);
-            text-align: center;
-
-            @include helper-breakpoint-media-min($md) {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
+            padding: rem(11) rem(25);
+            border-bottom: rem(1) dotted $setting-color-gray-3;
+            position: relative;
+            display: flex;
+            gap: rem(20);
+            flex-direction: column;
 
             @include helper-breakpoint-media-min($xl) {
-                @include helper-effect-transition(background-color box-shadow);
+                @include helper-effect-transition(box-shadow border-bottom-color);
+                justify-content: space-between;
+                flex-direction: row;
+
+                &::before {
+                    @include helper-effect-transition(opacity);
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(to bottom, $setting-color-black, $setting-color-alpha-1);
+                    opacity: 0;
+                    pointer-events: none;
+                }
 
                 &:hover {
-                    box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow-1, 0 rem(18) rem(18) 0 $setting-color-shadow-1;
-                    background-color: $setting-color-white;
+                    box-shadow: rem(2) rem(10) rem(30) 0 $setting-color-shadow;
+
+                    &::before {
+                        opacity: 0.05;
+                    }
                 }
             }
         }
 
-        &__name {
-            font: fw(medium) rem(18) / rem(20) $setting-font-family;
-            color: $setting-color-black;
+        &__title {
+            @include helper-font-size(default);
+            letter-spacing: rem(0.3);
+            font-weight: fw(medium);
+        }
 
-            @include helper-breakpoint-media-min($md) {
-                padding-right: rem(10);
-            }
+        &__button {
+            white-space: nowrap;
         }
 
         @content;
