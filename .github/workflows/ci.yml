@@ -429,7 +429,7 @@ jobs:
 
             -   name: Install robotframework-suite-tests folder
                 run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-bugfix/cc-36350/failing-api-tests-in-master" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
@@ -486,7 +486,7 @@ jobs:
 
             -   name: Install robotframework-suite-tests folder
                 run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-bugfix/cc-36350/failing-api-tests-in-master" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install docker-compose
