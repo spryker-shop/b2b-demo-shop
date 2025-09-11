@@ -5,7 +5,7 @@
 
 {% block body %}
     {% if data.isVisible and data.orderItem.isCancellable %}
-        <button type="button" {{ qa('cancel-service-popup') }} class="{{ trigger }} button button--flex button--hollow button--alert">
+        <button type="button" {{ qa('cancel-service-popup') }} class="{{ trigger }} button button--hollow button--alert">
             {% include atom('icon') with {
                 modifiers: ['small'],
                 data: {
@@ -48,7 +48,7 @@
 
             <div class="spacing-top--inner grid grid--right">
                 <div class="col spacing-right">
-                    <button type="button" class="js-main-popup-close button button--flex button--hollow">
+                    <button type="button" class="js-main-popup-close button button--hollow">
                         {% include atom('icon') with {
                             modifiers: ['small'],
                             data: {
@@ -64,7 +64,7 @@
                     {% embed molecule('remote-form-submit') with {
                         data: {
                             label: 'self_service_portal.service.cancel_service' | trans,
-                            buttonClass: 'button button--flex button--alert js-main-popup-close',
+                            buttonClass: 'button button--alert js-main-popup-close',
                             buttonExtraAttributes: {
                                 'data-qa': 'cancel-service-button',
                                 'data-init-single-click': true
