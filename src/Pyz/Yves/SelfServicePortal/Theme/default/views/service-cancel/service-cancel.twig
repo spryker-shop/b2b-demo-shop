@@ -5,7 +5,7 @@
 
 {% block body %}
     {% if data.isVisible and data.orderItem.isCancellable %}
-        <button type="button" class="{{ trigger }} button button--flex button--hollow button--alert">
+        <button type="button" {{ qa('cancel-service-popup') }} class="{{ trigger }} button button--flex button--hollow button--alert">
             {% include atom('icon') with {
                 modifiers: ['small'],
                 data: {
@@ -33,12 +33,14 @@
 {% block popupContent %}
     {% if data.isVisible and data.orderItem.isCancellable %}
         <div class="spacing-x">
-            <p class="title--h6">
-                {{ 'self_service_portal.order.service.cancel.description' | trans({
-                    '%name%': data.orderItem.salesOrderItemServicePoint.name,
-                    '%sku%': data.orderItem.sku,
-                }) }}
-            </p>
+            {% if data.orderItem.salesOrderItemServicePoint.name | default(null) %}
+                <p class="title--h6">
+                    {{ 'self_service_portal.order.service.cancel.description' | trans({
+                        '%name%': data.orderItem.salesOrderItemServicePoint.name,
+                        '%sku%': data.orderItem.sku,
+                    }) }}
+                </p>
+            {% endif %}
 
             {% if data.orderItem.metadata.scheduledAt | default(null) %}
                 <div class="title--h6 spacing-bottom--big">{{ 'self_service_portal.service.cart_item.scheduled_at' | trans }}: {{ data.orderItem.metadata.scheduledAt | formatDateTime }}</div>
