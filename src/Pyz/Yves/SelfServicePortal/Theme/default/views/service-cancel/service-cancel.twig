@@ -1,0 +1,90 @@
+{% extends view('service-cancel', '@SprykerFeature:SelfServicePortal') %}
+
+{% set id = random() %}
+{% set trigger = "js-popup-cancel-trigger-#{id}" %}
+
+{% block body %}
+    {% if data.isVisible and data.orderItem.isCancellable %}
+        <button type="button" {{ qa('cancel-service-popup') }} class="{{ trigger }} button button--hollow button--alert">
+            {% include atom('icon') with {
+                modifiers: ['small'],
+                data: {
+                    name: 'overview',
+                },
+            } only %}
+
+            {{ 'self_service_portal.service.cancel_service' | trans }}
+        </button>
+
+        {% include molecule('main-popup') with {
+            data: {
+                title: 'self_service_portal.order.service.cancel.title' | trans,
+                content: block('popupContent'),
+            },
+            attributes: {
+                'content-id': 'cancel-confirmation',
+                'trigger-class-name': trigger,
+                'has-content-mount': true,
+            },
+        } only %}
+    {% endif %}
+{% endblock %}
+
+{% block popupContent %}
+    {% if data.isVisible and data.orderItem.isCancellable %}
+        <div class="spacing-x">
+            {% if data.orderItem.salesOrderItemServicePoint.name | default(null) %}
+                <p class="title--h6">
+                    {{ 'self_service_portal.order.service.cancel.description' | trans({
+                        '%name%': data.orderItem.salesOrderItemServicePoint.name,
+                        '%sku%': data.orderItem.sku,
+                    }) }}
+                </p>
+            {% endif %}
+
+            {% if data.orderItem.metadata.scheduledAt | default(null) %}
+                <div class="title--h6 spacing-bottom--big">{{ 'self_service_portal.service.cart_item.scheduled_at' | trans }}: {{ data.orderItem.metadata.scheduledAt | formatDateTime }}</div>
+            {% endif %}
+
+            <div class="spacing-top--inner grid grid--right">
+                <div class="col spacing-right">
+                    <button type="button" class="js-main-popup-close button button--hollow">
+                        {% include atom('icon') with {
+                            modifiers: ['small'],
+                            data: {
+                                name: 'overview',
+                            },
+                        } only %}
+
+                        {{ 'self_service_portal.order.service.cancel.keep' | trans }}
+                    </button>
+                </div>
+
+                <div class="col">
+                    {% embed molecule('remote-form-submit') with {
+                        data: {
+                            label: 'self_service_portal.service.cancel_service' | trans,
+                            buttonClass: 'button button--alert js-main-popup-close',
+                            buttonExtraAttributes: {
+                                'data-qa': 'cancel-service-button',
+                                'data-init-single-click': true
+                            },
+                            iconName: 'overview',
+                        },
+                        attributes: {
+                            'form-name': "#{data.form.vars.id}-#{id}",
+                            'form-action': path('customer/ssp-service/cancel-service')
+                        },
+                        embed: {
+                            form: data.form
+                        }
+                    } only %}
+                        {% block fields %}
+                            {{- form_widget(embed.form) -}}
+                        {% endblock %}
+                    {% endembed %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

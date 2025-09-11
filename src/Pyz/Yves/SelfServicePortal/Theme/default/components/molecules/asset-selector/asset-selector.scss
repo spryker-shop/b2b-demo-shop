@@ -1,6 +1,4 @@
-@include self-service-portal-asset-selector($name: '.asset-selector');
-
-.asset-selector {
+@include self-service-portal-asset-selector($name: '.asset-selector') {
     &__container {
         padding: rem(14) rem(20);
         background-color: $setting-color-gray-7;
@@ -9,10 +7,10 @@
         &--filter {
             background: none;
             padding: 1rem 0 0;
-
-            .asset-selector__subtitle {
-                color: $setting-color-gray-8;
-            }
         }
+    }
+
+    &__subtitle {
+        color: $setting-color-gray-8;
     }
 }

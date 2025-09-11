@@ -1,25 +1,28 @@
 {% extends view('asset-info-for-item', '@SprykerFeature:SelfServicePortal') %}
 
-{% block title %}
-    <div class="title--h6"><strong>{{ 'self_service_portal.asset.assigned_asset' | trans }}:</strong></div>
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block asset %}
-    <ul class="list title--h6">
-        <li class="list__item ">
-            {{ 'self_service_portal.asset.name' | trans }}: <a href="{{ path('customer/ssp-asset/details', {'reference': data.asset.reference }) }}">{{ data.asset.name }}</a>
-        </li>
+    <div class="title--h6 ">
+        <strong>{{ 'self_service_portal.asset.name' | trans }}:</strong> <a class="link" href="{{ path('customer/ssp-asset/details', {'reference': data.asset.reference }) }}">{{ data.asset.name }}</a>
+    </div>
 
-        {% if data.asset.serialNumber %}
-            <li class="list__item">
-                {{ 'self_service_portal.asset.serial_number' | trans }}: {{ data.asset.serialNumber }}
-            </li>
-        {% endif %}
+    {% if data.asset.serialNumber %}
+        <div class="title--h6">
+            <strong>{{ 'self_service_portal.asset.serial_number' | trans }}:</strong> {{ data.asset.serialNumber }}
+        </div>
+    {% endif %}
 
-        {% if data.isCompatibilityVisible %}
-            <li class="list__item">
-                {% widget 'AssetCompatibilityLabelWidget' args [data.asset.reference, data.idProduct] %}{% endwidget %}
-            </li>
-        {% endif %}
-    </ul>
+    {% if data.isCompatibilityVisible %}
+        <div class="title--h6 grid grid--gap-smaller grid--middle">
+             <strong class="col">{{ 'self_service_portal.asset.compatibility' | trans }}:</strong>
+             <span>{% widget 'AssetCompatibilityLabelWidget' args [data.asset.reference, data.idProduct] %}{% endwidget %}</span>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if data.asset %}
+        {{ block('asset') }}
+    {% endif %}
 {% endblock %}
