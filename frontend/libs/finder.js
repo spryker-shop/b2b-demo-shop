@@ -54,9 +54,11 @@ const findEntryPoints = async (settings) => {
 };
 
 // merge entry points
-const mergeEntryPoints = async (files) =>
-    Object.values(
-        files.reduce((map, file) => {
+const mergeEntryPoints = async (files) => {
+    // Sort files before processing to ensure consistent order
+    const sortedFiles = [...files].sort();
+    return Object.values(
+        sortedFiles.reduce((map, file) => {
             const dir = path.dirname(file);
             const name = path.basename(dir);
             const type = path.basename(path.dirname(dir));
@@ -64,6 +66,7 @@ const mergeEntryPoints = async (files) =>
             return map;
         }, {}),
     );
+};
 
 // find components entry points
 const findComponentEntryPoints = async (settings) => await findEntryPoints(settings);
