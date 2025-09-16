@@ -40,7 +40,11 @@ const find = async (globDirs, globPatterns, globFallbackPatterns, globSettings =
         ? await findFiles(globDirs, globFallbackPatterns, globSettings)
         : [];
 
-    return defaultThemeFiles.concat(customThemeFiles);
+    // Sort both arrays to ensure deterministic order
+    const sortedCustomThemeFiles = [...customThemeFiles].sort();
+    const sortedDefaultThemeFiles = [...defaultThemeFiles].sort();
+
+    return [...sortedDefaultThemeFiles, ...sortedCustomThemeFiles];
 };
 
 // find entry points
