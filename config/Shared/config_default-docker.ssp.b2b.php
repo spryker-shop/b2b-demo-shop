@@ -41,8 +41,8 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     ],
     'ssp-model-image' => [
         'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
-        'key' => getenv('TEST_BUCKET_9_SSP_MODELS_STORAGE_S3_KEY_ACTUAL') ?: '',
-        'secret' => getenv('TEST_BUCKET_9_SSP_MODELS_STORAGE_S3_SECRET_ACTUAL') ?: '',
+        'key' => getenv('TEST_BUCKET_9_SSP_MODEL_STORAGE_S3_KEY_ACTUAL') ?: '',
+        'secret' => getenv('TEST_BUCKET_9_SSP_MODEL_STORAGE_S3_SECRET_ACTUAL') ?: '',
         'bucket' => 'test-bucket-9-ssp-model-storage',
         'region' => getenv('AWS_REGION'),
         'version' => 'latest',

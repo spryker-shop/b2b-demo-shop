@@ -13,7 +13,6 @@ use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlu
 use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
-use Pyz\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
 use Spryker\Yves\CustomerDataChangeRequest\Widget\CustomerEmailChangeRequestWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
@@ -48,6 +47,7 @@ use SprykerFeature\Yves\SelfServicePortal\Widget\SspCompanyFilesMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspFileListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspListMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspProductOfferPriceWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceCancelWidget;
