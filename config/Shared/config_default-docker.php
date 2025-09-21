@@ -256,6 +256,9 @@ foreach ($rabbitConnections as $key => $connection) {
 
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === APPLICATION_STORE;
 }
+
+$config[RabbitMqEnv::RABBITMQ_HEART_BEAT_SECONDS] = 300;
+$config[RabbitMqEnv::RABBITMQ_PUBLISH_CONFIRM_ENABLED] = true;
 /* End Broker */
 
 /* Search service */

@@ -199,6 +199,9 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = array_map(static function ($storeNa
     ];
 }, $dynamicStoreEnabled ? [$currentRegion] : Store::getInstance()->getAllowedStores());
 
+$config[RabbitMqEnv::RABBITMQ_HEART_BEAT_SECONDS] = 300;
+$config[RabbitMqEnv::RABBITMQ_PUBLISH_CONFIRM_ENABLED] = true;
+
 // ---------- LOGGER
 
 $config[LogConstants::LOG_LEVEL] = Logger::CRITICAL;
