@@ -28,6 +28,12 @@ use SprykerFeature\Client\SelfServicePortal\Plugin\ProductStorage\ShipmentTypePr
 class ProductStorageDependencyProvider extends SprykerProductStorageDependencyProvider
 {
     /**
+     * Returns a list of `ProductView` expander plugins ordered by execution priority.
+     *
+     * Important: `ShipmentTypeProductViewExpanderPlugin` MUST come before
+     * `ProductViewAvailabilityStorageExpanderPlugin` so that shipment type data
+     * is available when availability is expanded/calculated.
+     *
      * @return array<\Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface>
      */
     protected function getProductViewExpanderPlugins(): array
@@ -38,12 +44,12 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
             new ProductVariantProductViewExpanderPlugin(),
             new ProductViewProductConfigurationExpanderPlugin(),
             new ProductViewPriceExpanderPlugin(),
+            new ShipmentTypeProductViewExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
             new ProductDiscontinuedProductAvailabilityExpanderPlugin(), #ProductDiscontinuedFeature
             new ProductViewImageExpanderPlugin(),
             new ProductBundleProductViewExpanderPlugin(),
             new ProductViewProductOfferExpanderPlugin(),
-            new ShipmentTypeProductViewExpanderPlugin(),
         ];
 
         return $plugins;
