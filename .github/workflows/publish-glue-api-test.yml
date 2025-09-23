@@ -1,0 +1,161 @@
+name: Publish Glue API Specs (Test Only)
+
+# Purpose: Lightweight isolated test of the Glue API spec generation + optional S3 upload.
+# Does NOT depend on main CI; manually triggered only.
+# Safe to iterate (uses dry_run=true by default to skip AWS calls).
+
+on:
+  pull_request:
+      types: [ labeled, unlabeled, synchronize, opened ]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Skip AWS upload (generate + list files only)"
+        required: false
+        default: 'true'
+      override_storefront_s3_file:
+        description: "Override storefront filename (optional)"
+        required: false
+      override_backend_s3_file:
+        description: "Override backend filename (optional)"
+        required: false
+
+concurrency:
+  group: publish-glue-api-test-${{ github.ref }}
+  cancel-in-progress: true
+
+# Central config (mirrors production workflow but uses a sandbox bucket/prefix)
+# TODO: Adjust bucket / prefix / filenames for the repo before real upload tests.
+
+# s3://spryker/docs/api-schema/
+
+env:
+  AWS_REGION: eu-central-1
+  S3_BUCKET_PREFIX: docs/api-schema
+  STOREFRONT_SOURCE: src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml
+  BACKEND_SOURCE: src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml
+  STOREFRONT_S3_FILE: b2b_storefront_api.json
+  BACKEND_S3_FILE: b2b_backoffice_api.json
+  BUILD_DIR: build/glue-api-test
+  ARTIFACT_NAME: glue-api-json-test
+  APPLICATION_ENV: ci.mysql
+  DYNAMIC_STORE_MODE: true
+  SPRYKER_CURRENT_REGION: EU
+  PROJECT: suite
+
+jobs:
+  generate:
+    name: Generate Specs
+    runs-on: ubuntu-latest
+    outputs:
+      storefront_s3_file: ${{ steps.names.outputs.storefront_s3_file }}
+      backend_s3_file: ${{ steps.names.outputs.backend_s3_file }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install docker-compose
+        run: |
+            sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+
+      - name: Run docker and generate specs
+        run: |
+            git clone https://github.com/spryker/docker-sdk.git ./docker
+            docker/sdk boot deploy.ci.api.mariadb.yml
+            docker/sdk up -t
+
+      - name: Resolve filenames
+        id: names
+        run: |
+          sf="${{ github.event.inputs.override_storefront_s3_file || env.STOREFRONT_S3_FILE }}"
+          be="${{ github.event.inputs.override_backend_s3_file || env.BACKEND_S3_FILE }}"
+          echo "storefront_s3_file=$sf" >> $GITHUB_OUTPUT
+          echo "backend_s3_file=$be" >> $GITHUB_OUTPUT
+
+      - name: Test generated storefront spec
+        run: test -s "${{ env.STOREFRONT_SOURCE }}" || { echo "Storefront spec missing"; exit 1; }
+
+      - name: Test generated backend spec
+        run: test -s "${{ env.BACKEND_SOURCE }}" || { echo "Backend spec missing"; exit 1; }
+
+      - name: Convert YAML -> JSON
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y python3-pip
+          pip3 install pyyaml
+          mkdir -p "${{ env.BUILD_DIR }}"
+          python3 - <<PY
+          import json, yaml, os
+          pairs=[
+            ("${{ env.STOREFRONT_SOURCE }}", "${{ env.BUILD_DIR }}/${{ steps.names.outputs.storefront_s3_file }}"),
+            ("${{ env.BACKEND_SOURCE }}", "${{ env.BUILD_DIR }}/${{ steps.names.outputs.backend_s3_file }}"),
+          ]
+          for src,dst in pairs:
+              with open(src) as f:
+                  data=yaml.safe_load(f)
+              with open(dst,'w') as o:
+                  json.dump(data,o,separators=(',',':'))
+              if os.path.getsize(dst)==0:
+                  raise SystemExit(f"Empty output {dst}")
+              print(f"Wrote {dst} ({os.path.getsize(dst)} bytes)")
+          PY
+
+      - name: Checksums
+        run: |
+          (cd "${{ env.BUILD_DIR }}" && for f in *.json; do sha256sum "$f" > "$f.sha256"; done)
+
+      - name: List files
+        run: ls -al "${{ env.BUILD_DIR }}"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: |
+            ${{ env.BUILD_DIR }}/*.json
+            ${{ env.BUILD_DIR }}/*.sha256
+          if-no-files-found: error
+          retention-days: 3
+
+  publish:
+    name: Publish (Sandbox)
+    runs-on: ubuntu-latest
+    needs: generate
+    if: needs.generate.result == 'success'
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: out
+
+      - name: Show artifact
+        run: ls -al out
+
+#      - name: Configure AWS (skip if dry-run)
+#        if: github.event.inputs.dry_run != 'true'
+#        uses: aws-actions/configure-aws-credentials@v4
+#        with:
+#          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+#          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload to sandbox bucket
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          set -euo pipefail
+          base_path="s3://${{ vars.API_SPEC_S3_BUCKET }}"
+          if [ -n "${{ env.S3_BUCKET_PREFIX }}" ]; then base_path="$base_path/${{ env.S3_BUCKET_PREFIX }}"; fi
+          for f in out/*.json; do
+            AWS_DEFAULT_REGION=${{env.AWS_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp "$f" "$base_path/$(basename "$f")" --acl private --only-show-errors
+            AWS_DEFAULT_REGION=${{env.AWS_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp "$f.sha256" "$base_path/$(basename "$f").sha256" --acl private --only-show-errors
+            echo "Uploaded: $base_path/$(basename "$f")"
+          done
+
+      - name: Dry run summary
+        if: github.event.inputs.dry_run == 'true'
+        run: |
+          echo "Dry run: would upload these files to s3://${{ vars.API_SPEC_S3_BUCKET }}/${{ env.S3_BUCKET_PREFIX }}:" && ls -1 out/*.json | sed 's|^| - |'
