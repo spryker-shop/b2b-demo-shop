@@ -1,0 +1,28 @@
+{% extends template('page-critical-path') %}
+
+{% define data = {
+    request: app.request,
+} %}
+
+{% block content %}
+    <form method="post" action="/DE/en/product-configurator-gateway/response">
+        <input name="sourceType" type="hidden" value="SOURCE_TYPE_PDP">
+        <input name="sku" type="hidden" value="506670">
+        <input name="productConfigurationInstance[configuratorKey]" type="hidden" value="TEST_CONF">
+        <input name="itemGroupKey" type="hidden" value="">
+        <input type="hidden" name="productConfigurationInstance[configuration]" value="{
+  &quot;shelve&quot;: &quot;2&quot;,
+  &quot;locker&quot;: &quot;1&quot;
+}">
+        <input type="hidden" name="productConfigurationInstance[displayData]" value="{
+  &quot;Adjustable shelves&quot;: &quot;5 shelves&quot;,
+  &quot;Lockers&quot;: &quot;2 lockers&quot;
+}">
+        <input type="hidden" name="productConfigurationInstance[prices][EUR][priceData]" value="null">
+        <input type="hidden" name="productConfigurationInstance[prices][EUR][GROSS_MODE][DEFAULT]" value="234654">
+        <input type="hidden" name="productConfigurationInstance[prices][EUR][NET_MODE][DEFAULT]" value="234654">
+        <input type="checkbox" name="productConfigurationInstance[isComplete]" checked="true" style="display: none;">
+
+        <button type="submit">Configure</button>
+    </form>
+{% endblock %}
