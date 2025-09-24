@@ -25,16 +25,14 @@ image:
     tag: spryker/php:8.2
     environment:
         SPRYKER_DNS_RESOLVER_IP: "10.105.0.2"
-        SPRYKER_DEFAULT_STORE: "DE"
-        SPRYKER_ACTIVE_STORES: "DE,AT"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy.dynamic-store-off -vvv"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "vendor/bin/install -r install-post-deploy-workflow.yml -vvv"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production.dynamic-store-off --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive.dynamic-store-off --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: dtc.b2b.demo-spryker.com
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
-        SPRYKER_YVES_HOST_DE: de.b2b.demo-spryker.com
-        SPRYKER_YVES_HOST_AT: at.b2b.demo-spryker.com
+        SPRYKER_YVES_HOST_EU: eu.b2b.demo-spryker.com
+        SPRYKER_YVES_HOST_US: us.b2b.demo-spryker.com
     php:
         ini:
             "opcache.revalidate_freq": 0
@@ -67,28 +65,12 @@ regions:
                 username: spryker
                 password: secret
 
-        stores:
-            DE:
-                services:
-                    broker:
-                        namespace: de_queue
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: de_search
-                    session:
-                        namespace: 2
-
-            AT:
-                services:
-                    broker:
-                        namespace: at-docker
-                    key_value_store:
-                        namespace: 3
-                    search:
-                        namespace: at_search
-                    session:
-                        namespace: 4
+        broker:
+            namespace: eu-docker
+            key_value_store:
+                namespace: 1
+            search:
+                namespace: eu_search
 
 groups:
     EU:
@@ -98,104 +80,79 @@ groups:
                 application: static
                 endpoints:
                     b2b.demo-spryker.com:
-                        store: DE
+                        region: EU
                         redirect:
                             code: 302
-                            url: www.de.b2b.demo-spryker.com
+                            url: www.eu.b2b.demo-spryker.com
                     www.b2b.demo-spryker.com:
-                        store: DE
+                        region: EU
                         redirect:
                             code: 302
-                            url: www.de.b2b.demo-spryker.com
+                            url: www.eu.b2b.demo-spryker.com
                     backoffice.b2b.demo-spryker.com:
-                        store: DE
+                        region: EU
                         redirect:
                             code: 302
-                            url: backoffice.de.b2b.demo-spryker.com
+                            url: backoffice.eu.b2b.demo-spryker.com
                     os.b2b.demo-spryker.com:
-                        store: DE
+                        region: EU
                         redirect:
                             code: 302
-                            url: backoffice.de.b2b.demo-spryker.com
-                    os.de.b2b.demo-spryker.com:
-                        store: DE
+                            url: backoffice.eu.b2b.demo-spryker.com
+                    os.eu.b2b.demo-spryker.com:
+                        region: EU
                         redirect:
                             code: 302
-                            url: backoffice.de.b2b.demo-spryker.com
+                            url: backoffice.eu.b2b.demo-spryker.com
 
             yves:
                 application: yves
                 endpoints:
-                    www.de.b2b.demo-spryker.com:
-                        store: DE
+                    www.eu.b2b.demo-spryker.com:
+                        region: EU
                         services:
                             session:
                                 namespace: 1
-                    www.at.b2b.demo-spryker.com:
-                        store: AT
-                        services:
-                            session:
-                                namespace: 2
                     dtc.b2b.demo-spryker.com:
                         entry-point: Configurator
             glue:
                 application: glue
                 endpoints:
-                    glue.de.b2b.demo-spryker.com:
-                        store: DE
-                        cors-allow-origin: '*'
-                    glue.at.b2b.demo-spryker.com:
-                        store: AT
+                    glue.eu.b2b.demo-spryker.com:
+                        region: EU
                         cors-allow-origin: '*'
             glue_storefront:
                 application: glue-storefront
                 endpoints:
-                    glue-storefront.de.b2b.demo-spryker.com:
-                        store: DE
-                        cors-allow-origin: '*'
-                    glue-storefront.at.b2b.demo-spryker.com:
-                        store: AT
+                    glue-storefront.eu.b2b.demo-spryker.com:
+                        region: EU
                         cors-allow-origin: '*'
             glue_backend:
                 application: glue-backend
                 endpoints:
-                    glue-backend.de.b2b.demo-spryker.com:
-                        store: DE
-                        cors-allow-origin: '*'
-                    glue-backend.at.b2b.demo-spryker.com:
-                        store: AT
+                    glue-backend.eu.b2b.demo-spryker.com:
+                        region: EU
                         cors-allow-origin: '*'
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.b2b.demo-spryker.com:
-                        store: DE
+                    backoffice.eu.b2b.demo-spryker.com:
+                        region: EU
                         primal: true
                         services:
                             session:
                                 namespace: 3
-                    backoffice.at.b2b.demo-spryker.com:
-                        store: AT
-                        services:
-                            session:
-                                namespace: 4
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.b2b.demo-spryker.com:
-                        store: DE
-                        primal: true
-                    backend-gateway.at.b2b.demo-spryker.com:
-                        store: AT
+                    backend-gateway.eu.b2b.demo-spryker.com:
+                        region: EU
                         primal: true
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.de.b2b.demo-spryker.com:
-                        store: DE
-                        entry-point: BackendApi
-                    backend-api.at.b2b.demo-spryker.com:
-                        store: AT
+                    backend-api.eu.b2b.demo-spryker.com:
+                        region: EU
                         entry-point: BackendApi
 services:
     database:
@@ -225,7 +182,7 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: 7.6
+        version: 7.10
         endpoints:
             localhost:9200:
                 protocol: tcp
@@ -252,7 +209,7 @@ docker:
             enabled: false
 
     testing:
-        store: DE
+        region: EU
 
     mount:
         baked:
