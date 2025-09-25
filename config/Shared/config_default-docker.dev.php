@@ -90,7 +90,7 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION][EventConstants::EVENT_QUEUE
 
 // >>> LOGGER
 
-$config[EventConstants::LOGGER_ACTIVE] = true;
+$config[EventConstants::LOGGER_ACTIVE] = false;
 $config[PropelOrmConstants::PROPEL_SHOW_EXTENDED_EXCEPTION] = true;
 $config[LogConstants::LOG_LEVEL] = getenv('SPRYKER_DEBUG_ENABLED') ? Logger::INFO : Logger::DEBUG;
 
