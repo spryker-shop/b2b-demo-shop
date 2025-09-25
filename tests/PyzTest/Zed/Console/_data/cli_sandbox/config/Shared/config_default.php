@@ -342,5 +342,3 @@ $config[PropelConstants::ZED_DB_PORT] = getenv('SPRYKER_DB_PORT');
 $config[PropelConstants::ZED_DB_USERNAME] = getenv('SPRYKER_DB_USERNAME');
 $config[PropelConstants::ZED_DB_PASSWORD] = getenv('SPRYKER_DB_PASSWORD');
 $config[PropelConstants::ZED_DB_DATABASE] = getenv('SPRYKER_DB_DATABASE');
-
-$config[RabbitMqEnv::RABBITMQ_ENABLE_RUNTIME_SETTING_UP] = false;
