@@ -128,7 +128,7 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
 ];
 
-$config[EventConstants::LOGGER_ACTIVE] = false;
+$config[EventConstants::LOGGER_ACTIVE] = true;
 
 //Check how to generate https://oauth2.thephpleague.com/installation/
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';
