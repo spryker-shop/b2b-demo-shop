@@ -531,6 +531,8 @@ $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES]
     = $config[LogConstants::EXCEPTION_LOG_FILE_PATH]
     = getenv('SPRYKER_LOG_STDERR') ?: 'php://stderr';
 
+$config[EventConstants::EVENT_LOGGER_LEVEL] = Logger::WARNING;
+
 // >>> QUEUE
 
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
