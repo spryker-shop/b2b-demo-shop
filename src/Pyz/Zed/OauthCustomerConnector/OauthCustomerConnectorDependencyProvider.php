@@ -11,7 +11,7 @@ namespace Pyz\Zed\OauthCustomerConnector;
 
 use Spryker\Zed\CompanyUsersRestApi\Communication\Plugin\OauthCustomerConnector\CompanyUserOauthCustomerIdentifierExpanderPlugin;
 use Spryker\Zed\OauthCustomerConnector\OauthCustomerConnectorDependencyProvider as SprykerOauthCustomerConnectorDependencyProvider;
-use Spryker\Zed\OauthPermission\Communication\Plugin\OauthCustomerConnector\PermissionOauthCustomerIdentifierExpanderPlugin;
+use Spryker\Zed\OauthPermission\Communication\Plugin\OauthCustomerConnector\StoredPermissionOauthCustomerIdentifierExpanderPlugin;
 
 /**
  * @method \Spryker\Zed\OauthCustomerConnector\OauthCustomerConnectorConfig getConfig()
@@ -25,7 +25,7 @@ class OauthCustomerConnectorDependencyProvider extends SprykerOauthCustomerConne
     {
         return [
             new CompanyUserOauthCustomerIdentifierExpanderPlugin(),
-            new PermissionOauthCustomerIdentifierExpanderPlugin(),
+            new StoredPermissionOauthCustomerIdentifierExpanderPlugin(),
         ];
     }
 }
