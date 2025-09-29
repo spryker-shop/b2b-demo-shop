@@ -18,9 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ShoppingListWidgetController extends SprykerShopShoppingListWidgetController
 {
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     */
     public function indexAction(Request $request): RedirectResponse
     {
         $parentResponse = parent::indexAction($request);

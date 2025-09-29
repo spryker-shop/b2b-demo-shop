@@ -40,10 +40,6 @@ class CustomerPresentationTester extends Actor
      */
     protected const URL_STORE_PREFIX = '/DE';
 
-    /**
-     * @param string $email
-     * @param string $password
-     */
     public function submitLoginForm(string $email, string $password): void
     {
         $i = $this;
@@ -67,9 +63,6 @@ class CustomerPresentationTester extends Actor
         $i->click(CustomerRegistrationPage::FORM_FIELD_SELECTOR_ACCEPT_TERMS);
     }
 
-    /**
-     * @param string $uri
-     */
     public function seeCurrentUrlEquals(string $uri): void
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {

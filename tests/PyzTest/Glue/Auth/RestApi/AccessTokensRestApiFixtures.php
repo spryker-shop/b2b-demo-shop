@@ -21,14 +21,8 @@ class AccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     public const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     */
     public function buildFixtures(AuthRestApiTester $I): FixturesContainerInterface
     {
         $I->haveCompanyMailConnectorToMailDependency();
@@ -43,9 +37,6 @@ class AccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesC
         return $this->customerTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     */
     protected function createCustomerTransfer(AuthRestApiTester $I): CustomerTransfer
     {
         $customerTransfer = $I->haveCustomer([

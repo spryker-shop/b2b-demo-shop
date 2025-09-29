@@ -70,10 +70,6 @@ class PaymentMethodPresentationTester extends Actor
             );
     }
 
-    /**
-     * @param string $paymentProviderName
-     * @param string $paymentMethodName
-     */
     public function generatePaymentMethodKey(
         string $paymentProviderName,
         string $paymentMethodName,
@@ -89,9 +85,6 @@ class PaymentMethodPresentationTester extends Actor
         );
     }
 
-    /**
-     * @param string $paymentMethodKey
-     */
     public function cleanupPaymentMethodByPaymentMethodKey(string $paymentMethodKey): void
     {
         $this->addCleanup(function () use ($paymentMethodKey): void {

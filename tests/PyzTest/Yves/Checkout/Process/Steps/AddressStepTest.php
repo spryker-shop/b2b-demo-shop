@@ -18,6 +18,7 @@ use Generated\Shared\Transfer\AddressesTransfer;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use PyzTest\Yves\Checkout\CheckoutBusinessTester;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
@@ -48,10 +49,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AddressStepTest extends Unit
 {
-    /**
-     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
-     */
-    public $tester;
+    public CheckoutBusinessTester $tester;
 
     public function testExecuteAddressStepWhenGuestIsSubmittedShouldUseDataFromAddressFromForm(): void
     {

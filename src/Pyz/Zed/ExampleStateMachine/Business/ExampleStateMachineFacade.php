@@ -17,9 +17,6 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  */
 class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMachineFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
-     */
     public function updateItemState(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {
         return $this->getFactory()->createStateMachineSaver()->itemStateUpdate($stateMachineItemTransfer);

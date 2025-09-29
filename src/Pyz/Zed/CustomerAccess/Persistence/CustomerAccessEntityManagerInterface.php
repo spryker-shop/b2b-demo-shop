@@ -14,8 +14,5 @@ use Spryker\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface 
 
 interface CustomerAccessEntityManagerInterface extends SprykerCustomerAccessEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     */
     public function setContentTypesToAccessible(CustomerAccessTransfer $customerAccessTransfer): void;
 }

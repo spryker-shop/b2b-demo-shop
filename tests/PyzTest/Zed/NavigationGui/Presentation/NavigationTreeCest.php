@@ -33,18 +33,12 @@ use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
  */
 class NavigationTreeCest
 {
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     */
     public function _before(NavigationGuiPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     */
     public function testSeeEmptyNavigationTree(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('See navigation tree.');
@@ -64,9 +58,6 @@ class NavigationTreeCest
         $i->cleanUpNavigationTree($navigationTreeTransfer);
     }
 
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     */
     public function testCreateChildNodeWithoutType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create child node without type.');
@@ -93,9 +84,6 @@ class NavigationTreeCest
         $i->cleanUpNavigationTree($navigationTreeTransfer);
     }
 
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     */
     public function testCreateChildNodeWithExternalUrlType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create external URL child node.');
@@ -127,9 +115,6 @@ class NavigationTreeCest
         $i->cleanUpNavigationTree($navigationTreeTransfer);
     }
 
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     */
     public function testUpdateNodeToCategoryType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Update child node to category type.');
@@ -166,9 +151,6 @@ class NavigationTreeCest
         $i->cleanUpNavigationTree($navigationTreeTransfer);
     }
 
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     */
     public function testCreateChildNodeWithCmsPageType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create CMS page child node.');
@@ -278,10 +260,6 @@ class NavigationTreeCest
         $i->cleanUpNavigationTree($navigationTreeTransfer);
     }
 
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testDeleteNavigationNode(NavigationGuiPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->wantTo('Remove child node.');

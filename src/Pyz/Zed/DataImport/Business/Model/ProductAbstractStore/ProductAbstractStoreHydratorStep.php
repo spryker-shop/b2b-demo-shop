@@ -35,17 +35,11 @@ class ProductAbstractStoreHydratorStep implements DataImportStepInterface
      */
     public const DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER = 'DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->importProductAbstractStore($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProductAbstractStore(DataSetInterface $dataSet): void
     {
         $productAbstractStoreTransfer = new ProductAbstractStoreTransfer();

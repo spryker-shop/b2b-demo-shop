@@ -39,22 +39,13 @@ class ProductGroupWriter extends PublishAwareStep implements DataImportStepInter
      */
     public const COLUMN_POSITION = 'position';
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
-    protected $productRepository;
+    protected ProductRepository $productRepository;
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
     public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $productGroupEntity = SpyProductGroupQuery::create()

@@ -27,9 +27,6 @@ use PyzTest\Zed\CmsGui\PageObject\CmsEditPage;
  */
 class CmsGuiCreatePageCest
 {
-    /**
-     * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
-     */
     public function _before(CmsGuiPresentationTester $i): void
     {
         $i->amZed();

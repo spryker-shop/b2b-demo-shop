@@ -36,18 +36,12 @@ class PaymentRefundedMessageCest
      */
     public const FINAL_ITEM_STATE = 'payment refund succeeded';
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $i
-     */
     public function _before(PaymentPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     */
     public function testPaymentReservationCanceledMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
         // Arrange

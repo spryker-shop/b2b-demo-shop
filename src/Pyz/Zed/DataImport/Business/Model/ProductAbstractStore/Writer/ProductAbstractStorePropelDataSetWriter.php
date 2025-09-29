@@ -23,24 +23,18 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @var array<int> Keys are SKUs, values are product abstract ids.
      */
-    protected static $idProductAbstractBuffer;
+    protected static array $idProductAbstractBuffer;
 
     /**
      * @var array<int> Keys are store names, values are store ids.
      */
-    protected static $idStoreBuffer;
+    protected static array $idStoreBuffer;
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function write(DataSetInterface $dataSet): void
     {
         $this->createOrUpdateProductAbstractStore($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function createOrUpdateProductAbstractStore(DataSetInterface $dataSet): void
     {
         $productAbstractStoreTransfer = $this->getProductAbstractStoreTransfers($dataSet);
@@ -55,9 +49,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
             ->save();
     }
 
-    /**
-     * @param string $productAbstractSku
-     */
     protected function getIdProductAbstractBySku(string $productAbstractSku): int
     {
         if (!isset(static::$idProductAbstractBuffer[$productAbstractSku])) {
@@ -68,9 +59,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
         return static::$idProductAbstractBuffer[$productAbstractSku];
     }
 
-    /**
-     * @param string $storeName
-     */
     protected function getIdStoreByName(string $storeName): int
     {
         if (!isset(static::$idStoreBuffer[$storeName])) {
@@ -86,9 +74,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
         DataImporterPublisher::triggerEvents();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function getProductAbstractStoreTransfers(DataSetInterface $dataSet): ProductAbstractStoreTransfer
     {
         return $dataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER];

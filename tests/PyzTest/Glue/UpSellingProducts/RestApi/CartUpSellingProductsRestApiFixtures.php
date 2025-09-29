@@ -44,19 +44,10 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $upSellingProductConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected QuoteTransfer $quoteTransfer;
 
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -69,9 +60,6 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
         return $this->quoteTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
         $I->truncateSalesOrderThresholds();
@@ -83,9 +71,6 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     */
     protected function createQuoteWithProduct(UpSellingProductsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
@@ -101,17 +86,11 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
         $this->quoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     */
     protected function createUpSellingProductConcrete(UpSellingProductsApiTester $I): void
     {
         $this->upSellingProductConcreteTransfer = $I->haveFullProduct();
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     */
     protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
     {
         $storeTransfer = $I->haveStore([

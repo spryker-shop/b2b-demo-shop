@@ -19,22 +19,13 @@ class ProductManagerStub
 {
     use DatabaseTransactionHandlerTrait;
 
-    /**
-     * @var \Spryker\Zed\Product\Persistence\ProductQueryContainerInterface
-     */
-    protected $productQueryContainer;
+    protected ProductQueryContainerInterface $productQueryContainer;
 
-    /**
-     * @param \Spryker\Zed\Product\Persistence\ProductQueryContainerInterface $productQueryContainer
-     */
     public function __construct(ProductQueryContainerInterface $productQueryContainer)
     {
         $this->productQueryContainer = $productQueryContainer;
     }
 
-    /**
-     * @param string $sku
-     */
     protected function createProductAbstractEntity(string $sku): SpyProductAbstract
     {
         $productAbstractEntity = new SpyProductAbstract();
@@ -45,10 +36,6 @@ class ProductManagerStub
         return $productAbstractEntity;
     }
 
-    /**
-     * @param string $name
-     * @param int $idProductAbstract
-     */
     protected function createLocalizedAttributeEntity(string $name, int $idProductAbstract): SpyProductAbstractLocalizedAttributes
     {
         $localizedAttributeEntity = new SpyProductAbstractLocalizedAttributes();
@@ -61,10 +48,6 @@ class ProductManagerStub
         return $localizedAttributeEntity;
     }
 
-    /**
-     * @param string $sku
-     * @param string $name
-     */
     public function addProductWithoutTransactionHandling(string $sku, string $name): int
     {
         $this->productQueryContainer->getConnection()->beginTransaction();
@@ -77,10 +60,6 @@ class ProductManagerStub
         return $productAbstractEntity->getIdProductAbstract();
     }
 
-    /**
-     * @param string $sku
-     * @param string $name
-     */
     public function addProductWithoutTransactionHandlingShouldThrowException(string $sku, string $name): void
     {
         $this->productQueryContainer->getConnection()->beginTransaction();
@@ -102,10 +81,6 @@ class ProductManagerStub
         $this->productQueryContainer->getConnection()->commit();
     }
 
-    /**
-     * @param string $sku
-     * @param string $name
-     */
     public function addProductWithTransactionHandlingShouldRollbackAndThrowException(string $sku, string $name): void
     {
         $this->handleDatabaseTransaction(function () use ($sku, $name): void {
@@ -125,10 +100,6 @@ class ProductManagerStub
         }, $this->productQueryContainer->getConnection());
     }
 
-    /**
-     * @param string $sku
-     * @param string $name
-     */
     public function addProductWithTransactionHandlingShouldCommitAndReturnValue(string $sku, string $name): SpyProductAbstractLocalizedAttributes
     {
         return $this->handleDatabaseTransaction(function () use ($sku, $name) {

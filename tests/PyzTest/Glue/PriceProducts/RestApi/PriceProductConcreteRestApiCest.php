@@ -25,14 +25,8 @@ use PyzTest\Glue\PriceProducts\PriceProductsApiTester;
  */
 class PriceProductConcreteRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\PriceProducts\RestApi\PriceProductsRestApiFixtures
-     */
     protected PriceProductsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     */
     public function loadFixtures(PriceProductsApiTester $I): void
     {
         /** @var \PyzTest\Glue\PriceProducts\RestApi\PriceProductsRestApiFixtures $fixtures */

@@ -17,9 +17,6 @@ use Spryker\Zed\CustomerAccess\Persistence\CustomerAccessEntityManager as Spryke
  */
 class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager implements CustomerAccessEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     */
     public function setContentTypesToAccessible(CustomerAccessTransfer $customerAccessTransfer): void
     {
         foreach ($customerAccessTransfer->getContentTypeAccess() as $contentTypeAccess) {

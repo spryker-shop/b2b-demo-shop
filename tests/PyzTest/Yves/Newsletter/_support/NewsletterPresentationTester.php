@@ -35,9 +35,6 @@ class NewsletterPresentationTester extends Actor
 {
     use _generated\NewsletterPresentationTesterActions;
 
-    /**
-     * @param string $email
-     */
     public function haveAnAlreadySubscribedEmail(string $email): void
     {
         $newsletterSubscriberEntity = new SpyNewsletterSubscriber();

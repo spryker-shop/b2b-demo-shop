@@ -174,10 +174,7 @@ class CheckoutControllerTest extends Unit
      */
     public const SUCCESS_URL = '/checkout/success';
 
-    /**
-     * @var \SprykerShop\Yves\CheckoutPage\Controller\CheckoutController
-     */
-    private $controller;
+    private CheckoutController $controller;
 
     protected function setUp(): void
     {

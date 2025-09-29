@@ -70,10 +70,6 @@ class CartsApiTester extends ApiEndToEndTester
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param string $sku
-     */
     public function getGroupKeyFromQuote(QuoteTransfer $quoteTransfer, string $sku): ?string
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
@@ -85,11 +81,6 @@ class CartsApiTester extends ApiEndToEndTester
         return null;
     }
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $cartUuid
-     * @param array $attributes
-     */
     public function createCartResourceEntityTag(
         CartsApiTester $I,
         string $cartUuid,
@@ -102,11 +93,6 @@ class CartsApiTester extends ApiEndToEndTester
         );
     }
 
-    /**
-     * @param int $quantity
-     * @param string $resourceName
-     * @param string $itemSku
-     */
     public function seeCartItemQuantityEqualsToQuantityInRequest(
         int $quantity,
         string $resourceName,

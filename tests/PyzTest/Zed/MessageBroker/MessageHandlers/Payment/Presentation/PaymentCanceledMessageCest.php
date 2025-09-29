@@ -41,18 +41,12 @@ class PaymentCanceledMessageCest
      */
     public const NOT_ALLOWED_FOR_CANCEL_ITEM_STATE = 'payment captured';
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $i
-     */
     public function _before(PaymentPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     */
     public function testPaymentCanceledMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
         // Arrange
@@ -69,9 +63,6 @@ class PaymentCanceledMessageCest
         $I->assertOrderHasCorrectState($salesOrderEntity, static::FINAL_ITEM_STATE);
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     */
     public function testPaymentCanceledMessageIsIgnoredWhenTransitionIsNotPossible(PaymentPresentationTester $I): void
     {
         // Arrange

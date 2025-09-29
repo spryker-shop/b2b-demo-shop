@@ -31,14 +31,8 @@ class RefreshTokensRestApiCest
      */
     protected const INVALID_REFRESH_TOKEN = 'invalid refresh token';
 
-    /**
-     * @var \PyzTest\Glue\Auth\RestApi\RefreshTokensRestApiFixtures
-     */
     protected RefreshTokensRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     */
     public function loadFixtures(AuthRestApiTester $I): void
     {
         /** @var \PyzTest\Glue\Auth\RestApi\RefreshTokensRestApiFixtures $fixtures */

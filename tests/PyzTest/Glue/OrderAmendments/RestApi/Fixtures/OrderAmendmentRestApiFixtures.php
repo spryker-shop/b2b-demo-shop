@@ -50,19 +50,10 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
      */
     protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $readyForAmendmentOrderTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $notReadyForAmendmentOrderTransfer;
 
     public function getCustomerTransfer(): CustomerTransfer
@@ -80,9 +71,6 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
         return $this->notReadyForAmendmentOrderTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     public function buildFixtures(OrderAmendmentsApiTester $I): FixturesContainerInterface
     {
         $this->configureStateMachine($I);
@@ -105,9 +93,6 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     protected function createCustomerTransfer(OrderAmendmentsApiTester $I): CustomerTransfer
     {
         $customerTransfer = $I->haveCustomer([
@@ -119,9 +104,6 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
         return $I->confirmCustomer($customerTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     protected function createOrderWithProductConcretes(OrderAmendmentsApiTester $I): SaveOrderTransfer
     {
         $product1Transfer = $I->haveProductWithPriceAndStock();
@@ -160,9 +142,6 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
         }
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     protected function configureStateMachine(OrderAmendmentsApiTester $I): void
     {
         $I->configureTestStateMachine([static::STATE_MACHINE_NAME]);

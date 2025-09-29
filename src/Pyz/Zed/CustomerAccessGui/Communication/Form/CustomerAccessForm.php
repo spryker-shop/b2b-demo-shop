@@ -42,9 +42,6 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
      */
     protected const FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE);

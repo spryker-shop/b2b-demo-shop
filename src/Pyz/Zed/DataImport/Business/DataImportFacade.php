@@ -17,9 +17,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
  */
 class DataImportFacade extends SprykerDataImportFacade implements DataImportFacadeInterface
 {
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeProductAbstractDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductAbstractPropelWriter()->write($dataSet);
@@ -30,9 +27,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createProductAbstractPropelWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeProductConcreteDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductConcretePropelWriter()->write($dataSet);
@@ -43,9 +37,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createProductConcretePropelWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeProductImageDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductImagePropelWriter()->write($dataSet);
@@ -56,9 +47,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createProductImagePropelWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeProductStockDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductStockPropelWriter()->write($dataSet);
@@ -69,9 +57,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createProductStockPropelWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeProductAbstractStoreDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductAbstractStorePropelWriter()->write($dataSet);
@@ -82,9 +67,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createProductAbstractStorePropelWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeCombinedProductPriceDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createCombinedProductPricePropelDataSetWriter()->write($dataSet);
@@ -95,9 +77,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createCombinedProductPricePropelDataSetWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeCombinedProductImageDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createCombinedProductImagePropelDataSetWriter()->write($dataSet);
@@ -108,9 +87,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createCombinedProductImagePropelDataSetWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeCombinedProductStockDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createCombinedProductStockPropelDataSetWriter()->write($dataSet);
@@ -121,9 +97,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createCombinedProductStockPropelDataSetWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeCombinedProductAbstractStoreDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createCombinedProductAbstractStorePropelDataSetWriter()->write($dataSet);
@@ -134,9 +107,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createCombinedProductAbstractStorePropelDataSetWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeCombinedProductAbstractDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createCombinedProductAbstractPropelDataSetWriter()->write($dataSet);
@@ -147,9 +117,6 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
         $this->getFactory()->createCombinedProductAbstractPropelDataSetWriter()->flush();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function writeCombinedProductConcreteDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createCombinedProductConcretePropelDataSetWriter()->write($dataSet);

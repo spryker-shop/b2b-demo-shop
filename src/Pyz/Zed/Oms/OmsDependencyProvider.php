@@ -41,9 +41,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      */
     public const FACADE_TRANSLATOR = 'FACADE_TRANSLATOR';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -99,9 +96,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         ];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
@@ -110,9 +104,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     protected function addTranslatorFacade(Container $container): Container
     {
         $container->set(static::FACADE_TRANSLATOR, function (Container $container) {
@@ -142,9 +133,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         ];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     protected function extendCommandPlugins(Container $container): Container
     {
         $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {

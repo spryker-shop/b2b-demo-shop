@@ -22,7 +22,7 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
     /**
      * @var array<string>
      */
-    protected $defaultAttributes = [];
+    protected array $defaultAttributes = [];
 
     /**
      * @param array<string> $defaultAttributes
@@ -32,9 +32,6 @@ class ProductLocalizedAttributesExtractorStep implements DataImportStepInterface
         $this->defaultAttributes = $defaultAttributes;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $keysToUnset = [];

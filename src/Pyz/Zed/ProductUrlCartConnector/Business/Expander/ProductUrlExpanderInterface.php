@@ -13,8 +13,5 @@ use Generated\Shared\Transfer\CartChangeTransfer;
 
 interface ProductUrlExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     */
     public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer;
 }

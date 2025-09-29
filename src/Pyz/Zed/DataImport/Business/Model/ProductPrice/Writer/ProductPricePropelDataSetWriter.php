@@ -47,26 +47,12 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
 
     protected const COLUMN_PRICE_DATA_CHECKSUM = ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
-    protected $productRepository;
+    protected ProductRepository $productRepository;
 
-    /**
-     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
-    protected $storeFacade;
+    protected StoreFacadeInterface $storeFacade;
 
-    /**
-     * @var \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
-     */
-    protected $currencyFacade;
+    protected CurrencyFacadeInterface $currencyFacade;
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\Currency\Business\CurrencyFacadeInterface $currencyFacade
-     */
     public function __construct(
         ProductRepository $productRepository,
         StoreFacadeInterface $storeFacade,
@@ -77,9 +63,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         $this->currencyFacade = $currencyFacade;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function write(DataSetInterface $dataSet): void
     {
         $priceTypeEntity = $this->findOrCreatePriceType($dataSet);
@@ -178,9 +161,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         return $priceProductStoreEntity;
     }
 
-    /**
-     * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore $priceProductStore
-     */
     protected function findOrCreatePriceProductDefault(SpyPriceProductStore $priceProductStore): SpyPriceProductDefault
     {
         $priceProductDefault = SpyPriceProductDefaultQuery::create()

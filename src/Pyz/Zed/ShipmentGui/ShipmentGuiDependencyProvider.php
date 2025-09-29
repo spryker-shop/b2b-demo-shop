@@ -17,9 +17,6 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 
 class ShipmentGuiDependencyProvider extends SprykerShipmentGuiDependencyProvider
 {
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     protected function getMoneyCollectionFormTypePlugin(Container $container): FormTypeInterface // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return new MoneyCollectionFormTypePlugin();

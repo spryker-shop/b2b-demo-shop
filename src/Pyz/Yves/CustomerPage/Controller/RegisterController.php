@@ -25,9 +25,6 @@ class RegisterController extends SprykerRegisterController
      */
     protected const INVITATION_SESSION_ID = 'COMPANY_USER_INVITATION';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     */
     public function indexAction(Request $request): View|\Symfony\Component\HttpFoundation\RedirectResponse
     {
         $response = $this->executeIndexAction($request);

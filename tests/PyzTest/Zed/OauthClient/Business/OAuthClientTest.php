@@ -13,6 +13,7 @@ use Codeception\Test\Unit;
 use Generated\Shared\DataBuilder\AccessTokenRequestBuilder;
 use Generated\Shared\Transfer\AccessTokenRequestOptionsTransfer;
 use Generated\Shared\Transfer\AccessTokenRequestTransfer;
+use PyzTest\Zed\OauthClient\OauthClientBusinessTester;
 use Spryker\Zed\OauthClientExtension\Dependency\Plugin\OauthAccessTokenProviderPluginInterface;
 
 /**
@@ -27,10 +28,7 @@ use Spryker\Zed\OauthClientExtension\Dependency\Plugin\OauthAccessTokenProviderP
  */
 class OAuthClientTest extends Unit
 {
-    /**
-     * @var \PyzTest\Zed\OauthClient\OauthClientBusinessTester
-     */
-    protected $tester;
+    protected OauthClientBusinessTester $tester;
 
     /**
      * @var string

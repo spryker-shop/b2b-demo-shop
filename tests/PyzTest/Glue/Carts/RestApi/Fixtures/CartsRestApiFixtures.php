@@ -60,14 +60,8 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      */
     public const CURRENCY_EUR = 'EUR';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
     public function getCustomerTransfer(): CustomerTransfer
@@ -80,9 +74,6 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
         $I->truncateSalesOrderThresholds();
@@ -94,9 +85,6 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     */
     protected function createCustomer(CartsApiTester $I): CustomerTransfer
     {
         return $I->haveCustomer([

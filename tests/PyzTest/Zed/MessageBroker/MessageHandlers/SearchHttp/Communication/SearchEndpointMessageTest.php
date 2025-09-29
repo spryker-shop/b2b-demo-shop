@@ -26,9 +26,6 @@ use PyzTest\Zed\MessageBroker\SearchHttpCommunicationTester;
  */
 class SearchEndpointMessageTest extends Unit
 {
-    /**
-     * @var \PyzTest\Zed\MessageBroker\SearchHttpCommunicationTester
-     */
     protected SearchHttpCommunicationTester $tester;
 
     public function testSearchEndpointAvailableMessageIsSuccessfullyHandled(): void

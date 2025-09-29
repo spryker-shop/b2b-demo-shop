@@ -56,19 +56,10 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
      */
     protected const PRODUCT_ABSTRACT_COL_SKU = 'spy_product_abstract.sku';
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
-     */
     protected ProductRepositoryInterface $productRepository;
 
-    /**
-     * @var \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface
-     */
     protected DataImportToUtilEncodingServiceInterface $utilEncodingService;
 
-    /**
-     * @var \Pyz\Zed\DataImport\DataImportConfig
-     */
     protected DataImportConfig $dataImportConfig;
 
     /**
@@ -76,11 +67,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
      */
     protected static array $productConcreteAttributesMap = [];
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig
-     */
     public function __construct(
         ProductRepositoryInterface $productRepository,
         DataImportToUtilEncodingServiceInterface $utilEncodingService,
@@ -93,9 +79,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         $this->prepareProductConcreteAttributesMap();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         /** @var string $dataSetProductConcreteSku */
@@ -160,9 +143,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         } while (count($productConcreteCollection));
     }
 
-    /**
-     * @param \Propel\Runtime\Collection\ArrayCollection $productConcreteCollection
-     */
     protected function processProductConcreteAttributesMap(ArrayCollection $productConcreteCollection): void
     {
         foreach ($productConcreteCollection as $productConcrete) {

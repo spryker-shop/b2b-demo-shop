@@ -24,18 +24,12 @@ use PyzTest\Zed\CmsGui\PageObject\CmsListPage;
  */
 class CmsGuiPageListCest
 {
-    /**
-     * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
-     */
     public function _before(CmsGuiPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
-     */
     public function testICanOpenCmsPageList(CmsGuiPresentationTester $i): void
     {
         $i->amLoggedInUser();

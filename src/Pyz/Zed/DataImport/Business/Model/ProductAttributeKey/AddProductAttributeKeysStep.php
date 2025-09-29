@@ -25,11 +25,8 @@ class AddProductAttributeKeysStep implements DataImportStepInterface
     /**
      * @var array<string, int>
      */
-    protected $productAttributeKeys = [];
+    protected array $productAttributeKeys = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         if (!$this->productAttributeKeys) {

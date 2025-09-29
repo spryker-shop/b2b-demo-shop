@@ -148,9 +148,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $newProductsBoolQuery;
     }
 
-    /**
-     * @param string $fieldName
-     */
     protected function createStringFacetFieldFilter(string $fieldName): Term
     {
         $termQuery = new Term();
@@ -159,9 +156,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $termQuery;
     }
 
-    /**
-     * @param int $idProductLabel
-     */
     protected function createStringFacetValueFilter(int $idProductLabel): Term
     {
         $termQuery = new Term();
@@ -170,9 +164,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $termQuery;
     }
 
-    /**
-     * @param \Elastica\Query\AbstractQuery $abstractQuery
-     */
     protected function createQuery(AbstractQuery $abstractQuery): Query
     {
         $query = new Query();

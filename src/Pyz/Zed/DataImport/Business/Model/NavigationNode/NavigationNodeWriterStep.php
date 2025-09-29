@@ -109,9 +109,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      */
     public const NODE_TYPE_CMS_PAGE = 'cms_page';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $navigationNodeEntity = SpyNavigationNodeQuery::create()
@@ -191,10 +188,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
         return $parentNavigationNodeEntity->getIdNavigationNode();
     }
 
-    /**
-     * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNode $navigationNodeEntity
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function getPosition(SpyNavigationNode $navigationNodeEntity, DataSetInterface $dataSet): ?int
     {
         if (isset($dataSet[static::KEY_POSITION]) && !empty($dataSet[static::KEY_POSITION])) {
@@ -204,10 +197,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
         return $navigationNodeEntity->getPosition();
     }
 
-    /**
-     * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNode $navigationNodeEntity
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function isActive(SpyNavigationNode $navigationNodeEntity, DataSetInterface $dataSet): bool
     {
         if (isset($dataSet[static::KEY_IS_ACTIVE]) && !empty($dataSet[static::KEY_IS_ACTIVE])) {
@@ -223,10 +212,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
         return static::DEFAULT_IS_ACTIVE;
     }
 
-    /**
-     * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNode $navigationNodeEntity
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function getNodeType(SpyNavigationNode $navigationNodeEntity, DataSetInterface $dataSet): ?string
     {
         if (isset($dataSet[static::KEY_NODE_TYPE]) && !empty($dataSet[static::KEY_NODE_TYPE])) {

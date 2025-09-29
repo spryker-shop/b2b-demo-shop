@@ -69,34 +69,16 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConfigurationTransfer
-     */
     protected ProductConfigurationTransfer $productConfigurationTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     protected CompanyUserTransfer $companyUserTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected ShoppingListTransfer $shoppingListTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     protected ShoppingListItemTransfer $shoppingListItemTransfer;
 
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -119,9 +101,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
         return $this->shoppingListItemTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     public function buildFixtures(ProductConfigurationsApiTester $I): FixturesContainerInterface
     {
         $I->haveCompanyMailConnectorToMailDependency();
@@ -134,17 +113,11 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createProductConcrete(ProductConfigurationsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createProductConfiguration(ProductConfigurationsApiTester $I): void
     {
         $this->productConfigurationTransfer = $I->haveProductConfigurationTransferPersisted([
@@ -152,18 +125,12 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
         ]);
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createCustomer(ProductConfigurationsApiTester $I): void
     {
         $this->createCustomerWithCompanyUser($I);
         $I->confirmCustomer($this->customerTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createCustomerWithCompanyUser(ProductConfigurationsApiTester $I): void
     {
         $this->customerTransfer = $I->haveCustomer([
@@ -199,9 +166,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
         ]);
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createShoppingList(ProductConfigurationsApiTester $I): void
     {
         $this->shoppingListTransfer = $I->haveShoppingList([

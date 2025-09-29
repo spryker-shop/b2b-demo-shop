@@ -27,14 +27,8 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
  */
 class CompanyBusinessUnitAddressCheckoutDataRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CompanyBusinessUnitAddressCheckoutDataRestApiFixtures
-     */
     protected CompanyBusinessUnitAddressCheckoutDataRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     public function loadFixtures(CheckoutApiTester $I): void
     {
         $fixtures = $I->loadFixtures(CompanyBusinessUnitAddressCheckoutDataRestApiFixtures::class);

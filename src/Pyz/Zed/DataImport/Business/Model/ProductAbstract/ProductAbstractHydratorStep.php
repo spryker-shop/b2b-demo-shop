@@ -155,9 +155,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
      */
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->importProductAbstract($dataSet);
@@ -166,9 +163,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $this->importProductUrls($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProductAbstract(DataSetInterface $dataSet): void
     {
         $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
@@ -184,9 +178,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet): void
     {
         $localizedAttributeTransfer = [];
@@ -247,9 +238,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_CATEGORY_TRANSFER] = $productCategoryTransfers;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProductUrls(DataSetInterface $dataSet): void
     {
         $urlsTransfer = [];

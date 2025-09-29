@@ -17,9 +17,9 @@ class CmsCreateGlossaryPage
     public const URL = 'cms-gui/create-glossary/index?id-cms-page=%d';
 
     /**
-     * @var array
+     * @var array<string, array<string, string>>
      */
-    protected static $localizedPlaceholders = [
+    protected static array $localizedPlaceholders = [
         'title' => [
             'en' => 'english title',
             'de' => 'german title',
@@ -30,10 +30,6 @@ class CmsCreateGlossaryPage
         ],
     ];
 
-    /**
-     * @param string $placeholder
-     * @param string $locale
-     */
     public static function getLocalizedPlaceholderData(string $placeholder, string $locale): string
     {
         return static::$localizedPlaceholders[$placeholder][$locale];

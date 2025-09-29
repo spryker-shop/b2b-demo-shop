@@ -31,19 +31,10 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CustomerForgottenPasswordCest
 {
-    /**
-     * @var \PyzTest\Glue\Customer\RestApi\CustomerRestApiFixtures
-     */
     protected CustomerRestApiFixtures $fixtures;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     */
     public function _before(CustomerApiTester $I): void
     {
         /** @var \PyzTest\Glue\Customer\RestApi\CustomerRestApiFixtures $fixtures */

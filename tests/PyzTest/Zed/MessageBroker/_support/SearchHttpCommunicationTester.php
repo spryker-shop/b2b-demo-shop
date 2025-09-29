@@ -75,9 +75,6 @@ class SearchHttpCommunicationTester extends Actor
             ->deleteAll();
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $searchMessageTransfer
-     */
     public function handleSearchMessage(TransferInterface $searchMessageTransfer): void
     {
         $channelName = 'search-commands';

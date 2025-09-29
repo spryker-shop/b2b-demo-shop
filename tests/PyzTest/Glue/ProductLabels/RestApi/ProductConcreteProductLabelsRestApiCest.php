@@ -26,14 +26,8 @@ use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
  */
 class ProductConcreteProductLabelsRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\ProductLabels\RestApi\ProductLabelsRestApiFixtures
-     */
     protected ProductLabelsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\ProductLabels\ProductLabelsApiTester $I
-     */
     public function loadFixtures(ProductLabelsApiTester $I): void
     {
         /** @var \PyzTest\Glue\ProductLabels\RestApi\ProductLabelsRestApiFixtures $fixtures */

@@ -21,24 +21,18 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
      */
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
-     */
-    protected $productRepository;
+    protected ProductRepositoryInterface $productRepository;
 
     /**
      * @var array<string> Keys are concrete product sku values.
      */
-    protected $skuProductConcreteList = [];
+    protected array $skuProductConcreteList = [];
 
     /**
      * @var array<string, true> Keys are abstract product sku values. Values are set to "true" when abstract product added.
      */
-    protected $resolved = [];
+    protected array $resolved = [];
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     */
     public function __construct(ProductRepositoryInterface $productRepository)
     {
         $this->productRepository = $productRepository;
@@ -46,9 +40,6 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
         $this->skuProductConcreteList = array_flip($productRepository->getSkuProductConcreteList());
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->checkSkuProductAlreadyExists($dataSet);

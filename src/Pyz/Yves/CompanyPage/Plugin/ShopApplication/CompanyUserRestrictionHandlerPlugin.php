@@ -57,9 +57,6 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
         throw new CustomerAccessDeniedException(static::GLOSSARY_KEY_COMPANY_PAGE_RESTRICTED);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     */
     protected function canAccess(CustomerTransfer $customerTransfer): bool
     {
         $companyUserTransfer = $customerTransfer->getCompanyUserTransfer();
@@ -67,9 +64,6 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
         return $companyUserTransfer && $this->hasPermission($companyUserTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $customerTransfer
-     */
     protected function hasPermission(CompanyUserTransfer $customerTransfer): bool
     {
         $companyRoleTransfers = $customerTransfer

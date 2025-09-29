@@ -22,10 +22,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class SaleController extends AbstractController
 {
-    /**
-     * @param string|null $categoryPath
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     */
     public function indexAction(?string $categoryPath, Request $request): View
     {
         $parameters = $request->query->all();

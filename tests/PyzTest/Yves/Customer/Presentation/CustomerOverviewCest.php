@@ -29,18 +29,11 @@ use PyzTest\Yves\Customer\PageObject\CustomerProfilePage;
  */
 class CustomerOverviewCest
 {
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     */
     public function _before(CustomerPresentationTester $i): void
     {
         $i->amYves();
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanOpenOverviewPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
@@ -52,10 +45,6 @@ class CustomerOverviewCest
         $i->see(CustomerOverviewPage::BOX_HEADLINE_NEWSLETTER, 'h4');
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
@@ -65,10 +54,6 @@ class CustomerOverviewCest
         $i->amOnPage(CustomerProfilePage::URL);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
@@ -78,10 +63,6 @@ class CustomerOverviewCest
         $i->amOnPage(CustomerAddressesPage::URL);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanGoFromOverviewToOrdersPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
@@ -90,10 +71,6 @@ class CustomerOverviewCest
         $i->amOnPage(CustomerOrdersPage::URL);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanGoFromOverviewToNewsletterPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();

@@ -51,14 +51,8 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -71,9 +65,6 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
         return $this->customerTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     */
     public function buildFixtures(PriceProductVolumesApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
@@ -83,17 +74,11 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     */
     protected function createProductConcrete(PriceProductVolumesApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
     }
 
-    /**
-     * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     */
     protected function createPriceProduct(PriceProductVolumesApiTester $I): void
     {
         $I->havePriceProduct([
@@ -111,9 +96,6 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
         ]);
     }
 
-    /**
-     * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     */
     protected function createCustomer(PriceProductVolumesApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([

@@ -41,18 +41,12 @@ class PaymentCaptureFailedMessageCest
      */
     public const FINAL_ITEM_STATE = 'payment failed';
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $i
-     */
     public function _before(PaymentPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     */
     public function testPaymentCaptureFailedMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
         // Arrange
@@ -69,9 +63,6 @@ class PaymentCaptureFailedMessageCest
         $I->assertOrderHasCorrectState($salesOrderEntity, static::FINAL_ITEM_STATE);
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     */
     public function testPaymentCaptureFailedMessageIsSuccessfullyHandledWhenItemWasAuthorized(PaymentPresentationTester $I): void
     {
         // Arrange

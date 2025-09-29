@@ -19,9 +19,6 @@ class AttributesExtractorStep implements DataImportStepInterface
      */
     public const KEY_ATTRIBUTES = 'attributes';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $keysToUnset = [];

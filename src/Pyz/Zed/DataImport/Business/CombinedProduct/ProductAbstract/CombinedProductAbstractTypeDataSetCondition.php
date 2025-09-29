@@ -24,9 +24,6 @@ class CombinedProductAbstractTypeDataSetCondition implements DataSetConditionInt
      */
     protected const ASSIGNABLE_PRODUCT_TYPE_BOTH = 'both';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function hasData(DataSetInterface $dataSet): bool
     {
         if (

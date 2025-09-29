@@ -125,27 +125,18 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      */
     public const DATA_PRODUCT_BUNDLE_TRANSFER = 'DATA_PRODUCT_BUNDLE_TRANSFER';
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
-    protected $productRepository;
+    protected ProductRepository $productRepository;
 
     /**
      * @var array<bool> Keys are product column names
      */
-    protected static $isProductColumnBuffer = [];
+    protected static array $isProductColumnBuffer = [];
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
     public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->importProduct($dataSet);
@@ -153,9 +144,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $this->importBundles($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProduct(DataSetInterface $dataSet): void
     {
         $productEntityTransfer = new SpyProductEntityTransfer();
@@ -175,9 +163,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_CONCRETE_TRANSFER] = $productEntityTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProductLocalizedAttributes(DataSetInterface $dataSet): void
     {
         $localizedAttributeTransfer = [];
@@ -206,9 +191,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importBundles(DataSetInterface $dataSet): void
     {
         $productBundleTransfer = [];
@@ -232,9 +214,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_BUNDLE_TRANSFER] = $productBundleTransfer;
     }
 
-    /**
-     * @param string $columnName
-     */
     protected function isProductColumn(string $columnName): bool
     {
         if (isset(static::$isProductColumnBuffer[$columnName])) {

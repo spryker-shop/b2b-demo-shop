@@ -22,14 +22,8 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\OauthResponseTransfer
-     */
     protected OauthResponseTransfer $oauthResponseTransfer;
 
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     */
     public function buildFixtures(AuthRestApiTester $I): FixturesContainerInterface
     {
         $this->oauthResponseTransfer = $this->createOauthResponseTransfer($I);
@@ -42,9 +36,6 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
         return $this->oauthResponseTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     */
     protected function createOauthResponseTransfer(AuthRestApiTester $I): OauthResponseTransfer
     {
         $customerTransfer = $this->createCustomerTransfer($I);
@@ -53,9 +44,6 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     */
     protected function createCustomerTransfer(AuthRestApiTester $I): CustomerTransfer
     {
         return $I->haveCustomer([

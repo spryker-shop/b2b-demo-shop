@@ -31,14 +31,8 @@ class UrlsRestApiCest
      */
     protected const DEFAULT_LOCALE = 'en_US';
 
-    /**
-     * @var \PyzTest\Glue\Urls\RestApi\UrlsRestApiFixtures
-     */
     protected UrlsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     */
     public function loadFixtures(UrlsRestApiTester $I): void
     {
         /** @var \PyzTest\Glue\Urls\RestApi\UrlsRestApiFixtures $fixtures */

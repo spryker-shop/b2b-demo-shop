@@ -39,9 +39,6 @@ class TaxAppConfigMessageTest extends Unit
      */
     protected const VENDOR_CODE = 'VENDOR_CODE';
 
-    /**
-     * @var \PyzTest\Zed\MessageBroker\TaxAppCommunicationTester
-     */
     protected TaxAppCommunicationTester $tester;
 
     public function testConfigureTaxAppMessageIsSuccessfullyHandled(): void

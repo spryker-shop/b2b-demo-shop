@@ -39,9 +39,6 @@ class SendMessageTest extends Unit
      */
     protected const MESSAGE_BROKER_TRANSFER_VALUE = 'value';
 
-    /**
-     * @var \PyzTest\Zed\MessageBroker\MessageBrokerBusinessTester
-     */
     protected MessageBrokerBusinessTester $tester;
 
     public function testCheckAttributesBeforeSendingMessage(): void
@@ -100,9 +97,6 @@ class SendMessageTest extends Unit
         $this->tester->getMessageBrokerFacade()->sendMessage($messageBrokerTestMessageTransfer);
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $messageTransfer
-     */
     protected function getTransferNameFromClass(TransferInterface $messageTransfer): string
     {
         $messageName = get_class($messageTransfer);

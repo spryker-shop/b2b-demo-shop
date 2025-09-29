@@ -63,22 +63,13 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      */
     public const KEY_MAX_NUMBER_OF_USES = 'max_number_of_uses';
 
-    /**
-     * @var \Spryker\Zed\Discount\DiscountConfig
-     */
-    protected $discountConfig;
+    protected DiscountConfig $discountConfig;
 
-    /**
-     * @param \Spryker\Zed\Discount\DiscountConfig $discountConfig
-     */
     public function __construct(DiscountConfig $discountConfig)
     {
         $this->discountConfig = $discountConfig;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $discountEntity = SpyDiscountQuery::create()
@@ -110,10 +101,6 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
         $voucherCodeCollection->save();
     }
 
-    /**
-     * @param \Orm\Zed\Discount\Persistence\SpyDiscount $discountEntity
-     * @param int $voucherBatch
-     */
     protected function voucherBatchExists(SpyDiscount $discountEntity, int $voucherBatch): bool
     {
         $query = SpyDiscountVoucherQuery::create()
@@ -151,10 +138,6 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
         return $codesToGenerate;
     }
 
-    /**
-     * @param string $customCode
-     * @param string $code
-     */
     protected function addCustomCodeToGenerated(string $customCode, string $code): string
     {
         $replacementString = $this->discountConfig->getVoucherPoolTemplateReplacementString();
@@ -170,17 +153,11 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
         return str_replace($replacementString, $code, $customCode);
     }
 
-    /**
-     * @param string $code
-     */
     protected function voucherCodeExists(string $code): bool
     {
         return (SpyDiscountVoucherQuery::create()->filterByCode($code)->count() > 0);
     }
 
-    /**
-     * @param int $length
-     */
     protected function getRandomVoucherCode(int $length): string
     {
         $allowedCharacters = $this->discountConfig->getVoucherCodeCharacters();

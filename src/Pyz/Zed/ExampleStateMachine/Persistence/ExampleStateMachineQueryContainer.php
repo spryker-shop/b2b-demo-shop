@@ -40,9 +40,6 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
             ->find();
     }
 
-    /**
-     * @param int $idStateMachineItem
-     */
     public function queryExampleStateMachineItemByIdStateMachineItem(int $idStateMachineItem): PyzExampleStateMachineItemQuery
     {
         return $this->getFactory()

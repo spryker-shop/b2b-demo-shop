@@ -27,25 +27,15 @@ class LocaleNameToIdLocaleStep implements DataImportStepInterface
      */
     public const KEY_TARGET = 'idLocale';
 
-    /**
-     * @var string
-     */
-    protected $source;
+    protected string $source;
 
-    /**
-     * @var string
-     */
-    protected $target;
+    protected string $target;
 
     /**
      * @var array<string, int>
      */
-    protected $resolved = [];
+    protected array $resolved = [];
 
-    /**
-     * @param string $source
-     * @param string $target
-     */
     public function __construct(string $source = self::KEY_SOURCE, string $target = self::KEY_TARGET)
     {
         $this->source = $source;

@@ -39,11 +39,8 @@ class ProductRepository implements ProductRepositoryInterface
     /**
      * @var array<string, array<string, mixed>>
      */
-    protected static $resolved = [];
+    protected static array $resolved = [];
 
-    /**
-     * @param string $sku
-     */
     public function getIdProductByConcreteSku(string $sku): int
     {
         if (!isset(static::$resolved[$sku])) {
@@ -53,9 +50,6 @@ class ProductRepository implements ProductRepositoryInterface
         return static::$resolved[$sku][static::ID_PRODUCT];
     }
 
-    /**
-     * @param string $sku
-     */
     public function getAbstractSkuByConcreteSku(string $sku): string
     {
         if (!isset(static::$resolved[$sku])) {
@@ -65,9 +59,6 @@ class ProductRepository implements ProductRepositoryInterface
         return static::$resolved[$sku][static::ABSTRACT_SKU];
     }
 
-    /**
-     * @param string $sku
-     */
     public function getIdProductAbstractByAbstractSku(string $sku): int
     {
         if (!isset(static::$resolved[$sku])) {
@@ -77,9 +68,6 @@ class ProductRepository implements ProductRepositoryInterface
         return static::$resolved[$sku][static::ID_PRODUCT_ABSTRACT];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     */
     public function getProductConcreteAttributesCollection(PaginationTransfer $paginationTransfer): ArrayCollection
     {
         $productQuery = SpyProductQuery::create()
@@ -132,9 +120,6 @@ class ProductRepository implements ProductRepositoryInterface
         ];
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     */
     public function addProductAbstract(SpyProductAbstract $productAbstractEntity): void
     {
         static::$resolved[$productAbstractEntity->getSku()] = [
@@ -142,10 +127,6 @@ class ProductRepository implements ProductRepositoryInterface
         ];
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProduct $productEntity
-     * @param string|null $abstractSku
-     */
     public function addProductConcrete(SpyProduct $productEntity, ?string $abstractSku = null): void
     {
         static::$resolved[$productEntity->getSku()] = [
@@ -185,10 +166,6 @@ class ProductRepository implements ProductRepositoryInterface
         static::$resolved = [];
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductQuery $productQuery
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     */
     protected function applyPagination(SpyProductQuery $productQuery, PaginationTransfer $paginationTransfer): SpyProductQuery
     {
         if ($paginationTransfer->getOffset() === null || $paginationTransfer->getLimit() === null) {

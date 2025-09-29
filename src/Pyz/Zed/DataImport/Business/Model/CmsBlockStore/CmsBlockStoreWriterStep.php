@@ -38,16 +38,13 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
     /**
      * @var array<int> Keys are CMS Block names, values are CMS Block IDs.
      */
-    protected static $idCmsBlockBuffer = [];
+    protected static array $idCmsBlockBuffer = [];
 
     /**
      * @var array<int> Keys are store names, values are store ids.
      */
-    protected static $idStoreBuffer = [];
+    protected static array $idStoreBuffer = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $idCmsBlock = $this->getIdCmsBlockByKey($dataSet[static::KEY_BLOCK_KEY]);

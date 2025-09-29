@@ -49,9 +49,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      */
     protected const SERVICE_FORM_FACTORY = 'form.factory';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -60,9 +57,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     */
     protected function extendPaymentMethodHandler(Container $container): Container
     {
         $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
@@ -99,10 +93,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         ];
     }
 
-    /**
-     * @param string $subForm
-     * @param string $blockPrefix
-     */
     protected function getCustomerCheckoutForm(string $subForm, string $blockPrefix): FormInterface
     {
         return $this->getFormFactory()->createNamed(

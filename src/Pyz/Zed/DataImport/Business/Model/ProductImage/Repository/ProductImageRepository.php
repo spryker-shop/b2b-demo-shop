@@ -21,25 +21,18 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     /**
      * @var array<\Orm\Zed\ProductImage\Persistence\SpyProductImageSet>
      */
-    protected $resolvedProductImageSets = [];
+    protected array $resolvedProductImageSets = [];
 
     /**
      * @var array<\Orm\Zed\ProductImage\Persistence\SpyProductImage>
      */
-    protected $resolvedProductImages = [];
+    protected array $resolvedProductImages = [];
 
     /**
      * @var array<\Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage>
      */
-    protected $resolvedProductImageSetToProductImageRelations = [];
+    protected array $resolvedProductImageSetToProductImageRelations = [];
 
-    /**
-     * @param string $name
-     * @param int $localeId
-     * @param int|null $productAbstractId
-     * @param int|null $productConcreteId
-     * @param string|null $productImageSetKey
-     */
     public function getProductImageSetEntity(
         string $name,
         int $localeId,
@@ -56,9 +49,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         return $this->resolvedProductImageSets[$key];
     }
 
-    /**
-     * @param string $productImageKey
-     */
     public function getProductImageEntity(string $productImageKey): SpyProductImage
     {
         if (!isset($this->resolvedProductImages[$productImageKey])) {
@@ -68,10 +58,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         return $this->resolvedProductImages[$productImageKey];
     }
 
-    /**
-     * @param int $productImageSetId
-     * @param int $productImageId
-     */
     public function getProductImageSetToProductImageRelationEntity(
         int $productImageSetId,
         int $productImageId,
@@ -85,9 +71,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         return $this->resolvedProductImageSetToProductImageRelations[$key];
     }
 
-    /**
-     * @param string $productImageKey
-     */
     protected function getProductImage(string $productImageKey): SpyProductImage
     {
         $productImageEntity = SpyProductImageQuery::create()
@@ -101,10 +84,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         return new SpyProductImage();
     }
 
-    /**
-     * @param int $productImageSetId
-     * @param int $productImageId
-     */
     protected function buildProductImageSetToProductImageRelationKey(
         int $productImageSetId,
         int $productImageId,
@@ -112,10 +91,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         return sprintf('%d:%d', $productImageSetId, $productImageId);
     }
 
-    /**
-     * @param int $productImageSetId
-     * @param int $productImageId
-     */
     protected function getProductImageSetToProductImageRelation(
         int $productImageSetId,
         int $productImageId,
@@ -126,13 +101,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
             ->findOneOrCreate();
     }
 
-    /**
-     * @param string $name
-     * @param int $localeId
-     * @param int|null $productAbstractId
-     * @param int|null $productConcreteId
-     * @param string|null $productImageSetKey
-     */
     protected function buildProductImageSetKey(
         string $name,
         int $localeId,
@@ -149,13 +117,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         );
     }
 
-    /**
-     * @param string $name
-     * @param int $localeId
-     * @param int|null $productAbstractId
-     * @param int|null $productConcreteId
-     * @param string|null $productImageSetKey
-     */
     protected function getProductImageSet(
         string $name,
         int $localeId,

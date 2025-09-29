@@ -24,8 +24,5 @@ interface ExampleStateMachineQueryContainerInterface
      */
     public function queryAllStateMachineItems(): ObjectCollection;
 
-    /**
-     * @param int $idStateMachineItem
-     */
     public function queryExampleStateMachineItemByIdStateMachineItem(int $idStateMachineItem): PyzExampleStateMachineItemQuery;
 }

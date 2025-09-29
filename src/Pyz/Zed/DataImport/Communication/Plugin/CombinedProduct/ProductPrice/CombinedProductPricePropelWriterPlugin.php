@@ -20,9 +20,6 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  */
 class CombinedProductPricePropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
 {
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function write(DataSetInterface $dataSet): void
     {
         $this->getFacade()->writeCombinedProductPriceDataSet($dataSet);

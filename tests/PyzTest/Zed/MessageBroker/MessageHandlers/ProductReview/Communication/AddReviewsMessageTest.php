@@ -26,9 +26,6 @@ use PyzTest\Zed\MessageBroker\ProductReviewCommunicationTester;
  */
 class AddReviewsMessageTest extends Unit
 {
-    /**
-     * @var \PyzTest\Zed\MessageBroker\ProductReviewCommunicationTester
-     */
     protected ProductReviewCommunicationTester $tester;
 
     public function testAddReviewsMessageIsSuccessfullyHandled(): void

@@ -32,14 +32,8 @@ use Spryker\Shared\Price\PriceConfig;
  */
 class ProductConfigurationRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\ProductConfigurations\RestApi\Fixtures\ProductConfigurationsRestApiFixtures
-     */
     protected ProductConfigurationsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     public function loadFixtures(ProductConfigurationsApiTester $I): void
     {
         /** @var \PyzTest\Glue\ProductConfigurations\RestApi\Fixtures\ProductConfigurationsRestApiFixtures $fixtures */
@@ -93,9 +87,6 @@ class ProductConfigurationRestApiCest
             ->seeProductConfigurationInstanceEqualToExpectedValue($this->fixtures->getProductConfigurationTransfer());
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     public function requestAddConfigurableItemsToCart(ProductConfigurationsApiTester $I): void
     {
         // Arrange
@@ -164,9 +155,6 @@ class ProductConfigurationRestApiCest
         );
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     public function requestGetOrderDetails(ProductConfigurationsApiTester $I): void
     {
         // Arrange

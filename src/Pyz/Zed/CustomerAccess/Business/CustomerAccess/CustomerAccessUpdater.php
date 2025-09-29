@@ -19,26 +19,10 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
 {
     use TransactionTrait;
 
-    /**
-     * @var \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface
-     */
-    protected $customerAccessEntityManager;
+    protected CustomerAccessReaderInterface $customerAccessReader;
 
-    /**
-     * @var \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface
-     */
-    protected $customerAccessReader;
+    protected CustomerAccessFilterInterface $customerAccessFilter;
 
-    /**
-     * @var \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface
-     */
-    protected $customerAccessFilter;
-
-    /**
-     * @param \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface $customerAccessEntityManager
-     * @param \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface $customerAccessReader
-     * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface $customerAccessFilter
-     */
     public function __construct(
         CustomerAccessEntityManagerInterface $customerAccessEntityManager,
         CustomerAccessReaderInterface $customerAccessReader,
@@ -49,9 +33,6 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
         $this->customerAccessFilter = $customerAccessFilter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     */
     public function updateUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($customerAccessTransfer) {
@@ -59,7 +40,8 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
             $manageableContentTypes = $this->customerAccessFilter->filterManageableContentTypes($allContentTypes);
             $this->customerAccessEntityManager->setContentTypesToAccessible($manageableContentTypes);
 
-            return $this->customerAccessEntityManager->setContentTypesToInaccessible($customerAccessTransfer);
+            // Use the parent class method to set inaccessible content types
+            return parent::updateUnauthenticatedCustomerAccess($customerAccessTransfer);
         });
     }
 }

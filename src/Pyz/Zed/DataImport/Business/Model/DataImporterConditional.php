@@ -16,23 +16,13 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class DataImporterConditional extends DataImporter
 {
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
-    protected $dataSetCondition;
+    protected DataSetConditionInterface $dataSetCondition;
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface $dataSetCondition
-     */
     public function setDataSetCondition(DataSetConditionInterface $dataSetCondition): void
     {
         $this->dataSetCondition = $dataSetCondition;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Generated\Shared\Transfer\DataImporterReportTransfer $dataImporterReportTransfer
-     */
     protected function processDataSet(DataSetInterface $dataSet, DataImporterReportTransfer $dataImporterReportTransfer): void
     {
         if ($this->dataSetCondition->hasData($dataSet)) {

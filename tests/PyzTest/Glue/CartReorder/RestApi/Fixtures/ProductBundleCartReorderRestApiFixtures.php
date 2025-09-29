@@ -32,39 +32,18 @@ class ProductBundleCartReorderRestApiFixtures implements FixturesBuilderInterfac
      */
     protected const TEST_USERNAME = 'ProductBundleCartReorderRestApiFixtures';
 
-    /**
-     * @var \Generated\Shared\Transfer\StoreTransfer
-     */
     protected StoreTransfer $storeTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $bundledProductConcreteTransfer1;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $bundledProductConcreteTransfer2;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productBundleTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $orderWithProductBundle;
 
     public function getCustomerTransfer(): CustomerTransfer
@@ -97,9 +76,6 @@ class ProductBundleCartReorderRestApiFixtures implements FixturesBuilderInterfac
         return $this->orderWithProductBundle;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     public function buildFixtures(CartReorderApiTester $I): FixturesContainerInterface
     {
         $I->configureStateMachine();
@@ -115,9 +91,6 @@ class ProductBundleCartReorderRestApiFixtures implements FixturesBuilderInterfac
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createProductBundle(CartReorderApiTester $I): ProductConcreteTransfer
     {
         $productConcreteTransfer = $I->haveFullProduct();
@@ -155,9 +128,6 @@ class ProductBundleCartReorderRestApiFixtures implements FixturesBuilderInterfac
         return $productConcreteTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createOrderWithProductBundle(CartReorderApiTester $I): SaveOrderTransfer
     {
         $itemsData = [

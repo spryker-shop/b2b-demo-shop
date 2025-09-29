@@ -22,7 +22,7 @@ class ProductStockAfterImportPublishHook implements DataImporterAfterImportInter
     /**
      * @var array<mixed>
      */
-    protected $entityEvents = [];
+    protected array $entityEvents = [];
 
     public function afterImport(): void
     {

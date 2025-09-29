@@ -30,14 +30,8 @@ use Spryker\Shared\Calculation\CalculationPriceMode;
  */
 class CartsRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\Carts\RestApi\Fixtures\CartsRestApiFixtures
-     */
     protected CartsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     */
     public function loadFixtures(CartsApiTester $I): void
     {
         /** @var \PyzTest\Glue\Carts\RestApi\Fixtures\CartsRestApiFixtures $fixtures */
@@ -1223,9 +1217,6 @@ class CartsRestApiCest
         $I->seeResponseMatchesOpenApiSchema();
     }
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     */
     protected function authorizeCustomer(CartsApiTester $I): void
     {
         $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())->getAccessToken();

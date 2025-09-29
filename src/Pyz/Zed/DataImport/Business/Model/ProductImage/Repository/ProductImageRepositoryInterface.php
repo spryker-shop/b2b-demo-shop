@@ -15,13 +15,6 @@ use Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage;
 
 interface ProductImageRepositoryInterface
 {
-    /**
-     * @param string $name
-     * @param int $localeId
-     * @param int|null $productAbstractId
-     * @param int|null $productConcreteId
-     * @param string|null $productImageSetKey
-     */
     public function getProductImageSetEntity(
         string $name,
         int $localeId,
@@ -30,15 +23,8 @@ interface ProductImageRepositoryInterface
         ?string $productImageSetKey = null,
     ): SpyProductImageSet;
 
-    /**
-     * @param string $productImageKey
-     */
     public function getProductImageEntity(string $productImageKey): SpyProductImage;
 
-    /**
-     * @param int $productImageSetId
-     * @param int $productImageId
-     */
     public function getProductImageSetToProductImageRelationEntity(
         int $productImageSetId,
         int $productImageId,

@@ -51,14 +51,8 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     protected const PRODUCT_CONCRETES_GENERATE_NUMBER = 100;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransferWithPersistedAddress;
 
     /**
@@ -66,19 +60,10 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     protected array $productConcreteTransfers;
 
-    /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected QuoteTransfer $emptyQuoteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ShipmentMethodTransfer
-     */
     protected ShipmentMethodTransfer $shipmentMethodTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\AddressTransfer
-     */
     protected AddressTransfer $customerAddress;
 
     public function getCustomerTransfer(): CustomerTransfer
@@ -114,9 +99,6 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         return $this->customerAddress;
     }
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
         $I->truncateSalesOrderThresholds();

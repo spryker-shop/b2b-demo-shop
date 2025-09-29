@@ -101,9 +101,6 @@ class ProductSetIdsWidget extends AbstractWidget
         ];
     }
 
-    /**
-     * @param int $idProductSet
-     */
     protected function getProductSetStorageTransfer(int $idProductSet): ?ProductSetDataStorageTransfer
     {
         return $this->getFactory()->getProductSetStorageClient()->getProductSetByIdProductSet($idProductSet, $this->getLocale());

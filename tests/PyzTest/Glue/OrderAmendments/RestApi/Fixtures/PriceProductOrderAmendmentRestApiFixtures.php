@@ -61,24 +61,12 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
      */
     protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $readyForAmendmentOrderTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productWithBiggerPrice;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productWithLowerPrice;
 
     public function getCustomerTransfer(): CustomerTransfer
@@ -101,9 +89,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
         return $this->productWithLowerPrice;
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     public function buildFixtures(OrderAmendmentsApiTester $I): FixturesContainerInterface
     {
         $this->configureStateMachine($I);
@@ -134,9 +119,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     protected function createCustomerTransfer(OrderAmendmentsApiTester $I): CustomerTransfer
     {
         $customerTransfer = $I->haveCustomer([
@@ -148,9 +130,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
         return $I->confirmCustomer($customerTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     protected function createOrderWithProductConcretes(OrderAmendmentsApiTester $I): SaveOrderTransfer
     {
         $quoteTransfer = (new QuoteBuilder())
@@ -191,9 +170,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
         }
     }
 
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     */
     protected function configureStateMachine(OrderAmendmentsApiTester $I): void
     {
         $I->configureTestStateMachine([static::STATE_MACHINE_NAME]);

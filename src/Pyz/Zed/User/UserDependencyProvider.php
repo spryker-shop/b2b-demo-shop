@@ -22,9 +22,6 @@ use Spryker\Zed\UserLocaleGui\Communication\Plugin\UserLocaleFormExpanderPlugin;
 
 class UserDependencyProvider extends SprykerUserDependencyProvider
 {
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     protected function addGroupPlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_GROUP, function (Container $container) { // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter

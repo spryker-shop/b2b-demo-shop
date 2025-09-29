@@ -24,9 +24,6 @@ use PyzTest\Zed\Console\ConsoleConsoleTester;
  */
 class ConsoleCest
 {
-    /**
-     * @param \PyzTest\Zed\Console\ConsoleConsoleTester $i
-     */
     public function testICanRunConsoleApplication(ConsoleConsoleTester $i): void
     {
         $i->wantTo('See that console is running');

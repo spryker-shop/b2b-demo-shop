@@ -97,24 +97,12 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
      */
     protected const TEST_DISPLAY_DATA = '{"Preferred time of the day": "Afternoon", "Date": "9.09.2020"}';
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConfigurationTransfer
-     */
     protected ProductConfigurationTransfer $productConfigurationTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $saveOrderTransfer;
 
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -137,9 +125,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
         return $this->saveOrderTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     public function buildFixtures(ProductConfigurationsApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
@@ -150,11 +135,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
         return $this;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     * @param \Generated\Shared\Transfer\ProductConfigurationInstanceTransfer $productConfigurationInstanceTransfer
-     */
     public function createQuoteTransfer(
         CustomerTransfer $customerTransfer,
         ProductConcreteTransfer $productConcreteTransfer,
@@ -174,9 +154,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
             ->build();
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createProductConcrete(ProductConfigurationsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
@@ -190,9 +167,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
         ]);
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createProductConfiguration(ProductConfigurationsApiTester $I): void
     {
         $this->productConfigurationTransfer = $I->haveProductConfigurationTransferPersisted([
@@ -203,9 +177,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
         ]);
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createCustomerTransfer(ProductConfigurationsApiTester $I): void
     {
         $this->customerTransfer = $I->haveCustomer([
@@ -216,9 +187,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
         $I->confirmCustomer($this->customerTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createOrder(ProductConfigurationsApiTester $I): void
     {
         $productConfigurationInstanceTransfer = $this->createProductConfigurationInstanceTransfer($this->productConfigurationTransfer);
@@ -239,9 +207,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
             ->saveSalesOrderItemConfigurationsFromQuote($quoteTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     */
     protected function createStateMachine(ProductConfigurationsApiTester $I): string
     {
         $testStateMachineProcessName = 'DummyPayment01';
@@ -250,9 +215,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
         return $testStateMachineProcessName;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
-     */
     protected function createProductConfigurationInstanceTransfer(
         ProductConfigurationTransfer $productConfigurationTransfer,
     ): ProductConfigurationInstanceTransfer {

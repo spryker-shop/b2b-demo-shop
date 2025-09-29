@@ -25,14 +25,8 @@ use PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester;
  */
 class CartUpSellingProductsRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\UpSellingProducts\RestApi\CartUpSellingProductsRestApiFixtures
-     */
     protected CartUpSellingProductsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     */
     public function loadFixtures(UpSellingProductsApiTester $I): void
     {
         /** @var \PyzTest\Glue\UpSellingProducts\RestApi\CartUpSellingProductsRestApiFixtures $fixtures */

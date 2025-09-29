@@ -27,14 +27,8 @@ use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
  */
 class ShoppingListRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\ShoppingLists\RestApi\ShoppingListsRestApiFixtures
-     */
     protected ShoppingListsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     */
     public function loadFixtures(ShoppingListsApiTester $I): void
     {
         /** @var \PyzTest\Glue\ShoppingLists\RestApi\ShoppingListsRestApiFixtures $fixtures */

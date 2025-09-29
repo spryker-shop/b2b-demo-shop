@@ -107,9 +107,9 @@ class TaxRateCreatePage
     public const TAX_RATE_VALID_EDITED = 'validTaxRateEdited';
 
     /**
-     * @var array
+     * @var array<string, array<string, string>>
      */
-    public static $taxRateData = [
+    public static array $taxRateData = [
         self::TAX_RATE_VALID => [
             'name' => 'Acceptance Standard',
             'country' => 'Germany',

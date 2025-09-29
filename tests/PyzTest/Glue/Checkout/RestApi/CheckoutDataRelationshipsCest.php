@@ -27,14 +27,8 @@ use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
  */
 class CheckoutDataRelationshipsCest
 {
-    /**
-     * @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataShipmentRelationshipsFixtures
-     */
     protected CheckoutDataShipmentRelationshipsFixtures $checkoutDataShipmentRelationshipsFixtures;
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     public function loadShipmentFixtures(CheckoutApiTester $I): void
     {
         /** @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataShipmentRelationshipsFixtures $fixtures */

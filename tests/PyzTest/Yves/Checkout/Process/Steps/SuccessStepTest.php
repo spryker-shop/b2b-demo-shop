@@ -70,10 +70,6 @@ class SuccessStepTest extends Unit
         $this->assertFalse($successStep->postCondition($quoteTransfer));
     }
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface|null $customerClientMock
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCartClientInterface|null $cartClientMock
-     */
     protected function createSuccessStep(
         ?CheckoutPageToCustomerClientInterface $customerClientMock = null,
         ?CheckoutPageToCartClientInterface $cartClientMock = null,

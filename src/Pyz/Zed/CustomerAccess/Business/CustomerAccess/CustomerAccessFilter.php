@@ -14,22 +14,13 @@ use Pyz\Zed\CustomerAccess\CustomerAccessConfig;
 
 class CustomerAccessFilter implements CustomerAccessFilterInterface
 {
-    /**
-     * @var \Pyz\Zed\CustomerAccess\CustomerAccessConfig
-     */
-    protected $customerAccessConfig;
+    protected CustomerAccessConfig $customerAccessConfig;
 
-    /**
-     * @param \Pyz\Zed\CustomerAccess\CustomerAccessConfig $customerAccessConfig
-     */
     public function __construct(CustomerAccessConfig $customerAccessConfig)
     {
         $this->customerAccessConfig = $customerAccessConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     */
     public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         $filteredCustomerAccessTransfer = new CustomerAccessTransfer();
@@ -45,9 +36,6 @@ class CustomerAccessFilter implements CustomerAccessFilterInterface
         return $filteredCustomerAccessTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     */
     public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         $filteredCustomerAccessTransfer = new CustomerAccessTransfer();

@@ -28,14 +28,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $alternativeProductConcreteTransfer;
 
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -48,9 +42,6 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
         return $this->alternativeProductConcreteTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     */
     public function buildFixtures(AlternativeProductsRestApiTester $I): FixturesContainerInterface
     {
         $this->createAlternativeRelationBetweenProducts($I);
@@ -58,9 +49,6 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     */
     protected function createAlternativeRelationBetweenProducts(AlternativeProductsRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();

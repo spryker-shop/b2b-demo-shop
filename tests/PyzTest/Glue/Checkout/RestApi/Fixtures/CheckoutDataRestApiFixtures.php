@@ -41,24 +41,12 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected QuoteTransfer $quoteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ShipmentMethodTransfer
-     */
     protected ShipmentMethodTransfer $shipmentMethodTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\AddressTransfer
-     */
     protected AddressTransfer $customerAddress;
 
     public function getQuoteTransfer(): QuoteTransfer
@@ -81,9 +69,6 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
         return $this->customerAddress;
     }
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
         $I->truncateSalesOrderThresholds();

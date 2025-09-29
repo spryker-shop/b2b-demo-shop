@@ -26,14 +26,8 @@ use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
  */
 class AccessTokensRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\Auth\RestApi\AccessTokensRestApiFixtures
-     */
     protected AccessTokensRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     */
     public function loadFixtures(AuthRestApiTester $I): void
     {
         /** @var \PyzTest\Glue\Auth\RestApi\AccessTokensRestApiFixtures $fixtures */

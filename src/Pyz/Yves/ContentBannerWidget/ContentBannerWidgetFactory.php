@@ -16,10 +16,6 @@ use Twig\Environment;
 
 class ContentBannerWidgetFactory extends SprykerShopContentBannerWidgetFactory
 {
-    /**
-     * @param \Twig\Environment $twig
-     * @param string $localeName
-     */
     public function createContentBannerTwigFunctionProvider(Environment $twig, string $localeName): TwigFunctionProvider
     {
         return new ContentBannerTwigFunctionProvider(

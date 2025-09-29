@@ -28,14 +28,8 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
  */
 class CheckoutDataRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures
-     */
     protected CheckoutDataRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     public function loadFixtures(CheckoutApiTester $I): void
     {
         $I->loadFixtures(PaymentMethodsFixtures::class);

@@ -44,18 +44,12 @@ class MultiFactorAuthBackendApiTester extends BackendApiEndToEndTester
      */
     protected const TEST_PASSWORD = 'Change!23456';
 
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     */
     public function authorizeUserToBackendApi(UserTransfer $userTransfer): void
     {
         $oauthResponseTransfer = $this->havePasswordAuthorizationToBackendApi($userTransfer);
         $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
     }
 
-    /**
-     * @param string $userName
-     */
     public function createUser(string $userName): UserTransfer
     {
         $userTransfer = $this->haveUser([
@@ -67,10 +61,6 @@ class MultiFactorAuthBackendApiTester extends BackendApiEndToEndTester
         return $userTransfer->setPassword(static::TEST_PASSWORD);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     * @param string $mfaType
-     */
     public function getUserMultiFactorAuthCodeFromDatabase(UserTransfer $userTransfer, string $mfaType): ?string
     {
         $userMultiFactorAuthCodeEntity = (new SpyUserMultiFactorAuthCodesQuery())

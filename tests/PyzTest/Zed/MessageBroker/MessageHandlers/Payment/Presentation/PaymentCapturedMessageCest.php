@@ -41,18 +41,12 @@ class PaymentCapturedMessageCest
      */
     public const FINAL_ITEM_STATE = 'payment captured';
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $i
-     */
     public function _before(PaymentPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     */
     public function testPaymentCapturedMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
         // Arrange
@@ -69,9 +63,6 @@ class PaymentCapturedMessageCest
         $I->assertOrderHasCorrectState($salesOrderEntity, static::FINAL_ITEM_STATE);
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     */
     public function testPaymentCapturedMessageIsSuccessfullyHandledWhenItemWasAuthorized(PaymentPresentationTester $I): void
     {
         // Arrange

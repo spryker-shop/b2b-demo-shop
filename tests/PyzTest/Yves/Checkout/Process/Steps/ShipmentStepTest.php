@@ -13,6 +13,7 @@ use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
+use PyzTest\Yves\Checkout\CheckoutBusinessTester;
 use Spryker\Shared\Shipment\ShipmentConfig;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
@@ -42,10 +43,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ShipmentStepTest extends Unit
 {
-    /**
-     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
-     */
-    public $tester;
+    public CheckoutBusinessTester $tester;
 
     public function testShipmentStepExecuteShouldTriggerPlugins(): void
     {
@@ -79,9 +77,6 @@ class ShipmentStepTest extends Unit
         $this->assertTrue($shipmentStep->postCondition($quoteTransfer));
     }
 
-    /**
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $shipmentPlugins
-     */
     protected function createShipmentStep(StepHandlerPluginCollection $shipmentPlugins): ShipmentStep
     {
         $giftCardItemsCheckerMock = $this->createGiftCardItemsCheckerMock();

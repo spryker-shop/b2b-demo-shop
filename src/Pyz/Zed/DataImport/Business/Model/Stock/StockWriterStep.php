@@ -20,9 +20,6 @@ class StockWriterStep implements DataImportStepInterface
      */
     public const KEY_NAME = 'name';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $stockEntity = SpyStockQuery::create()

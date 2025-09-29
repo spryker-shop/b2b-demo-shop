@@ -41,9 +41,6 @@ class ShipmentWriterStep implements DataImportStepInterface
      */
     public const BULK_SIZE = 100;
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $shipmentCarrier = SpyShipmentCarrierQuery::create()

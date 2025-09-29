@@ -25,18 +25,12 @@ use PyzTest\Zed\Tax\TaxPresentationTester;
  */
 class TaxRateCreateCest
 {
-    /**
-     * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     */
     public function _before(TaxPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     */
     public function testCreateValidTaxRateShouldShowSuccessMessage(TaxPresentationTester $i): void
     {
         $i->wantTo('Create valid tax rate.');
@@ -48,9 +42,6 @@ class TaxRateCreateCest
         $i->removeTaxRateFromDatabase(TaxRateCreatePage::TAX_RATE_VALID);
     }
 
-    /**
-     * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     */
     public function testCreateInvalidTaxRateShouldShowErrorMessages(TaxPresentationTester $i): void
     {
         $i->wantTo('Create invalid tax rate');
@@ -60,9 +51,6 @@ class TaxRateCreateCest
         $i->seeErrorMessages();
     }
 
-    /**
-     * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     */
     public function testBackToListOfTaxRatesShouldOpenTaxRateListPageWithoutSaving(TaxPresentationTester $i): void
     {
         $i->wantTo('Create valid tax rate and back to list of tax rates');
@@ -78,9 +66,6 @@ class TaxRateCreateCest
         $i->waitForText(TaxRateListPage::MESSAGE_EMPTY_TABLE, 10);
     }
 
-    /**
-     * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     */
     public function testCreateTaxRateWhichAlreadyExistsShouldShowErrorMessage(TaxPresentationTester $i): void
     {
         $i->wantTo('Create tax rate which already exists');
@@ -94,9 +79,6 @@ class TaxRateCreateCest
         $i->see(TaxRateCreatePage::ERROR_MESSAGE_TAX_RATE_ALREADY_EXISTS);
     }
 
-    /**
-     * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     */
     public function testCreateAlreadyExistedTaxRateShouldShowErrorMessage(TaxPresentationTester $i): void
     {
         $i->wantTo('Create tax rate which already exists');
@@ -109,9 +91,6 @@ class TaxRateCreateCest
         $i->see(TaxRateCreatePage::ERROR_MESSAGE_TAX_RATE_ALREADY_EXISTS);
     }
 
-    /**
-     * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     */
     public function _after(TaxPresentationTester $i): void
     {
         $i->removeTaxRateFromDatabase(TaxRateCreatePage::TAX_RATE_VALID);

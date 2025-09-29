@@ -23,11 +23,8 @@ class AddCategoryKeysStep implements DataImportStepInterface
     /**
      * @var array<string, int>
      */
-    protected $categoryKeys = [];
+    protected array $categoryKeys = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         if (!$this->categoryKeys) {

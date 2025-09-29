@@ -26,18 +26,11 @@ use PyzTest\Yves\Customer\PageObject\CustomerAddressPage;
  */
 class CustomerAddressesCest
 {
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     */
     public function _before(CustomerPresentationTester $i): void
     {
         $i->amYves();
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanOpenAddAddressPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();

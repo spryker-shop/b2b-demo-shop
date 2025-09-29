@@ -23,9 +23,6 @@ class CustomerWriterStep implements DataImportStepInterface
      */
     public const COL_CUSTOMER_REFERENCE = 'customer_reference';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $customerEntity = SpyCustomerQuery::create()

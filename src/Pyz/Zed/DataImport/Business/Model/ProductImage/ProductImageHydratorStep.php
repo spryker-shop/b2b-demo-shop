@@ -109,9 +109,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      */
     public const DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER = 'DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->importImageSet($dataSet);
@@ -119,9 +116,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $this->importImageToImageSetRelation($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importImageSet(DataSetInterface $dataSet): void
     {
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
@@ -156,9 +150,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importImage(DataSetInterface $dataSet): void
     {
         $imageEntityTransfer = new SpyProductImageEntityTransfer();
@@ -169,9 +160,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $dataSet[static::DATA_PRODUCT_IMAGE_TRANSFER] = $imageEntityTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importImageToImageSetRelation(DataSetInterface $dataSet): void
     {
         $imageToImageSetRelationEntityTransfer = new SpyProductImageSetToProductImageEntityTransfer();
@@ -180,9 +168,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $dataSet[static::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = $imageToImageSetRelationEntityTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function getSortOrder(DataSetInterface $dataSet): int
     {
         if (isset($dataSet[static::COLUMN_SORT_ORDER]) && $dataSet[static::COLUMN_SORT_ORDER] >= 0) {

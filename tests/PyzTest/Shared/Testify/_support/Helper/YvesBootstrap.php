@@ -17,10 +17,7 @@ use Symfony\Component\HttpKernel\HttpKernelBrowser;
 
 class YvesBootstrap extends Framework
 {
-    /**
-     * @var \Pyz\Yves\ShopApplication\YvesBootstrap
-     */
-    private $yvesBootstrap;
+    private PyzYvesBootstrap $yvesBootstrap;
 
     public function _initialize(): void
     {

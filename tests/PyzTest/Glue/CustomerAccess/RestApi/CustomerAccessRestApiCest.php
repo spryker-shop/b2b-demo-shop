@@ -25,9 +25,6 @@ use PyzTest\Glue\CustomerAccess\CustomerAccessApiTester;
  */
 class CustomerAccessRestApiCest
 {
-    /**
-     * @param \PyzTest\Glue\CustomerAccess\CustomerAccessApiTester $I
-     */
     public function requestCustomerAccess(CustomerAccessApiTester $I): void
     {
         // Act

@@ -21,14 +21,8 @@ class AgentAccessTokensRestApiFixtures implements FixturesBuilderInterface, Fixt
      */
     public const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\UserTransfer
-     */
     protected UserTransfer $userTransfer;
 
-    /**
-     * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     */
     public function buildFixtures(AgentAuthRestApiTester $I): FixturesContainerInterface
     {
         $this->userTransfer = $this->createAgentUserTransfer($I);
@@ -41,9 +35,6 @@ class AgentAccessTokensRestApiFixtures implements FixturesBuilderInterface, Fixt
         return $this->userTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     */
     protected function createAgentUserTransfer(AgentAuthRestApiTester $I): UserTransfer
     {
         return $I->haveRegisteredAgent([

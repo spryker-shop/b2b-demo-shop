@@ -27,14 +27,8 @@ use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
  */
 class ProductBundleCartReorderRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\CartReorder\RestApi\Fixtures\ProductBundleCartReorderRestApiFixtures
-     */
     protected ProductBundleCartReorderRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     public function loadFixtures(CartReorderApiTester $I): void
     {
         /** @var \PyzTest\Glue\CartReorder\RestApi\Fixtures\ProductBundleCartReorderRestApiFixtures $fixtures */
@@ -43,9 +37,6 @@ class ProductBundleCartReorderRestApiCest
         $this->fixtures = $fixtures;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     public function requestCreateCartReorder(CartReorderApiTester $I): void
     {
         // Arrange

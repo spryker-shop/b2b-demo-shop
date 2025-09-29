@@ -53,9 +53,6 @@ class CartController extends SprykerCartController
         return $this->redirectToReferer($request);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     */
     protected function redirectToReferer(Request $request): RedirectResponse
     {
         return $request->headers->has(static::PARAM_REFERER) ?

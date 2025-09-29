@@ -44,9 +44,6 @@ class ProductSetImageExtractorStep implements DataImportStepInterface
      */
     public const IMAGE_ALT_TEXT_KEY_PREFIX = 'alt_text.';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $imageSets = [];

@@ -134,9 +134,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         );
     }
 
-    /**
-     * @param int $price
-     */
     public function assertShipmentExpensesHaveCorrectPrice(int $price): void
     {
         $this->amSure('The returned resource should have included orders resource')
@@ -315,20 +312,12 @@ class CheckoutApiTester extends ApiEndToEndTester
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
         $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
         $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param array $overrideItems
-     * @param string $priceMode
-     */
     public function havePersistentQuoteWithItemsAndItemLevelShipment(
         CustomerTransfer $customerTransfer,
         array $overrideItems = [],
@@ -346,9 +335,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         ]);
     }
 
-    /**
-     * @param array $overrideCustomer
-     */
     public function haveEmptyPersistentQuote(array $overrideCustomer = []): QuoteTransfer
     {
         return $this->havePersistentQuote([
@@ -381,17 +367,11 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $productConcreteTransfer;
     }
 
-    /**
-     * @param array $override
-     */
     public function createCustomerTransfer(array $override = []): CustomerTransfer
     {
         return (new CustomerBuilder($override))->build();
     }
 
-    /**
-     * @param array $override
-     */
     public function haveCustomerWithPersistentAddress(array $override = []): CustomerTransfer
     {
         $customerTransfer = $this->haveCustomer($override);
@@ -399,10 +379,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $this->haveAddressForCustomer($customerTransfer);
     }
 
-    /**
-     * @param array $paymentMethodOverrideData
-     * @param array $storeOverrideData
-     */
     public function havePaymentMethodWithStore(
         array $paymentMethodOverrideData = [],
         array $storeOverrideData = [
@@ -446,9 +422,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     */
     public function assertCustomerBillingAddressInOrders(AddressTransfer $addressTransfer): void
     {
         $jsonPath = sprintf('$..included[?(@.type == \'%s\')]', 'orders');
@@ -463,9 +436,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         $this->assertSame($addressTransfer->getIso2Code(), $billingAddress['iso2Code']);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     */
     public function assertCustomerShippingAddressInOrderShipments(
         AddressTransfer $addressTransfer,
     ): void {
@@ -481,9 +451,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         $this->assertSame($addressTransfer->getIso2Code(), $shippingAddress['iso2Code']);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
-     */
     public function assertCompanyBusinessUnitBillingAddressInOrders(
         CompanyUnitAddressTransfer $companyUnitAddressTransfer,
     ): void {
@@ -499,9 +466,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         $this->assertSame($companyUnitAddressTransfer->getIso2Code(), $billingAddress['iso2Code']);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
-     */
     public function assertCompanyBusinessUnitShippingAddressInOrderShipments(
         CompanyUnitAddressTransfer $companyUnitAddressTransfer,
     ): void {
@@ -517,9 +481,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         $this->assertSame($companyUnitAddressTransfer->getIso2Code(), $shippingAddress['iso2Code']);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     */
     protected function haveAddressForCustomer(CustomerTransfer $customerTransfer): CustomerTransfer
     {
         $addressTransfer = (new AddressBuilder([

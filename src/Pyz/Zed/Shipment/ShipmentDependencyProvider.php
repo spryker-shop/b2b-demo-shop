@@ -46,9 +46,6 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     protected function createMoneyCollectionFormTypePlugin(Container $container): FormTypeInterface // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return new MoneyCollectionFormTypePlugin();

@@ -19,9 +19,6 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
      */
     public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -30,9 +27,6 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     */
     protected function addCustomerClient(Container $container): Container
     {
         $container->set(static::CLIENT_CUSTOMER, function (Container $container) {

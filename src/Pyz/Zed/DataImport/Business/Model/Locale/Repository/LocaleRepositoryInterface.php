@@ -11,8 +11,5 @@ namespace Pyz\Zed\DataImport\Business\Model\Locale\Repository;
 
 interface LocaleRepositoryInterface
 {
-    /**
-     * @param string $locale
-     */
     public function getIdLocaleByLocale(string $locale): int;
 }

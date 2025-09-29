@@ -21,9 +21,6 @@ class BootstrapHelper extends Framework
 {
     use ConfigHelperTrait;
 
-    /**
-     * @param \Codeception\TestInterface $test
-     */
     public function _before(TestInterface $test): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $this->disableWhoopsErrorHandler();

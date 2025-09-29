@@ -30,9 +30,6 @@ use Ramsey\Uuid\Uuid;
  */
 class AssetMessageTest extends Unit
 {
-    /**
-     * @var \PyzTest\Zed\MessageBroker\AssetCommunicationTester
-     */
     protected AssetCommunicationTester $tester;
 
     public function testAssetAddedMessageIsSuccessfullyHandled(): void

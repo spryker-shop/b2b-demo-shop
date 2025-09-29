@@ -42,9 +42,6 @@ class CustomerHelper extends Module
     use DependencyHelperTrait;
     use LocatorHelperTrait;
 
-    /**
-     * @param string $email
-     */
     public function loadCustomerByEmail(string $email): ?SpyCustomer
     {
         $customerQuery = new SpyCustomerQuery();
@@ -52,9 +49,6 @@ class CustomerHelper extends Module
         return $customerQuery->findOneByEmail($email);
     }
 
-    /**
-     * @param array $seed
-     */
     public function haveRegisteredCustomer(array $seed = []): CustomerTransfer
     {
         $this->setupSession();
@@ -68,12 +62,6 @@ class CustomerHelper extends Module
         return $customerTransfer;
     }
 
-    /**
-     * @param string $email
-     * @param string $address
-     * @param bool $isDefaultShipping
-     * @param bool $isDefaultBilling
-     */
     public function addAddressToCustomer(string $email, string $address, bool $isDefaultShipping = true, bool $isDefaultBilling = true): void
     {
         $customerEntity = $this->loadCustomerByEmail($email);
@@ -97,10 +85,6 @@ class CustomerHelper extends Module
         $customerEntity->save();
     }
 
-    /**
-     * @param string $email
-     * @param string $type
-     */
     public function addNewsletterSubscription(string $email, string $type = NewsletterConstants::DEFAULT_NEWSLETTER_TYPE): void
     {
         $customerEntity = $this->loadCustomerByEmail($email);
@@ -119,9 +103,6 @@ class CustomerHelper extends Module
         $newsletterFacade->subscribeWithDoubleOptIn($newsletterSubscriptionRequestTransfer);
     }
 
-    /**
-     * @param array $seed
-     */
     public function amLoggedInCustomer(array $seed = []): CustomerTransfer
     {
         $customerTransfer = $this->haveRegisteredCustomer($seed);
@@ -139,9 +120,6 @@ class CustomerHelper extends Module
         return $customerTransfer;
     }
 
-    /**
-     * @param array $seed
-     */
     protected function createCustomer(array $seed = []): CustomerTransfer
     {
         $mailMock = new CustomerToMailBridge($this->getMailMock());

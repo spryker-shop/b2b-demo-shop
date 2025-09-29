@@ -15,22 +15,13 @@ use Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInt
 
 class ExampleStateMachineItemSaver
 {
-    /**
-     * @var \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface
-     */
-    protected $exampleStateMachineQueryContainer;
+    protected ExampleStateMachineQueryContainerInterface $exampleStateMachineQueryContainer;
 
-    /**
-     * @param \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface $exampleStateMachineQueryContainer
-     */
     public function __construct(ExampleStateMachineQueryContainerInterface $exampleStateMachineQueryContainer)
     {
         $this->exampleStateMachineQueryContainer = $exampleStateMachineQueryContainer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
-     */
     public function itemStateUpdate(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {
         $exampleStateMachineItemEntity = $this->exampleStateMachineQueryContainer

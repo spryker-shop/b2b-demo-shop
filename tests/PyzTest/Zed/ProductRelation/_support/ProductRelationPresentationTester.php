@@ -73,10 +73,7 @@ class ProductRelationPresentationTester extends Actor
      */
     public const PRODUCT_TABLE_BODY_XPATH = '//*[@class="dataTables_scrollBody"]/table/tbody/tr[1]/td[1]';
 
-    /**
-     * @var int
-     */
-    protected $numberOfRulesSelected = 0;
+    protected int $numberOfRulesSelected = 0;
 
     /**
      * @param string $type
@@ -175,9 +172,6 @@ class ProductRelationPresentationTester extends Actor
         return $this;
     }
 
-    /**
-     * @param string $productRelationKey
-     */
     public function cleanUpProductRelation(string $productRelationKey): void
     {
         $productRelationEntity = $this->findProductRelationByProductRelationKey($productRelationKey);
@@ -189,9 +183,6 @@ class ProductRelationPresentationTester extends Actor
         $productRelationEntity->delete();
     }
 
-    /**
-     * @param string $productRelationKey
-     */
     protected function findProductRelationByProductRelationKey(string $productRelationKey): ?SpyProductRelation
     {
         return SpyProductRelationQuery::create()->findOneByProductRelationKey($productRelationKey);

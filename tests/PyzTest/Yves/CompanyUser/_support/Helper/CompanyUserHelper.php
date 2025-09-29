@@ -45,9 +45,6 @@ class CompanyUserHelper extends Module
         'RemoveCartItemPermissionPlugin',
     ];
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     */
     public function haveRegisteredCompanyUser(CustomerTransfer $customerTransfer): CompanyUserTransfer
     {
         $companyTransfer = $this->createCompany();
@@ -89,18 +86,12 @@ class CompanyUserHelper extends Module
         return $permissionCollectionTransfer;
     }
 
-    /**
-     * @param array $seed
-     */
     protected function createCompanyRole(array $seed = []): CompanyRoleTransfer
     {
         return $this->getModule('\\' . CompanyRoleHelper::class)
             ->haveCompanyRole($seed);
     }
 
-    /**
-     * @param array $seed
-     */
     protected function createCompany(array $seed = []): CompanyTransfer
     {
         $mailMock = new CompanyMailConnectorToMailFacadeBridge($this->getMailMock());
@@ -112,18 +103,12 @@ class CompanyUserHelper extends Module
             ]);
     }
 
-    /**
-     * @param array $seed
-     */
     protected function createCompanyBusinessUnit(array $seed = []): CompanyBusinessUnitTransfer
     {
         return $this->getModule('\\' . CompanyBusinessUnitHelper::class)
             ->haveCompanyBusinessUnit($seed);
     }
 
-    /**
-     * @param array $seed
-     */
     protected function createCompanyUser(array $seed = []): CompanyUserTransfer
     {
         return $this->getModule('\\' . SprykerTestCompanyUserHelper::class)

@@ -114,9 +114,6 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
         self::ASSIGNABLE_PRODUCT_TYPE_BOTH,
     ];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->assertAssignableProductTypeColumn($dataSet);

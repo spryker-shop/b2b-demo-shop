@@ -17,9 +17,6 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 
 class CheckoutPageDependencyInjector extends SprykerCheckoutPageDependencyInjector
 {
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     */
     protected function injectPaymentSubForms(Container $container): Container
     {
         $container->extend(CheckoutDependencyProvider::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubForms) {

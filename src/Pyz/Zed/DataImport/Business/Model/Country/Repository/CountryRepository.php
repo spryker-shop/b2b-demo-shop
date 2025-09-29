@@ -17,16 +17,13 @@ class CountryRepository implements CountryRepositoryInterface
     /**
      * @var \ArrayObject<string, int>
      */
-    protected $countryIds;
+    protected ArrayObject $countryIds;
 
     public function __construct()
     {
         $this->countryIds = new ArrayObject();
     }
 
-    /**
-     * @param string $countryName
-     */
     public function hasCountryByName(string $countryName): bool
     {
         if ($this->countryIds->count() === 0) {
@@ -36,9 +33,6 @@ class CountryRepository implements CountryRepositoryInterface
         return isset($this->countryIds[$countryName]);
     }
 
-    /**
-     * @param string $countryName
-     */
     public function getIdCountryByName(string $countryName): int
     {
         if ($this->countryIds->count() === 0) {

@@ -103,9 +103,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         return $this->getLocator()->store()->facade()->getCurrentStore();
     }
 
-    /**
-     * @param string $customerName
-     */
     public function createCustomer(string $customerName): CustomerTransfer
     {
         $customerTransfer = $this->haveCustomer([
@@ -117,9 +114,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         return $this->confirmCustomer($customerTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     */
     public function createProductWithPriceAndStock(StoreTransfer $storeTransfer): ProductConcreteTransfer
     {
         $productConcreteTransfer = $this->haveFullProduct();
@@ -143,9 +137,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         return $productConcreteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     */
     public function createProductMeasurementSalesUnit(ProductConcreteTransfer $productConcreteTransfer): ProductMeasurementSalesUnitTransfer
     {
         $productMeasurementUnitEntityTransfer = $this->haveProductMeasurementUnit();
@@ -195,9 +186,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
         $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
@@ -213,9 +201,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         ]);
     }
 
-    /**
-     * @param string $quoteName
-     */
     public function assertResponseContainsCorrectCartName(string $quoteName): void
     {
         $attributes = $this->getDataFromResponseByJsonPath('$.data.attributes');
@@ -224,34 +209,21 @@ class CartReorderApiTester extends ApiEndToEndTester
         $this->assertSame($quoteName, $attributes[RestCartsAttributesTransfer::NAME]);
     }
 
-    /**
-     * @param string $sku
-     */
     public function assertResponseContainsItemBySku(string $sku): void
     {
         $this->assertNotNull($this->findIncludedItemsResourceBySku($sku));
     }
 
-    /**
-     * @param string $sku
-     */
     public function assertResponseDoesNotContainItemBySku(string $sku): void
     {
         $this->assertNull($this->findIncludedItemsResourceBySku($sku));
     }
 
-    /**
-     * @param string $sku
-     */
     public function assertResponseContainsBundleItemBySku(string $sku): void
     {
         $this->assertNotNull($this->findIncludedBundleItemsResourceBySku($sku));
     }
 
-    /**
-     * @param string $sku
-     * @param int $quantity
-     */
     public function assertItemHasCorrectQuantity(string $sku, int $quantity): void
     {
         $itemsResourceAttributes = $this->findIncludedItemsResourceBySku($sku)['attributes'];
@@ -260,10 +232,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         $this->assertSame($quantity, $itemsResourceAttributes[RestItemsAttributesTransfer::QUANTITY]);
     }
 
-    /**
-     * @param string $sku
-     * @param int $quantity
-     */
     public function assertBundleItemHasCorrectQuantity(string $sku, int $quantity): void
     {
         $bundleItemsResourceAttributes = $this->findIncludedBundleItemsResourceBySku($sku)['attributes'];
@@ -272,10 +240,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         $this->assertSame($quantity, $bundleItemsResourceAttributes[RestItemsAttributesTransfer::QUANTITY]);
     }
 
-    /**
-     * @param string $sku
-     * @param int $idSalesUnit
-     */
     public function assertItemHasIdSalesUnit(string $sku, int $idSalesUnit): void
     {
         $itemsResourceAttributes = $this->findIncludedItemsResourceBySku($sku)['attributes'];
@@ -286,10 +250,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         $this->assertSame($idSalesUnit, $itemSalesUnitData[RestCartItemsSalesUnitAttributesTransfer::ID]);
     }
 
-    /**
-     * @param string $sku
-     * @param \Spryker\DecimalObject\Decimal $amount
-     */
     public function assertItemHasSalesUnitAmount(string $sku, Decimal $amount): void
     {
         $itemsResourceAttributes = $this->findIncludedItemsResourceBySku($sku)['attributes'];
@@ -300,10 +260,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         $this->assertTrue($amount->equals($itemSalesUnitData[RestCartItemsSalesUnitAttributesTransfer::AMOUNT]));
     }
 
-    /**
-     * @param string $productConcreteSku
-     * @param string $productOptionSku
-     */
     public function assertItemHasProductOption(string $productConcreteSku, string $productOptionSku): void
     {
         $itemsResourceAttributes = $this->findIncludedItemsResourceBySku($productConcreteSku)['attributes'];
@@ -317,9 +273,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         $this->assertSame($productOptionSku, $productOption[RestItemProductOptionsTransfer::SKU]);
     }
 
-    /**
-     * @param string $cartUuid
-     */
     public function buildCartsUrl(string $cartUuid): string
     {
         return $this->formatFullUrl(

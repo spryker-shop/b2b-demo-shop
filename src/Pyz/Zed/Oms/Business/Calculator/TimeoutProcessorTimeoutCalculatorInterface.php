@@ -14,8 +14,5 @@ use Generated\Shared\Transfer\TimeoutProcessorTimeoutResponseTransfer;
 
 interface TimeoutProcessorTimeoutCalculatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer $timeoutProcessorTimeoutRequestTransfer
-     */
     public function calculateTimeout(TimeoutProcessorTimeoutRequestTransfer $timeoutProcessorTimeoutRequestTransfer): TimeoutProcessorTimeoutResponseTransfer;
 }

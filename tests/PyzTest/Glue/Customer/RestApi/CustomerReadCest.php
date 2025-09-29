@@ -27,19 +27,10 @@ use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
  */
 class CustomerReadCest
 {
-    /**
-     * @var \PyzTest\Glue\Customer\RestApi\CustomerRestApiFixtures
-     */
     protected CustomerRestApiFixtures $fixtures;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     */
     public function _before(CustomerApiTester $I): void
     {
         /** @var \PyzTest\Glue\Customer\RestApi\CustomerRestApiFixtures $fixtures */
@@ -59,9 +50,6 @@ class CustomerReadCest
         $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     */
     public function requestGetCustomerReturnsCollectionWithOneResource(CustomerApiTester $I): void
     {
         // Act
@@ -99,9 +87,6 @@ class CustomerReadCest
             );
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     */
     public function requestGetCustomerByIdReturnsOneResource(CustomerApiTester $I): void
     {
         // Act

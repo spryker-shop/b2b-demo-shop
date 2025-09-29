@@ -15,29 +15,16 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class NavigationNodeValidityDatesStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
-    protected $keyValidFrom;
+    protected string $keyValidFrom;
 
-    /**
-     * @var string
-     */
-    protected $keyValidTo;
+    protected string $keyValidTo;
 
-    /**
-     * @param string $keyValidFrom
-     * @param string $keyValidTo
-     */
     public function __construct(string $keyValidFrom, string $keyValidTo)
     {
         $this->keyValidFrom = $keyValidFrom;
         $this->keyValidTo = $keyValidTo;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->filterDate($dataSet, $this->keyValidFrom);
@@ -47,10 +34,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
         $this->assertDateRelation($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param string $key
-     */
     protected function filterDate(DataSetInterface $dataSet, string $key): void
     {
         if (isset($dataSet[$key])) {

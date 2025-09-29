@@ -61,9 +61,6 @@ class AuthRestApiTester extends ApiEndToEndTester
         $this->assertFalse($this->getDataFromResponseByJsonPath(self::REFRESH_TOKEN_JSON_PATH));
     }
 
-    /**
-     * @param string $expectedIdCompanyUser
-     */
     public function seeIdCompanyUserEquals(string $expectedIdCompanyUser): void
     {
         $idCompanyUser = $this->grabIdCompanyUser();

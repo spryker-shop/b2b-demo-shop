@@ -18,6 +18,7 @@ use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductOptionTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use PyzTest\Zed\Calculation\CalculationBusinessTester;
 use Spryker\Shared\Calculation\CalculationPriceMode;
 use Spryker\Zed\Discount\DiscountDependencyProvider;
 
@@ -34,10 +35,7 @@ use Spryker\Zed\Discount\DiscountDependencyProvider;
  */
 class CalculationWithCalculableObjectFacadeTest extends Unit
 {
-    /**
-     * @var \PyzTest\Zed\Calculation\CalculationBusinessTester
-     */
-    protected $tester;
+    protected CalculationBusinessTester $tester;
 
     protected function setUp(): void
     {
@@ -554,11 +552,6 @@ class CalculationWithCalculableObjectFacadeTest extends Unit
         $this->assertSame($results[5], $quoteTransfer->getTotals()->getRefundTotal());
     }
 
-    /**
-     * @param string $priceMode
-     * @param array $items
-     * @param array $expense
-     */
     protected function createFixtureDataForTestCases(string $priceMode, array $items, array $expense): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();

@@ -46,19 +46,10 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      */
     protected const TEST_GRAND_TOTAL = 1;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $saveOrderTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerWithoutOrders;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerWithOrders;
 
     public function getCustomerWithoutOrders(): CustomerTransfer
@@ -76,9 +67,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         return $this->saveOrderTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     */
     public function buildFixtures(OrdersApiTester $I): FixturesContainerInterface
     {
         $this->customerWithoutOrders = $this->createCustomerTransfer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
@@ -88,18 +76,11 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     */
     public function createProductTransfer(OrdersApiTester $I): ProductConcreteTransfer
     {
         return $I->haveProduct();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param array $productTransfers
-     */
     public function createQuoteTransfer(CustomerTransfer $customerTransfer, array $productTransfers): AbstractTransfer
     {
         return (new QuoteBuilder())
@@ -113,9 +94,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
             ->build();
     }
 
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     */
     protected function createOrderTransfer(OrdersApiTester $I): SaveOrderTransfer
     {
         $this->customerWithOrders = $this->createCustomerTransfer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
@@ -124,9 +102,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         return $I->haveOrderFromQuote($quote, $this->createStateMachine($I));
     }
 
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     */
     protected function createStateMachine(OrdersApiTester $I): string
     {
         $testStateMachineProcessName = 'DummyPayment01';
@@ -135,11 +110,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         return $testStateMachineProcessName;
     }
 
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     * @param string $name
-     * @param string $password
-     */
     protected function createCustomerTransfer(OrdersApiTester $I, string $name, string $password): CustomerTransfer
     {
         $customerTransfer = $I->haveCustomer([

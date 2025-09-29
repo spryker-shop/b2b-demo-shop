@@ -38,29 +38,14 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected ShoppingListTransfer $shoppingListTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     protected ShoppingListItemTransfer $shoppingListItemTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     protected CompanyUserTransfer $companyUserTransfer;
 
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -83,9 +68,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
         return $this->customerTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     */
     public function buildFixtures(ShoppingListsApiTester $I): FixturesContainerInterface
     {
         $I->haveCompanyMailConnectorToMailDependency();
@@ -96,18 +78,12 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     */
     protected function createCustomer(ShoppingListsApiTester $I): void
     {
         $this->createCustomerWithCompanyUser($I);
         $I->confirmCustomer($this->customerTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     */
     protected function createCustomerWithCompanyUser(ShoppingListsApiTester $I): void
     {
         $this->customerTransfer = $I->haveCustomer([
@@ -118,11 +94,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
         $this->companyUserTransfer = $this->createCompanyUser($I, $this->customerTransfer);
     }
 
-    /**
-     * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param array $seed
-     */
     protected function createCompanyUser(
         ShoppingListsApiTester $I,
         CustomerTransfer $customerTransfer,
@@ -143,9 +114,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
         ]);
     }
 
-    /**
-     * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     */
     protected function createShoppingList(ShoppingListsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();

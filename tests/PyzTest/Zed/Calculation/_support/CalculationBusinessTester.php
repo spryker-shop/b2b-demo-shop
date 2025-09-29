@@ -66,21 +66,13 @@ class CalculationBusinessTester extends Actor
 {
     use _generated\CalculationBusinessTesterActions;
 
-    /**
-     * @var int
-     */
-    protected $incrementNumber = 0;
+    protected int $incrementNumber = 0;
 
     /**
      * @var string
      */
     protected const COUNTRY_DE = 'DE';
 
-    /**
-     * @param int $discountAmount
-     * @param string $calculatorType
-     * @param string $sku
-     */
     public function createDiscounts(int $discountAmount, string $calculatorType, string $sku = '*'): SpyDiscountVoucher
     {
         $discountVoucherPoolEntity = new SpyDiscountVoucherPool();
@@ -126,12 +118,6 @@ class CalculationBusinessTester extends Actor
         return $discountVoucherEntity;
     }
 
-    /**
-     * @param int $price
-     * @param string $priceMode
-     * @param float $taxRate
-     * @param int $quantity
-     */
     public function createExpenseTransfer(int $price, string $priceMode, float $taxRate, int $quantity): ExpenseTransfer
     {
         $expenseTransfer = new ExpenseTransfer();
@@ -149,9 +135,6 @@ class CalculationBusinessTester extends Actor
         return $expenseTransfer;
     }
 
-    /**
-     * @param array $calculatorPlugins
-     */
     public function createCalculationFacade(array $calculatorPlugins = []): CalculationFacade
     {
         if (!$calculatorPlugins) {
@@ -213,10 +196,6 @@ class CalculationBusinessTester extends Actor
         return $calculationFacade->recalculateQuote($quoteTransfer);
     }
 
-    /**
-     * @param int $discountAmount
-     * @param string $sku
-     */
     public function createDiscountTransfer(int $discountAmount, string $sku): DiscountTransfer
     {
         $voucherEntity = $this->createDiscounts($discountAmount, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED, $sku);
@@ -243,12 +222,6 @@ class CalculationBusinessTester extends Actor
             ->setCode('EUR');
     }
 
-    /**
-     * @param int $price
-     * @param string $priceMode
-     * @param float $taxRate
-     * @param int $quantity
-     */
     public function createItemTransfer(int $price, string $priceMode, float $taxRate, int $quantity): ItemTransfer
     {
         $abstractProductEntity = $this->createAbstractProductWithTaxSet($taxRate);
@@ -271,12 +244,6 @@ class CalculationBusinessTester extends Actor
         return $itemTransfer;
     }
 
-    /**
-     * @param int $price
-     * @param string $priceMode
-     * @param float $taxRate
-     * @param int $quantity
-     */
     public function createProductOptionTransfer(int $price, string $priceMode, float $taxRate, int $quantity): ProductOptionTransfer
     {
         $productOptionValueEntity = $this->createProductOptionValue($taxRate);
@@ -297,9 +264,6 @@ class CalculationBusinessTester extends Actor
         return $productOptionTransfer;
     }
 
-    /**
-     * @param float $taxRate
-     */
     public function createAbstractProductWithTaxSet(float $taxRate): SpyProductAbstract
     {
         $countryEntity = SpyCountryQuery::create()->findOneByIso2Code(static::COUNTRY_DE);
@@ -341,9 +305,6 @@ class CalculationBusinessTester extends Actor
         return SpyCurrencyQuery::create()->findOneByCode('EUR');
     }
 
-    /**
-     * @param float $taxRate
-     */
     protected function createProductOptionValue(float $taxRate): SpyProductOptionValue
     {
         $countryEntity = SpyCountryQuery::create()->findOneByIso2Code('DE');
@@ -380,10 +341,6 @@ class CalculationBusinessTester extends Actor
         return $taxSetEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Tax\Persistence\SpyTaxSet $taxSetEntity
-     * @param \Orm\Zed\Tax\Persistence\SpyTaxRate $taxRateEntity
-     */
     protected function createTaxSetTax(SpyTaxSet $taxSetEntity, SpyTaxRate $taxRateEntity): void
     {
         $taxSetTaxRateEntity = new SpyTaxSetTax();
@@ -393,9 +350,6 @@ class CalculationBusinessTester extends Actor
         $taxSetTaxRateEntity->save();
     }
 
-    /**
-     * @param \Orm\Zed\Tax\Persistence\SpyTaxSet $taxSetEntity
-     */
     protected function createAbstractProduct(SpyTaxSet $taxSetEntity): SpyProductAbstract
     {
         $abstractProductEntity = new SpyProductAbstract();
@@ -407,9 +361,6 @@ class CalculationBusinessTester extends Actor
         return $abstractProductEntity;
     }
 
-    /**
-     * @param array $items
-     */
     protected function isCanceledAmount(array $items): bool
     {
         foreach ($items as $item) {

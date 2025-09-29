@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
+use PyzTest\Yves\Checkout\CheckoutBusinessTester;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
@@ -35,10 +36,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SummaryStepTest extends Unit
 {
-    /**
-     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
-     */
-    public $tester;
+    public CheckoutBusinessTester $tester;
 
     public function testPostConditionShouldReturnWhenQuoteReadyForSummaryDisplay(): void
     {

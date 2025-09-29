@@ -31,14 +31,8 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
      */
     protected const RESOURCE_CARTS = 'carts';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     */
     public function buildFixtures(MultiFactorAuthRestApiTester $I): FixturesContainerInterface
     {
         $this->customerTransfer = $I->createCustomer(static::TEST_USERNAME);
@@ -86,9 +80,6 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
         ];
     }
 
-    /**
-     * @param string $resourceName
-     */
     public function generateUrl(string $resourceName): string
     {
         return sprintf('/%s', $resourceName);

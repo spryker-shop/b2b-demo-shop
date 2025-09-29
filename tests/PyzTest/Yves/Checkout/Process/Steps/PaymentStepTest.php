@@ -75,9 +75,6 @@ class PaymentStepTest extends Unit
         $this->assertTrue($paymentStep->requireInput(new QuoteTransfer()));
     }
 
-    /**
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $paymentPlugins
-     */
     protected function createPaymentStep(StepHandlerPluginCollection $paymentPlugins): PaymentStep
     {
         return new PaymentStep(

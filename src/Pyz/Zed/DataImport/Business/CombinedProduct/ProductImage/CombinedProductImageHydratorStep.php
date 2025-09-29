@@ -89,9 +89,6 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
         self::ASSIGNABLE_PRODUCT_TYPE_CONCRETE,
     ];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $dataSet = $this->assignProductType($dataSet);
@@ -99,9 +96,6 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
         parent::execute($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function assignProductType(DataSetInterface $dataSet): DataSetInterface
     {
         $this->assertAssignableProductTypeColumn($dataSet);

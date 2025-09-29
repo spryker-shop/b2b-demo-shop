@@ -30,17 +30,11 @@ use PyzTest\Yves\Newsletter\PageObject\NewsletterSubscriptionHomePage;
  */
 class NewsletterSubscriptionCest
 {
-    /**
-     * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     */
     public function _before(NewsletterPresentationTester $i): void
     {
         $i->amYves();
     }
 
-    /**
-     * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     */
     public function iCanSubscribeWithAnUnsubscribedEmail(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an unsubscribed new email.');
@@ -56,9 +50,6 @@ class NewsletterSubscriptionCest
         $i->seeInPageSource(NewsletterSubscriptionHomePage::SUCCESS_MESSAGE);
     }
 
-    /**
-     * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     */
     public function iCanNotSubscribeWithAnAlreadySubscribedEmail(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an already subscribed email.');
@@ -76,9 +67,6 @@ class NewsletterSubscriptionCest
         $i->seeInPageSource(NewsletterSubscriptionHomePage::ERROR_MESSAGE);
     }
 
-    /**
-     * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     */
     public function subscribedEmailIsLinkedWithCustomerAfterRegistration(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an unsubscribed email and later on register with that address.');
@@ -99,10 +87,6 @@ class NewsletterSubscriptionCest
         $i->seeCheckboxIsChecked(CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION_INPUT);
     }
 
-    /**
-     * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function subscribedEmailCanBeUnsubscribedByCustomerAfterRegistration(NewsletterPresentationTester $i, Scenario $scenario): void
     {
         $scenario->skip('Test is broken due to improper usage of checkbox check/uncheck functions.');

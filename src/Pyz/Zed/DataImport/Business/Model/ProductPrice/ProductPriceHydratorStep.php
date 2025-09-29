@@ -106,20 +106,10 @@ class ProductPriceHydratorStep implements DataImportStepInterface
      */
     public const KEY_PRICE_DATA_PREFIX = 'price_data.';
 
-    /**
-     * @var \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface
-     */
-    protected $utilEncodingService;
+    protected DataImportToUtilEncodingServiceInterface $utilEncodingService;
 
-    /**
-     * @var \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
-     */
-    protected $priceProductFacade;
+    protected PriceProductFacadeInterface $priceProductFacade;
 
-    /**
-     * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
-     * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         PriceProductFacadeInterface $priceProductFacade,
         DataImportToUtilEncodingServiceInterface $utilEncodingService,
@@ -128,9 +118,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->importPriceData($dataSet);
@@ -192,9 +179,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         return $priceProductStoreEntityTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importPriceType(DataSetInterface $dataSet): SpyPriceTypeEntityTransfer
     {
         $priceTypeTransfer = new SpyPriceTypeEntityTransfer();
@@ -207,9 +191,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         return $priceTypeTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProductAbstract(DataSetInterface $dataSet): SpyProductAbstractEntityTransfer
     {
         $productAbstractTransfer = new SpyProductAbstractEntityTransfer();
@@ -218,9 +199,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         return $productAbstractTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importProductConcrete(DataSetInterface $dataSet): SpyProductEntityTransfer
     {
         $productConcreteTransfer = new SpyProductEntityTransfer();
@@ -229,9 +207,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         return $productConcreteTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     protected function importPriceData(DataSetInterface $dataSet): void
     {
         $priceData = $this->getPriceData($dataSet);
@@ -267,9 +242,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         return $priceData;
     }
 
-    /**
-     * @param string $key
-     */
     protected function isPriceDataKey(string $key): bool
     {
         return mb_strpos($key, static::KEY_PRICE_DATA_PREFIX) === 0;

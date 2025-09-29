@@ -20,9 +20,6 @@ use Spryker\Zed\StateMachine\Dependency\Plugin\CommandPluginInterface;
  */
 class TestCommandPlugin extends AbstractPlugin implements CommandPluginInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
-     */
     public function run(StateMachineItemTransfer $stateMachineItemTransfer): bool // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return true;

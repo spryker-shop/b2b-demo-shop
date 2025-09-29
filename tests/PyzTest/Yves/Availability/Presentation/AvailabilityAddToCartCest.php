@@ -25,18 +25,11 @@ use PyzTest\Yves\Cart\PageObject\CartListPage;
  */
 class AvailabilityAddToCartCest
 {
-    /**
-     * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
-     */
     public function _before(AvailabilityPresentationTester $i): void
     {
         $i->amYves();
     }
 
-    /**
-     * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i, Scenario $scenario): void
     {
         $scenario->skip('This test needs to be refactored since we can not use add to cart URL directly.');

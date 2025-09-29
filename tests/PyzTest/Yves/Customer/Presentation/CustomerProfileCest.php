@@ -26,18 +26,11 @@ use PyzTest\Yves\Customer\PageObject\CustomerProfilePage;
  */
 class CustomerProfileCest
 {
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     */
     public function _before(CustomerPresentationTester $i): void
     {
         $i->amYves();
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanUpdateProfileData(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
@@ -55,10 +48,6 @@ class CustomerProfileCest
         $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanUpdateEmail(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
@@ -75,10 +64,6 @@ class CustomerProfileCest
         $i->seeInSource(CustomerProfilePage::CONFIRM_EMAIL_MESSAGE);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $i->amLoggedInCustomer();
@@ -92,10 +77,6 @@ class CustomerProfileCest
         $i->seeInSource(CustomerProfilePage::ERROR_MESSAGE_EMAIL);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanChangePassword(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $customerTransfer = $i->amLoggedInCustomer();
@@ -113,10 +94,6 @@ class CustomerProfileCest
         $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE_CHANGE_PASSWORD);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     * @param \Codeception\Scenario $scenario
-     */
     public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $customerTransfer = $i->amLoggedInCustomer();

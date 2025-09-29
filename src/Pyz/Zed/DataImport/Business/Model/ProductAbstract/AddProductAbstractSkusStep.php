@@ -25,11 +25,8 @@ class AddProductAbstractSkusStep implements DataImportStepInterface
     /**
      * @var array<string, int>
      */
-    protected $productAbstractSkus = [];
+    protected array $productAbstractSkus = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         if (!$this->productAbstractSkus) {

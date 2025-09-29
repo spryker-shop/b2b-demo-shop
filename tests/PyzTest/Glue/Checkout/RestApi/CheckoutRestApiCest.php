@@ -40,14 +40,8 @@ class CheckoutRestApiCest
      */
     protected const RESPONSE_DETAILS_CART_IS_EMPTY = 'Cart is empty.';
 
-    /**
-     * @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutRestApiFixtures
-     */
     protected CheckoutRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     public function loadFixtures(CheckoutApiTester $I): void
     {
         /** @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutRestApiFixtures $fixtures */

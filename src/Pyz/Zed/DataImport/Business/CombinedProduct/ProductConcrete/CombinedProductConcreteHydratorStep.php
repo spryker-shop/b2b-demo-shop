@@ -80,17 +80,11 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
         self::ASSIGNABLE_PRODUCT_TYPE_BOTH,
     ];
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
     public function __construct(ProductRepository $productRepository)
     {
         parent::__construct($productRepository);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->assertAssignableProductTypeColumn($dataSet);

@@ -17,9 +17,6 @@ use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ProductO
 
 class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProvider
 {
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     */
     protected function createMoneyCollectionFormTypePlugin(Container $container): FormTypeInterface // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return new MoneyCollectionFormTypePlugin();

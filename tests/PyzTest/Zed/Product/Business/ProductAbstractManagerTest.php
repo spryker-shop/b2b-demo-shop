@@ -63,9 +63,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         $this->assertReadProductAbstract($productAbstract);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     */
     protected function assertCreateProductAbstract(ProductAbstractTransfer $productAbstractTransfer): void
     {
         $createdProductEntity = $this->productQueryContainer
@@ -77,9 +74,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         $this->assertSame($productAbstractTransfer->getSku(), $createdProductEntity->getSku());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     */
     protected function assertSaveProductAbstract(ProductAbstractTransfer $productAbstractTransfer): void
     {
         $updatedProductEntity = $this->productQueryContainer
@@ -97,18 +91,12 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     */
     protected function assertReadProductAbstract(ProductAbstractTransfer $productAbstractTransfer): void
     {
         $this->assertProductPrice($productAbstractTransfer);
         $this->assertProductImages($productAbstractTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     */
     protected function assertProductPrice(ProductAbstractTransfer $productAbstractTransfer): void
     {
         foreach ($productAbstractTransfer->getPrices() as $priceProductTransfer) {
@@ -118,9 +106,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     */
     protected function assertProductImages(ProductAbstractTransfer $productAbstractTransfer): void
     {
         /** @var array<\Generated\Shared\Transfer\ProductImageSetTransfer> $imageSetCollection */

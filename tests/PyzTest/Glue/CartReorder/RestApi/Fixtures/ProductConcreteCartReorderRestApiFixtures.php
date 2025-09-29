@@ -30,44 +30,20 @@ class ProductConcreteCartReorderRestApiFixtures implements FixturesBuilderInterf
      */
     protected const TEST_USERNAME = 'ProductConcreteCartReorderRestApiFixtures';
 
-    /**
-     * @var \Generated\Shared\Transfer\StoreTransfer
-     */
     protected StoreTransfer $storeTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer1;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer2;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $notAvailableProductConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $orderWithConcreteProducts;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $orderWithNotAvailableConcreteProduct;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $orderFromAnotherCustomer;
 
     public function getCustomerTransfer(): CustomerTransfer
@@ -105,9 +81,6 @@ class ProductConcreteCartReorderRestApiFixtures implements FixturesBuilderInterf
         return $this->orderFromAnotherCustomer;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     public function buildFixtures(CartReorderApiTester $I): FixturesContainerInterface
     {
         $I->configureStateMachine();
@@ -125,9 +98,6 @@ class ProductConcreteCartReorderRestApiFixtures implements FixturesBuilderInterf
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createNotAvailableProductConcrete(CartReorderApiTester $I): ProductConcreteTransfer
     {
         $productConcreteTransfer = $I->haveFullProduct();
@@ -150,9 +120,6 @@ class ProductConcreteCartReorderRestApiFixtures implements FixturesBuilderInterf
         return $productConcreteTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createOrderWithConcreteProducts(CartReorderApiTester $I): SaveOrderTransfer
     {
         $itemsData = [
@@ -169,9 +136,6 @@ class ProductConcreteCartReorderRestApiFixtures implements FixturesBuilderInterf
         return $I->createOrder($this->customerTransfer, [QuoteTransfer::ITEMS => $itemsData]);
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createOrderWithNotAvailableConcreteProduct(CartReorderApiTester $I): SaveOrderTransfer
     {
         $itemsData = [
@@ -188,9 +152,6 @@ class ProductConcreteCartReorderRestApiFixtures implements FixturesBuilderInterf
         return $I->createOrder($this->customerTransfer, [QuoteTransfer::ITEMS => $itemsData]);
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createOrderFromAnotherCustomer(CartReorderApiTester $I): SaveOrderTransfer
     {
         $itemsData = [

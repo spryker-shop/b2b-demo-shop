@@ -29,14 +29,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductUrlTransfer
-     */
     protected ProductUrlTransfer $productUrlTransfer;
 
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -49,9 +43,6 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
         return $this->productUrlTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     */
     public function buildFixtures(UrlsRestApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
@@ -60,17 +51,11 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     */
     protected function createProductConcrete(UrlsRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
     }
 
-    /**
-     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     */
     protected function createProductUrl(UrlsRestApiTester $I): void
     {
         $productAbstractTransfer = (new ProductAbstractTransfer())

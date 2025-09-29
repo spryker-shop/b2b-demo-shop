@@ -36,36 +36,18 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
      */
     protected const TEST_PRODUCT_PACKAGING_UNIT_TYPE = 'box';
 
-    /**
-     * @var \Generated\Shared\Transfer\StoreTransfer
-     */
     protected StoreTransfer $storeTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransferWithSalesUnit;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer
-     */
     protected ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer;
 
     protected ProductPackagingUnitTransfer $productPackagingUnitTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $orderWithSalesUnit;
 
     public function getCustomerTransfer(): CustomerTransfer
@@ -98,9 +80,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
         return $this->orderWithSalesUnit;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     public function buildFixtures(CartReorderApiTester $I): FixturesContainerInterface
     {
         $I->configureStateMachine();
@@ -117,9 +96,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createProductPackagingUnit(CartReorderApiTester $I): ProductPackagingUnitTransfer
     {
         $productPackagingUnitTypeTransfer = $I->haveProductPackagingUnitType([
@@ -135,9 +111,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
         return (new ProductPackagingUnitTransfer())->fromArray($productPackagingUnitEntityTransfer->toArray(), true);
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     */
     protected function createOrderWithProductPackagingUnit(CartReorderApiTester $I): SaveOrderTransfer
     {
         $itemsData = [

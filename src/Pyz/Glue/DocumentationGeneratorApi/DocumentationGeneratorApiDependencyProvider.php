@@ -69,9 +69,6 @@ class DocumentationGeneratorApiDependencyProvider extends SprykerDocumentationGe
         ];
     }
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorApi\Expander\ContextExpanderCollectionInterface $contextExpanderCollection
-     */
     protected function getContextExpanderPlugins(ContextExpanderCollectionInterface $contextExpanderCollection): ContextExpanderCollectionInterface
     {
         $apiApplications = [];

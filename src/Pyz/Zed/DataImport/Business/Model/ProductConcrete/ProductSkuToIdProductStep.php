@@ -26,34 +26,21 @@ class ProductSkuToIdProductStep implements DataImportStepInterface
      */
     public const KEY_TARGET = 'idProduct';
 
-    /**
-     * @var string
-     */
-    protected $source;
+    protected string $source;
 
-    /**
-     * @var string
-     */
-    protected $target;
+    protected string $target;
 
     /**
      * @var array<string, int>
      */
-    protected static $resolved = [];
+    protected static array $resolved = [];
 
-    /**
-     * @param string $source
-     * @param string $target
-     */
     public function __construct(string $source = self::KEY_SOURCE, string $target = self::KEY_TARGET)
     {
         $this->source = $source;
         $this->target = $target;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         if (empty($dataSet[$this->source])) {

@@ -34,9 +34,9 @@ class CustomerAddressesPage
     public const ADDRESS_B = 'address b';
 
     /**
-     * @var array
+     * @var array<string, array<string, mixed>>
      */
-    protected static $addresses = [
+    protected static array $addresses = [
         self::ADDRESS_A => [
             'salutation' => 'Mr',
             'firstName' => 'Cat',
@@ -65,9 +65,6 @@ class CustomerAddressesPage
         ],
     ];
 
-    /**
-     * @param string $address
-     */
     public static function getAddressData(string $address): AddressTransfer
     {
         $addressTransfer = new AddressTransfer();

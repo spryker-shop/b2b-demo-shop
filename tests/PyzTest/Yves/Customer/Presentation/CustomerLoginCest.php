@@ -26,26 +26,17 @@ use PyzTest\Yves\Customer\PageObject\CustomerPasswordForgottenPage;
  */
 class CustomerLoginCest
 {
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     */
     public function _before(CustomerPresentationTester $i): void
     {
         $i->amYves();
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     */
     public function testICanOpenLoginPage(CustomerPresentationTester $i): void
     {
         $i->amOnPage(CustomerLoginPage::URL);
         $i->see(CustomerLoginPage::TITLE_LOGIN);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     */
     public function testICanOpenForgotPasswordPage(CustomerPresentationTester $i): void
     {
         $i->amOnPage(CustomerLoginPage::URL);
@@ -53,9 +44,6 @@ class CustomerLoginCest
         $i->seeCurrentUrlEquals(CustomerPasswordForgottenPage::URL);
     }
 
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     */
     public function testICanLoginWithValidData(CustomerPresentationTester $i): void
     {
         $i->amOnPage(CustomerLoginPage::URL);

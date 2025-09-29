@@ -35,24 +35,12 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected QuoteTransfer $quoteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     protected CompanyUserTransfer $companyUserTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CompanyUnitAddressTransfer
-     */
     protected CompanyUnitAddressTransfer $companyUnitAddressTransfer;
 
     public function getQuoteTransfer(): QuoteTransfer
@@ -75,9 +63,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
         return $this->companyUnitAddressTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
         $I->truncateSalesOrderThresholds();
@@ -96,10 +81,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     */
     protected function buildCompanyUserAccount(
         CheckoutApiTester $I,
         CustomerTransfer $customerTransfer,
@@ -129,9 +110,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
         ]);
     }
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     protected function createPersistentQuoteWithItemsAndItemLevelShipment(CheckoutApiTester $I): QuoteTransfer
     {
         $shipmentMethodTransfer = $I->haveShipmentMethod(
@@ -152,9 +130,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
         );
     }
 
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     */
     protected function mockCompanyPostSavePlugins(CheckoutApiTester $I): void
     {
         $I->setDependency(CompanyDependencyProvider::COMPANY_POST_SAVE_PLUGINS, []);

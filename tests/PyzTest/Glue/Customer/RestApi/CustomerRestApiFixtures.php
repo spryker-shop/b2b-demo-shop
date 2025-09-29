@@ -33,9 +33,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
     /**
@@ -50,9 +47,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         return $this->customerTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     */
     public function buildFixtures(CustomerApiTester $i): FixturesContainerInterface
     {
         $this->createCustomer($i);
@@ -61,9 +55,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     */
     protected function createCustomer(CustomerApiTester $i): void
     {
         $customerTransfer = $i->haveCustomer([
@@ -74,9 +65,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         $this->customerTransfer = $customerTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     */
     protected function confirmCustomer(CustomerApiTester $i): void
     {
         $this->customerTransfer = $i->confirmCustomer($this->customerTransfer);
