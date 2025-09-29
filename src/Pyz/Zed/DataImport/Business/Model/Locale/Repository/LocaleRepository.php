@@ -17,7 +17,7 @@ class LocaleRepository implements LocaleRepositoryInterface
     /**
      * @var array<string, int>
      */
-    protected static array $localeMap;
+    protected static array $localeMap = [];
 
     public function getIdLocaleByLocale(string $locale): int
     {
