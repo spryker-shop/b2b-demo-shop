@@ -17,6 +17,9 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
 
     protected const MIN_LENGTH_CUSTOMER_PASSWORD = 12;
 
+    /**
+     * @uses \Pyz\Zed\Customer\CustomerConfig::MAX_LENGTH_CUSTOMER_PASSWORD
+     */
     protected const MAX_LENGTH_CUSTOMER_PASSWORD = 128;
 
     protected const IS_ORDER_HISTORY_SEARCH_ENABLED = true;

@@ -27,7 +27,7 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     protected function getMerchantFormExpanderPlugins(): array
     {
         return [
-        new IsOpenForRelationRequestMerchantFormExpanderPlugin(),
+            new IsOpenForRelationRequestMerchantFormExpanderPlugin(),
         ];
     }
 }
