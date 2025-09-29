@@ -19,6 +19,14 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
 {
     use TransactionTrait;
 
+    /**
+     * @var \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface
+     *
+     * Note: Disabled phpcs because of compatibility issues with Spryker parent class. The current CS config requires to set a variable type, but it is absent in the parent and so produces an error.
+     */
+    // phpcs:disable
+    protected $customerAccessEntityManager;
+
     protected CustomerAccessReaderInterface $customerAccessReader;
 
     protected CustomerAccessFilterInterface $customerAccessFilter;
