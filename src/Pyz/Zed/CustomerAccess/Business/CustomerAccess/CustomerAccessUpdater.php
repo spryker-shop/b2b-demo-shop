@@ -19,8 +19,6 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
 {
     use TransactionTrait;
 
-    protected $customerAccessEntityManager;
-
     protected CustomerAccessReaderInterface $customerAccessReader;
 
     protected CustomerAccessFilterInterface $customerAccessFilter;
