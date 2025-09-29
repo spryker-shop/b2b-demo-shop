@@ -43,6 +43,7 @@ use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetFilterWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspCartItemAssetSelectorWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspCompanyFilesMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspFileListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryListWidget;
@@ -390,6 +391,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspListMenuItemWidget::class,
             SspAssetInfoForItemWidget::class,
             SspServiceDetectorWidget::class,
+            SspCartItemAssetSelectorWidget::class,
             SspItemAssetSelectorWidget::class,
             SspProductOfferPriceWidget::class,
             SspAddressFormItemsByShipmentTypeWidget::class,

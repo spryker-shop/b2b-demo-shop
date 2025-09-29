@@ -216,6 +216,10 @@
 
                                 {% block serviceInformation %}
                                     {% widget 'SspAssetInfoForItemWidget' args [listItem] only %}{% endwidget %}
+                                    {% widget 'SspCartItemAssetSelectorWidget' args [data.listItem, false] with {
+                                        ajaxTriggerAttribute: data.ajaxTriggerAttribute
+                                    } only %}{% endwidget %}
+
                                     {% widget 'SspServicePointNameForItemWidget' args [listItem] only %}
                                         {% elsewidget 'ServicePointNameForItemWidget' args [listItem] only %}
                                     {% endwidget %}
