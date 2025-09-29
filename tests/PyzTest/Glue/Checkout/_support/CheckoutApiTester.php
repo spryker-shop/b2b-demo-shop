@@ -477,6 +477,11 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $customerTransfer;
     }
 
+    /**
+     * @param array<string, mixed> $overrideItems
+     *
+     * @return array<array<string, mixed>>
+     */
     protected function mapProductConcreteTransfersToQuoteTransferItemsWithItemLevelShipment(array $overrideItems = []): array
     {
         $quoteTransferItems = [];
@@ -506,6 +511,11 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT];
     }
 
+    /**
+     * @param array<string, mixed> $overrideItem
+     *
+     * @return array<string, mixed>
+     */
     protected function getOverrideShipmentDataFromOverrideItemData(array $overrideItem): array
     {
         return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT];
