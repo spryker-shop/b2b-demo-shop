@@ -29,52 +29,20 @@ use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
  */
 class ProductConcreteCartReorderRestApiCest
 {
-    /**
-     * @var string
-     */
     protected const RESPONSE_CODE_PARAMETER_ORDER_REFERENCE_INVALID = '901';
 
-    /**
-     * @var string
-     */
     protected const RESPONSE_DETAIL_PARAMETER_ORDER_REFERENCE_INVALID = 'orderReference => This value should not be blank.';
 
-    /**
-     * @uses \Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig::ERROR_CODE_ORDER_NOT_FOUND
-     *
-     * @var string
-     */
     protected const RESPONSE_CODE_ORDER_NOT_FOUND = '5801';
 
-    /**
-     * @uses \Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig::ERROR_CODE_QUOTE_NOT_PROVIDED
-     *
-     * @var string
-     */
     protected const ERROR_CODE_QUOTE_NOT_PROVIDED = '5802';
 
-    /**
-     * @var string
-     */
     protected const RESPONSE_DETAIL_ORDER_NOT_FOUND = 'Order not found.';
 
-    /**
-     * @var string
-     */
     protected const RESPONSE_DETAIL_QUOTE_NOT_PROVIDED = 'Quote not provided.';
 
-    /**
-     * @uses \Spryker\Zed\PersistentCart\Communication\Plugin\CartReorder\ReplacePersistentCartReorderQuoteProviderStrategyPlugin::REORDER_STRATEGY_REPLACE
-     *
-     * @var string
-     */
     protected const REORDER_STRATEGY_REPLACE = 'replace';
 
-    /**
-     * @uses \Spryker\Zed\MultiCart\Communication\Plugin\CartReorder\NewPersistentCartReorderQuoteProviderStrategyPlugin::REORDER_STRATEGY_NEW
-     *
-     * @var string
-     */
     protected const REORDER_STRATEGY_NEW = 'new';
 
     protected ProductConcreteCartReorderRestApiFixtures $fixtures;

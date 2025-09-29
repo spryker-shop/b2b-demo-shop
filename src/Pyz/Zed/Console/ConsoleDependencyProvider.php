@@ -193,9 +193,6 @@ use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Console\DateTi
  */
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
-    /**
-     * @var string
-     */
     protected const COMMAND_SEPARATOR = ':';
 
     /**

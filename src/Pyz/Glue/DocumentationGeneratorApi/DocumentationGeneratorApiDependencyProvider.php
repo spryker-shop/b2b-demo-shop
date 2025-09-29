@@ -36,14 +36,8 @@ use Spryker\Glue\GlueStorefrontApiApplicationGlueJsonApiConventionConnector\Plug
 
 class DocumentationGeneratorApiDependencyProvider extends SprykerDocumentationGeneratorApiDependencyProvider
 {
-    /**
-     * @var string
-     */
     protected const GLUE_BACKEND_API_APPLICATION_NAME = 'backend';
 
-    /**
-     * @var string
-     */
     protected const GLUE_STOREFRONT_API_APPLICATION_NAME = 'storefront';
 
     /**

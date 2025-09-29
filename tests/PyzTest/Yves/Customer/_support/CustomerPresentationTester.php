@@ -35,9 +35,6 @@ class CustomerPresentationTester extends Actor
 {
     use _generated\CustomerPresentationTesterActions;
 
-    /**
-     * @var string
-     */
     protected const URL_STORE_PREFIX = '/DE';
 
     public function submitLoginForm(string $email, string $password): void

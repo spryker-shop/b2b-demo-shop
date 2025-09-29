@@ -17,9 +17,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
     protected OauthResponseTransfer $oauthResponseTransfer;

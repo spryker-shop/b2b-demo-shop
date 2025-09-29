@@ -28,24 +28,12 @@ use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
  */
 class OrderAmendmentsRestApiCest
 {
-    /**
-     * @var string
-     */
     protected const RESPONSE_CODE_ORDER_IS_NOT_AMENDABLE = '5800';
 
-    /**
-     * @var string
-     */
     protected const RESPONSE_DETAIL_ORDER_IS_NOT_AMENDABLE = 'The order cannot be amended.';
 
-    /**
-     * @var string
-     */
     protected const RESPONSE_CODE_PARAMETER_IS_AMENDABLE_INVALID = '901';
 
-    /**
-     * @var string
-     */
     protected const RESPONSE_DETAIL_PARAMETER_IS_AMENDABLE_INVALID = 'isAmendment => This value should be of type bool.';
 
     protected OrderAmendmentRestApiFixtures $fixtures;

@@ -36,9 +36,6 @@ use Spryker\Zed\TaxApp\Communication\Plugin\Oms\OrderRefundedEventListenerPlugin
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const FACADE_TRANSLATOR = 'FACADE_TRANSLATOR';
 
     public function provideBusinessLayerDependencies(Container $container): Container

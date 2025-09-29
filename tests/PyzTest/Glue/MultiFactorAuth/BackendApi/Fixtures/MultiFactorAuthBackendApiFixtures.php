@@ -16,19 +16,10 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class MultiFactorAuthBackendApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USER_NAME = 'multiFactorAuthBackendApiUser@example.com';
 
-    /**
-     * @var string
-     */
     protected const MFA_TYPE = 'email';
 
-    /**
-     * @var string
-     */
     protected const RESOURCE_WAREHOUSE_USER_ASSIGNMENTS = 'warehouse-user-assignments';
 
     protected UserTransfer $userTransfer;

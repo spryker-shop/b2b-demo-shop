@@ -16,11 +16,6 @@ use SprykerShop\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFun
  */
 class ContentProductAbstractListTwigFunctionProvider extends SprykerShopContentProductAbstractListTwigFunctionProvider
 {
-    /**
-     * @uses \Pyz\Shared\ContentProduct\ContentProductConfig::WIDGET_TEMPLATE_IDENTIFIER_SLIDER
-     *
-     * @var string
-     */
     protected const WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';
 
     /**

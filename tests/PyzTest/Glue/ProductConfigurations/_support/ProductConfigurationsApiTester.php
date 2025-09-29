@@ -34,9 +34,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
 {
     use _generated\ProductConfigurationsApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const ATTRIBUTE_KEY_SKU = 'sku';
 
     public function amAuthorizedCustomer(CustomerTransfer $customerTransfer): void

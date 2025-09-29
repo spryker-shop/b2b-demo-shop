@@ -15,18 +15,12 @@ use SprykerShop\Yves\PaymentAppWidget\PaymentAppWidgetConfig as SprykerPaymentAp
 
 class PaymentAppWidgetConfig extends SprykerPaymentAppWidgetConfig
 {
-    /**
-     * @var list<string>
-     */
     protected const CHECKOUT_STEPS_TO_SKIP_IN_EXPRESS_CHECKOUT_WORKFLOW = [
         'address',
         'shipment',
         'payment',
     ];
 
-    /**
-     * @var list<string>
-     */
     protected const QUOTE_FIELDS_TO_CLEAN_IN_EXPRESS_CHECKOUT_WORKFLOW = [
         QuoteTransfer::PAYMENT,
         QuoteTransfer::PAYMENTS,

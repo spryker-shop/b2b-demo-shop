@@ -34,14 +34,8 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionCustomer
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const FACADE_SALES = 'sales facade';
 
-    /**
-     * @var string
-     */
     public const FACADE_NEWSLETTER = 'newsletter facade';
 
     public function provideCommunicationLayerDependencies(Container $container): Container

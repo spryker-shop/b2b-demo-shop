@@ -24,9 +24,6 @@ use SprykerShop\Yves\SessionAgentValidation\Plugin\CustomerPage\UpdateAgentSessi
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const CLIENT_PYZ_SESSION = 'CLIENT_PYZ_SESSION';
 
     public function provideDependencies(Container $container): Container

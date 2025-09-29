@@ -30,14 +30,8 @@ class OAuthClientTest extends Unit
 {
     protected OauthClientBusinessTester $tester;
 
-    /**
-     * @var string
-     */
     protected const AUDIENCE = 'aud';
 
-    /**
-     * @var string
-     */
     protected const TEST_SUCCESS_PROVIDER_NAME = 'test-success-provider-name';
 
     public function testOauthTokenRequestContainsAllTheNecessaryData(): void

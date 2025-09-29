@@ -31,14 +31,8 @@ class AgentAuthRestApiTester extends ApiEndToEndTester
 {
     use _generated\AgentAuthRestApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const ACCESS_TOKEN_JSON_PATH = '$.data.attributes.accessToken';
 
-    /**
-     * @var string
-     */
     protected const REFRESH_TOKEN_JSON_PATH = '$.data.attributes.refreshToken';
 
     public function seeResponseHasAccessToken(): void

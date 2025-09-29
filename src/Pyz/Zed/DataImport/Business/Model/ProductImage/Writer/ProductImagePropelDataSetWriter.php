@@ -28,19 +28,10 @@ use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 
 class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_ALT_TEXT_SMALL = 'alt_text_small';
 
-    /**
-     * @var string
-     */
     public const KEY_ALT_TEXT_LARGE = 'alt_text_large';
 
-    /**
-     * @var string
-     */
     protected const GLOSSARY_KEY_PREFIX = 'product_image';
 
     protected ProductImageRepositoryInterface $productImageRepository;

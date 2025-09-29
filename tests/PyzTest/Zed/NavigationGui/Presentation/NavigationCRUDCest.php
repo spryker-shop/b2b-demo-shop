@@ -28,9 +28,6 @@ use PyzTest\Zed\NavigationGui\PageObject\NavigationUpdatePage;
  */
 class NavigationCRUDCest
 {
-    /**
-     * @var int
-     */
     public const ELEMENT_TIMEOUT = 5;
 
     public function _before(NavigationGuiPresentationTester $i): void

@@ -14,9 +14,6 @@ use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as Sp
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const CLIENT_PRODUCT_STORAGE_PYZ = 'CLIENT_PRODUCT_STORAGE_PYZ';
 
     public function provideDependencies(Container $container): Container

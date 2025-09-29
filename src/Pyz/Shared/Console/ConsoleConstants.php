@@ -17,8 +17,6 @@ interface ConsoleConstants
      * - Must be set to false for environments where composer install --no-dev is performed.
      *
      * @api
-     *
-     * @var string
      */
     public const ENABLE_DEVELOPMENT_CONSOLE_COMMANDS = 'CONSOLE:ENABLE_DEVELOPMENT_CONSOLE_COMMANDS';
 }

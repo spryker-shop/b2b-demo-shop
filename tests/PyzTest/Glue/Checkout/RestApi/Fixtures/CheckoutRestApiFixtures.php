@@ -31,24 +31,12 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'CheckoutRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME_2 = 'CheckoutRestApiFixtures2';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var int
-     */
     protected const PRODUCT_CONCRETES_GENERATE_NUMBER = 100;
 
     protected CustomerTransfer $customerTransfer;

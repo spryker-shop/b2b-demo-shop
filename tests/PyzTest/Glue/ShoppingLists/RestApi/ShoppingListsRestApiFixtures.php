@@ -33,9 +33,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
     protected ShoppingListTransfer $shoppingListTransfer;

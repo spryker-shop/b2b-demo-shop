@@ -19,9 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MultiCartController extends SprykerShopMultiCartController
 {
-    /**
-     * @var string
-     */
     public const REQUEST_HEADER_REFERER = 'referer';
 
     public function setDefaultBackAction(int $idQuote, Request $request): RedirectResponse

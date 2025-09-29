@@ -29,14 +29,8 @@ use PyzTest\Zed\MessageBroker\TaxAppCommunicationTester;
  */
 class TaxAppConfigMessageTest extends Unit
 {
-    /**
-     * @var string
-     */
     protected const STORE_REFERENCE = 'DE';
 
-    /**
-     * @var string
-     */
     protected const VENDOR_CODE = 'VENDOR_CODE';
 
     protected TaxAppCommunicationTester $tester;

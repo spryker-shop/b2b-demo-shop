@@ -21,14 +21,8 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
  */
 class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implements ExampleProductSalePageQueryContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
 
-    /**
-     * @var string
-     */
     protected const PRICE_TYPE_DEFAULT = 'DEFAULT';
 
     /**

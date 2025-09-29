@@ -15,9 +15,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductSetImageLocalizedAttributesExtractorStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_IMAGE_ALT_TEXT_LOCALIZED_ATTRIBUTES = 'imageAltTextLocalizedAttributes';
 
     public function execute(DataSetInterface $dataSet): void

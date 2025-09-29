@@ -34,14 +34,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
     protected ProductConcreteTransfer $productConcreteTransfer;

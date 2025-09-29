@@ -29,14 +29,8 @@ use Spryker\Zed\MessageBroker\MessageBrokerDependencyProvider;
  */
 class PaymentMethodMessageCest
 {
-    /**
-     * @var string
-     */
     protected const PAYMENT_METHOD_NAME = 'payment-method-name';
 
-    /**
-     * @var string
-     */
     protected const PROVIDER_NAME = 'provider-name';
 
     public function testAddPaymentMethodMessageIsSuccessfullyHandled(PaymentMethodPresentationTester $I): void

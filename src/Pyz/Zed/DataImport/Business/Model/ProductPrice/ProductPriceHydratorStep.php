@@ -26,84 +26,36 @@ use Spryker\Zed\PriceProductDataImport\Business\Exception\InvalidPriceDataKeyExc
 
 class ProductPriceHydratorStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 5000;
 
-    /**
-     * @var string
-     */
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
 
-    /**
-     * @var string
-     */
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
 
-    /**
-     * @var string
-     */
     public const COLUMN_CURRENCY = 'currency';
 
-    /**
-     * @var string
-     */
     public const COLUMN_STORE = 'store';
 
-    /**
-     * @var string
-     */
     public const COLUMN_PRICE_NET = 'value_net';
 
-    /**
-     * @var string
-     */
     public const COLUMN_PRICE_GROSS = 'value_gross';
 
-    /**
-     * @var string
-     */
     public const COLUMN_PRICE_DATA = 'price_data';
 
-    /**
-     * @var string
-     */
     public const COLUMN_PRICE_DATA_CHECKSUM = 'price_data_checksum';
 
-    /**
-     * @var string
-     */
     public const COLUMN_PRICE_TYPE = 'price_type';
 
-    /**
-     * @var string
-     */
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
-    /**
-     * @var string
-     */
     public const KEY_DEFAULT_PRICE_MODE_CONFIGURATION = SpyPriceTypeTableMap::COL_PRICE_MODE_CONFIGURATION_BOTH;
 
-    /**
-     * @var string
-     */
     public const KEY_SKU = 'sku';
 
-    /**
-     * @var string
-     */
     public const PRICE_TYPE_TRANSFER = 'PRICE_TYPE_TRANSFER';
 
-    /**
-     * @var string
-     */
     public const PRICE_PRODUCT_TRANSFER = 'PRICE_PRODUCT_TRANSFER';
 
-    /**
-     * @var string
-     */
     public const KEY_PRICE_DATA_PREFIX = 'price_data.';
 
     protected DataImportToUtilEncodingServiceInterface $utilEncodingService;

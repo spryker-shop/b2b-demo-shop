@@ -34,14 +34,8 @@ class MultiFactorAuthBackendApiTester extends BackendApiEndToEndTester
 {
     use _generated\MultiFactorAuthBackendApiTesterActions;
 
-    /**
-     * @var string
-     */
     public const TEST_UUID = '11111111-55a9-55ae-a538-4d8109b4087c';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'Change!23456';
 
     public function authorizeUserToBackendApi(UserTransfer $userTransfer): void

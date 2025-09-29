@@ -16,9 +16,6 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class CustomerFullNameWidget extends AbstractWidget
 {
-    /**
-     * @var string
-     */
     protected const PARAMETER_CUSTOMER_FULL_NAME = 'customerFullName';
 
     public static function getName(): string

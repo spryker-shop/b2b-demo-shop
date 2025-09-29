@@ -14,9 +14,6 @@ use Spryker\Yves\Router\Route\RouteCollection;
 
 class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
 {
-    /**
-     * @var string
-     */
     public const ROUTE_NAME_SALE = 'sale';
 
     public function addRoutes(RouteCollection $routeCollection): RouteCollection

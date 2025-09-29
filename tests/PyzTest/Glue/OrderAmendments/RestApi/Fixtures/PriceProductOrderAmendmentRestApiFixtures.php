@@ -21,44 +21,20 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var int
-     */
     public const DEFAULT_UNIT_PRICE_AMOUNT = 10000;
 
-    /**
-     * @var int
-     */
     public const BIGGER_UNIT_PRICE_AMOUNT = 15000;
 
-    /**
-     * @var int
-     */
     public const LOWER_UNIT_PRICE_AMOUNT = 5000;
 
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'PriceProductOrderAmendmentRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var string
-     */
     protected const STATE_MACHINE_NAME = 'DummyPayment01';
 
-    /**
-     * @var string
-     */
     protected const ORDER_ITEM_STATE_GRACE_PERIOD_STARTED = 'grace period started';
 
-    /**
-     * @var string
-     */
     protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
     protected CustomerTransfer $customerTransfer;

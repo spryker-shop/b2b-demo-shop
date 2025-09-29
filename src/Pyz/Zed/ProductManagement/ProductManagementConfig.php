@@ -13,9 +13,6 @@ use Spryker\Zed\ProductManagement\ProductManagementConfig as SprykerProductManag
 
 class ProductManagementConfig extends SprykerProductManagementConfig
 {
-    /**
-     * @var list<string>
-     */
     protected const PRODUCT_TABLE_FILTER_FORM_EXTERNAL_FIELD_NAMES = ['id-merchant'];
 
     public function isConcreteSkuSearchInProductTableEnabled(): bool

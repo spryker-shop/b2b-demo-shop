@@ -13,8 +13,5 @@ use Spryker\Zed\ProductListGui\ProductListGuiConfig as SprykerProductListGuiConf
 
 class ProductListGuiConfig extends SprykerProductListGuiConfig
 {
-    /**
-     * @var bool
-     */
     protected const IS_FILE_EXTENSION_VALIDATION_ENABLED = true;
 }

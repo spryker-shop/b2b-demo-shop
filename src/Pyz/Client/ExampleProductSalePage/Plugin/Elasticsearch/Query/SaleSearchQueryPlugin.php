@@ -26,9 +26,6 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\SearchContextAwareQueryInte
  */
 class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, SearchContextAwareQueryInterface
 {
-    /**
-     * @var string
-     */
     protected const SOURCE_IDENTIFIER = 'page';
 
     protected Query $query;

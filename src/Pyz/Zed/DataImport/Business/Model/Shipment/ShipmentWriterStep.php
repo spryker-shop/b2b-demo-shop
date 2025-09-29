@@ -16,29 +16,14 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ShipmentWriterStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const COL_CARRIER = 'carrier';
 
-    /**
-     * @var string
-     */
     public const COL_SHIPMENT_METHOD_KEY = 'shipment_method_key';
 
-    /**
-     * @var string
-     */
     public const COL_NAME = 'name';
 
-    /**
-     * @var string
-     */
     public const COL_ID_TAX_SET = 'idTaxSet';
 
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
     public function execute(DataSetInterface $dataSet): void

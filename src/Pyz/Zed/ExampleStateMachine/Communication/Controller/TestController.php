@@ -20,9 +20,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TestController extends AbstractController
 {
-    /**
-     * @var string
-     */
     public const STATE_MACHINE_NAME = 'Test';
 
     /**

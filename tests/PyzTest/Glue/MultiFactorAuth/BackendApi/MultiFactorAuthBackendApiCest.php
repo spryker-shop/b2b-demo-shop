@@ -28,14 +28,8 @@ class MultiFactorAuthBackendApiCest
 {
     protected ?string $mfaCode = null;
 
-    /**
-     * @var string
-     */
     protected const INVALID_MFA_CODE = '000000';
 
-    /**
-     * @var string
-     */
     protected const INVALID_MFA_TYPE = 'invalid-type';
 
     protected ?MultiFactorAuthBackendApiFixtures $fixtures = null;

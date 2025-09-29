@@ -13,8 +13,5 @@ use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig as SprykerProdu
 
 class ProductPricesRestApiConfig extends SprykerProductPricesRestApiConfig
 {
-    /**
-     * @var bool
-     */
     protected const PERMISSION_CHECK_ENABLED = true;
 }

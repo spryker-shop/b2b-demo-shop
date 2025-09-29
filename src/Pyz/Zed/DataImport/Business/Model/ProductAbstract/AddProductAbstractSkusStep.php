@@ -17,9 +17,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class AddProductAbstractSkusStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_PRODUCT_ABSTRACT_SKUS = 'productAbstractSkus';
 
     /**

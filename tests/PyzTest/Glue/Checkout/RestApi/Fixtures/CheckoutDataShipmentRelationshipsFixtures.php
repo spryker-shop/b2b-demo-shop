@@ -30,14 +30,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CheckoutDataShipmentRelationshipsFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'CheckoutDataRelationshipsFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
     protected CustomerTransfer $customerTransfer;

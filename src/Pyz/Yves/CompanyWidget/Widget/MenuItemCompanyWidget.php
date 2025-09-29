@@ -16,19 +16,10 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class MenuItemCompanyWidget extends AbstractWidget
 {
-    /**
-     * @var string
-     */
     protected const PARAMETER_IS_VISIBLE = 'isVisible';
 
-    /**
-     * @var string
-     */
     protected const PARAMETER_COMPANY_NAME = 'companyName';
 
-    /**
-     * @var string
-     */
     protected const PARAMETER_HAS_COMPANY_ACCESS = 'hasCompanyAccess';
 
     public function __construct()

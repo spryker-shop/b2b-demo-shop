@@ -16,14 +16,8 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductAbstractSkuToIdProductAbstractStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_SOURCE = 'sku';
 
-    /**
-     * @var string
-     */
     public const KEY_TARGET = 'idProductAbstract';
 
     protected string $source;

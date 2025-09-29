@@ -34,9 +34,6 @@ class MultiFactorAuthRestApiTester extends ApiEndToEndTester
 {
     use _generated\MultiFactorAuthRestApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'Change!23456';
 
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void

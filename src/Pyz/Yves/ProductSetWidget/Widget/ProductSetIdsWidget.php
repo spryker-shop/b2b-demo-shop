@@ -19,19 +19,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProductSetIdsWidget extends AbstractWidget
 {
-    /**
-     * @var string
-     */
     protected const REQUEST = 'request';
 
-    /**
-     * @var string
-     */
     protected const PARAMETER_PRODUCT_SET_LIST = 'productSetList';
 
-    /**
-     * @var string
-     */
     protected const PARAMETER_ATTRIBUTES = 'attributes';
 
     /**

@@ -14,14 +14,8 @@ use SprykerShop\Yves\ProductSetWidget\ProductSetWidgetDependencyProvider as Spry
 
 class ProductSetWidgetDependencyProvider extends SprykerProductSetWidgetDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const CLIENT_PRODUCT_SET_STORAGE = 'CLIENT_PRODUCT_SET_STORAGE';
 
-    /**
-     * @var string
-     */
     public const CLIENT_PRODUCT_STORAGE = 'CLIENT_PRODUCT_STORAGE';
 
     public function provideDependencies(Container $container): Container

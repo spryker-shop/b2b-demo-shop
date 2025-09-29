@@ -27,14 +27,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class CompanyBusinessUnitAddressCheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'CompanyBUAddressCheckoutRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
     protected CustomerTransfer $customerTransfer;

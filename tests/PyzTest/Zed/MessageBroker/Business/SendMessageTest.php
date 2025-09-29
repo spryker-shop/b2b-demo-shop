@@ -29,14 +29,8 @@ use Symfony\Component\Messenger\Envelope;
  */
 class SendMessageTest extends Unit
 {
-    /**
-     * @var string
-     */
     public const CHANNEL_NAME = 'channel';
 
-    /**
-     * @var string
-     */
     protected const MESSAGE_BROKER_TRANSFER_VALUE = 'value';
 
     protected MessageBrokerBusinessTester $tester;

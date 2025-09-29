@@ -15,19 +15,10 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CurrencyWriterStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_ISO_CODE = 'iso_code';
 
-    /**
-     * @var string
-     */
     public const KEY_CURRENCY_SYMBOL = 'currency_symbol';
 
-    /**
-     * @var string
-     */
     public const KEY_NAME = 'name';
 
     public function execute(DataSetInterface $dataSet): void

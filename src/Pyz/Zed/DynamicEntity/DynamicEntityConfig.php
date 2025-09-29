@@ -13,9 +13,6 @@ use Spryker\Zed\DynamicEntity\DynamicEntityConfig as SprykerDynamicEntityConfig;
 
 class DynamicEntityConfig extends SprykerDynamicEntityConfig
 {
-    /**
-     * @var string
-     */
     protected const CONFIGURATION_FILE_PATH = '%s/src/Pyz/Zed/DynamicEntity/data/installer/configuration.json';
 
     public function getInstallerConfigurationDataFilePath(): string

@@ -26,14 +26,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'ProductPackagingUnitCartReorderRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PRODUCT_PACKAGING_UNIT_TYPE = 'box';
 
     protected StoreTransfer $storeTransfer;

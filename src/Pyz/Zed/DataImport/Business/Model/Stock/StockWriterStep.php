@@ -15,9 +15,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class StockWriterStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_NAME = 'name';
 
     public function execute(DataSetInterface $dataSet): void

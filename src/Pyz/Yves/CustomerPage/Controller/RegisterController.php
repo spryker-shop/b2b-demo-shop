@@ -18,11 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RegisterController extends SprykerRegisterController
 {
-    /**
-     * @var string
-     *
-     * @uses \SprykerShop\Yves\CompanyUserInvitationPage\CompanyUserInvitationPageConfig::INVITATION_SESSION_ID
-     */
     protected const INVITATION_SESSION_ID = 'COMPANY_USER_INVITATION';
 
     public function indexAction(Request $request): View|\Symfony\Component\HttpFoundation\RedirectResponse

@@ -20,34 +20,16 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'OrderAmendmentRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var string
-     */
     protected const STATE_MACHINE_NAME = 'DummyPayment01';
 
-    /**
-     * @var string
-     */
     protected const ORDER_ITEM_STATE_GRACE_PERIOD_STARTED = 'grace period started';
 
-    /**
-     * @var string
-     */
     protected const ORDER_ITEM_STATE_PAID = 'paid';
 
-    /**
-     * @var string
-     */
     protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
     protected CustomerTransfer $customerTransfer;

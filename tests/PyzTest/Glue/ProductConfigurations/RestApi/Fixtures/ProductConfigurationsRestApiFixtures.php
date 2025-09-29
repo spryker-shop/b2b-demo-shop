@@ -26,14 +26,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     public const PRODUCT_CONFIGURATION_INSTANCE_ATTRIBUTE_JSON_PATH = '.productConfigurationInstance';
 
-    /**
-     * @var array<string, mixed>
-     */
     public const PRODUCT_CONFIGURATION_CART_ITEM_DATA = [
         'displayData' => self::TEST_DISPLAY_DATA,
         'configuration' => self::TEST_CONFIGURATION,
@@ -72,29 +66,14 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
         ],
     ];
 
-    /**
-     * @var string
-     */
     public const STORE_NAME_DE = 'DE';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var string
-     */
     protected const TEST_CONFIGURATOR_KEY = 'DATE_TIME_CONFIGURATOR';
 
-    /**
-     * @var string
-     */
     protected const TEST_CONFIGURATION = '{"time_of_day": "2"}';
 
-    /**
-     * @var string
-     */
     protected const TEST_DISPLAY_DATA = '{"Preferred time of the day": "Afternoon", "Date": "9.09.2020"}';
 
     protected ProductConcreteTransfer $productConcreteTransfer;

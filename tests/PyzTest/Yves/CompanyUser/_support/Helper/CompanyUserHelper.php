@@ -36,9 +36,6 @@ class CompanyUserHelper extends Module
     use LocatorHelperTrait;
     use DependencyHelperTrait;
 
-    /**
-     * @var array
-     */
     protected const COMPANY_USER_PERMISSIONS_KEY_LIST = [
         'AddCartItemPermissionPlugin',
         'ChangeCartItemPermissionPlugin',

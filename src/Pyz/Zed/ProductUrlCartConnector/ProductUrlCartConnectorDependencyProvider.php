@@ -14,14 +14,8 @@ use Spryker\Zed\Kernel\Container;
 
 class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const FACADE_PRODUCT = 'FACADE_PRODUCT';
 
-    /**
-     * @var string
-     */
     public const FACADE_LOCALE = 'FACADE_LOCALE';
 
     public function provideBusinessLayerDependencies(Container $container): Container

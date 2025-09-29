@@ -22,24 +22,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class CustomerAccessForm extends SprykerCustomerAccessForm
 {
-    /**
-     * @var string
-     */
     public const OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE';
 
-    /**
-     * @var string
-     */
     public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE';
 
-    /**
-     * @var string
-     */
     public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA';
 
-    /**
-     * @var string
-     */
     protected const FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
 
     public function configureOptions(OptionsResolver $resolver): void

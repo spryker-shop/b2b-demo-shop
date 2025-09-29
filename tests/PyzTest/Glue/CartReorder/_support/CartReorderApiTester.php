@@ -50,47 +50,18 @@ class CartReorderApiTester extends ApiEndToEndTester
 {
     use _generated\CartReorderApiTesterActions;
 
-    /**
-     * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESOURCE_CART_ITEMS
-     *
-     * @var string
-     */
     public const RESOURCE_CARTS = 'carts';
 
-    /**
-     * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESOURCE_CART_ITEMS
-     *
-     * @var string
-     */
     public const RESOURCE_CART_ITEMS = 'items';
 
-    /**
-     * @uses \Spryker\Glue\ProductBundleCartsRestApi\ProductBundleCartsRestApiConfig::RESOURCE_BUNDLE_ITEMS
-     *
-     * @var string
-     */
     public const RESOURCE_BUNDLE_ITEMS = 'bundle-items';
 
-    /**
-     * @uses \Spryker\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_DEFAULT
-     *
-     * @var string
-     */
     public const PRICE_TYPE = 'DEFAULT';
 
-    /**
-     * @var string
-     */
     protected const PRICE_MODE = 'GROSS_MODE';
 
-    /**
-     * @var string
-     */
     protected const STATE_MACHINE_NAME = 'DummyPayment01';
 
-    /**
-     * @var string
-     */
     protected const TEST_CUSTOMER_PASSWORD = 'change123';
 
     public function configureStateMachine(): void

@@ -29,11 +29,6 @@ use Spryker\Zed\ProductSearch\Dependency\ProductSearchEvents;
 
 class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 {
-    /**
-     * @uses \Spryker\Shared\ProductBundleStorage\ProductBundleStorageConfig::PRODUCT_BUNDLE_PUBLISH
-     *
-     * @var string
-     */
     protected const PRODUCT_BUNDLE_PUBLISH = 'ProductBundle.product_bundle.publish.write';
 
     protected const COLUMN_ABSTRACT_SKU = ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU;

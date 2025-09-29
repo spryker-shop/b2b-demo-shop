@@ -26,9 +26,6 @@ use Spryker\Glue\UrlsRestApi\UrlsRestApiConfig;
  */
 class UrlsRestApiCest
 {
-    /**
-     * @var string
-     */
     protected const DEFAULT_LOCALE = 'en_US';
 
     protected UrlsRestApiFixtures $fixtures;

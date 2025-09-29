@@ -23,9 +23,6 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 class ProductManagementAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
     public function execute(DataSetInterface $dataSet): void

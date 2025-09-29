@@ -16,11 +16,6 @@ use SprykerShop\Yves\ContentProductSetWidget\Twig\ContentProductSetTwigFunctionP
  */
 class ContentProductSetTwigFunctionProvider extends SprykerShopContentProductSetTwigFunctionProvider
 {
-    /**
-     * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
-     *
-     * @var string
-     */
     protected const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
 
     /**

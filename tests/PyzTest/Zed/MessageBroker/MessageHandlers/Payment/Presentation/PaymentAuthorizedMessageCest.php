@@ -26,14 +26,8 @@ use PyzTest\Zed\MessageBroker\PaymentPresentationTester;
  */
 class PaymentAuthorizedMessageCest
 {
-    /**
-     * @var string
-     */
     protected const INITIAL_ITEM_STATE = 'payment pending';
 
-    /**
-     * @var string
-     */
     public const FINAL_ITEM_STATE = 'payment authorized';
 
     public function _before(PaymentPresentationTester $i): void

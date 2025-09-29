@@ -26,21 +26,12 @@ use Spryker\Glue\MultiFactorAuth\MultiFactorAuthConfig;
  */
 class MultiFactorAuthRestApiCest
 {
-    /**
-     * @var string
-     */
     protected const RESOURCE_MULTI_FACTOR_AUTH_TYPES = 'multi-factor-auth-types';
 
     protected ?string $mfaCode = null;
 
-    /**
-     * @var string
-     */
     protected const INVALID_MFA_CODE = '000000';
 
-    /**
-     * @var string
-     */
     protected const INVALID_MFA_TYPE = 'invalid-type';
 
     protected ?MultiFactorAuthRestApiFixtures $fixtures = null;

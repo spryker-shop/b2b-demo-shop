@@ -15,9 +15,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductManagementLocalizedAttributesExtractorStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
     public function execute(DataSetInterface $dataSet): void

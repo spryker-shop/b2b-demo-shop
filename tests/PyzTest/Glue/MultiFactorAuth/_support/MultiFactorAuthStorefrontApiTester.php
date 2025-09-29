@@ -34,9 +34,6 @@ class MultiFactorAuthStorefrontApiTester extends StorefrontApiEndToEndTester
 {
     use _generated\MultiFactorAuthStorefrontApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'Change!23456';
 
     public function authorizeCustomerToStorefrontApi(CustomerTransfer $customerTransfer): void

@@ -23,9 +23,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var array<string, mixed>
-     */
     public const PRODUCT_CONFIGURATION_SHOPPING_LIST_ITEM_DATA = [
         'displayData' => '{"Preferred time of the day": "Afternoon", "Date": "9.09.2020"}',
         'configuration' => '{"time_of_day": "2"}',
@@ -64,9 +61,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
         ],
     ];
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
     protected ProductConcreteTransfer $productConcreteTransfer;

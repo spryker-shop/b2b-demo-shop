@@ -26,19 +26,10 @@ use PyzTest\Zed\MessageBroker\PaymentPresentationTester;
  */
 class PaymentCanceledMessageCest
 {
-    /**
-     * @var string
-     */
     protected const INITIAL_ITEM_STATE = 'payment cancellation pending';
 
-    /**
-     * @var string
-     */
     public const FINAL_ITEM_STATE = 'payment cancelled';
 
-    /**
-     * @var string
-     */
     public const NOT_ALLOWED_FOR_CANCEL_ITEM_STATE = 'payment captured';
 
     public function _before(PaymentPresentationTester $i): void

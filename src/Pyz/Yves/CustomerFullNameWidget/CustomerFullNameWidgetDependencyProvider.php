@@ -14,9 +14,6 @@ use Spryker\Yves\Kernel\Container;
 
 class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
 
     public function provideDependencies(Container $container): Container

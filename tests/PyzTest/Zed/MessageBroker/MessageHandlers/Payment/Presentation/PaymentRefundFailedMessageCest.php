@@ -26,14 +26,8 @@ use PyzTest\Zed\MessageBroker\PaymentPresentationTester;
  */
 class PaymentRefundFailedMessageCest
 {
-    /**
-     * @var string
-     */
     protected const INITIAL_ITEM_STATE = 'payment refund pending';
 
-    /**
-     * @var string
-     */
     public const FINAL_ITEM_STATE = 'payment refund failed';
 
     public function _before(PaymentPresentationTester $i): void

@@ -15,9 +15,6 @@ use Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface;
 
 class Environment extends Module
 {
-    /**
-     * @var string
-     */
     protected const TESTING_APPLICATION_ENV_NAME = 'devtest';
 
     public function _initialize(): void

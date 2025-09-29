@@ -19,14 +19,8 @@ class ConsoleHelper extends Module
 {
     use ModuleHelperConfigTrait;
 
-    /**
-     * @var string
-     */
     public const RUNNER = 'console_runner.php';
 
-    /**
-     * @var string
-     */
     public const SANDBOX_DIR = 'cli_sandbox/';
 
     public function _after(TestInterface $test): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter

@@ -68,9 +68,6 @@ class CalculationBusinessTester extends Actor
 
     protected int $incrementNumber = 0;
 
-    /**
-     * @var string
-     */
     protected const COUNTRY_DE = 'DE';
 
     public function createDiscounts(int $discountAmount, string $calculatorType, string $sku = '*'): SpyDiscountVoucher

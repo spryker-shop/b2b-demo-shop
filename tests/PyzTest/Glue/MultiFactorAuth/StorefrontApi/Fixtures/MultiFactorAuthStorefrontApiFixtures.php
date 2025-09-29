@@ -16,14 +16,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_CUSTOMER_NAME = 'multiFactorAuthStorefrontApiCustomer@example.com';
 
-    /**
-     * @var string
-     */
     protected const MFA_TYPE = 'email';
 
     protected CustomerTransfer $customerTransfer;

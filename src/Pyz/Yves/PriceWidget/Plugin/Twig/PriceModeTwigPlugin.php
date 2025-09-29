@@ -20,9 +20,6 @@ use Twig\TwigFunction;
  */
 class PriceModeTwigPlugin extends AbstractPlugin implements TwigPluginInterface
 {
-    /**
-     * @var string
-     */
     protected const FUNCTION_NAME_GET_PRICE_MODE = 'getPriceMode';
 
     /**

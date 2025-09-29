@@ -14,39 +14,18 @@ use Spryker\Yves\Kernel\Container;
 
 class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const CLIENT_SEARCH = 'CLIENT_SEARCH';
 
-    /**
-     * @var string
-     */
     public const CLIENT_URL_STORAGE = 'CLIENT_URL_STORAGE';
 
-    /**
-     * @var string
-     */
     public const CLIENT_STORE = 'CLIENT_STORE';
 
-    /**
-     * @var string
-     */
     public const PLUGIN_PRODUCT_SALE_PAGE_WIDGETS = 'PLUGIN_PRODUCT_SALE_PAGE_WIDGETS';
 
-    /**
-     * @var string
-     */
     public const CLIENT_CATALOG = 'CLIENT_CATALOG';
 
-    /**
-     * @var string
-     */
     public const CLIENT_LOCALE = 'CLIENT_LOCALE';
 
-    /**
-     * @var string
-     */
     public const SERVICE_UTIL_NUMBER = 'SERVICE_UTIL_NUMBER';
 
     public function provideDependencies(Container $container): Container

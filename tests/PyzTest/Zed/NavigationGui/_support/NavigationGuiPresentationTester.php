@@ -36,99 +36,42 @@ class NavigationGuiPresentationTester extends Actor
 {
     use _generated\NavigationGuiPresentationTesterActions;
 
-    /**
-     * @var string
-     */
     public const ROOT_NODE_ANCHOR_SELECTOR = '#navigation-node-0_anchor';
 
-    /**
-     * @var string
-     */
     public const CHILD_NODE_ANCHOR_SELECTOR = '#navigation-node-%d_anchor';
 
-    /**
-     * @var string
-     */
     public const NAVIGATION_NODE_SELECTOR = '.jstree-node';
 
-    /**
-     * @var string
-     */
     public const NAVIGATION_TREE_SELECTOR = '#navigation-tree';
 
-    /**
-     * @var string
-     */
     public const NAVIGATION_TREE_SAVE_BUTTON_SELECTOR = '#navigation-tree-save-btn';
 
-    /**
-     * @var string
-     */
     public const REMOVE_NODE_BUTTON_SELECTOR = '#remove-selected-node-btn';
 
-    /**
-     * @var string
-     */
     public const ADD_CHILD_NODE_BUTTON_SELECTOR = '#add-child-node-btn';
 
-    /**
-     * @var string
-     */
     public const LOCALIZED_FORM_CONTAINER_SELECTOR = '#localized_attributes_container-%s .collapse-link';
 
-    /**
-     * @var string
-     */
     public const NODE_CHILD_SELECTOR = '#navigation-node-%d #navigation-node-%d';
 
-    /**
-     * @var string
-     */
     public const NODE_NAME_CHILD_SELECTOR = "//*[@id=\"navigation-node-%d\"]//*[text()[contains(.,'%s')]]";
 
-    /**
-     * @var string
-     */
     public const NODE_FORM_IFRAME_NAME = 'navigation-node-form-iframe';
 
-    /**
-     * @var string
-     */
     public const SUCCESS_MESSAGE_SELECTOR = '.flash-messages .alert-success';
 
-    /**
-     * @var string
-     */
     public const SWEET_ALERT_SELECTOR = '.sweet-alert';
 
-    /**
-     * @var string
-     */
     public const SWEET_ALERT_CONFIRM_SELECTOR = '.sweet-alert button.confirm';
 
-    /**
-     * @var string
-     */
     public const NODE_FORM_SELECTOR = 'form';
 
-    /**
-     * @var string
-     */
     public const NODE_UPDATE_FORM_SELECTOR = '//form[@name="navigation_node"]';
 
-    /**
-     * @var string
-     */
     public const FLASH_MESSAGE_TEXT_SELECTOR = '//div[@class="flash-messages"]/div';
 
-    /**
-     * @var string
-     */
     public const NAVIGATION_DELETE_FORM_SELECTOR = '//*[@id="navigation-table"]/tbody/tr/td[5]/form[1]';
 
-    /**
-     * @var string
-     */
     public const NAVIGATION_ROW_ACTIVE_LINK_SELECTOR = '//*[@id="navigation-table"]/tbody/tr[1]/td[5]/a[2]';
 
     public function setNameField(string $value): void

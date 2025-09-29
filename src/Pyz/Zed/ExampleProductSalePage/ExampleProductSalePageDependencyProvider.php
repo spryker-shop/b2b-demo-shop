@@ -14,14 +14,8 @@ use Spryker\Zed\Kernel\Container;
 
 class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const QUERY_CONTAINER_PRODUCT_LABEL = 'QUERY_CONTAINER_PRODUCT_LABEL';
 
-    /**
-     * @var string
-     */
     public const QUERY_CONTAINER_PRODUCT = 'QUERY_CONTAINER_PRODUCT';
 
     public function providePersistenceLayerDependencies(Container $container): Container

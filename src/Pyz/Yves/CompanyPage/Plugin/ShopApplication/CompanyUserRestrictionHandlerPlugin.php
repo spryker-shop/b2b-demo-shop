@@ -18,9 +18,6 @@ use Symfony\Component\HttpKernel\Event\ControllerEvent;
 
 class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionHandlerPlugin
 {
-    /**
-     * @var string
-     */
     protected const PERMISSION_KEY = 'SeeCompanyMenuPermissionPlugin';
 
     /**

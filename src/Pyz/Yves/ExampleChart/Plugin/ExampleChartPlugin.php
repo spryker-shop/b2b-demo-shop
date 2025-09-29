@@ -17,9 +17,6 @@ use Spryker\Yves\Kernel\AbstractPlugin;
 
 class ExampleChartPlugin extends AbstractPlugin implements ChartPluginInterface
 {
-    /**
-     * @var string
-     */
     public const NAME = 'testChart';
 
     public function getName(): string

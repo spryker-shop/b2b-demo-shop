@@ -13,38 +13,16 @@ use SprykerShop\Yves\CustomerPage\CustomerPageConfig as SprykerCustomerPageConfi
 
 class CustomerPageConfig extends SprykerCustomerPageConfig
 {
-    /**
-     * @var bool
-     */
     protected const CUSTOMER_SECURITY_BLOCKER_ENABLED = true;
 
-    /**
-     * @uses \Pyz\Zed\Customer\CustomerConfig::MIN_LENGTH_CUSTOMER_PASSWORD
-     *
-     * @var int
-     */
     protected const MIN_LENGTH_CUSTOMER_PASSWORD = 12;
 
-    /**
-     * @uses \Pyz\Zed\Customer\CustomerConfig::MAX_LENGTH_CUSTOMER_PASSWORD
-     *
-     * @var int
-     */
     protected const MAX_LENGTH_CUSTOMER_PASSWORD = 128;
 
-    /**
-     * @var bool
-     */
     protected const IS_ORDER_HISTORY_SEARCH_ENABLED = true;
 
-    /**
-     * @var string
-     */
     protected const PASSWORD_VALIDATION_PATTERN = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\_\-\=\+\[\]\{\}\|;:<>.,\/?\\~])[A-Za-z\d!@#$%^&*()\_\-\=\+\[\]\{\}\|;:<>.,\/?\\~]+$/';
 
-    /**
-     * @var string
-     */
     protected const PASSWORD_VALIDATION_MESSAGE = 'global.password.invalid_password';
 
     /**

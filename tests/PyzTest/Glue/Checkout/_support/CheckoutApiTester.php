@@ -66,34 +66,16 @@ class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
 
-    /**
-     * @var string
-     */
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
 
-    /**
-     * @var string
-     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
 
-    /**
-     * @var string
-     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
 
-    /**
-     * @var string
-     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
 
-    /**
-     * @var int
-     */
     protected const DEFAULT_QUOTE_ITEM_QUANTITY = 10;
 
     public function assertCheckoutResponseResourceHasCorrectData(): void

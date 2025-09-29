@@ -15,9 +15,6 @@ use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 
 class GlueApplicationConfig extends SprykerGlueApplicationConfig
 {
-    /**
-     * @var bool
-     */
     public const VALIDATE_REQUEST_HEADERS = false;
 
     /**

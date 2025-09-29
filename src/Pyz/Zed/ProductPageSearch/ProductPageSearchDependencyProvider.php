@@ -45,9 +45,6 @@ use Spryker\Zed\ProductReviewSearch\Communication\Plugin\ProductPageSearch\Elast
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
 
     /**

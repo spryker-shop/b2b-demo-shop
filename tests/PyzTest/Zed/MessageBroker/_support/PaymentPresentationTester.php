@@ -40,14 +40,8 @@ class PaymentPresentationTester extends Actor
 {
     use _generated\PaymentPresentationTesterActions;
 
-    /**
-     * @var string
-     */
     protected const CURRENCY_USD = 'USD';
 
-    /**
-     * @var string
-     */
     protected const DEFAULT_OMS_PROCESS_NAME = 'ForeignPaymentStateMachine01';
 
     public function haveSalesOrder(string $initialItemState): SpySalesOrder

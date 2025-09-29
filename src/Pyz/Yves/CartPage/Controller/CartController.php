@@ -19,9 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CartController extends SprykerCartController
 {
-    /**
-     * @var string
-     */
     protected const PARAM_REFERER = 'referer';
 
     /**

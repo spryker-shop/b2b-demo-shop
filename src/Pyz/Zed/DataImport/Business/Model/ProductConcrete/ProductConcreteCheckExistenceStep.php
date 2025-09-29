@@ -16,9 +16,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductConcreteCheckExistenceStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_CONCRETE_SKU = 'concrete_sku';
 
     protected ProductRepositoryInterface $productRepository;

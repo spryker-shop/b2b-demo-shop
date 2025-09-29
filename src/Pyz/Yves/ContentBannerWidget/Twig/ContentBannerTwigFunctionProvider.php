@@ -13,11 +13,6 @@ use SprykerShop\Yves\ContentBannerWidget\Twig\ContentBannerTwigFunctionProvider 
 
 class ContentBannerTwigFunctionProvider extends SprykerShopContentBannerTwigFunctionProvider
 {
-    /**
-     * @uses \Pyz\Shared\ContentBanner\ContentBannerConfig::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE
-     *
-     * @var string
-     */
     protected const WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
 
     /**
