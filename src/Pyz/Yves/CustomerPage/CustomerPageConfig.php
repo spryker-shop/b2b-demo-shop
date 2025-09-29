@@ -15,6 +15,9 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
 {
     protected const CUSTOMER_SECURITY_BLOCKER_ENABLED = true;
 
+    /**
+     * @uses \Pyz\Zed\Customer\CustomerConfig::MIN_LENGTH_CUSTOMER_PASSWORD
+     */
     protected const MIN_LENGTH_CUSTOMER_PASSWORD = 12;
 
     /**
