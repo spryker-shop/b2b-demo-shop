@@ -31,15 +31,9 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
      */
     protected const SOURCE_IDENTIFIER = 'page';
 
-    /**
-     * @var \Elastica\Query
-     */
-    protected $query;
+    protected Query $query;
 
-    /**
-     * @var \Generated\Shared\Transfer\SearchContextTransfer
-     */
-    protected $searchContextTransfer;
+    protected SearchContextTransfer $searchContextTransfer;
 
     public function __construct()
     {
