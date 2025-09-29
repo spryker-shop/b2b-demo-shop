@@ -14,7 +14,6 @@ use Spryker\Shared\ContentNavigationGui\ContentNavigationGuiConfig as SprykerCon
 class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
 {
     /**
-     * @var string
      *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER
      *
@@ -23,7 +22,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER = 'navigation-header';
 
     /**
-     * @var string
      *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER
      *
@@ -32,7 +30,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
 
     /**
-     * @var string
      *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
      *
@@ -41,7 +38,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT = 'navigation-footer-checkout';
 
     /**
-     * @var string
      *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
      *
@@ -50,7 +46,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
 
     /**
-     * @var string
      *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
      *
@@ -59,35 +54,30 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
 
     /**
-     * @var string
      *
      * Content item navigation header template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_HEADER = 'Navigation Header';
 
     /**
-     * @var string
      *
      * Content item navigation footer template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER = 'Navigation Footer';
 
     /**
-     * @var string
      *
      * Content item navigation footer checkout template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT = 'Navigation Footer Checkout';
 
     /**
-     * @var string
      *
      * Content item footer partners template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS = 'Footer Partners';
 
     /**
-     * @var string
      *
      * Content item footer social links template name.
      */

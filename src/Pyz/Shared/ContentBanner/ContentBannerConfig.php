@@ -14,7 +14,6 @@ use Spryker\Shared\ContentBanner\ContentBannerConfig as SprykerContentBannerConf
 class ContentBannerConfig extends SprykerContentBannerConfig
 {
     /**
-     * @var string
      *
      * Content item banner home page template identifier
      */

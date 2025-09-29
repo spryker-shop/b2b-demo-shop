@@ -43,7 +43,6 @@ use Symfony\Component\Form\FormInterface;
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     /**
-     * @var string
      *
      * @uses \Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin::SERVICE_FORM_FACTORY
      */
