@@ -120,8 +120,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     *
-     * @return void
      */
     protected function assertProductImages(ProductAbstractTransfer $productAbstractTransfer): void
     {
