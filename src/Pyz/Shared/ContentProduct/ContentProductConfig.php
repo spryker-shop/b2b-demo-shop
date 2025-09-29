@@ -14,7 +14,6 @@ use Spryker\Shared\ContentProduct\ContentProductConfig as SprykerContentProductC
 class ContentProductConfig extends SprykerContentProductConfig
 {
     /**
-     *
      * Content item abstract product list slider template identifier
      */
     public const WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';

@@ -14,7 +14,6 @@ use Spryker\Shared\ContentNavigationGui\ContentNavigationGuiConfig as SprykerCon
 class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
 {
     /**
-     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER
      *
      * Content item navigation header template identifier.
@@ -22,7 +21,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER = 'navigation-header';
 
     /**
-     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER
      *
      * Content item navigation footer template identifier.
@@ -30,7 +28,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
 
     /**
-     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
      *
      * Content item navigation footer checkout template identifier.
@@ -38,7 +35,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT = 'navigation-footer-checkout';
 
     /**
-     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
      *
      * Content item footer partners template identifier.
@@ -46,7 +42,6 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
 
     /**
-     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
      *
      * Content item footer social links template identifier.
@@ -54,31 +49,26 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
 
     /**
-     *
      * Content item navigation header template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_HEADER = 'Navigation Header';
 
     /**
-     *
      * Content item navigation footer template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER = 'Navigation Footer';
 
     /**
-     *
      * Content item navigation footer checkout template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT = 'Navigation Footer Checkout';
 
     /**
-     *
      * Content item footer partners template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS = 'Footer Partners';
 
     /**
-     *
      * Content item footer social links template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_SOCIAL_LINKS = 'Footer Social Links';

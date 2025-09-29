@@ -14,7 +14,6 @@ use Spryker\Shared\ContentProductSet\ContentProductSetConfig as SprykerContentPr
 class ContentProductSetConfig extends SprykerContentProductSetConfig
 {
     /**
-     *
      * Content item product set landing page template identifier
      */
     public const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';

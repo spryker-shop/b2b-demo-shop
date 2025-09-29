@@ -14,13 +14,11 @@ use Spryker\Shared\ContentBannerGui\ContentBannerGuiConfig as SprykerContentBann
 class ContentBannerGuiConfig extends SprykerContentBannerGuiConfig
 {
     /**
-     *
      * @uses \Pyz\Shared\ContentBanner\ContentBannerConfig::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE
      */
     protected const WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
 
     /**
-     *
      * Content item banner home page template name
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_HOME_PAGE = 'content_banner.template.home-page';
