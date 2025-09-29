@@ -19,6 +19,8 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
 {
     use TransactionTrait;
 
+    protected $customerAccessEntityManager;
+
     protected CustomerAccessReaderInterface $customerAccessReader;
 
     protected CustomerAccessFilterInterface $customerAccessFilter;
@@ -40,8 +42,7 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
             $manageableContentTypes = $this->customerAccessFilter->filterManageableContentTypes($allContentTypes);
             $this->customerAccessEntityManager->setContentTypesToAccessible($manageableContentTypes);
 
-            // Use the parent class method to set inaccessible content types
-            return parent::updateUnauthenticatedCustomerAccess($customerAccessTransfer);
+            return $this->customerAccessEntityManager->setContentTypesToInaccessible($customerAccessTransfer);
         });
     }
 }
