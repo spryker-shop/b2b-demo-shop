@@ -34,8 +34,6 @@ class ProductManagerStub
 
     /**
      * @param string $sku
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
     protected function createProductAbstractEntity(string $sku): SpyProductAbstract
     {
@@ -50,8 +48,6 @@ class ProductManagerStub
     /**
      * @param string $name
      * @param int $idProductAbstract
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributes
      */
     protected function createLocalizedAttributeEntity(string $name, int $idProductAbstract): SpyProductAbstractLocalizedAttributes
     {
@@ -68,8 +64,6 @@ class ProductManagerStub
     /**
      * @param string $sku
      * @param string $name
-     *
-     * @return int
      */
     public function addProductWithoutTransactionHandling(string $sku, string $name): int
     {
@@ -86,8 +80,6 @@ class ProductManagerStub
     /**
      * @param string $sku
      * @param string $name
-     *
-     * @return void
      */
     public function addProductWithoutTransactionHandlingShouldThrowException(string $sku, string $name): void
     {
@@ -113,8 +105,6 @@ class ProductManagerStub
     /**
      * @param string $sku
      * @param string $name
-     *
-     * @return void
      */
     public function addProductWithTransactionHandlingShouldRollbackAndThrowException(string $sku, string $name): void
     {
@@ -138,8 +128,6 @@ class ProductManagerStub
     /**
      * @param string $sku
      * @param string $name
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributes
      */
     public function addProductWithTransactionHandlingShouldCommitAndReturnValue(string $sku, string $name): SpyProductAbstractLocalizedAttributes
     {
@@ -162,8 +150,6 @@ class ProductManagerStub
 
     /**
      * @throws \Exception
-     *
-     * @return void
      */
     protected function throwSampleException(): void
     {

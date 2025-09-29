@@ -37,8 +37,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -52,8 +50,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param string $key
-     *
-     * @return void
      */
     protected function filterDate(DataSetInterface $dataSet, string $key): void
     {
@@ -69,8 +65,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
      * @param string $key
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\NavigationNodeValidityDateException
-     *
-     * @return void
      */
     protected function formatDate(DataSetInterface $dataSet, string $key): void
     {
@@ -93,8 +87,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\NavigationNodeValidityDateException
-     *
-     * @return void
      */
     protected function assertDateRelation(DataSetInterface $dataSet): void
     {

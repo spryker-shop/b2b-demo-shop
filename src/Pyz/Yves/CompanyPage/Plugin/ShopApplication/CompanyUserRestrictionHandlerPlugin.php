@@ -59,8 +59,6 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
      */
     protected function canAccess(CustomerTransfer $customerTransfer): bool
     {
@@ -71,8 +69,6 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
 
     /**
      * @param \Generated\Shared\Transfer\CompanyUserTransfer $customerTransfer
-     *
-     * @return bool
      */
     protected function hasPermission(CompanyUserTransfer $customerTransfer): bool
     {

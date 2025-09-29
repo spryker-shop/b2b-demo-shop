@@ -55,33 +55,21 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
      */
     protected CompanyUnitAddressTransfer $companyUnitAddressTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function getQuoteTransfer(): QuoteTransfer
     {
         return $this->quoteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     public function getCompanyUserTransfer(): CompanyUserTransfer
     {
         return $this->companyUserTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyUnitAddressTransfer
-     */
     public function getCompanyUnitAddressTransfer(): CompanyUnitAddressTransfer
     {
         return $this->companyUnitAddressTransfer;
@@ -89,8 +77,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
 
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
@@ -113,8 +99,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     protected function buildCompanyUserAccount(
         CheckoutApiTester $I,
@@ -147,8 +131,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
 
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     protected function createPersistentQuoteWithItemsAndItemLevelShipment(CheckoutApiTester $I): QuoteTransfer
     {
@@ -172,8 +154,6 @@ class CompanyBusinessUnitAddressCheckoutDataRestApiFixtures implements FixturesB
 
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
      */
     protected function mockCompanyPostSavePlugins(CheckoutApiTester $I): void
     {

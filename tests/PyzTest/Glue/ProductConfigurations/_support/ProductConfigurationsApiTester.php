@@ -41,8 +41,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     public function amAuthorizedCustomer(CustomerTransfer $customerTransfer): void
     {
@@ -53,8 +51,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
-     *
-     * @return void
      */
     public function seeProductConfigurationInstanceEqualToExpectedValue(ProductConfigurationTransfer $productConfigurationTransfer): void
     {
@@ -72,8 +68,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
-     *
-     * @return void
      */
     public function seeOrderItemContainProductConfigurationInstance(ProductConfigurationTransfer $productConfigurationTransfer): void
     {
@@ -91,8 +85,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
     /**
      * @param string $resourceName
      * @param string $itemSku
-     *
-     * @return void
      */
     public function seeCartItemContainsProductConfigurationInstance(
         string $resourceName,
@@ -145,8 +137,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
      * @param \Generated\Shared\Transfer\RestProductConfigurationInstanceAttributesTransfer $restProductConfigurationInstanceAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestProductConfigurationInstanceAttributesTransfer
      */
     protected function mapProductConfigurationTransferToRestProductConfigurationInstanceAttributesTransfer(
         ProductConfigurationTransfer $productConfigurationTransfer,

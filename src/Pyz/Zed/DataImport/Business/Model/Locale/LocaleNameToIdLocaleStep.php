@@ -56,8 +56,6 @@ class LocaleNameToIdLocaleStep implements DataImportStepInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -82,8 +80,6 @@ class LocaleNameToIdLocaleStep implements DataImportStepInterface
      * @param string $localeName
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return int
      */
     protected function resolveIdLocale(string $localeName): int
     {

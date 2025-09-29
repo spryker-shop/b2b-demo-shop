@@ -21,8 +21,6 @@ interface ProductImageRepositoryInterface
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
     public function getProductImageSetEntity(
         string $name,
@@ -34,16 +32,12 @@ interface ProductImageRepositoryInterface
 
     /**
      * @param string $productImageKey
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
     public function getProductImageEntity(string $productImageKey): SpyProductImage;
 
     /**
      * @param int $productImageSetId
      * @param int $productImageId
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage
      */
     public function getProductImageSetToProductImageRelationEntity(
         int $productImageSetId,

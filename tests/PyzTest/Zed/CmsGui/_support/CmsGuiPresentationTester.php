@@ -76,8 +76,6 @@ class CmsGuiPresentationTester extends Actor
 
     /**
      * @param string $selector
-     *
-     * @return bool
      */
     public function tryToSeeElement(string $selector): bool
     {
@@ -142,8 +140,6 @@ class CmsGuiPresentationTester extends Actor
      * @param int $placeHolderIndex
      * @param int $localeIndex
      * @param string $contents
-     *
-     * @return void
      */
     public function fillPlaceholderContents(int $placeHolderIndex, int $localeIndex, string $contents): void
     {
@@ -190,16 +186,13 @@ class CmsGuiPresentationTester extends Actor
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function grabCmsPageId(): int
     {
         return (int)$this->grabFromCurrentUrl('/id-cms-page=(\d+)/');
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getLocalizedFakeData(): array
     {
@@ -220,8 +213,6 @@ class CmsGuiPresentationTester extends Actor
 
     /**
      * @param string $locale
-     *
-     * @return string
      */
     public function getLocalizedName(string $locale): string
     {
@@ -232,8 +223,6 @@ class CmsGuiPresentationTester extends Actor
 
     /**
      * @param string $locale
-     *
-     * @return string
      */
     public function getLocalizedUrl(string $locale): string
     {

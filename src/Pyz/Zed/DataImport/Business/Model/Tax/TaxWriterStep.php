@@ -73,8 +73,6 @@ class TaxWriterStep extends PublishAwareStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -95,8 +93,6 @@ class TaxWriterStep extends PublishAwareStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Tax\Persistence\SpyTaxRate
      */
     protected function findOrCreateTaxRate(DataSetInterface $dataSet): SpyTaxRate
     {
@@ -118,8 +114,6 @@ class TaxWriterStep extends PublishAwareStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Tax\Persistence\SpyTaxSet
      */
     protected function findOrCreateTaxSet(DataSetInterface $dataSet): SpyTaxSet
     {
@@ -135,8 +129,6 @@ class TaxWriterStep extends PublishAwareStep implements DataImportStepInterface
     /**
      * @param \Orm\Zed\Tax\Persistence\SpyTaxRate $taxRateEntity
      * @param \Orm\Zed\Tax\Persistence\SpyTaxSet $taxSetEntity
-     *
-     * @return \Orm\Zed\Tax\Persistence\SpyTaxSetTax
      */
     protected function findOrCreateTaxSetTax(SpyTaxRate $taxRateEntity, SpyTaxSet $taxSetEntity): SpyTaxSetTax
     {
@@ -152,8 +144,6 @@ class TaxWriterStep extends PublishAwareStep implements DataImportStepInterface
 
     /**
      * @param \Orm\Zed\Tax\Persistence\SpyTaxSet $taxSetEntity
-     *
-     * @return void
      */
     protected function addShipmentTax(SpyTaxSet $taxSetEntity): void
     {

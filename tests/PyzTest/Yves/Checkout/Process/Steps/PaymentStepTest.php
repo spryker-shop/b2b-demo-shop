@@ -39,9 +39,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PaymentStepTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testExecuteShouldSelectPlugin(): void
     {
         $paymentPluginMock = $this->createPaymentPluginMock();
@@ -60,9 +57,6 @@ class PaymentStepTest extends Unit
         $paymentStep->execute($this->createRequest(), $quoteTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testPostConditionsShouldReturnTrueWhenPaymentSet(): void
     {
         $quoteTransfer = new QuoteTransfer();
@@ -75,9 +69,6 @@ class PaymentStepTest extends Unit
         $this->assertTrue($paymentStep->postCondition($quoteTransfer));
     }
 
-    /**
-     * @return void
-     */
     public function testShipmentRequireInputShouldReturnTrue(): void
     {
         $paymentStep = $this->createPaymentStep(new StepHandlerPluginCollection());
@@ -86,8 +77,6 @@ class PaymentStepTest extends Unit
 
     /**
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $paymentPlugins
-     *
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep
      */
     protected function createPaymentStep(StepHandlerPluginCollection $paymentPlugins): PaymentStep
     {
@@ -103,51 +92,36 @@ class PaymentStepTest extends Unit
         );
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     protected function createRequest(): Request
     {
         return Request::createFromGlobals();
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
-     */
     protected function createPaymentPluginMock(): StepHandlerPluginInterface
     {
         return $this->createMock(StepHandlerPluginInterface::class);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
-     */
     protected function getCalculationClientMock(): CheckoutPageToCalculationClientInterface
     {
         return $this->createMock(CheckoutPageToCalculationClientBridge::class);
     }
 
-    /**
-     * @return \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface
-     */
     protected function getFlashMessengerMock(): FlashMessengerInterface
     {
         return $this->createMock(FlashMessengerInterface::class);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface
-     */
     protected function getPaymentClientMock(): CheckoutPageToPaymentClientInterface
     {
         $availablePaymentMethods = (new PaymentMethodsTransfer())
-            ->addMethod(
-                (new PaymentMethodTransfer())->setMethodName('test'),
-            );
+        ->addMethod(
+            (new PaymentMethodTransfer())->setMethodName('test'),
+        );
 
         $paymentClientMock = $this->createMock(CheckoutPageToPaymentClientInterface::class);
         $paymentClientMock->method('getAvailableMethods')
-            ->willReturn($availablePaymentMethods);
+        ->willReturn($availablePaymentMethods);
 
         return $paymentClientMock;
     }
@@ -158,7 +132,7 @@ class PaymentStepTest extends Unit
     public function getCheckoutPaymentStepEnterPreCheckPlugins(): array
     {
         return [
-            $this->getQuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPluginMock(),
+        $this->getQuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPluginMock(),
         ];
     }
 
@@ -168,7 +142,7 @@ class PaymentStepTest extends Unit
     protected function getQuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPluginMock(): CheckoutPaymentStepEnterPreCheckPluginInterface
     {
         return $this->getMockBuilder(QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin::class)
-            ->enableProxyingToOriginalMethods()
-            ->getMock();
+        ->enableProxyingToOriginalMethods()
+        ->getMock();
     }
 }

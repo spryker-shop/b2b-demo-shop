@@ -42,8 +42,6 @@ class CustomerConfirmationCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function _before(CustomerApiTester $I): void
     {
@@ -63,8 +61,6 @@ class CustomerConfirmationCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestPostCustomerConfirmationActivatesCustomerProfile(CustomerApiTester $I): void
     {
@@ -89,8 +85,6 @@ class CustomerConfirmationCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestPostCustomerConfirmationFailsOnUsedConfirmationCode(CustomerApiTester $I): void
     {
@@ -124,8 +118,6 @@ class CustomerConfirmationCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestPostCustomerConfirmationFailsOnEmptyConfirmationCode(CustomerApiTester $I): void
     {

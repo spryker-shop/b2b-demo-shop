@@ -60,8 +60,6 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -78,8 +76,6 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
 
     /**
      * @param string $shipmentMethodKey
-     *
-     * @return int
      */
     protected function getIdShipmentMethodByShipmentMethodKey(string $shipmentMethodKey): int
     {
@@ -94,8 +90,6 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
 
     /**
      * @param string $currencyIsoCode
-     *
-     * @return int
      */
     protected function getIdCurrencyByIsoCode(string $currencyIsoCode): int
     {
@@ -110,8 +104,6 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
 
     /**
      * @param string $storeName
-     *
-     * @return int
      */
     protected function getIdStoreByStoreName(string $storeName): int
     {

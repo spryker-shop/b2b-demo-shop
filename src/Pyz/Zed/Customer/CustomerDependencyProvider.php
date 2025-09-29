@@ -46,8 +46,6 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
@@ -60,8 +58,6 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addFacadeSales(Container $container): Container
     {
@@ -74,8 +70,6 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addFacadeNewsletter(Container $container): Container
     {

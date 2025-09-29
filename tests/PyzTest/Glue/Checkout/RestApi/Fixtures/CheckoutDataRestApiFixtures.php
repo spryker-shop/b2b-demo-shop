@@ -61,33 +61,21 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     protected AddressTransfer $customerAddress;
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function getQuoteTransfer(): QuoteTransfer
     {
         return $this->quoteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
-     */
     public function getShipmentMethodTransfer(): ShipmentMethodTransfer
     {
         return $this->shipmentMethodTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\AddressTransfer
-     */
     public function getCustomerAddress(): AddressTransfer
     {
         return $this->customerAddress;
@@ -95,8 +83,6 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
 
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {

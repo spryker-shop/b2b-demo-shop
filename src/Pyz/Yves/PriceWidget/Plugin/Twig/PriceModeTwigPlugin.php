@@ -44,8 +44,6 @@ class PriceModeTwigPlugin extends AbstractPlugin implements TwigPluginInterface
 
     /**
      * @param \Twig\Environment $twig
-     *
-     * @return \Twig\Environment
      */
     protected function addPriceModeFunction(Environment $twig): Environment
     {

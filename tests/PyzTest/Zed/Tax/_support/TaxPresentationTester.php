@@ -36,8 +36,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     public function createTaxRate(string $taxRateName): void
     {
@@ -49,8 +47,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     protected function fillTaxRateForm(string $taxRateName): void
     {
@@ -68,8 +64,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     public function createTaxRateWithoutSaving(string $taxRateName): void
     {
@@ -79,8 +73,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     public function searchForTaxRate(string $taxRateName): void
     {
@@ -91,8 +83,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     public function deleteTaxRate(string $taxRateName): void
     {
@@ -103,9 +93,6 @@ class TaxPresentationTester extends Actor
         $i->click(TaxRateListPage::SELECTOR_DELETE);
     }
 
-    /**
-     * @return void
-     */
     public function seeErrorMessages(): void
     {
         $i = $this;
@@ -117,8 +104,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     public function createOneAndTheSameTaxRate(string $taxRateName): void
     {
@@ -148,8 +133,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     public function editTaxRateWithValidData(string $taxRateName): void
     {
@@ -162,9 +145,6 @@ class TaxPresentationTester extends Actor
         $i->click(TaxRateCreatePage::SELECTOR_SAVE);
     }
 
-    /**
-     * @return void
-     */
     public function deleteTaxRateFromEditForm(): void
     {
         $i = $this;
@@ -174,8 +154,6 @@ class TaxPresentationTester extends Actor
 
     /**
      * @param string $taxRateName
-     *
-     * @return void
      */
     public function removeTaxRateFromDatabase(string $taxRateName): void
     {

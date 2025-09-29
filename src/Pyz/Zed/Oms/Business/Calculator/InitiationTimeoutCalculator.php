@@ -18,8 +18,6 @@ class InitiationTimeoutCalculator implements TimeoutProcessorTimeoutCalculatorIn
 {
     /**
      * @param \Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer $timeoutProcessorTimeoutRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\TimeoutProcessorTimeoutResponseTransfer
      */
     public function calculateTimeout(TimeoutProcessorTimeoutRequestTransfer $timeoutProcessorTimeoutRequestTransfer): TimeoutProcessorTimeoutResponseTransfer
     {

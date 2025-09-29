@@ -29,8 +29,6 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(AuthRestApiTester $I): FixturesContainerInterface
     {
@@ -39,9 +37,6 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
-     */
     public function getOauthResponseTransfer(): OauthResponseTransfer
     {
         return $this->oauthResponseTransfer;
@@ -49,8 +44,6 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
     protected function createOauthResponseTransfer(AuthRestApiTester $I): OauthResponseTransfer
     {
@@ -62,8 +55,6 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomerTransfer(AuthRestApiTester $I): CustomerTransfer
     {

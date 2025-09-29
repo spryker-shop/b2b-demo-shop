@@ -99,33 +99,21 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
      */
     protected ShoppingListItemTransfer $shoppingListItemTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function getShoppingList(): ShoppingListTransfer
     {
         return $this->shoppingListTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function getShoppingListItem(): ShoppingListItemTransfer
     {
         return $this->shoppingListItemTransfer;
@@ -133,8 +121,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(ProductConfigurationsApiTester $I): FixturesContainerInterface
     {
@@ -150,8 +136,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createProductConcrete(ProductConfigurationsApiTester $I): void
     {
@@ -160,8 +144,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createProductConfiguration(ProductConfigurationsApiTester $I): void
     {
@@ -172,8 +154,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createCustomer(ProductConfigurationsApiTester $I): void
     {
@@ -183,8 +163,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createCustomerWithCompanyUser(ProductConfigurationsApiTester $I): void
     {
@@ -200,8 +178,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array<string, mixed> $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
     protected function createCompanyUser(
         ProductConfigurationsApiTester $I,
@@ -225,8 +201,6 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createShoppingList(ProductConfigurationsApiTester $I): void
     {

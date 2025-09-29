@@ -13,8 +13,6 @@ interface LocaleRepositoryInterface
 {
     /**
      * @param string $locale
-     *
-     * @return int
      */
     public function getIdLocaleByLocale(string $locale): int;
 }

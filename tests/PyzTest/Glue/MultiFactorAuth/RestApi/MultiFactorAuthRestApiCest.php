@@ -53,8 +53,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(MultiFactorAuthRestApiTester $I): void
     {
@@ -65,8 +63,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestGetMultiFactorAuthTypes(MultiFactorAuthRestApiTester $I): void
     {
@@ -84,8 +80,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestActivateMultiFactorAuthType(MultiFactorAuthRestApiTester $I): void
     {
@@ -103,8 +97,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestActivateMultiFactorAuthTypeWithInvalidType(MultiFactorAuthRestApiTester $I): void
     {
@@ -131,8 +123,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestVerifyMultiFactorAuthType(MultiFactorAuthRestApiTester $I): void
     {
@@ -153,8 +143,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestVerifyMultiFactorAuthTypeWithoutActivation(MultiFactorAuthRestApiTester $I): void
     {
@@ -173,8 +161,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestVerifyMultiFactorAuthTypeWithInvalidCode(MultiFactorAuthRestApiTester $I): void
     {
@@ -198,8 +184,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthType(MultiFactorAuthRestApiTester $I): void
     {
@@ -220,8 +204,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthTypeWithoutActivation(MultiFactorAuthRestApiTester $I): void
     {
@@ -238,8 +220,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthTypeWithInvalidCode(MultiFactorAuthRestApiTester $I): void
     {
@@ -266,8 +246,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthTypeWithoutVerification(MultiFactorAuthRestApiTester $I): void
     {
@@ -292,8 +270,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartWithActivatedMultiFactorAuth(MultiFactorAuthRestApiTester $I): void
     {
@@ -321,8 +297,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartWithActivatedMultiFactorAuthButInvalidCode(MultiFactorAuthRestApiTester $I): void
     {
@@ -350,8 +324,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartWithActivatedMultiFactorAuthWithoutCode(MultiFactorAuthRestApiTester $I): void
     {
@@ -380,8 +352,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     protected function activateMultiFactorAuth(MultiFactorAuthRestApiTester $I): void
     {
@@ -391,8 +361,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     protected function verifyMultiFactorAuth(MultiFactorAuthRestApiTester $I): void
     {
@@ -410,8 +378,6 @@ class MultiFactorAuthRestApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return void
      */
     protected function deactivateMultiFactorAuth(MultiFactorAuthRestApiTester $I): void
     {

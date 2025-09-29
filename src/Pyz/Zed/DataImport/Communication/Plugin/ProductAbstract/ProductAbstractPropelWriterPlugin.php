@@ -22,17 +22,12 @@ class ProductAbstractPropelWriterPlugin extends AbstractPlugin implements DataSe
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
         $this->getFacade()->writeProductAbstractDataSet($dataSet);
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         $this->getFacade()->flushProductAbstractDataImporter();

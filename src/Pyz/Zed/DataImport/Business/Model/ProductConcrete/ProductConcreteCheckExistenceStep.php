@@ -48,8 +48,6 @@ class ProductConcreteCheckExistenceStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -60,8 +58,6 @@ class ProductConcreteCheckExistenceStep implements DataImportStepInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidSkuProductException
-     *
-     * @return void
      */
     protected function checkSkuProductAlreadyExists(DataSetInterface $dataSet): void
     {

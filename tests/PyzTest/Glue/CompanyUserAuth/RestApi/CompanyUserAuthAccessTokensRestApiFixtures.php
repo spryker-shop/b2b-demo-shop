@@ -47,8 +47,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CompanyUserAuthRestApiTester $I): FixturesContainerInterface
     {
@@ -61,33 +59,21 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
-     */
     public function getOauthResponseTransferForCompanyUser(): OauthResponseTransfer
     {
         return $this->oauthResponseTransferForCompanyUser;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
-     */
     public function getOauthResponseTransferForNonCompanyUser(): OauthResponseTransfer
     {
         return $this->oauthResponseTransferForNonCompanyUser;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
-     */
     public function getOauthResponseTransferForCustomerWithTwoCompanyUsers(): OauthResponseTransfer
     {
         return $this->oauthResponseTransferForCustomerWithTwoCompanyUsers;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     public function getNonDefaultCompanyUserTransfer(): CompanyUserTransfer
     {
         return $this->nonDefaultCompanyUserTransfer;
@@ -95,8 +81,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
     protected function createOauthResponseForCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
@@ -108,8 +92,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
     protected function createOauthResponseForNotCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
@@ -121,8 +103,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
     protected function createOauthResponseForCustomerWithTwoCompanyUsers(
         CompanyUserAuthRestApiTester $I,
@@ -135,8 +115,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomerWithCompanyUser(CompanyUserAuthRestApiTester $I): CustomerTransfer
     {
@@ -152,8 +130,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): CustomerTransfer
     {
@@ -173,8 +149,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomer(CompanyUserAuthRestApiTester $I): CustomerTransfer
     {
@@ -188,8 +162,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
     protected function createCompanyUser(
         CompanyUserAuthRestApiTester $I,

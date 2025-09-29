@@ -44,8 +44,6 @@ class CustomerHelper extends Module
 
     /**
      * @param string $email
-     *
-     * @return \Orm\Zed\Customer\Persistence\SpyCustomer|null
      */
     public function loadCustomerByEmail(string $email): ?SpyCustomer
     {
@@ -56,8 +54,6 @@ class CustomerHelper extends Module
 
     /**
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function haveRegisteredCustomer(array $seed = []): CustomerTransfer
     {
@@ -77,8 +73,6 @@ class CustomerHelper extends Module
      * @param string $address
      * @param bool $isDefaultShipping
      * @param bool $isDefaultBilling
-     *
-     * @return void
      */
     public function addAddressToCustomer(string $email, string $address, bool $isDefaultShipping = true, bool $isDefaultBilling = true): void
     {
@@ -106,8 +100,6 @@ class CustomerHelper extends Module
     /**
      * @param string $email
      * @param string $type
-     *
-     * @return void
      */
     public function addNewsletterSubscription(string $email, string $type = NewsletterConstants::DEFAULT_NEWSLETTER_TYPE): void
     {
@@ -129,8 +121,6 @@ class CustomerHelper extends Module
 
     /**
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function amLoggedInCustomer(array $seed = []): CustomerTransfer
     {
@@ -151,8 +141,6 @@ class CustomerHelper extends Module
 
     /**
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomer(array $seed = []): CustomerTransfer
     {
@@ -172,33 +160,21 @@ class CustomerHelper extends Module
         return $customerTransfer->setPassword($password);
     }
 
-    /**
-     * @return \Spryker\Zed\Mail\Business\MailFacadeInterface
-     */
     protected function getMailMock(): MailFacadeInterface
     {
         return Stub::makeEmpty(MailFacadeInterface::class);
     }
 
-    /**
-     * @return \Spryker\Zed\Customer\Business\CustomerFacadeInterface
-     */
     protected function getCustomerFacade(): CustomerFacadeInterface
     {
         return $this->getLocator()->customer()->facade();
     }
 
-    /**
-     * @return \Codeception\Module\WebDriver
-     */
     protected function getWebDriver(): WebDriver
     {
         return $this->getModule('WebDriver');
     }
 
-    /**
-     * @return void
-     */
     protected function setupSession(): void
     {
         $sessionContainer = new Session(new MockArraySessionStorage());

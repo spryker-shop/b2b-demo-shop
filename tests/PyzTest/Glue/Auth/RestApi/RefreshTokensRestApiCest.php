@@ -38,8 +38,6 @@ class RefreshTokensRestApiCest
 
     /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(AuthRestApiTester $I): void
     {
@@ -53,8 +51,6 @@ class RefreshTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestRefreshTokenWithValidRefreshTokenValue(AuthRestApiTester $I): void
     {
@@ -78,8 +74,6 @@ class RefreshTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestRefreshTokenWithInvalidRefreshTokenValue(AuthRestApiTester $I): void
     {
@@ -102,8 +96,6 @@ class RefreshTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestRefreshTokenWithEmptyRefreshTokenValue(AuthRestApiTester $I): void
     {
@@ -128,8 +120,6 @@ class RefreshTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestRefreshTokenWithInvalidPostData(AuthRestApiTester $I): void
     {
@@ -152,8 +142,6 @@ class RefreshTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestRefreshTokenWithInvalidRequestType(AuthRestApiTester $I): void
     {
@@ -178,8 +166,6 @@ class RefreshTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestRefreshTokenWithEmptyType(AuthRestApiTester $I): void
     {

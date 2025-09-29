@@ -16,9 +16,6 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 
 class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
 {
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
-     */
     protected function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return new StoreRelationToggleFormTypePlugin();
@@ -30,7 +27,7 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     protected function getMerchantFormExpanderPlugins(): array
     {
         return [
-            new IsOpenForRelationRequestMerchantFormExpanderPlugin(),
+        new IsOpenForRelationRequestMerchantFormExpanderPlugin(),
         ];
     }
 }

@@ -16,8 +16,6 @@ class LoginHelper extends Module
     /**
      * @param string $username
      * @param string $password
-     *
-     * @return void
      */
     public function amLoggedInUser(string $username = 'admin@spryker.com', string $password = 'change123'): void
     {
@@ -30,10 +28,7 @@ class LoginHelper extends Module
         $i->click('Login');
     }
 
-    /**
-     * @return \Codeception\Module|\Codeception\Lib\Framework
-     */
-    protected function getClient()
+    protected function getClient(): Module|\Codeception\Lib\Framework
     {
         return $this->getModule('\\' . BootstrapHelper::class);
     }

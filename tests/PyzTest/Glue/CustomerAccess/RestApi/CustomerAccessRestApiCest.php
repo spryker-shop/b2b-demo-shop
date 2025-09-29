@@ -27,8 +27,6 @@ class CustomerAccessRestApiCest
 {
     /**
      * @param \PyzTest\Glue\CustomerAccess\CustomerAccessApiTester $I
-     *
-     * @return void
      */
     public function requestCustomerAccess(CustomerAccessApiTester $I): void
     {

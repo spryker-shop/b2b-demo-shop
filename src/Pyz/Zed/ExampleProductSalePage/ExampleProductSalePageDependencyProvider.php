@@ -26,8 +26,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
@@ -40,8 +38,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addProductLabelQueryContainer(Container $container): Container
     {
@@ -54,8 +50,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addProductQueryContainer(Container $container): Container
     {

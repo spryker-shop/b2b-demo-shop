@@ -33,8 +33,6 @@ class ConcreteAlternativeProductsRestApiCest
 
     /**
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(AlternativeProductsRestApiTester $I): void
     {
@@ -48,8 +46,6 @@ class ConcreteAlternativeProductsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
      */
     public function requestConcreteAlternativeProducts(AlternativeProductsRestApiTester $I): void
     {
@@ -81,8 +77,6 @@ class ConcreteAlternativeProductsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
      */
     public function requestConcreteAlternativeProductsByNotExistingProductConcreteSku(
         AlternativeProductsRestApiTester $I,

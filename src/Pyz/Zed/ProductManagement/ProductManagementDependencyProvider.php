@@ -43,9 +43,6 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
-     */
     protected function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return new StoreRelationToggleFormTypePlugin();
@@ -53,8 +50,6 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
     protected function createMoneyFormTypePlugin(Container $container): FormTypeInterface // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {

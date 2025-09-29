@@ -27,8 +27,6 @@ class CategoryTemplateWriterStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {

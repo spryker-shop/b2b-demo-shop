@@ -42,8 +42,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
@@ -60,8 +58,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
     protected function createOrUpdateProductAbstract(DataSetInterface $dataSet): SpyProductAbstract
     {
@@ -85,8 +81,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param int $idProductAbstract
-     *
-     * @return void
      */
     protected function createOrUpdateProductAbstractLocalizedAbstract(
         DataSetInterface $dataSet,
@@ -117,8 +111,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param int $idProductAbstract
-     *
-     * @return void
      */
     protected function createOrUpdateProductCategories(DataSetInterface $dataSet, int $idProductAbstract): void
     {
@@ -148,8 +140,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param int $idProductAbstract
-     *
-     * @return void
      */
     protected function createOrUpdateProductUrls(DataSetInterface $dataSet, int $idProductAbstract): void
     {
@@ -182,8 +172,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param string $abstractProductUrl
-     *
-     * @return void
      */
     protected function cleanupRedirectUrls(string $abstractProductUrl): void
     {
@@ -193,9 +181,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
             ->delete();
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         DataImporterPublisher::triggerEvents();
@@ -203,8 +188,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer
      */
     protected function getProductAbstractTransfer(DataSetInterface $dataSet): SpyProductAbstractEntityTransfer
     {

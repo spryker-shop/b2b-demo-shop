@@ -32,8 +32,6 @@ class CartUpSellingProductsRestApiCest
 
     /**
      * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(UpSellingProductsApiTester $I): void
     {
@@ -47,8 +45,6 @@ class CartUpSellingProductsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
      */
     public function requestCartUpSellingProductsByNotExistingCartUuid(UpSellingProductsApiTester $I): void
     {

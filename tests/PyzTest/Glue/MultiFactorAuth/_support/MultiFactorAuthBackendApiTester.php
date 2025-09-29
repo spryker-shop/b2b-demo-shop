@@ -46,8 +46,6 @@ class MultiFactorAuthBackendApiTester extends BackendApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     *
-     * @return void
      */
     public function authorizeUserToBackendApi(UserTransfer $userTransfer): void
     {
@@ -57,8 +55,6 @@ class MultiFactorAuthBackendApiTester extends BackendApiEndToEndTester
 
     /**
      * @param string $userName
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer
      */
     public function createUser(string $userName): UserTransfer
     {
@@ -74,8 +70,6 @@ class MultiFactorAuthBackendApiTester extends BackendApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
      * @param string $mfaType
-     *
-     * @return string|null
      */
     public function getUserMultiFactorAuthCodeFromDatabase(UserTransfer $userTransfer, string $mfaType): ?string
     {

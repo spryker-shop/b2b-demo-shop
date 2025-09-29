@@ -53,8 +53,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
@@ -69,9 +67,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
         $this->createOrUpdateBundles($dataSet, $productConcreteEntity->getIdProduct());
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         DataImporterPublisher::triggerEvents();
@@ -79,8 +74,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProduct
      */
     protected function createOrUpdateProductConcrete(DataSetInterface $dataSet): SpyProduct
     {
@@ -115,8 +108,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param int $idProduct
-     *
-     * @return void
      */
     protected function createOrUpdateBundles(DataSetInterface $dataSet, int $idProduct): void
     {
@@ -150,8 +141,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param int $idProduct
-     *
-     * @return void
      */
     protected function createOrUpdateProductConcreteLocalizedAttributesEntities(
         DataSetInterface $dataSet,
@@ -180,8 +169,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param int $idProduct
      * @param \Generated\Shared\Transfer\SpyProductSearchEntityTransfer $productSearchEntityTransfer
-     *
-     * @return void
      */
     protected function createOrUpdateProductConcreteSearchEntities(
         int $idProduct,
@@ -211,8 +198,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      * @param \Orm\Zed\ProductSearch\Persistence\SpyProductSearch $productSearchEntity
      * @param bool $isNewProductSearchEntity
      * @param \Generated\Shared\Transfer\EventEntityTransfer $eventEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\EventEntityTransfer
      */
     protected function mapProductSearchEntityToEventEntityTransfer(
         SpyProductSearch $productSearchEntity,
@@ -258,8 +243,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Generated\Shared\Transfer\SpyProductEntityTransfer
      */
     protected function getProductConcreteTransfer(DataSetInterface $dataSet): SpyProductEntityTransfer
     {

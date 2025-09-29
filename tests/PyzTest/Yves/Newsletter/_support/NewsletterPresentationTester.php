@@ -37,8 +37,6 @@ class NewsletterPresentationTester extends Actor
 
     /**
      * @param string $email
-     *
-     * @return void
      */
     public function haveAnAlreadySubscribedEmail(string $email): void
     {

@@ -22,8 +22,6 @@ class ProductUrlCartPlugin extends AbstractPlugin implements ItemExpanderPluginI
 {
     /**
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
     public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {

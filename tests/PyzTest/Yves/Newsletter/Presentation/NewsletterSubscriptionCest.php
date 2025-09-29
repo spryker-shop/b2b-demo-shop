@@ -32,8 +32,6 @@ class NewsletterSubscriptionCest
 {
     /**
      * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     *
-     * @return void
      */
     public function _before(NewsletterPresentationTester $i): void
     {
@@ -42,8 +40,6 @@ class NewsletterSubscriptionCest
 
     /**
      * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     *
-     * @return void
      */
     public function iCanSubscribeWithAnUnsubscribedEmail(NewsletterPresentationTester $i): void
     {
@@ -62,8 +58,6 @@ class NewsletterSubscriptionCest
 
     /**
      * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     *
-     * @return void
      */
     public function iCanNotSubscribeWithAnAlreadySubscribedEmail(NewsletterPresentationTester $i): void
     {
@@ -84,8 +78,6 @@ class NewsletterSubscriptionCest
 
     /**
      * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
-     *
-     * @return void
      */
     public function subscribedEmailIsLinkedWithCustomerAfterRegistration(NewsletterPresentationTester $i): void
     {
@@ -110,8 +102,6 @@ class NewsletterSubscriptionCest
     /**
      * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function subscribedEmailCanBeUnsubscribedByCustomerAfterRegistration(NewsletterPresentationTester $i, Scenario $scenario): void
     {

@@ -134,8 +134,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 {
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|null
      */
     public function getDataImporterByType(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): ?DataImporterInterface
     {
@@ -217,8 +215,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCurrencyImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -236,8 +232,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createGlossaryImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -257,8 +251,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCategoryTemplateImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -278,11 +270,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createCustomerImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createCustomerImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -297,11 +288,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createCmsTemplateImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createCmsTemplateImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -317,11 +307,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createCmsBlockImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createCmsBlockImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -344,11 +333,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createCmsBlockStoreImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createCmsBlockStoreImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -362,11 +350,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createDiscountImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createDiscountImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -382,11 +369,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createDiscountStoreImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createDiscountStoreImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -400,11 +386,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createDiscountAmountImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createDiscountAmountImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -420,11 +405,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createDiscountVoucherImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createDiscountVoucherImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -438,9 +422,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\Discount\DiscountConfig
-     */
     public function createDiscountConfig(): DiscountConfig
     {
         return new DiscountConfig();
@@ -448,11 +429,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductOptionImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductOptionImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -474,11 +454,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductOptionPriceImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductOptionPriceImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -494,8 +473,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createProductStockImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -513,9 +490,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface
-     */
     public function getProductBundleFacade(): ProductBundleFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRODUCT_BUNDLE);
@@ -523,8 +497,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createProductImageImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -551,9 +523,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface
-     */
     public function createLocaleRepository(): LocaleRepositoryInterface
     {
         return new LocaleRepository();
@@ -561,11 +530,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createTaxImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createTaxImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -579,9 +547,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\Country\Repository\CountryRepositoryInterface
-     */
     public function createCountryRepository(): CountryRepositoryInterface
     {
         return new CountryRepository();
@@ -589,11 +554,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createNavigationImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createNavigationImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -609,11 +573,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createNavigationNodeImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createNavigationNodeImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -638,8 +601,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @param string $source
      * @param string $target
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\Navigation\NavigationKeyToIdNavigationStep
      */
     public function createNavigationKeyToIdNavigationStep(
         string $source = NavigationKeyToIdNavigationStep::KEY_SOURCE,
@@ -651,8 +612,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @param string $keyValidFrom
      * @param string $keyValidTo
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\NavigationNode\NavigationNodeValidityDatesStep
      */
     public function createNavigationNodeValidityDatesStep(
         string $keyValidFrom,
@@ -663,8 +622,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createProductAbstractImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
@@ -699,8 +656,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createProductAbstractStoreImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
@@ -721,8 +676,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createProductConcreteImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
@@ -753,9 +706,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createProductConcreteAttributesUniqueCheckStep(): DataImportStepInterface
     {
         return new ProductConcreteAttributesUniqueCheckStep(
@@ -765,9 +715,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
     public function createProductRepository(): ProductRepository
     {
         return new ProductRepository();
@@ -775,11 +722,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductAttributeKeyImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductAttributeKeyImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -795,11 +741,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductManagementAttributeImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductManagementAttributeImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -816,9 +761,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductManagementAttribute\ProductManagementLocalizedAttributesExtractorStep
-     */
     public function createProductManagementLocalizedAttributesExtractorStep(): ProductManagementLocalizedAttributesExtractorStep
     {
         return new ProductManagementLocalizedAttributesExtractorStep();
@@ -826,11 +768,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductGroupImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -848,11 +789,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductReviewImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductReviewImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -870,11 +810,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductSetImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductSetImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -902,17 +841,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageExtractorStep
-     */
     public function createProductSetImageExtractorStep(): ProductSetImageExtractorStep
     {
         return new ProductSetImageExtractorStep();
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageLocalizedAttributesExtractorStep
-     */
     protected function createProductSetImageLocalizedAttributesExtractorStep(): ProductSetImageLocalizedAttributesExtractorStep
     {
         return new ProductSetImageLocalizedAttributesExtractorStep();
@@ -920,11 +853,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductSearchAttributeMapImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductSearchAttributeMapImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -941,11 +873,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductSearchAttributeImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    public function createProductSearchAttributeImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
+    ): DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface {
         $dataImporter = $this->getCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
         );
@@ -965,33 +896,21 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\Hook\ProductSearchAfterImportHook
-     */
     public function createProductSearchAfterImportHook(): ProductSearchAfterImportHook
     {
         return new ProductSearchAfterImportHook();
     }
 
-    /**
-     * @return \Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder
-     */
     public function createSearchGlossaryKeyBuilder(): FilterGlossaryKeyBuilder
     {
         return new FilterGlossaryKeyBuilder();
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddCategoryKeysStep
-     */
     public function createAddCategoryKeysStep(): AddCategoryKeysStep
     {
         return new AddCategoryKeysStep();
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\Product\AttributesExtractorStep
-     */
     public function createAttributesExtractorStep(): AttributesExtractorStep
     {
         return new AttributesExtractorStep();
@@ -999,8 +918,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param array<string> $defaultAttributes
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep
      */
     public function createProductLocalizedAttributesExtractorStep(
         array $defaultAttributes = [],
@@ -1008,9 +925,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductLocalizedAttributesExtractorStep($defaultAttributes);
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep
-     */
     public function createAddProductAbstractSkusStep(): AddProductAbstractSkusStep
     {
         return new AddProductAbstractSkusStep();
@@ -1019,8 +933,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @param string $source
      * @param string $target
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\Locale\LocaleNameToIdLocaleStep
      */
     public function createLocaleNameToIdStep(
         string $source = LocaleNameToIdLocaleStep::KEY_SOURCE,
@@ -1032,8 +944,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @param string $source
      * @param string $target
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep
      */
     public function createTaxSetNameToIdTaxSetStep(
         string $source = TaxSetNameToIdTaxSetStep::KEY_SOURCE,
@@ -1042,25 +952,16 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new TaxSetNameToIdTaxSetStep($source, $target);
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep
-     */
     public function createAddProductAttributeKeysStep(): AddProductAttributeKeysStep
     {
         return new AddProductAttributeKeysStep();
     }
 
-    /**
-     * @return \Spryker\Zed\Event\Business\EventFacadeInterface
-     */
     public function getEventFacade(): EventFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_EVENT);
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createAddLocalesStep(): DataImportStepInterface
     {
         return new AddLocalesStep($this->getDataImportStoreFacade());
@@ -1069,8 +970,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @param string $importType
      * @param \Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface $reader
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterConditional
      */
     public function createDataImporterConditional(string $importType, DataReaderInterface $reader): DataImporterConditional
     {
@@ -1090,8 +989,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterConditional
      */
     public function getConditionalCsvDataImporterFromConfig(
         DataImporterConfigurationTransfer $dataImporterConfigurationTransfer,
@@ -1114,9 +1011,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $this->createDataImporterWriterAwareConditional($dataImporterConfigurationTransfer->getImportType(), $csvReader);
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductPricePropelDataSetWriter(): DataSetWriterInterface
     {
         return new CombinedProductPricePropelDataSetWriter(
@@ -1126,9 +1020,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductImagePropelDataSetWriter(): DataSetWriterInterface
     {
         return new CombinedProductImagePropelDataSetWriter(
@@ -1136,9 +1027,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductStockPropelDataSetWriter(): DataSetWriterInterface
     {
         return new CombinedProductStockPropelDataSetWriter(
@@ -1149,17 +1037,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductAbstractStorePropelDataSetWriter(): DataSetWriterInterface
     {
         return new CombinedProductAbstractStorePropelDataSetWriter();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductAbstractPropelDataSetWriter(): DataSetWriterInterface
     {
         return new CombinedProductAbstractPropelDataSetWriter(
@@ -1167,9 +1049,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductConcretePropelDataSetWriter(): DataSetWriterInterface
     {
         return new CombinedProductConcretePropelDataSetWriter(
@@ -1179,8 +1058,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCombinedProductPriceImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -1202,41 +1079,26 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
-     */
     public function getCurrencyFacade(): CurrencyFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_CURRENCY);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
-     */
     public function getPriceProductFacade(): PriceProductFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRICE_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Zed\Stock\Business\StockFacadeInterface
-     */
     public function getStockFacade(): StockFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STOCK);
     }
 
-    /**
-     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
     public function getStoreFacade(): StoreFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductStockDataImportWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createProductStockWriterPlugins());
@@ -1252,25 +1114,16 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         ];
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
     public function createCombinedProductPriceMandatoryColumnCondition(): DataSetConditionInterface
     {
         return new CombinedProductPriceMandatoryColumnCondition();
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface
-     */
     public function createProductImageRepository(): ProductImageRepositoryInterface
     {
         return new ProductImageRepository();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductPriceDataSetWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createCombinedProductPriceDataSetWriterPlugins());
@@ -1288,8 +1141,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCombinedProductImageImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -1316,17 +1167,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
     public function createCombinedProductImageMandatoryColumnCondition(): DataSetConditionInterface
     {
         return new CombinedProductImageMandatoryColumnCondition();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductImageDataSetWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createCombinedProductImageDataSetWriterPlugins());
@@ -1344,8 +1189,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCombinedProductStockImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -1364,17 +1207,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
     public function createCombinedProductStockMandatoryColumnCondition(): DataSetConditionInterface
     {
         return new CombinedProductStockMandatoryColumnCondition();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductStockDataSetWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createCombinedProductStockDataSetWriterPlugins());
@@ -1392,8 +1229,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCombinedProductAbstractStoreImporter(
         DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
@@ -1412,17 +1247,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
     public function createCombinedProductAbstractStoreMandatoryColumnCondition(): DataSetConditionInterface
     {
         return new CombinedProductAbstractStoreMandatoryColumnCondition();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductAbstractStoreDataSetWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createCombinedProductAbstractStoreDataSetWriterPlugins());
@@ -1440,8 +1269,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCombinedProductAbstractImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -1473,17 +1300,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
     public function createCombinedProductAbstractTypeDataSetCondition(): DataSetConditionInterface
     {
         return new CombinedProductAbstractTypeDataSetCondition();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductAbstractDataSetWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createCombinedProductAbstractDataSetWriterPlugins());
@@ -1501,8 +1322,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCombinedProductConcreteImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -1532,17 +1351,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
     public function createCombinedProductConcreteTypeDataSetCondition(): DataSetConditionInterface
     {
         return new CombinedProductConcreteTypeDataSetCondition();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createCombinedProductConcreteDataSetWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createCombinedProductConcreteDataSetWriterPlugins());
@@ -1560,8 +1373,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createCombinedProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
@@ -1579,9 +1390,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
-     */
     public function createCombinedProductGroupMandatoryColumnCondition(): DataSetConditionInterface
     {
         return new CombinedProductGroupMandatoryColumnCondition();
@@ -1613,9 +1421,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductSkuToIdProductStep($source, $target);
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createProductAbstractCheckExistenceStep(): DataImportStepInterface
     {
         return new ProductAbstractCheckExistenceStep(
@@ -1623,9 +1428,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createProductConcreteCheckExistenceStep(): DataImportStepInterface
     {
         return new ProductConcreteCheckExistenceStep(
@@ -1633,9 +1435,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductAbstractDataImportWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createProductAbstractWriterPlugins());
@@ -1651,9 +1450,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductConcreteDataImportWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createProductConcreteWriterPlugins());
@@ -1669,9 +1465,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductImageDataWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createProductImageWriterPlugins());
@@ -1687,9 +1480,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductAbstractStoreDataImportWriters(): DataSetWriterInterface
     {
         return new DataSetWriterCollection($this->createProductAbstractStoreWriterPlugins());
@@ -1705,33 +1495,21 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductAbstractPropelWriter(): DataSetWriterInterface
     {
         return new ProductAbstractPropelDataSetWriter($this->createProductRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductConcretePropelWriter(): DataSetWriterInterface
     {
         return new ProductConcretePropelDataSetWriter($this->createProductRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductImagePropelWriter(): DataSetWriterInterface
     {
         return new ProductImagePropelDataSetWriter($this->createProductImageRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductStockPropelWriter(): DataSetWriterInterface
     {
         return new ProductStockPropelDataSetWriter(
@@ -1742,9 +1520,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
     public function createProductAbstractStorePropelWriter(): DataSetWriterInterface
     {
         return new ProductAbstractStorePropelDataSetWriter();
@@ -1760,8 +1535,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
     /**
      * @param array<mixed> $defaultAttributes
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep
      */
     public function createCombinedProductLocalizedAttributesExtractorStep(
         array $defaultAttributes = [],

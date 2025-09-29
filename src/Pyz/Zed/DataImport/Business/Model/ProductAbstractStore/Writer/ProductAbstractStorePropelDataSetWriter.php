@@ -32,8 +32,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
@@ -42,8 +40,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function createOrUpdateProductAbstractStore(DataSetInterface $dataSet): void
     {
@@ -61,8 +57,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param string $productAbstractSku
-     *
-     * @return int
      */
     protected function getIdProductAbstractBySku(string $productAbstractSku): int
     {
@@ -76,8 +70,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param string $storeName
-     *
-     * @return int
      */
     protected function getIdStoreByName(string $storeName): int
     {
@@ -89,9 +81,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
         return static::$idStoreBuffer[$storeName];
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         DataImporterPublisher::triggerEvents();
@@ -99,8 +88,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractStoreTransfer
      */
     protected function getProductAbstractStoreTransfers(DataSetInterface $dataSet): ProductAbstractStoreTransfer
     {

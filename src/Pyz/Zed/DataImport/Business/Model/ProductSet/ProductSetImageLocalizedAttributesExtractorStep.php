@@ -22,8 +22,6 @@ class ProductSetImageLocalizedAttributesExtractorStep implements DataImportStepI
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {

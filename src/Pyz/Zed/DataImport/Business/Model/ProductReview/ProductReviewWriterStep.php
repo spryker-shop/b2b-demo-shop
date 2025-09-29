@@ -42,8 +42,6 @@ class ProductReviewWriterStep extends PublishAwareStep implements DataImportStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -73,8 +71,6 @@ class ProductReviewWriterStep extends PublishAwareStep implements DataImportStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return int
      */
     protected function getFkProductAbstract(DataSetInterface $dataSet): int
     {
@@ -83,8 +79,6 @@ class ProductReviewWriterStep extends PublishAwareStep implements DataImportStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return int
      */
     protected function getFkLocale(DataSetInterface $dataSet): int
     {

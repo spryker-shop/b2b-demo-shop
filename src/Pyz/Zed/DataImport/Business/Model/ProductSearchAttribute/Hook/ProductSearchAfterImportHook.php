@@ -20,9 +20,6 @@ class ProductSearchAfterImportHook implements DataImporterAfterImportInterface
      */
     public const ID_DEFAULT = 0;
 
-    /**
-     * @return void
-     */
     public function afterImport(): void
     {
         DataImporterPublisher::addEvent(ProductSearchEvents::PRODUCT_SEARCH_CONFIG_PUBLISH, static::ID_DEFAULT);

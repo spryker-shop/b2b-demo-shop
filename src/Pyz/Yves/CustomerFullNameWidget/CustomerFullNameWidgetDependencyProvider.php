@@ -21,8 +21,6 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     public function provideDependencies(Container $container): Container
     {
@@ -34,8 +32,6 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addCustomerClient(Container $container): Container
     {

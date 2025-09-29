@@ -134,8 +134,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -148,8 +146,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\ProductSet\Persistence\SpyProductSet
      */
     protected function findOrCreateProductSet(DataSetInterface $dataSet): SpyProductSet
     {
@@ -172,8 +168,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\ProductSet\Persistence\SpyProductSet $productSetEntity
-     *
-     * @return void
      */
     protected function findOrCreateProductAbstractSet(DataSetInterface $dataSet, SpyProductSet $productSetEntity): void
     {
@@ -204,8 +198,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\ProductSet\Persistence\SpyProductSet $productSetEntity
-     *
-     * @return void
      */
     protected function findOrCreateProductSetData(DataSetInterface $dataSet, SpyProductSet $productSetEntity): void
     {
@@ -248,8 +240,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\ProductSet\Persistence\SpyProductSet $productSetEntity
-     *
-     * @return void
      */
     protected function findOrCreateProductImageSet(DataSetInterface $dataSet, SpyProductSet $productSetEntity): void
     {
@@ -302,8 +292,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
      * @param \Orm\Zed\ProductImage\Persistence\SpyProductImage $productImageEntity
      * @param string $keyAltTextSmall
      * @param string $keyAltTextLarge
-     *
-     * @return void
      */
     protected function createOrUpdateProductImageAltTexts(
         DataSetInterface $dataSet,
@@ -331,8 +319,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
 
     /**
      * @param \Orm\Zed\ProductImage\Persistence\SpyProductImage $productImageEntity
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
     protected function saveProductImageAltTextGlossaryKeys(SpyProductImage $productImageEntity): SpyProductImage
     {
@@ -359,8 +345,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
      * @param string $glossaryKey
      * @param int $idLocale
      * @param string $value
-     *
-     * @return void
      */
     protected function createOrUpdateGlossaryKey(
         string $glossaryKey,

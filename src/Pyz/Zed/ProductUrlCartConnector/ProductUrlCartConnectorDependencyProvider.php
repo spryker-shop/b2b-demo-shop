@@ -26,8 +26,6 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
@@ -40,8 +38,6 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addFacadeProduct(Container $container): Container
     {
@@ -54,8 +50,6 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addFacadeLocale(Container $container): Container
     {

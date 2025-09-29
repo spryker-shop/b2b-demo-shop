@@ -55,8 +55,6 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -79,8 +77,6 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
 
     /**
      * @param string $taxSetName
-     *
-     * @return int
      */
     protected function resolveIdStock(string $taxSetName): int
     {

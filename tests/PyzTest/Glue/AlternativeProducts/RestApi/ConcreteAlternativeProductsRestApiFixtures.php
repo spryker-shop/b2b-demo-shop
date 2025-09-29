@@ -38,17 +38,11 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
      */
     protected ProductConcreteTransfer $alternativeProductConcreteTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getAlternativeProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->alternativeProductConcreteTransfer;
@@ -56,8 +50,6 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(AlternativeProductsRestApiTester $I): FixturesContainerInterface
     {
@@ -68,8 +60,6 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
 
     /**
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
      */
     protected function createAlternativeRelationBetweenProducts(AlternativeProductsRestApiTester $I): void
     {

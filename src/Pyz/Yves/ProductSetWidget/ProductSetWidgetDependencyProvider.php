@@ -26,8 +26,6 @@ class ProductSetWidgetDependencyProvider extends SprykerProductSetWidgetDependen
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     public function provideDependencies(Container $container): Container
     {
@@ -40,8 +38,6 @@ class ProductSetWidgetDependencyProvider extends SprykerProductSetWidgetDependen
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addProductStorageClient(Container $container): Container
     {
@@ -54,8 +50,6 @@ class ProductSetWidgetDependencyProvider extends SprykerProductSetWidgetDependen
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addProductSetStorageClient(Container $container): Container
     {

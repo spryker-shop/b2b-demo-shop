@@ -26,8 +26,6 @@ class CmsGuiPageListCest
 {
     /**
      * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
-     *
-     * @return void
      */
     public function _before(CmsGuiPresentationTester $i): void
     {
@@ -37,8 +35,6 @@ class CmsGuiPageListCest
 
     /**
      * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testICanOpenCmsPageList(CmsGuiPresentationTester $i): void
     {

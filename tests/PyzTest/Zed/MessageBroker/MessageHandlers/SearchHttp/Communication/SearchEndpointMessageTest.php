@@ -31,9 +31,6 @@ class SearchEndpointMessageTest extends Unit
      */
     protected SearchHttpCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testSearchEndpointAvailableMessageIsSuccessfullyHandled(): void
     {
         // Arrange
@@ -47,9 +44,6 @@ class SearchEndpointMessageTest extends Unit
         $this->tester->assertSearchHttpConfigExistsForStore();
     }
 
-    /**
-     * @return void
-     */
     public function testSearchEndpointRemovedMessageIsSuccessfullyHandled(): void
     {
         // Arrange

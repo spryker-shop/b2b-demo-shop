@@ -23,8 +23,6 @@ class DataImporterDataSetWriterAwareConditional extends DataImporterDataSetWrite
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface $dataSetCondition
-     *
-     * @return void
      */
     public function setDataSetCondition(DataSetConditionInterface $dataSetCondition): void
     {
@@ -34,8 +32,6 @@ class DataImporterDataSetWriterAwareConditional extends DataImporterDataSetWrite
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Generated\Shared\Transfer\DataImporterReportTransfer $dataImporterReportTransfer
-     *
-     * @return void
      */
     protected function processDataSet(DataSetInterface $dataSet, DataImporterReportTransfer $dataImporterReportTransfer): void
     {

@@ -27,8 +27,6 @@ class TaxRateCreateCest
 {
     /**
      * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     *
-     * @return void
      */
     public function _before(TaxPresentationTester $i): void
     {
@@ -38,8 +36,6 @@ class TaxRateCreateCest
 
     /**
      * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     *
-     * @return void
      */
     public function testCreateValidTaxRateShouldShowSuccessMessage(TaxPresentationTester $i): void
     {
@@ -54,8 +50,6 @@ class TaxRateCreateCest
 
     /**
      * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     *
-     * @return void
      */
     public function testCreateInvalidTaxRateShouldShowErrorMessages(TaxPresentationTester $i): void
     {
@@ -68,8 +62,6 @@ class TaxRateCreateCest
 
     /**
      * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     *
-     * @return void
      */
     public function testBackToListOfTaxRatesShouldOpenTaxRateListPageWithoutSaving(TaxPresentationTester $i): void
     {
@@ -88,8 +80,6 @@ class TaxRateCreateCest
 
     /**
      * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     *
-     * @return void
      */
     public function testCreateTaxRateWhichAlreadyExistsShouldShowErrorMessage(TaxPresentationTester $i): void
     {
@@ -106,8 +96,6 @@ class TaxRateCreateCest
 
     /**
      * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     *
-     * @return void
      */
     public function testCreateAlreadyExistedTaxRateShouldShowErrorMessage(TaxPresentationTester $i): void
     {
@@ -123,8 +111,6 @@ class TaxRateCreateCest
 
     /**
      * @param \PyzTest\Zed\Tax\TaxPresentationTester $i
-     *
-     * @return void
      */
     public function _after(TaxPresentationTester $i): void
     {

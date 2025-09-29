@@ -58,8 +58,6 @@ class ProductStockHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -69,8 +67,6 @@ class ProductStockHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importStock(DataSetInterface $dataSet): void
     {
@@ -82,8 +78,6 @@ class ProductStockHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importStockProduct(DataSetInterface $dataSet): void
     {

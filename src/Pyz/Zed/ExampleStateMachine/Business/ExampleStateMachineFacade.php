@@ -19,8 +19,6 @@ class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMa
 {
     /**
      * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
-     *
-     * @return bool
      */
     public function updateItemState(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {
@@ -45,9 +43,6 @@ class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMa
         return $this->getFactory()->createExampleStateMachineItemReader()->getStateMachineItems();
     }
 
-    /**
-     * @return bool
-     */
     public function createExampleItem(): bool
     {
         return $this->getFactory()->createStateMachineSaver()->createExampleItem();

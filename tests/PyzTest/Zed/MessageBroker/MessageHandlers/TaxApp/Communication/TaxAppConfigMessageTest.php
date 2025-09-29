@@ -44,9 +44,6 @@ class TaxAppConfigMessageTest extends Unit
      */
     protected TaxAppCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testConfigureTaxAppMessageIsSuccessfullyHandled(): void
     {
         // Arrange
@@ -67,9 +64,6 @@ class TaxAppConfigMessageTest extends Unit
         $this->tester->assertTaxAppConfigIsSavedCorrectlyForStore($storeTransfer, $configureTaxAppTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteTaxAppMessageIsSuccessfullyHandled(): void
     {
         // Arrange
@@ -91,9 +85,6 @@ class TaxAppConfigMessageTest extends Unit
         $this->tester->assertTaxAppConfigIsRemovedForStore($storeTransfer, $deleteTaxAppTransfer);
     }
 
-    /**
-     * @return void
-     */
     protected function createDummyTaxAppConfig(): void
     {
         $this->tester->handleTaxAppMessage(

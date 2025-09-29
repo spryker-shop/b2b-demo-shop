@@ -30,8 +30,6 @@ class CustomerNewsletterCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
      */
     public function _before(CustomerPresentationTester $i): void
     {
@@ -41,8 +39,6 @@ class CustomerNewsletterCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanSubscribeNewsletter(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -59,8 +55,6 @@ class CustomerNewsletterCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanUnSubscribeNewsletter(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {

@@ -95,8 +95,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -118,8 +116,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
      * @param array<string, mixed> $dataSetProductConcreteAttributes
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidDataException
-     *
-     * @return void
      */
     protected function checkProductConcreteAttributesUnique(
         string $dataSetProductAbstractSku,
@@ -147,9 +143,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         }
     }
 
-    /**
-     * @return void
-     */
     protected function prepareProductConcreteAttributesMap(): void
     {
         $readCollectionBatchSize = $this->dataImportConfig->getReadCollectionBatchSize();
@@ -169,8 +162,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
 
     /**
      * @param \Propel\Runtime\Collection\ArrayCollection $productConcreteCollection
-     *
-     * @return void
      */
     protected function processProductConcreteAttributesMap(ArrayCollection $productConcreteCollection): void
     {

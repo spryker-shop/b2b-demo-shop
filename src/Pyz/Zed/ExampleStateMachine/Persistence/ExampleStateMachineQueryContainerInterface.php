@@ -16,8 +16,6 @@ interface ExampleStateMachineQueryContainerInterface
 {
     /**
      * @param array<int> $stateIds
-     *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
     public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery;
 
@@ -28,8 +26,6 @@ interface ExampleStateMachineQueryContainerInterface
 
     /**
      * @param int $idStateMachineItem
-     *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
     public function queryExampleStateMachineItemByIdStateMachineItem(int $idStateMachineItem): PyzExampleStateMachineItemQuery;
 }

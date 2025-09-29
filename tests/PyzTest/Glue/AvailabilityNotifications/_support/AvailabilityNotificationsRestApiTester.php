@@ -34,8 +34,6 @@ class AvailabilityNotificationsRestApiTester extends ApiEndToEndTester
 
     /**
      * @param string $customerReference
-     *
-     * @return string
      */
     public function buildCustomerAvailabilityNotificationsUrl(string $customerReference): string
     {

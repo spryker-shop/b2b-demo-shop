@@ -23,8 +23,6 @@ class BootstrapHelper extends Framework
 
     /**
      * @param \Codeception\TestInterface $test
-     *
-     * @return void
      */
     public function _before(TestInterface $test): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -45,8 +43,6 @@ class BootstrapHelper extends Framework
 
     /**
      * The WhoopsErrorHandler converts E_USER_DEPRECATED into exception, we need to disable it for controller tests.
-     *
-     * @return void
      */
     protected function disableWhoopsErrorHandler(): void
     {

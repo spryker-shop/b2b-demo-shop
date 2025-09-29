@@ -68,49 +68,31 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
      */
     protected SaveOrderTransfer $orderWithSalesUnit;
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransferWithSalesUnit(): ProductConcreteTransfer
     {
         return $this->productConcreteTransferWithSalesUnit;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer
-     */
     public function getProductMeasurementSalesUnitTransfer(): ProductMeasurementSalesUnitTransfer
     {
         return $this->productMeasurementSalesUnitTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductPackagingUnitTransfer
-     */
     public function getProductPackagingUnitTransfer(): ProductPackagingUnitTransfer
     {
         return $this->productPackagingUnitTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     public function getOrderWithSalesUnit(): SaveOrderTransfer
     {
         return $this->orderWithSalesUnit;
@@ -118,8 +100,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CartReorderApiTester $I): FixturesContainerInterface
     {
@@ -139,8 +119,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\ProductPackagingUnitTransfer
      */
     protected function createProductPackagingUnit(CartReorderApiTester $I): ProductPackagingUnitTransfer
     {
@@ -159,8 +137,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     protected function createOrderWithProductPackagingUnit(CartReorderApiTester $I): SaveOrderTransfer
     {

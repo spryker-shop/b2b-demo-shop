@@ -38,8 +38,6 @@ class MultiFactorAuthBackendApiFixtures implements FixturesBuilderInterface, Fix
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthBackendApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(MultiFactorAuthBackendApiTester $I): FixturesContainerInterface
     {
@@ -48,9 +46,6 @@ class MultiFactorAuthBackendApiFixtures implements FixturesBuilderInterface, Fix
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function getUserTransfer(): UserTransfer
     {
         return $this->userTransfer;
@@ -94,17 +89,12 @@ class MultiFactorAuthBackendApiFixtures implements FixturesBuilderInterface, Fix
 
     /**
      * @param string $resourceName
-     *
-     * @return string
      */
     public function generateUrl(string $resourceName): string
     {
         return sprintf('/%s', $resourceName);
     }
 
-    /**
-     * @return string
-     */
     public function generateWarehouseUserAssignmentsUrl(): string
     {
         return sprintf('/%s', static::RESOURCE_WAREHOUSE_USER_ASSIGNMENTS);

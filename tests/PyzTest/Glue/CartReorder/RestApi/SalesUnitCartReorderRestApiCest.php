@@ -35,8 +35,6 @@ class SalesUnitCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(CartReorderApiTester $I): void
     {
@@ -48,8 +46,6 @@ class SalesUnitCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartReorder(CartReorderApiTester $I): void
     {

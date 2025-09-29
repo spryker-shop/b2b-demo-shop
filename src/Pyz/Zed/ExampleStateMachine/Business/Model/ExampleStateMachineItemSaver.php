@@ -30,8 +30,6 @@ class ExampleStateMachineItemSaver
 
     /**
      * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
-     *
-     * @return bool
      */
     public function itemStateUpdate(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {
@@ -45,9 +43,6 @@ class ExampleStateMachineItemSaver
         return $affectedRowCount > 0;
     }
 
-    /**
-     * @return bool
-     */
     public function createExampleItem(): bool
     {
         $exampleStateMachineItemEntity = new PyzExampleStateMachineItem();

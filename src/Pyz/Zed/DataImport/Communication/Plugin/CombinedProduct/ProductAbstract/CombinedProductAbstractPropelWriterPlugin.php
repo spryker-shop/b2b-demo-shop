@@ -22,17 +22,12 @@ class CombinedProductAbstractPropelWriterPlugin extends AbstractPlugin implement
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
         $this->getFacade()->writeCombinedProductAbstractDataSet($dataSet);
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         $this->getFacade()->flushCombinedProductAbstractDataImporter();

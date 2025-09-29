@@ -40,8 +40,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
 
     /**
      * @throws \RuntimeException
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function getCustomerTransfer(): CustomerTransfer
     {
@@ -54,8 +52,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CustomerApiTester $i): FixturesContainerInterface
     {
@@ -67,8 +63,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return void
      */
     protected function createCustomer(CustomerApiTester $i): void
     {
@@ -82,8 +76,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return void
      */
     protected function confirmCustomer(CustomerApiTester $i): void
     {

@@ -40,8 +40,6 @@ class NavigationWriterStep extends PublishAwareStep implements DataImportStepInt
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -60,8 +58,6 @@ class NavigationWriterStep extends PublishAwareStep implements DataImportStepInt
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigation $navigationEntity
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return string
      */
     protected function getName(SpyNavigation $navigationEntity, DataSetInterface $dataSet): string
     {

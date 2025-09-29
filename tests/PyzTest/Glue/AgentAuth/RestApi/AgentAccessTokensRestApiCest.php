@@ -34,8 +34,6 @@ class AgentAccessTokensRestApiCest
 
     /**
      * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(AgentAuthRestApiTester $I): void
     {
@@ -49,8 +47,6 @@ class AgentAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForExistingAgentUser(AgentAuthRestApiTester $I): void
     {
@@ -76,8 +72,6 @@ class AgentAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForNonExistingAgentUser(AgentAuthRestApiTester $I): void
     {

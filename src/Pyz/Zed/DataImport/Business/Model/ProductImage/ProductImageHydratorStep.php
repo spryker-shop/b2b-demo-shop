@@ -111,8 +111,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -123,8 +121,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importImageSet(DataSetInterface $dataSet): void
     {
@@ -162,8 +158,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importImage(DataSetInterface $dataSet): void
     {
@@ -177,8 +171,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importImageToImageSetRelation(DataSetInterface $dataSet): void
     {
@@ -190,8 +182,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return int
      */
     protected function getSortOrder(DataSetInterface $dataSet): int
     {

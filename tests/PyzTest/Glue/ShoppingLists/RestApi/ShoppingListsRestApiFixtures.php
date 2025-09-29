@@ -63,33 +63,21 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     protected CompanyUserTransfer $companyUserTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function getShoppingListTransfer(): ShoppingListTransfer
     {
         return $this->shoppingListTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function getShoppingListItemTransfer(): ShoppingListItemTransfer
     {
         return $this->shoppingListItemTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -97,8 +85,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(ShoppingListsApiTester $I): FixturesContainerInterface
     {
@@ -112,8 +98,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     protected function createCustomer(ShoppingListsApiTester $I): void
     {
@@ -123,8 +107,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     protected function createCustomerWithCompanyUser(ShoppingListsApiTester $I): void
     {
@@ -140,8 +122,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
     protected function createCompanyUser(
         ShoppingListsApiTester $I,
@@ -165,8 +145,6 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     protected function createShoppingList(ShoppingListsApiTester $I): void
     {

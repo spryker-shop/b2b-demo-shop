@@ -35,8 +35,6 @@ class ProductAbstractPriceProductVolumesRestApiCest
 
     /**
      * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(PriceProductVolumesApiTester $I): void
     {
@@ -50,8 +48,6 @@ class ProductAbstractPriceProductVolumesRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     *
-     * @return void
      */
     public function requestProductAbstractPrices(PriceProductVolumesApiTester $I): void
     {

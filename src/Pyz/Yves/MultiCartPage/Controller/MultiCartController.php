@@ -27,8 +27,6 @@ class MultiCartController extends SprykerShopMultiCartController
     /**
      * @param int $idQuote
      * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function setDefaultBackAction(int $idQuote, Request $request): RedirectResponse
     {
@@ -52,8 +50,6 @@ class MultiCartController extends SprykerShopMultiCartController
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return string
      */
     protected function getRefererUrl(Request $request): string
     {

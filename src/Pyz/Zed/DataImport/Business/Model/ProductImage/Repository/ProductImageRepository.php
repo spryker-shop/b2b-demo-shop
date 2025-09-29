@@ -39,8 +39,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
     public function getProductImageSetEntity(
         string $name,
@@ -60,8 +58,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
 
     /**
      * @param string $productImageKey
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
     public function getProductImageEntity(string $productImageKey): SpyProductImage
     {
@@ -75,8 +71,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     /**
      * @param int $productImageSetId
      * @param int $productImageId
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage
      */
     public function getProductImageSetToProductImageRelationEntity(
         int $productImageSetId,
@@ -93,8 +87,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
 
     /**
      * @param string $productImageKey
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
     protected function getProductImage(string $productImageKey): SpyProductImage
     {
@@ -112,8 +104,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     /**
      * @param int $productImageSetId
      * @param int $productImageId
-     *
-     * @return string
      */
     protected function buildProductImageSetToProductImageRelationKey(
         int $productImageSetId,
@@ -125,8 +115,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     /**
      * @param int $productImageSetId
      * @param int $productImageId
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage
      */
     protected function getProductImageSetToProductImageRelation(
         int $productImageSetId,
@@ -144,8 +132,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
-     *
-     * @return string
      */
     protected function buildProductImageSetKey(
         string $name,
@@ -169,8 +155,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
      * @param string|null $productImageSetKey
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
     protected function getProductImageSet(
         string $name,

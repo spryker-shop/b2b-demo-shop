@@ -33,8 +33,6 @@ class AccessTokensForCompanyUserRestApiCest
 
     /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(AuthRestApiTester $I): void
     {
@@ -48,8 +46,6 @@ class AccessTokensForCompanyUserRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForExistingCustomerWithoutCompanyUser(AuthRestApiTester $I): void
     {
@@ -78,8 +74,6 @@ class AccessTokensForCompanyUserRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForExistingCustomerWithCompanyUser(AuthRestApiTester $I): void
     {
@@ -108,8 +102,6 @@ class AccessTokensForCompanyUserRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForCustomerWithTwoCompanyUserWithoutDefaultOne(AuthRestApiTester $I): void
     {
@@ -138,8 +130,6 @@ class AccessTokensForCompanyUserRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForCustomerWithTwoCompanyUserWithDefaultOne(AuthRestApiTester $I): void
     {

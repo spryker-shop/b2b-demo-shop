@@ -117,33 +117,21 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
      */
     protected SaveOrderTransfer $saveOrderTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConfigurationTransfer
-     */
     public function getProductConfigurationTransfer(): ProductConfigurationTransfer
     {
         return $this->productConfigurationTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     public function getSaveOrderTransfer(): SaveOrderTransfer
     {
         return $this->saveOrderTransfer;
@@ -151,8 +139,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(ProductConfigurationsApiTester $I): FixturesContainerInterface
     {
@@ -168,8 +154,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
      * @param \Generated\Shared\Transfer\ProductConfigurationInstanceTransfer $productConfigurationInstanceTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function createQuoteTransfer(
         CustomerTransfer $customerTransfer,
@@ -192,8 +176,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createProductConcrete(ProductConfigurationsApiTester $I): void
     {
@@ -210,8 +192,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createProductConfiguration(ProductConfigurationsApiTester $I): void
     {
@@ -225,8 +205,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createCustomerTransfer(ProductConfigurationsApiTester $I): void
     {
@@ -240,8 +218,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     protected function createOrder(ProductConfigurationsApiTester $I): void
     {
@@ -265,8 +241,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return string
      */
     protected function createStateMachine(ProductConfigurationsApiTester $I): string
     {
@@ -278,8 +252,6 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConfigurationInstanceTransfer
      */
     protected function createProductConfigurationInstanceTransfer(
         ProductConfigurationTransfer $productConfigurationTransfer,

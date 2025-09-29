@@ -31,8 +31,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     public function provideDependencies(Container $container): Container
     {
@@ -78,8 +76,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addPyzSessionClient(Container $container): Container
     {

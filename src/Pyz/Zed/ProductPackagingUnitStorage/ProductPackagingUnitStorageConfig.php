@@ -15,25 +15,16 @@ use Spryker\Zed\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig as
 
 class ProductPackagingUnitStorageConfig extends SprykerProductPackagingUnitStorageConfig
 {
-    /**
-     * @return string|null
-     */
     public function getProductPackagingUnitSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
-    /**
-     * @return string|null
-     */
     public function getProductAbstractPackagingSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;

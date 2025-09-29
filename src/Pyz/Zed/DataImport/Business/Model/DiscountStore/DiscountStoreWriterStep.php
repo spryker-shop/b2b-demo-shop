@@ -44,8 +44,6 @@ class DiscountStoreWriterStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -58,8 +56,6 @@ class DiscountStoreWriterStep implements DataImportStepInterface
 
     /**
      * @param string $discountKey
-     *
-     * @return int
      */
     protected function getIdDiscountByKey(string $discountKey): int
     {
@@ -73,8 +69,6 @@ class DiscountStoreWriterStep implements DataImportStepInterface
 
     /**
      * @param string $storeName
-     *
-     * @return int
      */
     protected function getIdStoreByName(string $storeName): int
     {

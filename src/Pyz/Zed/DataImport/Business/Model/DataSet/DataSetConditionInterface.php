@@ -15,8 +15,6 @@ interface DataSetConditionInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return bool
      */
     public function hasData(DataSetInterface $dataSet): bool;
 }

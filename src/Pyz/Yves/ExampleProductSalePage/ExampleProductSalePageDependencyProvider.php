@@ -51,8 +51,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     public function provideDependencies(Container $container): Container
     {
@@ -70,8 +68,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addSearchClient(Container $container): Container
     {
@@ -84,8 +80,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addUrlStorageClient(Container $container): Container
     {
@@ -98,8 +92,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addClientStore(Container $container): Container
     {
@@ -112,8 +104,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addCatalogClient(Container $container): Container
     {
@@ -126,8 +116,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addProductSalePageWidgetPlugins(Container $container): Container
     {
@@ -140,8 +128,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addLocaleClient(Container $container): Container
     {
@@ -154,8 +140,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addUtilNumberService(Container $container): Container
     {

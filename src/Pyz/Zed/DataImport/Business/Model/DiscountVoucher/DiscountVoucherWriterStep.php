@@ -78,8 +78,6 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -115,8 +113,6 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
     /**
      * @param \Orm\Zed\Discount\Persistence\SpyDiscount $discountEntity
      * @param int $voucherBatch
-     *
-     * @return bool
      */
     protected function voucherBatchExists(SpyDiscount $discountEntity, int $voucherBatch): bool
     {
@@ -158,8 +154,6 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
     /**
      * @param string $customCode
      * @param string $code
-     *
-     * @return string
      */
     protected function addCustomCodeToGenerated(string $customCode, string $code): string
     {
@@ -178,8 +172,6 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
 
     /**
      * @param string $code
-     *
-     * @return bool
      */
     protected function voucherCodeExists(string $code): bool
     {
@@ -188,8 +180,6 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
 
     /**
      * @param int $length
-     *
-     * @return string
      */
     protected function getRandomVoucherCode(int $length): string
     {

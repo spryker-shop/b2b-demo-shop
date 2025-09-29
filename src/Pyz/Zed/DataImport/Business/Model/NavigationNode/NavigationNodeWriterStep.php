@@ -111,8 +111,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -177,8 +175,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      * @param string $nodeKey
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\NavigationNodeByKeyNotFoundException
-     *
-     * @return int
      */
     protected function getFkParentNavigationNode(string $nodeKey): int
     {
@@ -198,8 +194,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNode $navigationNodeEntity
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return int|null
      */
     protected function getPosition(SpyNavigationNode $navigationNodeEntity, DataSetInterface $dataSet): ?int
     {
@@ -213,8 +207,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNode $navigationNodeEntity
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return bool
      */
     protected function isActive(SpyNavigationNode $navigationNodeEntity, DataSetInterface $dataSet): bool
     {
@@ -234,8 +226,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNode $navigationNodeEntity
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return string|null
      */
     protected function getNodeType(SpyNavigationNode $navigationNodeEntity, DataSetInterface $dataSet): ?string
     {
@@ -249,8 +239,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
      * @param array<string, mixed> $localizedAttributes
-     *
-     * @return string
      */
     protected function getTitle(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
@@ -266,8 +254,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
      * @param array<string, mixed> $localizedAttributes
-     *
-     * @return string|null
      */
     protected function getLink(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
@@ -283,8 +269,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
      * @param array<string, mixed> $localizedAttributes
-     *
-     * @return string|null
      */
     protected function getExternalUrl(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
@@ -301,8 +285,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
      * @param array<string, mixed> $localizedAttributes
      * @param int $idLocale
-     *
-     * @return int|null
      */
     protected function getFkUrl(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
@@ -326,8 +308,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
      * @param array<string, mixed> $localizedAttributes
-     *
-     * @return string|null
      */
     protected function getCssClass(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,

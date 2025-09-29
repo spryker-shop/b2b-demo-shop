@@ -21,8 +21,6 @@ class MultiCartPageRouteProviderPlugin extends SprykerMultiCartPageRouteProvider
 
     /**
      * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
      */
     public function addRoutes(RouteCollection $routeCollection): RouteCollection
     {
@@ -34,8 +32,6 @@ class MultiCartPageRouteProviderPlugin extends SprykerMultiCartPageRouteProvider
 
     /**
      * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
      */
     protected function addMultiCartSetDefaultBackRoute(RouteCollection $routeCollection): RouteCollection
     {

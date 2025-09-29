@@ -22,8 +22,6 @@ class TestConditionPlugin extends AbstractPlugin implements ConditionPluginInter
 {
     /**
      * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
-     *
-     * @return bool
      */
     public function check(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {

@@ -66,8 +66,6 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
 
     /**
      * @throws \Pyz\Zed\ExampleProductSalePage\Business\Exception\ProductLabelSaleNotFoundException
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabel
      */
     protected function getProductLabelNewEntity(): SpyProductLabel
     {
@@ -130,8 +128,6 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      * @param int $idProductLabel
      * @param array<int, array<int>> $relationsToAssign
      * @param array<int, array<int>> $relationsToDeAssign
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer
      */
     protected function mapRelationTransfer(
         int $idProductLabel,

@@ -33,8 +33,6 @@ class PriceProductOrderAmendmentsRestApiCest
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(OrderAmendmentsApiTester $I): void
     {
@@ -45,8 +43,6 @@ class PriceProductOrderAmendmentsRestApiCest
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     public function requestCreateOrderAmendmentWithPricesSavedFromTheOrder(OrderAmendmentsApiTester $I): void
     {
@@ -82,8 +78,6 @@ class PriceProductOrderAmendmentsRestApiCest
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     protected function assertProductPricesBeforeOrderAmendment(OrderAmendmentsApiTester $I): void
     {

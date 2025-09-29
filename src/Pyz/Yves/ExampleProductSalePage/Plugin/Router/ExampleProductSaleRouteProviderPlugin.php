@@ -21,8 +21,6 @@ class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
 
     /**
      * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
      */
     public function addRoutes(RouteCollection $routeCollection): RouteCollection
     {

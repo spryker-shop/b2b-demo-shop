@@ -44,17 +44,11 @@ class ProductSetIdsWidget extends AbstractWidget
         $this->addProductSetListParameter($productSetIds);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'ProductSetIdsWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@ProductSetWidget/views/product-set-ids/product-set-ids.twig';
@@ -62,8 +56,6 @@ class ProductSetIdsWidget extends AbstractWidget
 
     /**
      * @param list<int> $productSetIds
-     *
-     * @return void
      */
     protected function addProductSetListParameter(array $productSetIds): void
     {
@@ -111,8 +103,6 @@ class ProductSetIdsWidget extends AbstractWidget
 
     /**
      * @param int $idProductSet
-     *
-     * @return \Generated\Shared\Transfer\ProductSetDataStorageTransfer|null
      */
     protected function getProductSetStorageTransfer(int $idProductSet): ?ProductSetDataStorageTransfer
     {
@@ -154,9 +144,6 @@ class ProductSetIdsWidget extends AbstractWidget
         return isset($attributes[$idProductAbstract]) ? array_reverse(array_filter($attributes[$idProductAbstract])) : [];
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     protected function getRequest(): Request
     {
         return $this->getGlobalContainer()->get(static::REQUEST);

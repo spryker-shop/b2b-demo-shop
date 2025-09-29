@@ -39,8 +39,6 @@ class CustomerReadCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function _before(CustomerApiTester $I): void
     {
@@ -63,8 +61,6 @@ class CustomerReadCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestGetCustomerReturnsCollectionWithOneResource(CustomerApiTester $I): void
     {
@@ -105,8 +101,6 @@ class CustomerReadCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestGetCustomerByIdReturnsOneResource(CustomerApiTester $I): void
     {

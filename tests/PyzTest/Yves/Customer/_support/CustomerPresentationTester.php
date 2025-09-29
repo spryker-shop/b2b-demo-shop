@@ -43,8 +43,6 @@ class CustomerPresentationTester extends Actor
     /**
      * @param string $email
      * @param string $password
-     *
-     * @return void
      */
     public function submitLoginForm(string $email, string $password): void
     {
@@ -55,9 +53,6 @@ class CustomerPresentationTester extends Actor
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function fillOutRegistrationForm(): void
     {
         $i = $this;
@@ -74,8 +69,6 @@ class CustomerPresentationTester extends Actor
 
     /**
      * @param string $uri
-     *
-     * @return void
      */
     public function seeCurrentUrlEquals(string $uri): void
     {
@@ -86,9 +79,6 @@ class CustomerPresentationTester extends Actor
         $this->getScenario()->runStep(new Assertion('seeCurrentUrlEquals', func_get_args()));
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToProfilePage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
@@ -98,9 +88,6 @@ class CustomerPresentationTester extends Actor
         return CustomerOverviewPage::LINK_TO_PROFILE_PAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToAddressesPage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
@@ -110,9 +97,6 @@ class CustomerPresentationTester extends Actor
         return CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToOrdersPage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
@@ -122,9 +106,6 @@ class CustomerPresentationTester extends Actor
         return CustomerOverviewPage::LINK_TO_ORDERS_PAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToNewsletterPage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {

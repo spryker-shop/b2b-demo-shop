@@ -55,8 +55,6 @@ class OrderAmendmentsRestApiCest
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(OrderAmendmentsApiTester $I): void
     {
@@ -67,8 +65,6 @@ class OrderAmendmentsRestApiCest
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     public function requestCreateOrderAmendmentWithInvalidOrder(OrderAmendmentsApiTester $I): void
     {
@@ -101,8 +97,6 @@ class OrderAmendmentsRestApiCest
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     public function requestCreateOrderAmendmentWithEmptyIsAmendmentParameter(OrderAmendmentsApiTester $I): void
     {
@@ -135,8 +129,6 @@ class OrderAmendmentsRestApiCest
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     public function requestCreateOrderAmendmentWithValidOrder(OrderAmendmentsApiTester $I): void
     {

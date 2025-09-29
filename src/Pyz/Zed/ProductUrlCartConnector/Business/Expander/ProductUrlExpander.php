@@ -41,8 +41,6 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
 
     /**
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
     public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
@@ -55,8 +53,6 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return void
      */
     protected function expandItemsWithUrl(ItemTransfer $itemTransfer): void
     {

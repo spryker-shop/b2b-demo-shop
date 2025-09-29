@@ -89,9 +89,6 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return $companyRoleTransfers;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
-     */
     protected function getBuyerRole(): CompanyRoleTransfer
     {
         return (new CompanyRoleTransfer())
@@ -101,9 +98,6 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             ));
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
-     */
     protected function getApproverRole(): CompanyRoleTransfer
     {
         return (new CompanyRoleTransfer())
@@ -113,9 +107,6 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             ));
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
-     */
     protected function getBuyerWithLimitRole(): CompanyRoleTransfer
     {
         return (new CompanyRoleTransfer())

@@ -33,8 +33,6 @@ class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(MultiFactorAuthStorefrontApiTester $I): FixturesContainerInterface
     {
@@ -43,9 +41,6 @@ class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, 
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -70,8 +65,6 @@ class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param string $resourceName
-     *
-     * @return string
      */
     public function generateUrl(string $resourceName): string
     {

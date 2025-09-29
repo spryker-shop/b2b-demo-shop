@@ -19,8 +19,6 @@ class CheckoutPageDependencyInjector extends SprykerCheckoutPageDependencyInject
 {
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function injectPaymentSubForms(Container $container): Container
     {

@@ -41,8 +41,6 @@ class MultiFactorAuthRestApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
@@ -52,8 +50,6 @@ class MultiFactorAuthRestApiTester extends ApiEndToEndTester
 
     /**
      * @param string $customerName
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function createCustomer(string $customerName): CustomerTransfer
     {
@@ -69,8 +65,6 @@ class MultiFactorAuthRestApiTester extends ApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param string $mfaType
-     *
-     * @return string|null
      */
     public function getCustomerMultiFactorAuthCodeFromDatabase(CustomerTransfer $customerTransfer, string $mfaType): ?string
     {

@@ -20,9 +20,6 @@ class Environment extends Module
      */
     protected const TESTING_APPLICATION_ENV_NAME = 'devtest';
 
-    /**
-     * @return void
-     */
     public function _initialize(): void
     {
         $rootDir = realpath(__DIR__ . '/../../../../../../');
@@ -42,9 +39,6 @@ class Environment extends Module
         putenv('APPLICATION_CODE_BUCKET=' . APPLICATION_CODE_BUCKET);
     }
 
-    /**
-     * @return string
-     */
     protected function getApplicationEnv(): string
     {
         if (getenv('SPRYKER_TESTING_ENABLED')) {
@@ -54,9 +48,6 @@ class Environment extends Module
         return static::TESTING_APPLICATION_ENV_NAME;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface
-     */
     protected function createCodeBucketConfig(): CodeBucketConfigInterface
     {
         return new CodeBucketConfig();

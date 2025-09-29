@@ -38,8 +38,6 @@ class UrlsRestApiCest
 
     /**
      * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(UrlsRestApiTester $I): void
     {
@@ -53,8 +51,6 @@ class UrlsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     *
-     * @return void
      */
     public function requestNonExistingUrl(UrlsRestApiTester $I): void
     {
@@ -79,8 +75,6 @@ class UrlsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     *
-     * @return void
      */
     public function requestUrlWithoutUrlParameter(UrlsRestApiTester $I): void
     {
@@ -103,8 +97,6 @@ class UrlsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     *
-     * @return void
      */
     public function requestExistingProductAbstractUrl(UrlsRestApiTester $I): void
     {

@@ -39,8 +39,6 @@ class CustomerAddressesRestApiCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function _before(CustomerApiTester $I): void
     {
@@ -64,8 +62,6 @@ class CustomerAddressesRestApiCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestGetCustomerAddresses(CustomerApiTester $I): void
     {
@@ -88,8 +84,6 @@ class CustomerAddressesRestApiCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestGetCustomerAddressesAuthorizationError(CustomerApiTester $I): void
     {

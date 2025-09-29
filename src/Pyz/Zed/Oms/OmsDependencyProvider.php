@@ -43,8 +43,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
@@ -103,8 +101,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
@@ -116,8 +112,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addTranslatorFacade(Container $container): Container
     {
@@ -150,8 +144,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function extendCommandPlugins(Container $container): Container
     {

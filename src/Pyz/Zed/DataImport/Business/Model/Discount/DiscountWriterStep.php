@@ -106,8 +106,6 @@ class DiscountWriterStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -151,8 +149,6 @@ class DiscountWriterStep implements DataImportStepInterface
 
     /**
      * @param string $queryString
-     *
-     * @return string
      */
     protected function processQueryString(string $queryString): string
     {
@@ -164,8 +160,6 @@ class DiscountWriterStep implements DataImportStepInterface
 
     /**
      * @param string $queryString
-     *
-     * @return string
      */
     protected function convertShipmentMethodNameToId(string $queryString): string
     {
@@ -181,8 +175,6 @@ class DiscountWriterStep implements DataImportStepInterface
 
     /**
      * @param string $queryString
-     *
-     * @return string
      */
     protected function convertShipmentCarrierNameToId(string $queryString): string
     {
@@ -229,8 +221,6 @@ class DiscountWriterStep implements DataImportStepInterface
 
     /**
      * @param string $conditionValue
-     *
-     * @return \Orm\Zed\Shipment\Persistence\SpyShipmentMethod
      */
     protected function findShipmentMethodByConditionValue(string $conditionValue): SpyShipmentMethod
     {
@@ -251,8 +241,6 @@ class DiscountWriterStep implements DataImportStepInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\Discount\Persistence\SpyDiscount $discountEntity
-     *
-     * @return void
      */
     protected function saveDiscountPromotion(DataSetInterface $dataSet, SpyDiscount $discountEntity): void
     {

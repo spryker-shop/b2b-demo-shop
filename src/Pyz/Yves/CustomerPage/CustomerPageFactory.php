@@ -14,9 +14,6 @@ use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFact
 
 class CustomerPageFactory extends SprykerCustomerPageFactory
 {
-    /**
-     * @return \Spryker\Client\Session\SessionClientInterface
-     */
     public function getPyzSessionClient(): SessionClientInterface
     {
         return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_PYZ_SESSION);

@@ -78,8 +78,6 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -133,8 +131,6 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\ProductOption\Persistence\Base\SpyProductOptionGroup $productOptionGroupEntity
-     *
-     * @return bool
      */
     protected function isActive(DataSetInterface $dataSet, SpyProductOptionGroup $productOptionGroupEntity): bool
     {
@@ -149,8 +145,6 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
      * @param string $key
      * @param string $translation
      * @param int $idLocale
-     *
-     * @return void
      */
     protected function findOrCreateTranslation(string $key, string $translation, int $idLocale): void
     {

@@ -47,8 +47,6 @@ class CompanyUserHelper extends Module
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
     public function haveRegisteredCompanyUser(CustomerTransfer $customerTransfer): CompanyUserTransfer
     {
@@ -69,9 +67,6 @@ class CompanyUserHelper extends Module
         ]);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     protected function createPermissionCollectionTransferWithCartPermissions(): PermissionCollectionTransfer
     {
         $this->setDependency(PermissionDependencyProvider::PLUGINS_PERMISSION_STORAGE, [
@@ -96,8 +91,6 @@ class CompanyUserHelper extends Module
 
     /**
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
      */
     protected function createCompanyRole(array $seed = []): CompanyRoleTransfer
     {
@@ -107,8 +100,6 @@ class CompanyUserHelper extends Module
 
     /**
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
      */
     protected function createCompany(array $seed = []): CompanyTransfer
     {
@@ -123,8 +114,6 @@ class CompanyUserHelper extends Module
 
     /**
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
      */
     protected function createCompanyBusinessUnit(array $seed = []): CompanyBusinessUnitTransfer
     {
@@ -134,8 +123,6 @@ class CompanyUserHelper extends Module
 
     /**
      * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
     protected function createCompanyUser(array $seed = []): CompanyUserTransfer
     {
@@ -145,25 +132,16 @@ class CompanyUserHelper extends Module
             ]);
     }
 
-    /**
-     * @return \Spryker\Zed\Permission\Business\PermissionFacadeInterface
-     */
     protected function getPermissionFacade(): PermissionFacadeInterface
     {
         return $this->getLocator()->permission()->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface
-     */
     protected function getPermissionStoragePluginMock(): PermissionStoragePluginInterface
     {
         return Stub::makeEmpty(PermissionStoragePluginInterface::class);
     }
 
-    /**
-     * @return \Spryker\Zed\Mail\Business\MailFacadeInterface
-     */
     protected function getMailMock(): MailFacadeInterface
     {
         return Stub::makeEmpty(MailFacadeInterface::class);

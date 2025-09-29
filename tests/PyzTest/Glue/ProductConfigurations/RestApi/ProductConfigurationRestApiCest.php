@@ -39,8 +39,6 @@ class ProductConfigurationRestApiCest
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(ProductConfigurationsApiTester $I): void
     {
@@ -54,8 +52,6 @@ class ProductConfigurationRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     public function requestProductConcrete(ProductConfigurationsApiTester $I): void
     {
@@ -99,8 +95,6 @@ class ProductConfigurationRestApiCest
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     public function requestAddConfigurableItemsToCart(ProductConfigurationsApiTester $I): void
     {
@@ -172,8 +166,6 @@ class ProductConfigurationRestApiCest
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
-     *
-     * @return void
      */
     public function requestGetOrderDetails(ProductConfigurationsApiTester $I): void
     {

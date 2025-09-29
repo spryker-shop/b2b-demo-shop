@@ -93,17 +93,11 @@ class CartReorderApiTester extends ApiEndToEndTester
      */
     protected const TEST_CUSTOMER_PASSWORD = 'change123';
 
-    /**
-     * @return void
-     */
     public function configureStateMachine(): void
     {
         $this->configureTestStateMachine([static::STATE_MACHINE_NAME]);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(): StoreTransfer
     {
         return $this->getLocator()->store()->facade()->getCurrentStore();
@@ -111,8 +105,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param string $customerName
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function createCustomer(string $customerName): CustomerTransfer
     {
@@ -127,8 +119,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function createProductWithPriceAndStock(StoreTransfer $storeTransfer): ProductConcreteTransfer
     {
@@ -155,8 +145,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer
      */
     public function createProductMeasurementSalesUnit(ProductConcreteTransfer $productConcreteTransfer): ProductMeasurementSalesUnitTransfer
     {
@@ -191,8 +179,6 @@ class CartReorderApiTester extends ApiEndToEndTester
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array<string, mixed> $seedData
      * @param list<\Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutDoSaveOrderInterface> $checkoutDoSaveOrderPlugins
-     *
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     public function createOrder(
         CustomerTransfer $customerTransfer,
@@ -211,8 +197,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
@@ -220,9 +204,6 @@ class CartReorderApiTester extends ApiEndToEndTester
         $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
     }
 
-    /**
-     * @return string
-     */
     public function getCartReorderUrl(): string
     {
         $url = sprintf('{cartReorderResource}?include=%s,%s', static::RESOURCE_CART_ITEMS, static::RESOURCE_BUNDLE_ITEMS);
@@ -234,8 +215,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param string $quoteName
-     *
-     * @return void
      */
     public function assertResponseContainsCorrectCartName(string $quoteName): void
     {
@@ -247,8 +226,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param string $sku
-     *
-     * @return void
      */
     public function assertResponseContainsItemBySku(string $sku): void
     {
@@ -257,8 +234,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param string $sku
-     *
-     * @return void
      */
     public function assertResponseDoesNotContainItemBySku(string $sku): void
     {
@@ -267,8 +242,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param string $sku
-     *
-     * @return void
      */
     public function assertResponseContainsBundleItemBySku(string $sku): void
     {
@@ -278,8 +251,6 @@ class CartReorderApiTester extends ApiEndToEndTester
     /**
      * @param string $sku
      * @param int $quantity
-     *
-     * @return void
      */
     public function assertItemHasCorrectQuantity(string $sku, int $quantity): void
     {
@@ -292,8 +263,6 @@ class CartReorderApiTester extends ApiEndToEndTester
     /**
      * @param string $sku
      * @param int $quantity
-     *
-     * @return void
      */
     public function assertBundleItemHasCorrectQuantity(string $sku, int $quantity): void
     {
@@ -306,8 +275,6 @@ class CartReorderApiTester extends ApiEndToEndTester
     /**
      * @param string $sku
      * @param int $idSalesUnit
-     *
-     * @return void
      */
     public function assertItemHasIdSalesUnit(string $sku, int $idSalesUnit): void
     {
@@ -322,8 +289,6 @@ class CartReorderApiTester extends ApiEndToEndTester
     /**
      * @param string $sku
      * @param \Spryker\DecimalObject\Decimal $amount
-     *
-     * @return void
      */
     public function assertItemHasSalesUnitAmount(string $sku, Decimal $amount): void
     {
@@ -338,8 +303,6 @@ class CartReorderApiTester extends ApiEndToEndTester
     /**
      * @param string $productConcreteSku
      * @param string $productOptionSku
-     *
-     * @return void
      */
     public function assertItemHasProductOption(string $productConcreteSku, string $productOptionSku): void
     {
@@ -356,8 +319,6 @@ class CartReorderApiTester extends ApiEndToEndTester
 
     /**
      * @param string $cartUuid
-     *
-     * @return string
      */
     public function buildCartsUrl(string $cartUuid): string
     {
@@ -373,8 +334,6 @@ class CartReorderApiTester extends ApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array<string, mixed> $seedData
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     protected function createQuoteTransfer(CustomerTransfer $customerTransfer, array $seedData): QuoteTransfer
     {

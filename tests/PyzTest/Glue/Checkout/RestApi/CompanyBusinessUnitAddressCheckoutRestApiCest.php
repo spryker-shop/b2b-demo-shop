@@ -34,8 +34,6 @@ class CompanyBusinessUnitAddressCheckoutRestApiCest
 
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(CheckoutApiTester $I): void
     {
@@ -47,8 +45,6 @@ class CompanyBusinessUnitAddressCheckoutRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
      */
     public function requestCheckoutShouldAcceptCompanyBusinessUnitAddressForBillingAddress(CheckoutApiTester $I): void
     {
@@ -89,8 +85,6 @@ class CompanyBusinessUnitAddressCheckoutRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
      */
     public function requestCheckoutShouldAcceptCompanyBusinessUnitAddressForShippingAddress(CheckoutApiTester $I): void
     {

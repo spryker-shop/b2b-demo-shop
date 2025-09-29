@@ -27,8 +27,6 @@ class AppCatalogGuiControllerCest
 {
     /**
      * @param \PyzTest\Zed\AppCatalogGui\AppCatalogGuiPresentationTester $I
-     *
-     * @return void
      */
     public function checkIfAppCatalogGuiReturn200AndValidUrl(AppCatalogGuiPresentationTester $I): void
     {
@@ -52,8 +50,6 @@ class AppCatalogGuiControllerCest
 
     /**
      * @param \PyzTest\Zed\AppCatalogGui\AppCatalogGuiPresentationTester $I
-     *
-     * @return void
      */
     public function checkIfAppCatalogGuiApiLoginReturn200AndValidToken(AppCatalogGuiPresentationTester $I): void
     {

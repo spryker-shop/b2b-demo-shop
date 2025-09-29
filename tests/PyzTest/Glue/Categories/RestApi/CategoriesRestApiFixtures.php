@@ -32,9 +32,6 @@ class CategoriesRestApiFixtures implements FixturesBuilderInterface, FixturesCon
      */
     protected CategoryTransfer $categoryTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\CategoryTransfer
-     */
     public function getCategoryTransfer(): CategoryTransfer
     {
         return $this->categoryTransfer;
@@ -42,8 +39,6 @@ class CategoriesRestApiFixtures implements FixturesBuilderInterface, FixturesCon
 
     /**
      * @param \PyzTest\Glue\Categories\CategoriesRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CategoriesRestApiTester $I): FixturesContainerInterface
     {
@@ -54,8 +49,6 @@ class CategoriesRestApiFixtures implements FixturesBuilderInterface, FixturesCon
 
     /**
      * @param \PyzTest\Glue\Categories\CategoriesRestApiTester $I
-     *
-     * @return void
      */
     protected function createCategory(CategoriesRestApiTester $I): void
     {

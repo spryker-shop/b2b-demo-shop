@@ -34,8 +34,6 @@ class PriceProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {

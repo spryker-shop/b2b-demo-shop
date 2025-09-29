@@ -90,8 +90,6 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -105,8 +103,6 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
      * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidDataException
-     *
-     * @return void
      */
     protected function assertAssignableProductTypeColumn(DataSetInterface $dataSet): void
     {

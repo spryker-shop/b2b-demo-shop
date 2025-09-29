@@ -34,8 +34,6 @@ class DeleteMethodRestApiCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return void
      */
     public function _before(CustomerApiTester $i): void
     {
@@ -50,8 +48,6 @@ class DeleteMethodRestApiCest
      *
      * When SymfonyListener is not enabled Glue returns 204 with content inside, this test is to check it doesn't happen
      * Jira ticket GLUE-9691
-     *
-     * @return void
      */
     public function ensureDeleteRequestHasNoBody(CustomerApiTester $i): void
     {
@@ -102,8 +98,6 @@ class DeleteMethodRestApiCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return void
      */
     public function ensureDeleteRequestForbidden(CustomerApiTester $i): void
     {

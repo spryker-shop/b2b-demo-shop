@@ -44,8 +44,6 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -57,8 +55,6 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array<string> $options
-     *
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

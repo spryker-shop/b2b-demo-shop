@@ -26,8 +26,6 @@ class CountryRepository implements CountryRepositoryInterface
 
     /**
      * @param string $countryName
-     *
-     * @return bool
      */
     public function hasCountryByName(string $countryName): bool
     {
@@ -40,8 +38,6 @@ class CountryRepository implements CountryRepositoryInterface
 
     /**
      * @param string $countryName
-     *
-     * @return int
      */
     public function getIdCountryByName(string $countryName): int
     {
@@ -52,9 +48,6 @@ class CountryRepository implements CountryRepositoryInterface
         return $this->countryIds[$countryName];
     }
 
-    /**
-     * @return void
-     */
     private function loadCountries(): void
     {
         $query = SpyCountryQuery::create();

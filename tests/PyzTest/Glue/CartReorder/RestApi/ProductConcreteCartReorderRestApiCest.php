@@ -84,8 +84,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(CartReorderApiTester $I): void
     {
@@ -97,8 +95,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartReorder(CartReorderApiTester $I): void
     {
@@ -124,8 +120,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartReorderWithReorderStrategyReplace(CartReorderApiTester $I): void
     {
@@ -152,8 +146,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartReorderWithReorderStrategyNew(CartReorderApiTester $I): void
     {
@@ -182,8 +174,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateCartReorderWithNotAvailableProduct(CartReorderApiTester $I): void
     {
@@ -221,8 +211,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateReorderWithEmptyOrderReferenceParameter(CartReorderApiTester $I): void
     {
@@ -254,8 +242,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateReorderWithNonExistingOrderReference(CartReorderApiTester $I): void
     {
@@ -287,8 +273,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateReorderWithAnotherCustomersOrderReference(CartReorderApiTester $I): void
     {
@@ -320,8 +304,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     public function requestCreateReorderWithNonExistingReorderStrategy(CartReorderApiTester $I): void
     {
@@ -357,8 +339,6 @@ class ProductConcreteCartReorderRestApiCest
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
      * @param \Generated\Shared\Transfer\SaveOrderTransfer $saveOrderTransfer
      * @param string|null $cartNamePostfix
-     *
-     * @return void
      */
     protected function assertCreateCartReorder(
         CartReorderApiTester $I,
@@ -398,8 +378,6 @@ class ProductConcreteCartReorderRestApiCest
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return void
      */
     protected function deleteLastResponseCart(CartReorderApiTester $I): void
     {

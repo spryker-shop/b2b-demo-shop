@@ -33,8 +33,6 @@ class AbstractAlternativeProductsRestApiCest
 
     /**
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(AlternativeProductsRestApiTester $I): void
     {
@@ -48,8 +46,6 @@ class AbstractAlternativeProductsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
      */
     public function requestAbstractAlternativeProducts(AlternativeProductsRestApiTester $I): void
     {
@@ -85,8 +81,6 @@ class AbstractAlternativeProductsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
      */
     public function requestAbstractAlternativeProductsByNotExistingProductConcreteSku(
         AlternativeProductsRestApiTester $I,

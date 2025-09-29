@@ -34,8 +34,6 @@ class CheckoutDataRelationshipsCest
 
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
      */
     public function loadShipmentFixtures(CheckoutApiTester $I): void
     {
@@ -48,8 +46,6 @@ class CheckoutDataRelationshipsCest
      * @depends loadShipmentFixtures
      *
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
      */
     public function requestCheckoutDataIncludesShipmentsRelationship(CheckoutApiTester $I): void
     {
@@ -107,8 +103,6 @@ class CheckoutDataRelationshipsCest
      * @depends loadShipmentFixtures
      *
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
      */
     public function requestCheckoutDataIncludesShipmentMethodsRelationship(CheckoutApiTester $I): void
     {

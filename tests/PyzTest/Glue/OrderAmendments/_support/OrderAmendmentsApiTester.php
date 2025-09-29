@@ -40,8 +40,6 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
@@ -51,8 +49,6 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $orderReference
-     *
-     * @return void
      */
     public function assertResponseContainsAmendmentOrderReference(string $orderReference): void
     {
@@ -64,8 +60,6 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $quoteName
-     *
-     * @return void
      */
     public function assertResponseContainsCorrectCartName(string $quoteName): void
     {
@@ -75,9 +69,6 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
         $this->assertSame($quoteName, $attributes['name']);
     }
 
-    /**
-     * @return string
-     */
     public function getCartReorderUrl(): string
     {
         return $this->formatUrl('{cartReorderResource}?include=items', [
@@ -87,17 +78,12 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $sku
-     *
-     * @return string
      */
     public function getConcreteProductPricesUrl(string $sku): string
     {
         return $this->formatUrl('concrete-products/{sku}/concrete-product-prices', ['sku' => $sku]);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(): StoreTransfer
     {
         return $this->getLocator()->store()->facade()->getCurrentStore();
@@ -105,8 +91,6 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
 
     /**
      * @param int|null $unitPrice
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function haveProductWithPriceAndStock(?int $unitPrice = 10000): ProductConcreteTransfer
     {

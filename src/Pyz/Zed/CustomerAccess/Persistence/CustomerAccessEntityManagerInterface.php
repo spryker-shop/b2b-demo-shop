@@ -16,8 +16,6 @@ interface CustomerAccessEntityManagerInterface extends SprykerCustomerAccessEnti
 {
     /**
      * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return void
      */
     public function setContentTypesToAccessible(CustomerAccessTransfer $customerAccessTransfer): void;
 }

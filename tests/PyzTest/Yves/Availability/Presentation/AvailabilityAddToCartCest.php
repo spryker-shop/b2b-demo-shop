@@ -27,8 +27,6 @@ class AvailabilityAddToCartCest
 {
     /**
      * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
-     *
-     * @return void
      */
     public function _before(AvailabilityPresentationTester $i): void
     {
@@ -38,8 +36,6 @@ class AvailabilityAddToCartCest
     /**
      * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i, Scenario $scenario): void
     {

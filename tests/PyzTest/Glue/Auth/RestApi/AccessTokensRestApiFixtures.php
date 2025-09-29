@@ -28,8 +28,6 @@ class AccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesC
 
     /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(AuthRestApiTester $I): FixturesContainerInterface
     {
@@ -40,9 +38,6 @@ class AccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesC
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -50,8 +45,6 @@ class AccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesC
 
     /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomerTransfer(AuthRestApiTester $I): CustomerTransfer
     {

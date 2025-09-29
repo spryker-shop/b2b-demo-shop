@@ -25,8 +25,6 @@ class GenerateDataBuildersCest
 {
     /**
      * @param \PyzTest\Zed\Console\ConsoleConsoleTester $i
-     *
-     * @return void
      */
     public function dataBuilder(ConsoleConsoleTester $i): void
     {

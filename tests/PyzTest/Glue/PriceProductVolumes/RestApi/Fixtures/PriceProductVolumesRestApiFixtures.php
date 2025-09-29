@@ -61,17 +61,11 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
      */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -79,8 +73,6 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
 
     /**
      * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(PriceProductVolumesApiTester $I): FixturesContainerInterface
     {
@@ -93,8 +85,6 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
 
     /**
      * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     *
-     * @return void
      */
     protected function createProductConcrete(PriceProductVolumesApiTester $I): void
     {
@@ -103,8 +93,6 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
 
     /**
      * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     *
-     * @return void
      */
     protected function createPriceProduct(PriceProductVolumesApiTester $I): void
     {
@@ -116,9 +104,6 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
         ]);
     }
 
-    /**
-     * @return string
-     */
     protected function createVolumePriceData(): string
     {
         return json_encode([
@@ -128,8 +113,6 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
 
     /**
      * @param \PyzTest\Glue\PriceProductVolumes\PriceProductVolumesApiTester $I
-     *
-     * @return void
      */
     protected function createCustomer(PriceProductVolumesApiTester $I): void
     {

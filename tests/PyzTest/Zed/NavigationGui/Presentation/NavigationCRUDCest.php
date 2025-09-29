@@ -35,8 +35,6 @@ class NavigationCRUDCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function _before(NavigationGuiPresentationTester $i): void
     {
@@ -46,8 +44,6 @@ class NavigationCRUDCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testICanCreateReadUpdateAndDeleteNavigation(NavigationGuiPresentationTester $i): void
     {
@@ -69,8 +65,6 @@ class NavigationCRUDCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return int
      */
     protected function create(NavigationGuiPresentationTester $i): int
     {
@@ -88,8 +82,6 @@ class NavigationCRUDCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     protected function read(NavigationGuiPresentationTester $i): void
     {
@@ -102,8 +94,6 @@ class NavigationCRUDCest
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
      * @param int $idNavigation
-     *
-     * @return void
      */
     protected function update(NavigationGuiPresentationTester $i, int $idNavigation): void
     {
@@ -121,8 +111,6 @@ class NavigationCRUDCest
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
      * @param int $idNavigation
-     *
-     * @return void
      */
     protected function delete(NavigationGuiPresentationTester $i, int $idNavigation): void
     {

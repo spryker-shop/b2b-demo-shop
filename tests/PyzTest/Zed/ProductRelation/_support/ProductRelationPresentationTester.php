@@ -177,8 +177,6 @@ class ProductRelationPresentationTester extends Actor
 
     /**
      * @param string $productRelationKey
-     *
-     * @return void
      */
     public function cleanUpProductRelation(string $productRelationKey): void
     {
@@ -193,8 +191,6 @@ class ProductRelationPresentationTester extends Actor
 
     /**
      * @param string $productRelationKey
-     *
-     * @return \Orm\Zed\ProductRelation\Persistence\SpyProductRelation|null
      */
     protected function findProductRelationByProductRelationKey(string $productRelationKey): ?SpyProductRelation
     {

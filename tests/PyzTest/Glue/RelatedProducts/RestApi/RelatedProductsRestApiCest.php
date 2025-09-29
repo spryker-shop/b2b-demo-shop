@@ -33,8 +33,6 @@ class RelatedProductsRestApiCest
 
     /**
      * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(RelatedProductsApiTester $I): void
     {
@@ -48,8 +46,6 @@ class RelatedProductsRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
-     *
-     * @return void
      */
     public function requestRelatedProducts(RelatedProductsApiTester $I): void
     {

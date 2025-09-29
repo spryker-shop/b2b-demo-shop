@@ -72,7 +72,7 @@ class CompanyRegistrationPage
     public const MESSAGE_SUCCESS_COMPANY_REGISTERED = 'Registration Successful';
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public static function getCompanyData(): array
     {

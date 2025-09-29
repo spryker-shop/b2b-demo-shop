@@ -39,8 +39,6 @@ class CustomerRegistrationCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return void
      */
     public function _before(CustomerApiTester $i): void
     {
@@ -52,8 +50,6 @@ class CustomerRegistrationCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestPostCustomerFailsOnExistingEmailUsage(CustomerApiTester $I): void
     {
@@ -100,8 +96,6 @@ class CustomerRegistrationCest
      *
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
      * @param \Codeception\Example $example
-     *
-     * @return void
      */
     public function requestPostCustomerFailsValidation(CustomerApiTester $I, Example $example): void
     {
@@ -129,7 +123,7 @@ class CustomerRegistrationCest
     }
 
     /**
-     * @return array
+     * @return array<array<string, mixed>>
      */
     protected function requestPostCustomerFailsValidationDataProvider(): array
     {

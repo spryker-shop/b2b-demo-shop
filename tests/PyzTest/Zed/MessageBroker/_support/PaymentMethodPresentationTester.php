@@ -45,8 +45,6 @@ class PaymentMethodPresentationTester extends Actor
     /**
      * @param array<string, mixed> $seedData
      * @param array<string, mixed> $messageAttributesSeedData
-     *
-     * @return \Generated\Shared\Transfer\AddPaymentMethodTransfer
      */
     public function haveAddPaymentMethodTransfer(
         array $seedData,
@@ -61,8 +59,6 @@ class PaymentMethodPresentationTester extends Actor
     /**
      * @param array<string, mixed> $seedData
      * @param array<string, mixed> $messageAttributesSeedData
-     *
-     * @return \Generated\Shared\Transfer\DeletePaymentMethodTransfer
      */
     public function haveDeletePaymentMethodTransfer(
         array $seedData,
@@ -77,8 +73,6 @@ class PaymentMethodPresentationTester extends Actor
     /**
      * @param string $paymentProviderName
      * @param string $paymentMethodName
-     *
-     * @return string
      */
     public function generatePaymentMethodKey(
         string $paymentProviderName,
@@ -97,8 +91,6 @@ class PaymentMethodPresentationTester extends Actor
 
     /**
      * @param string $paymentMethodKey
-     *
-     * @return void
      */
     public function cleanupPaymentMethodByPaymentMethodKey(string $paymentMethodKey): void
     {
@@ -119,9 +111,6 @@ class PaymentMethodPresentationTester extends Actor
         });
     }
 
-    /**
-     * @return string
-     */
     protected function getUuid(): string
     {
         return Uuid::uuid4()->toString();

@@ -27,8 +27,6 @@ class ProductRelationCreateRelationCest
 {
     /**
      * @param \PyzTest\Zed\ProductRelation\ProductRelationPresentationTester $i
-     *
-     * @return void
      */
     public function _before(ProductRelationPresentationTester $i): void
     {
@@ -38,8 +36,6 @@ class ProductRelationCreateRelationCest
 
     /**
      * @param \PyzTest\Zed\ProductRelation\ProductRelationPresentationTester $i
-     *
-     * @return void
      */
     public function testICanCreateProductRelationAndSeeInYves(ProductRelationPresentationTester $i): void
     {

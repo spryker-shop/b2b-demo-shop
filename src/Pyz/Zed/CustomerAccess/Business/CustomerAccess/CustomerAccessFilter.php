@@ -29,8 +29,6 @@ class CustomerAccessFilter implements CustomerAccessFilterInterface
 
     /**
      * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
     public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
@@ -49,8 +47,6 @@ class CustomerAccessFilter implements CustomerAccessFilterInterface
 
     /**
      * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
     public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
@@ -70,8 +66,6 @@ class CustomerAccessFilter implements CustomerAccessFilterInterface
     /**
      * @param string|null $contentType
      * @param array<mixed> $manageableContentTypes
-     *
-     * @return bool
      */
     protected function isManageable(?string $contentType, array $manageableContentTypes): bool
     {

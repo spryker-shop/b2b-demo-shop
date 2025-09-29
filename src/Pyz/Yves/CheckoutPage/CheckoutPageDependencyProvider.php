@@ -51,8 +51,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     public function provideDependencies(Container $container): Container
     {
@@ -64,8 +62,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
      */
     protected function extendPaymentMethodHandler(Container $container): Container
     {
@@ -106,8 +102,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @param string $subForm
      * @param string $blockPrefix
-     *
-     * @return \Symfony\Component\Form\FormInterface
      */
     protected function getCustomerCheckoutForm(string $subForm, string $blockPrefix): FormInterface
     {
@@ -119,9 +113,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormFactory
-     */
     protected function getFormFactory(): FormFactory
     {
         return (new GlobalContainer())->get(static::SERVICE_FORM_FACTORY);
@@ -178,17 +169,11 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         ];
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
-     */
     protected function getCheckoutAddressFormDataProviderPlugin(): StepEngineFormDataProviderInterface
     {
         return new CheckoutAddressFormDataProviderPlugin();
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
-     */
     protected function getCustomerStepHandler(): StepHandlerPluginInterface
     {
         return new CustomerStepHandler();

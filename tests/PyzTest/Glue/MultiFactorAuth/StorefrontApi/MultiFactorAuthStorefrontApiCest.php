@@ -48,8 +48,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -60,8 +58,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestGetMultiFactorAuthTypes(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -79,8 +75,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestActivateMultiFactorAuthType(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -98,8 +92,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestActivateMultiFactorAuthTypeWithInvalidType(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -126,8 +118,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestVerifyMultiFactorAuthType(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -148,8 +138,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestVerifyMultiFactorAuthTypeWithoutActivation(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -168,8 +156,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestVerifyMultiFactorAuthTypeWithInvalidCode(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -193,8 +179,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthType(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -215,8 +199,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthTypeWithoutActivation(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -233,8 +215,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthTypeWithInvalidCode(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -261,8 +241,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     public function requestDeactivateMultiFactorAuthTypeWithoutVerification(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -287,8 +265,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     protected function activateMultiFactorAuth(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -298,8 +274,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     protected function verifyMultiFactorAuth(MultiFactorAuthStorefrontApiTester $I): void
     {
@@ -317,8 +291,6 @@ class MultiFactorAuthStorefrontApiCest
 
     /**
      * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return void
      */
     protected function deactivateMultiFactorAuth(MultiFactorAuthStorefrontApiTester $I): void
     {

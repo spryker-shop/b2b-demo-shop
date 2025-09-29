@@ -37,9 +37,6 @@ class InitializeProductExportMessageTest extends Unit
      */
     protected ProductCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testInitializeProductExportMessageIsSuccessfullyHandled(): void
     {
         // Arrange

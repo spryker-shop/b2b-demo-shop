@@ -132,8 +132,6 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -150,8 +148,6 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
     protected function importProductAbstract(DataSetInterface $dataSet): SpyProductAbstract
     {
@@ -176,8 +172,6 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return void
      */
     protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
@@ -208,8 +202,6 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
-     *
-     * @return void
      */
     protected function importProductCategories(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
@@ -276,8 +268,6 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return void
      */
     protected function importProductUrls(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
@@ -305,8 +295,6 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
 
     /**
      * @param string $abstractProductUrl
-     *
-     * @return void
      */
     protected function cleanupRedirectUrls(string $abstractProductUrl): void
     {

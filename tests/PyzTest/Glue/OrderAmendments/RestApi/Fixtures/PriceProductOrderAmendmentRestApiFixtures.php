@@ -81,33 +81,21 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
      */
     protected ProductConcreteTransfer $productWithLowerPrice;
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     public function getReadyForAmendmentOrderTransfer(): SaveOrderTransfer
     {
         return $this->readyForAmendmentOrderTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductWithBiggerPrice(): ProductConcreteTransfer
     {
         return $this->productWithBiggerPrice;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductWithLowerPrice(): ProductConcreteTransfer
     {
         return $this->productWithLowerPrice;
@@ -115,8 +103,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(OrderAmendmentsApiTester $I): FixturesContainerInterface
     {
@@ -150,8 +136,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomerTransfer(OrderAmendmentsApiTester $I): CustomerTransfer
     {
@@ -166,8 +150,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     protected function createOrderWithProductConcretes(OrderAmendmentsApiTester $I): SaveOrderTransfer
     {
@@ -201,8 +183,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
      * @param \ArrayObject<array-key, \Generated\Shared\Transfer\ItemTransfer> $itemTransfers
      * @param string $stateName
-     *
-     * @return void
      */
     protected function setOrderItemsState(OrderAmendmentsApiTester $I, ArrayObject $itemTransfers, string $stateName): void
     {
@@ -213,8 +193,6 @@ class PriceProductOrderAmendmentRestApiFixtures implements FixturesBuilderInterf
 
     /**
      * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
      */
     protected function configureStateMachine(OrderAmendmentsApiTester $I): void
     {

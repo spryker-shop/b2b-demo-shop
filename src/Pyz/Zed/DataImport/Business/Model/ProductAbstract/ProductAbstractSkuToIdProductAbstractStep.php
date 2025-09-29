@@ -53,8 +53,6 @@ class ProductAbstractSkuToIdProductAbstractStep implements DataImportStepInterfa
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -75,8 +73,6 @@ class ProductAbstractSkuToIdProductAbstractStep implements DataImportStepInterfa
      * @param string $sku
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return int
      */
     protected function resolveIdProductAbstract(string $sku): int
     {

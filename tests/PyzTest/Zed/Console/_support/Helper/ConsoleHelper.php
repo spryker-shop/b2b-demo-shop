@@ -10,6 +10,7 @@ declare(strict_types = 1);
 namespace PyzTest\Zed\Console\Helper;
 
 use Codeception\Module;
+use Codeception\Module\Cli;
 use Codeception\TestInterface;
 use Codeception\Util\FileSystem;
 use SprykerTest\Shared\Testify\Helper\ModuleHelperConfigTrait;
@@ -30,8 +31,6 @@ class ConsoleHelper extends Module
 
     /**
      * @param \Codeception\TestInterface $test
-     *
-     * @return void
      */
     public function _after(TestInterface $test): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -44,8 +43,6 @@ class ConsoleHelper extends Module
 
     /**
      * @param string $command
-     *
-     * @return void
      */
     public function runSprykerCommand(string $command): void
     {
@@ -53,9 +50,6 @@ class ConsoleHelper extends Module
         $this->getCli()->runShellCommand($command);
     }
 
-    /**
-     * @return void
-     */
     protected function setDefaultConfig(): void
     {
         $this->config = [
@@ -63,10 +57,7 @@ class ConsoleHelper extends Module
         ];
     }
 
-    /**
-     * @return \Codeception\Module\Cli|\Codeception\Module
-     */
-    protected function getCli()
+    protected function getCli(): Cli|\Codeception\Module
     {
         return $this->getModule('Cli');
     }

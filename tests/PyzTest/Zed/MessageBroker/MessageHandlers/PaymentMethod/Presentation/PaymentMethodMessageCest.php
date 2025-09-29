@@ -41,8 +41,6 @@ class PaymentMethodMessageCest
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentMethodPresentationTester $I
-     *
-     * @return void
      */
     public function testAddPaymentMethodMessageIsSuccessfullyHandled(PaymentMethodPresentationTester $I): void
     {
@@ -85,8 +83,6 @@ class PaymentMethodMessageCest
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentMethodPresentationTester $I
-     *
-     * @return void
      */
     public function testPaymentMethodRemovedMessageIsSuccessfullyHandled(PaymentMethodPresentationTester $I): void
     {

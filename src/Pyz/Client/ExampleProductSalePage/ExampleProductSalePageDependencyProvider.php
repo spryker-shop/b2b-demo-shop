@@ -60,8 +60,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
      */
     public function provideServiceLayerDependencies(Container $container): Container
     {
@@ -78,8 +76,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
      */
     protected function addSearchClient(Container $container): Container
     {
@@ -92,8 +88,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
      */
     protected function addProductLabelClient(Container $container): Container
     {
@@ -106,8 +100,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
      */
     protected function addSaleSearchQueryPlugin(Container $container): Container
     {
@@ -120,8 +112,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
      */
     protected function addSaleSearchQueryExpanderPlugins(Container $container): Container
     {
@@ -154,8 +144,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
      */
     protected function addSaleSearchResultFormatterPlugins(Container $container): Container
     {
@@ -183,8 +171,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
      */
     protected function addClientStore(Container $container): Container
     {

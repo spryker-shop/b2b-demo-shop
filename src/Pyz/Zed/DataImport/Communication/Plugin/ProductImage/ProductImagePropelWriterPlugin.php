@@ -22,17 +22,12 @@ class ProductImagePropelWriterPlugin extends AbstractPlugin implements DataSetWr
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
         $this->getFacade()->writeProductImageDataSet($dataSet);
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         $this->getFacade()->flushProductImageDataImporter();

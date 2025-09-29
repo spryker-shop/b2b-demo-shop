@@ -16,8 +16,6 @@ class CustomerAccessGuiDependencyProvider extends SprykerCustomerAccessGuiDepend
 {
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addCustomerAccessFacade(Container $container): Container
     {

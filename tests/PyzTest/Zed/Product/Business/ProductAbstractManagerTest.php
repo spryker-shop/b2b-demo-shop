@@ -26,9 +26,6 @@ use Generated\Shared\Transfer\ProductImageTransfer;
  */
 class ProductAbstractManagerTest extends ProductTestAbstract
 {
-    /**
-     * @return void
-     */
     public function testCreateProductAbstractShouldCreateProductAbstractAndTriggerPlugins(): void
     {
         $idProductAbstract = $this->productAbstractManager->createProductAbstract($this->productAbstractTransfer);
@@ -38,9 +35,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         $this->assertCreateProductAbstract($this->productAbstractTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testSaveProductAbstractShouldUpdateProductAbstractAndTriggerPlugins(): void
     {
         $idProductAbstract = $this->productAbstractManager->createProductAbstract($this->productAbstractTransfer);
@@ -58,9 +52,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         $this->assertSaveProductAbstract($this->productAbstractTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductAbstractByIdShouldReturnFullyLoadedTransferObject(): void
     {
         $this->setupDefaultProducts();
@@ -74,8 +65,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     *
-     * @return void
      */
     protected function assertCreateProductAbstract(ProductAbstractTransfer $productAbstractTransfer): void
     {
@@ -90,8 +79,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     *
-     * @return void
      */
     protected function assertSaveProductAbstract(ProductAbstractTransfer $productAbstractTransfer): void
     {
@@ -112,8 +99,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     *
-     * @return void
      */
     protected function assertReadProductAbstract(ProductAbstractTransfer $productAbstractTransfer): void
     {
@@ -123,8 +108,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     *
-     * @return void
      */
     protected function assertProductPrice(ProductAbstractTransfer $productAbstractTransfer): void
     {

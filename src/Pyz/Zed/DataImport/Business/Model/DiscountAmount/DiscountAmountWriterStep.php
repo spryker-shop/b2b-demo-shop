@@ -50,8 +50,6 @@ class DiscountAmountWriterStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -76,8 +74,6 @@ class DiscountAmountWriterStep implements DataImportStepInterface
 
     /**
      * @param string $currencyCode
-     *
-     * @return \Orm\Zed\Currency\Persistence\SpyCurrency
      */
     protected function getCurrencyByCode(string $currencyCode): SpyCurrency
     {

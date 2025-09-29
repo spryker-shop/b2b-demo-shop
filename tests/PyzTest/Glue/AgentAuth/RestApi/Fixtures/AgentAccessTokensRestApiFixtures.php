@@ -28,8 +28,6 @@ class AgentAccessTokensRestApiFixtures implements FixturesBuilderInterface, Fixt
 
     /**
      * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(AgentAuthRestApiTester $I): FixturesContainerInterface
     {
@@ -38,9 +36,6 @@ class AgentAccessTokensRestApiFixtures implements FixturesBuilderInterface, Fixt
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function getUserTransfer(): UserTransfer
     {
         return $this->userTransfer;
@@ -48,8 +43,6 @@ class AgentAccessTokensRestApiFixtures implements FixturesBuilderInterface, Fixt
 
     /**
      * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer
      */
     protected function createAgentUserTransfer(AgentAuthRestApiTester $I): UserTransfer
     {

@@ -33,8 +33,6 @@ class AvailabilityNotificationsRestApiCest
 
     /**
      * @param \PyzTest\Glue\AvailabilityNotifications\AvailabilityNotificationsRestApiTester.php $I
-     *
-     * @return void
      */
     public function loadFixtures(AvailabilityNotificationsRestApiTester $I): void
     {
@@ -46,8 +44,6 @@ class AvailabilityNotificationsRestApiCest
 
     /**
      * @param \PyzTest\Glue\AvailabilityNotifications\AvailabilityNotificationsRestApiTester $I
-     *
-     * @return void
      */
     public function requestCustomerAvailabilityNotifications(AvailabilityNotificationsRestApiTester $I): void
     {
@@ -70,8 +66,6 @@ class AvailabilityNotificationsRestApiCest
 
     /**
      * @param \PyzTest\Glue\AvailabilityNotifications\AvailabilityNotificationsRestApiTester $I
-     *
-     * @return void
      */
     public function requestCustomerAvailabilityNotificationsAuthorizationError(AvailabilityNotificationsRestApiTester $I): void
     {

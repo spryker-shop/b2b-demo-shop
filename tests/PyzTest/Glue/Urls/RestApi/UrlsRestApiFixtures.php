@@ -39,17 +39,11 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
      */
     protected ProductUrlTransfer $productUrlTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductUrlTransfer
-     */
     public function getProductUrlTransfer(): ProductUrlTransfer
     {
         return $this->productUrlTransfer;
@@ -57,8 +51,6 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
 
     /**
      * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(UrlsRestApiTester $I): FixturesContainerInterface
     {
@@ -70,8 +62,6 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
 
     /**
      * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     *
-     * @return void
      */
     protected function createProductConcrete(UrlsRestApiTester $I): void
     {
@@ -80,8 +70,6 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
 
     /**
      * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
-     *
-     * @return void
      */
     protected function createProductUrl(UrlsRestApiTester $I): void
     {

@@ -42,9 +42,6 @@ class AvailabilityNotificationsApiFixtures implements FixturesBuilderInterface, 
      */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -52,8 +49,6 @@ class AvailabilityNotificationsApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\AvailabilityNotifications\AvailabilityNotificationsRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(AvailabilityNotificationsRestApiTester $I): FixturesContainerInterface
     {
@@ -65,8 +60,6 @@ class AvailabilityNotificationsApiFixtures implements FixturesBuilderInterface, 
 
     /**
      * @param \PyzTest\Glue\AvailabilityNotifications\AvailabilityNotificationsRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomer(AvailabilityNotificationsRestApiTester $I): CustomerTransfer
     {

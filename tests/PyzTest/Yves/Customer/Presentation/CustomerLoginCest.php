@@ -28,8 +28,6 @@ class CustomerLoginCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
      */
     public function _before(CustomerPresentationTester $i): void
     {
@@ -38,8 +36,6 @@ class CustomerLoginCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
      */
     public function testICanOpenLoginPage(CustomerPresentationTester $i): void
     {
@@ -49,8 +45,6 @@ class CustomerLoginCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
      */
     public function testICanOpenForgotPasswordPage(CustomerPresentationTester $i): void
     {
@@ -61,8 +55,6 @@ class CustomerLoginCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
      */
     public function testICanLoginWithValidData(CustomerPresentationTester $i): void
     {

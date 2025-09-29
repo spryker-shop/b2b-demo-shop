@@ -61,25 +61,16 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      */
     protected CustomerTransfer $customerWithOrders;
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerWithoutOrders(): CustomerTransfer
     {
         return $this->customerWithoutOrders;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerWithOrders(): CustomerTransfer
     {
         return $this->customerWithOrders;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     public function geSaveOrderTransfer(): SaveOrderTransfer
     {
         return $this->saveOrderTransfer;
@@ -87,8 +78,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(OrdersApiTester $I): FixturesContainerInterface
     {
@@ -101,8 +90,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function createProductTransfer(OrdersApiTester $I): ProductConcreteTransfer
     {
@@ -112,8 +99,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array $productTransfers
-     *
-     * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
     public function createQuoteTransfer(CustomerTransfer $customerTransfer, array $productTransfers): AbstractTransfer
     {
@@ -130,8 +115,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     protected function createOrderTransfer(OrdersApiTester $I): SaveOrderTransfer
     {
@@ -143,8 +126,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return string
      */
     protected function createStateMachine(OrdersApiTester $I): string
     {
@@ -158,8 +139,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      * @param string $name
      * @param string $password
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomerTransfer(OrdersApiTester $I, string $name, string $password): CustomerTransfer
     {

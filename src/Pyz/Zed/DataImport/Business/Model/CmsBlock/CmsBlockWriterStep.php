@@ -91,8 +91,6 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -105,8 +103,6 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\CmsBlock\Persistence\SpyCmsBlockTemplate
      */
     protected function findOrCreateCmsBlockTemplate(DataSetInterface $dataSet): SpyCmsBlockTemplate
     {
@@ -126,8 +122,6 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\CmsBlock\Persistence\SpyCmsBlockTemplate $templateEntity
-     *
-     * @return \Orm\Zed\CmsBlock\Persistence\SpyCmsBlock
      */
     protected function findOrCreateCmsBlock(DataSetInterface $dataSet, SpyCmsBlockTemplate $templateEntity): SpyCmsBlock
     {
@@ -149,8 +143,6 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param \Orm\Zed\CmsBlock\Persistence\SpyCmsBlock $cmsBlockEntity
-     *
-     * @return void
      */
     protected function findOrCreateCmsBlockPlaceholderTranslation(DataSetInterface $dataSet, SpyCmsBlock $cmsBlockEntity): void
     {

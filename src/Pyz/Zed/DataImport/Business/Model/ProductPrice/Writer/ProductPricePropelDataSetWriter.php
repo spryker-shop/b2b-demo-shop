@@ -79,8 +79,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
@@ -155,8 +153,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct $spyPriceProduct
-     *
-     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore
      */
     protected function findOrCreatePriceProductStore(
         DataSetInterface $dataSet,
@@ -184,8 +180,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore $priceProductStore
-     *
-     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductDefault
      */
     protected function findOrCreatePriceProductDefault(SpyPriceProductStore $priceProductStore): SpyPriceProductDefault
     {
@@ -198,9 +192,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         return $priceProductDefault;
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         DataImporterPublisher::triggerEvents();

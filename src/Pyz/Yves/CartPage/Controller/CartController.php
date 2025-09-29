@@ -45,8 +45,6 @@ class CartController extends SprykerCartController
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param string $sku
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function addAction(Request $request, $sku): RedirectResponse // phpcs:ignore
     {
@@ -57,8 +55,6 @@ class CartController extends SprykerCartController
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function redirectToReferer(Request $request): RedirectResponse
     {

@@ -38,8 +38,6 @@ class PaymentAuthorizedMessageCest
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $i
-     *
-     * @return void
      */
     public function _before(PaymentPresentationTester $i): void
     {
@@ -49,8 +47,6 @@ class PaymentAuthorizedMessageCest
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     *
-     * @return void
      */
     public function testPaymentAuthorizedMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {

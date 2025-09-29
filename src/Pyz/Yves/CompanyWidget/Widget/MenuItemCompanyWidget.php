@@ -38,25 +38,16 @@ class MenuItemCompanyWidget extends AbstractWidget
         $this->addHasCompanyAccessParameter();
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'MenuItemCompanyWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@CompanyWidget/views/shop-ui/menu-item-company-widget.twig';
     }
 
-    /**
-     * @return void
-     */
     protected function addIsVisibleParameter(): void
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -65,17 +56,11 @@ class MenuItemCompanyWidget extends AbstractWidget
         $this->addParameter(static::PARAMETER_IS_VISIBLE, $isVisible);
     }
 
-    /**
-     * @return void
-     */
     protected function addCompanyNameParameter(): void
     {
         $this->addParameter(static::PARAMETER_COMPANY_NAME, $this->getCompanyName());
     }
 
-    /**
-     * @return void
-     */
     protected function addHasCompanyAccessParameter(): void
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -84,9 +69,6 @@ class MenuItemCompanyWidget extends AbstractWidget
         $this->addParameter(static::PARAMETER_HAS_COMPANY_ACCESS, $hasCompanyAccess);
     }
 
-    /**
-     * @return string
-     */
     protected function getCompanyName(): string
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();

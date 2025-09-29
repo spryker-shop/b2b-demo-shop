@@ -61,41 +61,26 @@ class ProductOptionsCartReorderRestApiFixtures implements FixturesBuilderInterfa
      */
     protected SaveOrderTransfer $orderWithProductOptions;
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransferWithProductOptions(): ProductConcreteTransfer
     {
         return $this->productConcreteTransferWithProductOptions;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductOptionTransfer
-     */
     public function getProductOptionTransfer(): ProductOptionTransfer
     {
         return $this->productOptionTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     public function getOrderWithProductOptions(): SaveOrderTransfer
     {
         return $this->orderWithProductOptions;
@@ -103,8 +88,6 @@ class ProductOptionsCartReorderRestApiFixtures implements FixturesBuilderInterfa
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CartReorderApiTester $I): FixturesContainerInterface
     {
@@ -123,8 +106,6 @@ class ProductOptionsCartReorderRestApiFixtures implements FixturesBuilderInterfa
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\ProductOptionTransfer
      */
     protected function createProductOption(CartReorderApiTester $I): ProductOptionTransfer
     {
@@ -156,8 +137,6 @@ class ProductOptionsCartReorderRestApiFixtures implements FixturesBuilderInterfa
 
     /**
      * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     protected function createOrderWithProductOptions(CartReorderApiTester $I): SaveOrderTransfer
     {

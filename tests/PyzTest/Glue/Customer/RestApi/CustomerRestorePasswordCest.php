@@ -43,8 +43,6 @@ class CustomerRestorePasswordCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function _before(CustomerApiTester $I): void
     {
@@ -68,8 +66,6 @@ class CustomerRestorePasswordCest
      *
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
      * @param \Codeception\Example $example
-     *
-     * @return void
      */
     public function requestPatchCustomerPasswordFailsValidation(CustomerApiTester $I, Example $example): void
     {
@@ -111,7 +107,7 @@ class CustomerRestorePasswordCest
     }
 
     /**
-     * @return array
+     * @return array<array<string, mixed>>
      */
     protected function requestPatchCustomerPasswordFailsValidationDataProvider(): array
     {

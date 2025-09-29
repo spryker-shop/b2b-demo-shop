@@ -91,8 +91,6 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -103,8 +101,6 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface
      */
     protected function assignProductType(DataSetInterface $dataSet): DataSetInterface
     {
@@ -125,8 +121,6 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
      * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidDataException
-     *
-     * @return void
      */
     protected function assertAssignableProductTypeColumn(DataSetInterface $dataSet): void
     {

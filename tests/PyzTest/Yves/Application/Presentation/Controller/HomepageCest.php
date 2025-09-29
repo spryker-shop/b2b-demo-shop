@@ -27,8 +27,6 @@ class HomepageCest
 {
     /**
      * @param \PyzTest\Yves\Application\ApplicationPresentationTester $i
-     *
-     * @return void
      */
     public function _before(ApplicationPresentationTester $i): void
     {
@@ -37,8 +35,6 @@ class HomepageCest
 
     /**
      * @param \PyzTest\Yves\Application\ApplicationPresentationTester $i
-     *
-     * @return void
      */
     public function testICanOpenHomepage(ApplicationPresentationTester $i): void
     {

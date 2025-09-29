@@ -26,8 +26,6 @@ class ConsoleCest
 {
     /**
      * @param \PyzTest\Zed\Console\ConsoleConsoleTester $i
-     *
-     * @return void
      */
     public function testICanRunConsoleApplication(ConsoleConsoleTester $i): void
     {

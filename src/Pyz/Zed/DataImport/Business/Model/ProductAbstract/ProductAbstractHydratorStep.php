@@ -157,8 +157,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -170,8 +168,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importProductAbstract(DataSetInterface $dataSet): void
     {
@@ -190,8 +186,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet): void
     {
@@ -221,8 +215,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
-     *
-     * @return void
      */
     protected function importProductCategories(DataSetInterface $dataSet): void
     {
@@ -257,8 +249,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importProductUrls(DataSetInterface $dataSet): void
     {

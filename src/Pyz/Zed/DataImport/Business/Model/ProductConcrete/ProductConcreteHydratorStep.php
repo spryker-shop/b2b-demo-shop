@@ -145,8 +145,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -157,8 +155,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importProduct(DataSetInterface $dataSet): void
     {
@@ -181,8 +177,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importProductLocalizedAttributes(DataSetInterface $dataSet): void
     {
@@ -214,8 +208,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
      */
     protected function importBundles(DataSetInterface $dataSet): void
     {
@@ -242,8 +234,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
     /**
      * @param string $columnName
-     *
-     * @return bool
      */
     protected function isProductColumn(string $columnName): bool
     {

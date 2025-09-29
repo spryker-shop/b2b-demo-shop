@@ -31,8 +31,6 @@ class CategoriesRestApiCest
 
     /**
      * @param \PyzTest\Glue\Categories\CategoriesRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(CategoriesRestApiTester $I): void
     {
@@ -46,8 +44,6 @@ class CategoriesRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Categories\CategoriesRestApiTester $I
-     *
-     * @return void
      */
     public function requestCategoryNodeHasUrlAttribute(CategoriesRestApiTester $I): void
     {

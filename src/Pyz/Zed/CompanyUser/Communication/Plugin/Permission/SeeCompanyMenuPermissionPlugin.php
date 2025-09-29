@@ -23,9 +23,6 @@ class SeeCompanyMenuPermissionPlugin extends AbstractPlugin implements Permissio
      */
     public const KEY = 'SeeCompanyMenuPermissionPlugin';
 
-    /**
-     * @return string
-     */
     public function getKey(): string
     {
         return static::KEY;

@@ -43,8 +43,6 @@ class PaymentCanceledMessageCest
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $i
-     *
-     * @return void
      */
     public function _before(PaymentPresentationTester $i): void
     {
@@ -54,8 +52,6 @@ class PaymentCanceledMessageCest
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     *
-     * @return void
      */
     public function testPaymentCanceledMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
@@ -75,8 +71,6 @@ class PaymentCanceledMessageCest
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     *
-     * @return void
      */
     public function testPaymentCanceledMessageIsIgnoredWhenTransitionIsNotPossible(PaymentPresentationTester $I): void
     {

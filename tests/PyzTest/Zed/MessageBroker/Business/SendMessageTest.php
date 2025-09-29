@@ -44,9 +44,6 @@ class SendMessageTest extends Unit
      */
     protected MessageBrokerBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testCheckAttributesBeforeSendingMessage(): void
     {
         // Arrange
@@ -105,8 +102,6 @@ class SendMessageTest extends Unit
 
     /**
      * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $messageTransfer
-     *
-     * @return string
      */
     protected function getTransferNameFromClass(TransferInterface $messageTransfer): string
     {

@@ -12,8 +12,6 @@ namespace PyzTest\Glue\Checkout;
 use DateTime;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
-use Generated\Shared\DataBuilder\ItemBuilder;
-use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
@@ -98,9 +96,6 @@ class CheckoutApiTester extends ApiEndToEndTester
      */
     protected const DEFAULT_QUOTE_ITEM_QUANTITY = 10;
 
-    /**
-     * @return void
-     */
     public function assertCheckoutResponseResourceHasCorrectData(): void
     {
         $this->amSure('The returned resource id should be null')
@@ -125,9 +120,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         );
     }
 
-    /**
-     * @return void
-     */
     public function assertCheckoutDataResponseResourceHasCorrectData(): void
     {
         $this->amSure('The returned resource id should be null')
@@ -144,8 +136,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param int $price
-     *
-     * @return void
      */
     public function assertShipmentExpensesHaveCorrectPrice(int $price): void
     {
@@ -170,8 +160,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildCheckoutUrl(array $includes = []): string
     {
@@ -185,8 +173,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildCheckoutDataUrl(array $includes = []): string
     {
@@ -198,9 +184,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
     public function getStoreFacade(): StoreFacadeInterface
     {
         return $this->getLocator()
@@ -208,9 +191,6 @@ class CheckoutApiTester extends ApiEndToEndTester
             ->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\Customer\Business\CustomerFacadeInterface
-     */
     public function getCustomerFacade(): CustomerFacadeInterface
     {
         return $this->getLocator()
@@ -218,9 +198,6 @@ class CheckoutApiTester extends ApiEndToEndTester
             ->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\Cart\Business\CartFacadeInterface
-     */
     public function getCartFacade(): CartFacadeInterface
     {
         return $this->getLocator()->cart()->facade();
@@ -229,7 +206,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getAddressRequestPayload(AddressTransfer $addressTransfer): array
     {
@@ -253,7 +230,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getCustomerRequestPayload(CustomerTransfer $customerTransfer): array
     {
@@ -269,7 +246,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      * @param string $paymentMethodName
      * @param string $paymentProviderName
      *
-     * @return array
+     * @return array<array<string, string>>
      */
     public function getPaymentRequestPayload(
         string $paymentMethodName = self::REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE,
@@ -286,7 +263,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param int $idShipmentMethod
      *
-     * @return array
+     * @return array<string, int>
      */
     public function getShipmentRequestPayload(int $idShipmentMethod): array
     {
@@ -316,11 +293,13 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
+     * /**
+     *
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
      * @param \Generated\Shared\Transfer\ShipmentMethodTransfer $shipmentMethodTransfer
      * @param int $quantity
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getQuoteItemOverrideData(
         ProductConcreteTransfer $productConcreteTransfer,
@@ -338,8 +317,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
@@ -351,8 +328,6 @@ class CheckoutApiTester extends ApiEndToEndTester
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array $overrideItems
      * @param string $priceMode
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function havePersistentQuoteWithItemsAndItemLevelShipment(
         CustomerTransfer $customerTransfer,
@@ -373,8 +348,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param array $overrideCustomer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function haveEmptyPersistentQuote(array $overrideCustomer = []): QuoteTransfer
     {
@@ -384,9 +357,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         ]);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function haveProductWithStock(): ProductConcreteTransfer
     {
         $productConcreteTransfer = $this->haveFullProduct();
@@ -413,8 +383,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param array $override
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function createCustomerTransfer(array $override = []): CustomerTransfer
     {
@@ -423,8 +391,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param array $override
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function haveCustomerWithPersistentAddress(array $override = []): CustomerTransfer
     {
@@ -436,8 +402,6 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param array $paymentMethodOverrideData
      * @param array $storeOverrideData
-     *
-     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
      */
     public function havePaymentMethodWithStore(
         array $paymentMethodOverrideData = [],
@@ -484,8 +448,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     *
-     * @return void
      */
     public function assertCustomerBillingAddressInOrders(AddressTransfer $addressTransfer): void
     {
@@ -503,8 +465,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     *
-     * @return void
      */
     public function assertCustomerShippingAddressInOrderShipments(
         AddressTransfer $addressTransfer,
@@ -523,8 +483,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
-     *
-     * @return void
      */
     public function assertCompanyBusinessUnitBillingAddressInOrders(
         CompanyUnitAddressTransfer $companyUnitAddressTransfer,
@@ -543,8 +501,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
-     *
-     * @return void
      */
     public function assertCompanyBusinessUnitShippingAddressInOrderShipments(
         CompanyUnitAddressTransfer $companyUnitAddressTransfer,
@@ -563,8 +519,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function haveAddressForCustomer(CustomerTransfer $customerTransfer): CustomerTransfer
     {
@@ -577,62 +531,11 @@ class CheckoutApiTester extends ApiEndToEndTester
         $customerFacade = $this->getCustomerFacade();
         $customerFacade->createAddress($addressTransfer);
 
-        return $customerFacade->getCustomer($customerTransfer);
+        return $customerTransfer;
     }
 
     /**
-     * @param array $overrideItems
-     *
-     * @return array
-     */
-    protected function mapProductConcreteTransfersToQuoteTransferItemsWithItemLevelShipment(array $overrideItems = []): array
-    {
-        $quoteTransferItems = [];
-
-        foreach ($overrideItems as $overrideItem) {
-            $productConcreteTransfer = $this->getProductConcreteTransferFromOverrideItemData($overrideItem);
-            $overrideShipment = $this->getOverrideShipmentDataFromOverrideItemData($overrideItem);
-
-            $quoteTransferItems[] = (new ItemBuilder([
-                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
-                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
-                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
-                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
-                ItemTransfer::QUANTITY => $this->getQuoteItemQuantityFromOverrideItemData($overrideItem),
-            ]))->withShipment((new ShipmentBuilder($overrideShipment))
-                ->withMethod()
-                ->withShippingAddress())
-                ->build()
-                ->modifiedToArray();
-        }
-
-        return $quoteTransferItems;
-    }
-
-    /**
-     * @param array $overrideItem
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    protected function getProductConcreteTransferFromOverrideItemData(array $overrideItem): ProductConcreteTransfer
-    {
-        return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT];
-    }
-
-    /**
-     * @param array $overrideItem
-     *
-     * @return array
-     */
-    protected function getOverrideShipmentDataFromOverrideItemData(array $overrideItem): array
-    {
-        return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT];
-    }
-
-    /**
-     * @param array $overrideItem
-     *
-     * @return int
+     * @param array<string, mixed> $overrideItem
      */
     protected function getQuoteItemQuantityFromOverrideItemData(array $overrideItem): int
     {
@@ -641,8 +544,6 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param array<string> $includes
-     *
-     * @return string
      */
     protected function formatQueryInclude(array $includes = []): string
     {

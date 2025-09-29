@@ -45,25 +45,16 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     protected ProductLabelTransfer $productLabelTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransferWithLabel(): ProductConcreteTransfer
     {
         return $this->productConcreteTransferWithLabel;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
     public function getProductLabelTransfer(): ProductLabelTransfer
     {
         return $this->productLabelTransfer;
@@ -71,8 +62,6 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\ProductLabels\ProductLabelsApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(ProductLabelsApiTester $I): FixturesContainerInterface
     {
@@ -84,8 +73,6 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\ProductLabels\ProductLabelsApiTester $I
-     *
-     * @return void
      */
     protected function createProductConcrete(ProductLabelsApiTester $I): void
     {
@@ -94,8 +81,6 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\ProductLabels\ProductLabelsApiTester $I
-     *
-     * @return void
      */
     protected function createProductConcreteWithProductLabelRelationship(ProductLabelsApiTester $I): void
     {

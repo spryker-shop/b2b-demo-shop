@@ -32,8 +32,6 @@ class PriceProductAbstractRestApiCest
 
     /**
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(PriceProductsApiTester $I): void
     {
@@ -47,8 +45,6 @@ class PriceProductAbstractRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
      */
     public function requestTheNonExistingProductAbstractPrices(PriceProductsApiTester $I): void
     {
@@ -69,8 +65,6 @@ class PriceProductAbstractRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
      */
     public function requestProductAbstractPricesWithoutId(PriceProductsApiTester $I): void
     {
@@ -90,8 +84,6 @@ class PriceProductAbstractRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
      */
     public function requestExistingProductAbstractPrices(PriceProductsApiTester $I): void
     {

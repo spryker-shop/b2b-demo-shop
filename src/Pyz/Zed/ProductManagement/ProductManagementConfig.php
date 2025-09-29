@@ -18,9 +18,6 @@ class ProductManagementConfig extends SprykerProductManagementConfig
      */
     protected const PRODUCT_TABLE_FILTER_FORM_EXTERNAL_FIELD_NAMES = ['id-merchant'];
 
-    /**
-     * @return bool
-     */
     public function isConcreteSkuSearchInProductTableEnabled(): bool
     {
         return true;

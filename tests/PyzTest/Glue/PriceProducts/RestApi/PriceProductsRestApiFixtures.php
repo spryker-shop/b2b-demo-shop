@@ -49,17 +49,11 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -67,8 +61,6 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(PriceProductsApiTester $I): FixturesContainerInterface
     {
@@ -80,8 +72,6 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
      */
     protected function createProductConcrete(PriceProductsApiTester $I): void
     {
@@ -90,8 +80,6 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
     /**
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
      */
     protected function createCustomer(PriceProductsApiTester $I): void
     {

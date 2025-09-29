@@ -35,8 +35,6 @@ class NavigationTreeCest
 {
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function _before(NavigationGuiPresentationTester $i): void
     {
@@ -46,8 +44,6 @@ class NavigationTreeCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testSeeEmptyNavigationTree(NavigationGuiPresentationTester $i): void
     {
@@ -70,8 +66,6 @@ class NavigationTreeCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testCreateChildNodeWithoutType(NavigationGuiPresentationTester $i): void
     {
@@ -101,8 +95,6 @@ class NavigationTreeCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testCreateChildNodeWithExternalUrlType(NavigationGuiPresentationTester $i): void
     {
@@ -137,8 +129,6 @@ class NavigationTreeCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testUpdateNodeToCategoryType(NavigationGuiPresentationTester $i): void
     {
@@ -178,8 +168,6 @@ class NavigationTreeCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testCreateChildNodeWithCmsPageType(NavigationGuiPresentationTester $i): void
     {
@@ -230,8 +218,6 @@ class NavigationTreeCest
      * @group singleNavigationTest
      *
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
      */
     public function testChangeNavigationTreeStructure(NavigationGuiPresentationTester $i): void
     {
@@ -295,8 +281,6 @@ class NavigationTreeCest
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testDeleteNavigationNode(NavigationGuiPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {

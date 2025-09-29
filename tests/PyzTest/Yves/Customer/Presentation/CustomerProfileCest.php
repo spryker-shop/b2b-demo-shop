@@ -28,8 +28,6 @@ class CustomerProfileCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
      */
     public function _before(CustomerPresentationTester $i): void
     {
@@ -39,8 +37,6 @@ class CustomerProfileCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanUpdateProfileData(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -62,8 +58,6 @@ class CustomerProfileCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanUpdateEmail(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -84,8 +78,6 @@ class CustomerProfileCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -103,8 +95,6 @@ class CustomerProfileCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanChangePassword(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -126,8 +116,6 @@ class CustomerProfileCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {

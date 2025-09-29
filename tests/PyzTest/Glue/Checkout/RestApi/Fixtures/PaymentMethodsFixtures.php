@@ -30,8 +30,6 @@ class PaymentMethodsFixtures implements FixturesBuilderInterface, FixturesContai
 {
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {

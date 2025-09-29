@@ -38,8 +38,6 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
 {
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
@@ -52,8 +50,6 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
      */
     protected function extendMailProviderCollection(Container $container): Container
     {

@@ -71,9 +71,6 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
         return true;
     }
 
-    /**
-     * @return bool
-     */
     public function isRememberMeEnabled(): bool
     {
         return false;
@@ -84,8 +81,6 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
      * - Returns the pattern for customer password validation.
      *
      * @api
-     *
-     * @return string
      */
     public function getCustomerPasswordPattern(): string
     {
@@ -97,8 +92,6 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
      * - Returns the message for customer password validation.
      *
      * @api
-     *
-     * @return string
      */
     public function getPasswordValidationMessage(): string
     {

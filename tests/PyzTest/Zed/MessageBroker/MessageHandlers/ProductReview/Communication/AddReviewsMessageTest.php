@@ -31,9 +31,6 @@ class AddReviewsMessageTest extends Unit
      */
     protected ProductReviewCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testAddReviewsMessageIsSuccessfullyHandled(): void
     {
         // Arrange

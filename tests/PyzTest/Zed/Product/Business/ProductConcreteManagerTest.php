@@ -28,9 +28,6 @@ use Orm\Zed\Product\Persistence\SpyProduct;
  */
 class ProductConcreteManagerTest extends ProductTestAbstract
 {
-    /**
-     * @return void
-     */
     public function testCreateProductConcreteShouldCreateProductAndTriggerPlugins(): void
     {
         $idProductAbstract = $this->productAbstractManager->createProductAbstract($this->productAbstractTransfer);
@@ -45,9 +42,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
         $this->assertCreateProductConcrete($this->productConcreteTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testSaveProductConcreteShouldUpdateProductAndTriggerPlugins(): void
     {
         $idProductAbstract = $this->productAbstractManager->createProductAbstract($this->productAbstractTransfer);
@@ -69,9 +63,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
         $this->assertSaveProductConcrete($this->productConcreteTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetConcreteProductsByAbstractProductIdShouldReturnFullyLoadedTransferObject(): void
     {
         $this->setupDefaultProducts();
@@ -87,8 +78,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
 
     /**
      * @param int $idProductConcrete
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProduct
      */
     protected function getProductConcreteEntityById(int $idProductConcrete): SpyProduct
     {
@@ -100,8 +89,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return void
      */
     protected function assertCreateProductConcrete(ProductConcreteTransfer $productConcreteTransfer): void
     {
@@ -113,8 +100,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return void
      */
     protected function assertSaveProductConcrete(ProductConcreteTransfer $productConcreteTransfer): void
     {
@@ -132,8 +117,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return void
      */
     protected function assertReadProductConcrete(ProductConcreteTransfer $productConcreteTransfer): void
     {
@@ -144,8 +127,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return void
      */
     protected function assertProductPrice(ProductConcreteTransfer $productConcreteTransfer): void
     {
@@ -158,8 +139,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return void
      */
     protected function assertProductStock(ProductConcreteTransfer $productConcreteTransfer): void
     {
@@ -172,8 +151,6 @@ class ProductConcreteManagerTest extends ProductTestAbstract
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return void
      */
     protected function assertProductImages(ProductConcreteTransfer $productConcreteTransfer): void
     {

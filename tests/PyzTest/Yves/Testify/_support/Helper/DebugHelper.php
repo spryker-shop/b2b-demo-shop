@@ -22,8 +22,6 @@ class DebugHelper extends Module
 
     /**
      * @param array $settings
-     *
-     * @return void
      */
     public function _beforeSuite(array $settings = []): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {

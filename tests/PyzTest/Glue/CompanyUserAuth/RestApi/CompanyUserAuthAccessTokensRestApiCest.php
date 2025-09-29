@@ -33,8 +33,6 @@ class CompanyUserAuthAccessTokensRestApiCest
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(CompanyUserAuthRestApiTester $I): void
     {
@@ -48,8 +46,6 @@ class CompanyUserAuthAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCompanyUserAccessTokenForExistingCustomerWithCompanyUser(
         CompanyUserAuthRestApiTester $I,
@@ -79,8 +75,6 @@ class CompanyUserAuthAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCompanyUserAccessTokenForExistingCustomerWithWrongType(CompanyUserAuthRestApiTester $I): void
     {
@@ -109,8 +103,6 @@ class CompanyUserAuthAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCompanyUserAccessTokenForExistingCustomerWithInvalidPostData(
         CompanyUserAuthRestApiTester $I,
@@ -138,8 +130,6 @@ class CompanyUserAuthAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCompanyUserAccessTokenWithUuidOfAnotherCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
@@ -168,8 +158,6 @@ class CompanyUserAuthAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCompanyUserAccessTokenWithNoExistingIdCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
@@ -198,8 +186,6 @@ class CompanyUserAuthAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestCompanyUserAccessTokenWithEmptyIdCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
@@ -228,8 +214,6 @@ class CompanyUserAuthAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForNonDefaultCompanyUser(CompanyUserAuthRestApiTester $I): void
     {

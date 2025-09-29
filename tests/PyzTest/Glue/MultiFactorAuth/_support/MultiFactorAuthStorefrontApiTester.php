@@ -41,8 +41,6 @@ class MultiFactorAuthStorefrontApiTester extends StorefrontApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     public function authorizeCustomerToStorefrontApi(CustomerTransfer $customerTransfer): void
     {
@@ -52,8 +50,6 @@ class MultiFactorAuthStorefrontApiTester extends StorefrontApiEndToEndTester
 
     /**
      * @param string $customerName
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function createCustomer(string $customerName): CustomerTransfer
     {
@@ -72,8 +68,6 @@ class MultiFactorAuthStorefrontApiTester extends StorefrontApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param string $mfaType
-     *
-     * @return string|null
      */
     public function getCustomerMultiFactorAuthCodeFromDatabase(CustomerTransfer $customerTransfer, string $mfaType): ?string
     {

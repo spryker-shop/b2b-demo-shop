@@ -43,8 +43,6 @@ class TaxAppCommunicationTester extends Actor
     /**
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param \Generated\Shared\Transfer\ConfigureTaxAppTransfer $configureTaxAppTransfer
-     *
-     * @return void
      */
     public function assertTaxAppConfigIsSavedCorrectlyForStore(StoreTransfer $storeTransfer, ConfigureTaxAppTransfer $configureTaxAppTransfer): void
     {
@@ -62,8 +60,6 @@ class TaxAppCommunicationTester extends Actor
     /**
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param \Generated\Shared\Transfer\DeleteTaxAppTransfer $deleteTaxAppTransfer
-     *
-     * @return void
      */
     public function assertTaxAppConfigIsRemovedForStore(StoreTransfer $storeTransfer, DeleteTaxAppTransfer $deleteTaxAppTransfer): void
     {
@@ -75,8 +71,6 @@ class TaxAppCommunicationTester extends Actor
     /**
      * @param array $messageAttributesSeed
      * @param array $configureTaxAppSeed
-     *
-     * @return \Generated\Shared\Transfer\ConfigureTaxAppTransfer
      */
     public function buildConfigureTaxAppTransfer(array $messageAttributesSeed = [], array $configureTaxAppSeed = []): ConfigureTaxAppTransfer
     {
@@ -88,8 +82,6 @@ class TaxAppCommunicationTester extends Actor
     /**
      * @param array $messageAttributesSeed
      * @param array $configureTaxAppSeed
-     *
-     * @return \Generated\Shared\Transfer\DeleteTaxAppTransfer
      */
     public function buildDeleteTaxAppTransfer(array $messageAttributesSeed = [], array $configureTaxAppSeed = []): DeleteTaxAppTransfer
     {
@@ -100,8 +92,6 @@ class TaxAppCommunicationTester extends Actor
 
     /**
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return void
      */
     public function removeTaxAppConfigForStore(StoreTransfer $storeTransfer): void
     {
@@ -112,8 +102,6 @@ class TaxAppCommunicationTester extends Actor
 
     /**
      * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $configureTaxAppMessage
-     *
-     * @return void
      */
     public function handleTaxAppMessage(TransferInterface $configureTaxAppMessage): void
     {
@@ -131,8 +119,6 @@ class TaxAppCommunicationTester extends Actor
     /**
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param string $vendorCode
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig|null
      */
     protected function findTaxAppConfigEntity(StoreTransfer $storeTransfer, string $vendorCode): ?SpyTaxAppConfig
     {

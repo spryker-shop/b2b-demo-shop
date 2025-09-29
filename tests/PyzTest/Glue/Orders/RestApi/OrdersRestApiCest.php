@@ -34,8 +34,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function loadFixtures(OrdersApiTester $I): void
     {
@@ -48,8 +46,6 @@ class OrdersRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetEmptyListOfOrders(OrdersApiTester $I): void
     {
@@ -79,8 +75,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetListOfOrdersWithSingleOrder(OrdersApiTester $I): void
     {
@@ -118,8 +112,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetOrderDetails(OrdersApiTester $I): void
     {
@@ -154,8 +146,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetCustomerOrder(OrdersApiTester $I): void
     {
@@ -183,8 +173,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetCustomerOrderAuthorizationError(OrdersApiTester $I): void
     {
@@ -211,8 +199,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetListOfOrderWithoutAuthorizationToken(OrdersApiTester $I): void
     {
@@ -229,8 +215,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetOrderDetailsWithoutAuthorizationToken(OrdersApiTester $I): void
     {
@@ -256,8 +240,6 @@ class OrdersRestApiCest
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
      */
     public function requestGetOrderDetailsWithIncorrectOrderReference(OrdersApiTester $I): void
     {
@@ -284,8 +266,6 @@ class OrdersRestApiCest
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
      */
     protected function authorizeCustomer(OrdersApiTester $I, CustomerTransfer $customerTransfer): void
     {

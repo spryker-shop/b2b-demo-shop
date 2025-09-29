@@ -31,8 +31,6 @@ class CustomerOverviewCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
      */
     public function _before(CustomerPresentationTester $i): void
     {
@@ -42,8 +40,6 @@ class CustomerOverviewCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanOpenOverviewPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -59,8 +55,6 @@ class CustomerOverviewCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -74,8 +68,6 @@ class CustomerOverviewCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -89,8 +81,6 @@ class CustomerOverviewCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanGoFromOverviewToOrdersPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
@@ -103,8 +93,6 @@ class CustomerOverviewCest
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanGoFromOverviewToNewsletterPage(CustomerPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {

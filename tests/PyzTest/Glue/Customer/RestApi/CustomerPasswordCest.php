@@ -44,8 +44,6 @@ class CustomerPasswordCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function _before(CustomerApiTester $I): void
     {
@@ -68,8 +66,6 @@ class CustomerPasswordCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestPatchCustomerPasswordUpdatesCustomerPassword(CustomerApiTester $I): void
     {
@@ -103,8 +99,6 @@ class CustomerPasswordCest
 
     /**
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
-     *
-     * @return void
      */
     public function requestPatchCustomerPasswordFailsToUseAnotherCustomerReference(CustomerApiTester $I): void
     {
@@ -155,8 +149,6 @@ class CustomerPasswordCest
      *
      * @param \PyzTest\Glue\Customer\CustomerApiTester $I
      * @param \Codeception\Example $example
-     *
-     * @return void
      */
     public function requestPatchCustomerPasswordFailsValidation(CustomerApiTester $I, Example $example): void
     {
@@ -191,7 +183,7 @@ class CustomerPasswordCest
     }
 
     /**
-     * @return array
+     * @return array<array<string, mixed>>
      */
     protected function requestPatchCustomerPasswordFailsValidationDataProvider(): array
     {
