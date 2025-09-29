@@ -12,6 +12,8 @@ namespace PyzTest\Glue\Checkout;
 use DateTime;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
+use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
@@ -272,8 +274,6 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
-     * /**
-     *
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
      * @param \Generated\Shared\Transfer\ShipmentMethodTransfer $shipmentMethodTransfer
      * @param int $quantity
@@ -475,6 +475,40 @@ class CheckoutApiTester extends ApiEndToEndTester
         $customerFacade->createAddress($addressTransfer);
 
         return $customerTransfer;
+    }
+
+    protected function mapProductConcreteTransfersToQuoteTransferItemsWithItemLevelShipment(array $overrideItems = []): array
+    {
+        $quoteTransferItems = [];
+
+        foreach ($overrideItems as $overrideItem) {
+            $productConcreteTransfer = $this->getProductConcreteTransferFromOverrideItemData($overrideItem);
+            $overrideShipment = $this->getOverrideShipmentDataFromOverrideItemData($overrideItem);
+
+            $quoteTransferItems[] = (new ItemBuilder([
+                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+                ItemTransfer::QUANTITY => $this->getQuoteItemQuantityFromOverrideItemData($overrideItem),
+            ]))->withShipment((new ShipmentBuilder($overrideShipment))
+                ->withMethod()
+                ->withShippingAddress())
+                ->build()
+                ->modifiedToArray();
+        }
+
+        return $quoteTransferItems;
+    }
+
+    protected function getProductConcreteTransferFromOverrideItemData(array $overrideItem): ProductConcreteTransfer
+    {
+        return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT];
+    }
+
+    protected function getOverrideShipmentDataFromOverrideItemData(array $overrideItem): array
+    {
+        return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT];
     }
 
     /**
