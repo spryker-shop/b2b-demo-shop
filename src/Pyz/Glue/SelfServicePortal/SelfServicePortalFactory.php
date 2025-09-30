@@ -20,6 +20,6 @@ class SelfServicePortalFactory extends SprykerSelfServicePortalFactory
 {
     public function createSspAssetsMapper(): BackendSspAssetsMapperInterface
     {
-        return new BackendSspAssetsMapper($this->getSelfServicePortalClient());
+        return new BackendSspAssetsMapper($this->getSelfServicePortalFacade());
     }
 }

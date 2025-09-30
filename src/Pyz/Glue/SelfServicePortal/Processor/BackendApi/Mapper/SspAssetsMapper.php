@@ -14,12 +14,12 @@ use Generated\Shared\Transfer\SspAssetCollectionRequestTransfer;
 use Generated\Shared\Transfer\SspAssetConditionsTransfer;
 use Generated\Shared\Transfer\SspAssetCriteriaTransfer;
 use Generated\Shared\Transfer\SspAssetTransfer;
-use SprykerFeature\Client\SelfServicePortal\SelfServicePortalClientInterface;
 use SprykerFeature\Glue\SelfServicePortal\Processor\BackendApi\Mapper\SspAssetsMapper as SprykerSspAssetMapper;
+use SprykerFeature\Zed\SelfServicePortal\Business\SelfServicePortalFacadeInterface;
 
 class SspAssetsMapper extends SprykerSspAssetMapper
 {
-    public function __construct(protected SelfServicePortalClientInterface $selfServicePortalClient)
+    public function __construct(protected SelfServicePortalFacadeInterface $selfServicePortalFacade)
     {
     }
 
@@ -45,7 +45,7 @@ class SspAssetsMapper extends SprykerSspAssetMapper
 
     protected function findSspAssetByReference(string $assetReference): ?SspAssetTransfer
     {
-        $sspAssetCollectionTransfer = $this->selfServicePortalClient->getSspAssetCollection(
+        $sspAssetCollectionTransfer = $this->selfServicePortalFacade->getSspAssetCollection(
             (new SspAssetCriteriaTransfer())->setSspAssetConditions(
                 (new SspAssetConditionsTransfer())->setReferences([$assetReference]),
             ),
