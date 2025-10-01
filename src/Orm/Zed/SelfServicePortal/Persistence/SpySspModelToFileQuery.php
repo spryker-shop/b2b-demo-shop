@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Commerce OS.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpySspModelToFileQuery as BaseSpySspModelToFileQuery;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspModelToFileQuery as BaseSpySspModelToFileQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_ssp_model_to_file' table.
