@@ -116,9 +116,7 @@ class CreateSspAssetBackendJsonApiCest
     {
         // Arrange
         $oauthResponseTransfer = $I->havePasswordAuthorizationToBackendApi($this->fixtures->getUserTransfer());
-
         $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-
         $companyBusinessUnitUUID = $this->fixtures->getCompanyBusinessUnitTransfer()->getUuid();
 
         $requestData = $I->buildAssetCreateRequestData(

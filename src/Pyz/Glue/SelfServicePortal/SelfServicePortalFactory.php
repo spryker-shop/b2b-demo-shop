@@ -10,8 +10,6 @@ declare(strict_types = 1);
 namespace Pyz\Glue\SelfServicePortal;
 
 use Pyz\Glue\SelfServicePortal\Processor\BackendApi\Mapper\SspAssetsMapper as BackendSspAssetsMapper;
-use Pyz\Glue\SelfServicePortal\Processor\BackendApi\Creator\SspAssetsCreator as BackendSspAssetsCreator;
-use SprykerFeature\Glue\SelfServicePortal\Processor\BackendApi\Creator\SspAssetsCreatorInterface as BackendSspAssetsCreatorInterface;
 use SprykerFeature\Glue\SelfServicePortal\Processor\BackendApi\Mapper\SspAssetsMapperInterface as BackendSspAssetsMapperInterface;
 use SprykerFeature\Glue\SelfServicePortal\SelfServicePortalFactory as SprykerSelfServicePortalFactory;
 
@@ -23,14 +21,5 @@ class SelfServicePortalFactory extends SprykerSelfServicePortalFactory
     public function createSspAssetsMapper(): BackendSspAssetsMapperInterface
     {
         return new BackendSspAssetsMapper($this->getSelfServicePortalFacade());
-    }
-
-    public function createSspAssetsCreator(): BackendSspAssetsCreatorInterface
-    {
-        return new BackendSspAssetsCreator(
-            $this->getSelfServicePortalFacade(),
-            $this->createSspAssetsResponseBuilder(),
-            $this->createSspAssetsMapper(),
-        );
     }
 }
