@@ -65,7 +65,6 @@ class CreateSspAssetBackendJsonApiCest
         );
 
         // Act
-        $I->haveHttpHeader('Accept-Language', 'en-US');
         $I->sendJsonApiPost($I->getCreateSspAssetUrl(), $requestData);
 
         // Assert
@@ -130,6 +129,7 @@ class CreateSspAssetBackendJsonApiCest
         );
 
         // Act
+        $I->haveHttpHeader('Accept-Language', 'en-US');
         $I->sendJsonApiPost($I->getCreateSspAssetUrl(), $requestData);
 
         // Assert
