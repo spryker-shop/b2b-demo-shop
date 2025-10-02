@@ -4471,6 +4471,20 @@ self_service_portal.inquiry.type.order,Order Claim,en_US
 self_service_portal.inquiry.type.order,Bestellreklamation,de_DE
 customer.account.ssp_inquiries,Inquiries,en_US
 customer.account.ssp_inquiries,Anfragen,de_DE
+customer.ssp_inquiries.access_level.placeholder,Select access level,en_US
+customer.ssp_inquiries.access_level.placeholder,Zugriffsebene auswählen,de_DE
+customer.ssp_inquiries.search.placeholder,"Search by reference or description",en_US
+customer.ssp_inquiries.search.placeholder,"Suche nach Referenz oder Beschreibung",de_DE
+customer.ssp_inquiries.access_level.company_inquiries,Company inquiries,en_US
+customer.ssp_inquiries.access_level.company_inquiries,Firmenanfragen,de_DE
+customer.ssp_inquiries.search.label,"Search",en_US
+customer.ssp_inquiries.search.label,"Suche",de_DE
+customer.ssp_inquiries.search.placeholder,"Search by reference or subject",en_US
+customer.ssp_inquiries.search.placeholder,"Suche nach Referenz oder Betreff",de_DE
+customer.ssp_inquiries.access_level.label,Access Level,en_US
+customer.ssp_inquiries.access_level.label,Zugriffsebene,de_DE
+customer.ssp_inquiries.access_level.my_inquiries,My inquiries,en_US
+customer.ssp_inquiries.access_level.my_inquiries,Meine anfragen,de_DE
 customer.self_service_portal.inquiry.create_ssp_inquiry,Create inquiry,en_US
 customer.self_service_portal.inquiry.create_ssp_inquiry,Anfrage stellen,de_DE
 self_service_portal.inquiry.validation.type.invalid,Invalid inquiry type.,en_US
@@ -4564,7 +4578,7 @@ self_service_portal.service.list.my_services,Meine Services,de_DE
 self_service_portal.service.list.business_unit_services,Business Unit Services,en_US
 self_service_portal.service.list.business_unit_services,Geschäftsbereich Services,de_DE
 self_service_portal.service.list.company_services,Company Services,en_US
-self_service_portal.service.list.company_services,Unternehmensdienstleistungen,de_DE
+self_service_portal.service.list.company_services,Firmenservices,de_DE
 self_service_portal.service.update_scheduled_time,Change scheduled time,en_US
 self_service_portal.service.update_scheduled_time,Geplante Zeit ändern,de_DE
 self_service_portal.service.update_scheduled_time.service.sku,SKU,en_US
@@ -4587,8 +4601,8 @@ self_service_portal.service.update_scheduled_time.button.cancel,Cancel,en_US
 self_service_portal.service.update_scheduled_time.button.cancel,Abbrechen,de_DE
 self_service_portal.service.update_scheduled_time.error.order_item_not_found,Order item with uuid %uuid% not found.,en_US
 self_service_portal.service.update_scheduled_time.error.order_item_not_found,Bestellposition mit UUID %uuid% nicht gefunden.,de_DE
-self_service_portal.service.list.field.business_unit,Business Unit,en_US
-self_service_portal.service.list.field.business_unit,Geschäftsbereich,de_DE
+self_service_portal.service.list.field.business_unit,Access Level,en_US
+self_service_portal.service.list.field.business_unit,Zugriffsebene,de_DE
 self_service_portal.service.list.button.view,View,en_US
 self_service_portal.service.list.button.view,Ansehen,de_DE
 self_service_portal.company_file.table.header.file_reference,Reference,en_US
@@ -4935,8 +4949,8 @@ customer.ssp_asset.filter.scope.placeholder,Select access level,en_US
 customer.ssp_asset.filter.scope.placeholder,Zugriffsebene auswählen,de_DE
 customer.ssp_asset.filter_by_business_unit,My business unit assets,en_US
 customer.ssp_asset.filter_by_business_unit,Assets meiner Geschäftseinheit,de_DE
-customer.ssp_asset.filter_by_company,My company assets,en_US
-customer.ssp_asset.filter_by_company,Assets meiner Firma,de_DE
+customer.ssp_asset.filter_by_company,Company Assets,en_US
+customer.ssp_asset.filter_by_company,Firmenassets,de_DE
 self_service_portal.asset.error.cannot_unassign_own_business_unit,You cannot unassign your own business unit from the asset,en_US
 self_service_portal.asset.error.cannot_unassign_own_business_unit,Sie können Ihre eigene Geschäftseinheit nicht vom Asset trennen,de_DE
 self_service_portal.search_filter_form.label.active_filters,Active filters:,en_US
@@ -5061,8 +5075,8 @@ customer.address.single_address_per_shipment_type,Set same address for all produ
 customer.address.single_address_per_shipment_type,Setze gleiche Adresse für alle Produkte,de_DE
 service_point_widget.location_label,Location:,en_US
 service_point_widget.location_label,Standort:,de_DE
-self_service_portal.company_file.file_search_filter_form.field.business_entity.label,Filter by Business entity,en_US
-self_service_portal.company_file.file_search_filter_form.field.business_entity.label,Nach Geschäftseinheit filtern,de_DE
+self_service_portal.company_file.file_search_filter_form.field.business_entity.label,Access Level,en_US
+self_service_portal.company_file.file_search_filter_form.field.business_entity.label,Zugriffsebene,de_DE
 self_service_portal.company_file.file_search_filter_form.field.ssp_asset_entity.label,Filter by Asset,en_US
 self_service_portal.company_file.file_search_filter_form.field.ssp_asset_entity.label,Nach Asset filtern,de_DE
 self_service_portal.company_file.file_attachment_type.all,All available files,en_US
@@ -5071,10 +5085,16 @@ self_service_portal.company_file.file_attachment_business_type.none,Don’t show
 self_service_portal.company_file.file_attachment_business_type.none,Keine Geschäftseinheitsdateien anzeigen,de_DE
 self_service_portal.company_file.file_attachment_ssp_asset_type.none,Don’t show Asset entity files,en_US
 self_service_portal.company_file.file_attachment_ssp_asset_type.none,Keine Asset-Einheitsdateien anzeigen,de_DE
-self_service_portal.company_file.file_attachment_type.company_user,My User Files,en_US
-self_service_portal.company_file.file_attachment_type.company_user,Meine Benutzerdaten,de_DE
+self_service_portal.company_file.file_attachment_type.company_user,My Files,en_US
+self_service_portal.company_file.file_attachment_type.company_user,Meine Dateien,de_DE
 self_service_portal.company_file.file_attachment_type.company,Company Files,en_US
-self_service_portal.company_file.file_attachment_type.company,Unternehmensdateien,de_DE
+self_service_portal.company_file.file_attachment_type.company,Firmendateien,de_DE
+self_service_portal.company_file.file_attachment_type.all,All available files,en_US
+self_service_portal.company_file.file_attachment_type.all,Alle verfügbaren Dateien,de_DE
+self_service_portal.company_file.file_attachment_ssp_asset_type.none,Don't show Asset files,en_US
+self_service_portal.company_file.file_attachment_ssp_asset_type.none,Keine Asset-Dateien anzeigen,de_DE
+self_service_portal.company_file.file_attachment_business_type.none,Don't show Business unit files,en_US
+self_service_portal.company_file.file_attachment_business_type.none,Keine Geschäftseinheitsdateien anzeigen,de_DE
 cart_reorder.validation.order_not_found,Order not found.,en_US
 cart_reorder.validation.order_not_found,Bestellung nicht gefunden.,de_DE
 cart_reorder.validation.quote_not_provided,Quote not provided.,en_US
