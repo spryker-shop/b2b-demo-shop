@@ -1,0 +1,51 @@
+{% extends view('cart-item-asset-selector', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% if data.isVisible %}
+        {% embed molecule('asset-selector', 'SelfServicePortal') with {
+            modifiers: ['cart'],
+            data: {
+                formFieldName: 'quoteItemSspAsset[sspAssetReference]',
+                isDisabled: data.isDisabled,
+                placeholder: 'self_service_portal.asset.selector.search_placeholder' | trans,
+                product: data.productItem,
+                asset: data.asset,
+                ajax: {
+                    action: path('/customer/ssp-asset/attach-to-cart-item'),
+                    trigger: data.ajaxTriggerAttribute,
+                    fields: {
+                        'quoteItemSspAsset[_token]': data.form._token.vars.value,
+                        'quoteItemSspAsset[sku]': data.productItem.sku,
+                        'quoteItemSspAsset[groupKey]': data.productItem.groupKey,
+                    },
+                },
+            },
+            attributes: {
+                'disable-history-url': true,
+                'asset-link-base': path('customer/ssp-asset/details', { 'reference': '' })
+            },
+        } only %}
+            {% block name %}
+                <div class="title--h6 {{ config.name }}__data-row">
+                    <strong>{{ 'self_service_portal.asset.name' | trans }}:</strong> {{ parent() }}
+                </div>
+            {% endblock %}
+
+            {% block data %}
+                {% block information %}
+                    <div class="title--h6 {{ config.name }}__data-row {{ config.name }}__information">
+                        <strong>{{ 'self_service_portal.asset.serial_number' | trans }}:</strong>
+                        <span class="{{ config.name }}__asset-text {{ config.jsName }}__asset-serial" {{ qa('asset-selector-serial') }}>{{- data.asset is not empty ? data.asset.serialNumber -}}</span>
+                    </div>
+                {% endblock %}
+
+                {% block status %}
+                    <span class="title--h6 {{ config.name }}__data-row">
+                        <strong class="col">{{ 'self_service_portal.asset.compatibility' | trans }}:</strong>
+                        {{ parent() }}
+                    </span>
+                {% endblock %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+{% endblock %}
