@@ -246,6 +246,7 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
             TRAVIS: 1
         steps:
+            - uses: actions/checkout@v4
             - uses: ./.github/actions/php-82-postgresql-acceptance
               with:
                   slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
@@ -295,6 +296,7 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
             TRAVIS: 1
         steps:
+            - uses: actions/checkout@v4
             - uses: ./.github/actions/php-82-postgresql-functional
               with:
                   slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
@@ -338,6 +340,7 @@ jobs:
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
+            - uses: actions/checkout@v4
             - uses: ./.github/actions/docker-php-82-postgresql-robot-api
               with:
                   slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
@@ -411,6 +414,7 @@ jobs:
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
+            - uses: actions/checkout@v4
             - uses: ./.github/actions/docker-php-83-mariadb-cypress
               with:
                   slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}

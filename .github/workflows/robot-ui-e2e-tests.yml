@@ -106,6 +106,7 @@ jobs:
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
+            - uses: actions/checkout@v4
             - uses: ./.github/actions/docker-php-82-postgresql-robot-ui
               with:
                   slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
