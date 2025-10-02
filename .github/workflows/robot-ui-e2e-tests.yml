@@ -93,3 +93,24 @@ jobs:
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
+
+    docker-alpine-php-82-postgresql-dynamic-store-off-robot-ui:
+        if: >
+            github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+
+        name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI"
+        runs-on: ubuntu-latest
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            TRAVIS: 1
+            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+        steps:
+            - uses: ./.github/actions/docker-php-82-postgresql-robot-ui
+              with:
+                  slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
+                  weekly_ci_slack_channel_id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
+                  jira_ticket_slack_user_group_mapping: ${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+                  robot_tests_artifacts_key: ${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }}
+                  robot_tests_artifacts_secret: ${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }}
+                  robot_tests_artifacts_bucket: ${{ vars.ROBOT_TESTS_ARTIFACTS_BUCKET }}

@@ -1,0 +1,74 @@
+name: B2B-COMPATIBILITY-CI-SCHEDULED
+
+on:
+    schedule:
+        -   cron: "0 3 * * 6"
+
+env:
+    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    WEEKLY_CI_SLACK_CHANNEL_ID: ${{ secrets.WEEKLY_CI_SLACK_CHANNEL_ID }}
+    JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ secrets.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    php-82-postgresql-acceptance-debian-dynamic-store-off:
+        name: "PHP 8.2 / PostgreSQL / Acceptance & API / Debian / Dynamic Store OFF"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./.github/actions/php-82-postgresql-acceptance
+              with:
+                slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
+                weekly_ci_slack_channel_id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
+                jira_ticket_slack_user_group_mapping: ${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+
+    php-82-postgres-functional-debian-dynamic-store-off:
+        name: "PHP 8.2 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./.github/actions/php-82-postgresql-functional
+              with:
+                slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
+                weekly_ci_slack_channel_id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
+                jira_ticket_slack_user_group_mapping: ${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+
+    docker-debian-php-82-postgresql-robot-dynamic-store-off:
+        name: "Docker / Debian / PHP 8.2 / PostgreSql / Robot / API / Dynamic Store OFF"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./.github/actions/docker-php-82-postgresql-robot-api
+              with:
+                slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
+                weekly_ci_slack_channel_id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
+                jira_ticket_slack_user_group_mapping: ${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+                robot_tests_artifacts_key: ${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }}
+                robot_tests_artifacts_secret: ${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }}
+                robot_tests_artifacts_bucket: ${{ vars.ROBOT_TESTS_ARTIFACTS_BUCKET }}
+
+    docker-alpine-php-83-mariadb-cypress-dynamic-store-off:
+        name: "Docker / Alpine / PHP 8.3 / MariaDB / Cypress / UI / Dynamic Store OFF"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./.github/actions/docker-php-83-mariadb-cypress
+              with:
+                slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
+                weekly_ci_slack_channel_id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
+                jira_ticket_slack_user_group_mapping: ${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+                robot_tests_artifacts_key: ${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }}
+                robot_tests_artifacts_secret: ${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }}
+                robot_tests_artifacts_bucket: ${{ vars.ROBOT_TESTS_ARTIFACTS_BUCKET }}
+
+    docker-alpine-php-82-postgresql-dynamic-store-off-robot-ui:
+        name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Dynamic Store OFF / Robot / UI"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./.github/actions/docker-php-82-postgresql-robot-ui
+              with:
+                slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
+                weekly_ci_slack_channel_id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
+                jira_ticket_slack_user_group_mapping: ${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+                robot_tests_artifacts_key: ${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }}
+                robot_tests_artifacts_secret: ${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }}
+                robot_tests_artifacts_bucket: ${{ vars.ROBOT_TESTS_ARTIFACTS_BUCKET }}

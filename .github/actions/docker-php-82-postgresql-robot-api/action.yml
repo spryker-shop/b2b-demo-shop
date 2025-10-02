@@ -1,0 +1,91 @@
+name: 'Docker PHP 8.2 PostgreSQL Robot API Tests'
+description: 'Run Docker Debian PHP 8.2 with PostgreSQL Robot API tests with Dynamic Store OFF'
+
+inputs:
+  slack_bot_token:
+    description: 'Slack bot token for notifications'
+    required: true
+  weekly_ci_slack_channel_id:
+    description: 'Slack channel ID for weekly CI notifications'
+    required: true
+  jira_ticket_slack_user_group_mapping:
+    description: 'JIRA ticket to Slack user group mapping'
+    required: true
+  robot_tests_artifacts_key:
+    description: 'AWS access key for robot test artifacts'
+    required: true
+  robot_tests_artifacts_secret:
+    description: 'AWS secret key for robot test artifacts'
+    required: true
+  robot_tests_artifacts_bucket:
+    description: 'S3 bucket for robot test artifacts'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: master
+
+    - name: Install packages
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        pip3 install --upgrade pip
+        pip3 install awscli
+
+    - name: Install robotframework-suite-tests folder
+      shell: bash
+      run: |
+        cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+        cp -r vendor ../vendor
+
+    - name: Install docker-compose
+      shell: bash
+      run: |
+        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+
+    - name: Install Project
+      continue-on-error: false
+      shell: bash
+      run: |
+        git clone https://github.com/spryker/docker-sdk.git ./docker
+        docker/sdk boot deploy.ci.api.dynamic-store-off.robot.yml
+        sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local glue-backend.de.spryker.local glue-backend.at.spryker.local glue-storefront.de.spryker.local glue-storefront.at.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
+        docker/sdk up -t
+        docker/sdk cli composer dump-autoload -o -a --apcu
+        APPLICATION_STORE=AT docker/sdk console queue:worker:start --stop-when-empty
+      env:
+        PROGRESS_TYPE: plain
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+        TRAVIS: 1
+        ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+
+    - name: Run Tests
+      shell: bash
+      run: |
+        docker/sdk exec robot-framework robot -v env:api_b2b -v db_engine:psycopg2 -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.b2b .
+      env:
+        PROGRESS_TYPE: plain
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+        TRAVIS: 1
+        ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+
+    - name: Upload artifacts
+      if: failure()
+      shell: bash
+      run: |
+        AWS_DEFAULT_REGION=eu-west-1 AWS_ACCESS_KEY_ID=${{ inputs.robot_tests_artifacts_key }} AWS_SECRET_ACCESS_KEY=${{ inputs.robot_tests_artifacts_secret }} aws s3 cp .robot/results/log.html s3://${{ inputs.robot_tests_artifacts_bucket }}/b2b/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/log.html
+      env:
+        ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+
+    - name: Slack Notification for failed job
+      uses: ./.github/actions/job-slack-notifications
+      if: always()
+      env:
+        SLACK_BOT_TOKEN: ${{ inputs.slack_bot_token }}
+        WEEKLY_CI_SLACK_CHANNEL_ID: ${{ inputs.weekly_ci_slack_channel_id }}
+        JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ inputs.jira_ticket_slack_user_group_mapping }}

@@ -1,0 +1,47 @@
+name: 'PHP 8.2 PostgreSQL Functional Tests'
+description: 'Run PHP 8.2 with PostgreSQL functional tests on Debian with Dynamic Store OFF'
+
+inputs:
+  slack_bot_token:
+    description: 'Slack bot token for notifications'
+    required: true
+  weekly_ci_slack_channel_id:
+    description: 'Slack channel ID for weekly CI notifications'
+    required: true
+  jira_ticket_slack_user_group_mapping:
+    description: 'JIRA ticket to Slack user group mapping'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: master
+
+    - name: Install docker-compose
+      shell: bash
+      run: |
+        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+
+    - name: Run docker
+      shell: bash
+      run: |
+        git clone https://github.com/spryker/docker-sdk.git ./docker
+        docker/sdk boot deploy.ci.functional.dynamic-store-off.yml
+        docker/sdk up -t
+        docker/sdk cli composer dump-autoload -o -a --apcu
+        docker/sdk testing codecept run -c codeception.functional.yml
+      env:
+        PROGRESS_TYPE: plain
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+        TRAVIS: 1
+
+    - name: Slack Notification for failed job
+      uses: ./.github/actions/job-slack-notifications
+      if: always()
+      env:
+        SLACK_BOT_TOKEN: ${{ inputs.slack_bot_token }}
+        WEEKLY_CI_SLACK_CHANNEL_ID: ${{ inputs.weekly_ci_slack_channel_id }}
+        JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ inputs.jira_ticket_slack_user_group_mapping }}
