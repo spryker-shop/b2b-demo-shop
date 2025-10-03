@@ -202,11 +202,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -269,11 +264,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -316,8 +306,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
             -   run: echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
-            -   run: sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            -   run: sudo chmod +x /usr/local/bin/docker-compose
             -   run: git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
             -   run: docker/sdk boot deploy.yml
             -   run: SPRYKER_BUILD_HASH=myhash docker/sdk export images
@@ -377,11 +365,6 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
 
             -   name: Install Project
                 continue-on-error: false
@@ -449,11 +432,6 @@ jobs:
 #                run: |
 #                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
 #                    cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
-#
-#            -   name: Install docker-compose
-#                run: |
-#                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-#                    sudo chmod +x /usr/local/bin/docker-compose
 #            -   name: Install Project
 #                continue-on-error: true
 #                run: |
@@ -504,10 +482,6 @@ jobs:
                     cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
             -   name: Install Project
                 continue-on-error: true
                 run: |

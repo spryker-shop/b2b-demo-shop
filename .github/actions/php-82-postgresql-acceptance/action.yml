@@ -15,12 +15,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Install docker-compose
-      shell: bash
-      run: |
-        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
-
     - name: Run docker
       shell: bash
       run: |
