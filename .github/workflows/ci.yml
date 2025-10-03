@@ -306,7 +306,7 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
             -   run: echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
-            -   run: git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
+            -   run: git clone --depth 1 https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
             -   run: docker/sdk boot deploy.yml
             -   run: SPRYKER_BUILD_HASH=myhash docker/sdk export images
             -   run: docker run -t --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_b2b_frontend:1.0-frontend nginx -t
