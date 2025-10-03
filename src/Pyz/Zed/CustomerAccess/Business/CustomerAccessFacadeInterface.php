@@ -21,8 +21,6 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      * @api
      *
      * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
     public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 
@@ -33,8 +31,6 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      * @api
      *
      * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
     public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 }

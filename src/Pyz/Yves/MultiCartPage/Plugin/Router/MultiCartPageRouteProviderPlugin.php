@@ -14,16 +14,8 @@ use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugi
 
 class MultiCartPageRouteProviderPlugin extends SprykerMultiCartPageRouteProviderPlugin
 {
-    /**
-     * @var string
-     */
     public const ROUTE_MULTI_CART_SET_DEFAULT_BACK = 'multi-cart/set-default-back';
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     public function addRoutes(RouteCollection $routeCollection): RouteCollection
     {
         $routeCollection = parent::addRoutes($routeCollection);
@@ -32,11 +24,6 @@ class MultiCartPageRouteProviderPlugin extends SprykerMultiCartPageRouteProvider
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addMultiCartSetDefaultBackRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/set-default-back/{idQuote}', 'MultiCartPage', 'MultiCart', 'setDefaultBack');

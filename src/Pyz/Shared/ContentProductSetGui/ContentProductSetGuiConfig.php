@@ -14,15 +14,11 @@ use Spryker\Shared\ContentProductSetGui\ContentProductSetGuiConfig as SprykerCon
 class ContentProductSetGuiConfig extends SprykerContentProductSetGuiConfig
 {
     /**
-     * @var string
-     *
      * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
      */
     protected const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
 
     /**
-     * @var string
-     *
      * Content item product set landing page template name
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE = 'content_product_set_gui.template.landing-page';

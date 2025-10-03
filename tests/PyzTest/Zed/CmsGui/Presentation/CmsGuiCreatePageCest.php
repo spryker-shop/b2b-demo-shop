@@ -27,11 +27,6 @@ use PyzTest\Zed\CmsGui\PageObject\CmsEditPage;
  */
 class CmsGuiCreatePageCest
 {
-    /**
-     * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
-     *
-     * @return void
-     */
     public function _before(CmsGuiPresentationTester $i): void
     {
         $i->amZed();
@@ -43,8 +38,6 @@ class CmsGuiCreatePageCest
      *
      * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
      * @param \Codeception\Scenario $scenario
-     *
-     * @return void
      */
     public function testICanCreateCmsPageWithTranslatedPlaceholders(CmsGuiPresentationTester $i, Scenario $scenario): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {

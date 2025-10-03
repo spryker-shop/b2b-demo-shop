@@ -13,9 +13,6 @@ use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurati
 
 class CmsProductGroupContentWidgetConfigurationProvider extends SprykerCmsProductGroupContentWidgetConfigurationProvider
 {
-    /**
-     * @var string
-     */
     public const SLIDER_TEMPLATE_IDENTIFIER = 'slider';
 
     /**

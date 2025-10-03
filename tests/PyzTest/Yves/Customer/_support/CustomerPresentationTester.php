@@ -35,17 +35,8 @@ class CustomerPresentationTester extends Actor
 {
     use _generated\CustomerPresentationTesterActions;
 
-    /**
-     * @var string
-     */
     protected const URL_STORE_PREFIX = '/DE';
 
-    /**
-     * @param string $email
-     * @param string $password
-     *
-     * @return void
-     */
     public function submitLoginForm(string $email, string $password): void
     {
         $i = $this;
@@ -55,9 +46,6 @@ class CustomerPresentationTester extends Actor
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function fillOutRegistrationForm(): void
     {
         $i = $this;
@@ -72,11 +60,6 @@ class CustomerPresentationTester extends Actor
         $i->click(CustomerRegistrationPage::FORM_FIELD_SELECTOR_ACCEPT_TERMS);
     }
 
-    /**
-     * @param string $uri
-     *
-     * @return void
-     */
     public function seeCurrentUrlEquals(string $uri): void
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
@@ -86,9 +69,6 @@ class CustomerPresentationTester extends Actor
         $this->getScenario()->runStep(new Assertion('seeCurrentUrlEquals', func_get_args()));
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToProfilePage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
@@ -98,9 +78,6 @@ class CustomerPresentationTester extends Actor
         return CustomerOverviewPage::LINK_TO_PROFILE_PAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToAddressesPage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
@@ -110,9 +87,6 @@ class CustomerPresentationTester extends Actor
         return CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToOrdersPage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {
@@ -122,9 +96,6 @@ class CustomerPresentationTester extends Actor
         return CustomerOverviewPage::LINK_TO_ORDERS_PAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getLinkToNewsletterPage(): string
     {
         if ($this->getLocator()->store()->facade()->isDynamicStoreEnabled() === true) {

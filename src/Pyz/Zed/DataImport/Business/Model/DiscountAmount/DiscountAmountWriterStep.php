@@ -18,41 +18,21 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class DiscountAmountWriterStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @var string
-     */
     public const KEY_DISCOUNT_KEY = 'discount_key';
 
-    /**
-     * @var string
-     */
     public const KEY_CURRENCY = 'currency';
 
-    /**
-     * @var string
-     */
     public const KEY_VALUE_NET = 'value_net';
 
-    /**
-     * @var string
-     */
     public const KEY_VALUE_GROSS = 'value_gross';
 
     /**
      * @var array<string, \Orm\Zed\Currency\Persistence\SpyCurrency>
      */
-    protected static $currencyCache = [];
+    protected static array $currencyCache = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $discountEntity = SpyDiscountQuery::create()
@@ -74,11 +54,6 @@ class DiscountAmountWriterStep implements DataImportStepInterface
         $discountAmountEntity->save();
     }
 
-    /**
-     * @param string $currencyCode
-     *
-     * @return \Orm\Zed\Currency\Persistence\SpyCurrency
-     */
     protected function getCurrencyByCode(string $currencyCode): SpyCurrency
     {
         if (isset(static::$currencyCache[$currencyCode])) {

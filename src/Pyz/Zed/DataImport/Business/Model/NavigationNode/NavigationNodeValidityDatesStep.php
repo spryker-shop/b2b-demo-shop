@@ -15,31 +15,16 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class NavigationNodeValidityDatesStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
-    protected $keyValidFrom;
+    protected string $keyValidFrom;
 
-    /**
-     * @var string
-     */
-    protected $keyValidTo;
+    protected string $keyValidTo;
 
-    /**
-     * @param string $keyValidFrom
-     * @param string $keyValidTo
-     */
     public function __construct(string $keyValidFrom, string $keyValidTo)
     {
         $this->keyValidFrom = $keyValidFrom;
         $this->keyValidTo = $keyValidTo;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->filterDate($dataSet, $this->keyValidFrom);
@@ -49,12 +34,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
         $this->assertDateRelation($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param string $key
-     *
-     * @return void
-     */
     protected function filterDate(DataSetInterface $dataSet, string $key): void
     {
         if (isset($dataSet[$key])) {
@@ -69,8 +48,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
      * @param string $key
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\NavigationNodeValidityDateException
-     *
-     * @return void
      */
     protected function formatDate(DataSetInterface $dataSet, string $key): void
     {
@@ -93,8 +70,6 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\NavigationNodeValidityDateException
-     *
-     * @return void
      */
     protected function assertDateRelation(DataSetInterface $dataSet): void
     {

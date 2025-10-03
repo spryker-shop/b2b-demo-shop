@@ -23,16 +23,8 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 class ProductManagementAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $productManagementAttributeEntity = SpyProductManagementAttributeQuery::create()

@@ -13,24 +13,12 @@ use Spryker\Zed\Customer\CustomerConfig as SprykerCustomerConfig;
 
 class CustomerConfig extends SprykerCustomerConfig
 {
-    /**
-     * @var bool
-     */
     protected const PASSWORD_RESET_EXPIRATION_IS_ENABLED = true;
 
-    /**
-     * @var int
-     */
     protected const MIN_LENGTH_CUSTOMER_PASSWORD = 12;
 
-    /**
-     * @var int
-     */
     protected const MAX_LENGTH_CUSTOMER_PASSWORD = 128;
 
-    /**
-     * @var bool
-     */
     protected const IS_CUSTOMER_EMAIL_VALIDATION_CASE_SENSITIVE = true;
 
     /**

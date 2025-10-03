@@ -13,14 +13,8 @@ use Spryker\Zed\Synchronization\SynchronizationConfig as SprykerSynchronizationC
 
 class SynchronizationConfig extends SprykerSynchronizationConfig
 {
-    /**
-     * @var string
-     */
     public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
-    /**
-     * @return bool
-     */
     public function isRepositorySyncExportPropelInstancePoolingDisabled(): bool
     {
         return true;

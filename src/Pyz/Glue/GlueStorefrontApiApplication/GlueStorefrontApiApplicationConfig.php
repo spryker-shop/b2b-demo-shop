@@ -13,9 +13,6 @@ use Spryker\Glue\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConfig
 
 class GlueStorefrontApiApplicationConfig extends SprykerGlueStorefrontApiApplicationConfig
 {
-    /**
-     * @var string
-     */
     protected const HEADER_CACHE_CONTROL_VALUE = 'no-cache, private';
 
     /**

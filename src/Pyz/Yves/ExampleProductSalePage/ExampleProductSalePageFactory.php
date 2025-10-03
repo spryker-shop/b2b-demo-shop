@@ -27,25 +27,16 @@ class ExampleProductSalePageFactory extends AbstractFactory
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
     }
 
-    /**
-     * @return \Spryker\Client\Search\SearchClientInterface
-     */
     protected function getSearchClient(): SearchClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_SEARCH);
     }
 
-    /**
-     * @return \Spryker\Client\UrlStorage\UrlStorageClientInterface
-     */
     public function getUrlStorageClient(): UrlStorageClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_URL_STORAGE);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStore(): StoreTransfer
     {
         $storeClient = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_STORE);
@@ -53,25 +44,16 @@ class ExampleProductSalePageFactory extends AbstractFactory
         return $storeClient->getCurrentStore();
     }
 
-    /**
-     * @return \Spryker\Client\Catalog\CatalogClientInterface
-     */
     public function getCatalogClient(): CatalogClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_CATALOG);
     }
 
-    /**
-     * @return \Spryker\Client\Locale\LocaleClientInterface
-     */
     public function getLocaleClient(): LocaleClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Service\UtilNumber\UtilNumberServiceInterface
-     */
     public function getUtilNumberService(): UtilNumberServiceInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::SERVICE_UTIL_NUMBER);

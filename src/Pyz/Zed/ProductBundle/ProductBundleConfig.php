@@ -13,8 +13,5 @@ use Spryker\Zed\ProductBundle\ProductBundleConfig as SprykerProductBundleConfig;
 
 class ProductBundleConfig extends SprykerProductBundleConfig
 {
-    /**
-     * @var bool
-     */
     protected const USE_BATCH_AVAILABILITY_CHECK = true;
 }

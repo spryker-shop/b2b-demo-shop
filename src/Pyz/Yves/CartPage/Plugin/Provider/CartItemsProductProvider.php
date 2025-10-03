@@ -13,14 +13,8 @@ use SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientIn
 
 class CartItemsProductProvider implements CartItemsProductProviderInterface
 {
-    /**
-     * @var \SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface
-     */
-    protected $productStorageClient;
+    protected CartPageToProductStorageClientInterface $productStorageClient;
 
-    /**
-     * @param \SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface $productStorageClient
-     */
     public function __construct(CartPageToProductStorageClientInterface $productStorageClient)
     {
         $this->productStorageClient = $productStorageClient;

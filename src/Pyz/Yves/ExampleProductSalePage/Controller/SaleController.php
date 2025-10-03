@@ -22,12 +22,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class SaleController extends AbstractController
 {
-    /**
-     * @param string|null $categoryPath
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Spryker\Yves\Kernel\View\View
-     */
     public function indexAction(?string $categoryPath, Request $request): View
     {
         $parameters = $request->query->all();
@@ -96,8 +90,6 @@ class SaleController extends AbstractController
      * @param string $locale
      *
      * @throws \InvalidArgumentException
-     *
-     * @return string
      */
     protected function getLanguageFromLocale(string $locale): string
     {

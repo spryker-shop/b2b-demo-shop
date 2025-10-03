@@ -26,101 +26,54 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'ProductPackagingUnitCartReorderRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PRODUCT_PACKAGING_UNIT_TYPE = 'box';
 
-    /**
-     * @var \Generated\Shared\Transfer\StoreTransfer
-     */
     protected StoreTransfer $storeTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransferWithSalesUnit;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer
-     */
     protected ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer;
 
     protected ProductPackagingUnitTransfer $productPackagingUnitTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected SaveOrderTransfer $orderWithSalesUnit;
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransferWithSalesUnit(): ProductConcreteTransfer
     {
         return $this->productConcreteTransferWithSalesUnit;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer
-     */
     public function getProductMeasurementSalesUnitTransfer(): ProductMeasurementSalesUnitTransfer
     {
         return $this->productMeasurementSalesUnitTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductPackagingUnitTransfer
-     */
     public function getProductPackagingUnitTransfer(): ProductPackagingUnitTransfer
     {
         return $this->productPackagingUnitTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     public function getOrderWithSalesUnit(): SaveOrderTransfer
     {
         return $this->orderWithSalesUnit;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
-     */
     public function buildFixtures(CartReorderApiTester $I): FixturesContainerInterface
     {
         $I->configureStateMachine();
@@ -137,11 +90,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\ProductPackagingUnitTransfer
-     */
     protected function createProductPackagingUnit(CartReorderApiTester $I): ProductPackagingUnitTransfer
     {
         $productPackagingUnitTypeTransfer = $I->haveProductPackagingUnitType([
@@ -157,11 +105,6 @@ class SalesUnitCartReorderRestApiFixtures implements FixturesBuilderInterface, F
         return (new ProductPackagingUnitTransfer())->fromArray($productPackagingUnitEntityTransfer->toArray(), true);
     }
 
-    /**
-     * @param \PyzTest\Glue\CartReorder\CartReorderApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\SaveOrderTransfer
-     */
     protected function createOrderWithProductPackagingUnit(CartReorderApiTester $I): SaveOrderTransfer
     {
         $itemsData = [

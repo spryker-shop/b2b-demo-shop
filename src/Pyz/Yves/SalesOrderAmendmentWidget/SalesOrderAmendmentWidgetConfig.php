@@ -13,8 +13,5 @@ use SprykerShop\Yves\SalesOrderAmendmentWidget\SalesOrderAmendmentWidgetConfig a
 
 class SalesOrderAmendmentWidgetConfig extends SprykerSalesOrderAmendmentWidgetConfig
 {
-    /**
-     * @var string|null
-     */
     protected const ORDER_AMENDMENT_CART_REORDER_STRATEGY = 'new';
 }

@@ -23,17 +23,11 @@ class TransferConfig extends SprykerTransferConfig
         ];
     }
 
-    /**
-     * @return bool
-     */
     public function isTransferXmlValidationEnabled(): bool
     {
         return true;
     }
 
-    /**
-     * @return bool
-     */
     public function isTransferSuffixCheckStrict(): bool
     {
         return true;

@@ -23,9 +23,6 @@ use Spryker\Zed\StoreGui\Communication\Plugin\Form\StoreRelationDropdownFormType
  */
 class CategoryGuiDependencyProvider extends SpykerCategoryGuiDependencyProvider
 {
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
-     */
     protected function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return new StoreRelationDropdownFormTypePlugin();

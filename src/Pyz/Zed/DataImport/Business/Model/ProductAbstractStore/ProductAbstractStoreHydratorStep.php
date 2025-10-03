@@ -15,41 +15,19 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductAbstractStoreHydratorStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 1000;
 
-    /**
-     * @var string
-     */
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
 
-    /**
-     * @var string
-     */
     public const COLUMN_STORE_NAME = 'store_name';
 
-    /**
-     * @var string
-     */
     public const DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER = 'DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->importProductAbstractStore($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     protected function importProductAbstractStore(DataSetInterface $dataSet): void
     {
         $productAbstractStoreTransfer = new ProductAbstractStoreTransfer();

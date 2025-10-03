@@ -13,8 +13,5 @@ use Spryker\Zed\PriceProductScheduleGui\PriceProductScheduleGuiConfig as Spryker
 
 class PriceProductScheduleGuiConfig extends SprykerPriceProductScheduleGuiConfig
 {
-    /**
-     * @var bool
-     */
     protected const IS_FILE_EXTENSION_VALIDATION_ENABLED = true;
 }

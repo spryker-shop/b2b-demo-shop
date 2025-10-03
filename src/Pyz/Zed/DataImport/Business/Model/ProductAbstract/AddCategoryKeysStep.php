@@ -15,21 +15,13 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class AddCategoryKeysStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_CATEGORY_KEYS = 'categoryKeys';
 
     /**
      * @var array<string, int>
      */
-    protected $categoryKeys = [];
+    protected array $categoryKeys = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         if (!$this->categoryKeys) {

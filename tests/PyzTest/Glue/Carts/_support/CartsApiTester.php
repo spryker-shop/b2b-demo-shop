@@ -44,8 +44,6 @@ class CartsApiTester extends ApiEndToEndTester
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function createPersistentQuote(
         CartsApiTester $I,
@@ -72,12 +70,6 @@ class CartsApiTester extends ApiEndToEndTester
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param string $sku
-     *
-     * @return string|null
-     */
     public function getGroupKeyFromQuote(QuoteTransfer $quoteTransfer, string $sku): ?string
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
@@ -89,13 +81,6 @@ class CartsApiTester extends ApiEndToEndTester
         return null;
     }
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $cartUuid
-     * @param array $attributes
-     *
-     * @return string
-     */
     public function createCartResourceEntityTag(
         CartsApiTester $I,
         string $cartUuid,
@@ -108,13 +93,6 @@ class CartsApiTester extends ApiEndToEndTester
         );
     }
 
-    /**
-     * @param int $quantity
-     * @param string $resourceName
-     * @param string $itemSku
-     *
-     * @return void
-     */
     public function seeCartItemQuantityEqualsToQuantityInRequest(
         int $quantity,
         string $resourceName,
@@ -128,8 +106,6 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function formatQueryInclude(array $includes = []): string
     {
@@ -143,8 +119,6 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param string $productConcreteSku
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildProductConcreteUrl(string $productConcreteSku, array $includes = []): string
     {
@@ -159,8 +133,6 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildCartsUrl(array $includes = []): string
     {
@@ -175,8 +147,6 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param string $customerReference
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildCustomerCartUrl(string $customerReference, array $includes = []): string
     {
@@ -193,8 +163,6 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param string $cartUuid
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildCartUrl(string $cartUuid, array $includes = []): string
     {
@@ -211,8 +179,6 @@ class CartsApiTester extends ApiEndToEndTester
      * @param string $cartUuid
      * @param string $cartItemGroupKey
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildCartItemUrl(string $cartUuid, string $cartItemGroupKey, array $includes = []): string
     {
@@ -230,7 +196,7 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
-     * @return array
+     * @return array<array<string, mixed>>
      */
     protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
     {

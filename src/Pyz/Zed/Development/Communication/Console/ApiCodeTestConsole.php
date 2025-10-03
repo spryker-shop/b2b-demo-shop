@@ -17,13 +17,7 @@ use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
  */
 class ApiCodeTestConsole extends CodeTestConsole
 {
-    /**
-     * @var string
-     */
     public const COMMAND_NAME = 'code:test:api';
 
-    /**
-     * @var string
-     */
     protected const CODECEPTION_CONFIG_FILE_NAME = 'codeception.api.yml';
 }

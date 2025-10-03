@@ -20,36 +20,22 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @var string
-     */
     public const KEY_BLOCK_KEY = 'block_key';
 
-    /**
-     * @var string
-     */
     public const KEY_STORE_NAME = 'store_name';
 
     /**
      * @var array<int> Keys are CMS Block names, values are CMS Block IDs.
      */
-    protected static $idCmsBlockBuffer = [];
+    protected static array $idCmsBlockBuffer = [];
 
     /**
      * @var array<int> Keys are store names, values are store ids.
      */
-    protected static $idStoreBuffer = [];
+    protected static array $idStoreBuffer = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $idCmsBlock = $this->getIdCmsBlockByKey($dataSet[static::KEY_BLOCK_KEY]);
@@ -67,8 +53,6 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
      * @param string $cmsBlockKey
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return int
      */
     protected function getIdCmsBlockByKey(string $cmsBlockKey): int
     {
@@ -91,8 +75,6 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
      * @param string $storeName
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return int
      */
     protected function getIdStoreByName(string $storeName): int
     {

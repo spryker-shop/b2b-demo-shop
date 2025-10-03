@@ -15,25 +15,16 @@ use Spryker\Zed\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageConfi
 
 class ProductMeasurementUnitStorageConfig extends SprykerProductMeasurementUnitStorageConfig
 {
-    /**
-     * @return string|null
-     */
     public function getProductMeasurementUnitSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
-    /**
-     * @return string|null
-     */
     public function getProductMeasurementUnitEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
 
-    /**
-     * @return string|null
-     */
     public function getProductConcreteMeasurementUnitEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;

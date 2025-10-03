@@ -13,13 +13,7 @@ use Spryker\Zed\FileManagerGui\FileManagerGuiConfig as SprykerFileManagerGuiConf
 
 class FileManagerGuiConfig extends SprykerFileManagerGuiConfig
 {
-    /**
-     * @var bool
-     */
     protected const IS_FILE_EXTENSION_VALIDATION_ENABLED = true;
 
-    /**
-     * @var bool
-     */
     protected const IS_EMPTY_TYPES_VALIDATION_ENABLED = true;
 }

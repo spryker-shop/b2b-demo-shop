@@ -13,6 +13,7 @@ use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
+use PyzTest\Yves\Checkout\CheckoutBusinessTester;
 use Spryker\Shared\Shipment\ShipmentConfig;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
@@ -42,14 +43,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ShipmentStepTest extends Unit
 {
-    /**
-     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
-     */
-    public $tester;
+    public CheckoutBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testShipmentStepExecuteShouldTriggerPlugins(): void
     {
         $shipmentPluginMock = $this->createShipmentMock();
@@ -68,9 +63,6 @@ class ShipmentStepTest extends Unit
         $shipmentStep->execute($this->createRequest(), $quoteTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testShipmentPostConditionsShouldReturnTrueWhenShipmentSet(): void
     {
         $this->markTestSkipped('This test is skipped because it is no longer relevant after https://spryker.atlassian.net/browse/SUPESC-435.');
@@ -85,11 +77,6 @@ class ShipmentStepTest extends Unit
         $this->assertTrue($shipmentStep->postCondition($quoteTransfer));
     }
 
-    /**
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $shipmentPlugins
-     *
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep
-     */
     protected function createShipmentStep(StepHandlerPluginCollection $shipmentPlugins): ShipmentStep
     {
         $giftCardItemsCheckerMock = $this->createGiftCardItemsCheckerMock();
@@ -105,17 +92,11 @@ class ShipmentStepTest extends Unit
         );
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     protected function createRequest(): Request
     {
         return Request::createFromGlobals();
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
-     */
     protected function createCalculationClientMock(): CheckoutPageToCalculationClientInterface
     {
         $calculationClientMock = $this->createMock(CheckoutPageToCalculationClientInterface::class);
@@ -125,9 +106,6 @@ class ShipmentStepTest extends Unit
         return $calculationClientMock;
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
-     */
     protected function createShipmentMock(): StepHandlerPluginInterface
     {
         return $this->createMock(StepHandlerPluginInterface::class);

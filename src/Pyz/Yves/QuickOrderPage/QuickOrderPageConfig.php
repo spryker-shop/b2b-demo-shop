@@ -13,9 +13,6 @@ use SprykerShop\Yves\QuickOrderPage\QuickOrderPageConfig as SprykerQuickOrderPag
 
 class QuickOrderPageConfig extends SprykerQuickOrderPageConfig
 {
-    /**
-     * @var array<string>
-     */
     protected const ALLOWED_CSV_FILE_MIME_TYPES = [
         'text/csv',
         'text/plain',

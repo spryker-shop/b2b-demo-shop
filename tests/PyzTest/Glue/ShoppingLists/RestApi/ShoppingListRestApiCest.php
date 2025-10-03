@@ -27,16 +27,8 @@ use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
  */
 class ShoppingListRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\ShoppingLists\RestApi\ShoppingListsRestApiFixtures
-     */
     protected ShoppingListsRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
-     */
     public function loadFixtures(ShoppingListsApiTester $I): void
     {
         /** @var \PyzTest\Glue\ShoppingLists\RestApi\ShoppingListsRestApiFixtures $fixtures */
@@ -49,8 +41,6 @@ class ShoppingListRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     public function requestShoppingListByUuid(ShoppingListsApiTester $I): void
     {
@@ -85,8 +75,6 @@ class ShoppingListRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     public function requestShoppingLists(ShoppingListsApiTester $I): void
     {
@@ -119,8 +107,6 @@ class ShoppingListRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     public function requestShoppingListByUuidWithShoppingListItemsRelationship(ShoppingListsApiTester $I): void
     {
@@ -171,8 +157,6 @@ class ShoppingListRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     public function requestShoppingListByUuidWithProductConcreteRelationship(ShoppingListsApiTester $I): void
     {
@@ -226,8 +210,6 @@ class ShoppingListRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\ShoppingLists\ShoppingListsApiTester $I
-     *
-     * @return void
      */
     public function requestShoppingListByNotExistingShoppingListUuid(ShoppingListsApiTester $I): void
     {

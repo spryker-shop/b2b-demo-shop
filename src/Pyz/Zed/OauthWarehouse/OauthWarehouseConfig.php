@@ -13,11 +13,6 @@ use Spryker\Zed\OauthWarehouse\OauthWarehouseConfig as SprykerOauthWarehouseConf
 
 class OauthWarehouseConfig extends SprykerOauthWarehouseConfig
 {
-    /**
-     * @uses \Spryker\Zed\OauthUserConnector\OauthUserConnectorConfig::SCOPE_BACK_OFFICE_USER
-     *
-     * @var string
-     */
     protected const SCOPE_BACK_OFFICE_USER = 'back-office-user';
 
     /**

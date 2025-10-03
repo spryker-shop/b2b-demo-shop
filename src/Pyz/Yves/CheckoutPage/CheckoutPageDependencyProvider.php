@@ -43,17 +43,10 @@ use Symfony\Component\Form\FormInterface;
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     /**
-     * @var string
-     *
      * @uses \Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin::SERVICE_FORM_FACTORY
      */
     protected const SERVICE_FORM_FACTORY = 'form.factory';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -62,11 +55,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function extendPaymentMethodHandler(Container $container): Container
     {
         $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
@@ -103,12 +91,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         ];
     }
 
-    /**
-     * @param string $subForm
-     * @param string $blockPrefix
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     protected function getCustomerCheckoutForm(string $subForm, string $blockPrefix): FormInterface
     {
         return $this->getFormFactory()->createNamed(
@@ -119,9 +101,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormFactory
-     */
     protected function getFormFactory(): FormFactory
     {
         return (new GlobalContainer())->get(static::SERVICE_FORM_FACTORY);
@@ -178,17 +157,11 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         ];
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
-     */
     protected function getCheckoutAddressFormDataProviderPlugin(): StepEngineFormDataProviderInterface
     {
         return new CheckoutAddressFormDataProviderPlugin();
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
-     */
     protected function getCustomerStepHandler(): StepHandlerPluginInterface
     {
         return new CustomerStepHandler();

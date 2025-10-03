@@ -36,8 +36,6 @@ class RelatedProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function formatQueryInclude(array $includes = []): string
     {
@@ -51,8 +49,6 @@ class RelatedProductsApiTester extends ApiEndToEndTester
     /**
      * @param string $productAbstractSku
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildRelatedProductsUrl(string $productAbstractSku, array $includes = []): string
     {
@@ -69,8 +65,6 @@ class RelatedProductsApiTester extends ApiEndToEndTester
     /**
      * @param string $productAbstractSku
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildProductAbstractUrl(string $productAbstractSku, array $includes = []): string
     {

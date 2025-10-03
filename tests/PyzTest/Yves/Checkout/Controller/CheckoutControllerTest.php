@@ -49,139 +49,58 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
  */
 class CheckoutControllerTest extends Unit
 {
-    /**
-     * @var string
-     */
     public const CUSTOMER_URL = '/checkout/customer';
 
-    /**
-     * @var string
-     */
     public const CUSTOMER_ACTION = 'customerAction';
 
-    /**
-     * @var string
-     */
     public const CUSTOMER_ROUTE = 'checkout-customer';
 
-    /**
-     * @var string
-     */
     public const GUEST_FORM = 'guestForm';
 
-    /**
-     * @var string
-     */
     public const CUSTOMER_EMAIL = 'hans@muster.de';
 
-    /**
-     * @var string
-     */
     public const ADDRESS_URL = '/checkout/address';
 
-    /**
-     * @var string
-     */
     public const ADDRESS_ACTION = 'addressAction';
 
-    /**
-     * @var string
-     */
     public const ADDRESS_ROUTE = 'checkout-address';
 
-    /**
-     * @var string
-     */
     public const ADDRESS_FORM = 'addressesForm';
 
-    /**
-     * @var string
-     */
     public const SHIPMENT_URL = '/checkout/shipment';
 
-    /**
-     * @var string
-     */
     public const SHIPMENT_ACTION = 'shipmentAction';
 
-    /**
-     * @var string
-     */
     public const SHIPMENT_ROUTE = 'checkout-shipment';
 
-    /**
-     * @var string
-     */
     public const SHIPMENT_FORM = 'shipmentForm';
 
-    /**
-     * @var string
-     */
     public const PAYMENT_URL = '/checkout/payment';
 
-    /**
-     * @var string
-     */
     public const PAYMENT_ACTION = 'paymentAction';
 
-    /**
-     * @var string
-     */
     public const PAYMENT_ROUTE = 'checkout-payment';
 
-    /**
-     * @var string
-     */
     public const PAYMENT_FORM = 'paymentForm';
 
-    /**
-     * @var string
-     */
     public const SUMMARY_URL = '/checkout/summary';
 
-    /**
-     * @var string
-     */
     public const SUMMARY_ACTION = 'summaryAction';
 
-    /**
-     * @var string
-     */
     public const SUMMARY_ROUTE = 'checkout-summary';
 
-    /**
-     * @var string
-     */
     public const SUMMARY_FORM = 'summaryForm';
 
-    /**
-     * @var string
-     */
     public const PLACE_ORDER_URL = '/checkout/place-order';
 
-    /**
-     * @var string
-     */
     public const PLACE_ORDER_ACTION = 'placeOrderAction';
 
-    /**
-     * @var string
-     */
     public const PLACE_ORDER_ROUTE = 'checkout-place-order';
 
-    /**
-     * @var string
-     */
     public const SUCCESS_URL = '/checkout/success';
 
-    /**
-     * @var \SprykerShop\Yves\CheckoutPage\Controller\CheckoutController
-     */
-    private $controller;
+    private CheckoutController $controller;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         $this->controller = new CheckoutController();
@@ -190,9 +109,6 @@ class CheckoutControllerTest extends Unit
         $sessionClient->setContainer(new Session(new MockArraySessionStorage()));
     }
 
-    /**
-     * @return void
-     */
     public function testIndexAction(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -208,9 +124,6 @@ class CheckoutControllerTest extends Unit
         $this->assertSame($response->getTargetUrl(), self::CUSTOMER_URL);
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerActionShouldRenderRegisterAndLoginForms(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -224,9 +137,6 @@ class CheckoutControllerTest extends Unit
         $this->assertArrayHasKey('registerForm', $response);
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerAction(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -252,9 +162,6 @@ class CheckoutControllerTest extends Unit
         $this->assertSame($response->getTargetUrl(), self::ADDRESS_URL);
     }
 
-    /**
-     * @return void
-     */
     public function testAddressActionShouldRenderAddressForms(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -269,9 +176,6 @@ class CheckoutControllerTest extends Unit
         $this->assertArrayHasKey('previousStepUrl', $response);
     }
 
-    /**
-     * @return void
-     */
     public function testAddressAction(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -303,9 +207,6 @@ class CheckoutControllerTest extends Unit
         $this->assertSame($response->getTargetUrl(), self::SHIPMENT_URL);
     }
 
-    /**
-     * @return void
-     */
     public function testShipmentActionShouldRenderShipmentForms(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -320,9 +221,6 @@ class CheckoutControllerTest extends Unit
         $this->assertArrayHasKey('previousStepUrl', $response);
     }
 
-    /**
-     * @return void
-     */
     public function testShipmentAction(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -343,9 +241,6 @@ class CheckoutControllerTest extends Unit
         $this->assertSame($response->getTargetUrl(), self::PAYMENT_URL);
     }
 
-    /**
-     * @return void
-     */
     public function testPaymentActionShouldRenderPaymentForms(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -364,8 +259,6 @@ class CheckoutControllerTest extends Unit
 
     /**
      * This test only works with DummyPayment
-     *
-     * @return void
      */
     public function testPaymentAction(): void
     {
@@ -394,9 +287,6 @@ class CheckoutControllerTest extends Unit
         $this->assertSame($response->getTargetUrl(), self::SUMMARY_URL);
     }
 
-    /**
-     * @return void
-     */
     public function testSummaryActionShouldRenderSummaryPage(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -412,9 +302,6 @@ class CheckoutControllerTest extends Unit
         $this->assertArrayHasKey('previousStepUrl', $response);
     }
 
-    /**
-     * @return void
-     */
     public function testSummaryAction(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -436,9 +323,6 @@ class CheckoutControllerTest extends Unit
         $this->assertSame($response->getTargetUrl(), self::PLACE_ORDER_URL);
     }
 
-    /**
-     * @return void
-     */
     public function testPlaceOrder(): void
     {
         $this->markTestSkipped('Move this to function controller tests');
@@ -453,9 +337,6 @@ class CheckoutControllerTest extends Unit
         $this->assertSame($response->getTargetUrl(), self::SUCCESS_URL);
     }
 
-    /**
-     * @return void
-     */
     private function setQuoteForCustomer(): void
     {
         $quoteTransfer = new QuoteTransfer();
@@ -468,9 +349,6 @@ class CheckoutControllerTest extends Unit
         $cartClient->storeQuote($quoteTransfer);
     }
 
-    /**
-     * @return void
-     */
     private function setQuoteForAddress(): void
     {
         $quoteTransfer = new QuoteTransfer();
@@ -487,9 +365,6 @@ class CheckoutControllerTest extends Unit
         $cartClient->storeQuote($quoteTransfer);
     }
 
-    /**
-     * @return void
-     */
     private function setQuoteForShipment(): void
     {
         $quoteTransfer = new QuoteTransfer();
@@ -521,9 +396,6 @@ class CheckoutControllerTest extends Unit
         $cartClient->storeQuote($quoteTransfer);
     }
 
-    /**
-     * @return void
-     */
     private function setQuoteForPayment(): void
     {
         $quoteTransfer = new QuoteTransfer();
@@ -567,9 +439,6 @@ class CheckoutControllerTest extends Unit
         $cartClient->storeQuote($quoteTransfer);
     }
 
-    /**
-     * @return void
-     */
     private function setQuoteForSummary(): void
     {
         $quoteTransfer = new QuoteTransfer();
@@ -624,7 +493,7 @@ class CheckoutControllerTest extends Unit
      * @param string $routeName
      * @param string $formName
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getFormData(string $url, string $actionName, string $routeName, string $formName): array
     {
@@ -639,7 +508,7 @@ class CheckoutControllerTest extends Unit
     /**
      * @param \Symfony\Component\Form\FormView $formView
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getFormDataFromResult(FormView $formView): array
     {
@@ -651,9 +520,6 @@ class CheckoutControllerTest extends Unit
         return $customerData;
     }
 
-    /**
-     * @return void
-     */
     protected function allowMoreThenOneRequestToZed(): void
     {
         $reflectionProperty = new ReflectionProperty(HttpClient::class, 'alreadyRequested');

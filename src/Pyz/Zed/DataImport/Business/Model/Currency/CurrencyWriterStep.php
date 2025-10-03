@@ -15,26 +15,12 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CurrencyWriterStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_ISO_CODE = 'iso_code';
 
-    /**
-     * @var string
-     */
     public const KEY_CURRENCY_SYMBOL = 'currency_symbol';
 
-    /**
-     * @var string
-     */
     public const KEY_NAME = 'name';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $currencyEntity = SpyCurrencyQuery::create()

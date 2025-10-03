@@ -28,20 +28,12 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
     /**
      * @throws \RuntimeException
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function getCustomerTransfer(): CustomerTransfer
     {
@@ -52,11 +44,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         return $this->customerTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
-     */
     public function buildFixtures(CustomerApiTester $i): FixturesContainerInterface
     {
         $this->createCustomer($i);
@@ -65,11 +52,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return void
-     */
     protected function createCustomer(CustomerApiTester $i): void
     {
         $customerTransfer = $i->haveCustomer([
@@ -80,11 +62,6 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         $this->customerTransfer = $customerTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
-     *
-     * @return void
-     */
     protected function confirmCustomer(CustomerApiTester $i): void
     {
         $this->customerTransfer = $i->confirmCustomer($this->customerTransfer);

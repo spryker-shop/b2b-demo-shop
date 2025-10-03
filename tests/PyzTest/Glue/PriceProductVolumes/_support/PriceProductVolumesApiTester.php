@@ -34,11 +34,6 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
 {
     use _generated\PriceProductVolumesApiTesterActions;
 
-    /**
-     * @param array $expectedVolumePrices
-     *
-     * @return void
-     */
     public function seeVolumePricesEqualToExpectedValue(array $expectedVolumePrices): void
     {
         $expectedVolumePrices = $this->mapVolumePricesDataToExpectedFormat($expectedVolumePrices);
@@ -46,11 +41,6 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
         $this->assertEqualsCanonicalizing($expectedVolumePrices, $this->grabPriceProductVolumesData());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
         $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
@@ -58,7 +48,7 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function grabPriceProductVolumesData(): array
     {
@@ -66,9 +56,9 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param array $volumePrices
+     * @param array<mixed> $volumePrices
      *
-     * @return array
+     * @return array<\Generated\Shared\Transfer\RestProductPriceVolumesAttributesTransfer>
      */
     protected function mapVolumePricesDataToExpectedFormat(array $volumePrices): array
     {

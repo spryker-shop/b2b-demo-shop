@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\CustomerPage\Controller;
 
+use Spryker\Yves\Kernel\View\View;
 use SprykerShop\Yves\CustomerPage\Controller\RegisterController as SprykerRegisterController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,18 +19,11 @@ use Symfony\Component\HttpFoundation\Request;
 class RegisterController extends SprykerRegisterController
 {
     /**
-     * @var string
-     *
      * @uses \SprykerShop\Yves\CompanyUserInvitationPage\CompanyUserInvitationPageConfig::INVITATION_SESSION_ID
      */
     protected const INVITATION_SESSION_ID = 'COMPANY_USER_INVITATION';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Spryker\Yves\Kernel\View\View|\Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request): View|\Symfony\Component\HttpFoundation\RedirectResponse
     {
         $response = $this->executeIndexAction($request);
 

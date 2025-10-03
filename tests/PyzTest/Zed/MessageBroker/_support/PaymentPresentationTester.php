@@ -40,21 +40,10 @@ class PaymentPresentationTester extends Actor
 {
     use _generated\PaymentPresentationTesterActions;
 
-    /**
-     * @var string
-     */
     protected const CURRENCY_USD = 'USD';
 
-    /**
-     * @var string
-     */
     protected const DEFAULT_OMS_PROCESS_NAME = 'ForeignPaymentStateMachine01';
 
-    /**
-     * @param string $initialItemState
-     *
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrder
-     */
     public function haveSalesOrder(string $initialItemState): SpySalesOrder
     {
         $this->haveCurrency([CurrencyTransfer::CODE => static::CURRENCY_USD]);
@@ -70,12 +59,6 @@ class PaymentPresentationTester extends Actor
         );
     }
 
-    /**
-     * @param string $paymentMessageTransferClassName
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
-     *
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
-     */
     public function havePaymentMessageTransfer(
         string $paymentMessageTransferClassName,
         SpySalesOrder $salesOrderEntity,
@@ -85,11 +68,6 @@ class PaymentPresentationTester extends Actor
         );
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $paymentMessageTransfer
-     *
-     * @return void
-     */
     public function handlePaymentMessageTransfer(TransferInterface $paymentMessageTransfer): void
     {
         $channelName = 'payment-commands';
@@ -102,12 +80,6 @@ class PaymentPresentationTester extends Actor
         );
     }
 
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrder
-     * @param string $finalState
-     *
-     * @return void
-     */
     public function assertOrderHasCorrectState(SpySalesOrder $salesOrder, string $finalState): void
     {
         $omsProcess = $this->getOmsProcess();
@@ -147,11 +119,6 @@ class PaymentPresentationTester extends Actor
         return $orderItemIds;
     }
 
-    /**
-     * @param string $stateName
-     *
-     * @return \Orm\Zed\Oms\Persistence\SpyOmsOrderItemState|null
-     */
     protected function getOrderItemState(string $stateName): ?SpyOmsOrderItemState
     {
         $omsOrderItemStateQuery = new SpyOmsOrderItemStateQuery();
@@ -160,9 +127,6 @@ class PaymentPresentationTester extends Actor
         return $omsOrderItemStateQuery->findOne();
     }
 
-    /**
-     * @return \Orm\Zed\Oms\Persistence\SpyOmsOrderProcess|null
-     */
     protected function getOmsProcess(): ?SpyOmsOrderProcess
     {
         $omsOrderProcessQuery = new SpyOmsOrderProcessQuery();

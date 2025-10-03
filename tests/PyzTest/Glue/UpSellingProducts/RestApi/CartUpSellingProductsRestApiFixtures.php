@@ -34,52 +34,26 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'change123';
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected ProductConcreteTransfer $upSellingProductConcreteTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected QuoteTransfer $quoteTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function getQuoteTransfer(): QuoteTransfer
     {
         return $this->quoteTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
-     */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
         $I->truncateSalesOrderThresholds();
@@ -91,11 +65,6 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
         return $this;
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
     protected function createQuoteWithProduct(UpSellingProductsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
@@ -111,21 +80,11 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
         $this->quoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
     protected function createUpSellingProductConcrete(UpSellingProductsApiTester $I): void
     {
         $this->upSellingProductConcreteTransfer = $I->haveFullProduct();
     }
 
-    /**
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
     protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
     {
         $storeTransfer = $I->haveStore([
@@ -155,8 +114,6 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     protected function createPersistentQuote(
         UpSellingProductsApiTester $I,
@@ -176,7 +133,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     /**
      * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
-     * @return array
+     * @return array<array<string, mixed>>
      */
     protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
     {

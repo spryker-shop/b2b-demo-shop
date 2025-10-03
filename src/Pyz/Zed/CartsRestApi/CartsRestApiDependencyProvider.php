@@ -24,9 +24,6 @@ use Spryker\Zed\SharedCartsRestApi\Communication\Plugin\CartsRestApi\QuotePermis
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
-    /**
-     * @return \Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface
-     */
     protected function getQuoteCreatorPlugin(): QuoteCreatorPluginInterface
     {
         return new QuoteCreatorPlugin();

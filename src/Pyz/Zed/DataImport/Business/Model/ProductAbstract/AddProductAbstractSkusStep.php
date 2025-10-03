@@ -17,21 +17,13 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class AddProductAbstractSkusStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_PRODUCT_ABSTRACT_SKUS = 'productAbstractSkus';
 
     /**
      * @var array<string, int>
      */
-    protected $productAbstractSkus = [];
+    protected array $productAbstractSkus = [];
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         if (!$this->productAbstractSkus) {

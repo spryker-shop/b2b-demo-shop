@@ -32,9 +32,6 @@ class CompanyUserPresentationTester extends Actor
 {
     use _generated\CompanyUserPresentationTesterActions;
 
-    /**
-     * @return void
-     */
     public function fillOutCompanyRegistrationForm(): void
     {
         $i = $this;

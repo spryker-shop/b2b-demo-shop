@@ -77,9 +77,6 @@ class ProductConfig extends SprykerProductConfig
         ]);
     }
 
-    /**
-     * @return bool
-     */
     public function isFullLocaleNamesInUrlEnabled(): bool
     {
         return true;

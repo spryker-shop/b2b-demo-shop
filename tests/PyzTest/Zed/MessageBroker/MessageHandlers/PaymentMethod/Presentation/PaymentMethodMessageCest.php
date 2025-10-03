@@ -29,21 +29,10 @@ use Spryker\Zed\MessageBroker\MessageBrokerDependencyProvider;
  */
 class PaymentMethodMessageCest
 {
-    /**
-     * @var string
-     */
     protected const PAYMENT_METHOD_NAME = 'payment-method-name';
 
-    /**
-     * @var string
-     */
     protected const PROVIDER_NAME = 'provider-name';
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentMethodPresentationTester $I
-     *
-     * @return void
-     */
     public function testAddPaymentMethodMessageIsSuccessfullyHandled(PaymentMethodPresentationTester $I): void
     {
         // Arrange
@@ -83,11 +72,6 @@ class PaymentMethodMessageCest
         $I->cleanupPaymentMethodByPaymentMethodKey($paymentMethodKey);
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentMethodPresentationTester $I
-     *
-     * @return void
-     */
     public function testPaymentMethodRemovedMessageIsSuccessfullyHandled(PaymentMethodPresentationTester $I): void
     {
         // Arrange

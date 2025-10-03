@@ -17,20 +17,10 @@ use Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContai
 
 class ProductAbstractRelationReader implements ProductAbstractRelationReaderInterface
 {
-    /**
-     * @var \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface
-     */
-    protected $productSaleQueryContainer;
+    protected ExampleProductSalePageQueryContainerInterface $productSaleQueryContainer;
 
-    /**
-     * @var \Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig
-     */
-    protected $productSaleConfig;
+    protected ExampleProductSalePageConfig $productSaleConfig;
 
-    /**
-     * @param \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface $productSaleQueryContainer
-     * @param \Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig $productSaleConfig
-     */
     public function __construct(
         ExampleProductSalePageQueryContainerInterface $productSaleQueryContainer,
         ExampleProductSalePageConfig $productSaleConfig,
@@ -66,8 +56,6 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
 
     /**
      * @throws \Pyz\Zed\ExampleProductSalePage\Business\Exception\ProductLabelSaleNotFoundException
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabel
      */
     protected function getProductLabelNewEntity(): SpyProductLabel
     {
@@ -130,8 +118,6 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      * @param int $idProductLabel
      * @param array<int, array<int>> $relationsToAssign
      * @param array<int, array<int>> $relationsToDeAssign
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer
      */
     protected function mapRelationTransfer(
         int $idProductLabel,

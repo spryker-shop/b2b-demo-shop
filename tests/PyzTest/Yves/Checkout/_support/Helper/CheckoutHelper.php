@@ -13,10 +13,7 @@ use Codeception\Module;
 
 class CheckoutHelper extends Module
 {
-    /**
-     * @return \Codeception\Module|\Codeception\Module\WebDriver
-     */
-    protected function getWebDriver()
+    protected function getWebDriver(): Module|\Codeception\Module\WebDriver
     {
         return $this->getModule('WebDriver');
     }

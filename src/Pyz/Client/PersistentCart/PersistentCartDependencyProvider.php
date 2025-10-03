@@ -55,9 +55,6 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
         ];
     }
 
-    /**
-     * @return \Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuotePersistPluginInterface
-     */
     protected function getQuotePersistPlugin(): QuotePersistPluginInterface
     {
         return new MultiCartQuotePersistPlugin();

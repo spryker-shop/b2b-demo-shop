@@ -24,16 +24,8 @@ use SprykerShop\Yves\SessionAgentValidation\Plugin\CustomerPage\UpdateAgentSessi
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const CLIENT_PYZ_SESSION = 'CLIENT_PYZ_SESSION';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -76,11 +68,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         ];
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addPyzSessionClient(Container $container): Container
     {
         $container->set(static::CLIENT_PYZ_SESSION, function (Container $container) {

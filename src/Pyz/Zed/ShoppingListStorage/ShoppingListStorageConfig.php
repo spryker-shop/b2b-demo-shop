@@ -15,17 +15,11 @@ use Spryker\Zed\ShoppingListStorage\ShoppingListStorageConfig as SprykerShopping
 
 class ShoppingListStorageConfig extends SprykerShoppingListStorageConfig
 {
-    /**
-     * @return string|null
-     */
     public function getShoppingListSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;

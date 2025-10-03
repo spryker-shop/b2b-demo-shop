@@ -18,11 +18,6 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 trait CartsRestApiFixturesTrait
 {
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     protected function createProduct(CartsApiTester $I): ProductConcreteTransfer
     {
         $productConcreteTransfer = $I->haveFullProduct();
@@ -47,11 +42,6 @@ trait CartsRestApiFixturesTrait
         return $productConcreteTransfer;
     }
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
     protected function getStoreFacade(CartsApiTester $I): StoreFacadeInterface
     {
         return $I->getLocator()->store()->facade();

@@ -22,34 +22,17 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 class ProductSearchAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @var string
-     */
     public const KEY = 'key';
 
-    /**
-     * @var \Spryker\Shared\ProductSearch\Code\KeyBuilder\GlossaryKeyBuilderInterface
-     */
-    protected $glossaryKeyBuilder;
+    protected GlossaryKeyBuilderInterface $glossaryKeyBuilder;
 
-    /**
-     * @param \Spryker\Shared\ProductSearch\Code\KeyBuilder\GlossaryKeyBuilderInterface $glossaryKeyBuilder
-     */
     public function __construct(GlossaryKeyBuilderInterface $glossaryKeyBuilder)
     {
         $this->glossaryKeyBuilder = $glossaryKeyBuilder;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $productSearchAttributeEntity = SpyProductSearchAttributeQuery::create()

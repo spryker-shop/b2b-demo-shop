@@ -13,9 +13,6 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig as SprykerCheckoutRestApi
 
 class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
 {
-    /**
-     * @var array<string, array<string>>
-     */
     protected const PAYMENT_METHOD_REQUIRED_FIELDS = [
         'dummyPaymentInvoice' => ['dummyPaymentInvoice.dateOfBirth'],
         'dummyPaymentCreditCard' => [
@@ -29,43 +26,30 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     ];
 
     /**
-     * @var string
-     *
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PROVIDER_NAME
      */
     protected const DUMMY_PAYMENT_PROVIDER_NAME = 'DummyPayment';
 
     /**
-     * @var string
-     *
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_NAME_INVOICE
      */
     protected const DUMMY_PAYMENT_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
 
     /**
-     * @var string
-     *
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD
      */
     protected const DUMMY_PAYMENT_PAYMENT_METHOD_NAME_CREDIT_CARD = 'Credit Card';
 
     /**
-     * @var string
-     *
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_INVOICE
      */
     protected const PAYMENT_METHOD_INVOICE = 'dummyPaymentInvoice';
 
     /**
-     * @var string
-     *
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD
      */
     protected const PAYMENT_METHOD_CREDIT_CARD = 'dummyPaymentCreditCard';
 
-    /**
-     * @var bool
-     */
     protected const IS_PAYMENT_PROVIDER_METHOD_TO_STATE_MACHINE_MAPPING_ENABLED = false;
 
     /**
@@ -81,25 +65,16 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
         ];
     }
 
-    /**
-     * @return bool
-     */
     public function isShipmentMethodsMappedToAttributes(): bool
     {
         return false;
     }
 
-    /**
-     * @return bool
-     */
     public function isPaymentProvidersMappedToAttributes(): bool
     {
         return false;
     }
 
-    /**
-     * @return bool
-     */
     public function isAddressesMappedToAttributes(): bool
     {
         return false;

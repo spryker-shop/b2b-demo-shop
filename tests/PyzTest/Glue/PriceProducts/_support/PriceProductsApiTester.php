@@ -32,11 +32,6 @@ class PriceProductsApiTester extends ApiEndToEndTester
 {
     use _generated\PriceProductsApiTesterActions;
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
     public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
     {
         $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);

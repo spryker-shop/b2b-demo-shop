@@ -31,51 +31,30 @@ class CompanyUserAuthRestApiTester extends ApiEndToEndTester
 {
     use _generated\CompanyUserAuthRestApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const ACCESS_TOKEN_JSON_PATH = '$.data.attributes.accessToken';
 
-    /**
-     * @var string
-     */
     protected const REFRESH_TOKEN_JSON_PATH = '$.data.attributes.refreshToken';
 
-    /**
-     * @return void
-     */
     public function seeResponseHasAccessToken(): void
     {
         $this->assertNotEmpty($this->getDataFromResponseByJsonPath(self::ACCESS_TOKEN_JSON_PATH));
     }
 
-    /**
-     * @return void
-     */
     public function seeResponseHasRefreshToken(): void
     {
         $this->assertNotEmpty($this->getDataFromResponseByJsonPath(self::REFRESH_TOKEN_JSON_PATH));
     }
 
-    /**
-     * @return void
-     */
     public function dontSeeResponseHasAccessToken(): void
     {
         $this->assertFalse($this->getDataFromResponseByJsonPath(self::ACCESS_TOKEN_JSON_PATH));
     }
 
-    /**
-     * @return void
-     */
     public function dontSeeResponseHasRefreshToken(): void
     {
         $this->assertFalse($this->getDataFromResponseByJsonPath(self::REFRESH_TOKEN_JSON_PATH));
     }
 
-    /**
-     * @return string|null
-     */
     public function grabAccessTokenFromResponse(): ?string
     {
         return $this->getDataFromResponseByJsonPath(self::ACCESS_TOKEN_JSON_PATH);

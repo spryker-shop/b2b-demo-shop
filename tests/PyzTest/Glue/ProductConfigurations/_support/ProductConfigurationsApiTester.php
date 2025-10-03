@@ -34,16 +34,8 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
 {
     use _generated\ProductConfigurationsApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const ATTRIBUTE_KEY_SKU = 'sku';
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
     public function amAuthorizedCustomer(CustomerTransfer $customerTransfer): void
     {
         $token = $this->haveAuthorizationToGlue($customerTransfer)->getAccessTokenOrFail();
@@ -51,11 +43,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         $this->amBearerAuthenticated($token);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
-     *
-     * @return void
-     */
     public function seeProductConfigurationInstanceEqualToExpectedValue(ProductConfigurationTransfer $productConfigurationTransfer): void
     {
         $productConfigurationData = $this->grabProductConfigurationInstanceDataFromConcreteProductsResource();
@@ -70,11 +57,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
-     *
-     * @return void
-     */
     public function seeOrderItemContainProductConfigurationInstance(ProductConfigurationTransfer $productConfigurationTransfer): void
     {
         $productConfigurationData = $this->grabProductConfigurationInstanceDataFromOrdersResource();
@@ -88,12 +70,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         $this->assertEquals($productConfigurationData['configuratorKey'], $restProductConfigurationInstanceAttributesTransfer->getConfiguratorKey());
     }
 
-    /**
-     * @param string $resourceName
-     * @param string $itemSku
-     *
-     * @return void
-     */
     public function seeCartItemContainsProductConfigurationInstance(
         string $resourceName,
         string $itemSku,
@@ -142,12 +118,6 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         return $this->getDataFromResponseByJsonPath('$.data.attributes.items[0].salesOrderItemConfiguration');
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConfigurationTransfer $productConfigurationTransfer
-     * @param \Generated\Shared\Transfer\RestProductConfigurationInstanceAttributesTransfer $restProductConfigurationInstanceAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestProductConfigurationInstanceAttributesTransfer
-     */
     protected function mapProductConfigurationTransferToRestProductConfigurationInstanceAttributesTransfer(
         ProductConfigurationTransfer $productConfigurationTransfer,
         RestProductConfigurationInstanceAttributesTransfer $restProductConfigurationInstanceAttributesTransfer,

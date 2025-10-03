@@ -14,16 +14,8 @@ use Spryker\Yves\Router\Route\RouteCollection;
 
 class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
 {
-    /**
-     * @var string
-     */
     public const ROUTE_NAME_SALE = 'sale';
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     public function addRoutes(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/outlet{categoryPath}', 'ExampleProductSalePage', 'Sale', 'indexAction');

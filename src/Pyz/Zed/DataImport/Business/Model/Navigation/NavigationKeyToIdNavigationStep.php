@@ -17,35 +17,19 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class NavigationKeyToIdNavigationStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_SOURCE = 'navigationKey';
 
-    /**
-     * @var string
-     */
     public const KEY_TARGET = 'idNavigation';
 
-    /**
-     * @var string
-     */
-    protected $source;
+    protected string $source;
 
-    /**
-     * @var string
-     */
-    protected $target;
+    protected string $target;
 
     /**
      * @var array<string, int>
      */
-    protected $resolved = [];
+    protected array $resolved = [];
 
-    /**
-     * @param string $source
-     * @param string $target
-     */
     public function __construct(string $source = self::KEY_SOURCE, string $target = self::KEY_TARGET)
     {
         $this->source = $source;
@@ -56,8 +40,6 @@ class NavigationKeyToIdNavigationStep implements DataImportStepInterface
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
-     *
-     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -82,8 +64,6 @@ class NavigationKeyToIdNavigationStep implements DataImportStepInterface
      * @param string $navigationKey
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return int
      */
     protected function resolveIdNavigation(string $navigationKey): int
     {
