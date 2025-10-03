@@ -21,6 +21,7 @@ concurrency:
 jobs:
     validation:
         name: "Static analysis"
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/ssp-master') }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -157,6 +158,7 @@ jobs:
 
     js-validation:
         name: "NPM validation"
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/ssp-master') }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
