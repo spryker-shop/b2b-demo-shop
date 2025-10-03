@@ -18,7 +18,7 @@ runs:
     - name: Run docker
       shell: bash
       run: |
-        git clone https://github.com/spryker/docker-sdk.git ./docker
+        git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
         docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml
         docker/sdk up -t
         docker/sdk cli composer dump-autoload -o -a --apcu
