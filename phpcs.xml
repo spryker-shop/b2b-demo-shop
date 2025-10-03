@@ -7,6 +7,8 @@
         All sniffs in ./Sniffs will be auto loaded
     </description>
 
+    <config name="php_version" value="80313"/>
+    
     <file>src/</file>
     <file>config/</file>
     <file>tests/</file>
@@ -29,6 +31,13 @@
         <exclude name="Spryker.Internal.SprykerDisallowFunctions"/>
         <exclude name="Spryker.ControlStructures.DisallowCloakingCheck"/>
         <exclude name="SlevomatCodingStandard.ControlStructures.DisallowNullSafeObjectOperator"/>
+    </rule>
+
+    <rule ref="Spryker.Internal.SprykerDisallowFunctions">
+        <properties>
+            <!-- We want to prevent 8.4+ functions to break 8.3 compatibility -->
+            <property name="phpVersion" value="8.3"/>
+        </properties>
     </rule>
 
     <rule ref="Spryker.Namespaces.SprykerNamespace">
