@@ -1,4 +1,4 @@
-name: 'PHP 8.2 PostgreSQL Acceptance Tests'
+name: 'PHP 8.3 PostgreSQL Acceptance Tests'
 description: 'Run PHP 8.2 with PostgreSQL acceptance and API tests on Debian with Dynamic Store OFF'
 
 inputs:
@@ -26,7 +26,7 @@ runs:
         docker/sdk console queue:worker:start --stop-when-empty
       env:
         PROGRESS_TYPE: plain
-        SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
         TRAVIS: 1
 
     - name: Run Acceptance Tests
@@ -35,7 +35,7 @@ runs:
         docker/sdk testing codecept run -c codeception.acceptance.yml
       env:
         PROGRESS_TYPE: plain
-        SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
         TRAVIS: 1
 
     - name: Run API Tests
@@ -44,7 +44,7 @@ runs:
         docker/sdk testing codecept run -c codeception.api.yml
       env:
         PROGRESS_TYPE: plain
-        SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
         TRAVIS: 1
 
     - name: Slack Notification for failed job

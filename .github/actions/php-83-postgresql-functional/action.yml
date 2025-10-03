@@ -1,5 +1,5 @@
-name: 'PHP 8.2 PostgreSQL Functional Tests'
-description: 'Run PHP 8.2 with PostgreSQL functional tests on Debian with Dynamic Store OFF'
+name: 'PHP 8.3 PostgreSQL Functional Tests'
+description: 'Run PHP 8.3 with PostgreSQL functional tests on Debian with Dynamic Store OFF'
 
 inputs:
   slack_bot_token:
@@ -25,7 +25,7 @@ runs:
         docker/sdk testing codecept run -c codeception.functional.yml
       env:
         PROGRESS_TYPE: plain
-        SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
         TRAVIS: 1
 
     - name: Slack Notification for failed job

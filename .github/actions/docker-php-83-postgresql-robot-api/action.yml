@@ -1,5 +1,5 @@
-name: 'Docker PHP 8.3 MariaDB Cypress Tests'
-description: 'Run Docker Alpine PHP 8.3 with MariaDB Cypress UI tests with Dynamic Store OFF'
+name: 'Docker PHP 8.3 PostgreSQL Robot API Tests'
+description: 'Run Docker Debian PHP 8.3 with PostgreSQL Robot API tests with Dynamic Store OFF'
 
 inputs:
   slack_bot_token:
@@ -32,35 +32,35 @@ runs:
         pip3 install --upgrade pip
         pip3 install awscli
 
-    - name: Install cypress-tests folder
+    - name: Install robotframework-suite-tests folder
       shell: bash
       run: |
-        cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
-        cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
+        cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+        cp -r vendor ../vendor
 
     - name: Install Project
-      continue-on-error: true
+      continue-on-error: false
       shell: bash
       run: |
         git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
-        docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store-off.cypress.yml
+        docker/sdk boot deploy.ci.api.dynamic-store-off.robot.yml
         sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local glue-backend.de.spryker.local glue-backend.at.spryker.local glue-storefront.de.spryker.local glue-storefront.at.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
         docker/sdk up -t
         docker/sdk cli composer dump-autoload -o -a --apcu
+        APPLICATION_STORE=AT docker/sdk console queue:worker:start --stop-when-empty
       env:
         PROGRESS_TYPE: plain
-        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
         TRAVIS: 1
         ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
 
     - name: Run Tests
       shell: bash
       run: |
-        docker/sdk exec cypress-tests cp .env.example .env
-        docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
+        docker/sdk exec robot-framework robot -v env:api_b2b -v db_engine:psycopg2 -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.b2b .
       env:
         PROGRESS_TYPE: plain
-        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+        SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
         TRAVIS: 1
         ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
 
@@ -68,7 +68,7 @@ runs:
       if: failure()
       shell: bash
       run: |
-        AWS_DEFAULT_REGION=eu-west-1 AWS_ACCESS_KEY_ID=${{ inputs.robot_tests_artifacts_key }} AWS_SECRET_ACCESS_KEY=${{ inputs.robot_tests_artifacts_secret }} aws s3 cp .cypress s3://${{ inputs.robot_tests_artifacts_bucket }}/b2b/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
+        AWS_DEFAULT_REGION=eu-west-1 AWS_ACCESS_KEY_ID=${{ inputs.robot_tests_artifacts_key }} AWS_SECRET_ACCESS_KEY=${{ inputs.robot_tests_artifacts_secret }} aws s3 cp .robot/results/log.html s3://${{ inputs.robot_tests_artifacts_bucket }}/b2b/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/log.html
       env:
         ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
 
