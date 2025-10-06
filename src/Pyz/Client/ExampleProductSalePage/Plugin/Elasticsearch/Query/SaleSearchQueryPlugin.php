@@ -167,6 +167,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
 
     protected function hasSearchContext(): bool
     {
-        return (bool)$this->searchContextTransfer;
+        return isset($this->searchContextTransfer);
     }
 }
