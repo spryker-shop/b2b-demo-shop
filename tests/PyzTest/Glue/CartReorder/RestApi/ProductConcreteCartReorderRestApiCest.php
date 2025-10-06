@@ -41,8 +41,14 @@ class ProductConcreteCartReorderRestApiCest
 
     protected const RESPONSE_DETAIL_QUOTE_NOT_PROVIDED = 'Quote not provided.';
 
+    /**
+     * @uses \Spryker\Zed\PersistentCart\Communication\Plugin\CartReorder\ReplacePersistentCartReorderQuoteProviderStrategyPlugin::REORDER_STRATEGY_REPLACE
+     */
     protected const REORDER_STRATEGY_REPLACE = 'replace';
 
+    /**
+     * @uses \Spryker\Zed\MultiCart\Communication\Plugin\CartReorder\NewPersistentCartReorderQuoteProviderStrategyPlugin::REORDER_STRATEGY_NEW
+     */
     protected const REORDER_STRATEGY_NEW = 'new';
 
     protected ProductConcreteCartReorderRestApiFixtures $fixtures;

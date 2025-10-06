@@ -11,6 +11,7 @@ namespace Pyz\Yves\CustomerPage\Controller;
 
 use Spryker\Yves\Kernel\View\View;
 use SprykerShop\Yves\CustomerPage\Controller\RegisterController as SprykerRegisterController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -23,7 +24,7 @@ class RegisterController extends SprykerRegisterController
      */
     protected const INVITATION_SESSION_ID = 'COMPANY_USER_INVITATION';
 
-    public function indexAction(Request $request): View|\Symfony\Component\HttpFoundation\RedirectResponse
+    public function indexAction(Request $request): View|RedirectResponse
     {
         $response = $this->executeIndexAction($request);
 

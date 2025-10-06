@@ -50,12 +50,24 @@ class CartReorderApiTester extends ApiEndToEndTester
 {
     use _generated\CartReorderApiTesterActions;
 
+    /**
+     * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESOURCE_CART_ITEMS
+     */
     public const RESOURCE_CARTS = 'carts';
 
+    /**
+     * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESOURCE_CART_ITEMS
+     */
     public const RESOURCE_CART_ITEMS = 'items';
 
+    /**
+     * @uses \Spryker\Glue\ProductBundleCartsRestApi\ProductBundleCartsRestApiConfig::RESOURCE_BUNDLE_ITEMS
+     */
     public const RESOURCE_BUNDLE_ITEMS = 'bundle-items';
 
+    /**
+     * @uses \Spryker\Shared\PriceProduct\PriceProductConfig::PRICE_TYPE_DEFAULT
+     */
     public const PRICE_TYPE = 'DEFAULT';
 
     protected const PRICE_MODE = 'GROSS_MODE';

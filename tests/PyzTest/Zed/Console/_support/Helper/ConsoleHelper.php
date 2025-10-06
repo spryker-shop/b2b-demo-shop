@@ -45,7 +45,7 @@ class ConsoleHelper extends Module
         ];
     }
 
-    protected function getCli(): Cli|\Codeception\Module
+    protected function getCli(): Cli|Module
     {
         return $this->getModule('Cli');
     }

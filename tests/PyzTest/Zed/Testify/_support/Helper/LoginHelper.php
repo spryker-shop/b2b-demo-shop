@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace PyzTest\Zed\Testify\Helper;
 
+use Codeception\Lib\Framework;
 use Codeception\Module;
 
 class LoginHelper extends Module
@@ -24,7 +25,7 @@ class LoginHelper extends Module
         $i->click('Login');
     }
 
-    protected function getClient(): Module|\Codeception\Lib\Framework
+    protected function getClient(): Module|Framework
     {
         return $this->getModule('\\' . BootstrapHelper::class);
     }

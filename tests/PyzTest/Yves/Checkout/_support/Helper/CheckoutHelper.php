@@ -10,10 +10,11 @@ declare(strict_types = 1);
 namespace PyzTest\Yves\Checkout\Helper;
 
 use Codeception\Module;
+use Codeception\Module\WebDriver;
 
 class CheckoutHelper extends Module
 {
-    protected function getWebDriver(): Module|\Codeception\Module\WebDriver
+    protected function getWebDriver(): Module|WebDriver
     {
         return $this->getModule('WebDriver');
     }
