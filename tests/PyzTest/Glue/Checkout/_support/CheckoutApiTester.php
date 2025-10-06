@@ -474,7 +474,7 @@ class CheckoutApiTester extends ApiEndToEndTester
         $customerFacade = $this->getCustomerFacade();
         $customerFacade->createAddress($addressTransfer);
 
-        return $customerTransfer;
+        return $customerFacade->getCustomer($customerTransfer);
     }
 
     /**
