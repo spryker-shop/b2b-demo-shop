@@ -173,52 +173,52 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-#    docker-debian-php-83-postgresql-cypress-dynamic-store-off:
-#        if: >
-#            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci'))
-#            || github.event_name == 'schedule'
-#        name: "Docker / Debian / PHP 8.3 / PostgreSql / Cypress / UI / Dynamic Store OFF"
-#        runs-on: ubuntu-latest
-#        env:
-#            PROGRESS_TYPE: plain
-#            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
-#            TRAVIS: 1
-#            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-#        steps:
-#            -   uses: actions/checkout@v4
-#
-#            -   name: Install packages
-#                run: |
-#                    sudo apt-get update
-#                    sudo apt-get install -y python3-pip
-#                    pip3 install --upgrade pip
-#                    pip3 install awscli
-#
-#            -   name: Install cypress-tests folder
-#                run: |
-#                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
-#                    cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
-#
-#            -   name: Install Project
-#                continue-on-error: true
-#                run: |
-#                    git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
-#                    docker/sdk boot deploy.ci.acceptance.postges.dynamic-store-off.cypress.yml
-#                    sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local glue-backend.de.spryker.local glue-backend.at.spryker.local glue-storefront.de.spryker.local glue-storefront.at.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
-#                    docker/sdk up -t
-#                    docker/sdk cli composer dump-autoload -o -a --apcu
-#            -   name: Run Tests
-#                run: |
-#                    docker/sdk exec cypress-tests cp .env.example .env
-#                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
-#            -   name: Upload artifacts
-#                if: failure()
-#                run: |
-#                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/ --recursive
-#
-#            -   name: Slack Notification for failed job
-#                uses: ./.github/actions/job-slack-notifications
-#                if: always()
+    docker-debian-php-83-postgresql-cypress-dynamic-store-off:
+        if: >
+            (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci'))
+            || github.event_name == 'schedule'
+        name: "Docker / Debian / PHP 8.3 / PostgreSql / Cypress / UI / Dynamic Store OFF"
+        runs-on: ubuntu-latest
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
+            TRAVIS: 1
+            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install packages
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install -y python3-pip
+                    pip3 install --upgrade pip
+                    pip3 install awscli
+
+            -   name: Install cypress-tests folder
+                run: |
+                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
+                    cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
+
+            -   name: Install Project
+                continue-on-error: true
+                run: |
+                    git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.acceptance.postges.dynamic-store-off.cypress.yml
+                    sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local glue-backend.de.spryker.local glue-backend.at.spryker.local glue-storefront.de.spryker.local glue-storefront.at.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
+                    docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+            -   name: Run Tests
+                run: |
+                    docker/sdk exec cypress-tests cp .env.example .env
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
+            -   name: Upload artifacts
+                if: failure()
+                run: |
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/ --recursive
+
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
 
     docker-alpine-php-83-postgresql-dynamic-store-off-robot-ui:
         if: >
