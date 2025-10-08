@@ -10,7 +10,7 @@ declare(strict_types = 1);
 namespace Pyz\Zed\OauthCompanyUser;
 
 use Spryker\Zed\OauthCompanyUser\OauthCompanyUserDependencyProvider as SprykerOauthCompanyUserDependencyProvider;
-use Spryker\Zed\OauthPermission\Communication\Plugin\OauthCompanyUser\PermissionOauthCompanyUserIdentifierExpanderPlugin;
+use Spryker\Zed\OauthPermission\Communication\Plugin\OauthCompanyUser\StoredPermissionOauthCompanyUserIdentifierExpanderPlugin;
 
 class OauthCompanyUserDependencyProvider extends SprykerOauthCompanyUserDependencyProvider
 {
@@ -20,7 +20,7 @@ class OauthCompanyUserDependencyProvider extends SprykerOauthCompanyUserDependen
     protected function getOauthCompanyUserIdentifierExpanderPlugins(): array
     {
         return [
-            new PermissionOauthCompanyUserIdentifierExpanderPlugin(),
+            new StoredPermissionOauthCompanyUserIdentifierExpanderPlugin(),
         ];
     }
 }
