@@ -583,6 +583,9 @@ foreach ($rabbitConnections as $key => $connection) {
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === $defaultKey;
 }
 
+$config[RabbitMqEnv::RABBITMQ_HEART_BEAT_SECONDS] = 300;
+$config[RabbitMqEnv::RABBITMQ_PUBLISH_CONFIRM_ENABLED] = true;
+
 // >>> SYNCHRONIZATION
 $config[SynchronizationConstants::DEFAULT_SYNC_SEARCH_QUEUE_MESSAGE_CHUNK_SIZE] = 1000;
 
