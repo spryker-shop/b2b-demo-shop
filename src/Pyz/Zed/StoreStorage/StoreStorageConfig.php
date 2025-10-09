@@ -33,14 +33,14 @@ class StoreStorageConfig extends SprykerStoreStorageConfig
     public function getStoreCreationResourcesToReSync(): array
     {
         return [
-        GlossaryStorageConfig::TRANSLATION_RESOURCE_NAME,
-        ProductReviewSearchConfig::PRODUCT_REVIEW_RESOURCE_NAME,
-        NavigationStorageConstants::RESOURCE_NAME,
-        ProductMeasurementUnitStorageConfig::PRODUCT_MEASUREMENT_UNIT_RESOURCE_NAME,
-        ProductPackagingUnitStorageConfig::PRODUCT_PACKAGING_UNIT_RESOURCE_NAME,
-        CustomerAccessStorageConstants::CUSTOMER_ACCESS_RESOURCE_NAME,
-        CompanyUserStorageConfig::COMPANY_USER_RESOURCE_NAME,
-        SalesReturnSearchConfig::RETURN_REASON_RESOURCE_NAME,
+            GlossaryStorageConfig::TRANSLATION_RESOURCE_NAME,
+            ProductReviewSearchConfig::PRODUCT_REVIEW_RESOURCE_NAME,
+            NavigationStorageConstants::RESOURCE_NAME,
+            ProductMeasurementUnitStorageConfig::PRODUCT_MEASUREMENT_UNIT_RESOURCE_NAME,
+            ProductPackagingUnitStorageConfig::PRODUCT_PACKAGING_UNIT_RESOURCE_NAME,
+            CustomerAccessStorageConstants::CUSTOMER_ACCESS_RESOURCE_NAME,
+            CompanyUserStorageConfig::COMPANY_USER_RESOURCE_NAME,
+            SalesReturnSearchConfig::RETURN_REASON_RESOURCE_NAME,
         ];
     }
 }
