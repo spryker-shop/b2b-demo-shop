@@ -34,109 +34,47 @@ use Spryker\Zed\Url\Dependency\UrlEvents;
  */
 class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @var string
-     */
     public const KEY_PRODUCT_SET_KEY = 'product_set_key';
 
-    /**
-     * @var string
-     */
     public const KEY_NAME = 'name';
 
-    /**
-     * @var string
-     */
     public const KEY_DESCRIPTION = 'description';
 
-    /**
-     * @var string
-     */
     public const KEY_META_TITLE = 'meta_title';
 
-    /**
-     * @var string
-     */
     public const KEY_META_DESCRIPTION = 'meta_description';
 
-    /**
-     * @var string
-     */
     public const KEY_META_KEYWORDS = 'meta_keywords';
 
-    /**
-     * @var string
-     */
     public const KEY_URL = 'url';
 
-    /**
-     * @var string
-     */
     public const KEY_IS_ACTIVE = 'is_active';
 
-    /**
-     * @var string
-     */
     public const KEY_WEIGHT = 'weight';
 
-    /**
-     * @var string
-     */
     public const KEY_ABSTRACT_SKUS = 'abstract_skus';
 
-    /**
-     * @var string
-     */
     public const KEY_IMAGE_SET = 'image_set';
 
-    /**
-     * @var string
-     */
     public const KEY_IMAGES = 'images';
 
-    /**
-     * @var string
-     */
     public const KEY_IMAGE_LARGE = 'image_large';
 
-    /**
-     * @var string
-     */
     protected const KEY_ALT_TEXT_SMALL = 'alt_text_small';
 
-    /**
-     * @var string
-     */
     protected const KEY_ALT_TEXT_LARGE = 'alt_text_large';
 
-    /**
-     * @var string
-     */
     protected const GLOSSARY_KEY_PREFIX = 'product_image';
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
-     */
-    protected $productRepository;
+    protected ProductRepositoryInterface $productRepository;
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     */
     public function __construct(ProductRepositoryInterface $productRepository)
     {
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $productSetEntity = $this->findOrCreateProductSet($dataSet);
@@ -146,11 +84,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
         $this->findOrCreateProductImageSet($dataSet, $productSetEntity);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\ProductSet\Persistence\SpyProductSet
-     */
     protected function findOrCreateProductSet(DataSetInterface $dataSet): SpyProductSet
     {
         $productSetEntity = SpyProductSetQuery::create()
@@ -169,12 +102,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
         return $productSetEntity;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Orm\Zed\ProductSet\Persistence\SpyProductSet $productSetEntity
-     *
-     * @return void
-     */
     protected function findOrCreateProductAbstractSet(DataSetInterface $dataSet, SpyProductSet $productSetEntity): void
     {
         $productAbstractSkus = explode(',', $dataSet[static::KEY_ABSTRACT_SKUS]);
@@ -201,12 +128,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Orm\Zed\ProductSet\Persistence\SpyProductSet $productSetEntity
-     *
-     * @return void
-     */
     protected function findOrCreateProductSetData(DataSetInterface $dataSet, SpyProductSet $productSetEntity): void
     {
         foreach ($dataSet[LocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
@@ -245,12 +166,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Orm\Zed\ProductSet\Persistence\SpyProductSet $productSetEntity
-     *
-     * @return void
-     */
     protected function findOrCreateProductImageSet(DataSetInterface $dataSet, SpyProductSet $productSetEntity): void
     {
         foreach ($dataSet[ProductSetImageExtractorStep::KEY_TARGET] as $imageSetIndex => $imageSet) {
@@ -297,14 +212,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Orm\Zed\ProductImage\Persistence\SpyProductImage $productImageEntity
-     * @param string $keyAltTextSmall
-     * @param string $keyAltTextLarge
-     *
-     * @return void
-     */
     protected function createOrUpdateProductImageAltTexts(
         DataSetInterface $dataSet,
         SpyProductImage $productImageEntity,
@@ -329,11 +236,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
         }
     }
 
-    /**
-     * @param \Orm\Zed\ProductImage\Persistence\SpyProductImage $productImageEntity
-     *
-     * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
-     */
     protected function saveProductImageAltTextGlossaryKeys(SpyProductImage $productImageEntity): SpyProductImage
     {
         $altTextLargeGlossaryKey = sprintf(
@@ -355,13 +257,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
         return $productImageEntity;
     }
 
-    /**
-     * @param string $glossaryKey
-     * @param int $idLocale
-     * @param string $value
-     *
-     * @return void
-     */
     protected function createOrUpdateGlossaryKey(
         string $glossaryKey,
         int $idLocale,

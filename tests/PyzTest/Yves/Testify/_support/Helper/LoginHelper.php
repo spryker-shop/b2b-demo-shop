@@ -9,16 +9,11 @@ declare(strict_types = 1);
 
 namespace PyzTest\Yves\Testify\Helper;
 
+use Codeception\Lib\Framework;
 use Codeception\Module;
 
 class LoginHelper extends Module
 {
-    /**
-     * @param string $username
-     * @param string $password
-     *
-     * @return void
-     */
     public function amLoggedInCustomer(string $username = 'spencor.hopkins@spryker.com', string $password = 'change123'): void
     {
         $i = $this->getClient();
@@ -30,10 +25,7 @@ class LoginHelper extends Module
         $i->click('Login');
     }
 
-    /**
-     * @return \Codeception\Module|\Codeception\Lib\Framework
-     */
-    protected function getClient()
+    protected function getClient(): Module|Framework
     {
         return $this->getModule('\\' . BootstrapHelper::class);
     }

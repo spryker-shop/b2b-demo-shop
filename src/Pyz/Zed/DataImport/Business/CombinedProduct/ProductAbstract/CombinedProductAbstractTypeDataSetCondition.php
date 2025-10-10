@@ -14,21 +14,10 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CombinedProductAbstractTypeDataSetCondition implements DataSetConditionInterface
 {
-    /**
-     * @var string
-     */
     protected const ASSIGNABLE_PRODUCT_TYPE_ABSTRACT = 'abstract';
 
-    /**
-     * @var string
-     */
     protected const ASSIGNABLE_PRODUCT_TYPE_BOTH = 'both';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return bool
-     */
     public function hasData(DataSetInterface $dataSet): bool
     {
         if (

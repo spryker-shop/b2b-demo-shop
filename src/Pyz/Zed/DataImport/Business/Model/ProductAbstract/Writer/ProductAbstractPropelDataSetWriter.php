@@ -27,24 +27,13 @@ use Spryker\Zed\Url\Dependency\UrlEvents;
 
 class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
 {
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
-    protected $productRepository;
+    protected ProductRepository $productRepository;
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
     public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function write(DataSetInterface $dataSet): void
     {
         $productAbstractEntity = $this->createOrUpdateProductAbstract($dataSet);
@@ -58,11 +47,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
         DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
-     */
     protected function createOrUpdateProductAbstract(DataSetInterface $dataSet): SpyProductAbstract
     {
         $productAbstractEntityTransfer = $this->getProductAbstractTransfer($dataSet);
@@ -82,12 +66,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
         return $productAbstractEntity;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     protected function createOrUpdateProductAbstractLocalizedAbstract(
         DataSetInterface $dataSet,
         int $idProductAbstract,
@@ -114,12 +92,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     protected function createOrUpdateProductCategories(DataSetInterface $dataSet, int $idProductAbstract): void
     {
         $productCategoryTransfers = $this->getProductCategoryTransfers($dataSet);
@@ -145,12 +117,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     protected function createOrUpdateProductUrls(DataSetInterface $dataSet, int $idProductAbstract): void
     {
         $productUrlTransfers = $this->getProductUrlTransfers($dataSet);
@@ -180,11 +146,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
         }
     }
 
-    /**
-     * @param string $abstractProductUrl
-     *
-     * @return void
-     */
     protected function cleanupRedirectUrls(string $abstractProductUrl): void
     {
         SpyUrlQuery::create()
@@ -193,19 +154,11 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
             ->delete();
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         DataImporterPublisher::triggerEvents();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer
-     */
     protected function getProductAbstractTransfer(DataSetInterface $dataSet): SpyProductAbstractEntityTransfer
     {
         return $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER];

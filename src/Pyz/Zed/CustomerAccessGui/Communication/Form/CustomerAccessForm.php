@@ -22,31 +22,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class CustomerAccessForm extends SprykerCustomerAccessForm
 {
-    /**
-     * @var string
-     */
     public const OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE';
 
-    /**
-     * @var string
-     */
     public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE';
 
-    /**
-     * @var string
-     */
     public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA';
 
-    /**
-     * @var string
-     */
     protected const FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE);
@@ -57,8 +40,6 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array<string> $options
-     *
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

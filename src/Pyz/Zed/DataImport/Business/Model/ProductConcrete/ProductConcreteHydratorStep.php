@@ -20,134 +20,60 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductConcreteHydratorStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @var string
-     */
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
 
-    /**
-     * @var string
-     */
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
 
-    /**
-     * @var string
-     */
     public const COLUMN_NAME = 'name';
 
-    /**
-     * @var string
-     */
     public const COLUMN_DESCRIPTION = 'description';
 
-    /**
-     * @var string
-     */
     public const COLUMN_IS_SEARCHABLE = 'is_searchable';
 
-    /**
-     * @var string
-     */
     public const COLUMN_BUNDLES = 'bundled';
 
-    /**
-     * @var string
-     */
     public const COLUMN_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
-    /**
-     * @var string
-     */
     public const KEY_ATTRIBUTES = 'attributes';
 
-    /**
-     * @var string
-     */
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
-    /**
-     * @var string
-     */
     public const KEY_LOCALES = 'locales';
 
-    /**
-     * @var string
-     */
     public const KEY_SKU = 'sku';
 
-    /**
-     * @var string
-     */
     public const KEY_IS_ACTIVE = 'is_active';
 
-    /**
-     * @var string
-     */
     public const KEY_IS_COMPLETE = 'is_complete';
 
-    /**
-     * @var string
-     */
     public const KEY_PRODUCT_BUNDLE_TRANSFER = 'productBundleEntityTransfer';
 
-    /**
-     * @var string
-     */
     public const KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
 
-    /**
-     * @var string
-     */
     public const KEY_PRODUCT_SEARCH_TRANSFER = 'productSearchEntityTransfer';
 
-    /**
-     * @var string
-     */
     public const KEY_PRODUCT_BUNDLE_SKU = 'bundledProductSku';
 
-    /**
-     * @var string
-     */
     public const DATA_PRODUCT_CONCRETE_TRANSFER = 'DATA_PRODUCT_CONCRETE_TRANSFER';
 
-    /**
-     * @var string
-     */
     public const DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
 
-    /**
-     * @var string
-     */
     public const DATA_PRODUCT_BUNDLE_TRANSFER = 'DATA_PRODUCT_BUNDLE_TRANSFER';
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
-    protected $productRepository;
+    protected ProductRepository $productRepository;
 
     /**
      * @var array<bool> Keys are product column names
      */
-    protected static $isProductColumnBuffer = [];
+    protected static array $isProductColumnBuffer = [];
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
     public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->importProduct($dataSet);
@@ -155,11 +81,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $this->importBundles($dataSet);
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     protected function importProduct(DataSetInterface $dataSet): void
     {
         $productEntityTransfer = new SpyProductEntityTransfer();
@@ -179,11 +100,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_CONCRETE_TRANSFER] = $productEntityTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     protected function importProductLocalizedAttributes(DataSetInterface $dataSet): void
     {
         $localizedAttributeTransfer = [];
@@ -212,11 +128,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     protected function importBundles(DataSetInterface $dataSet): void
     {
         $productBundleTransfer = [];
@@ -240,11 +151,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $dataSet[static::DATA_PRODUCT_BUNDLE_TRANSFER] = $productBundleTransfer;
     }
 
-    /**
-     * @param string $columnName
-     *
-     * @return bool
-     */
     protected function isProductColumn(string $columnName): bool
     {
         if (isset(static::$isProductColumnBuffer[$columnName])) {

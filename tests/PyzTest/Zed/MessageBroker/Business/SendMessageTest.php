@@ -29,24 +29,12 @@ use Symfony\Component\Messenger\Envelope;
  */
 class SendMessageTest extends Unit
 {
-    /**
-     * @var string
-     */
     public const CHANNEL_NAME = 'channel';
 
-    /**
-     * @var string
-     */
     protected const MESSAGE_BROKER_TRANSFER_VALUE = 'value';
 
-    /**
-     * @var \PyzTest\Zed\MessageBroker\MessageBrokerBusinessTester
-     */
     protected MessageBrokerBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testCheckAttributesBeforeSendingMessage(): void
     {
         // Arrange
@@ -103,11 +91,6 @@ class SendMessageTest extends Unit
         $this->tester->getMessageBrokerFacade()->sendMessage($messageBrokerTestMessageTransfer);
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $messageTransfer
-     *
-     * @return string
-     */
     protected function getTransferNameFromClass(TransferInterface $messageTransfer): string
     {
         $messageName = get_class($messageTransfer);

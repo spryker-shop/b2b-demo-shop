@@ -20,9 +20,6 @@ use Symfony\Component\Form\FormInterface;
  */
 class CustomerAccessGuiCommunicationFactory extends SprykerCustomerAccessGuiCommunicationFactory
 {
-    /**
-     * @return \Pyz\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccessDataProvider
-     */
     public function createCustomerAccessDataProvider(): CustomerAccessDataProvider
     {
         return new CustomerAccessDataProvider($this->getCustomerAccessFacade());
@@ -31,8 +28,6 @@ class CustomerAccessGuiCommunicationFactory extends SprykerCustomerAccessGuiComm
     /**
      * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
      * @param array<mixed> $options
-     *
-     * @return \Symfony\Component\Form\FormInterface
      */
     public function getCustomerAccessForm(CustomerAccessTransfer $customerAccessTransfer, array $options): FormInterface
     {

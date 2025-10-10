@@ -21,8 +21,6 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
 {
     /**
      * @param array<int> $stateIds
-     *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
     public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery
     {
@@ -42,11 +40,6 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
             ->find();
     }
 
-    /**
-     * @param int $idStateMachineItem
-     *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
-     */
     public function queryExampleStateMachineItemByIdStateMachineItem(int $idStateMachineItem): PyzExampleStateMachineItemQuery
     {
         return $this->getFactory()

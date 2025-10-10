@@ -26,37 +26,18 @@ use PyzTest\Zed\MessageBroker\PaymentPresentationTester;
  */
 class PaymentCaptureFailedMessageCest
 {
-    /**
-     * @var string
-     */
     protected const INITIAL_ITEM_STATE = 'payment capture pending';
 
-    /**
-     * @var string
-     */
     protected const INITIAL_ITEM_STATE_AFTER_AUTHORIZATION = 'payment capture pending';
 
-    /**
-     * @var string
-     */
     public const FINAL_ITEM_STATE = 'payment failed';
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $i
-     *
-     * @return void
-     */
     public function _before(PaymentPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     *
-     * @return void
-     */
     public function testPaymentCaptureFailedMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
         // Arrange
@@ -73,11 +54,6 @@ class PaymentCaptureFailedMessageCest
         $I->assertOrderHasCorrectState($salesOrderEntity, static::FINAL_ITEM_STATE);
     }
 
-    /**
-     * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
-     *
-     * @return void
-     */
     public function testPaymentCaptureFailedMessageIsSuccessfullyHandledWhenItemWasAuthorized(PaymentPresentationTester $I): void
     {
         // Arrange

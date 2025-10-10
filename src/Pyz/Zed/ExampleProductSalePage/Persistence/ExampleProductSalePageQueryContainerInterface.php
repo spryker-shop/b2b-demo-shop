@@ -22,8 +22,6 @@ interface ExampleProductSalePageQueryContainerInterface
      * @api
      *
      * @param string $labelName
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
      */
     public function queryProductLabelByName(string $labelName): SpyProductLabelQuery;
 
@@ -31,8 +29,6 @@ interface ExampleProductSalePageQueryContainerInterface
      * @api
      *
      * @param int $idProductLabel
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery
      */
     public function queryRelationsBecomingInactive(int $idProductLabel): SpyProductLabelProductAbstractQuery;
 
@@ -40,8 +36,6 @@ interface ExampleProductSalePageQueryContainerInterface
      * @api
      *
      * @param int $idProductLabel
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryRelationsBecomingActive(int $idProductLabel): SpyProductAbstractQuery;
 }

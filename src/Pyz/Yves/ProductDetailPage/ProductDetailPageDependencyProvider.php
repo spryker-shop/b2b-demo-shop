@@ -14,16 +14,8 @@ use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as Sp
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const CLIENT_PRODUCT_STORAGE_PYZ = 'CLIENT_PRODUCT_STORAGE_PYZ';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -32,11 +24,6 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addProductStoragePyzClient(Container $container): Container
     {
         $container->set(static::CLIENT_PRODUCT_STORAGE_PYZ, function (Container $container) {

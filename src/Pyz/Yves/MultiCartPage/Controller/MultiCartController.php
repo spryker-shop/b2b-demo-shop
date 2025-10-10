@@ -19,17 +19,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MultiCartController extends SprykerShopMultiCartController
 {
-    /**
-     * @var string
-     */
     public const REQUEST_HEADER_REFERER = 'referer';
 
-    /**
-     * @param int $idQuote
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function setDefaultBackAction(int $idQuote, Request $request): RedirectResponse
     {
         $multiCartClient = $this->getFactory()
@@ -50,11 +41,6 @@ class MultiCartController extends SprykerShopMultiCartController
         return $this->redirectResponseExternal($this->getRefererUrl($request));
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return string
-     */
     protected function getRefererUrl(Request $request): string
     {
         if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {

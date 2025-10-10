@@ -34,27 +34,14 @@ class MultiFactorAuthStorefrontApiTester extends StorefrontApiEndToEndTester
 {
     use _generated\MultiFactorAuthStorefrontApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const TEST_PASSWORD = 'Change!23456';
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
     public function authorizeCustomerToStorefrontApi(CustomerTransfer $customerTransfer): void
     {
         $oauthResponseTransfer = $this->havePasswordAuthorizationToStorefrontApi($customerTransfer);
         $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
     }
 
-    /**
-     * @param string $customerName
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function createCustomer(string $customerName): CustomerTransfer
     {
         $customerTransfer = $this->haveCustomer([
@@ -69,12 +56,6 @@ class MultiFactorAuthStorefrontApiTester extends StorefrontApiEndToEndTester
         return $customerTransfer->setPassword(static::TEST_PASSWORD);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param string $mfaType
-     *
-     * @return string|null
-     */
     public function getCustomerMultiFactorAuthCodeFromDatabase(CustomerTransfer $customerTransfer, string $mfaType): ?string
     {
         $customerMultiFactorAuthCodeEntity = (new SpyCustomerMultiFactorAuthCodesQuery())

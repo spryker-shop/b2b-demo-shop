@@ -15,14 +15,8 @@ use Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInt
 
 class ExampleStateMachineItemReader
 {
-    /**
-     * @var \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface
-     */
-    protected $exampleStateMachineQueryContainer;
+    protected ExampleStateMachineQueryContainerInterface $exampleStateMachineQueryContainer;
 
-    /**
-     * @param \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface $exampleStateMachineQueryContainer
-     */
     public function __construct(ExampleStateMachineQueryContainerInterface $exampleStateMachineQueryContainer)
     {
         $this->exampleStateMachineQueryContainer = $exampleStateMachineQueryContainer;

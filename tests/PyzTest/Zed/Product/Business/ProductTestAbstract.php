@@ -28,200 +28,120 @@ use Orm\Zed\Stock\Persistence\SpyStock;
 use Orm\Zed\Tax\Persistence\SpyTaxRate;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use Orm\Zed\Tax\Persistence\SpyTaxSetTax;
-use Spryker\Service\UtilEncoding\UtilEncodingService;
 use Spryker\Service\UtilText\UtilTextService;
+use Spryker\Service\UtilText\UtilTextServiceInterface;
 use Spryker\Zed\Currency\Business\CurrencyFacade;
+use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\Locale\Business\LocaleFacade;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Zed\PriceProduct\Persistence\PriceProductQueryContainer;
+use Spryker\Zed\PriceProduct\Persistence\PriceProductQueryContainerInterface;
+use Spryker\Zed\Product\Business\Product\ProductAbstractManagerInterface;
+use Spryker\Zed\Product\Business\Product\ProductConcreteManagerInterface;
 use Spryker\Zed\Product\Business\Product\ProductManager;
+use Spryker\Zed\Product\Business\Product\ProductManagerInterface;
 use Spryker\Zed\Product\Business\ProductBusinessFactory;
 use Spryker\Zed\Product\Business\ProductFacade;
+use Spryker\Zed\Product\Business\ProductFacadeInterface;
+use Spryker\Zed\Product\Dependency\Service\ProductToUtilEncodingInterface;
 use Spryker\Zed\Product\Persistence\ProductQueryContainer;
+use Spryker\Zed\Product\Persistence\ProductQueryContainerInterface;
 use Spryker\Zed\ProductImage\Persistence\ProductImageQueryContainer;
+use Spryker\Zed\ProductImage\Persistence\ProductImageQueryContainerInterface;
 use Spryker\Zed\Store\Business\StoreFacade;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 use Spryker\Zed\Tax\Persistence\TaxQueryContainer;
+use Spryker\Zed\Tax\Persistence\TaxQueryContainerInterface;
 use Spryker\Zed\Touch\Business\TouchFacade;
+use Spryker\Zed\Touch\Business\TouchFacadeInterface;
 use Spryker\Zed\Touch\Persistence\TouchQueryContainer;
+use Spryker\Zed\Touch\Persistence\TouchQueryContainerInterface;
 use Spryker\Zed\Url\Business\UrlFacade;
+use Spryker\Zed\Url\Business\UrlFacadeInterface;
 
 abstract class ProductTestAbstract extends Unit
 {
-    /**
-     * @var array
-     */
     public const PRODUCT_ABSTRACT_NAME = [
         'en_US' => 'Product name en_US',
         'de_DE' => 'Product name de_DE',
     ];
 
-    /**
-     * @var array
-     */
     public const PRODUCT_CONCRETE_NAME = [
         'en_US' => 'Product concrete name en_US',
         'de_DE' => 'Product concrete name de_DE',
     ];
 
-    /**
-     * @var array
-     */
     public const UPDATED_PRODUCT_ABSTRACT_NAME = [
         'en_US' => 'Updated Product name en_US',
         'de_DE' => 'Updated Product name de_DE',
     ];
 
-    /**
-     * @var array
-     */
     public const UPDATED_PRODUCT_CONCRETE_NAME = [
         'en_US' => 'Updated Product concrete name en_US',
         'de_DE' => 'Updated Product concrete name de_DE',
     ];
 
-    /**
-     * @var string
-     */
     public const ABSTRACT_SKU = 'foo';
 
-    /**
-     * @var string
-     */
     public const CONCRETE_SKU = 'foo-concrete';
 
-    /**
-     * @var string
-     */
     public const IMAGE_SET_NAME = 'Default';
 
-    /**
-     * @var string
-     */
     public const IMAGE_URL_LARGE = 'large';
 
-    /**
-     * @var string
-     */
     public const IMAGE_URL_SMALL = 'small';
 
-    /**
-     * @var int
-     */
     public const PRICE = 1234;
 
-    /**
-     * @var int
-     */
     public const STOCK_QUANTITY = 99;
 
-    /**
-     * @var string
-     */
     public const CURRENCY_ISO_CODE = 'EUR';
 
     /**
      * @var array<\Generated\Shared\Transfer\LocaleTransfer>
      */
-    protected $locales;
+    protected array $locales;
 
-    /**
-     * @var \Spryker\Zed\Product\Persistence\ProductQueryContainerInterface
-     */
-    protected $productQueryContainer;
+    protected ProductQueryContainerInterface $productQueryContainer;
 
-    /**
-     * @var \Spryker\Zed\ProductImage\Persistence\ProductImageQueryContainerInterface
-     */
-    protected $productImageQueryContainer;
+    protected ProductImageQueryContainerInterface $productImageQueryContainer;
 
-    /**
-     * @var \Spryker\Zed\PriceProduct\Persistence\PriceProductQueryContainerInterface
-     */
-    protected $priceProductQueryContainer;
+    protected PriceProductQueryContainerInterface $priceProductQueryContainer;
 
-    /**
-     * @var \Spryker\Zed\Touch\Persistence\TouchQueryContainerInterface
-     */
-    protected $touchQueryContainer;
+    protected TouchQueryContainerInterface $touchQueryContainer;
 
-    /**
-     * @var \Spryker\Zed\Tax\Persistence\TaxQueryContainerInterface
-     */
-    protected $taxQueryContainer;
+    protected TaxQueryContainerInterface $taxQueryContainer;
 
-    /**
-     * @var \Spryker\Zed\Product\Business\ProductFacadeInterface
-     */
-    protected $productFacade;
+    protected ProductFacadeInterface $productFacade;
 
-    /**
-     * @var \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
-     */
-    protected $priceProductFacade;
+    protected PriceProductFacadeInterface $priceProductFacade;
 
-    /**
-     * @var \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
-    protected $localeFacade;
+    protected LocaleFacadeInterface $localeFacade;
 
-    /**
-     * @var \Spryker\Zed\Url\Business\UrlFacadeInterface
-     */
-    protected $urlFacade;
+    protected UrlFacadeInterface $urlFacade;
 
-    /**
-     * @var \Spryker\Service\UtilText\UtilTextServiceInterface
-     */
-    protected $utilTextService;
+    protected UtilTextServiceInterface $utilTextService;
 
-    /**
-     * @var \Spryker\Zed\Touch\Business\TouchFacadeInterface
-     */
-    protected $touchFacade;
+    protected TouchFacadeInterface $touchFacade;
 
-    /**
-     * @var \Spryker\Zed\Product\Business\Product\ProductManagerInterface
-     */
-    protected $productManager;
+    protected ProductManagerInterface $productManager;
 
-    /**
-     * @var \Spryker\Zed\Product\Business\Product\ProductAbstractManagerInterface
-     */
-    protected $productAbstractManager;
+    protected ProductAbstractManagerInterface $productAbstractManager;
 
-    /**
-     * @var \Spryker\Zed\Product\Business\Product\ProductConcreteManagerInterface
-     */
-    protected $productConcreteManager;
+    protected ProductConcreteManagerInterface $productConcreteManager;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductAbstractTransfer
-     */
-    protected $productAbstractTransfer;
+    protected ProductAbstractTransfer $productAbstractTransfer;
 
-    /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    protected $productConcreteTransfer;
+    protected ProductConcreteTransfer $productConcreteTransfer;
 
-    /**
-     * @var \Spryker\Zed\Product\Dependency\Service\ProductToUtilEncodingInterface
-     */
-    protected $utilEncodingService;
+    protected ProductToUtilEncodingInterface $utilEncodingService;
 
-    /**
-     * @var \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
-     */
-    protected $currencyFacade;
+    protected CurrencyFacadeInterface $currencyFacade;
 
-    /**
-     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
-    protected $storeFacade;
+    protected StoreFacadeInterface $storeFacade;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -237,7 +157,7 @@ abstract class ProductTestAbstract extends Unit
         $this->priceProductQueryContainer = new PriceProductQueryContainer();
         $this->productImageQueryContainer = new ProductImageQueryContainer();
         $this->taxQueryContainer = new TaxQueryContainer();
-        $this->utilEncodingService = new UtilEncodingService();
+        $this->utilEncodingService = $this->createMock(ProductToUtilEncodingInterface::class);
         $this->currencyFacade = new CurrencyFacade();
         $this->storeFacade = new StoreFacade();
 
@@ -261,9 +181,6 @@ abstract class ProductTestAbstract extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     protected function setupLocales(): void
     {
         $this->locales['de_DE'] = new LocaleTransfer();
@@ -273,9 +190,6 @@ abstract class ProductTestAbstract extends Unit
         $this->locales['en_US']->setIdLocale(66)->setIsActive(true)->setLocaleName('en_US');
     }
 
-    /**
-     * @return void
-     */
     protected function setupProductAbstract(): void
     {
         $this->productAbstractTransfer = new ProductAbstractTransfer();
@@ -294,9 +208,6 @@ abstract class ProductTestAbstract extends Unit
         $this->productAbstractTransfer->setStoreRelation((new StoreRelationTransfer())->setIdStores([]));
     }
 
-    /**
-     * @return void
-     */
     protected function setupProductConcrete(): void
     {
         $this->productConcreteTransfer = new ProductConcreteTransfer();
@@ -313,9 +224,6 @@ abstract class ProductTestAbstract extends Unit
         $this->productConcreteTransfer->addLocalizedAttributes($localizedAttribute);
     }
 
-    /**
-     * @return void
-     */
     protected function setupTaxes(): void
     {
         $taxSet = new SpyTaxSet();
@@ -333,9 +241,6 @@ abstract class ProductTestAbstract extends Unit
         $this->productAbstractTransfer->setIdTaxSet($taxSet->getIdTaxSet());
     }
 
-    /**
-     * @return void
-     */
     protected function setupStocks(): void
     {
         $stockEntity = new SpyStock();
@@ -349,9 +254,6 @@ abstract class ProductTestAbstract extends Unit
         $this->productConcreteTransfer->setStocks(new ArrayObject($stock));
     }
 
-    /**
-     * @return void
-     */
     protected function setupPluginImages(): void
     {
         $imageSetTransfer = (new ProductImageSetTransfer())
@@ -374,9 +276,6 @@ abstract class ProductTestAbstract extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     protected function setupPluginPrices(): void
     {
         $currencyTransfer = $this->currencyFacade->fromIsoCode(static::CURRENCY_ISO_CODE);
@@ -407,35 +306,21 @@ abstract class ProductTestAbstract extends Unit
         $this->productConcreteTransfer->addPrice($priceProductTransfer2);
     }
 
-    /**
-     * @return void
-     */
     protected function setupAbstractPluginData(): void
     {
         $this->setupTaxes();
     }
 
-    /**
-     * @return void
-     */
     protected function setupConcretePluginData(): void
     {
         $this->setupStocks();
     }
 
-    /**
-     * @return void
-     */
     protected function setupDefaultProducts(): void
     {
         $this->productManager->addProduct($this->productAbstractTransfer, [$this->productConcreteTransfer]);
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
-     */
     protected function getProductAbstractEntityById(int $idProductAbstract): SpyProductAbstract
     {
         return $this->productQueryContainer
@@ -444,11 +329,6 @@ abstract class ProductTestAbstract extends Unit
             ->findOne();
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProduct
-     */
     protected function getProductConcreteEntityByAbstractId(int $idProductAbstract): SpyProduct
     {
         return $this->productQueryContainer

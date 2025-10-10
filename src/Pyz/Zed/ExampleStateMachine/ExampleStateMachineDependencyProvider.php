@@ -14,16 +14,8 @@ use Spryker\Zed\Kernel\Container;
 
 class ExampleStateMachineDependencyProvider extends AbstractBundleDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const FACADE_STATE_MACHINE = 'FACADE_STATE_MACHINE';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container->set(static::FACADE_STATE_MACHINE, function (Container $container) {
@@ -33,11 +25,6 @@ class ExampleStateMachineDependencyProvider extends AbstractBundleDependencyProv
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container->set(static::FACADE_STATE_MACHINE, function (Container $container) {

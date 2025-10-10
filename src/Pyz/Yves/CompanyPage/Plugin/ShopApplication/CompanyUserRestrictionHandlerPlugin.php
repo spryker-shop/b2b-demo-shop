@@ -18,9 +18,6 @@ use Symfony\Component\HttpKernel\Event\ControllerEvent;
 
 class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionHandlerPlugin
 {
-    /**
-     * @var string
-     */
     protected const PERMISSION_KEY = 'SeeCompanyMenuPermissionPlugin';
 
     /**
@@ -57,11 +54,6 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
         throw new CustomerAccessDeniedException(static::GLOSSARY_KEY_COMPANY_PAGE_RESTRICTED);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function canAccess(CustomerTransfer $customerTransfer): bool
     {
         $companyUserTransfer = $customerTransfer->getCompanyUserTransfer();
@@ -69,11 +61,6 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
         return $companyUserTransfer && $this->hasPermission($companyUserTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function hasPermission(CompanyUserTransfer $customerTransfer): bool
     {
         $companyRoleTransfers = $customerTransfer

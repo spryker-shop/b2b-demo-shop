@@ -15,9 +15,6 @@ use Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface;
 
 class ExampleChart implements ChartPluginInterface
 {
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return 'testChart';
@@ -25,8 +22,6 @@ class ExampleChart implements ChartPluginInterface
 
     /**
      * @param string|null $dataIdentifier
-     *
-     * @return \Generated\Shared\Transfer\ChartDataTransfer
      */
     public function getChartData($dataIdentifier = null): ChartDataTransfer // phpcs:ignore
     {
@@ -38,9 +33,6 @@ class ExampleChart implements ChartPluginInterface
         return $data;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
-     */
     protected function getTrace(): ChartDataTraceTransfer
     {
         $trace = new ChartDataTraceTransfer();

@@ -18,9 +18,6 @@ use Spryker\Zed\Queue\QueueConfig as SprykerQueueConfig;
 
 class QueueConfig extends SprykerQueueConfig
 {
-    /**
-     * @var string
-     */
     public const RABBITMQ = 'rabbitmq';
 
     /**
@@ -66,9 +63,6 @@ class QueueConfig extends SprykerQueueConfig
         ];
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer
-     */
     protected function getRabbitMqQueueMessageCheckOptions(): RabbitMqConsumerOptionTransfer
     {
         $queueOptionTransfer = $this->getRabbitMqQueueConsumerOptions();
@@ -77,9 +71,6 @@ class QueueConfig extends SprykerQueueConfig
         return $queueOptionTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer
-     */
     protected function getRabbitMqQueueConsumerOptions(): RabbitMqConsumerOptionTransfer
     {
         $queueOptionTransfer = new RabbitMqConsumerOptionTransfer();

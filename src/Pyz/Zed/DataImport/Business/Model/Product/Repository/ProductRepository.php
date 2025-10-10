@@ -21,31 +21,17 @@ use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 
 class ProductRepository implements ProductRepositoryInterface
 {
-    /**
-     * @var string
-     */
     public const ID_PRODUCT = 'idProduct';
 
-    /**
-     * @var string
-     */
     public const ID_PRODUCT_ABSTRACT = 'idProductAbstract';
 
-    /**
-     * @var string
-     */
     public const ABSTRACT_SKU = 'abstractSku';
 
     /**
      * @var array<string, array<string, mixed>>
      */
-    protected static $resolved = [];
+    protected static array $resolved = [];
 
-    /**
-     * @param string $sku
-     *
-     * @return int
-     */
     public function getIdProductByConcreteSku(string $sku): int
     {
         if (!isset(static::$resolved[$sku])) {
@@ -55,11 +41,6 @@ class ProductRepository implements ProductRepositoryInterface
         return static::$resolved[$sku][static::ID_PRODUCT];
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return string
-     */
     public function getAbstractSkuByConcreteSku(string $sku): string
     {
         if (!isset(static::$resolved[$sku])) {
@@ -69,11 +50,6 @@ class ProductRepository implements ProductRepositoryInterface
         return static::$resolved[$sku][static::ABSTRACT_SKU];
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return int
-     */
     public function getIdProductAbstractByAbstractSku(string $sku): int
     {
         if (!isset(static::$resolved[$sku])) {
@@ -83,11 +59,6 @@ class ProductRepository implements ProductRepositoryInterface
         return static::$resolved[$sku][static::ID_PRODUCT_ABSTRACT];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     *
-     * @return \Propel\Runtime\Collection\ArrayCollection
-     */
     public function getProductConcreteAttributesCollection(PaginationTransfer $paginationTransfer): ArrayCollection
     {
         $productQuery = SpyProductQuery::create()
@@ -104,8 +75,6 @@ class ProductRepository implements ProductRepositoryInterface
      * @param string $sku
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return void
      */
     private function resolveProductByConcreteSku(string $sku): void
     {
@@ -127,8 +96,6 @@ class ProductRepository implements ProductRepositoryInterface
      * @param string $sku
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return void
      */
     private function resolveProductByAbstractSku(string $sku): void
     {
@@ -144,11 +111,6 @@ class ProductRepository implements ProductRepositoryInterface
         ];
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return void
-     */
     public function addProductAbstract(SpyProductAbstract $productAbstractEntity): void
     {
         static::$resolved[$productAbstractEntity->getSku()] = [
@@ -156,12 +118,6 @@ class ProductRepository implements ProductRepositoryInterface
         ];
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProduct $productEntity
-     * @param string|null $abstractSku
-     *
-     * @return void
-     */
     public function addProductConcrete(SpyProduct $productEntity, ?string $abstractSku = null): void
     {
         static::$resolved[$productEntity->getSku()] = [
@@ -196,20 +152,11 @@ class ProductRepository implements ProductRepositoryInterface
         return $productEntities->toArray();
     }
 
-    /**
-     * @return void
-     */
     public function flush(): void
     {
         static::$resolved = [];
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductQuery $productQuery
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductQuery
-     */
     protected function applyPagination(SpyProductQuery $productQuery, PaginationTransfer $paginationTransfer): SpyProductQuery
     {
         if ($paginationTransfer->getOffset() === null || $paginationTransfer->getLimit() === null) {

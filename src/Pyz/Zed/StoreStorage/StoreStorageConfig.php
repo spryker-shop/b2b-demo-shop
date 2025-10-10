@@ -22,9 +22,6 @@ use Spryker\Zed\StoreStorage\StoreStorageConfig as SprykerStoreStorageConfig;
 
 class StoreStorageConfig extends SprykerStoreStorageConfig
 {
-    /**
-     * @return string|null
-     */
     public function getStoreSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;

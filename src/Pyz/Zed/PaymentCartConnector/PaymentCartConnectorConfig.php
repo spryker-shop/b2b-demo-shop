@@ -13,9 +13,6 @@ use Spryker\Zed\PaymentCartConnector\PaymentCartConnectorConfig as SprykerPaymen
 
 class PaymentCartConnectorConfig extends SprykerPaymentCartConnectorConfig
 {
-    /**
-     * @var list<string>
-     */
     protected const EXCLUDED_PAYMENT_METHODS = [
         'PayPal Express',
     ];

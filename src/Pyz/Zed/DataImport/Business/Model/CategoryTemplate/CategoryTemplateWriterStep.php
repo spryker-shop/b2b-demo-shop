@@ -15,21 +15,10 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CategoryTemplateWriterStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     public const KEY_NAME = 'template_name';
 
-    /**
-     * @var string
-     */
     public const KEY_PATH = 'template_path';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $categoryTemplateEntity = SpyCategoryTemplateQuery::create()

@@ -18,14 +18,8 @@ use Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterfa
  */
 class SeeCompanyMenuPermissionPlugin extends AbstractPlugin implements PermissionPluginInterface
 {
-    /**
-     * @var string
-     */
     public const KEY = 'SeeCompanyMenuPermissionPlugin';
 
-    /**
-     * @return string
-     */
     public function getKey(): string
     {
         return static::KEY;

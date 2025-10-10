@@ -16,26 +16,12 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_CUSTOMER_NAME = 'multiFactorAuthStorefrontApiCustomer@example.com';
 
-    /**
-     * @var string
-     */
     protected const MFA_TYPE = 'email';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
-     */
     public function buildFixtures(MultiFactorAuthStorefrontApiTester $I): FixturesContainerInterface
     {
         $this->customerTransfer = $I->createCustomer(static::TEST_CUSTOMER_NAME);
@@ -43,9 +29,6 @@ class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, 
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -68,11 +51,6 @@ class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, 
         ];
     }
 
-    /**
-     * @param string $resourceName
-     *
-     * @return string
-     */
     public function generateUrl(string $resourceName): string
     {
         return sprintf('/%s', $resourceName);

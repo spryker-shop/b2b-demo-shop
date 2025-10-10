@@ -20,55 +20,22 @@ use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInt
 
 class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterface
 {
-    /**
-     * @var string
-     */
     protected const KEY_CONCRETE_SKU = 'concrete_sku';
 
-    /**
-     * @var string
-     */
     protected const KEY_ABSTRACT_SKU = 'abstract_sku';
 
-    /**
-     * @var string
-     */
     protected const KEY_ATTRIBUTES = 'attributes';
 
-    /**
-     * @uses \Orm\Zed\Product\Persistence\Map\SpyProductTableMap::COL_ATTRIBUTES
-     *
-     * @var string
-     */
     protected const PRODUCT_COL_ATTRIBUTES = 'spy_product.attributes';
 
-    /**
-     * @uses \Orm\Zed\Product\Persistence\Map\SpyProductTableMap::COL_SKU
-     *
-     * @var string
-     */
     protected const PRODUCT_COL_SKU = 'spy_product.sku';
 
-    /**
-     * @uses \Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap::COL_SKU
-     *
-     * @var string
-     */
     protected const PRODUCT_ABSTRACT_COL_SKU = 'spy_product_abstract.sku';
 
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
-     */
     protected ProductRepositoryInterface $productRepository;
 
-    /**
-     * @var \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface
-     */
     protected DataImportToUtilEncodingServiceInterface $utilEncodingService;
 
-    /**
-     * @var \Pyz\Zed\DataImport\DataImportConfig
-     */
     protected DataImportConfig $dataImportConfig;
 
     /**
@@ -76,11 +43,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
      */
     protected static array $productConcreteAttributesMap = [];
 
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig
-     */
     public function __construct(
         ProductRepositoryInterface $productRepository,
         DataImportToUtilEncodingServiceInterface $utilEncodingService,
@@ -93,11 +55,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         $this->prepareProductConcreteAttributesMap();
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         /** @var string $dataSetProductConcreteSku */
@@ -118,8 +75,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
      * @param array<string, mixed> $dataSetProductConcreteAttributes
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidDataException
-     *
-     * @return void
      */
     protected function checkProductConcreteAttributesUnique(
         string $dataSetProductAbstractSku,
@@ -147,9 +102,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         }
     }
 
-    /**
-     * @return void
-     */
     protected function prepareProductConcreteAttributesMap(): void
     {
         $readCollectionBatchSize = $this->dataImportConfig->getReadCollectionBatchSize();
@@ -167,11 +119,6 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         } while (count($productConcreteCollection));
     }
 
-    /**
-     * @param \Propel\Runtime\Collection\ArrayCollection $productConcreteCollection
-     *
-     * @return void
-     */
     protected function processProductConcreteAttributesMap(ArrayCollection $productConcreteCollection): void
     {
         foreach ($productConcreteCollection as $productConcrete) {
