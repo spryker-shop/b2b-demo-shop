@@ -203,7 +203,6 @@ class SspInquiriesRestApiFixtures implements FixturesBuilderInterface, FixturesC
 
     protected function createInquiries(SelfServicePortalApiTester $I): void
     {
-        $storeTransfer = $I->getLocator()->store()->facade()->getCurrentStore();
         $sspInquiryStateMachineProcess = $I->haveStateMachineProcess([
             StateMachineProcessTransfer::STATE_MACHINE_NAME => 'test_ssp_inquiry',
         ]);
@@ -218,7 +217,6 @@ class SspInquiriesRestApiFixtures implements FixturesBuilderInterface, FixturesC
              SspInquiryTransfer::DESCRIPTION => 'This is a test inquiry description 1',
              SspInquiryTransfer::TYPE => 'general',
              SspInquiryTransfer::STATUS => 'test_initial_state',
-             SspInquiryTransfer::STORE => $storeTransfer,
              SspInquiryTransfer::COMPANY_USER => $this->companyUserTransfer,
          ]);
 
@@ -227,7 +225,6 @@ class SspInquiriesRestApiFixtures implements FixturesBuilderInterface, FixturesC
              SspInquiryTransfer::DESCRIPTION => 'This is a test inquiry description 2',
              SspInquiryTransfer::TYPE => 'ssp_asset',
              SspInquiryTransfer::STATUS => 'test_initial_state',
-             SspInquiryTransfer::STORE => $storeTransfer,
              SspInquiryTransfer::SSP_ASSET => $this->assetTransfer,
              SspInquiryTransfer::COMPANY_USER => $this->companyUserTransfer,
          ]);
@@ -237,7 +234,6 @@ class SspInquiriesRestApiFixtures implements FixturesBuilderInterface, FixturesC
              SspInquiryTransfer::DESCRIPTION => 'This is a test inquiry description 3',
              SspInquiryTransfer::TYPE => 'order',
              SspInquiryTransfer::STATUS => 'test_initial_state',
-             SspInquiryTransfer::STORE => $storeTransfer,
              SspInquiryTransfer::COMPANY_USER => $this->companyUserTransfer,
              SspInquiryTransfer::ORDER => (new OrderTransfer())->setIdSalesOrder($this->saveOrderTransfer->getIdSalesOrder())
                  ->setOrderReference($this->saveOrderTransfer->getOrderReference()),
