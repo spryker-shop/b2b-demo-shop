@@ -90,12 +90,6 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
-
-            -   name: Install robotframework-suite-tests folder
-                run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
-                    cp -r vendor ../vendor
-
             -   name: Install Project
                 continue-on-error: false
                 run: |
@@ -230,12 +224,6 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
-
-            -   name: Install robotframework-suite-tests folder
-                run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
-                    cp -r vendor ../vendor
-
             -   name: Install Project
                 continue-on-error: false
                 run: |
