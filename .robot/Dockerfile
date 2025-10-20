@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:jammy
+FROM mcr.microsoft.com/playwright:noble
 ENV ROBOT_WORK_DIR /opt/robotframework
 RUN mkdir -p ${ROBOT_WORK_DIR}
 
