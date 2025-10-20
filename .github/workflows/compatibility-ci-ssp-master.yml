@@ -91,10 +91,12 @@ jobs:
                     pip3 install --upgrade pip
                     pip3 install awscli
             -   name: Install robotframework-suite-tests folder
+
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
             -   name: Install Project
+
                 continue-on-error: false
                 run: |
                     git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
@@ -137,6 +139,7 @@ jobs:
                     pip3 install --upgrade pip
                     pip3 install awscli
             -   name: Install cypress-tests folder
+
                 run: |
                     cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
@@ -228,10 +231,12 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
+
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+                    
             -   name: Install Project
                 continue-on-error: false
                 run: |
