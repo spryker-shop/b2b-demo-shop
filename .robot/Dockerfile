@@ -13,7 +13,7 @@ RUN pip3 install  \
     --no-cache-dir  \
     robotframework  \
     robotframework-pabot  \
-    robotframework-browser==19.7.2  \
+    robotframework-browser==19.10.1  \
     robotframework-databaselibrary  \
     robotframework-requests \
     PyMySQL \
