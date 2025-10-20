@@ -53,14 +53,14 @@ groups:
     EU:
         region: EU
         applications:
-            glue_eu:
+            glue:
                 application: glue
                 endpoints:
                     glue.de.spryker.local:
                         store: DE
                     glue.at.spryker.local:
                         store: AT
-            backend_gateway_eu:
+            backgw:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.de.spryker.local:
@@ -69,7 +69,7 @@ groups:
                     backend-gateway.at.spryker.local:
                         store: AT
                         primal: true
-            backend_api_eu:
+            backapi:
                 application: zed
                 endpoints:
                     backend-api.de.spryker.local:
@@ -87,7 +87,7 @@ services:
             password: "secret"
     broker:
         engine: rabbitmq
-        version: '3.13'
+        version: '4.1'
         api:
             username: "spryker"
             password: "secret"

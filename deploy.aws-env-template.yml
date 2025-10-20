@@ -110,7 +110,7 @@ groups:
     EU:
         region: EU
         applications:
-            yves_eu:
+            yves:
                 application: yves
                 endpoints:
                     date-time-configurator-example.cloud.spryker.toys:
@@ -133,7 +133,7 @@ groups:
                     us.example.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
-            backoffice_eu:
+            boffice:
                 application: backoffice
                 endpoints:
                     backoffice.de.example.cloud.spryker.toys:
@@ -143,7 +143,7 @@ groups:
                         store: AT
                     backoffice.us.example.cloud.spryker.toys:
                         store: US
-            backend_gateway_eu:
+            backgw:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.de.example.cloud.spryker.toys:
@@ -153,7 +153,7 @@ groups:
                         store: AT
                     backend-gateway.us.example.cloud.spryker.toys:
                         store: US
-            backend_api_eu:
+            backapi:
                 application: zed
                 endpoints:
                     backend-api.de.example.cloud.spryker.toys:
@@ -165,7 +165,7 @@ groups:
                     backend-api.us.example.cloud.spryker.toys:
                         store: US
                         entry-point: BackendApi
-            glue_eu:
+            glue:
                 application: glue
                 endpoints:
                     glue.de.example.cloud.spryker.toys:
@@ -174,7 +174,7 @@ groups:
                         store: AT
                     glue.us.example.cloud.spryker.toys:
                         store: US
-            glue_storefront_eu:
+            gluestorefront:
                 application: glue-storefront
                 endpoints:
                     glue-storefront.de.example.cloud.spryker.toys:
@@ -183,7 +183,7 @@ groups:
                         store: AT
                     glue-storefront.us.example.cloud.spryker.toys:
                         store: US
-            glue_backend_eu:
+            gluebackend:
                 application: glue-backend
                 endpoints:
                     glue-backend.de.example.cloud.spryker.toys:
@@ -204,7 +204,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: '3.13'
+        version: '4.1'
         api:
             username: "spryker"
             password: "secret"
