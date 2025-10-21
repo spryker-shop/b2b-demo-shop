@@ -27,8 +27,8 @@ jobs:
             fail-fast: false
             matrix:
                 php-version: [
-                    '8.2',
-                    '8.3'
+                    '8.3',
+                    '8.4'
                 ]
 
         env:
@@ -228,11 +228,11 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
-        name: "PHP 8.2 / PostgreSQL / Glue / Debian / Dynamic Store OFF"
+        name: "PHP 8.3 / PostgreSQL / Glue / Debian / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
         steps:
             -   uses: actions/checkout@v4
@@ -294,11 +294,11 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
-        name: "PHP 8.2 / PostgreSQL / Acceptance / Debian / Dynamic Store OFF"
+        name: "PHP 8.3 / PostgreSQL / Acceptance / Debian / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
         steps:
             -   uses: actions/checkout@v4
@@ -358,11 +358,11 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
-        name: "PHP 8.2 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
+        name: "PHP 8.3 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
         steps:
             -   uses: actions/checkout@v4
@@ -389,11 +389,11 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
-        name: "[run-functional-ci] PHP 8.2 / Frontend & Assets"
+        name: "[run-functional-ci] PHP 8.3 / Frontend & Assets"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
         steps:
             -   uses: actions/checkout@v4
             -   run: echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
@@ -414,11 +414,11 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ssp-master'
-        name: "Docker / Debian / PHP 8.2 / PostgreSql / Robot / API / Dynamic Store OFF"
+        name: "Docker / Debian / PHP 8.3 / PostgreSql / Robot / API / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
