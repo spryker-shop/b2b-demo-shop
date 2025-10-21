@@ -155,7 +155,7 @@ jobs:
             -   name: Run Tests
                 run: |
                     docker/sdk exec cypress-tests cp .env.example .env
-                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" --env "ENV_IS_SSP_ENABLED=true" cypress-tests npm run cy:ci
             -   name: Upload artifacts
                 if: failure()
                 run: |
@@ -254,12 +254,12 @@ jobs:
                 id: run_dynamic_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework pabot --processes 6 --ordering pabot_b2b_ordering -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set -s '*'.tests.parallel_ui.b2b .
+                    docker/sdk exec robot-framework pabot --processes 6 --ordering pabot_b2b_ordering -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/dynamic_set -v is_ssp:true --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set -s '*'.tests.parallel_ui.b2b .
             -   name: Run Static Tests Set
                 id: run_static_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/static_set --exclude skip-due-to-issueORskip-due-to-refactoring --include static-set -s '*'.tests.parallel_ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/static_set -v is_ssp:true --exclude skip-due-to-issueORskip-due-to-refactoring --include static-set -s '*'.tests.parallel_ui.b2b .
             -   name: Merge Initial Test Results
                 id: merge_initial_results
                 continue-on-error: true
@@ -269,7 +269,7 @@ jobs:
                 id: rerun_failed_tests
                 if: always() && steps.merge_initial_results.outcome != 'success'
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v dms:false -v db_engine:psycopg2 -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.parallel_ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v dms:false -v db_engine:psycopg2 -v headless:true -v ignore_console:false -v is_ssp:true -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.parallel_ui.b2b .
             -   name: Merge Final Test Results
                 if: always() && steps.merge_initial_results.outcome != 'success'
                 run: |
