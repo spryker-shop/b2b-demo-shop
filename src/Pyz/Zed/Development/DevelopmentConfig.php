@@ -18,6 +18,9 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
         return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'phpcs.xml';
     }
 
+    /**
+     * @return array<string>
+     */
     public function getOrganizationPathMap(): array
     {
         return [

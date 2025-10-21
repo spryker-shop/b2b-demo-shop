@@ -14,6 +14,9 @@ use Spryker\Client\ProductOfferShipmentTypeAvailabilityStorage\Plugin\ProductOff
 
 class ProductOfferServicePointAvailabilityStorageDependencyProvider extends SprykerProductOfferServicePointAvailabilityStorageDependencyProvider
 {
+    /**
+     * @return list<\Spryker\Client\ProductOfferServicePointAvailabilityStorageExtension\Dependency\Plugin\ProductOfferServicePointAvailabilityFilterPluginInterface>
+     */
     protected function getProductOfferServicePointAvailabilityFilterPlugins(): array
     {
         return [

@@ -14,6 +14,9 @@ use SprykerShop\Yves\ProductSearchWidget\ProductSearchWidgetDependencyProvider a
 
 class ProductSearchWidgetDependencyProvider extends SprykerProductSearchWidgetDependencyProvider
 {
+    /**
+     * @return array<\SprykerShop\Yves\ProductSearchWidgetExtension\Dependency\Plugin\ProductQuickAddFormExpanderPluginInterface>
+     */
     protected function getProductQuickAddFormExpanderPlugins(): array
     {
         return [

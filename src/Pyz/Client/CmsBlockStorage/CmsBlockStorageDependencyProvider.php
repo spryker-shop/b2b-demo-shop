@@ -14,6 +14,9 @@ use SprykerFeature\Client\SelfServicePortal\Plugin\CmsBlockStorage\CmsBlockCompa
 
 class CmsBlockStorageDependencyProvider extends SprykerCmsBlockStorageDependencyProvider
 {
+    /**
+     * @return array<\Spryker\Client\CmsBlockStorageExtension\Dependency\Plugin\CmsBlockStorageReaderPluginInterface>
+     */
     protected function getCmsBlockStorageReaderPlugins(): array
     {
         return [

@@ -14,6 +14,9 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ServicePointSearch
 
 class ServicePointSearchDependencyProvider extends SprykerServicePointSearchDependencyProvider
 {
+    /**
+     * @return list<\Spryker\Zed\ServicePointSearchExtension\Dependency\Plugin\ServicePointSearchDataExpanderPluginInterface>
+     */
     protected function getServicePointSearchDataExpanderPlugins(): array
     {
         return [

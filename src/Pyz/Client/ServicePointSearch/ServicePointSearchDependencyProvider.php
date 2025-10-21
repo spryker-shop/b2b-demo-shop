@@ -19,6 +19,9 @@ use Spryker\Client\ServicePointSearch\ServicePointSearchDependencyProvider as Sp
 
 class ServicePointSearchDependencyProvider extends SprykerServicePointSearchDependencyProvider
 {
+    /**
+     * @return list<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
+     */
     protected function getServicePointSearchResultFormatterPlugins(): array
     {
         return [

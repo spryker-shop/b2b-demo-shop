@@ -14,6 +14,9 @@ use Spryker\Client\ProductOfferServicePointAvailabilityCalculatorStorage\Product
 
 class ProductOfferServicePointAvailabilityCalculatorStorageDependencyProvider extends SprykerProductOfferServicePointAvailabilityCalculatorStorageDependencyProvider
 {
+    /**
+     * @return list<\Spryker\Client\ProductOfferServicePointAvailabilityCalculatorStorageExtension\Dependency\Plugin\ProductOfferServicePointAvailabilityCalculatorStrategyPluginInterface>
+     */
     protected function getProductOfferServicePointAvailabilityCalculatorStrategyPlugins(): array
     {
         return [

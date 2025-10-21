@@ -14,6 +14,9 @@ use Spryker\Zed\ProductOfferServicePointStorage\ProductOfferServicePointStorageD
 
 class ProductOfferServicePointStorageDependencyProvider extends SprykerProductOfferServicePointStorageDependencyProvider
 {
+    /**
+     * @return list<\Spryker\Zed\ProductOfferServicePointStorageExtension\Dependency\Plugin\ProductOfferServiceCollectionStorageFilterPluginInterface>
+     */
     protected function getProductOfferServiceCollectionStorageFilterPlugins(): array
     {
         return [

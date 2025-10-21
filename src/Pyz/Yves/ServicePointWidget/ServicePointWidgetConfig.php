@@ -14,6 +14,9 @@ use SprykerShop\Yves\ServicePointWidget\ServicePointWidgetConfig as SprykerServi
 
 class ServicePointWidgetConfig extends SprykerServicePointWidgetConfig
 {
+    /**
+     * @return list<string>
+     */
     public function getNotApplicableServicePointAddressStepFormItemPropertiesForHydration(): array
     {
         return [

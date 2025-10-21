@@ -13,6 +13,9 @@ use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConfig as SprykerSe
 
 class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
 {
+    /**
+     * @return array<string, string>
+     */
     public function getInquiryInitialStateMachineMap(): array
     {
         return [
@@ -20,6 +23,9 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getSspInquiryStateMachineProcessInquiryTypeMap(): array
     {
         return [

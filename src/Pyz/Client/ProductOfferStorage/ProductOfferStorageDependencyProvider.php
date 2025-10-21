@@ -19,6 +19,9 @@ use Spryker\Client\ProductOfferStorage\ProductOfferStorageDependencyProvider as 
 
 class ProductOfferStorageDependencyProvider extends SprykerProductOfferStorageDependencyProvider
 {
+    /**
+     * @return array<\Spryker\Client\ProductOfferStorageExtension\Dependency\Plugin\ProductOfferStorageExpanderPluginInterface>
+     */
     protected function getProductOfferStorageExpanderPlugins(): array
     {
         return [

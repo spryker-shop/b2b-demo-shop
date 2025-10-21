@@ -14,6 +14,9 @@ use Spryker\Zed\ProductOfferShipmentTypeStorage\ProductOfferShipmentTypeStorageD
 
 class ProductOfferShipmentTypeStorageDependencyProvider extends SprykerProductOfferShipmentTypeStorageDependencyProvider
 {
+    /**
+     * @return list<\Spryker\Zed\ProductOfferShipmentTypeStorageExtension\Dependency\Plugin\ProductOfferShipmentTypeStorageFilterPluginInterface>
+     */
     protected function getProductOfferShipmentTypeStorageFilterPlugins(): array
     {
         return [
