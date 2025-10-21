@@ -16,6 +16,7 @@
         "ext-redis": "*",
         "composer/installers": "^2.3",
         "galbar/jsonpath": "^1.3.1",
+        "oomphinc/composer-installers-extender": "^2.0",
         "spryker-eco/loggly": "^0.1.1",
         "spryker-eco/new-relic": "^2.0.1",
         "spryker-feature/agent-assist": "^202507.0",
@@ -316,9 +317,12 @@
         }
     },
     "extra": {
+        "installer-types": [
+            "spryker-test"
+        ],
         "installer-paths": {
             "tests/cypress-tests/": [
-                "type:zend-module"
+                "spryker/cypress-tests"
             ]
         }
     },
@@ -352,7 +356,8 @@
             "spryker-sdk/integrator": false,
             "symfony/flex": true,
             "symfony/runtime": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "repositories": [
@@ -361,20 +366,8 @@
             "url": "https://github.com/spryker/robotframework-suite-tests.git"
         },
         {
-            "type": "package",
-            "package": {
-                "name": "spryker/cypress-tests",
-                "version": "dev-master",
-                "source": {
-                    "url": "https://github.com/spryker/cypress-tests.git",
-                    "type": "git",
-                    "reference": "23939af41189041e7154ac4a72ef3b514d85a422"
-                },
-                "type": "zend-module",
-                "license": [
-                    "MIT"
-                ]
-            }
+            "type": "git",
+            "url": "https://github.com/spryker/cypress-tests.git"
         }
     ],
     "scripts": {
