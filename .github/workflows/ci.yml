@@ -477,13 +477,13 @@ jobs:
                 id: run_dynamic_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework pabot --processes 6 --ordering pabot_b2b_ordering -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set -s '*'.tests.parallel_ui.b2b .
+                    docker/sdk exec robot-framework pabot --processes 6 --ordering pabot_b2b_ordering -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v is_ssp:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set -s '*'.tests.parallel_ui.b2b .
 
             -   name: Run Static Tests Set
                 id: run_static_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/static_set --exclude skip-due-to-issueORskip-due-to-refactoring --include static-set -s '*'.tests.parallel_ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v headless:true -v ignore_console:false -v dms:true -v is_ssp:true -d results/static_set --exclude skip-due-to-issueORskip-due-to-refactoring --include static-set -s '*'.tests.parallel_ui.b2b .
 
             -   name: Merge Initial Test Results
                 id: merge_initial_results
@@ -495,7 +495,7 @@ jobs:
                 id: rerun_failed_tests
                 if: always() && steps.merge_initial_results.outcome != 'success'
                 run: |
-                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v dms:true -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.parallel_ui.b2b .
+                    docker/sdk exec robot-framework robot -v env:ui_b2b -v docker:True -v dms:true -v headless:true -v ignore_console:false -v is_ssp:true -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.parallel_ui.b2b .
 
             -   name: Merge Final Test Results
                 if: always() && steps.merge_initial_results.outcome != 'success'
