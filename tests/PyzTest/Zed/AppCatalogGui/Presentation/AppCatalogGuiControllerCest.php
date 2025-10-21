@@ -25,11 +25,6 @@ use PyzTest\Zed\AppCatalogGui\PageObject\AppCatalogGuiIndexPage;
  */
 class AppCatalogGuiControllerCest
 {
-    /**
-     * @param \PyzTest\Zed\AppCatalogGui\AppCatalogGuiPresentationTester $I
-     *
-     * @return void
-     */
     public function checkIfAppCatalogGuiReturn200AndValidUrl(AppCatalogGuiPresentationTester $I): void
     {
         // Arrange
@@ -50,11 +45,6 @@ class AppCatalogGuiControllerCest
         ));
     }
 
-    /**
-     * @param \PyzTest\Zed\AppCatalogGui\AppCatalogGuiPresentationTester $I
-     *
-     * @return void
-     */
     public function checkIfAppCatalogGuiApiLoginReturn200AndValidToken(AppCatalogGuiPresentationTester $I): void
     {
         // Arrange

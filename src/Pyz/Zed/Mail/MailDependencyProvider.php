@@ -38,11 +38,6 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Mail\SspInquiryRej
 
 class MailDependencyProvider extends SprykerMailDependencyProvider
 {
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -52,11 +47,6 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function extendMailProviderCollection(Container $container): Container
     {
         $container->extend(self::MAIL_PROVIDER_COLLECTION, function (MailProviderCollectionAddInterface $mailProviderCollection) {

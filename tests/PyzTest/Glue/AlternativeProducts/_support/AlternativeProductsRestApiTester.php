@@ -36,8 +36,6 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
 
     /**
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function formatQueryInclude(array $includes = []): string
     {
@@ -51,8 +49,6 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
     /**
      * @param string $productAbstractSku
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildProductAbstractUrl(string $productAbstractSku, array $includes = []): string
     {
@@ -68,8 +64,6 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
     /**
      * @param string $productConcreteSku
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildProductConcreteUrl(string $productConcreteSku, array $includes = []): string
     {
@@ -85,8 +79,6 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
     /**
      * @param string $productConcreteSku
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildAbstractAlternativeProductsUrl(string $productConcreteSku, array $includes = []): string
     {
@@ -103,8 +95,6 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
     /**
      * @param string $productConcreteSku
      * @param array<string> $includes
-     *
-     * @return string
      */
     public function buildConcreteAlternativeProductsUrl(string $productConcreteSku, array $includes = []): string
     {

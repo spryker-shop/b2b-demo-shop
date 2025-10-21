@@ -55,9 +55,6 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductPageSearch\
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
-    /**
-     * @var string
-     */
     public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
 
     /**

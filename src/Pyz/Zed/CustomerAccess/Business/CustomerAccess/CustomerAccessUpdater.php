@@ -21,24 +21,16 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
 
     /**
      * @var \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface
+     *
+     * Note: Disabled phpcs because of compatibility issues with Spryker parent class. The current CS config requires to set a variable type, but it is absent in the parent and so produces an error.
      */
+    // phpcs:disable
     protected $customerAccessEntityManager;
 
-    /**
-     * @var \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface
-     */
-    protected $customerAccessReader;
+    protected CustomerAccessReaderInterface $customerAccessReader;
 
-    /**
-     * @var \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface
-     */
-    protected $customerAccessFilter;
+    protected CustomerAccessFilterInterface $customerAccessFilter;
 
-    /**
-     * @param \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface $customerAccessEntityManager
-     * @param \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface $customerAccessReader
-     * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface $customerAccessFilter
-     */
     public function __construct(
         CustomerAccessEntityManagerInterface $customerAccessEntityManager,
         CustomerAccessReaderInterface $customerAccessReader,
@@ -49,11 +41,6 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
         $this->customerAccessFilter = $customerAccessFilter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
     public function updateUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($customerAccessTransfer) {

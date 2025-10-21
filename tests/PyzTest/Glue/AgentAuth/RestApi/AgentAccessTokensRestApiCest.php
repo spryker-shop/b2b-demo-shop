@@ -27,16 +27,8 @@ use Spryker\Glue\AgentAuthRestApi\AgentAuthRestApiConfig;
  */
 class AgentAccessTokensRestApiCest
 {
-    /**
-     * @var \PyzTest\Glue\AgentAuth\RestApi\Fixtures\AgentAccessTokensRestApiFixtures
-     */
     protected AgentAccessTokensRestApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return void
-     */
     public function loadFixtures(AgentAuthRestApiTester $I): void
     {
         /** @var \PyzTest\Glue\AgentAuth\RestApi\Fixtures\AgentAccessTokensRestApiFixtures $fixtures */
@@ -49,8 +41,6 @@ class AgentAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForExistingAgentUser(AgentAuthRestApiTester $I): void
     {
@@ -76,8 +66,6 @@ class AgentAccessTokensRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\AgentAuth\AgentAuthRestApiTester $I
-     *
-     * @return void
      */
     public function requestAccessTokenForNonExistingAgentUser(AgentAuthRestApiTester $I): void
     {

@@ -19,9 +19,6 @@ use Spryker\Zed\StateMachine\Business\StateMachineFacadeInterface;
  */
 class ExampleStateMachineCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\StateMachine\Business\StateMachineFacadeInterface
-     */
     public function getStateMachineFacade(): StateMachineFacadeInterface
     {
         return $this->getProvidedDependency(ExampleStateMachineDependencyProvider::FACADE_STATE_MACHINE);

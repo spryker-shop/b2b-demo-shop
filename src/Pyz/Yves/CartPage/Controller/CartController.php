@@ -19,9 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CartController extends SprykerCartController
 {
-    /**
-     * @var string
-     */
     protected const PARAM_REFERER = 'referer';
 
     /**
@@ -45,8 +42,6 @@ class CartController extends SprykerCartController
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param string $sku
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function addAction(Request $request, $sku): RedirectResponse // phpcs:ignore
     {
@@ -55,11 +50,6 @@ class CartController extends SprykerCartController
         return $this->redirectToReferer($request);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function redirectToReferer(Request $request): RedirectResponse
     {
         return $request->headers->has(static::PARAM_REFERER) ?

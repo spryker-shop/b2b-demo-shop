@@ -43,7 +43,7 @@ tag: '1.0'
 environment: docker.demo
 
 image:
-    tag: spryker/php:8.3
+    tag: spryker/php:8.4
     environment:
         SPRYKER_DEFAULT_STORE: "DE"
         SPRYKER_ACTIVE_STORES: ""
@@ -166,7 +166,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: '3.9'
+        version: '4.1'
         api:
             username: "spryker"
             password: "secret"

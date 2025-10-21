@@ -77,9 +77,6 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         ];
     }
 
-    /**
-     * @return string|null
-     */
     public function getDefaultLocaleCode(): ?string
     {
         return 'en_US';
@@ -189,9 +186,6 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function getDefaultBoundQueueNamePrefix(): string
     {
         return 'error';

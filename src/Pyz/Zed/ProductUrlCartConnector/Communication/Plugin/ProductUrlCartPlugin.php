@@ -20,11 +20,6 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  */
 class ProductUrlCartPlugin extends AbstractPlugin implements ItemExpanderPluginInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
-     */
     public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
         $this->getFacade()->expandItems($cartChangeTransfer);

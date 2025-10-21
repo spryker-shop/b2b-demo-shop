@@ -18,31 +18,14 @@ use Spryker\Zed\Navigation\Dependency\NavigationEvents;
 
 class NavigationWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @var string
-     */
     public const NAME = 'name';
 
-    /**
-     * @var string
-     */
     public const KEY = 'key';
 
-    /**
-     * @var string
-     */
     public const KEY_IS_ACTIVE = 'is_active';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $navigationEntity = SpyNavigationQuery::create()
@@ -57,12 +40,6 @@ class NavigationWriterStep extends PublishAwareStep implements DataImportStepInt
         $this->addPublishEvents(NavigationEvents::NAVIGATION_KEY_PUBLISH, $navigationEntity->getIdNavigation());
     }
 
-    /**
-     * @param \Orm\Zed\Navigation\Persistence\SpyNavigation $navigationEntity
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return string
-     */
     protected function getName(SpyNavigation $navigationEntity, DataSetInterface $dataSet): string
     {
         if (isset($dataSet[static::NAME]) && !empty($dataSet[static::NAME])) {

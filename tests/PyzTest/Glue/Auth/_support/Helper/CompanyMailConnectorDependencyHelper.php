@@ -28,9 +28,6 @@ class CompanyMailConnectorDependencyHelper extends Module
     use DependencyHelperTrait;
     use LocatorHelperTrait;
 
-    /**
-     * @return void
-     */
     public function haveCompanyMailConnectorToMailDependency(): void
     {
         $mailFacade = $this->getLocator()->mail()->facade();

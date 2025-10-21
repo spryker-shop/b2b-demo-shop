@@ -6,16 +6,12 @@ tag: '1.0'
 environment: docker.ci
 pipeline: docker.ci.acceptance
 image:
-    tag: spryker/php:8.3
+    tag: spryker/php:8.4
     php:
         enabled-extensions:
             - otel
     environment:
-        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
-        SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
-        SPRYKER_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_YVES_HOST_EU: yves.eu.spryker.local
-        SPRYKER_YVES_HOST_US: yves.us.spryker.local
         SPRYKER_DYNAMIC_STORE_MODE: true
     node:
         version: 18
@@ -47,7 +43,7 @@ groups:
     EU:
         region: EU
         applications:
-            yves_eu:
+            yves:
                 application: yves
                 endpoints:
                     yves.eu.spryker.local:
@@ -55,12 +51,12 @@ groups:
                         services:
                             session:
                                 namespace: 1
-            glue_eu:
+            glue:
                 application: glue
                 endpoints:
                     glue.eu.spryker.local:
                         region: EU
-            backoffice_eu:
+            boffice:
                 application: backoffice
                 endpoints:
                     backoffice.eu.spryker.local:
@@ -68,24 +64,24 @@ groups:
                         services:
                             session:
                                 namespace: 3
-            backend_gateway_eu:
+            backgw:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.eu.spryker.local:
                         region: EU
                         primal: true
-            backend_api_eu:
+            backapi:
                 application: zed
                 endpoints:
                     backend-api.eu.spryker.local:
                         region: EU
                         entry-point: BackendApi
-            glue_storefront_eu:
+            gluestorefront:
                 application: glue-storefront
                 endpoints:
                     glue-storefront.eu.spryker.local:
                         region: EU
-            glue_backend_eu:
+            gluebackend:
                 application: glue-backend
                 endpoints:
                     glue-backend.eu.spryker.local:
@@ -103,7 +99,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: '3.13'
+        version: '4.1'
         api:
             username: 'spryker'
             password: 'secret'

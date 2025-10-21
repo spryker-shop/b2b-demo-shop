@@ -26,20 +26,11 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\SearchContextAwareQueryInte
  */
 class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, SearchContextAwareQueryInterface
 {
-    /**
-     * @var string
-     */
     protected const SOURCE_IDENTIFIER = 'page';
 
-    /**
-     * @var \Elastica\Query
-     */
-    protected $query;
+    protected Query $query;
 
-    /**
-     * @var \Generated\Shared\Transfer\SearchContextTransfer
-     */
-    protected $searchContextTransfer;
+    protected SearchContextTransfer $searchContextTransfer;
 
     public function __construct()
     {
@@ -91,9 +82,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         $this->searchContextTransfer = $searchContextTransfer;
     }
 
-    /**
-     * @return void
-     */
     protected function setupDefaultSearchContext(): void
     {
         $searchContextTransfer = new SearchContextTransfer();
@@ -102,9 +90,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         $this->searchContextTransfer = $searchContextTransfer;
     }
 
-    /**
-     * @return \Elastica\Query
-     */
     protected function createSearchQuery(): Query
     {
         $saleProductsFilter = $this->createSaleProductsFilter();
@@ -115,9 +100,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $this->createQuery($boolQuery);
     }
 
-    /**
-     * @return \Elastica\Query\Nested
-     */
     protected function createSaleProductsFilter(): Nested
     {
         $saleProductsQuery = $this->createSaleProductsQuery();
@@ -130,9 +112,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $saleProductsFilter;
     }
 
-    /**
-     * @return \Elastica\Query\BoolQuery
-     */
     protected function createSaleProductsQuery(): BoolQuery
     {
         $storeTransfer = $this->getFactory()->getStore();
@@ -160,11 +139,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $newProductsBoolQuery;
     }
 
-    /**
-     * @param string $fieldName
-     *
-     * @return \Elastica\Query\Term
-     */
     protected function createStringFacetFieldFilter(string $fieldName): Term
     {
         $termQuery = new Term();
@@ -173,11 +147,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $termQuery;
     }
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return \Elastica\Query\Term
-     */
     protected function createStringFacetValueFilter(int $idProductLabel): Term
     {
         $termQuery = new Term();
@@ -186,11 +155,6 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $termQuery;
     }
 
-    /**
-     * @param \Elastica\Query\AbstractQuery $abstractQuery
-     *
-     * @return \Elastica\Query
-     */
     protected function createQuery(AbstractQuery $abstractQuery): Query
     {
         $query = new Query();
@@ -201,11 +165,8 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         return $query;
     }
 
-    /**
-     * @return bool
-     */
     protected function hasSearchContext(): bool
     {
-        return (bool)$this->searchContextTransfer;
+        return isset($this->searchContextTransfer);
     }
 }

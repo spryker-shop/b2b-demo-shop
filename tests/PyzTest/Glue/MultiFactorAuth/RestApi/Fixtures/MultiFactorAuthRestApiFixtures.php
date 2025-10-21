@@ -16,31 +16,14 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    /**
-     * @var string
-     */
     protected const TEST_USERNAME = 'MultiFactorAuthRestApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const MFA_TYPE = 'email';
 
-    /**
-     * @var string
-     */
     protected const RESOURCE_CARTS = 'carts';
 
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected CustomerTransfer $customerTransfer;
 
-    /**
-     * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
-     *
-     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
-     */
     public function buildFixtures(MultiFactorAuthRestApiTester $I): FixturesContainerInterface
     {
         $this->customerTransfer = $I->createCustomer(static::TEST_USERNAME);
@@ -48,9 +31,6 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
         return $this;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function getCustomerTransfer(): CustomerTransfer
     {
         return $this->customerTransfer;
@@ -91,19 +71,11 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
         ];
     }
 
-    /**
-     * @param string $resourceName
-     *
-     * @return string
-     */
     public function generateUrl(string $resourceName): string
     {
         return sprintf('/%s', $resourceName);
     }
 
-    /**
-     * @return string
-     */
     public function generateCartUrl(): string
     {
         return sprintf('/%s', static::RESOURCE_CARTS);

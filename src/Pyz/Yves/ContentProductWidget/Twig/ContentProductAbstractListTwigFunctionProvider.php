@@ -18,8 +18,6 @@ class ContentProductAbstractListTwigFunctionProvider extends SprykerShopContentP
 {
     /**
      * @uses \Pyz\Shared\ContentProduct\ContentProductConfig::WIDGET_TEMPLATE_IDENTIFIER_SLIDER
-     *
-     * @var string
      */
     protected const WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';
 

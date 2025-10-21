@@ -23,9 +23,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class ProductController extends SprykerShopProductController
 {
-    /**
-     * @var string
-     */
     protected const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     /**

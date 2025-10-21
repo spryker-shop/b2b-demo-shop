@@ -14,9 +14,6 @@ use Spryker\Zed\MerchantSearch\MerchantSearchConfig as SprykerMerchantSearchConf
 
 class MerchantSearchConfig extends SprykerMerchantSearchConfig
 {
-    /**
-     * @return string|null
-     */
     public function getMerchantSearchSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;

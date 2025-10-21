@@ -15,9 +15,6 @@ use Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProvid
 
 class SharedCartsRestApiDependencyProvider extends SprykerSharedCartsRestApiDependencyProvider
 {
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProviderPluginInterface
-     */
     protected function getCompanyUserProviderPlugin(): CompanyUserProviderPluginInterface
     {
         return new CompanyUserStorageProviderPlugin();

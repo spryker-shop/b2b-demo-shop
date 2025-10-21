@@ -31,56 +31,24 @@ use Spryker\Zed\ProductOption\Dependency\ProductOptionEvents;
  */
 class ProductOptionWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @var int
-     */
     public const BULK_SIZE = 100;
 
-    /**
-     * @var string
-     */
     public const KEY_ABSTRACT_PRODUCT_SKUS = 'abstract_product_skus';
 
-    /**
-     * @var string
-     */
     public const KEY_GROUP_NAME_TRANSLATION_KEY = 'group_name_translation_key';
 
-    /**
-     * @var string
-     */
     public const KEY_IS_ACTIVE = 'is_active';
 
-    /**
-     * @var string
-     */
     public const KEY_SKU = 'sku';
 
-    /**
-     * @var string
-     */
     public const KEY_OPTION_NAME_TRANSLATION_KEY = 'option_name_translation_key';
 
-    /**
-     * @var string
-     */
     public const KEY_OPTION_NAME = 'option_name';
 
-    /**
-     * @var string
-     */
     public const KEY_GROUP_NAME = 'group_name';
 
-    /**
-     * @var string
-     */
     public const KEY_TAX_SET_NAME = 'tax_set_name';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $productOptionGroupEntity = SpyProductOptionGroupQuery::create()
@@ -130,12 +98,6 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
         }
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Orm\Zed\ProductOption\Persistence\Base\SpyProductOptionGroup $productOptionGroupEntity
-     *
-     * @return bool
-     */
     protected function isActive(DataSetInterface $dataSet, SpyProductOptionGroup $productOptionGroupEntity): bool
     {
         if (isset($dataSet[self::KEY_IS_ACTIVE])) {
@@ -145,13 +107,6 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
         return ($productOptionGroupEntity->getActive() !== null) ? $productOptionGroupEntity->getActive() : true;
     }
 
-    /**
-     * @param string $key
-     * @param string $translation
-     * @param int $idLocale
-     *
-     * @return void
-     */
     protected function findOrCreateTranslation(string $key, string $translation, int $idLocale): void
     {
         $glossaryKeyEntity = SpyGlossaryKeyQuery::create()
