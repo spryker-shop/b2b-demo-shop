@@ -60,21 +60,11 @@ class GlueControllerFinder extends SprykerGlueControllerFinder
         return $this->getExistingSourceDirectories($directories);
     }
 
-    /**
-     * @param string $moduleName
-     *
-     * @return string
-     */
     protected function removeRestApiSuffix(string $moduleName): string
     {
         return str_replace('RestApi', '', $moduleName);
     }
 
-    /**
-     * @param string $moduleName
-     *
-     * @return string
-     */
     protected function toSingular(string $moduleName): string
     {
         $rules = [

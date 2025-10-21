@@ -26,16 +26,8 @@ use PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester;
  */
 class UpdateSspAssetBackendJsonApiCest
 {
-    /**
-     * @var \PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonApiFixtures
-     */
     protected SspAssetsBackendJsonApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
-     */
     public function loadFixtures(SelfServicePortalBackendApiTester $I): void
     {
         /** @var \PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonApiFixtures $fixtures */
@@ -47,8 +39,6 @@ class UpdateSspAssetBackendJsonApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
      */
     public function requestUpdateSspAssetWithValidData(SelfServicePortalBackendApiTester $I): void
     {
@@ -78,11 +68,6 @@ class UpdateSspAssetBackendJsonApiCest
         $I->assertEquals('NOTE_PATCHED', $I->getJsonApiDataFromResponseByJsonPath('$.data.attributes.note'));
     }
 
-    /**
-     * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
-     */
     public function requestUpdateSspAssetWithInvalidToken(SelfServicePortalBackendApiTester $I): void
     {
         // Arrange

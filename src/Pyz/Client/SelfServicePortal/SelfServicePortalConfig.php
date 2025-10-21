@@ -13,9 +13,6 @@ use SprykerFeature\Client\SelfServicePortal\SelfServicePortalConfig as SprykerSe
 
 class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
 {
-    /**
-     * @var string
-     */
     protected const SHIPMENT_TYPE_IN_CENTER_SERVICE = 'in-center-service';
 
     /**

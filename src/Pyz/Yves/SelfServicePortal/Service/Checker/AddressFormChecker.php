@@ -15,11 +15,6 @@ use SprykerFeature\Yves\SelfServicePortal\Service\Checker\AddressFormChecker as 
 
 class AddressFormChecker extends SprykerAddressFormChecker
 {
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
     public function isApplicableForSingleAddressPerShipmentType(
         ItemTransfer $itemTransfer,
     ): bool {

@@ -24,16 +24,8 @@ use PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonA
  */
 class CreateSspAssetBackendJsonApiCest
 {
-    /**
-     * @var \PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonApiFixtures
-     */
     protected SspAssetsBackendJsonApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
-     */
     public function loadFixtures(SelfServicePortalBackendApiTester $I): void
     {
         /** @var \PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonApiFixtures $fixtures */
@@ -45,8 +37,6 @@ class CreateSspAssetBackendJsonApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
      */
     public function requestCreateSspAssetWithValidData(SelfServicePortalBackendApiTester $I): void
     {
@@ -82,8 +72,6 @@ class CreateSspAssetBackendJsonApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
      */
     public function requestCreateSspAssetWithInvalidToken(SelfServicePortalBackendApiTester $I): void
     {
@@ -107,11 +95,6 @@ class CreateSspAssetBackendJsonApiCest
         $I->seeJsonApiResponseCodeIs(HttpCode::UNAUTHORIZED);
     }
 
-    /**
-     * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
-     */
     public function requestCreateSspAssetWithMissingName(SelfServicePortalBackendApiTester $I): void
     {
         // Arrange

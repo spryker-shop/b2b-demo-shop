@@ -18,9 +18,6 @@ use Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFind
  */
 class DocumentationGeneratorRestApiBusinessFactory extends SprykerDocumentationGeneratorRestApiBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinderInterface
-     */
     public function createGlueControllerFinder(): GlueControllerFinderInterface
     {
         return new GlueControllerFinder(

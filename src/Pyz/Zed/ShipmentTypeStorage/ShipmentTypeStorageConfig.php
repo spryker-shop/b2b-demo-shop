@@ -14,9 +14,6 @@ use Spryker\Zed\ShipmentTypeStorage\ShipmentTypeStorageConfig as SprykerShipment
 
 class ShipmentTypeStorageConfig extends SprykerShipmentTypeStorageConfig
 {
-    /**
-     * @return string|null
-     */
     public function getShipmentTypeStorageSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;

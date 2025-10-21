@@ -57,12 +57,6 @@ class CheckoutAddressCollectionForm extends SprykerCheckoutAddressCollectionForm
         return $this;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     * @param \SprykerShop\Yves\CustomerPage\Dependency\Service\CustomerPageToShipmentServiceInterface $shipmentService
-     *
-     * @return void
-     */
     protected function hydrateShippingAddressSubFormDataFromItemLevelShippingAddresses(
         FormEvent $event,
         CustomerPageToShipmentServiceInterface $shipmentService,

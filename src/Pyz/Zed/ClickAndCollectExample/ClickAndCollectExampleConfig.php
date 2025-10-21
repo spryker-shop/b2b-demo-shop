@@ -13,14 +13,8 @@ use Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig as SprykerCl
 
 class ClickAndCollectExampleConfig extends SprykerClickAndCollectExampleConfig
 {
-    /**
-     * @var string
-     */
     protected const SHIPMENT_TYPE_IN_CENTER_SERVICE = 'in-center-service';
 
-    /**
-     * @return string
-     */
     public function getPickupShipmentTypeKey(): string
     {
         return static::SHIPMENT_TYPE_IN_CENTER_SERVICE;

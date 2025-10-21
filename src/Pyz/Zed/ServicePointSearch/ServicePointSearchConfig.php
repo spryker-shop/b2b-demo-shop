@@ -14,9 +14,6 @@ use Spryker\Zed\ServicePointSearch\ServicePointSearchConfig as SprykerServicePoi
 
 class ServicePointSearchConfig extends SprykerServicePointSearchConfig
 {
-    /**
-     * @return string|null
-     */
     public function getServicePointSearchSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;

@@ -29,9 +29,6 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getSspInquiryCancelStateMachineEventName(): string
     {
         return 'cancel';

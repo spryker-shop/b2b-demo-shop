@@ -15,17 +15,11 @@ use Spryker\Zed\PriceProductOfferStorage\PriceProductOfferStorageConfig as Spryk
 
 class PriceProductOfferStorageConfig extends SprykerPriceProductOfferStorageConfig
 {
-    /**
-     * @return string|null
-     */
     public function getPriceProductOfferSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;

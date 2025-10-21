@@ -31,15 +31,10 @@ class SelfServicePortalBackendApiTester extends BackendApiEndToEndTester
 {
     use _generated\SelfServicePortalBackendApiTesterActions;
 
-    /**
-     * @var string
-     */
     protected const RESOURCE_SSP_ASSETS = 'ssp-assets';
 
     /**
      * @param list<string> $includes
-     *
-     * @return string
      */
     public function getGetCollectionSspAssetsUrl(array $includes = []): string
     {
@@ -129,8 +124,6 @@ class SelfServicePortalBackendApiTester extends BackendApiEndToEndTester
 
     /**
      * @param list<string> $includes
-     *
-     * @return string
      */
     protected function formatQueryInclude(array $includes): string
     {

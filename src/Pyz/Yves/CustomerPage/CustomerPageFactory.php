@@ -15,9 +15,6 @@ use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFact
 
 class CustomerPageFactory extends SprykerCustomerPageFactory
 {
-    /**
-     * @return \Pyz\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider
-     */
     public function createCheckoutAddressFormDataProvider(): CheckoutAddressFormDataProvider
     {
         return new CheckoutAddressFormDataProvider(
@@ -32,9 +29,6 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\Session\SessionClientInterface
-     */
     public function getPyzSessionClient(): SessionClientInterface
     {
         return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_PYZ_SESSION);

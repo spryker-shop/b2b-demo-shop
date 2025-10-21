@@ -24,9 +24,6 @@ class SspAssetsBackendJsonApiFixtures implements FixturesBuilderInterface, Fixtu
 {
     protected const TEST_USERNAME = 'SspAssetsBackendApiFixtures';
 
-    /**
-     * @var string
-     */
     protected const TEST_USER_PASSWORD = 'change123';
 
     protected const TEST_COMPANY_NAME = 'Test Company';

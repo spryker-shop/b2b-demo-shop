@@ -37,11 +37,6 @@ class SspServicesRestApiFixtures implements FixturesBuilderInterface, FixturesCo
 
     protected const TEST_COMPANY_NAME = 'Test Company Services';
 
-    /**
-     * @uses \SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConfig::getServiceProductClassName()
-     *
-     * @var string
-     */
     protected const DEFAULT_PRODUCT_CLASS_NAME = 'Service';
 
     protected CustomerTransfer $customerTransfer;

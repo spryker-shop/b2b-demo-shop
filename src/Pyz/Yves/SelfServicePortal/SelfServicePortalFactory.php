@@ -17,17 +17,11 @@ use SprykerFeature\Yves\SelfServicePortal\Service\Handler\SingleAddressPerShipme
 
 class SelfServicePortalFactory extends SprykerSelfServicePortalFactory
 {
-    /**
-     * @return \SprykerFeature\Yves\SelfServicePortal\Service\Checker\AddressFormCheckerInterface
-     */
     public function createAddressFormChecker(): AddressFormCheckerInterface
     {
         return new AddressFormChecker($this->getConfig());
     }
 
-    /**
-     * @return \SprykerFeature\Yves\SelfServicePortal\Service\Handler\SingleAddressPerShipmentTypePreSubmitHandlerInterface
-     */
     public function createSingleAddressPerShipmentTypePreSubmitHandler(): SingleAddressPerShipmentTypePreSubmitHandlerInterface
     {
         return new SingleAddressPerShipmentTypePreSubmitHandler($this->createAddressFormChecker());

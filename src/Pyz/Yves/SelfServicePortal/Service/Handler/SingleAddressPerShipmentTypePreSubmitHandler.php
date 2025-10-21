@@ -14,11 +14,6 @@ use Symfony\Component\Form\FormEvent;
 
 class SingleAddressPerShipmentTypePreSubmitHandler extends SprykerSingleAddressPerShipmentTypePreSubmitHandler
 {
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     public function handlePreSubmit(FormEvent $event): void
     {
         $data = $event->getData();

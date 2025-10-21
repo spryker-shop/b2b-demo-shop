@@ -13,25 +13,16 @@ use Spryker\Zed\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConfi
 
 class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorRestApiConfig
 {
- /**
-  * @return string
-  */
     public function getPathVersionPrefix(): string
     {
         return 'v';
     }
 
-    /**
-     * @return bool
-     */
     public function getPathVersionResolving(): bool
     {
         return true;
     }
 
-    /**
-     * @return bool
-     */
     public function isNestedRelationshipsEnabled(): bool
     {
         return true;

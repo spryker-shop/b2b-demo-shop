@@ -14,9 +14,6 @@ use SprykerFeature\Zed\SelfServicePortal\SelfServicePortalConfig as SprykerSelfS
 
 class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
 {
-    /**
-     * @return string
-     */
     public function getDefaultMerchantReference(): string
     {
         return 'MERSPRYKER';
@@ -28,17 +25,14 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     public function getInquiryStatusClassMap(): array
     {
         return [
-            'approved' => 'label-success',
-            'rejected' => 'label-danger',
-            'pending' => 'label-warning',
-            'canceled' => 'label-default',
-            'in_review' => 'label-primary',
+        'approved' => 'label-success',
+        'rejected' => 'label-danger',
+        'pending' => 'label-warning',
+        'canceled' => 'label-default',
+        'in_review' => 'label-primary',
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getInquiryPendingStatus(): string
     {
         return 'pending';
@@ -50,16 +44,13 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     public function getAssetStatusClassMap(): array
     {
         return [
-            'pending' => 'label-warning',
-            'in_review' => 'label-primary',
-            'approved' => 'label-success',
-            'deactivated' => 'label-danger',
+        'pending' => 'label-warning',
+        'in_review' => 'label-primary',
+        'approved' => 'label-success',
+        'deactivated' => 'label-danger',
         ];
     }
 
-    /**
-     * @return string|null
-     */
     public function getSspAssetSearchSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;

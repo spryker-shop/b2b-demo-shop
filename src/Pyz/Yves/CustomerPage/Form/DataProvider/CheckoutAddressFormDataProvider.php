@@ -14,11 +14,6 @@ use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvi
 
 class CheckoutAddressFormDataProvider extends SprykerCheckoutAddressFormDataProvider
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function canDeliverToMultipleShippingAddresses(QuoteTransfer $quoteTransfer): bool
     {
         $items = $this->productBundleClient->getGroupedBundleItems(

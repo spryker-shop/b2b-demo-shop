@@ -26,16 +26,8 @@ use PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester;
  */
 class GetCollectionSspAssetsBackendJsonApiCest
 {
-    /**
-     * @var \PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonApiFixtures
-     */
     protected SspAssetsBackendJsonApiFixtures $fixtures;
 
-    /**
-     * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
-     */
     public function loadFixtures(SelfServicePortalBackendApiTester $I): void
     {
         /** @var \PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonApiFixtures $fixtures */
@@ -47,8 +39,6 @@ class GetCollectionSspAssetsBackendJsonApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
      */
     public function requestGetCollectionSspAssetsWithInvalidToken(SelfServicePortalBackendApiTester $I): void
     {
@@ -66,8 +56,6 @@ class GetCollectionSspAssetsBackendJsonApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester $I
-     *
-     * @return void
      */
     public function requestGetCollectionSspAssetsWithValidToken(SelfServicePortalBackendApiTester $I): void
     {

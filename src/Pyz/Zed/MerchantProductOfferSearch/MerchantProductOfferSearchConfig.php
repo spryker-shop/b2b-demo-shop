@@ -14,17 +14,11 @@ use Spryker\Zed\MerchantProductOfferSearch\MerchantProductOfferSearchConfig as S
 
 class MerchantProductOfferSearchConfig extends SprykerMerchantProductOfferSearchConfig
 {
-    /**
-     * @return string|null
-     */
     public function getMerchantEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMerchantProductOfferEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
