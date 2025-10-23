@@ -1,0 +1,6 @@
+{% extends molecule('inquiry-information', '@SprykerFeature:SelfServicePortal') %}
+
+{% block itemDefault %}
+    <span class="{{ config.name }}__info-title text-color-main">{{ info.title | trans }}:</span>
+    {{ info.value | trans }}
+{% endblock %}

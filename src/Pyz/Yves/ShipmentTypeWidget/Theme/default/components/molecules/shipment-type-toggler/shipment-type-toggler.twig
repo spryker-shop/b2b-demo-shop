@@ -1,0 +1,26 @@
+{% extends molecule('shipment-type-toggler', '@SprykerShop:ShipmentTypeWidget') %}
+
+{% block body %}
+    {% block radioButtons %}
+        <div class="grid grid--gap spacing-bottom {{ data.hideChoices ? 'is-hidden' }}">
+            {% for row in data.shipmentTypeForm.key.children %}
+                <div class="col spacing-y">
+                    {{ form_row(row, {
+                        attr: {
+                            class: config.jsName ~ '__trigger ' ~ data.shipmentTypesClassName,
+                            checked: activeShipmentType == '' and row.vars.value == 'delivery' ? true,
+                        },
+                        label_attr: {
+                            class: 'list--inline',
+                        },
+                    }) }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+    {% set servicePointType = 'in-center-service' %}
+    {% set servicePointHiddenClassName = activeShipmentType != servicePointType ? attributes['toggle-class-name'] %}
+
+    {{ block('servicePointForm') }}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends view('address-form-items-by-shipment-type','@SprykerFeature:SelfServicePortal') %}
+
+{% block title %}
+    {% set groupName = 'shipment_type.name.shipment_type_' ~ group.name %}
+    <div class="grid grid--justify spacing-x">
+        <div class="col title--h3 spacing-bottom--big"><strong>{{ groupName | trans }}</strong></div>
+        <div class="col">{{ 'self_service_portal.service.checkout.item_count' | trans }}: {{ group.items | length }}</div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% set loopIndex = 0 %}
+    {% set groupIndex = 0 %}
+
+    {% for key, group in data.shipmentTypeGroups %}
+        {% set groupIndex = loopIndex + 1 %}
+
+        <div class="spacing-bottom">
+            {{ block('title') }}
+            {% for item in group.items %}
+                {% set loopIndex = item.vars.name %}
+
+                {{ block('content') }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

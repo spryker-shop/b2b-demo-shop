@@ -1,0 +1,34 @@
+@include self-service-portal-asset-selector($name: '.asset-selector') {
+    &__container {
+        padding: rem(14) rem(20);
+        background-color: $setting-color-gray-7;
+        color: $setting-color-gray-3;
+
+        &--cart,
+        &--filter {
+            background: none;
+            padding: 1rem 0 0;
+        }
+    }
+
+    &--cart {
+        .asset-selector__subtitle {
+            padding-bottom: 0;
+        }
+
+        a {
+            color: $setting-color-main;
+        }
+    }
+
+    &__subtitle {
+        color: $setting-color-gray-8;
+    }
+
+    &__data-row {
+        display: flex;
+        gap: rem(5);
+        color: $setting-color-gray-8;
+        align-items: center;
+    }
+}

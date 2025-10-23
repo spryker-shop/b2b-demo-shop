@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
+
+    <process name="MarketplacePayment01" main="true">
+        <states>
+            <state name="new" display="oms.state.new">
+                <flag>cancellable</flag>
+            </state>
+            <state name="grace period started" reserved="true" display="oms.state.new">
+                <flag>cancellable</flag>
+                <flag>amendable</flag>
+            </state>
+            <state name="grace period finished" reserved="true" display="oms.state.new">
+                <flag>cancellable</flag>
+            </state>
+            <state name="paid" reserved="true" display="oms.state.paid"/>
+            <state name="cancelled" display="oms.state.canceled"/>
+            <state name="refunded" display="oms.state.refunded"/>
+            <state name="merchant split pending" reserved="true" display="oms.state.merchant-split-pending"/>
+            <state name="sent to merchant" reserved="true" display="oms.state.sent-to-merchant"/>
+            <state name="shipped by merchant" reserved="true" display="oms.state.shipped-by-merchant"/>
+            <state name="delivered" reserved="true" display="oms.state.delivered"/>
+            <state name="closed" display="oms.state.closed"/>
+        </states>
+
+        <transitions>
+            <transition happy="true">
+                <source>new</source>
+                <target>grace period started</target>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition happy="true">
+                <source>grace period started</source>
+                <target>grace period finished</target>
+                <event>skip grace period</event>
+            </transition>
+
+            <transition>
+                <source>grace period started</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition happy="true">
+                <source>grace period finished</source>
+                <target>warehouse allocated</target>
+                <event>allocate warehouse</event>
+            </transition>
+
+            <transition happy="true">
+                <source>warehouse allocated</source>
+                <target>paid</target>
+                <event>pay</event>
+            </transition>
+
+            <transition>
+                <source>warehouse allocated</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition happy="true">
+                <source>merchant split pending</source>
+                <target>sent to merchant</target>
+                <event>send to merchant</event>
+            </transition>
+
+            <transition>
+                <source>sent to merchant</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition condition="MerchantSalesOrder/IsOrderPaid">
+                <source>cancelled</source>
+                <target>refunded</target>
+                <event>refund</event>
+            </transition>
+
+            <transition>
+                <source>refunded</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition happy="true">
+                <source>sent to merchant</source>
+                <target>picking list generation scheduled</target>
+                <event>picking list generation schedule</event>
+            </transition>
+
+            <transition>
+                <source>sent to merchant</source>
+                <target>shipped by merchant</target>
+                <event>skip picking</event>
+            </transition>
+
+            <transition happy="true">
+                <source>picking finished</source>
+                <target>shipped by merchant</target>
+                <event>ship by merchant</event>
+            </transition>
+
+            <transition happy="true">
+                <source>shipped by merchant</source>
+                <target>delivered</target>
+                <event>deliver</event>
+            </transition>
+
+            <transition happy="true">
+                <source>delivered</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+        </transitions>
+
+        <events>
+            <event name="pay" manual="true" command="Order/RequestProductReviews"/>
+            <event name="skip grace period" manual="true" timeout="2 hour"/>
+            <event name="cancel" manual="true"/>
+            <event name="refund" manual="true"/>
+            <event name="skip picking" manual="true" timeout="30 minute"/>
+            <event name="send to merchant" onEnter="true" command="MerchantSalesOrder/CreateOrders"/>
+            <event name="ship by merchant"/>
+            <event name="deliver"/>
+            <event name="close" manual="true" command="MerchantOms/CloseOrderItem"/>
+        </events>
+
+        <subprocesses>
+            <process>MarketplaceReturn</process>
+            <process>MarketplaceRefund</process>
+            <process>WarehouseAllocation</process>
+        </subprocesses>
+
+    </process>
+
+    <process name="MarketplaceReturn" file="MarketplaceSubprocess/MarketplaceReturn01.xml"/>
+    <process name="MarketplaceRefund" file="MarketplaceSubprocess/MarketplaceRefund01.xml"/>
+    <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>
+    <process name="DummyPicking" file="DummySubprocess/DummyPicking01.xml"/>
+
+</statemachine>

@@ -1,0 +1,29 @@
+{% extends molecule('asset-details-title', '@SprykerFeature:SelfServicePortal') %}
+
+{% block unassign %}
+    {% if data.canBusinessUnitBeUnassigned and can('UnassignSspAssetPermissionPlugin') %}
+        <button title="{{ 'self_service_portal.asset.details_page.unassign' | trans }}" class="link link--alert {{ confirmationTrigger }}" {{ qa('unassign-ssp-asset-link') }}>
+            {% include atom('icon') with {
+                data: {
+                    name: 'remove',
+                }
+            } only %}
+        </button>
+    {% endif %}
+{% endblock %}
+
+{% block edit %}
+    {% if can('UpdateSspAssetPermissionPlugin') and data.isUpdateAllowed %}
+        <a
+            href="{{ url('customer/ssp-asset/update', { reference: data.reference }) }}"
+            class="link"
+            title="{{ 'general.edit.button' | trans }}"
+            {{ qa('edit-ssp-asset') }}>
+            {% include atom('icon') with {
+                data: {
+                    name: 'edit',
+                }
+            } only %}
+        </a>
+    {% endif %}
+{% endblock %}

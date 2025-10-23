@@ -14,6 +14,7 @@ use Spryker\Zed\ConfigurableBundleGui\Communication\Plugin\ProductListGui\Config
 use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGui\MerchantRelationListProductListTopButtonsExpanderPlugin;
 use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGui\MerchantRelationshipProductListUsedByTableExpanderPlugin;
 use Spryker\Zed\ProductListGui\ProductListGuiDependencyProvider as SprykerProductListGuiDependencyProvider;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductListGui\SspModelProductListUsedByTableExpanderPlugin;
 
 class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyProvider
 {
@@ -36,6 +37,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
         return [
             new ConfigurableBundleTemplateProductListUsedByTableExpanderPlugin(),
             new MerchantRelationshipProductListUsedByTableExpanderPlugin(),
+            new SspModelProductListUsedByTableExpanderPlugin(),
         ];
     }
 }

@@ -3,7 +3,12 @@
 {% block body %}
     <div class="grid grid--middle grid--justify">
         <div class="{{ config.name }}__col {{ config.name }}__col--counter col">
-            {{ _view.pagination.numFound | default(0) | executeFilterIfExists('formatInt', app.locale) }} {{ 'catalog.itemsFound' | trans }}
+            {% widget 'SspAssetFilterNameWidget' args [_view.pagination.numFound] with {
+                defaultCount: _view.pagination.numFound,
+            } only %}
+            {% nowidget %}
+                {{ _view.pagination.numFound | default(0) | executeFilterIfExists('formatInt', app.locale) }} {{ 'catalog.itemsFound' | trans }}
+            {% endwidget %}
         </div>
 
         <div class="col {{ config.name }}__col {{ config.name }}__col--filters is-hidden-sm-md">

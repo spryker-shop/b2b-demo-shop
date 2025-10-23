@@ -35,10 +35,18 @@ actions:
     source: data/import/common/common/tax.csv
   - data_entity: shipment
     source: data/import/common/common/shipment.csv
+  - data_entity: shipment-type
+    source: data/import/common/common/shipment_type.csv
+  - data_entity: shipment-method-shipment-type
+    source: data/import/common/common/shipment_method_shipment_type.csv
   - data_entity: shipment-price
     source: data/import/common/DE/shipment_price.csv
   - data_entity: shipment-price
     source: data/import/common/AT/shipment_price.csv
+  - data_entity: shipment-type-store
+    source: data/import/common/DE/shipment_type_store.csv
+  - data_entity: shipment-type-store
+    source: data/import/common/AT/shipment_type_store.csv
   - data_entity: sales-order-threshold
     source: data/import/common/DE/sales_order_threshold.csv
   - data_entity: sales-order-threshold
@@ -248,6 +256,8 @@ actions:
     source: data/import/common/common/company_user_on_behalf.csv
   - data_entity: merchant
     source : data/import/common/common/merchant.csv
+  - data_entity: merchant-stock
+    source: data/import/common/common/marketplace/merchant_stock.csv
   - data_entity: merchant-store
     source: data/import/common/AT/merchant_store.csv
   - data_entity: merchant-store
@@ -260,6 +270,22 @@ actions:
     source: data/import/common/DE/sales_order_threshold_per_merchant_relationship.csv
   - data_entity: merchant-relationship-sales-order-threshold
     source: data/import/common/AT/sales_order_threshold_per_merchant_relationship.csv
+  - data_entity: merchant-product-offer
+    source: data/import/common/common/marketplace/merchant_product_offer.csv
+  - data_entity: merchant-product-offer-store
+    source: data/import/common/DE/merchant_product_offer_store.csv
+  - data_entity: merchant-product-offer-store
+    source: data/import/common/AT/merchant_product_offer_store.csv
+  - data_entity: stock-store
+    source: data/import/common/DE/marketplace/warehouse_store.csv
+  - data_entity: stock-store
+    source: data/import/common/AT/marketplace/warehouse_store.csv
+  - data_entity: product-offer-validity
+    source: data/import/common/common/marketplace/product_offer_validity.csv
+  - data_entity: product-offer-stock
+    source: data/import/common/common/marketplace/product_offer_stock.csv
+  - data_entity: product-offer-shipment-type
+    source: data/import/common/common/product_offer_shipment_type.csv
   - data_entity: product-price-merchant-relationship
     source: data/import/common/DE/price_product_merchant_relationship.csv
   - data_entity: product-price-merchant-relationship
@@ -293,3 +319,42 @@ actions:
     source: data/import/common/AT/comment.csv
   - data_entity: mime-type
     source: data/import/common/common/mime_type.csv
+
+#9. Click&Collect import
+  - data_entity: service-point
+    source: data/import/common/common/service_point.csv
+  - data_entity: service-point-address
+    source: data/import/common/common/service_point_address.csv
+  - data_entity: service-type
+    source: data/import/common/common/service_type.csv
+  - data_entity: service
+    source: data/import/common/common/service.csv
+  - data_entity: shipment-type-service-type
+    source: data/import/common/common/shipment_type_service_type.csv
+  - data_entity: product-offer-service
+    source: data/import/common/common/product_offer_service.csv
+# Store relation
+  - data_entity: service-point-store
+    source: data/import/common/DE/service_point_store.csv
+  - data_entity: service-point-store
+    source: data/import/common/AT/service_point_store.csv
+
+# Product Shipment Type import
+  - data_entity: product-shipment-type
+    source: data/import/common/common/product_shipment_type.csv
+
+  # SelfServicePortal
+  - data_entity: ssp-inquiry
+    source: data/import/common/EU/ssp_inquiry.csv
+  - data_entity: product-class
+    source: data/import/common/common/product_class.csv
+  - data_entity: product-to-product-class
+    source: data/import/common/common/product_to_product_class.csv
+  - data_entity: ssp-asset
+    source: data/import/common/common/ssp_asset.csv
+  - data_entity: ssp-model
+    source: data/import/common/common/ssp_model.csv
+  - data_entity: ssp-model-asset
+    source: data/import/common/common/ssp_model_asset.csv
+  - data_entity: ssp-model-product-list
+    source: data/import/common/common/ssp_model_product_list.csv

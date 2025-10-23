@@ -1,0 +1,21 @@
+@include self-service-portal-contact-list($name: '.contact-list') {
+    &.box {
+        padding: rem(13) rem(18);
+    }
+
+    &__representative-mail,
+    &__representative-phone {
+        color: $setting-color-gray-4;
+    }
+
+    &__representative-name {
+        display: block;
+        font-size: rem(13);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    &__representative-logo {
+        background-color: $setting-color-gray-2;
+    }
+}

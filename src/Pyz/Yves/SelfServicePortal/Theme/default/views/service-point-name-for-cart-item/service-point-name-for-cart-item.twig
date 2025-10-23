@@ -1,0 +1,21 @@
+{% extends view('service-point-name-for-cart-item', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% if data.scheduledAt %}
+        <div class="title--h6"><strong>{{ 'self_service_portal.service.cart_item.scheduled_at' | trans }}</strong>: {{ data.scheduledAt | formatDateTime }}</div>
+    {% endif %}
+
+    {% block title %}
+        {% if data.servicePointName %}
+            {% block titleInner %}
+                <div class="title--h6">
+                    <strong>{{ 'self_service_portal.service.cart_item.service_point.name' | trans }}</strong>:
+
+                    {% block serviceName %}
+                        {{ data.servicePointName }}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

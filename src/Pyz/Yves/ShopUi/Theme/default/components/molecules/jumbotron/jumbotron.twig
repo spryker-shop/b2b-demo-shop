@@ -13,11 +13,16 @@
     btnTitle: '',
     headline: '',
     subHeadline: '',
+    isBanner: false,
 } %}
 
 {% set backgroundImage = data.imageUrl is empty ?: 'background-image: url(' ~ data.imageUrl ~ '); ' %}
 
 {% block body %}
+    {% if data.isBanner %}
+        <a href="{{ data.link | trans }}">
+    {% endif %}
+
     <div class="{{ component.renderClass(config.name ~ '__container', modifiers) }} grid grid--left {% block contentPositionClass %}grid--middle{% endblock %}" style="{{backgroundImage}}">
         <div class="col col--sm-12 spacing-y spacing-y--bigger">
             {% if data.content is not empty %}
@@ -31,4 +36,8 @@
             {% endif %}
         </div>
     </div>
+
+    {% if data.isBanner %}
+        </a>
+    {% endif %}
 {% endblock %}

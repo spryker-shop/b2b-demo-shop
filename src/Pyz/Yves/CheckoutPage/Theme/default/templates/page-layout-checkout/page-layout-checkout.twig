@@ -101,14 +101,20 @@
 
 {% block contentWrap %}
     <div class="container {% block containerClass %}container--checkout{% endblock %}">
-        {% if data.title is not empty %}
-            <h1 class="title title--checkout">
-                {% if data.stepNumder is defined and data.breadcrumbs | length > 1 %}
-                    <span class="title__index">{{ data.stepNumder }}</span>
-                {% endif %}
-                {{ data.title }}
-            </h1>
-        {% endif %}
+        <div class="grid grid--justify grid--baseline">
+            {% if data.title is not empty %}
+                <h1 class="title title--checkout col col--expand">
+                    {% if data.step is defined and data.breadcrumbs | length > 1 %}
+                        <span class="title__index">{{ data.step }}</span>
+                    {% endif %}
+                    {{ data.title }}
+                </h1>
+            {% endif %}
+
+            {% if data.titleLink is defined and data.titleLink.visibleIf %}
+                <a class="link link--secondary link--checkout text-right" href="{{ data.titleLink.url }}">{{ data.titleLink.text | trans }}</a>
+            {% endif %}
+        </div>
 
         {% block content %}{% endblock %}
     </div>

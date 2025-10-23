@@ -1,0 +1,12 @@
+{% extends view('inquiry-order-action-button', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    <a href="{{ url('customer/ssp-inquiry/create', parameters: {
+        orderReference: data.orderReference,
+        backUrlType: 'order',
+        backUrlIdentifier: data.orderId
+    })}}"
+       class="button button--expand button--small-space"
+       data-qa="create-order-ssp-inquiry"
+    >{{ 'self_service_portal.inquiry.order.create_ssp_inquiry' | trans }}</a>
+{% endblock %}

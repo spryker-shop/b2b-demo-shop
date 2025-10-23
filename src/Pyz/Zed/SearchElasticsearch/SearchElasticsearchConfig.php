@@ -22,6 +22,12 @@ class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
     public function getJsonSchemaDefinitionDirectories(): array
     {
         $directories = parent::getJsonSchemaDefinitionDirectories();
+
+        $directory = sprintf('%s/vendor/spryker-feature/*/src/*/Shared/*/Schema/', APPLICATION_ROOT_DIR);
+        if (glob($directory, GLOB_NOSORT | GLOB_ONLYDIR)) {
+            $directories[] = $directory;
+        }
+
         $directories[] = sprintf('%s/src/Pyz/Shared/*/Schema/', APPLICATION_ROOT_DIR);
 
         return $directories;

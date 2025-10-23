@@ -1,0 +1,85 @@
+{% extends view('update-service-time', '@SprykerFeature:SelfServicePortal') %}
+
+{% block customerContent %}
+    {% include molecule('action-bar') with {
+        modifiers: ['first'],
+        data: {
+            title: data.title | trans,
+        },
+    } only %}
+
+    {% block details %}
+        {% embed molecule('order-item-details', 'SelfServicePortal') with {
+            data: {
+                details: [
+                    {
+                        label: 'self_service_portal.service.update_scheduled_time.service.sku',
+                        value: data.orderItem.sku,
+                    },
+                    {
+                        label: 'self_service_portal.service.update_scheduled_time.service.name',
+                        value: data.orderItem.name,
+                    },
+                    {
+                        label: 'self_service_portal.service.update_scheduled_time.service.quantity',
+                        value: data.orderItem.quantity,
+                    },
+                    {
+                        label: 'self_service_portal.service.update_scheduled_time.service.state',
+                        value: data.orderItem.state.displayName | trans,
+                    },
+                ],
+            },
+        } only %}
+            {% block title %}{% endblock %}
+            {% block separator %}{% endblock %}
+        {% endembed %}
+    {% endblock %}
+
+    {% block form %}
+        {% embed molecule('form') with {
+            class: 'spacing-y--bigger',
+            data: {
+                form: data.serviceItemSchedulerForm,
+                submit: {
+                    enable: true,
+                    text: 'self_service_portal.service.update_scheduled_time.button.save' | trans,
+                },
+                cancel: {
+                    enable: true,
+                    text: 'self_service_portal.service.update_scheduled_time.button.cancel' | trans,
+                    url: path('customer/ssp-service/list'),
+                },
+            }
+        } only %}
+            {% block field %}
+                {% if field.vars.id == 'service_item_scheduler_form_scheduledAt' %}
+                    <div class="spacing-x col--sm-12 col--lg-6">
+                        {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
+                            embed: {
+                                field: field,
+                            },
+                        } only %}
+                            {% block body %}
+                                {% include molecule('date-time-picker') with {
+                                    data: {
+                                        field: embed.field,
+                                    },
+                                    attributes: {
+                                        language: data.currentLanguage,
+                                        config: {
+                                            dateFormat: 'Y-m-d H:i',
+                                            minDate: 'today',
+                                        } | json_encode,
+                                    },
+                                } only %}
+                            {% endblock %}
+                        {% endwidget %}
+                    </div>
+                {% else %}
+                    {{ parent() }}
+                {% endif %}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endblock %}

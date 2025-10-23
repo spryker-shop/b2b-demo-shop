@@ -12,14 +12,26 @@
 
 {%- block form_widget_simple -%}
     {%- set label = (label | default('')) | trans -%}
+    {% set type = type | default('text') %}
 
     {%- set attr = attr | merge({
-        class: ('input input--expand' ~ (errors is not empty ? ' input--error' : ' ') ~ (attr.class | default(''))) | trim,
-        type: type | default('text'),
+        class: type == 'file' ?: ('input input--expand' ~ (errors is not empty ? ' input--error' : ' ') ~ (attr.class | default(''))) | trim,
+        type: type,
         placeholder: attr.placeholder | default(label)
     }) -%}
 
-    <input {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
+    {% if type == 'file' %}
+        {% include molecule('input-dropzone') with {
+            modifiers: [errors is not empty ? 'error' : ''],
+            data: {
+                name: full_name,
+                id: id,
+                inputAttrs: attr,
+            },
+        } only %}
+    {% else %}
+        <input {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}>
+    {% endif %}
 {%- endblock -%}
 
 {%- block textarea_widget -%}
@@ -114,6 +126,7 @@
                 }) -}}
                 {{- form_widget(child, {
                     parent_label_class: label_attr.class|default(''),
+                    choices_attr: choices_attr | default({}),
                 }) -}}
             </li>
         {% endfor %}
@@ -126,16 +139,18 @@
     {%- set label = label | default(name | humanize) | trans -%}
     {%- set componentClass = componentClass | default -%}
     {%- set modifiers = errors is empty ? ['expand'] : ['expand', 'error'] -%}
-    {%- set inputClass = attr.class | default -%}
+    {%- set inputClass = attr.class | default ~ ' ' ~ choices_attr.class | default -%}
 
     {% define attributes = {
         id: id,
         name: full_name,
-        checked: checked | default(false),
+        checked: attr.checked | default(checked | default(false)),
         required: required | default(false),
-        disabled: disabled | default(false),
+        disabled: disabled ?: attr.disabled | default(false),
         value: value | default()
     } %}
+
+    {%- set modifiers = modifiers | merge([attributes.additionalModifier | default], choices_attr.modifiers | default([])) -%}
 
     {% include component with {
         class: componentClass,

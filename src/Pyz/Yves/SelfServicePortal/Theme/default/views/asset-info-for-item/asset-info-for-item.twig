@@ -1,0 +1,28 @@
+{% extends view('asset-info-for-item', '@SprykerFeature:SelfServicePortal') %}
+
+{% block title %}{% endblock %}
+
+{% block asset %}
+    <div class="title--h6 ">
+        <strong>{{ 'self_service_portal.asset.name' | trans }}:</strong> <a class="link" href="{{ path('customer/ssp-asset/details', {'reference': data.asset.reference }) }}">{{ data.asset.name }}</a>
+    </div>
+
+    {% if data.asset.serialNumber %}
+        <div class="title--h6">
+            <strong>{{ 'self_service_portal.asset.serial_number' | trans }}:</strong> {{ data.asset.serialNumber }}
+        </div>
+    {% endif %}
+
+    {% if data.isCompatibilityVisible %}
+        <div class="title--h6 grid grid--gap-smaller grid--middle">
+             <strong class="col">{{ 'self_service_portal.asset.compatibility' | trans }}:</strong>
+             <span>{% widget 'AssetCompatibilityLabelWidget' args [data.asset.reference, data.idProduct] %}{% endwidget %}</span>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if data.asset %}
+        {{ block('asset') }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends view('list-service', '@SprykerFeature:SelfServicePortal') %}
+
+{% block filtersToggler %}
+    <button class="button button--hollow button--hollow-active js-filter-button" data-qa="component filters-button">
+        {% include atom('icon') with {
+            modifiers: ['filter'],
+            class: 'spacing-right',
+            data: {
+                name: 'filter',
+            },
+        } only %}
+        {{ 'customer.account.button.search_filters' | trans }}
+    </button>
+
+    {% include molecule('toggler-click') with {
+        attributes: {
+            'trigger-class-name': 'js-filter-button',
+            'target-class-name': 'js-filter-section',
+            'trigger-class-to-toggle': 'button--hollow-active',
+        },
+    } only %}
+{% endblock %}
+
+{% block customerContent %}
+    {% include molecule('action-bar') with {
+        modifiers: ['first'],
+        data: {
+            title: data.title | trans,
+            actions: [
+                {
+                    block: block('filtersToggler',)
+                },
+            ],
+        },
+    } only %}
+
+    {{ block('serviceContent') }}
+{% endblock %}
+
+{% block table %}
+    {% set rows = rows | map(row => row | merge({
+        actions: row.actions | map(action => action | merge({
+            iconModifier: 'big',
+            icon: 'eye',
+            title: action.label,
+        })),
+    })) %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block filters %}
+    {% include molecule('filters', 'SelfServicePortal') with {
+        class: 'is-hidden box box--small js-filter-section spacing-bottom--bigger',
+        data: {
+            filters: filters,
+        },
+    } only %}
+{% endblock %}

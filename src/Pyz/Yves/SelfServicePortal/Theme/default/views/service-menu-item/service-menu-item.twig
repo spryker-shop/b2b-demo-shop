@@ -1,0 +1,25 @@
+{% extends view('service-menu-item', '@SprykerFeature:SelfServicePortal') %}
+
+{% define data = {
+    modifiers: [],
+    url: url('customer/ssp-service/list'),
+    label: 'self_service_portal.service.list.widget.title' | trans,
+    name: 'ssp-service-management'
+} %}
+
+{% block body %}
+    {% set modifiers = data.modifiers | default([]) %}
+
+    {% block content %}
+        {% include molecule('navigation-sidebar-item') with {
+            data: {
+                url: data.url,
+                icon: 'service',
+                label: data.label,
+                name: data.name
+            },
+            qa: 'service',
+            modifiers: data.isActivePage ? ['active'] | merge(modifiers) : modifiers,
+        } only %}
+    {% endblock %}
+{% endblock %}

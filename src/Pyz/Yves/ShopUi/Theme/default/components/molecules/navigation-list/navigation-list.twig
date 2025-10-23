@@ -7,49 +7,51 @@
 } %}
 
 {% define data = {
-    nodes: []
+    nodes: [],
 } %}
 
 {% block body %}
     <ul class="{{- component.renderClass('list', modifiers) -}}">
-        {% for node in data.nodes %}
-            {% if node.nodeType is defined %}
-                {% embed atom('node') with {
-                    modifiers: modifiers,
-                    class: 'list__item',
-                    config: {
-                        tag: 'li'
-                    },
-                    data: {
-                        node: node
-                    }
-                } only %}
-                    {% import _self as component %}
-                    {% set additionalClass = data.node.cssClass ?? '' %}
+        {% block menu %}
+            {% for node in data.nodes %}
+                {% if node.block is defined %}
+                    {{ node.block | raw }}
+                {% elseif node.nodeType is defined %}
+                    {% embed atom('node') with {
+                        modifiers: modifiers,
+                        class: 'list__item',
+                        config: {
+                            tag: 'li'
+                        },
+                        data: {
+                            node: node
+                        }
+                    } only %}
+                        {% import _self as component %}
+                        {% set additionalClass = data.node.cssClass ?? '' %}
 
-                    {% block url %}
-                        <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ functionExists('generatePath') ? generatePath(data.node.url) : data.node.url }}">{{ data.node.title }}</a>
-                    {% endblock %}
+                        {% block url %}
+                            <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ functionExists('generatePath') ? generatePath(data.node.url) : data.node.url }}">{{ data.node.title }}</a>
+                        {% endblock %}
 
-                    {% block externalUrl %}
-                        <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
-                    {% endblock %}
+                        {% block externalUrl %}
+                            <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+                        {% endblock %}
 
-                    {% block other %}
-                        {{ data.node.title }}
-                    {% endblock %}
-                {% endembed %}
-            {% else %}
-                {% set additionalClass = node.cssClass ?? '' %}
-
-                {% if node.url %}
-                    <li><a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ node.url }}">{{ node.title }}</a></li>
+                        {% block other %}
+                            {{ data.node.title }}
+                        {% endblock %}
+                    {% endembed %}
                 {% else %}
-                    <li><span class="{{ component.renderClass('text', modifiers) }} {{ additionalClass }}">{{ node.title }}</span></li>
+                    {% set additionalClass = node.cssClass ?? '' %}
+
+                    {% if node.url %}
+                        <li><a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ node.url }}">{{ node.title }}</a></li>
+                    {% else %}
+                        <li><span class="{{ component.renderClass('text', modifiers) }} {{ additionalClass }}">{{ node.title }}</span></li>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        {% endblock %}
     </ul>
 {% endblock %}
-
-

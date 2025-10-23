@@ -74,6 +74,9 @@
                 {% widget 'ProductConfigurationShoppingListPageButtonWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
             {% endblock %}
 
+            {% block serviceInformation %}
+            {% endblock %}
+
             {% block itemAttributes %}
                 {% if data.attributes is not empty %}
                     {% include molecule('product-item-attributes') with {

@@ -78,6 +78,45 @@
                 ]},
             } only %}
         </li>
+
+        <li class="{{ config.name }}__item {{ config.name }}__item--user">
+            <div class="{{ config.name }}__user-name">
+                <span class="{{ config.name }}__icon">
+                    {% include atom('icon') with {
+                        modifiers: ['bigger'],
+                        data: {
+                            name: 'ssp',
+                        },
+                    } only %}
+                    {% include atom('icon') with {
+                        class: config.name ~ '__arrow',
+                        data: {
+                            name: 'caret-down',
+                        },
+                    } only %}
+                </span>
+                <span class="{{ config.name }}__text">{{ 'self_service_portal.customer_navigation.title' | trans }}</span>
+            </div>
+            {% embed molecule('navigation-list') with {
+                modifiers: ['secondary'],
+                class: config.name ~ '__sub-nav',
+            } only %}
+                {% block menu %}
+                    {% widget 'SspListMenuItemWidget' args [false] only %}
+                        {% block menu %}
+                            {% widget widgetData only %}
+                                {% block content %}
+                                    <li>
+                                        <a class="link link--secondary" href="{{ data.url }}">{{ data.label }}</a>
+                                    </li>
+                                {% endblock %}
+                            {% endwidget %}
+                        {% endblock %}
+                    {% endwidget %}
+                {% endblock %}
+            {% endembed %}
+        </li>
+
         <li class="{{ config.name }}__item">
             <a class="{{ config.name }}__link" href="{{ url('quick-order') }}">
                 <span class="{{ config.name }}__icon">

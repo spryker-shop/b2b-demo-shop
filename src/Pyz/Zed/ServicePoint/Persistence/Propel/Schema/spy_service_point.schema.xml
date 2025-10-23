@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ServicePoint\Persistence" package="src.Orm.Zed.ServicePoint.Persistence">
+
+    <table name="spy_service_point">
+        <behavior name="event">
+            <parameter name="spy_service_point_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_service_point_address">
+        <behavior name="event">
+            <parameter name="spy_service_point_address_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_service_point_store">
+        <behavior name="event">
+            <parameter name="spy_service_point_store_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_service">
+        <behavior name="event">
+            <parameter name="spy_service_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_service_type">
+        <behavior name="event">
+            <parameter name="spy_service_type_all" column="*"/>
+        </behavior>
+    </table>
+
+</database>
