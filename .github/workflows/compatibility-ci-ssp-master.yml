@@ -1,8 +1,9 @@
 name: B2B-COMPATIBILITY-CI-SSP-MASTER
 
 on:
-    schedule:
-        - cron: '30 3 * * 6'
+    push:
+        branches:
+            - master
     workflow_dispatch:
 
 env:
