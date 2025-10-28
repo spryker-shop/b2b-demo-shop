@@ -1,0 +1,120 @@
+{% extends molecule('service-point-shipment-types', '@SprykerFeature:SelfServicePortal') %}
+
+{% block ajax %}
+    {% set dynamicParams = {
+        'service-type-key': {
+            selector: ".#{config.name}__radio input:checked",
+            attribute: 'data-service-type-key',
+        },
+        'shipment-type-uuid': {
+            selector: ".#{config.name}__radio input:checked",
+            attribute: 'value',
+        },
+        'service-type-uuid': {
+            selector: ".#{config.name}__radio input:checked",
+            attribute: 'data-service-type-uuid',
+        },
+        sku: {
+            selector: ".#{config.name}",
+            attribute: 'data-service-point-product-sku',
+        },
+        quantity: {
+            selector: '.js-formatted-number-input__hidden-input',
+            attribute: 'value',
+        },
+    } %}
+
+    {% include molecule('ajax-provider') with {
+        class: ajaxProviderClass,
+        attributes: {
+            'fetch-on-load': true,
+            url: url('customer/ssp-service-point-widget-content'),
+            'dynamic-params': dynamicParams | json_encode,
+        },
+    } only %}
+
+    {% include molecule('ajax-loader') with {
+        attributes: {
+            'provider-class-name': ajaxProviderClass,
+        },
+    } only %}
+
+    {% include molecule('ajax-renderer') with {
+        attributes: {
+            'provider-class-name': ajaxProviderClass,
+            'target-class-name': ajaxContainerClass,
+            'mount-after-render': true,
+        },
+    } only %}
+
+    {% include molecule('ajax-form-submitter') with {
+        attributes: {
+            'provider-class-name': ajaxProviderClass,
+            'trigger-attribute': ajaxTriggerAttribute,
+            event: 'change',
+            'is-provider-trigger': 'true',
+        },
+    } only %}
+{% endblock %}
+
+    {% block render %}
+        <div class="{{ ajaxContainerClass }} spacing-bottom"></div>
+    {% endblock %}
+
+{% block datepicker %}
+    {% if data.isServiceDateTimeFieldVisible %}
+        <div class="spacing-bottom--big">
+            {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
+                embed: {
+                    input: {
+                        label: 'self_service_portal.service.product.label.service_date_time',
+                        attrs: {
+                            id: 'service-point-shipment-type-datetime',
+                            name: data.formFieldItemMetadataScheduledAt,
+                            placeholder: 'self_service_portal.service.product.service_date_time' | trans,
+                        },
+                    },
+                },
+            } only %}
+                {% block body %}
+                    {% include molecule('date-time-picker') with {
+                        data: {
+                            input: embed.input,
+                        },
+                        attributes: {
+                            language: data.currentLanguage,
+                            config: {
+                                dateFormat: 'Y-m-d H:i',
+                                minDate: 'today',
+                            } | json_encode,
+                        },
+                    } only %}
+                {% endblock %}
+            {% endwidget %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set shipmentTypeLength = data.shipmentTypes | length %}
+
+    {% if shipmentTypeLength %}
+        {{ block('types') }}
+
+        {% if requiredServicePoint %}
+            {{ block('servicePointSelector') }}
+            <input data-service-point-uuid-input type="hidden" name="{{ data.formFieldServicePointUuid }}" value="">
+        {% endif %}
+
+        {{ block('datepicker') }}
+
+         <input data-product-offer-reference-input type="hidden" name="{{ data.formFieldProductOfferReference }}">
+
+        {% if data.hasOnlyDeliveryLikeShipmentType %}
+            {% set shipmentType = data.shipmentTypes | first %}
+		    <input type="hidden" name="{{ data.formFieldShipmentTypeUuid }}" value="{{ shipmentType.value }}">
+        {% endif %}
+    {% else %}
+        {{ block('empty') }}
+    {% endif %}
+{% endblock %}

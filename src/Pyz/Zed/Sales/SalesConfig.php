@@ -16,7 +16,7 @@ class SalesConfig extends SprykerSalesConfig
     /**
      * This method provides list of urls to render blocks inside order detail page.
      * URL defines path to external bundle controller. For example: /discount/sales/list would call discount bundle, sales controller, list action.
-     * Action should return return array or redirect response.
+     * Action should return array or redirect response.
      *
      * example:
      * [
@@ -36,6 +36,7 @@ class SalesConfig extends SprykerSalesConfig
             'sales_payment_details' => '/sales-payment-detail/sales/list',
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',
+            'inquiries' => '/self-service-portal/list-order-inquiry',
         ];
 
         $externalBlocks = parent::getSalesDetailExternalBlocksUrls();

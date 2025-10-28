@@ -27,7 +27,7 @@
                 margin-right: rem(14);
                 width: rem(20);
                 height: rem(20);
-                line-height: rem(20);
+                line-height: 1;
             }
 
             &--filter {
@@ -85,7 +85,7 @@
                     }
                 }
 
-                #{$name}__label {
+                #{$name}__label.label {
                     font-weight: fw(bold);
 
                     &--alternative {
@@ -105,9 +105,10 @@
 
                 &:checked ~ #{$name}__box {
                     background-color: $setting-color-gray-1;
+                    border-color: $setting-color-gray-1;
                 }
 
-                & ~ #{$name}__label {
+                & ~ #{$name}__label.label {
                     color: $setting-color-gray-2;
                     cursor: not-allowed;
                 }
@@ -126,7 +127,7 @@
             }
         }
 
-        &__label {
+        &__label.label {
             display: inline-block;
             vertical-align: middle;
             text-transform: none;

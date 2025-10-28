@@ -1,0 +1,10 @@
+{% extends molecule('advanced-table-actions-cell', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% include molecule('table-action-list') with {
+        modifiers: ['align-right'],
+        data: {
+            items: data.cell,
+        },
+    } only %}
+{% endblock %}

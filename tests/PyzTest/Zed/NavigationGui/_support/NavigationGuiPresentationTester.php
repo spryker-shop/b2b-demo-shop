@@ -258,8 +258,8 @@ class NavigationGuiPresentationTester extends Actor
     {
         $this->selectOption('#navigation_node_node_type', 'Category');
 
-        $this->fillField('//form[@name=\'navigation_node\']//input[@name=\'navigation_node[navigation_node_localized_attributes][0][category_url]\']', $categoryUrl_en_US);
-        $this->fillField('//form[@name=\'navigation_node\']//input[@name=\'navigation_node[navigation_node_localized_attributes][1][category_url]\']', $categoryUrl_de_DE);
+        $this->fillField('//form[@name=\'navigation_node\']//div[@id=\'localized_attributes_container-en_US\']//input[contains(@name, \'[category_url]\')]', $categoryUrl_en_US);
+        $this->fillField('//form[@name=\'navigation_node\']//div[@id=\'localized_attributes_container-de_DE\']//input[contains(@name, \'[category_url]\')]', $categoryUrl_de_DE);
 
         $this->click('//*[@id="navigation-node-form-submit"]');
     }

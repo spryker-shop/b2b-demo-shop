@@ -27,6 +27,12 @@
             {% block actions %}
                 {{ parent() }}
 
+                {% if widgetGlobalExists('CreateOrderSspInquiryWidget') and can('CreateSspInquiryPermissionPlugin') %}
+                    <div class="{{ config.name }}__action">
+                        {% widget 'CreateOrderSspInquiryWidget' args [embed.order.orderReference, embed.order.idSalesOrder] only %}{% endwidget %}
+                    </div>
+                {% endif %}
+
                 {% embed molecule('return-create-link', 'SalesReturnPage') ignore missing with {
                     class: config.name ~ '__action ' ~ embed.jsName ~ '__target-state-toggler button',
                     data: {
@@ -89,7 +95,20 @@
                     {% endblock %}
                 {% endwidget %}
 
-                {% widget 'OrderAmendmentWidget' args [embed.order] only %}{% endwidget %}
+                <div class="{{ config.name }}__action">
+                    {% widget 'OrderAmendmentWidget' args [embed.order] with {
+                        data: {
+                            buttonClass: 'button button--small-space button--expand',
+                        },
+                    } only %}
+                    {% endwidget %}
+                </div>
+
+                {% if widgetGlobalExists('CreateOrderSspInquiryLinkWidget') and can('CreateSspInquiryPermissionPlugin') %}
+                    <div class="{{ config.name }}__action">
+                        {% widget 'CreateOrderSspInquiryLinkWidget' args [embed.order.orderReference, embed.order.idSalesOrder] only %}{% endwidget %}
+                    </div>
+                {% endif %}
             {% endblock %}
         {% endembed %}
     {% endblock %}

@@ -1,0 +1,35 @@
+{% extends molecule('image-uploader', '@SprykerFeature:SelfServicePortal') %}
+
+{% define attributes = {
+    placeholder: null,
+} %}
+
+{% block button %}
+    <label inert for="{{ data.inputAttrs.id }}" class="{{ config.name }}__button button button--small-space">
+        {% include atom('icon') with {
+            data: {
+                name: 'upload',
+            }
+        } only %}
+
+        <span class="{{ config.name }}__button-text">{{ 'self_service_portal.asset.image.upload' | trans }}</span>
+    </label>
+{% endblock %}
+
+{% block delete %}
+    {% set deleteClass = attributes['initial-image'] ? attributes['confirmation-trigger'] : "#{config.jsName}__delete" %}
+    {% set hidden = attributes['initial-image'] ?: attributes['hidden-class'] %}
+
+    <button
+        type="button"
+        data-id="{{ attributes['data-id'] }}"
+        title="{{ 'general.remove.button' | trans }}"
+        class="{{ deleteClass }} {{ hidden }} {{ config.name }}__delete button button--small-space button--alert"
+    >
+        {% include atom('icon') with {
+            data: {
+                name: 'remove',
+            }
+        } only %}
+    </button>
+{% endblock %}

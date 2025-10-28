@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductOffer\Persistence" package="src.Orm.Zed.ProductOffer.Persistence">
+
+    <table name="spy_product_offer" phpName="SpyProductOffer">
+        <behavior name="event">
+            <parameter name="spy_product_offer_all" column="*"/>
+            <parameter name="spy_product_offer_product_offer_reference" column="product_offer_reference" keep-additional="true"/>
+            <parameter name="spy_product_offer_concrete_sku" column="concrete_sku" keep-additional="true"/>
+        </behavior>
+    </table>
+
+    <table name="spy_product_offer_store" phpName="SpyProductOfferStore">
+        <behavior name="event">
+            <parameter name="spy_product_offer_store_all" column="*"/>
+        </behavior>
+    </table>
+</database>

@@ -1,0 +1,8 @@
+{% extends view('list-items-by-shipment-type', '@SprykerFeature:SelfServicePortal') %}
+
+{% block title %}
+    {% set groupName = 'shipment_type.name.shipment_type_' ~ group.name %}
+    <div class="title--h3 spacing-bottom--big" {{qa('cart-item-title')}}><strong>{{ groupName | trans }}</strong></div>
+{% endblock %}
+
+{% block separator %}{% endblock %}

@@ -5,6 +5,10 @@
         padding-top: $setting-grid-space;
         padding-bottom: $setting-grid-space-mobile;
 
+        &--align-right {
+            justify-content: flex-end;
+        }
+
         @include helper-breakpoint-media-min($lg) {
             width: 100%;
             padding: 0 rem(10) 0 0;

@@ -116,6 +116,27 @@
                                         } only %}
                                     {% endif %}
                                 {% endblock %}
+
+                                {% widget 'SspAssetInfoForItemWidget' args [data.listItem] only %}{% endwidget %}
+                                {% widget 'SspServicePointNameForItemWidget' args [data.listItem, false] with {
+                                    item: data.listItem,
+                                } only %}
+                                    {% block serviceName %}
+                                        {{ item.salesOrderItemServicePoint.name | default }}
+                                    {% endblock %}
+
+                                    {% block title %}
+                                        {% if item.salesOrderItemServicePoint.name | default %}
+                                            {{ block('titleInner') }}
+                                        {% endif %}
+                                    {% endblock %}
+                                {% endwidget %}
+
+                                <div class="spacing-y">
+                                    {% widget 'SspServiceChangeScheduledTimeLinkWidget' args [data.listItem] only %}{% endwidget %}
+                                </div>
+
+                                {% widget 'SspServiceCancelWidget' args [data.listItem] only %}{% endwidget %}
                             {% endblock %}
 
                             {% block packagingUnitCartContent %}

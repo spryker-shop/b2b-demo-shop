@@ -1,0 +1,110 @@
+@include self-service-portal-advanced-table($name: '.advanced-table') {
+    &__head {
+        background-color: $setting-color-gray-7;
+        text-transform: uppercase;
+        font-size: map_get($setting-font-size, tiny);
+        font-weight: fw(bold);
+    }
+
+    &__col {
+        padding: rem(16) rem(15);
+        text-align: left;
+        color: $setting-color-gray-4;
+
+        &:first-child {
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(30);
+            }
+        }
+
+        &--head {
+            color: $setting-color-gray-5;
+            font-weight: fw(bold);
+
+            &:empty {
+                padding: 0;
+            }
+        }
+    }
+
+    &__row:nth-child(even) &__col {
+        background: none;
+    }
+
+    &__row:not(&__row--head) {
+        &:not(:first-child) {
+            border-top: rem(1) solid $setting-color-gray-6;
+        }
+
+        &:last-child {
+            border-bottom: rem(1) solid $setting-color-gray-6;
+        }
+    }
+
+    @include helper-breakpoint-media-max($lg - 1) {
+        display: block;
+
+        &__col,
+        &__row {
+            display: block;
+
+            &--head {
+                display: none;
+            }
+
+            &.is-hidden-sm-md {
+                display: none;
+            }
+        }
+
+        &__body {
+            tr {
+                padding-top: $setting-grid-space;
+                padding-bottom: $setting-grid-space;
+
+                &:not(#{&}--backgroungless) {
+                    &:nth-child(even) {
+                        background: none;
+                    }
+                }
+            }
+        }
+
+        &__col {
+            display: flex;
+            position: relative;
+            padding-top: 0;
+            padding-bottom: 0;
+
+            &:first-child {
+                padding-top: 1rem;
+            }
+
+            &:not(:has(.advanced-table-actions-cell)) {
+                background-color: $setting-color-gray-7;
+            }
+
+            &:nth-last-child(1 of .advanced-table__col:not(:has(.advanced-table-actions-cell))) {
+                padding-bottom: 1rem;
+            }
+
+            &:not([data-content=''])::before {
+                content: attr(data-content) ':';
+                font-weight: fw(bold);
+                display: inline-block;
+                width: auto;
+                padding-right: rem(10);
+                text-transform: uppercase;
+                flex-shrink: 0;
+            }
+
+            &:has(.advanced-table-actions-cell)::before {
+                display: none;
+            }
+
+            & > [class$='-cell'] {
+                width: 100%;
+            }
+        }
+    }
+}

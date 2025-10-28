@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:state-machine-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:state-machine-01 http://static.spryker.com/state-machine-01.xsd"
+>
+
+    <process name="MainMerchantStateMachine" main="true">
+
+        <states>
+            <state name="created"/>
+            <state name="new"/>
+            <state name="canceled"/>
+            <state name="left the merchant location"/>
+            <state name="arrived at distribution center"/>
+            <state name="shipped"/>
+            <state name="delivered"/>
+            <state name="closed"/>
+        </states>
+
+        <transitions>
+            <transition happy="true">
+                <source>created</source>
+                <target>new</target>
+                <event>initiate</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>canceled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
+                <source>canceled</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition happy="true">
+                <source>new</source>
+                <target>left the merchant location</target>
+                <event>send to distribution</event>
+            </transition>
+
+            <transition happy="true">
+                <source>left the merchant location</source>
+                <target>arrived at distribution center</target>
+                <event>confirm at center</event>
+            </transition>
+
+            <transition happy="true">
+                <source>arrived at distribution center</source>
+                <target>shipped</target>
+                <event>ship</event>
+            </transition>
+
+            <transition happy="true">
+                <source>shipped</source>
+                <target>delivered</target>
+                <event>deliver</event>
+            </transition>
+
+            <transition happy="true">
+                <source>delivered</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="initiate" onEnter="true"/>
+            <event name="send to distribution" manual="true"/>
+            <event name="confirm at center" manual="true"/>
+            <event name="ship" manual="true" command="MarketplaceOrder/ShipOrderItem"/>
+            <event name="deliver" manual="true" command="MarketplaceOrder/DeliverOrderItem"/>
+            <event name="close"/>
+            <event name="cancel" manual="true" command="MarketplaceOrder/CancelOrderItem"/>
+        </events>
+
+        <subprocesses>
+            <process>MerchantReturn</process>
+            <process>MerchantRefund</process>
+        </subprocesses>
+
+    </process>
+
+    <process name="MerchantReturn" file="Subprocess/MerchantReturn"/>
+    <process name="MerchantRefund" file="Subprocess/MerchantRefund"/>
+
+</statemachine>

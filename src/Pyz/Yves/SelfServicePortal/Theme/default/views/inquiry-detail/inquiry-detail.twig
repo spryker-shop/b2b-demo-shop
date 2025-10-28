@@ -1,0 +1,61 @@
+{% extends view('inquiry-detail', '@SprykerFeature:SelfServicePortal') %}
+
+{% block customerContent %}
+    {% if can('CreateSspInquiryPermissionPlugin') %}
+        {% include molecule('action-bar') with {
+            modifiers: ['first'],
+            data: {
+                title: data.title | trans,
+                actions: [
+                    {
+                        block: block('actions',)
+                    },
+                ],
+            },
+        } only %}
+    {% endif %}
+
+    {% block information %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block table %}
+    {% set rows = rows | map(row => row | merge({
+        actions: row.actions | map(action => action | merge({
+            iconModifier: 'big',
+            icon: 'download',
+            title: action.label,
+        })),
+    })) %}
+
+    {% include molecule('advanced-table', 'SelfServicePortal') with {
+        data: {
+            columns: columns,
+            rows: rows,
+        },
+    } only %}
+{% endblock %}
+
+{% block actions %}
+    {% if data.inquiry.isCancellable and data.isInquiryOwner %}
+        {{ form_start(data.cancelForm, {'action': path('customer/ssp-inquiry/cancel', {
+            'sspInquiryReference': data.inquiry.reference
+        })}) }}
+            <button class="button button--alert button--hollow" data-qa="cancel-ssp-inquiry">{{ 'self_service_portal.inquiry.cancel' | trans }}</button>
+        {{ form_end(data.cancelForm) }}
+    {% endif %}
+{% endblock %}
+
+{% block status %}
+    <li>
+        <span class="text-color-main">{{ 'customer.self_service_portal.inquiry.details.status' | trans  ~ ': ' }}</span>
+
+        {% include molecule('status') with {
+            data: {
+                label: ('self_service_portal.inquiry.status.' ~ data.inquiry.status) | trans ,
+                status: data.inquiry.status,
+            },
+        } only %}
+    </li>
+{% endblock %}

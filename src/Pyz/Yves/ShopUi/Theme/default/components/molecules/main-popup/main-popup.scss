@@ -1,4 +1,10 @@
 @include shop-ui-main-popup($name: '.main-popup') {
+    z-index: $setting-zi-header-overlay + 1;
+
+    &--auto {
+        width: auto;
+    }
+
     &--top {
         z-index: $setting-zi-header-overlay;
     }

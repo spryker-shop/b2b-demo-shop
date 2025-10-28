@@ -1,0 +1,9 @@
+{% extends molecule('asset-form', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% block form %}
+        {% set formModifiers = ['actions-right'] %}
+
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

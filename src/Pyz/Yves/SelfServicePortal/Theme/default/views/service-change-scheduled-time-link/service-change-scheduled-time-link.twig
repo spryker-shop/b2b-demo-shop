@@ -1,0 +1,19 @@
+{% extends view('service-change-scheduled-time-link', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% if data.isVisible %}
+        <a href="{{ path('customer/ssp-service/update-service-time', {
+            'item-uuid': data.orderItem.uuid,
+            'id-sales-order': data.orderItem.fkSalesOrder
+        }) }}" class="button button--hollow" data-qa="reschedule-button">
+            {% include atom('icon') with {
+                modifiers: ['small'],
+                data: {
+                    name: 'overview',
+                },
+            } only %}
+
+            {{ 'self_service_portal.service.update_scheduled_time' | trans }}
+        </a>
+    {% endif %}
+{% endblock %}

@@ -64,6 +64,48 @@
             </table>
         </pages>
     </sales>
+    <ssp>
+        <label>Customer Portal</label>
+        <title>Customer Portal</title>
+        <icon>fa-id-badge</icon>
+        <pages>
+            <self-service-portal-model>
+                <label>Models</label>
+                <title>Models</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-model</controller>
+                <action>index</action>
+            </self-service-portal-model>
+            <self-service-portal-asset>
+                <label>Assets</label>
+                <title>Assets</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-asset</controller>
+                <action>index</action>
+            </self-service-portal-asset>
+            <self-service-portal-company-file>
+                <label>File Attachments</label>
+                <title>File Attachments</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-file</controller>
+                <action>index</action>
+            </self-service-portal-company-file>
+            <self-service-portal-inquiries>
+                <label>Inquiries</label>
+                <title>Inquiries</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-inquiry</controller>
+                <action>index</action>
+            </self-service-portal-inquiries>
+            <self-service-portal-services>
+                <label>Booked Services</label>
+                <title>Booked Services</title>
+                <bundle>self-service-portal</bundle>
+                <controller>list-service</controller>
+                <action>index</action>
+            </self-service-portal-services>
+        </pages>
+    </ssp>
     <customer>
         <label>Customers</label>
         <title>Customers</title>
@@ -201,6 +243,13 @@
                 <controller>import</controller>
                 <action>index</action>
             </price-product-schedule>
+            <product-offer-gui>
+                <label>Offers</label>
+                <title>Offers</title>
+                <bundle>product-offer-gui</bundle>
+                <controller>list</controller>
+                <action>index</action>
+            </product-offer-gui>
         </pages>
     </catalog>
     <content>

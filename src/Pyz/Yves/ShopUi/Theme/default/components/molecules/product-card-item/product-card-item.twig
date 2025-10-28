@@ -213,6 +213,20 @@
                                         } only %}
                                     {% endif %}
                                 {% endblock %}
+
+                                {% block serviceInformation %}
+                                    {% if data.canEdit %}
+                                        {% widget 'SspCartItemAssetSelectorWidget' args [listItem, false] with {
+                                            ajaxTriggerAttribute: data.ajaxTriggerAttribute
+                                        } only %}{% endwidget %}
+                                    {% else %}
+                                        {% widget 'SspAssetInfoForItemWidget' args [listItem] only %}{% endwidget %}
+                                    {% endif %}
+
+                                    {% widget 'SspServicePointNameForItemWidget' args [listItem] only %}
+                                        {% elsewidget 'ServicePointNameForItemWidget' args [listItem] only %}
+                                    {% endwidget %}
+                                {% endblock %}
                             {% endblock %}
                         </div>
                         <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--total') }} col">

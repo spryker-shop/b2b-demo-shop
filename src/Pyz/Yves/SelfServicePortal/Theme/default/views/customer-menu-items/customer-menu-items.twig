@@ -1,0 +1,17 @@
+{% extends view('customer-menu-items', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% set widgets = [
+        findWidget('DashboardMenuItemWidget', [data.activePage]),
+        findWidget('SspAssetMenuItemWidget', [data.activePage]),
+        findWidget('SspInquiryMenuItemWidget', [data.activePage]),
+        findWidget('SspServiceMenuItemWidget', [data.activePage]),
+        findWidget('SspCompanyFilesMenuItemWidget', [data.activePage]),
+    ] %}
+
+    {% for widgetData in widgets %}
+        {% block menu %}
+            {% widget widgetData only %}{% endwidget %}
+        {% endblock %}
+    {% endfor %}
+{% endblock %}

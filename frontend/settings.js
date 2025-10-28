@@ -39,6 +39,8 @@ const globalSettings = {
             ],
             target: './frontend/assets/global/default/icons/sprite.svg',
         },
+
+        features: './vendor/spryker-feature',
     },
 
     expectedModeArgument: 2,
@@ -160,6 +162,9 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         // eco folders
         eco: globalSettings.paths.eco,
 
+        // features folder
+        features: globalSettings.paths.features,
+
         // project folders
         project: globalSettings.paths.project,
 
@@ -223,6 +228,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                 dirs: [
                     join(globalSettings.context, paths.core),
                     join(globalSettings.context, paths.sprykerCore),
+                    join(globalSettings.context, paths.features),
                     join(globalSettings.context, paths.eco),
                     join(globalSettings.context, paths.project),
                 ],
@@ -236,7 +242,11 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             // do not change unless necessary
             componentStyles: {
                 // absolute dirs in which look for
-                dirs: [join(globalSettings.context, paths.core), join(globalSettings.context, paths.sprykerCore)],
+                dirs: [
+                    join(globalSettings.context, paths.core),
+                    join(globalSettings.context, paths.features),
+                    join(globalSettings.context, paths.sprykerCore),
+                ],
                 // files/dirs patterns
                 patterns: [
                     `**/Theme/${namespaceConfig.defaultTheme}/components/atoms/*/*.scss`,

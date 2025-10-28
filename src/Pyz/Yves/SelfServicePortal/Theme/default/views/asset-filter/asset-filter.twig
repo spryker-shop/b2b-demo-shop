@@ -1,0 +1,11 @@
+{% extends view('asset-filter', '@SprykerFeature:SelfServicePortal') %}
+
+{% block body %}
+    {% if not data.isDisabled %}
+        <div class="spacing-bottom--big">
+            <div data-qa="component asset-list" class="filter-section__item">
+                {{ block('information') }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:state-machine-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:state-machine-01 http://static.spryker.com/state-machine-01.xsd"
+>
+
+    <process name="MerchantDefaultStateMachine" main="true">
+
+        <states>
+            <state name="created"/>
+            <state name="new"/>
+            <state name="canceled by merchant"/>
+            <state name="shipped"/>
+            <state name="delivered"/>
+            <state name="closed"/>
+        </states>
+
+        <transitions>
+            <transition happy="true">
+                <source>created</source>
+                <target>new</target>
+                <event>initiate</event>
+            </transition>
+
+            <transition happy="true">
+                <source>new</source>
+                <target>shipped</target>
+                <event>ship</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>canceled by merchant</target>
+                <event>cancel by merchant</event>
+            </transition>
+
+            <transition>
+                <source>canceled by merchant</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition happy="true">
+                <source>shipped</source>
+                <target>delivered</target>
+                <event>deliver</event>
+            </transition>
+
+            <transition happy="true">
+                <source>delivered</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="initiate" onEnter="true"/>
+            <event name="ship" manual="true" command="MarketplaceOrder/ShipOrderItem"/>
+            <event name="deliver" manual="true" command="MarketplaceOrder/DeliverOrderItem"/>
+            <event name="close"/>
+            <event name="cancel by merchant" manual="true" command="MarketplaceOrder/CancelOrderItem"/>
+        </events>
+
+        <subprocesses>
+            <process>MerchantReturn</process>
+            <process>MerchantRefund</process>
+        </subprocesses>
+
+    </process>
+
+    <process name="MerchantReturn" file="Subprocess/MerchantReturn"/>
+    <process name="MerchantRefund" file="Subprocess/MerchantRefund"/>
+
+</statemachine>

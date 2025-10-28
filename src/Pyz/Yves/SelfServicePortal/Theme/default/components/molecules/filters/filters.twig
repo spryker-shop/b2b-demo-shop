@@ -1,0 +1,53 @@
+{% extends molecule('filters', '@SprykerFeature:SelfServicePortal') %}
+
+{% block separator %}{% endblock %}
+
+{% block filter %}
+    {% set isDate = 'dateTo' in filter.row.vars.id or 'dateFrom' in filter.row.vars.id %}
+
+    {% if isDate %}
+        {% set dateFromId = 'dateTo' in filter.row.vars.id
+            ? (data.filters | find(_filter => 'dateFrom' in _filter.row.vars.id)).row.vars.id
+            : false
+        %}
+        {% set dateToId = 'dateFrom' in filter.row.vars.id
+            ? (data.filters | find(_filter => 'dateTo' in _filter.row.vars.id)).row.vars.id
+            : false
+        %}
+
+        {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
+            data: {
+                field: filter.row,
+            },
+            embed: {
+                dateFromId: dateFromId,
+                dateToId: dateToId,
+            },
+        } only %}
+            {% block body %}
+                {% set config = {
+                    dateFormat: 'Y-m-d H:i',
+                } %}
+
+                {% include molecule('date-time-picker') with {
+                    data: {
+                        field: data.field,
+                    },
+                    attributes: {
+                        language: data.currentLanguage,
+                        config: config | json_encode,
+                        'formatted-date-time': data.field.vars.value | date(config.dateFormat),
+                        'date-from-id': embed.dateFromId,
+                        'date-to-id': embed.dateToId,
+                    },
+                } only %}
+            {% endblock %}
+        {% endwidget %}
+    {% else %}
+        {% set isSelect = filter.row.vars.choices | default([]) | length %}
+
+        {{ form_row(filter.row, { attr: (filter.attr | default({})) | merge({
+            class: isSelect ? 'light',
+        }) }) }}
+    {% endif %}
+{% endblock %}

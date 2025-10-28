@@ -11,6 +11,7 @@ namespace Pyz\Zed\DataImport;
 
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 use Spryker\Zed\StockAddressDataImport\StockAddressDataImportConfig;
+use SprykerFeature\Zed\SelfServicePortal\SelfServicePortalConfig;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
@@ -111,6 +112,8 @@ class DataImportConfig extends SprykerDataImportConfig
     {
         $customImportTypes = [
             StockAddressDataImportConfig::IMPORT_TYPE_STOCK_ADDRESS,
+            SelfServicePortalConfig::IMPORT_TYPE_SSP_INQUIRY,
+            SelfServicePortalConfig::IMPORT_TYPE_PRODUCT_SHIPMENT_TYPE,
         ];
 
         return array_merge(parent::getFullImportTypes(), $customImportTypes);
