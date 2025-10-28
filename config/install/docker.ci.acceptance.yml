@@ -146,3 +146,6 @@ sections:
 
         api-generate-documentation:
             command: 'vendor/bin/glue api:generate:documentation'
+
+        publish-events:
+            command: 'vendor/bin/console publish:trigger-events -r unauthenticated_customer_access'
