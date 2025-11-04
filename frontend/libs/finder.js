@@ -22,17 +22,20 @@ const globAsync = async (patterns, rootConfiguration) => {
 
 const findFiles = (globDirs, globPatterns, globSettings) =>
     globDirs.reduce(async (resultsPromise, dir) => {
+        const results = await resultsPromise;
         const rootConfiguration = {
             ...defaultGlobSettings,
             ...globSettings,
             cwd: dir,
         };
 
-        const results = await resultsPromise;
         const globPath = await globAsync(globPatterns, rootConfiguration);
 
         return results.concat(globPath);
-    }, Promise.resolve([]));
+    }, Promise.resolve([])).then((results) => {
+        // Sort once here to make result deterministic
+        return results.sort();
+    });
 
 const find = async (globDirs, globPatterns, globFallbackPatterns, globSettings = {}) => {
     const customThemeFiles = await findFiles(globDirs, globPatterns, globSettings);
@@ -40,11 +43,8 @@ const find = async (globDirs, globPatterns, globFallbackPatterns, globSettings =
         ? await findFiles(globDirs, globFallbackPatterns, globSettings)
         : [];
 
-    // Sort both arrays to ensure deterministic order
-    const sortedCustomThemeFiles = [...customThemeFiles].sort();
-    const sortedDefaultThemeFiles = [...defaultThemeFiles].sort();
-
-    return [...sortedDefaultThemeFiles, ...sortedCustomThemeFiles];
+    // they are already sorted by findFiles; just concatenate fallback then custom
+    return [...defaultThemeFiles, ...customThemeFiles];
 };
 
 // find entry points
@@ -55,10 +55,9 @@ const findEntryPoints = async (settings) => {
 
 // merge entry points
 const mergeEntryPoints = async (files) => {
-    // Sort files before processing to ensure consistent order
-    const sortedFiles = [...files].sort();
+    // `files` is already sorted by findFiles, so we don't need to sort again here
     return Object.values(
-        sortedFiles.reduce((map, file) => {
+        files.reduce((map, file) => {
             const dir = path.dirname(file);
             const name = path.basename(dir);
             const type = path.basename(path.dirname(dir));
