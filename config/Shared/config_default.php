@@ -598,10 +598,14 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
     SchedulerConfig::SCHEDULER_JENKINS => [
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => sprintf(
             '%s://%s:%s/',
-            getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'http',
+            getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'https',
             getenv('SPRYKER_SCHEDULER_HOST'),
             getenv('SPRYKER_SCHEDULER_PORT'),
         ),
+        SchedulerJenkinsConfig::SCHEDULER_JENKINS_CREDENTIALS => [
+            getenv('SPRYKER_SCHEDULER_USERNAME'),
+            getenv('SPRYKER_SCHEDULER_PASSWORD')
+        ],
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_CSRF_ENABLED => (bool)getenv('SPRYKER_JENKINS_CSRF_PROTECTION_ENABLED'),
     ],
 ];
