@@ -146,6 +146,7 @@
         "spryker/company-sales-connector": "^1.1.1",
         "spryker/company-user-auth-rest-api": "^2.1.0",
         "spryker/company-users-rest-api": "^2.7.1",
+        "spryker/composer-autoload-plugin": "^0.2.0",
         "spryker/configurable-bundle-carts-rest-api": "^1.0.0",
         "spryker/configurable-bundles-products-resource-relationship": "^1.1.0",
         "spryker/configurable-bundles-rest-api": "^1.1.0",
@@ -309,6 +310,12 @@
             "tests/cypress-tests/": [
                 "spryker/cypress-tests"
             ]
+        },
+        "splitting": {
+            "namespaces": [
+                "Spryker\\",
+                "SprykerShop\\"
+            ]
         }
     },
     "autoload-dev": {
@@ -342,7 +349,8 @@
             "symfony/flex": true,
             "symfony/runtime": true,
             "tbachert/spi": true,
-            "oomphinc/composer-installers-extender": true
+            "oomphinc/composer-installers-extender": true,
+            "spryker/composer-autoload-plugin": true
         }
     },
     "repositories": [
