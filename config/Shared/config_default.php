@@ -583,12 +583,12 @@ foreach ($rabbitConnections as $key => $connection) {
         $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
     }
 
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_STREAM_CONTEXT_OPTIONS] = [
-        'ssl' => [
-            'verify_peer'       => true,
-            'verify_peer_name'  => true,
-        ],
-    ];
+    // $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_STREAM_CONTEXT_OPTIONS] = [
+    //     'ssl' => [
+    //         'verify_peer'       => true,
+    //         'verify_peer_name'  => true,
+    //     ],
+    // ];
 
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === $defaultKey;
 }
@@ -610,10 +610,10 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
             getenv('SPRYKER_SCHEDULER_HOST'),
             getenv('SPRYKER_SCHEDULER_PORT'),
         ),
-        SchedulerJenkinsConfig::SCHEDULER_JENKINS_CREDENTIALS => [
-            getenv('SPRYKER_SCHEDULER_USERNAME'),
-            getenv('SPRYKER_SCHEDULER_PASSWORD')
-        ],
+        // SchedulerJenkinsConfig::SCHEDULER_JENKINS_CREDENTIALS => [
+        //     getenv('SPRYKER_SCHEDULER_USERNAME'),
+        //     getenv('SPRYKER_SCHEDULER_PASSWORD')
+        // ],
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_CSRF_ENABLED => (bool)getenv('SPRYKER_JENKINS_CSRF_PROTECTION_ENABLED'),
     ],
 ];
