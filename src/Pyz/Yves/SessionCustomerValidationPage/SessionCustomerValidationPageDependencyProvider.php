@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\SessionCustomerValidationPage;
 
+use Spryker\Client\Customer\Plugin\SessionCustomerValidationPage\StorageInvalidationRecordCustomerSessionValidatorPlugin;
 use Spryker\Yves\SessionRedis\Plugin\SessionCustomerValidationPage\RedisCustomerSessionSaverPlugin;
 use Spryker\Yves\SessionRedis\Plugin\SessionCustomerValidationPage\RedisCustomerSessionValidatorPlugin;
 use SprykerShop\Yves\SessionCustomerValidationPage\SessionCustomerValidationPageDependencyProvider as SprykerSessionCustomerValidationPageDependencyProvider;
@@ -25,5 +26,13 @@ class SessionCustomerValidationPageDependencyProvider extends SprykerSessionCust
     protected function getCustomerSessionValidatorPlugin(): CustomerSessionValidatorPluginInterface
     {
         return new RedisCustomerSessionValidatorPlugin();
+    }
+
+    protected function getCustomerSessionValidatorPlugins(): array
+    {
+        return [
+            new RedisCustomerSessionValidatorPlugin(),
+            new StorageInvalidationRecordCustomerSessionValidatorPlugin(),
+        ];
     }
 }
