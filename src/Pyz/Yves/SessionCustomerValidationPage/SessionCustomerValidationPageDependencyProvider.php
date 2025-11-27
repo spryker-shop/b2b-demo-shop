@@ -28,6 +28,9 @@ class SessionCustomerValidationPageDependencyProvider extends SprykerSessionCust
         return new RedisCustomerSessionValidatorPlugin();
     }
 
+    /**
+     * @return array<\SprykerShop\Yves\SessionCustomerValidationPageExtension\Dependency\Plugin\CustomerSessionValidatorPluginInterface>
+     */
     protected function getCustomerSessionValidatorPlugins(): array
     {
         return [

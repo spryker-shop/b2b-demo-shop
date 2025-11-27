@@ -15,6 +15,9 @@ use Spryker\Zed\OauthPermission\Communication\Plugin\CompanyRole\OauthPermission
 
 class CompanyRoleDependencyProvider extends SprykerCompanyRoleDependencyProvider
 {
+    /**
+     * @return array<\Spryker\Zed\CompanyRoleExtension\Dependency\Plugin\CompanyRolePostSavePluginInterface>
+     */
     protected function getCompanyRolePostSavePlugins(): array
     {
         return [
