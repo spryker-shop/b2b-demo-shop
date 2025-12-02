@@ -470,7 +470,7 @@ $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_HOST] = getenv('SPRYKER
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PASSWORD] = getenv('SPRYKER_KEY_VALUE_STORE_PASSWORD');
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_DATABASE] = 7;
-$config[RedisConstants::REDIS_COMPRESSION_ENABLED] = getenv('SPRYKER_KEY_VALUE_COMPRESSING_ENABLED') ?: false;
+$config[RedisConstants::REDIS_COMPRESSION_ENABLED] = getenv('SPRYKER_KEY_VALUE_COMPRESSING_ENABLED') ?: true;
 
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_BLOCKING_TTL] = 600;
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_BLOCK_FOR] = 300;
