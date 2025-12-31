@@ -93,64 +93,110 @@ regions:
       search:
         namespace: eu_search
 
+# groups:
+#   EU:
+#     region: EU
+#     applications:
+#       mportal:
+#         application: merchant-portal
+#         application-group: backend-group
+#         endpoints:
+#           mp.eu.eugene-dev2.cloud.spryker.toys:
+#             region: EU
+#             <<: *frontend-auth
+#             entry-point: MerchantPortal
+#             primal: true
+#             services:
+#               session:
+#                 namespace: 7
+#       yves:
+#         application: yves
+#         application-group: frontend-group
+#         endpoints:
+#           yves.eu.eugene-dev2.cloud.spryker.toys:
+#             region: EU
+#             <<: *frontend-auth
+#             services:
+#               session:
+#                 namespace: 1
+#       glue:
+#         application: glue
+#         application-group: frontend-group
+#         endpoints:
+#           glue.eu.eugene-dev2.cloud.spryker.toys:
+#             region: EU
+#       boffice:
+#         application: backoffice
+#         application-group: backend-group
+#         endpoints:
+#           backoffice.eu.eugene-dev2.cloud.spryker.toys:
+#             region: EU
+#             <<: *frontend-auth
+#             primal: true
+#             services:
+#               session:
+#                 namespace: 3
+#       backgw:
+#         application: backend-gateway
+#         application-group: backend-group
+#         endpoints:
+#           backend-gateway.eu.eugene-dev2.cloud.spryker.toys:
+#             region: EU
+#             primal: true
+
+
+#       gluebackend:
+#         application: glue-backend
+#         application-group: backend-group
+#         endpoints:
+#           glue-backend.eu.eugene-dev2.cloud.spryker.toys:
+#             region: EU
+
 groups:
   EU:
     region: EU
     applications:
-      mportal:
-        application: merchant-portal
-        application-group: backend-group
+      yves:
+        application: yves
+        endpoints:
+          yves.eu.eugene-dev2.cloud.spryker.toys:
+            region: EU
+            <<: *frontend-auth
+            entry-point: Yves
+            services:
+              session:
+                namespace: 1
+
+          glue.eu.eugene-dev2.cloud.spryker.toys:
+            region: EU
+            entry-point: Glue
+
+      backoffice:
+        application: backoffice
         endpoints:
           mp.eu.eugene-dev2.cloud.spryker.toys:
             region: EU
             <<: *frontend-auth
             entry-point: MerchantPortal
-            primal: true
             services:
               session:
                 namespace: 7
-      yves:
-        application: yves
-        application-group: frontend-group
-        endpoints:
-          yves.eu.eugene-dev2.cloud.spryker.toys:
-            region: EU
-            <<: *frontend-auth
-            services:
-              session:
-                namespace: 1
-      glue:
-        application: glue
-        application-group: frontend-group
-        endpoints:
-          glue.eu.eugene-dev2.cloud.spryker.toys:
-            region: EU
-      boffice:
-        application: backoffice
-        application-group: backend-group
-        endpoints:
+
           backoffice.eu.eugene-dev2.cloud.spryker.toys:
             region: EU
             <<: *frontend-auth
-            primal: true
+            entry-point: Backoffice
             services:
               session:
                 namespace: 3
-      backgw:
-        application: backend-gateway
-        application-group: backend-group
-        endpoints:
+
           backend-gateway.eu.eugene-dev2.cloud.spryker.toys:
             region: EU
-            primal: true
+            entry-point: BackendGateway
 
-
-      gluebackend:
-        application: glue-backend
-        application-group: backend-group
-        endpoints:
           glue-backend.eu.eugene-dev2.cloud.spryker.toys:
             region: EU
+            entry-point: GlueBackend
 
 services:
   database:
