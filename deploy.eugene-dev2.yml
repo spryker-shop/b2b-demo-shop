@@ -37,19 +37,18 @@ x-frontend-auth: &frontend-auth
       - '${ALLOWED_IP}' # AWS gateway
       - 185.60.20.0/24 # PayOne
 
-namespace: eugene-dev2
+namespace: eugene-dev2-local
 tag: '1.0'
 
-environment: docker.dev
+environment: docker.production
 image:
   tag: spryker/php:8.3
   environment:
     SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy -vvv'
     SPRYKER_HOOK_AFTER_DEPLOY: 'true'
-    SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production --no-ansi -vvv'
+    SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r dynamic-store --no-ansi -vvv'
     SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive --no-ansi -vvv'
     SPRYKER_DYNAMIC_STORE_MODE: true
-    SPRYKER_DEBUG_ENABLED: true
     SPRYKER_YVES_HOST_EU: yves.eu.eugene-dev2.cloud.spryker.toys
     SPRYKER_CUSTOMER_REMEMBER_ME_SECRET: "remember_me"
     AWS_REGION: "eu-west-1"
@@ -85,72 +84,12 @@ regions:
         database: eugene_dev2
         username: spryker
         password: secret
-
       broker:
         namespace: eu-docker
       key_value_store:
         namespace: 1
       search:
         namespace: eu_search
-
-# groups:
-#   EU:
-#     region: EU
-#     applications:
-#       mportal:
-#         application: merchant-portal
-#         application-group: backend-group
-#         endpoints:
-#           mp.eu.eugene-dev2.cloud.spryker.toys:
-#             region: EU
-#             <<: *frontend-auth
-#             entry-point: MerchantPortal
-#             primal: true
-#             services:
-#               session:
-#                 namespace: 7
-#       yves:
-#         application: yves
-#         application-group: frontend-group
-#         endpoints:
-#           yves.eu.eugene-dev2.cloud.spryker.toys:
-#             region: EU
-#             <<: *frontend-auth
-#             services:
-#               session:
-#                 namespace: 1
-#       glue:
-#         application: glue
-#         application-group: frontend-group
-#         endpoints:
-#           glue.eu.eugene-dev2.cloud.spryker.toys:
-#             region: EU
-#       boffice:
-#         application: backoffice
-#         application-group: backend-group
-#         endpoints:
-#           backoffice.eu.eugene-dev2.cloud.spryker.toys:
-#             region: EU
-#             <<: *frontend-auth
-#             primal: true
-#             services:
-#               session:
-#                 namespace: 3
-#       backgw:
-#         application: backend-gateway
-#         application-group: backend-group
-#         endpoints:
-#           backend-gateway.eu.eugene-dev2.cloud.spryker.toys:
-#             region: EU
-#             primal: true
-
-
-#       gluebackend:
-#         application: glue-backend
-#         application-group: backend-group
-#         endpoints:
-#           glue-backend.eu.eugene-dev2.cloud.spryker.toys:
-#             region: EU
 
 groups:
   EU:
@@ -165,7 +104,7 @@ groups:
             entry-point: Yves
             services:
               session:
-                namespace: 1
+                namespace: 2
 
           glue.eu.eugene-dev2.cloud.spryker.toys:
             region: EU
@@ -180,7 +119,7 @@ groups:
             entry-point: MerchantPortal
             services:
               session:
-                namespace: 7
+                namespace: 3
 
           backoffice.eu.eugene-dev2.cloud.spryker.toys:
             region: EU
@@ -188,7 +127,7 @@ groups:
             entry-point: Backoffice
             services:
               session:
-                namespace: 3
+                namespace: 4
 
           backend-gateway.eu.eugene-dev2.cloud.spryker.toys:
             region: EU
@@ -210,7 +149,7 @@ services:
         protocol: tcp
   broker:
     engine: rabbitmq
-    version: '3.9'
+    version: '4.1'
     api:
       username: 'spryker'
       password: 'secret'
@@ -226,8 +165,7 @@ services:
       localhost:16379:
         protocol: tcp
   search:
-    engine: elastic
-    version: '7.10'
+    engine: opensearch
     endpoints:
       localhost:9200:
         protocol: tcp
@@ -236,22 +174,7 @@ services:
     version: '2.442'
     endpoints:
       scheduler.eugene-dev2.cloud.spryker.toys:
-  mail_catcher:
-    engine: mailhog
-    endpoints:
-      mail.eugene-dev2.cloud.spryker.toys:
-  swagger:
-    engine: swagger-ui
-    endpoints:
-      swagger.eugene-dev2.cloud.spryker.toys:
-  redis-gui:
-    engine: redis-commander
-    endpoints:
-      redis-commander.eugene-dev2.cloud.spryker.toys:
-  dashboard:
-    engine: dashboard
-    endpoints:
-      eugene-dev2.cloud.spryker.toys:
+
 docker:
   blackfire:
     enabled: false
@@ -259,7 +182,7 @@ docker:
     enabled: true
     redirect: true
   debug:
-    enabled: true
+    enabled: false
     xdebug:
       enabled: false
   mount:
