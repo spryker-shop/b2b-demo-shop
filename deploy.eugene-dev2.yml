@@ -61,9 +61,13 @@ image:
     enabled-extensions:
         - otel
 
+# composer:
+#   mode: --no-dev
+#   autoload: --classmap-authoritative
+
 composer:
-  mode: --no-dev
-  autoload: --classmap-authoritative
+  mode: ""
+  autoload: ""
 
 assets:
   image: spryker/nginx-brotli:latest
