@@ -61,13 +61,13 @@ image:
     enabled-extensions:
         - otel
 
-composer:
-  mode: --no-dev -q
-  autoload: --classmap-authoritative
-
 # composer:
-#   mode: ""
-#   autoload: ""
+#   mode: --no-dev -q
+#   autoload: --classmap-authoritative
+
+composer:
+  mode: "-q"
+  autoload: ""
 
 assets:
   image: spryker/nginx-brotli:latest
