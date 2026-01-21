@@ -2,6 +2,7 @@
 
 declare(strict_types = 1);
 
+
 use Generated\Shared\Transfer\AddPaymentMethodTransfer;
 use Generated\Shared\Transfer\AddReviewsTransfer;
 use Generated\Shared\Transfer\AppConfigUpdatedTransfer;
@@ -585,6 +586,14 @@ foreach ($rabbitConnections as $key => $connection) {
     foreach ($connection as $constant => $value) {
         $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
     }
+
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_STREAM_CONTEXT_OPTIONS] = [
+        'ssl' => [
+            'verify_peer'       => true,
+            'verify_peer_name'  => true,
+        ],
+    ];
+
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === $defaultKey;
 }
 
@@ -601,10 +610,14 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
     SchedulerConfig::SCHEDULER_JENKINS => [
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => sprintf(
             '%s://%s:%s/',
-            getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'http',
+            getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'https',
             getenv('SPRYKER_SCHEDULER_HOST'),
             getenv('SPRYKER_SCHEDULER_PORT'),
         ),
+        SchedulerJenkinsConfig::SCHEDULER_JENKINS_CREDENTIALS => [
+            getenv('SPRYKER_SCHEDULER_USERNAME'),
+            getenv('SPRYKER_SCHEDULER_PASSWORD')
+        ],
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_CSRF_ENABLED => (bool)getenv('SPRYKER_JENKINS_CSRF_PROTECTION_ENABLED'),
     ],
 ];
