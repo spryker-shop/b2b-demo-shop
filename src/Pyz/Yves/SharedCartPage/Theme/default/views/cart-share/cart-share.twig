@@ -6,8 +6,7 @@
     form: _view.sharedCartForm,
     title: 'shared_cart.form.share_cart' | trans,
     activePage: 'multiCart',
-    backUrl: app.request.headers.get('referer') | default(url('multi-cart')),
-
+    backUrl: url('multi-cart'),
 } %}
 
 {% block breadcrumbs %}
