@@ -1,5 +1,11 @@
 {% extends view('dismiss-confirm', '@SprykerShop:SharedCartPage') %}
 
+{% define data = {
+    quote: _view.quote,
+    quoteName: _view.quote.name | default,
+    idQuote: _view.quote.idQuote | default,
+} %}
+
 {% block customerContent %}
     <h3 class="spacing-bottom spacing-bottom--big">{{ "shared_cart_page.dismiss_confirmation.warning" | trans }}</h3>
     <div class="box">
@@ -8,7 +14,7 @@
             {{ "shared_cart_page.dismiss_confirmation.trying_to_dismiss" | trans }}
         </p>
         <div class="spacing-top spacing-top--bigger">
-            <a href="{{ functionExists('generatePath') ? generatePath(data.backUrl) : data.backUrl }}" class="button button--hollow spacing-right">
+            <a href="{{ path('multi-cart') }}" class="button button--hollow spacing-right">
                 {{ "general.back.button" | trans }}
             </a>
             <a href="{{ url('shared-cart/dismiss', { 'idQuote' : data.idQuote }) }}" class="button button--alert">
