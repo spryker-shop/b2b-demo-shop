@@ -126,15 +126,15 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    docker-alpine-php-84-mariadb-cypress-dynamic-store-off:
+    docker-alpine-php-84-postgres-cypress:
         if: >
             (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci'))
             || (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.4 / MariaDB / Cypress / UI / Dynamic Store OFF"
+        name: "Docker / Alpine / PHP 8.3 / Postgress / Cypress / UI"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
@@ -156,13 +156,13 @@ jobs:
                 continue-on-error: true
                 run: |
                     git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store.cypress.yml
+                    docker/sdk boot deploy.ci.acceptance.postgress.cypress.yml
                     sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local queue.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Run Tests
                 run: |
-                    docker/sdk exec cypress-tests cp .env.example .env
+                    docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec --env "ENV_REPOSITORY_ID=b2b" cypress-tests npm run cy:ci
             -   name: Upload artifacts
                 if: failure()
