@@ -96,7 +96,7 @@ jobs:
                     sudo apt-get update
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
-                    pip3 install awscli
+                    pip3 install awscli robotframework-browser robotframework-assertion-engine
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -130,7 +130,7 @@ jobs:
         if: >
             (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci'))
             || (github.event_name == 'push' && github.ref == 'refs/heads/master')
-        name: "Docker / Alpine / PHP 8.3 / Postgress / Cypress / UI"
+        name: "Docker / Alpine / PHP 8.3 / Postgres / Cypress / UI"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -145,7 +145,7 @@ jobs:
                     sudo apt-get update
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
-                    pip3 install awscli
+                    pip3 install awscli robotframework-browser robotframework-assertion-engine
 
             -   name: Install cypress-tests folder
                 run: |
@@ -192,7 +192,7 @@ jobs:
                     sudo apt-get update
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
-                    pip3 install awscli
+                    pip3 install awscli robotframework-browser robotframework-assertion-engine
 
             -   name: Install robotframework-suite-tests folder
                 run: |
