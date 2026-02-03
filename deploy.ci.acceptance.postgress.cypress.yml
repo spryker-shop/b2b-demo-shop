@@ -6,7 +6,7 @@ tag: '1.0'
 environment: docker.ci.cypress
 pipeline: docker.ci.acceptance
 image:
-    tag: spryker/php:8.4
+    tag: spryker/php:8.3
     php:
         enabled-extensions:
             - otel
@@ -20,8 +20,8 @@ image:
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PUBLIC_KEY: 'BGqNWbv0hWM5CQ1-KwAfSQBMC6TMVFyrnh3vQp37oGCNvQ6eG_HyMjxBFJRWeCPTbzDoxcjhxLJS8Ck8r1G2oFw'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PRIVATE_KEY: 'UK6DywwjKITPpRHBSY9TLPIXm6BPrHX40sseIoXT9c8'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
-        SPRYKER_YVES_HOST_DE: yves.de.spryker.local
-        SPRYKER_YVES_HOST_AT: yves.at.spryker.local
+        SPRYKER_YVES_HOST_EU: yves.eu.spryker.local
+        SPRYKER_DYNAMIC_STORE_MODE: true
     node:
         version: 18
         npm: 9
@@ -42,27 +42,12 @@ regions:
                 username: spryker
                 password: secret
 
-        stores:
-            DE:
-                services:
-                    broker:
-                        namespace: de-docker
-                    key_value_store:
-                        namespace: 1
-                    search:
-                        namespace: de_search
-                    session:
-                        namespace: 1
-            AT:
-                services:
-                    broker:
-                        namespace: at-docker
-                    key_value_store:
-                        namespace: 2
-                    search:
-                        namespace: at_search
-                    session:
-                        namespace: 1
+            broker:
+                namespace: eu-docker
+            key_value_store:
+                namespace: 1
+            search:
+                namespace: eu_search
 groups:
     EU:
         region: EU
@@ -72,61 +57,41 @@ groups:
                 endpoints:
                     date-time-configurator-example.spryker.local:
                         entry-point: Configurator
-                    yves.de.spryker.local:
-                        store: DE
+                    yves.eu.spryker.local:
+                        region: EU
                         services:
                             session:
                                 namespace: 1
-                    yves.at.spryker.local:
-                        store: AT
-                        services:
-                            session:
-                                namespace: 2
             glue:
                 application: glue
                 endpoints:
-                    glue.de.spryker.local:
-                        store: DE
-                    glue.at.spryker.local:
-                        store: AT
+                    glue.eu.spryker.local:
+                        region: EU
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.spryker.local:
-                        store: DE
+                    backoffice.eu.spryker.local:
+                        region: EU
                         services:
                             session:
                                 namespace: 3
-                    backoffice.at.spryker.local:
-                        store: AT
-                        services:
-                            session:
-                                namespace: 4
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.spryker.local:
-                        store: DE
-                        primal: true
-                    backend-gateway.at.spryker.local:
-                        store: AT
+                    backend-gateway.eu.spryker.local:
+                        region: EU
                         primal: true
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.de.spryker.local:
-                        store: DE
-                        entry-point: BackendApi
-                    backend-api.at.spryker.local:
-                        store: AT
+                    backend-api.eu.spryker.local:
+                        region: EU
                         entry-point: BackendApi
             gluestorefront:
                 application: glue-storefront
                 endpoints:
-                    glue-storefront.de.spryker.local:
-                        store: DE
-                    glue-storefront.at.spryker.local:
-                        store: AT
+                    glue-storefront.eu.spryker.local:
+                        region: EU
             gluebackend:
                 application: glue-backend
                 limits:
@@ -134,20 +99,17 @@ groups:
                 http:
                     timeout: 5m
                 endpoints:
-                    glue-backend.de.spryker.local:
-                        store: DE
-                    glue-backend.at.spryker.local:
-                        store: AT
+                    glue-backend.eu.spryker.local:
+                        region: EU
 
 services:
     database:
-        engine: mysql
-        version: mariadb-10.4
+        engine: postgres
         root:
-            username: 'root'
-            password: 'secret'
+            username: "root"
+            password: "secret"
         endpoints:
-            localhost:3306:
+            localhost:5432:
                 protocol: tcp
     broker:
         engine: rabbitmq
@@ -175,7 +137,7 @@ docker:
             enabled: false
 
     testing:
-        store: DE
+        region: EU
 
     mount:
         native:
