@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d63e4d26d132e5c2a1c02519bc905a0f",
+    "content-hash": "72e46495b00e5aff9996bc1b9c74e660",
     "packages": [
         {
             "name": "async-aws/core",
@@ -8075,7 +8075,7 @@
         },
         {
             "name": "spryker-feature/quotation-process",
-            "version": "202512.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/quotation-process.git",
@@ -8105,6 +8105,7 @@
                 "spryker-feature/prices": "Recommended feature dependency.",
                 "spryker-feature/spryker-core": "Recommended feature dependency."
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -8117,7 +8118,7 @@
             ],
             "description": "Quotation Process [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/quotation-process/tree/202512.0"
+                "source": "https://github.com/spryker-feature/quotation-process/tree/master"
             },
             "time": "2025-12-16T12:30:26+00:00"
         },
@@ -72891,9 +72892,17 @@
             "time": "2025-10-29T15:56:20+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker-feature/quotation-process",
+            "version": "9999999-dev",
+            "alias": "202512.0",
+            "alias_normalized": "202512.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker-feature/quotation-process": 20,
         "spryker/cypress-tests": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20
@@ -72917,5 +72926,5 @@
     "platform-overrides": {
         "php": "8.3.13"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
