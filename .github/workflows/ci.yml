@@ -385,7 +385,7 @@ jobs:
 
             -   name: Install robotframework-suite-tests folder
                 run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-feature/cc-37113-integration-of-the-fixes" --dev --no-interaction
+                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
 
             -   name: Install Project
