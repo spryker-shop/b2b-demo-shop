@@ -13,9 +13,9 @@ class TaxRateListPage
 {
     public const URL = '/tax/rate/list';
 
-    public const SELECTOR_DATA_TABLE = '.dataTables_wrapper';
+    public const SELECTOR_DATA_TABLE = '.dt-container';
 
-    public const SELECTOR_SEARCH = 'input.form-control.input-sm';
+    public const SELECTOR_SEARCH = 'input.form-control.form-control-sm';
 
     public const SELECTOR_DELETE = 'Delete';
 
