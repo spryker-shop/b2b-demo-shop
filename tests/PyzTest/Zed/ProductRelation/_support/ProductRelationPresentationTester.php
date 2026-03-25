@@ -37,7 +37,7 @@ class ProductRelationPresentationTester extends Actor
 
     public const PRODUCT_RELATION_TYPE_SELECTOR = '//*[@id="product_relation_productRelationType"]';
 
-    public const PRODUCT_TABLE_FILTER_LABEL_INPUT_SELECTOR = '//*[@id="product-table_filter"]/label/input';
+    public const PRODUCT_TABLE_FILTER_LABEL_INPUT_SELECTOR = '//*[@class="dt-search"]//input';
 
     public const PRODUCT_TAB_SELECTOR = '//*[@id="form-product-relation"]/div/ul/li[2]/a';
 
@@ -47,7 +47,7 @@ class ProductRelationPresentationTester extends Actor
 
     public const PRODUCT_RELATION_KEY_FIELD_SELECTOR = '//*[@id="product_relation_productRelationKey"]';
 
-    public const PRODUCT_TABLE_BODY_XPATH = '//*[@class="dataTables_scrollBody"]/table/tbody/tr[1]/td[1]';
+    public const PRODUCT_TABLE_BODY_XPATH = '//*[contains(@class, "dataTable")]/tbody/tr[1]/td[1]';
 
     protected int $numberOfRulesSelected = 0;
 

@@ -15,5 +15,5 @@ class OrderDetailPage
 
     public const ORDER_DETAIL_PAGE_URL = '/sales/detail?id-sales-order=%d';
 
-    public const ORDER_DETAIL_TABLE_FIRST_ORDER_ID_XPATH = '//*[@class="dataTables_scrollBody"]/table/tbody/tr[1]/td[1]';
+    public const ORDER_DETAIL_TABLE_FIRST_ORDER_ID_XPATH = '//*[contains(@class, "dataTable")]/tbody/tr[1]/td[1]';
 }

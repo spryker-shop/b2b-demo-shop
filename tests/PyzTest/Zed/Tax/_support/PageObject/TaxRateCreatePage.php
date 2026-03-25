@@ -39,7 +39,7 @@ class TaxRateCreatePage
 
     public const SELECTOR_SAVE = 'input.btn.btn-primary';
 
-    public const SELECTOR_LIST_OF_TAX_RATES_BUTTON = '//div[@class="title-action"]/a';
+    public const SELECTOR_LIST_OF_TAX_RATES_BUTTON = '//div[@data-qa="title-action"]/a';
 
     public const TAX_RATE_VALID = 'validTaxRate';
 
