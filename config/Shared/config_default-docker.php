@@ -276,10 +276,10 @@ $config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VA
  *   $config[StorageRedisConstants::STORAGE_REDIS_DATA_SOURCE_NAMES] = ['tcp://127.0.0.1:10009', 'tcp://10.0.0.1:6379']
  */
 //$config[StorageRedisConstants::STORAGE_REDIS_DATA_SOURCE_NAMES] = [];
-
+$namespaceKey = (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE') ? getenv('SPRYKER_CURRENT_REGION') : getenv('APPLICATION_STORE');
 $config[StorageRedisConstants::STORAGE_REDIS_HOST] = getenv('SPRYKER_KEY_VALUE_STORE_HOST');
 $config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
-$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE') ?: 1;
+$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = $keyValueRegionNamespaces[$namespaceKey]['namespace'] ?? getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE') ?: 1;
 
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = 'tcp';
 $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_FE_HOST');
