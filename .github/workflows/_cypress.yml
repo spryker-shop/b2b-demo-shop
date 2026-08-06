@@ -107,6 +107,7 @@ jobs:
                 uses: ./.github/actions/validate-sync-completeness
 
             -   name: Run Tests
+                id: run_tests
                 if: matrix.shard.mode == 'core' && env.CORE_SPECS != ''
                 run: |
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
@@ -115,8 +116,10 @@ jobs:
 
             -   name: Upload artifacts
                 # A boot failure leaves no .cypress dir, and `aws s3 cp` on a missing path adds
-                # a second, misleading red step on top of the real one.
-                if: failure()
+                # a second, misleading red step on top of the real one. Scoped to a test failure
+                # so a red boot or install step skips this outright; the guard below still covers
+                # a test run that wrote nothing.
+                if: failure() && steps.run_tests.outcome == 'failure'
                 run: |
                     if [ ! -d .cypress ]; then
                         echo "No .cypress directory — nothing to upload (the run failed before any test wrote artifacts)."

@@ -122,6 +122,7 @@ jobs:
                 uses: ./.github/actions/validate-sync-completeness
 
             -   name: Run Tests
+                id: tests
                 if: env.ROBOT_SUITES != ''
                 # --name Suites pins the root suite name: with the slice passed as explicit
                 # suite arguments robot would otherwise derive a root name from the file list,
@@ -132,8 +133,10 @@ jobs:
 
             -   name: Upload artifacts
                 # A boot failure leaves no log.html, and `aws s3 cp` on a missing file adds a
-                # second, misleading red step on top of the real one.
-                if: failure()
+                # second, misleading red step on top of the real one. Scoped to a test failure so
+                # a red boot or install step skips this outright; the guard below still covers a
+                # test run that produced no results file.
+                if: failure() && steps.tests.outcome == 'failure'
                 run: |
                     if [ ! -f .robot/results/log.html ]; then
                         echo "No .robot/results/log.html — nothing to upload (the run failed before any test wrote results)."
