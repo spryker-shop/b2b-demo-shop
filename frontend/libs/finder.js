@@ -22,17 +22,20 @@ const globAsync = async (patterns, rootConfiguration) => {
 
 const findFiles = (globDirs, globPatterns, globSettings) =>
     globDirs.reduce(async (resultsPromise, dir) => {
+        const results = await resultsPromise;
         const rootConfiguration = {
             ...defaultGlobSettings,
             ...globSettings,
             cwd: dir,
         };
 
-        const results = await resultsPromise;
         const globPath = await globAsync(globPatterns, rootConfiguration);
 
         return results.concat(globPath);
-    }, Promise.resolve([]));
+    }, Promise.resolve([])).then((results) => {
+        // Sort once here to make result deterministic
+        return results.sort();
+    });
 
 const find = async (globDirs, globPatterns, globFallbackPatterns, globSettings = {}) => {
     const customThemeFiles = await findFiles(globDirs, globPatterns, globSettings);
@@ -40,7 +43,8 @@ const find = async (globDirs, globPatterns, globFallbackPatterns, globSettings =
         ? await findFiles(globDirs, globFallbackPatterns, globSettings)
         : [];
 
-    return defaultThemeFiles.concat(customThemeFiles);
+    // they are already sorted by findFiles; just concatenate fallback then custom
+    return [...defaultThemeFiles, ...customThemeFiles];
 };
 
 // find entry points
@@ -50,8 +54,9 @@ const findEntryPoints = async (settings) => {
 };
 
 // merge entry points
-const mergeEntryPoints = async (files) =>
-    Object.values(
+const mergeEntryPoints = async (files) => {
+    // `files` is already sorted by findFiles, so we don't need to sort again here
+    return Object.values(
         files.reduce((map, file) => {
             const dir = path.dirname(file);
             const name = path.basename(dir);
@@ -60,6 +65,7 @@ const mergeEntryPoints = async (files) =>
             return map;
         }, {}),
     );
+};
 
 // find components entry points
 const findComponentEntryPoints = async (settings) => await findEntryPoints(settings);
