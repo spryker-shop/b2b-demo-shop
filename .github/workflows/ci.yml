@@ -16,9 +16,8 @@ env:
     JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ secrets.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
 
 concurrency:
-    # Master pushes are keyed by sha, not by ref: GitHub supersedes a *pending* run in a
-    # shared group even when cancel-in-progress is false, so cancel-in-progress alone does
-    # not stop one master push from discarding another. A per-sha group does.
+    # Master pushes are keyed by sha: GitHub supersedes a pending run in a shared group even
+    # when cancel-in-progress is false, so one master push would otherwise discard another.
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || (github.ref == 'refs/heads/master' && github.sha || github.ref) }}
     cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
