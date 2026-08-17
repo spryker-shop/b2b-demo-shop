@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $setting-color-business-chart-item-level: (
     1: $setting-color-blue-1,
     2: $setting-color-main,
@@ -20,7 +22,7 @@ $setting-color-business-chart-item-level: (
             align-items: center;
             font-size: rem(14);
             padding: rem(12) rem(15) rem(12) rem(20);
-            margin-bottom: map-get($setting-spacing, default);
+            margin-bottom: map.get($setting-spacing, default);
             background-color: $setting-color-gray-7;
             color: $setting-color-gray-5;
             font-weight: fw(medium);

@@ -1,8 +1,7 @@
-@import '~ShopUi/styles/util';
+@use '~ShopUi/styles/util' as core;
+@use 'utils/visibility' as *;
 
-@import 'utils/visibility';
-
-@include util-spacing;
-@include util-text;
-@include util-float;
+@include core.util-spacing;
+@include core.util-text;
+@include core.util-float;
 @include util-visibility;

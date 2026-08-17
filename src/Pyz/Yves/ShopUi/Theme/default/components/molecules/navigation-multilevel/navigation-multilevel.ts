@@ -12,8 +12,6 @@ export default class NavigationMultilevel extends Component {
     protected eventShowOverlay: CustomEvent<OverlayEventDetail>;
     protected eventHideOverlay: CustomEvent<OverlayEventDetail>;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayBlockClassName)[0];
         this.triggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__trigger`));

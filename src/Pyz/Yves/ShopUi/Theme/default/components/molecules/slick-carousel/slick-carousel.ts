@@ -6,8 +6,6 @@ import 'slick-carousel';
 export default class SlickCarousel extends Component {
     protected slider: HTMLElement;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.slider = <HTMLElement>this.getElementsByClassName(`${this.jsName}__container`)[0];
 

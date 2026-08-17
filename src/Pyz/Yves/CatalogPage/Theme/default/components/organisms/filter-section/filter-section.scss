@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 @mixin catalog-page-filter-section($name: '.filter-section') {
     #{$name} {
         position: fixed;
@@ -13,7 +15,7 @@
             position: static;
             padding: 0;
             background: none;
-            margin: map-get($setting-spacing, 'biggest') 0 map-get($setting-spacing, 'bigger');
+            margin: map.get($setting-spacing, 'biggest') 0 map.get($setting-spacing, 'bigger');
         }
 
         &__close {
@@ -114,7 +116,7 @@
             position: relative;
             background: none;
             z-index: $setting-zi-element;
-            padding: rem(20) 0 rem(30) 0;
+            padding: rem(20) 0 rem(30);
 
             @include helper-breakpoint-media-min($lg) {
                 position: static;

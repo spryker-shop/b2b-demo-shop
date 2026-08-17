@@ -13,8 +13,6 @@ export default class VolumePrice extends Component {
     protected currentQuantityValue: number;
     protected timeout = 400;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.productPriceElement = <HTMLElement>this.getElementsByClassName(`${this.jsName}__price`)[0];
         this.volumePricesData = <VolumePricesData[]>JSON.parse(this.dataset.json).reverse();
