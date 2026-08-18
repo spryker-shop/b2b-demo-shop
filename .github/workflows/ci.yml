@@ -184,7 +184,7 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   uses: ramsey/composer-install@v3
+            -   uses: ramsey/composer-install@26d8a556604053a9612623447203a691f406fbe6 # v4
                 with:
                     composer-options: "-q --ignore-platform-reqs --no-interaction --prefer-install=auto"
 
