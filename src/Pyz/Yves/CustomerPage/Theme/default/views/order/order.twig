@@ -11,7 +11,7 @@
         },
     } only %}
         {% block actions %}
-            <button class="button button--hollow button--justify-center {{ embed.jsPrefix }}filter-button">
+            <button class="button button--hollow button--justify-center {{ embed.jsPrefix }}filter-button" {{ qa('order-filters-toggle') }}>
                 {% include atom('icon') with {
                     modifiers: ['filter'],
                     class: 'spacing-right',
@@ -48,7 +48,7 @@
                 {% endblock %}
             {%- endset -%}
 
-            <div class="{{ jsPrefix }}filter-section {% if not activeFilters | trim %}is-hidden{% endif %}">
+            <div class="{{ jsPrefix }}filter-section {% if not activeFilters | trim %}is-hidden{% endif %}" {{ qa('order-filter-section') }}>
                 {% block orderFilters %}
                     {{ parent() }}
                 {% endblock %}

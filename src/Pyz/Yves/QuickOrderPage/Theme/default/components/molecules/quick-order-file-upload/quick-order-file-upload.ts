@@ -10,8 +10,6 @@ export default class QuickOrderFileUpload extends Component {
     protected readonly hiddenClass: string = 'is-hidden';
     protected readonly browseFileLabelToggleClass: string = 'label--browse-file-cursor-default';
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.inputFile = <HTMLInputElement>document.getElementById(this.inputFileId);
         this.fileUploadMessage = <HTMLElement>this.getElementsByClassName(`${this.jsName}__file-select`)[0];

@@ -11,8 +11,6 @@ export default class CustomSelect extends Component {
     protected isInited = false;
     protected timeout = 300;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.select = <HTMLSelectElement>this.getElementsByClassName(`${this.jsName}`)[0];
         this.$select = $(this.select);
