@@ -4,7 +4,7 @@ $address-form-width: rem(710);
     $name: '.form';
 
     &__field {
-        + & {
+        & + & {
             margin-top: 0.5rem;
         }
 
@@ -30,7 +30,7 @@ $address-form-width: rem(710);
     &__action {
         flex: none;
         width: 100%;
-        margin: rem(10) 0 0 0;
+        margin: rem(10) 0 0;
 
         @include helper-breakpoint-media-min($lg) {
             width: auto;
@@ -209,7 +209,9 @@ $address-form-width: rem(710);
             color: $setting-color-gray-4;
             border-radius: $setting-border-radius;
             border: none;
-            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            box-shadow:
+                0 rem(10) rem(10) 0 $setting-color-shadow-1,
+                0 rem(3) rem(3) 0 $setting-color-shadow-1;
 
             @include helper-breakpoint-media-min($lg) {
                 min-height: rem(86);
@@ -249,7 +251,9 @@ $address-form-width: rem(710);
             padding: rem(12) rem(13);
             border-radius: $setting-border-radius;
             border: none;
-            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            box-shadow:
+                0 rem(10) rem(10) 0 $setting-color-shadow-1,
+                0 rem(3) rem(3) 0 $setting-color-shadow-1;
             min-height: rem(119);
             max-width: 100%;
 
@@ -295,7 +299,9 @@ $address-form-width: rem(710);
             padding-right: rem(90);
             border-radius: $setting-border-radius;
             border: none;
-            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            box-shadow:
+                0 rem(10) rem(10) 0 $setting-color-shadow-1,
+                0 rem(3) rem(3) 0 $setting-color-shadow-1;
 
             @include helper-breakpoint-media-min($lg) {
                 padding-left: rem(12);

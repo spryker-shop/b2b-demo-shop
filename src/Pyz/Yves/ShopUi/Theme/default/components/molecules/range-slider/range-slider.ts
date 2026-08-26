@@ -6,8 +6,6 @@ export default class RangeSlider extends Component {
     protected rangeInputs: HTMLInputElement[];
     protected numberDigitsAfterDecimalPoint = 2;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.sliderContainer = <HTMLElement>document.getElementsByClassName(this.wrapClassName)[0];
         this.rangeInputs = <HTMLInputElement[]>Array.from(document.getElementsByClassName(this.inputsClassName));

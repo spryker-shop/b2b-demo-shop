@@ -16,8 +16,6 @@ export default class AutocompleteForm extends Component {
     protected eventShowOverlay: CustomEvent<OverlayEventDetail>;
     protected eventHideOverlay: CustomEvent<OverlayEventDetail>;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.ajaxProvider = <AjaxProvider>this.getElementsByClassName(`${this.jsName}__provider`)[0];
         this.suggestionsContainer = <HTMLElement>this.getElementsByClassName(`${this.jsName}__container`)[0];

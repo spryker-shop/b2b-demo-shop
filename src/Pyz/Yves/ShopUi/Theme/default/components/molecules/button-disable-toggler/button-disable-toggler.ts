@@ -5,8 +5,6 @@ type TTriggerElement = HTMLTextAreaElement | HTMLInputElement;
 export default class ButtonDisableToggler extends Component {
     protected triggers: TTriggerElement[];
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.triggers = <TTriggerElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.mapEvents();

@@ -181,6 +181,7 @@
 
         &-hidden-accessible {
             border: 0;
+            /* stylelint-disable-next-line property-no-deprecated */
             clip: rect(0 0 0 0);
             clip-path: inset(50%);
             height: rem(1);
@@ -217,7 +218,9 @@
 
                 #{$name}-dropdown {
                     border-radius: 0 0 $setting-border-radius $setting-border-radius;
-                    box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+                    box-shadow:
+                        0 rem(18) rem(18) 0 $setting-color-shadow-1,
+                        0 rem(3) rem(3) 0 $setting-color-shadow-1;
                 }
 
                 #{$name}-results__option {
@@ -259,7 +262,9 @@
                 #{$name}-dropdown {
                     padding: rem(3) 0;
                     border-radius: 0 0 $setting-border-radius $setting-border-radius;
-                    box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+                    box-shadow:
+                        0 rem(18) rem(18) 0 $setting-color-shadow-1,
+                        0 rem(3) rem(3) 0 $setting-color-shadow-1;
                 }
 
                 #{$name}-results__option {
@@ -298,7 +303,9 @@
             border: none;
             border-radius: $setting-border-radius;
             background: $setting-color-white;
-            box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            box-shadow:
+                0 rem(18) rem(18) 0 $setting-color-shadow-1,
+                0 rem(3) rem(3) 0 $setting-color-shadow-1;
         }
 
         &-search--dropdown.select2-search--hide {
@@ -316,7 +323,7 @@
             line-height: 1.87;
             letter-spacing: rem(0.2);
             padding: rem(10) rem(15);
-            word-break: break-word;
+            overflow-wrap: break-word;
 
             &[aria-selected] {
                 cursor: pointer;

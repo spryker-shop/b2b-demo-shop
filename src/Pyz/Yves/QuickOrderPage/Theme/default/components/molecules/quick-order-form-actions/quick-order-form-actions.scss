@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 @mixin quick-order-page-quick-order-form-actions($name: '.quick-order-form-actions') {
     #{$name} {
         &__clear-all-trigger,
@@ -26,8 +28,8 @@
 
         &__action-buttons {
             display: grid;
-            gap: map-get($setting-spacing, 'big') map-get($setting-spacing, 'default');
-            margin-top: map-get($setting-spacing, 'big');
+            gap: map.get($setting-spacing, 'big') map.get($setting-spacing, 'default');
+            margin-top: map.get($setting-spacing, 'big');
 
             @include helper-breakpoint(md) {
                 grid-template-columns: repeat(2, 1fr);

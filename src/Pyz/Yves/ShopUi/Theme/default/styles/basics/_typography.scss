@@ -1,7 +1,10 @@
+@use '../shared' as *;
+
 @mixin basic-typography() {
     @font-face {
         font-family: Circular;
-        src: url('../fonts/lineto-circular-pro-book.woff2') format('woff2'),
+        src:
+            url('../fonts/lineto-circular-pro-book.woff2') format('woff2'),
             url('../fonts/circular-pro/lineto-circular-pro-book.woff') format('woff');
         font-weight: 400;
         font-style: normal;
@@ -10,7 +13,8 @@
 
     @font-face {
         font-family: Circular;
-        src: url('../fonts/lineto-circular-pro-medium.woff2') format('woff2'),
+        src:
+            url('../fonts/lineto-circular-pro-medium.woff2') format('woff2'),
             url('../fonts/circular-pro/lineto-circular-pro-medium.woff') format('woff');
         font-weight: 500;
         font-style: normal;
@@ -19,7 +23,8 @@
 
     @font-face {
         font-family: Circular;
-        src: url('../fonts/lineto-circular-pro-bold.woff2') format('woff2'),
+        src:
+            url('../fonts/lineto-circular-pro-bold.woff2') format('woff2'),
             url('../fonts/circular-pro/lineto-circular-pro-bold.woff') format('woff');
         font-weight: 700;
         font-style: normal;

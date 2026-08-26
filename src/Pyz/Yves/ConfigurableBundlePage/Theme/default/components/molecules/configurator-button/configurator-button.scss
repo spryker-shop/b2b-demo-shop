@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 @mixin configurable-bundle-page-configurator-button($name: '.configurator-button') {
     @include shop-ui-button($name) {
         &--hollow {
@@ -65,7 +67,7 @@
 
         &--selected {
             @include configurable-bundle-page-configurator-button-state(
-                helper-color-light(map-get($setting-color-actions, 'success')),
+                helper-color-light(map.get($setting-color-actions, 'success')),
                 $setting-color-main,
                 $setting-color-transparent
             );

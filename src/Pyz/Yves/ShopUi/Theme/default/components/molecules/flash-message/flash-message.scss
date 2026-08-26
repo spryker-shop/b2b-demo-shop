@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 @mixin shop-ui-flash-message($name: '.flash-message') {
     #{$name} {
         @include helper-visibility-invisible;
@@ -6,7 +8,7 @@
         overflow-y: hidden;
         font-size: $setting-font-size-base + 1;
         font-family: $setting-font-family;
-        background-color: map-get($setting-color-actions, 'success');
+        background-color: map.get($setting-color-actions, 'success');
         color: $setting-color-white;
 
         &__content {
