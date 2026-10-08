@@ -1,13 +1,7 @@
-@mixin shop-ui-logo($name: '.logo') {
-    #{$name} {
-        &--checkout {
-            padding-right: 0;
-            margin-top: rem(-10);
-            margin-bottom: rem(-10);
-        }
-
-        @content;
+@include shop-ui-logo {
+    &--checkout {
+        padding-right: 0;
+        margin-top: rem(-10);
+        margin-bottom: rem(-10);
     }
 }
-
-@include shop-ui-logo();

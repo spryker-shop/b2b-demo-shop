@@ -5,7 +5,7 @@
         position: relative;
         width: rem(34);
         height: rem(14);
-        background-color: transparentize($setting-color-gray-1, 0.4);
+        background-color: color.adjust($setting-color-gray-1, $alpha: -0.4);
         border-radius: rem(7);
         overflow: visible;
         margin: rem(3) 0 rem(3) rem(10);
@@ -26,7 +26,7 @@
         }
 
         &--active {
-            background-color: transparentize($setting-color-main, 0.5);
+            background-color: color.adjust($setting-color-main, $alpha: -0.5);
             margin-left: 0;
 
             #{$name}__handle {

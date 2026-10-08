@@ -136,13 +136,13 @@
         &--order {
             #{$name}__container {
                 margin-bottom: 0;
-                font-size: map_get($setting-font-size, small);
+                font-size: map.get($setting-font-size, small);
                 background: $setting-color-alpha-2;
                 color: $setting-color-black;
                 padding: rem(15) rem(15) rem(15) 0;
 
                 @include helper-breakpoint-media-min($md) {
-                    font-size: map_get($setting-font-size, default);
+                    font-size: map.get($setting-font-size, default);
                 }
 
                 &:hover {
@@ -178,7 +178,7 @@
 
             #{$name}__sku {
                 color: $setting-color-gray-3;
-                font-size: map_get($setting-font-size, small);
+                font-size: map.get($setting-font-size, small);
             }
 
             #{$name}__quantity {
