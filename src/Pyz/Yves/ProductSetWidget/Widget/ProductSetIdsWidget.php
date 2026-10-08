@@ -126,10 +126,13 @@ class ProductSetIdsWidget extends AbstractWidget
      */
     protected function getSelectedAttributes(int $idProductAbstract): array
     {
-        /** @var array<mixed> $attributes */
-        $attributes = $this->getRequest()->query->get(static::PARAMETER_ATTRIBUTES) ?: [];
+        $attributes = $this->getRequest()->query->all()[static::PARAMETER_ATTRIBUTES] ?? [];
 
-        return isset($attributes[$idProductAbstract]) ? array_reverse(array_filter($attributes[$idProductAbstract])) : [];
+        if (!is_array($attributes) || !isset($attributes[$idProductAbstract]) || !is_array($attributes[$idProductAbstract])) {
+            return [];
+        }
+
+        return array_reverse(array_filter($attributes[$idProductAbstract]));
     }
 
     protected function getRequest(): Request
