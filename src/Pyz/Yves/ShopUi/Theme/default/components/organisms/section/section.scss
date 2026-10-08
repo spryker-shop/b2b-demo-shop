@@ -123,10 +123,10 @@
         }
 
         &__sub-title {
-            font-size: map_get($setting-font-size, default);
+            font-size: map.get($setting-font-size, default);
 
             @include helper-breakpoint-media-min($lg) {
-                font-size: map_get($setting-font-size, big);
+                font-size: map.get($setting-font-size, big);
             }
         }
 
@@ -142,7 +142,7 @@
             }
 
             @include helper-breakpoint-media-min($lg) {
-                font-size: map_get($setting-font-size, big);
+                font-size: map.get($setting-font-size, big);
             }
         }
     }

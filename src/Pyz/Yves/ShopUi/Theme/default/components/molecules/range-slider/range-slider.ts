@@ -1,13 +1,13 @@
 import Component from 'ShopUi/models/component';
-import noUiSlider from 'nouislider';
+import noUiSlider, { Options, target } from 'nouislider';
 
 export default class RangeSlider extends Component {
-    protected sliderContainer: HTMLElement;
+    protected sliderContainer: target;
     protected rangeInputs: HTMLInputElement[];
     protected numberDigitsAfterDecimalPoint = 2;
 
     protected init(): void {
-        this.sliderContainer = <HTMLElement>document.getElementsByClassName(this.wrapClassName)[0];
+        this.sliderContainer = <target>document.getElementsByClassName(this.wrapClassName)[0];
         this.rangeInputs = <HTMLInputElement[]>Array.from(document.getElementsByClassName(this.inputsClassName));
 
         this.initUiSlider();
@@ -31,11 +31,11 @@ export default class RangeSlider extends Component {
     protected setInputValueToSlider(index: number, value: string) {
         const inputsValue = [];
         inputsValue[index] = value;
-        (<noUiSlider>this.sliderContainer).noUiSlider.set(inputsValue);
+        this.sliderContainer.noUiSlider.set(inputsValue);
     }
 
     protected valueUpdate(): void {
-        (<noUiSlider>this.sliderContainer).noUiSlider.on('update', (values, handle) => {
+        this.sliderContainer.noUiSlider.on('update', (values, handle) => {
             this.rangeInputs[handle].value = String(values[handle]);
         });
     }
@@ -48,7 +48,7 @@ export default class RangeSlider extends Component {
         return this.getAttribute('inputs-class-name');
     }
 
-    protected get sliderConfig(): object {
+    protected get sliderConfig(): Options {
         return Object.assign(JSON.parse(this.getAttribute('slider-config')), {
             format: {
                 from: (value) => value,
