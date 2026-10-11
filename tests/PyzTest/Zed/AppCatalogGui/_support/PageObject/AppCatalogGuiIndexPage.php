@@ -13,5 +13,5 @@ class AppCatalogGuiIndexPage
 {
     public const APP_CATALOG_GUI_INDEX_PAGE_URL = '/app-catalog-gui';
 
-    public const APP_CATALOG_SCRIPT = '<script src="%s?storeReference=%s&amp;language=%s"></script>';
+    public const APP_CATALOG_SCRIPT = '<script src="%s"></script>';
 }
