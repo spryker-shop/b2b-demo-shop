@@ -25,7 +25,7 @@
                         checked: (filterValue.value in activeValues)
                     },
                     data: {
-                        label: filterValue.value ~ ' <span class="' ~ inputComponent ~ '__counter">' ~ filterValue.docCount | executeFilterIfExists('formatInt', app.locale) ~ '</span>'
+                        label: filterValue.value | e() ~ ' <span class="' ~ inputComponent ~ '__counter">' ~ filterValue.docCount | executeFilterIfExists('formatInt', app.locale) ~ '</span>'
                     }
                 } only %}
             </li>
