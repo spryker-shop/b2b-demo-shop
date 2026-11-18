@@ -11,6 +11,7 @@ namespace Pyz\Yves\Router;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Pyz\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
+use Spryker\Yves\Captcha\Plugin\Router\CaptchaRouteProviderPlugin;
 use Spryker\Yves\CustomerDataChangeRequest\Plugin\Router\CustomerDataChangeRequestRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
 use Spryker\Yves\MultiFactorAuth\Plugin\Router\Agent\MultiFactorAuthAgentRouteProviderPlugin;
@@ -117,6 +118,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new NewsletterPageRouteProviderPlugin(),
             new CartPageRouteProviderPlugin(),
             new HealthCheckRouteProviderPlugin(),
+            new CaptchaRouteProviderPlugin(),
             new NewsletterWidgetRouteProviderPlugin(),
             new CatalogPageRouteProviderPlugin(),
             new CalculationPageRouteProviderPlugin(),
