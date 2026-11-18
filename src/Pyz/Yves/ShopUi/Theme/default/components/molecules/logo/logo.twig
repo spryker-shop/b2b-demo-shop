@@ -5,6 +5,15 @@
     tag: 'div',
 } %}
 
+{% define data = {
+    configurable: true,
+} %}
+
+{% define attributes = {
+    src: data.configurable ? configurationValue('theme:logos:logos:yves_logo_url') : null,
+    alt: 'Logo',
+} %}
+
 {% block body %}
     <a href="{{data.url}}" class="{{ component.renderClass(config.name ~ '__link', modifiers) }}">
         {% if attributes.src is empty %}
