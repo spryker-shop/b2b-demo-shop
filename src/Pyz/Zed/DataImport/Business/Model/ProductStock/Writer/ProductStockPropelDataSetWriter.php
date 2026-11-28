@@ -72,6 +72,11 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 
     protected StoreFacadeInterface $storeFacade;
 
+    /**
+     * @var array<string, array<string>>|null
+     */
+    protected static ?array $storeToWarehouseMapping = null;
+
     protected StockFacadeInterface $stockFacade;
 
     public function __construct(
@@ -105,6 +110,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     {
         $this->triggerAvailabilityPublishEvents();
         $this->productRepository->flush();
+        static::$storeToWarehouseMapping = null;
     }
 
     protected function createOrUpdateStock(DataSetInterface $dataSet): SpyStock
@@ -230,7 +236,12 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getStoreWarehouses(string $storeName): array
     {
-        return $this->stockFacade->getStoreToWarehouseMapping()[$storeName] ?? [];
+        // Read once per flush, not for every row and store: the mapping grows with the number of warehouses.
+        if (static::$storeToWarehouseMapping === null) {
+            static::$storeToWarehouseMapping = $this->stockFacade->getStoreToWarehouseMapping();
+        }
+
+        return static::$storeToWarehouseMapping[$storeName] ?? [];
     }
 
     /**
